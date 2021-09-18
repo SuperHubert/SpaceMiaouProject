@@ -584,3 +584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 103834692}
   speed: 10
+  dashSpeed: 40
+  dashInternalCd: 0
+  dashInternalCdMax: 2
+  dashCd: 1
+  dashCdMax: 1
