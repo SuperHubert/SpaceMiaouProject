@@ -9,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject testCase;
+    public Vector2Int coords;
+    
     //Player GameObject
     public GameObject player;
     private Rigidbody rb;
@@ -72,7 +75,11 @@ public class PlayerMovement : MonoBehaviour
                 dashCd += Time.deltaTime;
             }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            testCase.GetComponent<Case>().CreateCase(coords,0);
+        }
     }
 
     void FixedUpdate()
