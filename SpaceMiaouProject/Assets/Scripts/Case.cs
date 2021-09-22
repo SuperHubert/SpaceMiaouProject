@@ -62,5 +62,5 @@ public class Case : MonoBehaviour
         
         return createdCase.GetComponent<Case>();
     }
-    
+
 }

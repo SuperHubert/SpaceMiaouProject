@@ -662,5 +662,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generationList: []
-  room: {fileID: 1835674645391862978, guid: aaeadf9880c3d5048a9790910860ad6f, type: 3}
+  roomPrefab: {fileID: 1835674645391862978, guid: aaeadf9880c3d5048a9790910860ad6f, type: 3}
   numberOfRooms: 2
