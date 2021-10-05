@@ -38,8 +38,15 @@ public class GenerationV2 : MonoBehaviour
         for (int i = 1; i < number; i++)
         {
             Vector2Int nextPos = GetNextPosition(selectedCase);
-            
-            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+
+            if (Random.Range(0, 2) == 1)
+            {
+                CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+            }
+            else
+            {
+                selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+            }
 
             GetSurroundingCases(selectedCase);
         }
@@ -83,7 +90,7 @@ public class GenerationV2 : MonoBehaviour
 
         if (surroundingRoomsList.Count == 4)
         {
-            currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 3);
+            currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
 
             return GetNextPosition(currentRoom);
         }
