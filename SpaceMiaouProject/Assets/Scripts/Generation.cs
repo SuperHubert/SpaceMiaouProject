@@ -10,19 +10,19 @@ public class Generation : MonoBehaviour
     public GameObject roomPrefab;
 
     public int numberOfRooms;
+
+    public Transform parent;
     void Start()
     {
         SetGenerationGrid(numberOfRooms);
         
-        Case selectedCase = CreateRoomToGrid(roomPrefab.GetComponent<Case>(),new Vector2Int(numberOfRooms,numberOfRooms), 0);
-        selectedCase.name = 0.ToString();
-        
+        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(numberOfRooms,numberOfRooms), 0,"0",parent);
+
         for (int i = 1; i < numberOfRooms; i++)
         {
             Vector2Int nextPos = GetNextPosition(selectedCase);
 
-            selectedCase = CreateRoomToGrid(roomPrefab.GetComponent<Case>(),nextPos, i);
-            selectedCase.name = selectedCase.generationNumber.ToString();
+            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parent);
             
             GetSurroundingCases(selectedCase);
         }
@@ -41,6 +41,15 @@ public class Generation : MonoBehaviour
         generationGrid = new Case[2*(size)+1,2*(size)+1];
     }
 
+    Case CreateRoom(Case creator, Vector2Int coords, int creationNumber, string caseName ,Transform caseParent)
+    {
+        Case createdRoom = CreateRoomToGrid(creator, coords, creationNumber);
+        createdRoom.name = caseName;
+        createdRoom.gameObject.transform.parent = caseParent;
+
+        return createdRoom;
+    }
+
     Case CreateRoomToGrid(Case creator,Vector2Int coords,int creationNumber)
     {
         generationGrid[coords.x, coords.y] = creator.CreateCase(coords,numberOfRooms,creationNumber);
@@ -49,6 +58,7 @@ public class Generation : MonoBehaviour
         
         return generationGrid[coords.x, coords.y];
     }
+    
     
     Vector2Int GetNextPosition(Case currentRoom)
     {
@@ -160,12 +170,6 @@ public class Generation : MonoBehaviour
             default:
                 return Vector2Int.zero;
         }
-    }
-
-    
-    Vector2Int ConvertPositionTo00(Vector2Int position)
-    {
-        return new Vector2Int(position.x - numberOfRooms/5, position.y - numberOfRooms/5);
     }
     
 }
