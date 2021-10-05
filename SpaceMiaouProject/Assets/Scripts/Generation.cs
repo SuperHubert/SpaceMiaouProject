@@ -14,15 +14,29 @@ public class Generation : MonoBehaviour
     public Transform parent;
     void Start()
     {
-        SetGenerationGrid(numberOfRooms);
-        
-        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(numberOfRooms,numberOfRooms), 0,"0",parent);
+        GenerateRooms(numberOfRooms,parent);
+    }
 
-        for (int i = 1; i < numberOfRooms; i++)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GameObject newParent = new GameObject("Parent");
+            GenerateRooms(numberOfRooms,newParent.transform);
+        }
+    }
+
+    void GenerateRooms(int number,Transform parentObj)
+    {
+        SetGenerationGrid(number);
+        
+        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(number,number), 0,"0",parentObj);
+
+        for (int i = 1; i < number; i++)
         {
             Vector2Int nextPos = GetNextPosition(selectedCase);
 
-            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parent);
+            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
             
             GetSurroundingCases(selectedCase);
         }
@@ -33,7 +47,6 @@ public class Generation : MonoBehaviour
             GetSurroundingCases(room);
             room.CloseOutOfBoundsWalls();
         }
-        
     }
 
     void SetGenerationGrid(int size)
