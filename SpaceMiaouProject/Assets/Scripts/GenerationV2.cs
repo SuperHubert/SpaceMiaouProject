@@ -13,6 +13,7 @@ public class GenerationV2 : MonoBehaviour
     public int numberOfRooms;
 
     public Transform parent;
+    public string parentName;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class GenerationV2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            GameObject newParent = new GameObject("Parent");
+            GameObject newParent = new GameObject(parentName);
             GenerateRooms(numberOfRooms,newParent.transform);
         }
     }
@@ -37,9 +38,9 @@ public class GenerationV2 : MonoBehaviour
         for (int i = 1; i < number; i++)
         {
             Vector2Int nextPos = GetNextPosition(selectedCase);
-
-            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
             
+            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+
             GetSurroundingCases(selectedCase);
         }
         
@@ -49,6 +50,8 @@ public class GenerationV2 : MonoBehaviour
             GetSurroundingCases(room);
             room.CloseOutOfBoundsWalls();
         }
+        
+        CleanUpGrid();
     }
 
     void SetGenerationGrid(int size)
@@ -80,7 +83,7 @@ public class GenerationV2 : MonoBehaviour
 
         if (surroundingRoomsList.Count == 4)
         {
-            currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
+            currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 3);
 
             return GetNextPosition(currentRoom);
         }
@@ -187,5 +190,18 @@ public class GenerationV2 : MonoBehaviour
             default:
                 return Vector2Int.zero;
         }
+    }
+    
+    void CleanUpGrid()
+    {
+        for (int i = 0; i < (2*numberOfRooms+1); i++)
+        {
+            for (int j = 0; i < (2*numberOfRooms+1); i++)
+            {
+                generationGrid[i, j] = null;
+            }
+        }
+        
+        generationList.Clear();
     }
 }

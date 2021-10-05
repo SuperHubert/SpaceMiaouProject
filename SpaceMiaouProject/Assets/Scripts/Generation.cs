@@ -12,6 +12,8 @@ public class Generation : MonoBehaviour
     public int numberOfRooms;
 
     public Transform parent;
+    public string parentName;
+    
     void Start()
     {
         GenerateRooms(numberOfRooms,parent);
@@ -21,7 +23,7 @@ public class Generation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            GameObject newParent = new GameObject("Parent");
+            GameObject newParent = new GameObject(parentName);
             GenerateRooms(numberOfRooms,newParent.transform);
         }
     }
@@ -47,6 +49,8 @@ public class Generation : MonoBehaviour
             GetSurroundingCases(room);
             room.CloseOutOfBoundsWalls();
         }
+        
+        CleanUpGrid();
     }
 
     void SetGenerationGrid(int size)
@@ -183,6 +187,19 @@ public class Generation : MonoBehaviour
             default:
                 return Vector2Int.zero;
         }
+    }
+
+    void CleanUpGrid()
+    {
+        for (int i = 0; i < (2*numberOfRooms+1); i++)
+        {
+            for (int j = 0; i < (2*numberOfRooms+1); i++)
+            {
+                generationGrid[i, j] = null;
+            }
+        }
+        
+        generationList.Clear();
     }
     
 }
