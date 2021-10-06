@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Generation : MonoBehaviour
 {
-    public Case[,] generationGrid;
+    Case[,] generationGrid;
     public List<Case> generationList;
     public GameObject roomPrefab;
 
@@ -19,7 +19,7 @@ public class Generation : MonoBehaviour
         GenerateRooms(numberOfRooms,parent);
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -40,15 +40,10 @@ public class Generation : MonoBehaviour
 
             selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
             
-            GetSurroundingCases(selectedCase);
+            UpdateAllSurroundingCases(selectedCase);
         }
-        
-        
-        foreach (Case room in generationList)
-        {
-            GetSurroundingCases(room);
-            room.CloseOutOfBoundsWalls();
-        }
+
+        UpdateRoomAppearance();
         
         CleanUpGrid();
     }
@@ -57,29 +52,23 @@ public class Generation : MonoBehaviour
     {
         generationGrid = new Case[2*(size)+1,2*(size)+1];
     }
-
-    Case CreateRoom(Case creator, Vector2Int coords, int creationNumber, string caseName ,Transform caseParent)
+    
+    Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
     {
-        Case createdRoom = CreateRoomToGrid(creator, coords, creationNumber);
+        Case createdRoom = creator.CreateCase(coords,numberOfRooms,creationNumber);
+        createdRoom.position = coords;
         createdRoom.name = caseName;
-        createdRoom.gameObject.transform.parent = caseParent;
-
-        return createdRoom;
-    }
-
-    Case CreateRoomToGrid(Case creator,Vector2Int coords,int creationNumber)
-    {
-        generationGrid[coords.x, coords.y] = creator.CreateCase(coords,numberOfRooms,creationNumber);
-        generationGrid[coords.x, coords.y].position = coords;
+        createdRoom.transform.parent = caseParent;
+        
+        generationGrid[coords.x, coords.y] = createdRoom;
         generationList.Add(generationGrid[coords.x, coords.y]);
         
         return generationGrid[coords.x, coords.y];
     }
-    
-    
+
     Vector2Int GetNextPosition(Case currentRoom)
     {
-        List<int> surroundingRoomsList = GetSurroundingCases(currentRoom);
+        List<int> surroundingRoomsList = GetSurroundingCasesList(currentRoom);
         
         if (surroundingRoomsList.Count == 4)
         {
@@ -89,7 +78,7 @@ public class Generation : MonoBehaviour
         }
         else
         {
-            List<int> availablePositionsList = GetAvailablePositionsFromUnavailablePositions(surroundingRoomsList);
+            List<int> availablePositionsList = GetAvailablePositionsListFromUnavailablePositionsList(surroundingRoomsList);
 
             int selectedPosition = availablePositionsList[Random.Range(0, availablePositionsList.Count)];
 
@@ -97,9 +86,9 @@ public class Generation : MonoBehaviour
         }
     }
     
-    List<int> GetSurroundingCases(Case targetCase)
+    List<int> GetSurroundingCasesList(Case targetCase)
     {
-        SetAllSurroundingCases(targetCase);
+        UpdateAllSurroundingCases(targetCase);
         List<int> caseList = new List<int>();
         
         if (targetCase.caseAbove != null)
@@ -125,7 +114,7 @@ public class Generation : MonoBehaviour
         return caseList;
     }
     
-    void SetAllSurroundingCases(Case targetCase)
+    void UpdateAllSurroundingCases(Case targetCase)
     {
         if (generationGrid[targetCase.position.x, targetCase.position.y + 1] != null)
         {
@@ -158,7 +147,7 @@ public class Generation : MonoBehaviour
         return null;
     }
     
-    List<int> GetAvailablePositionsFromUnavailablePositions(List<int> unavailablePositionsList)
+    List<int> GetAvailablePositionsListFromUnavailablePositionsList(List<int> unavailablePositionsList)
     {
         List<int> availablePositionsList = new List<int>() {1,2,3,4};
         foreach (int position in unavailablePositionsList)
@@ -186,6 +175,15 @@ public class Generation : MonoBehaviour
                 return new Vector2Int(room.position.x - 1, room.position.y);
             default:
                 return Vector2Int.zero;
+        }
+    }
+    
+    void UpdateRoomAppearance()
+    {
+        foreach (Case room in generationList)
+        {
+            GetSurroundingCasesList(room);
+            room.CloseOutOfBoundsWalls();
         }
     }
 
