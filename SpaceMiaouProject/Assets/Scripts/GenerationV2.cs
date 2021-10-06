@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class GenerationV2 : MonoBehaviour
 {
-    public Case[,] generationGrid;
+    Case[,] generationGrid;
     public List<Case> generationList;
     public GameObject roomPrefab;
 
@@ -15,14 +15,16 @@ public class GenerationV2 : MonoBehaviour
     public Transform parent;
     public string parentName;
 
+    private int checkpointNumber;
+    private bool checkNextInsteadOfPrevious = false;
     void Start()
     {
         GenerateRooms(numberOfRooms,parent);
     }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             GameObject newParent = new GameObject(parentName);
             GenerateRooms(numberOfRooms,newParent.transform);
@@ -37,26 +39,24 @@ public class GenerationV2 : MonoBehaviour
 
         for (int i = 1; i < number; i++)
         {
+            checkpointNumber = selectedCase.generationNumber;
+            checkNextInsteadOfPrevious = false;
             Vector2Int nextPos = GetNextPosition(selectedCase);
 
             if (Random.Range(0, 2) == 1)
             {
-                CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+                Case newRoom = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+                UpdateAllSurroundingCases(newRoom);
             }
             else
             {
                 selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+                UpdateAllSurroundingCases(selectedCase);
             }
+            
+        }
 
-            GetSurroundingCases(selectedCase);
-        }
-        
-        
-        foreach (Case room in generationList)
-        {
-            GetSurroundingCases(room);
-            room.CloseOutOfBoundsWalls();
-        }
+        UpdateRoomAppearance();
         
         CleanUpGrid();
     }
@@ -65,50 +65,60 @@ public class GenerationV2 : MonoBehaviour
     {
         generationGrid = new Case[2*(size)+1,2*(size)+1];
     }
-
-    Case CreateRoom(Case creator, Vector2Int coords, int creationNumber, string caseName ,Transform caseParent)
+    
+    Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
     {
-        Case createdRoom = CreateRoomToGrid(creator, coords, creationNumber);
+        Case createdRoom = creator.CreateCase(coords,numberOfRooms,creationNumber);
+        createdRoom.position = coords;
         createdRoom.name = caseName;
-        createdRoom.gameObject.transform.parent = caseParent;
-
-        return createdRoom;
-    }
-
-    Case CreateRoomToGrid(Case creator, Vector2Int coords, int creationNumber)
-    {
-        generationGrid[coords.x, coords.y] = creator.CreateCase(coords, numberOfRooms, creationNumber);
-        generationGrid[coords.x, coords.y].position = coords;
+        createdRoom.transform.parent = caseParent;
+        
+        generationGrid[coords.x, coords.y] = createdRoom;
         generationList.Add(generationGrid[coords.x, coords.y]);
-
+        
         return generationGrid[coords.x, coords.y];
     }
 
     Vector2Int GetNextPosition(Case currentRoom)
     {
-        List<int> surroundingRoomsList = GetSurroundingCases(currentRoom);
+        List<int> surroundingRoomsList = GetSurroundingCasesList(currentRoom);
 
         if (surroundingRoomsList.Count == 4)
         {
-            currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
-
+            if (currentRoom.generationNumber - 1 < 0 && !checkNextInsteadOfPrevious)
+            {
+                currentRoom = GetCaseFromNumber(checkpointNumber);
+                checkNextInsteadOfPrevious = true;
+            }
+            else
+            {
+                if (checkNextInsteadOfPrevious)
+                {
+                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber + 1);
+                }
+                else
+                {
+                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
+                }
+            }
+            
             return GetNextPosition(currentRoom);
         }
         else
         {
-            List<int> availablePositionsList = GetAvailablePositionsFromUnavailablePositions(surroundingRoomsList);
+            List<int> availablePositionsList = GetAvailablePositionsListFromUnavailablePositionsList(surroundingRoomsList);
 
             int selectedPosition = availablePositionsList[Random.Range(0, availablePositionsList.Count)];
 
             return ConvertIntToPosition(selectedPosition, currentRoom);
         }
     }
-
-    List<int> GetSurroundingCases(Case targetCase)
+    
+    List<int> GetSurroundingCasesList(Case targetCase)
     {
-        SetAllSurroundingCases(targetCase);
+        UpdateAllSurroundingCases(targetCase);
         List<int> caseList = new List<int>();
-
+        
         if (targetCase.caseAbove != null)
         {
             caseList.Add(1);
@@ -118,7 +128,7 @@ public class GenerationV2 : MonoBehaviour
         {
             caseList.Add(3);
         }
-
+        
         if (targetCase.caseRight != null)
         {
             caseList.Add(2);
@@ -128,33 +138,30 @@ public class GenerationV2 : MonoBehaviour
         {
             caseList.Add(4);
         }
-
+        
         return caseList;
     }
-
-    void SetAllSurroundingCases(Case targetCase)
+    
+    void UpdateAllSurroundingCases(Case targetCase)
     {
         if (generationGrid[targetCase.position.x, targetCase.position.y + 1] != null)
         {
             targetCase.caseAbove = generationGrid[targetCase.position.x, targetCase.position.y + 1];
         }
-
         if (generationGrid[targetCase.position.x, targetCase.position.y - 1] != null)
         {
             targetCase.caseUnder = generationGrid[targetCase.position.x, targetCase.position.y - 1];
         }
-
         if (generationGrid[targetCase.position.x + 1, targetCase.position.y] != null)
         {
             targetCase.caseRight = generationGrid[targetCase.position.x + 1, targetCase.position.y];
         }
-
         if (generationGrid[targetCase.position.x - 1, targetCase.position.y] != null)
         {
             targetCase.caseLeft = generationGrid[targetCase.position.x - 1, targetCase.position.y];
         }
     }
-
+    
     Case GetCaseFromNumber(int number)
     {
         foreach (Case room in generationList)
@@ -164,13 +171,13 @@ public class GenerationV2 : MonoBehaviour
                 return room;
             }
         }
-
+        
         return null;
     }
-
-    List<int> GetAvailablePositionsFromUnavailablePositions(List<int> unavailablePositionsList)
+    
+    List<int> GetAvailablePositionsListFromUnavailablePositionsList(List<int> unavailablePositionsList)
     {
-        List<int> availablePositionsList = new List<int>() {1, 2, 3, 4};
+        List<int> availablePositionsList = new List<int>() {1,2,3,4};
         foreach (int position in unavailablePositionsList)
         {
             if (availablePositionsList.Contains(position))
@@ -181,8 +188,8 @@ public class GenerationV2 : MonoBehaviour
 
         return availablePositionsList;
     }
-
-    Vector2Int ConvertIntToPosition(int position, Case room)
+    
+    Vector2Int ConvertIntToPosition(int position,Case room)
     {
         switch (position)
         {
@@ -199,6 +206,15 @@ public class GenerationV2 : MonoBehaviour
         }
     }
     
+    void UpdateRoomAppearance()
+    {
+        foreach (Case room in generationList)
+        {
+            GetSurroundingCasesList(room);
+            room.CloseOutOfBoundsWalls();
+        }
+    }
+
     void CleanUpGrid()
     {
         for (int i = 0; i < (2*numberOfRooms+1); i++)
@@ -211,4 +227,5 @@ public class GenerationV2 : MonoBehaviour
         
         generationList.Clear();
     }
+    
 }
