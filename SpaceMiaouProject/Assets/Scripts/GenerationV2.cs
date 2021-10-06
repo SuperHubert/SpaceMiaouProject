@@ -24,7 +24,7 @@ public class GenerationV2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             GameObject newParent = new GameObject(parentName);
             GenerateRooms(numberOfRooms,newParent.transform);
