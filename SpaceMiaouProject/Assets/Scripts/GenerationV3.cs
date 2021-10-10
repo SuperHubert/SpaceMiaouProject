@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class Generation : MonoBehaviour
+public class GenerationV3 : MonoBehaviour
 {
     Case[,] generationGrid;
     public List<Case> generationList;
@@ -13,7 +12,9 @@ public class Generation : MonoBehaviour
 
     public Transform parent;
     public string parentName;
-    
+
+    private int checkpointNumber;
+    private bool checkNextInsteadOfPrevious = false;
     void Start()
     {
         GenerateRooms(numberOfRooms,parent);
@@ -28,19 +29,24 @@ public class Generation : MonoBehaviour
         }
     }
 
-    void GenerateRooms(int number,Transform parentObj)
+    void GenerateRooms(int numberOfRoomsToGenerate,Transform parentObj)
     {
-        SetGenerationGrid(number);
+        int i = 0;
         
-        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(number,number), 0,"0",parentObj);
+        SetGenerationGrid(numberOfRoomsToGenerate);
+        
+        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(numberOfRoomsToGenerate,numberOfRoomsToGenerate), 0,"0",parentObj);
 
-        for (int i = 1; i < number; i++)
+        while (generationList.Count < numberOfRoomsToGenerate)
         {
+            i++;
+            checkpointNumber = selectedCase.generationNumber;
+            checkNextInsteadOfPrevious = false;
             Vector2Int nextPos = GetNextPosition(selectedCase);
-
-            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
             
+            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
             UpdateAllSurroundingCases(selectedCase);
+
         }
 
         UpdateRoomAppearance();
@@ -51,6 +57,19 @@ public class Generation : MonoBehaviour
     void SetGenerationGrid(int size)
     {
         generationGrid = new Case[2*(size)+1,2*(size)+1];
+    }
+
+    Case BlockRoom(Case creator, Vector2Int coords, int creationNumber, string caseName, Transform caseParent)
+    {
+        Case createdRoom = creator.CreateCase(coords,numberOfRooms,creationNumber);
+        createdRoom.position = coords;
+        createdRoom.name = caseName;
+        createdRoom.transform.parent = caseParent;
+        createdRoom.isEmpty = true;
+        
+        generationGrid[coords.x, coords.y] = createdRoom;
+        
+        return generationGrid[coords.x, coords.y];
     }
     
     Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
@@ -69,11 +88,26 @@ public class Generation : MonoBehaviour
     Vector2Int GetNextPosition(Case currentRoom)
     {
         List<int> surroundingRoomsList = GetSurroundingCasesList(currentRoom);
-        
+
         if (surroundingRoomsList.Count == 4)
         {
-            currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
-
+            if (currentRoom.generationNumber - 1 < 0 && !checkNextInsteadOfPrevious)
+            {
+                currentRoom = GetCaseFromNumber(checkpointNumber);
+                checkNextInsteadOfPrevious = true;
+            }
+            else
+            {
+                if (checkNextInsteadOfPrevious)
+                {
+                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber + 1);
+                }
+                else
+                {
+                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
+                }
+            }
+            
             return GetNextPosition(currentRoom);
         }
         else

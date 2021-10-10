@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Generation : MonoBehaviour
+public class GenerationV2 : MonoBehaviour
 {
     Case[,] generationGrid;
     public List<Case> generationList;
@@ -13,7 +14,9 @@ public class Generation : MonoBehaviour
 
     public Transform parent;
     public string parentName;
-    
+
+    private int checkpointNumber;
+    private bool checkNextInsteadOfPrevious = false;
     void Start()
     {
         GenerateRooms(numberOfRooms,parent);
@@ -36,11 +39,21 @@ public class Generation : MonoBehaviour
 
         for (int i = 1; i < number; i++)
         {
+            checkpointNumber = selectedCase.generationNumber;
+            checkNextInsteadOfPrevious = false;
             Vector2Int nextPos = GetNextPosition(selectedCase);
 
-            selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+            if (Random.Range(0, 2) == 1)
+            {
+                Case newRoom = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+                UpdateAllSurroundingCases(newRoom);
+            }
+            else
+            {
+                selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
+                UpdateAllSurroundingCases(selectedCase);
+            }
             
-            UpdateAllSurroundingCases(selectedCase);
         }
 
         UpdateRoomAppearance();
@@ -69,11 +82,26 @@ public class Generation : MonoBehaviour
     Vector2Int GetNextPosition(Case currentRoom)
     {
         List<int> surroundingRoomsList = GetSurroundingCasesList(currentRoom);
-        
+
         if (surroundingRoomsList.Count == 4)
         {
-            currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
-
+            if (currentRoom.generationNumber - 1 < 0 && !checkNextInsteadOfPrevious)
+            {
+                currentRoom = GetCaseFromNumber(checkpointNumber);
+                checkNextInsteadOfPrevious = true;
+            }
+            else
+            {
+                if (checkNextInsteadOfPrevious)
+                {
+                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber + 1);
+                }
+                else
+                {
+                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
+                }
+            }
+            
             return GetNextPosition(currentRoom);
         }
         else

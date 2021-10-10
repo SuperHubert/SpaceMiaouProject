@@ -12,6 +12,8 @@ public class Case : MonoBehaviour
     public Case caseUnder;
     public Case caseLeft;
 
+    public bool isEmpty = false;
+
     public GameObject wallTop;
     public GameObject wallBot;
     public GameObject wallRight;
@@ -27,21 +29,28 @@ public class Case : MonoBehaviour
 
     public void CloseOutOfBoundsWalls()
     {
-        if (caseAbove == null)
+        if (isEmpty)
         {
-            wallTop.SetActive(true);
+            Destroy(this.gameObject);
         }
-        if (caseUnder == null)
+        else
         {
-            wallBot.SetActive(true);
-        }
-        if (caseRight == null)
-        {
-            wallRight.SetActive(true);
-        }
-        if (caseLeft == null)
-        {
-            wallLeft.SetActive(true);
+            if (caseAbove == null || caseAbove.isEmpty)
+            {
+                wallTop.SetActive(true);
+            }
+            if (caseUnder == null || caseUnder.isEmpty)
+            {
+                wallBot.SetActive(true);
+            }
+            if (caseRight == null || caseRight.isEmpty)
+            {
+                wallRight.SetActive(true);
+            }
+            if (caseLeft == null || caseLeft.isEmpty)
+            {
+                wallLeft.SetActive(true);
+            }
         }
     }
 
