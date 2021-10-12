@@ -14,12 +14,7 @@ public class Case : MonoBehaviour
     public Case caseLeft;
 
     public bool isEmpty = false;
-
-    public GameObject wallTop;
-    public GameObject wallBot;
-    public GameObject wallRight;
-    public GameObject wallLeft;
-
+    
     public Vector2Int position = new Vector2Int(0,0);
     public int generationNumber = 0;
     
@@ -33,25 +28,6 @@ public class Case : MonoBehaviour
         if (isEmpty)
         {
             Destroy(this.gameObject);
-        }
-        else
-        {
-            if (caseAbove == null || caseAbove.isEmpty)
-            {
-                wallTop.SetActive(true);
-            }
-            if (caseUnder == null || caseUnder.isEmpty)
-            {
-                wallBot.SetActive(true);
-            }
-            if (caseRight == null || caseRight.isEmpty)
-            {
-                wallRight.SetActive(true);
-            }
-            if (caseLeft == null || caseLeft.isEmpty)
-            {
-                wallLeft.SetActive(true);
-            }
         }
     }
 
