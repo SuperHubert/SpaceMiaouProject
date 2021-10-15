@@ -245,10 +245,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 16, y: 16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2580076376384885513
@@ -270,10 +270,6 @@ MonoBehaviour:
   caseUnder: {fileID: 0}
   caseLeft: {fileID: 0}
   isEmpty: 0
-  wallTop: {fileID: 1771490204162813821}
-  wallBot: {fileID: 2971261476484698424}
-  wallRight: {fileID: 1871600936973034360}
-  wallLeft: {fileID: 5802447173147843245}
   position: {x: 0, y: 0}
   generationNumber: 0
 --- !u!1 &2971261476484698424
