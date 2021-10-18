@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class TextureAssigner : MonoBehaviour
 {
-    public List<Sprite> allDirections;
-    public List<Sprite> threeDirections1;
-    public List<Sprite> threeDirections2;
-    public List<Sprite> threeDirections3;
-    public List<Sprite> threeDirections4;
-    public List<Sprite> twoDirections1;
-    public List<Sprite> twoDirections2;
-    public List<Sprite> twoDirections3;
-    public List<Sprite> twoDirections4;
-    public List<Sprite> twoDirections5;
-    public List<Sprite> twoDirections6;
-    public List<Sprite> oneDirection1;
-    public List<Sprite> oneDirection2;
-    public List<Sprite> oneDirection3;
-    public List<Sprite> oneDirection4;
+    public List<GameObject> allDirections;
+    public List<GameObject> threeDirections1;
+    public List<GameObject> threeDirections2;
+    public List<GameObject> threeDirections3;
+    public List<GameObject> threeDirections4;
+    public List<GameObject> twoDirections1;
+    public List<GameObject> twoDirections2;
+    public List<GameObject> twoDirections3;
+    public List<GameObject> twoDirections4;
+    public List<GameObject> twoDirections5;
+    public List<GameObject> twoDirections6;
+    public List<GameObject> oneDirection1;
+    public List<GameObject> oneDirection2;
+    public List<GameObject> oneDirection3;
+    public List<GameObject> oneDirection4;
     
-    public Sprite GetSprite(bool isTop, bool isBot, bool isLeft, bool isRight)
+    public GameObject GetRoom(bool isTop, bool isBot, bool isLeft, bool isRight)
     {
         int a = 1;
         int b = 1;

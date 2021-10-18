@@ -210,10 +210,16 @@ public class GenerationSimpleHalf : MonoBehaviour
         {
             GetSurroundingCasesList(room);
             room.CloseOutOfBoundsWalls();
+            
+            GameObject prefabRoom = gameObject.GetComponent<TextureAssigner>().GetRoom((room.caseAbove != null), (room.caseUnder != null),
+                (room.caseLeft != null), (room.caseRight != null));
 
-            room.GetComponent<SpriteRenderer>().sprite =
-                gameObject.GetComponent<TextureAssigner>().GetSprite((room.caseAbove != null), (room.caseUnder != null),
-                    (room.caseLeft != null), (room.caseRight != null));
+            room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
+
+            for (int i = 0; i < prefabRoom.transform.childCount; i++)
+            {
+                Instantiate(prefabRoom.transform.GetChild(i),room.transform);
+            }
         }
     }
 
