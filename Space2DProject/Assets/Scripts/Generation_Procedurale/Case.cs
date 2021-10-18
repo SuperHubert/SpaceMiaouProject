@@ -33,7 +33,7 @@ public class Case : MonoBehaviour
 
     public Case CreateCase(Vector2Int creationPosition,int offset,int creationNumber)
     {
-        GameObject createdCase = Instantiate(prefabGameObject,new Vector3((creationPosition.x-offset)*16,(creationPosition.y-offset)*16),quaternion.identity);
+        GameObject createdCase = Instantiate(prefabGameObject,new Vector3((creationPosition.x-offset)*50,(creationPosition.y-offset)*50),quaternion.identity);
         createdCase.GetComponent<Case>().createdFrom = gameObject;
         createdCase.GetComponent<Case>().generationNumber = creationNumber;
         createdCase.GetComponent<Case>().position = creationPosition;
