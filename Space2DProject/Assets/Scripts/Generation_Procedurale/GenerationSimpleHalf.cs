@@ -57,7 +57,7 @@ public class GenerationSimpleHalf : MonoBehaviour
 
         UpdateRoomAppearance();
         
-        gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
+        //gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
         
         CleanUpGrid();
     }
