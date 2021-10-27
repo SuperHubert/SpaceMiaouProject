@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GenerationSimpleHalf : MonoBehaviour
 {
@@ -10,21 +11,21 @@ public class GenerationSimpleHalf : MonoBehaviour
 
     public int numberOfRooms;
 
-    public Transform parent;
+    public Transform grid;
     public string parentName;
 
     private int checkpointNumber;
     private bool checkNextInsteadOfPrevious = false;
     void Start()
     {
-        GenerateRooms(numberOfRooms,parent);
+        GenerateRooms(numberOfRooms,grid);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            GameObject newParent = new GameObject(parentName);
+            GameObject newParent = Instantiate(new GameObject(parentName),grid);
             GenerateRooms(numberOfRooms,newParent.transform);
         }
     }
@@ -55,6 +56,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
 
         UpdateRoomAppearance();
+        
+        gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
         
         CleanUpGrid();
     }
@@ -215,11 +218,15 @@ public class GenerationSimpleHalf : MonoBehaviour
                 (room.caseLeft != null), (room.caseRight != null));
 
             room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
+            
+            Instantiate(prefabRoom.transform.GetChild(0).GetChild(1),room.transform.GetChild(0));
 
+            /*
             for (int i = 0; i < prefabRoom.transform.childCount; i++)
             {
                 Instantiate(prefabRoom.transform.GetChild(i),room.transform);
             }
+            */
         }
     }
 
