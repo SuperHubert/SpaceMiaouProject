@@ -219,14 +219,15 @@ public class GenerationSimpleHalf : MonoBehaviour
 
             room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
             
+            //Instantiates prefab tilemap UnWalkable
             Instantiate(prefabRoom.transform.GetChild(0).GetChild(1),room.transform.GetChild(0));
-
-            /*
-            for (int i = 0; i < prefabRoom.transform.childCount; i++)
+            
+            //Instantiates prefab collision GameObjects
+            foreach (Transform item in prefabRoom.transform.GetChild(1))
             {
-                Instantiate(prefabRoom.transform.GetChild(i),room.transform);
+                Instantiate(item, room.transform.GetChild(1));
             }
-            */
+            
         }
     }
 
