@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,25 +19,27 @@ public class SmallEnemyBehaviour : MonoBehaviour
     
     void Update()
     {
-        if (!isPlayerInRange() && !isAttacking)
+        if (!isAttacking)
         {
             agent.SetDestination(target.position);
         }
         else
         {
-            Attack();
+            agent.SetDestination(transform.position);
         }
     }
-
-    bool isPlayerInRange()
+    
+    IEnumerator Attack()
     {
-        return false;
-    }
-
-    void Attack()
-    {
+        Debug.Log("Attacking");
         //recule en regardant le joueur puis dash en avant
+        yield return new WaitForSeconds(2);
         isAttacking = false;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        isAttacking = true;
+        StartCoroutine(Attack());
+    }
 }
