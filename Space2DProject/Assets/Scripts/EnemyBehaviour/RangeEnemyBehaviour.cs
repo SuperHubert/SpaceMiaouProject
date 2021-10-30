@@ -10,7 +10,7 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
     private Vector3 target;
     private NavMeshAgent agent;
     private NavMeshObstacle obstacle;
-    private bool isAttacking = false;
+    private bool isAttacking = true;
     private bool isRunning = false;
 
     void Start()
@@ -24,6 +24,12 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
     
     void Update()
     {
+        if (isAttacking)
+        {   
+            
+        }
+        
+        
         if (Input.GetKeyDown(KeyCode.B))
         {
             SwitchState();
