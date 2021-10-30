@@ -8,7 +8,6 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
 {
     [SerializeField] private Transform targetTransform;
     private Vector3 target;
-    private CircleCollider2D col;
     private NavMeshAgent agent;
     private bool isAttacking = false;
     private bool isBacking = false;
@@ -19,8 +18,6 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-
-        col = GetComponent<CircleCollider2D>();
     }
     
     void Update()
@@ -56,7 +53,6 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
     {
         isDashing = false;
         isAttacking = false;
-        col.enabled = true;
         agent.acceleration = 8;
         agent.speed = 3.5f;
     }
