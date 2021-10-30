@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SmallEnemyBehaviour : MonoBehaviour
+public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
 {
     [SerializeField] private Transform targetTransform;
     private Vector3 target;
@@ -72,6 +72,7 @@ public class SmallEnemyBehaviour : MonoBehaviour
     void AttackMoveForward()
     {
         isDashing = true;
+        agent.velocity = Vector3.zero;
         agent.acceleration = 100;
         agent.speed = 20;
         agent.SetDestination(target);
@@ -85,6 +86,7 @@ public class SmallEnemyBehaviour : MonoBehaviour
     public void StartAttack()
     {
         if (isAttacking) return;
+        agent.velocity = Vector3.zero;
         isAttacking = true;
         AttackMoveBack();
     }
@@ -93,5 +95,10 @@ public class SmallEnemyBehaviour : MonoBehaviour
     {
         //takeDamage
         Debug.Log("Ouch");
+    }
+
+    public void OnTriggerZoneEnter()
+    {
+        StartAttack();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyStartAttack : MonoBehaviour
 {
-    private SmallEnemyBehaviour enemy;
+    private IEnemy enemy;
     
     private void Start()
     {
@@ -14,6 +14,6 @@ public class EnemyStartAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        enemy.StartAttack();
+        enemy.OnTriggerZoneEnter();
     }
 }
