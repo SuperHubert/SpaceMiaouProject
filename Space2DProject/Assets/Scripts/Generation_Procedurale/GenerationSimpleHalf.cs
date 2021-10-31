@@ -249,9 +249,6 @@ public class GenerationSimpleHalf : MonoBehaviour
                 (room.caseUnder != null),
                 (room.caseLeft != null), (room.caseRight != null));
             
-            Debug.Log(prefabRoom);
-            
-            
             //Instantiates prefab enemy GameObjects
             foreach (Transform item in prefabRoom.transform.GetChild(2))
             {
