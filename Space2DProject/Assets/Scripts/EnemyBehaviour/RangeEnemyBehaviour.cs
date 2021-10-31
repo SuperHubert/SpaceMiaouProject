@@ -10,9 +10,10 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
     private Vector3 targetPosition;
     private NavMeshAgent agent;
     private NavMeshObstacle obstacle;
+    private bool isActive = false;
     private bool isAttacking = true;
     private bool isRunning = false;
-    
+
     [SerializeField] private int cooldown = 4;
     public int coolDownMax = 50;
     [SerializeField] float bulletSpeed = 10f;
@@ -31,6 +32,8 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
     
     void Update()
     {
+        if (!isActive) return;
+        
         LookAt(targetTransform);
         
         if (isAttacking)
@@ -93,5 +96,16 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
     public void OnTriggerZoneEnter()
     {
         StartRunningAway();
+    }
+
+    public void Activate()
+    {
+        isActive = true;
+    }
+    
+    public void DeActivate()
+    {
+        agent.SetDestination(transform.position);
+        isActive = false;
     }
 }

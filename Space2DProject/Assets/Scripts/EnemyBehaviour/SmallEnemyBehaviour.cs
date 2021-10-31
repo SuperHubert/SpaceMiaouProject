@@ -9,6 +9,7 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
     [SerializeField] private Transform targetTransform;
     private Vector3 target;
     private NavMeshAgent agent;
+    private bool isActive = false;
     private bool isAttacking = false;
     private bool isBacking = false;
     private bool isDashing = false;
@@ -22,6 +23,7 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
     
     void Update()
     {
+        if (!isActive) return;
         
         if (isAttacking)
         {
@@ -96,5 +98,16 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
     public void OnTriggerZoneEnter()
     {
         StartAttack();
+    }
+    
+    public void Activate()
+    {
+        isActive = !isActive;
+    }
+    
+    public void DeActivate()
+    {
+        agent.SetDestination(transform.position);
+        isActive = false;
     }
 }

@@ -9,7 +9,7 @@ public class EnemyStartAttack : MonoBehaviour
     
     private void Start()
     {
-        enemy = transform.parent.GetComponent<IEnemy>();
+        enemy = transform.parent.parent.GetComponent<IEnemy>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
