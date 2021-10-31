@@ -5,20 +5,23 @@ using UnityEngine.AI;
 
 public class GenerationSimpleHalf : MonoBehaviour
 {
+    [SerializeField] private int seed;
+    [SerializeField] private int numberOfRooms;
+    
+    [SerializeField] private string parentName;
+    [SerializeField] private Transform enemies;
+    [SerializeField] private Transform items;
+
     Case[,] generationGrid;
-    public List<Case> generationList;
-    public GameObject roomPrefab;
-
-    public int numberOfRooms;
-
-    public Transform grid;
-    public string parentName;
-
+    [SerializeField] private List<Case> generationList;
+    [SerializeField] private GameObject roomPrefab;
+    [SerializeField] private Transform grid;
+    
     private int checkpointNumber;
     private bool checkNextInsteadOfPrevious = false;
     void Start()
     {
-        GenerateRooms(numberOfRooms,grid);
+        GenerateRooms(numberOfRooms,grid,seed);
     }
 
     void Update()
@@ -26,12 +29,14 @@ public class GenerationSimpleHalf : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             GameObject newParent = Instantiate(new GameObject(parentName),grid);
-            GenerateRooms(numberOfRooms,newParent.transform);
+            GenerateRooms(numberOfRooms,newParent.transform,seed);
         }
     }
 
-    void GenerateRooms(int number,Transform parentObj)
+    void GenerateRooms(int number,Transform parentObj,int genSeed)
     {
+        Random.InitState(genSeed);
+        
         SetGenerationGrid(number);
         
         Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(number,number), 0,"0",parentObj);
@@ -55,9 +60,15 @@ public class GenerationSimpleHalf : MonoBehaviour
             
         }
 
+        Random.State generationOver = Random.state;                                                                     
+
         UpdateRoomAppearance();
         
         gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
+
+        Random.state = generationOver;
+        
+        SpawnEnemies();
         
         CleanUpGrid();
     }
@@ -226,6 +237,31 @@ public class GenerationSimpleHalf : MonoBehaviour
             foreach (Transform item in prefabRoom.transform.GetChild(1))
             {
                 Instantiate(item, room.transform.GetChild(1));
+            }
+        }
+    }
+
+    void SpawnEnemies()
+    {
+        foreach (Case room in generationList)
+        {
+            GameObject prefabRoom = gameObject.GetComponent<TextureAssigner>().GetRoom((room.caseAbove != null),
+                (room.caseUnder != null),
+                (room.caseLeft != null), (room.caseRight != null));
+            
+            Debug.Log(prefabRoom);
+            
+            
+            //Instantiates prefab enemy GameObjects
+            foreach (Transform item in prefabRoom.transform.GetChild(2))
+            {
+                Instantiate(item, room.transform).parent = enemies;
+            }
+
+            //Instantiates prefab items GameObjects
+            foreach (Transform item in prefabRoom.transform.GetChild(3))
+            {
+                Instantiate(item, room.transform).parent = items;
             }
             
         }
