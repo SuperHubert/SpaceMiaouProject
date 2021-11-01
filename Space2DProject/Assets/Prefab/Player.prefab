@@ -93,11 +93,11 @@ GameObject:
   - component: {fileID: 5629675976314166463}
   - component: {fileID: 5629675976314166456}
   - component: {fileID: 5629675976314166457}
-  - component: {fileID: 5880193793366788718}
-  - component: {fileID: 5629675976314166458}
   - component: {fileID: 5629675976314166459}
   - component: {fileID: 5629675976314166468}
   - component: {fileID: 1697177601}
+  - component: {fileID: 5880193793366788718}
+  - component: {fileID: 5629675976314166458}
   - component: {fileID: 2441487736100512651}
   m_Layer: 6
   m_Name: Player
@@ -193,40 +193,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5880193793366788718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5629675976314166469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2e1dc6acd33b843b7c21fe399a9881, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nyanCoins: 0
---- !u!114 &5629675976314166458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5629675976314166469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ffdf51f806fcc74b8f25288cf93ec6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7
-  inputMovement: {x: 0, y: 0, z: 0}
-  deadZone: 0.3
-  lastDirection: {x: 0, y: 0, z: 0}
-  dashSpeed: 30
-  dashInternalCdMax: 0.1
-  dashCdMax: 1
-  animPlayer: {fileID: 5629675976314166459}
-  playerDirection: 0
 --- !u!95 &5629675976314166459
 Animator:
   serializedVersion: 3
@@ -297,6 +263,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.907}
   m_EdgeRadius: 0
+--- !u!114 &5880193793366788718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629675976314166469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2e1dc6acd33b843b7c21fe399a9881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nyanCount: {fileID: 0}
+  coin: {fileID: 0}
+  coinAnim: {fileID: 0}
+--- !u!114 &5629675976314166458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629675976314166469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffdf51f806fcc74b8f25288cf93ec6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  inputMovement: {x: 0, y: 0, z: 0}
+  deadZone: 0.3
+  lastDirection: {x: 0, y: 0, z: 0}
+  dashSpeed: 30
+  dashInternalCdMax: 0.1
+  dashCdMax: 1
+  animPlayer: {fileID: 5629675976314166459}
+  playerDirection: 0
 --- !u!114 &2441487736100512651
 MonoBehaviour:
   m_ObjectHideFlags: 0
