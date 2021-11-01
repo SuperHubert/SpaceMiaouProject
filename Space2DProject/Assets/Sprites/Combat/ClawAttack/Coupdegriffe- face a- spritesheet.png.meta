@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: 4aa142d5d2ccf0a45b928a99ef7e7ed3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1482489283484017589
+    second: Coupdegriffe- face a- spritesheet_0
+  - first:
+      213: -9049611932226616580
+    second: Coupdegriffe- face a- spritesheet_1
+  - first:
+      213: 4649847463204352458
+    second: Coupdegriffe- face a- spritesheet_2
+  - first:
+      213: 4510650550074466179
+    second: Coupdegriffe- face a- spritesheet_3
+  - first:
+      213: -9113368678679061948
+    second: Coupdegriffe- face a- spritesheet_4
+  - first:
+      213: -1827151725557177818
+    second: Coupdegriffe- face a- spritesheet_5
+  - first:
+      213: 2168036398124434541
+    second: Coupdegriffe- face a- spritesheet_6
+  - first:
+      213: -1455711221319842993
+    second: Coupdegriffe- face a- spritesheet_7
+  - first:
+      213: 803840234120986900
+    second: Coupdegriffe- face a- spritesheet_8
+  - first:
+      213: -7811485617883163287
+    second: Coupdegriffe- face a- spritesheet_9
+  - first:
+      213: 1124768594381758602
+    second: Coupdegriffe- face a- spritesheet_10
+  - first:
+      213: 4008857152010553541
+    second: Coupdegriffe- face a- spritesheet_11
+  - first:
+      213: -8527482150919903575
+    second: Coupdegriffe- face a- spritesheet_12
+  - first:
+      213: 5012798829968666767
+    second: Coupdegriffe- face a- spritesheet_13
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 18
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c9c9ae9d32d6be0800000000000000
+      internalID: -1482489283484017589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 18
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf20f7005e1596280800000000000000
+      internalID: -9049611932226616580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 17
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1fb00c1a3978040800000000000000
+      internalID: 4649847463204352458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 17
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38fdb1fd6cc099e30800000000000000
+      internalID: 4510650550074466179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 18
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ad920b87fc68180800000000000000
+      internalID: -9113368678679061948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 18
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6222c6faf27a4a6e0800000000000000
+      internalID: -1827151725557177818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 18
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d64035a0e99661e10800000000000000
+      internalID: 2168036398124434541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 17
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f434ead5b564ccbe0800000000000000
+      internalID: -1455711221319842993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 17
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411c2fa1f60d72b00800000000000000
+      internalID: 803840234120986900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 18
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9655002b737089390800000000000000
+      internalID: -7811485617883163287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 18
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80e3aac31bfb9f00800000000000000
+      internalID: 1124768594381758602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 18
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c88fd4075252a730800000000000000
+      internalID: 4008857152010553541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 18
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a66fed0a2c48a980800000000000000
+      internalID: -8527482150919903575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coupdegriffe- face a- spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 18
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f80b6c61af9019540800000000000000
+      internalID: 5012798829968666767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

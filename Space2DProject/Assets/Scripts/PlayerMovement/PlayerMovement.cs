@@ -13,8 +13,10 @@ public class PlayerMovement : MonoBehaviour
     
     //normal movement
     public float speed = 10f;
-    public Vector2 inputMovement;
+    public Vector3 inputMovement;
     [SerializeField] private float deadZone = 0.3f;
+    
+    public Vector3 lastDirection;
 
     //dash related
     public float dashSpeed = 40f;
@@ -26,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     //Animations
     [SerializeField] private Animator animPlayer;
-    private int playerDirection = 0;
-    
+    public int playerDirection = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
     {
         inputMovement.x = Input.GetAxisRaw("Horizontal");
         inputMovement.y = Input.GetAxisRaw("Vertical");
+        
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.3f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.3f)
+        {
+            lastDirection = inputMovement;
+        }
         inputMovement.Normalize();
         
         if (Input.GetButtonDown("Dash"))
@@ -82,8 +89,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector2.zero;
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
         {
-            animPlayer.SetBool("IsWalking",true); 
-            rb.velocity = inputMovement * speed;
+            if (GetComponent<PlayerCombat>().isAttacking == false)
+            {
+                animPlayer.SetBool("IsWalking",true); 
+                rb.velocity = inputMovement * speed;  
+            }
         }
         else
         {
