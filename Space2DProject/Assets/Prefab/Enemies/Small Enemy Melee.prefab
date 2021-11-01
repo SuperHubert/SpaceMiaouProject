@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 736570091795526734}
   - component: {fileID: 4156325648408301138}
   - component: {fileID: 4096145215805208910}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Activation Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7774953230662319295}
   - component: {fileID: 1819749006969903074}
   - component: {fileID: 5621921394681760771}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Timeout Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 3024378164672279584}
   - component: {fileID: 8105036133275144169}
   - component: {fileID: 6015102788990128741}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Trigger Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4657740085828171463}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Triggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}

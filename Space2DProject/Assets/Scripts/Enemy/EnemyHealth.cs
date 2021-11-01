@@ -42,5 +42,6 @@ public class EnemyHealth : MonoBehaviour
         //Disable Enemy
         GetComponent<CircleCollider2D>().enabled = false;
         this.enabled = false;
+        gameObject.SetActive(false);
     }
 }

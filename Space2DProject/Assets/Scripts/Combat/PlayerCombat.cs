@@ -54,7 +54,8 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in enemiesHit)
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
-            Debug.Log("Tuché");
+            Debug.Log("tuché");
+            
         }
         
         Invoke("ResetAttack", 0.5f);
