@@ -8,6 +8,7 @@ public class MoneyManager : MonoBehaviour
 {
     public float nyanCoins = 0;
     public Animator coinAnim;
+    public Transform playerTransform;
 
 
     #region Singleton

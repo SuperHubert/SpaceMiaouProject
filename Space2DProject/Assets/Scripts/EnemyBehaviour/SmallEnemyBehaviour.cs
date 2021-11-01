@@ -14,8 +14,10 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
     private bool isBacking = false;
     private bool isDashing = false;
 
-    void Start()	
+    void Start()
     {
+        targetTransform = MoneyManager.Instance.playerTransform;
+        
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;

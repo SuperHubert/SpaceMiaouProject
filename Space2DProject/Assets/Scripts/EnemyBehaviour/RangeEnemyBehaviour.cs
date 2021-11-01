@@ -23,6 +23,7 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
 
     void Start()
     {
+        targetTransform = MoneyManager.Instance.playerTransform;
         obstacle = GetComponent<NavMeshObstacle>();
         obstacle.enabled = false;
         agent = GetComponent<NavMeshAgent>();
