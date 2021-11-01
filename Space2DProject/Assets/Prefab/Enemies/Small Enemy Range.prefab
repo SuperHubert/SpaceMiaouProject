@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3010271975602961688}
   - component: {fileID: 3010271975602961689}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4048186528573566486}
   - component: {fileID: 9187980041834276726}
   - component: {fileID: 6958117573571464577}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Activation Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 7994130524690522590}
   - component: {fileID: 7631993753905048293}
   - component: {fileID: 2547031918630704386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Timeout Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 445596482802315844}
   - component: {fileID: 5204456230655258079}
   - component: {fileID: 5208172015169060178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small Enemy Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 5204456231380345787}
   - component: {fileID: 5204456231380345784}
   - component: {fileID: 69025717764874099}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5988422634449676055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
