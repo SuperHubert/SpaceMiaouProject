@@ -1257,7 +1257,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 24567
+    m_Bits: 90103
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1433,11 +1433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8668452990960130894, guid: 84f00f0d0d1e66e4197909394426ae06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.922465
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8668452990960130894, guid: 84f00f0d0d1e66e4197909394426ae06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.716436
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8668452990960130894, guid: 84f00f0d0d1e66e4197909394426ae06, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1471,7 +1471,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5088660791074587265, guid: 84f00f0d0d1e66e4197909394426ae06, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 84f00f0d0d1e66e4197909394426ae06, type: 3}
 --- !u!1 &1931532793
 GameObject:
