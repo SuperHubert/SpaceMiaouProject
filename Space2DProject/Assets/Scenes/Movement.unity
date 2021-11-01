@@ -123,38 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &251438816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5629675976314166469, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
-  m_PrefabInstance: {fileID: 5629675976858725883}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &251438817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251438816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19eea4260ca4ed04eb03f6b6f2d335ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animPlayer: {fileID: 251438818}
-  isAttacking: 0
-  attackTime: 1
-  attackDelay: 0.05
-  hitBoxRange: 0.6
-  attackRange: 0.53
-  attackDamage: 1
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!95 &251438818 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5629675976314166459, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
-  m_PrefabInstance: {fileID: 5629675976858725883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &953031356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5629675976314166463, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
@@ -272,7 +240,7 @@ GameObject:
   - component: {fileID: 1262778544}
   - component: {fileID: 1262778547}
   - component: {fileID: 1262778548}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: TheEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,12 +399,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5629675976314166456, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5629675976314166456, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
-      propertyPath: m_CollisionDetection
+    - target: {fileID: 1966930718, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5629675976314166463, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}

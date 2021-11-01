@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5629675976314166459}
   - component: {fileID: 5629675976314166468}
   - component: {fileID: 1697177601}
+  - component: {fileID: 2441487736100512651}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -138,7 +139,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &5629675976314166457
 SpriteRenderer:
@@ -204,12 +205,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  inputMovement: {x: 0, y: 0}
+  inputMovement: {x: 0, y: 0, z: 0}
   deadZone: 0.3
+  lastDirection: {x: 0, y: 0, z: 0}
   dashSpeed: 30
   dashInternalCdMax: 0.1
   dashCdMax: 1
   animPlayer: {fileID: 5629675976314166459}
+  playerDirection: 0
 --- !u!95 &5629675976314166459
 Animator:
   serializedVersion: 3
@@ -280,3 +283,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.907}
   m_EdgeRadius: 0
+--- !u!114 &2441487736100512651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629675976314166469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19eea4260ca4ed04eb03f6b6f2d335ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animPlayer: {fileID: 5629675976314166459}
+  isAttacking: 0
+  attackRate: 2
+  hitBoxRange: 0.6
+  attackRange: 0.53
+  attackDamage: 1
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
