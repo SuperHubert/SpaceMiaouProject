@@ -554,7 +554,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 606386869}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -597,12 +598,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fc2e45e698d8348a867c42e4a36719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vertices:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 10, z: 0}
-  - {x: 10, y: 10, z: 0}
-  - {x: 10, y: 0, z: 0}
-  triangles: 000000000100000002000000000000000300000002000000
+  CoverSize: {x: 20, y: 11}
+  vertices: []
+  triangles: 
 --- !u!4 &606386869
 Transform:
   m_ObjectHideFlags: 0
@@ -610,12 +608,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606386866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 581464144}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &606386870
 MeshRenderer:
@@ -636,7 +634,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23daa5e1b05af6c44abfabedd7433495, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1377,7 +1375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1931532794
 Transform:
   m_ObjectHideFlags: 0
