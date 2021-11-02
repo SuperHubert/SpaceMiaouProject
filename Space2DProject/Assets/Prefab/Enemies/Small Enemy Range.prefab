@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4048186528573566486}
   - component: {fileID: 9187980041834276726}
   - component: {fileID: 6958117573571464577}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Activation Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 7994130524690522590}
   - component: {fileID: 7631993753905048293}
   - component: {fileID: 2547031918630704386}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Timeout Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,8 +319,9 @@ GameObject:
   - component: {fileID: 5204456230655258068}
   - component: {fileID: 5204456230655258078}
   - component: {fileID: 5204456230655258074}
-  - component: {fileID: 3030590263203284182}
+  - component: {fileID: 445596482802315844}
   - component: {fileID: 5204456230655258079}
+  - component: {fileID: 5208172015169060178}
   m_Layer: 7
   m_Name: Small Enemy Range
   m_TagString: Untagged
@@ -336,7 +337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5204456230655258065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.922416, y: 3.2782664, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 3010271975602961688}
@@ -449,20 +450,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3030590263203284182
-MonoBehaviour:
+--- !u!95 &445596482802315844
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5204456230655258065}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2bc9f44ccf394e4097e904171a261b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 2
-  currentHp: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9aeff5a6c7c485842b0b857eb5635af7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5204456230655258079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +485,22 @@ MonoBehaviour:
   cooldown: 4
   coolDownMax: 100
   bulletSpeed: 0.6
+  bulletDamage: 1
+--- !u!114 &5208172015169060178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204456230655258065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf1ff6d1f0f84949a11e375bb5b222b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  enemyAnimator: {fileID: 445596482802315844}
 --- !u!1 &5204456231380345781
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +513,7 @@ GameObject:
   - component: {fileID: 5204456231380345787}
   - component: {fileID: 5204456231380345784}
   - component: {fileID: 69025717764874099}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Trigger Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5988422634449676055}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Triggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -68,7 +68,7 @@ public class GenerationSimpleHalf : MonoBehaviour
 
         Random.state = generationOver;
         
-        SpawnEnemies();
+        SpawnEnemiesAndItems();
         
         CleanUpGrid();
     }
@@ -241,7 +241,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
     }
 
-    void SpawnEnemies()
+    void SpawnEnemiesAndItems()
     {
         foreach (Case room in generationList)
         {
