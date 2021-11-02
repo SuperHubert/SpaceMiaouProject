@@ -10,6 +10,15 @@ public class LifeManager : MonoBehaviour
     public int damagesPepito = 1;
     public int maxHP = 9;
 
+    #region Singleton
+    public static LifeManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+    
     public void TestDamages()
     {
         TakeDamages(damagesPepito);

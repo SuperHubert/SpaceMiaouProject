@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
+  damage: 1
 --- !u!114 &3188809751008780753
 MonoBehaviour:
   m_ObjectHideFlags: 0

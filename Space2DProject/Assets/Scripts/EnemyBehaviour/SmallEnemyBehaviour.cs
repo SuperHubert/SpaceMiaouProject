@@ -14,6 +14,8 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
     private bool isBacking = false;
     private bool isDashing = false;
 
+    [SerializeField] private int damage;
+
     void Start()
     {
         targetTransform = MoneyManager.Instance.playerTransform;
@@ -93,7 +95,7 @@ public class SmallEnemyBehaviour : MonoBehaviour, IEnemy
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //takeDamage
+        LifeManager.Instance.TakeDamages(damage);
         Debug.Log("Ouch");
     }
 
