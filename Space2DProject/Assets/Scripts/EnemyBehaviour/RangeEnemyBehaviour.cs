@@ -17,6 +17,7 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
     [SerializeField] private int cooldown = 4;
     public int coolDownMax = 50;
     [SerializeField] float bulletSpeed = 10f;
+    [SerializeField] private int bulletDamage;
     private ObjectPooler bulletPool;
     private GameObject bullet;
     
@@ -45,9 +46,7 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
             }
             else
             {
-                bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", transform.position, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().velocity = (targetTransform.position - transform.position) * bulletSpeed;
-                bullet.layer = 10;
+                ShootBullet();
                 cooldown = coolDownMax;
             }
         }
@@ -108,5 +107,13 @@ public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
     {
         agent.SetDestination(transform.position);
         isActive = false;
+    }
+
+    public void ShootBullet()
+    {
+        bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", transform.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().velocity = (targetTransform.position - transform.position) * bulletSpeed;
+        bullet.GetComponent<BulletDamage>().SetBulletDamage(bulletDamage);
+        bullet.layer = 11;
     }
 }
