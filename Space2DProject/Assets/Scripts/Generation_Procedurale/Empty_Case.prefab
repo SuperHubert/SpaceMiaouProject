@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8668452990960130894}
   - component: {fileID: 5465425074860977487}
   - component: {fileID: 2580076376384885513}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Empty_Case
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,15 +74,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f80170ae6d080514d95b5b71fd9bc559, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26af4e94f14f0b04097c0171307b1633, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 16, y: 16}
+  m_Size: {x: 50, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2580076376384885513
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4985212859430674384}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Tilemaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 6055043696358692842}
   - component: {fileID: 7412821460577860802}
   - component: {fileID: 3621549538078288828}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Walkable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100305,7 +100305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2838620344006928787}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Collisions
   m_TagString: Untagged
   m_Icon: {fileID: 0}

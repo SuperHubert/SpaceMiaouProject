@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 736570091795526734}
   - component: {fileID: 4156325648408301138}
   - component: {fileID: 4096145215805208910}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Activation Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7774953230662319295}
   - component: {fileID: 1819749006969903074}
   - component: {fileID: 5621921394681760771}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Timeout Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 3024378164672279584}
   - component: {fileID: 8105036133275144169}
   - component: {fileID: 6015102788990128741}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Trigger Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,10 +347,8 @@ GameObject:
   - component: {fileID: 7704697534804523453}
   - component: {fileID: 7704697534804523452}
   - component: {fileID: 7704697534804523454}
-  - component: {fileID: 7704697534804523440}
-  - component: {fileID: 8812302847654796943}
   - component: {fileID: 7704697534804523455}
-  - component: {fileID: 3188809751008780753}
+  - component: {fileID: 7704697534804523440}
   m_Layer: 7
   m_Name: Small Enemy Melee
   m_TagString: Untagged
@@ -366,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7704697534804523451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.35, y: 2.79, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4657740085828171463}
@@ -446,6 +444,19 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7704697534804523455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7704697534804523451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3696b7a3ade43e249a119d2b8d32b8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 0}
 --- !u!58 &7704697534804523440
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -462,54 +473,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!95 &8812302847654796943
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7704697534804523451}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9aeff5a6c7c485842b0b857eb5635af7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7704697534804523455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7704697534804523451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3696b7a3ade43e249a119d2b8d32b8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
-  damage: 1
---- !u!114 &3188809751008780753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7704697534804523451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf1ff6d1f0f84949a11e375bb5b222b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 0
-  enemyAnimator: {fileID: 8812302847654796943}
 --- !u!1 &9102295133355150425
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4657740085828171463}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Triggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
