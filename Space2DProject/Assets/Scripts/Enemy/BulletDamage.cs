@@ -6,13 +6,13 @@ using UnityEngine;
 public class BulletDamage : MonoBehaviour
 {
     [SerializeField] private int bulletDamage;
-    
-    private void OnCollisionEnter2D(Collision2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         LifeManager.Instance.TakeDamages(bulletDamage);
         gameObject.SetActive(false);
     }
-
+    
     public void SetBulletDamage(int damage)
     {
         bulletDamage = damage;
