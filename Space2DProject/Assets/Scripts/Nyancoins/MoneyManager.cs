@@ -6,10 +6,14 @@ using TMPro;
 
 public class MoneyManager : MonoBehaviour
 {
-    public float nyanCoins = 0;
-    public Animator coinAnim;
+    [SerializeField] private float nyanCoins = 0;
+    [SerializeField] private Image movingCoin;
+    [SerializeField] private Animator coinAnim;
+    [SerializeField] private TextMeshProUGUI nyanCount;
+    
     public Transform playerTransform;
 
+    private static readonly int GainPick = Animator.StringToHash("GainPick");
 
     #region Singleton
     public static MoneyManager Instance;
@@ -20,4 +24,17 @@ public class MoneyManager : MonoBehaviour
     }
     #endregion
 
+    void Start()
+    {
+        coinAnim = movingCoin.GetComponent<Animator>();
+    }
+    
+    public void PickupCoin()
+    {
+        nyanCoins ++;
+        Debug.Log("moula");
+        nyanCount.text = nyanCoins.ToString();
+        coinAnim.SetTrigger(GainPick);
+    }
+    
 }

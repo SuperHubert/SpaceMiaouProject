@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nyanCoins: 0
+  coin: {fileID: 0}
   coinAnim: {fileID: 0}
+  nyanCount: {fileID: 0}
+  playerTransform: {fileID: 0}

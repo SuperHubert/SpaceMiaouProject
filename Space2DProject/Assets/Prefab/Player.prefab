@@ -275,9 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2e1dc6acd33b843b7c21fe399a9881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nyanCount: {fileID: 0}
-  coin: {fileID: 0}
-  coinAnim: {fileID: 0}
 --- !u!114 &5629675976314166458
 MonoBehaviour:
   m_ObjectHideFlags: 0
