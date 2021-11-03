@@ -7,8 +7,6 @@ public class StartGame : MonoBehaviour, IInteractible
 {
     public void OnInteraction()
     {
-        Debug.Log("AAAAAAAAAAA");
-        SceneManager.LoadScene(1);
-        return;
+        LoadingManager.Instance.LoadScene(4);
     }
 }

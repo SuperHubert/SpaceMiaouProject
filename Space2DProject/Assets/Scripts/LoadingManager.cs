@@ -28,19 +28,26 @@ public class LoadingManager : MonoBehaviour
     }
     #endregion
 
-    public async void LoadScene(int sceneNumber)
+    public void LoadScene(int sceneNumber)
     {
-        SceneManager.LoadScene(1);
-        canvas.SetActive(true);
-        var scene = SceneManager.LoadSceneAsync(sceneNumber);
-        scene.allowSceneActivation = false;
+        StartCoroutine(LoadAsynchronously(sceneNumber));
+    }
 
-        do
-        {
-            progressBar.fillAmount = scene.progress;
-        } while (scene.progress < 0.9f);
+    IEnumerator LoadAsynchronously(int sceneNumber)
+    {
+        AsyncOperation scene = SceneManager.LoadSceneAsync(sceneNumber);
+
+        canvas.SetActive(true);
         
-        scene.allowSceneActivation = true;
+        while (!scene.isDone)
+        {
+            float progress = Mathf.Clamp01(scene.progress / 0.9f);
+            
+            progressBar.fillAmount = progress;
+            
+            yield return null;
+        }
+        
         canvas.SetActive(false);
     }
 }
