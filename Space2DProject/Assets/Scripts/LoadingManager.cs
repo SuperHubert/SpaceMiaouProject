@@ -7,30 +7,40 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
+    [SerializeField] private GameObject canvas;
     [SerializeField] private Image progressBar;
 
-    #region Singleton
+    #region Singleton Don't Destroy On Load
     public static LoadingManager Instance;
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
     #endregion
 
-    private void Start()
+    public async void LoadScene(int sceneNumber)
     {
-        StartCoroutine(LoadAsyncOperation(4));
-    }
-    
-    IEnumerator LoadAsyncOperation(int sceneNumber)
-    {
-        AsyncOperation level = SceneManager.LoadSceneAsync(sceneNumber);
+        SceneManager.LoadScene(1);
+        canvas.SetActive(true);
+        var scene = SceneManager.LoadSceneAsync(sceneNumber);
+        scene.allowSceneActivation = false;
 
-        while (level.progress < 1)
+        do
         {
-            progressBar.fillAmount = level.progress;
-            yield return new WaitForEndOfFrame();
-        }
+            progressBar.fillAmount = scene.progress;
+        } while (scene.progress < 0.9f);
+        
+        scene.allowSceneActivation = true;
+        canvas.SetActive(false);
     }
 }
