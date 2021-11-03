@@ -516,6 +516,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 514725136}
     - target: {fileID: 7452341281602668116, guid: 114528c67270ea1419efb294155a466c, type: 3}
+      propertyPath: movingCoin
+      value: 
+      objectReference: {fileID: 1049388529}
+    - target: {fileID: 7452341281602668116, guid: 114528c67270ea1419efb294155a466c, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1875830711}
