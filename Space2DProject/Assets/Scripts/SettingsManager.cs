@@ -7,7 +7,6 @@ public class SettingsManager : MonoBehaviour
 {
     public void MenuBack()
     {
-        //SceneManager.LoadScene(x);
         Debug.Log("Retour au Menu");
     }
 

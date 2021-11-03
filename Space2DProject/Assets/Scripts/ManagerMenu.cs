@@ -7,19 +7,22 @@ public class ManagerMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        //SceneManager.LoadScene(x);
-        Debug.Log("Jouer");
+        SceneManager.LoadScene(2);
     }
 
     public void QuitGame()
     {
-        //Application.Quit(x);
+        Application.Quit();
         Debug.Log("Quitter");
     }
 
     public void OpenSettings()
     {
-        //SceneManager.LoadScene(x);
-        Debug.Log("Parametres");
+        SceneManager.LoadScene(2);
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
