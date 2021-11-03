@@ -408,6 +408,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1876340317}
     - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
+      propertyPath: seed
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: items
       value: 
       objectReference: {fileID: 420402805}
@@ -415,6 +419,10 @@ PrefabInstance:
       propertyPath: enemies
       value: 
       objectReference: {fileID: 8120662}
+    - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
+      propertyPath: numberOfRooms
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 5940852392271807216, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -873,6 +881,10 @@ PrefabInstance:
       propertyPath: nyanCount
       value: 
       objectReference: {fileID: 694601362}
+    - target: {fileID: 7452341281602668116, guid: 114528c67270ea1419efb294155a466c, type: 3}
+      propertyPath: movingCoin
+      value: 
+      objectReference: {fileID: 694601363}
     - target: {fileID: 7452341281602668116, guid: 114528c67270ea1419efb294155a466c, type: 3}
       propertyPath: playerTransform
       value: 
