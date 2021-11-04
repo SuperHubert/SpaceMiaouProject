@@ -59,7 +59,6 @@ public class LevelManager : MonoBehaviour
 
     void GenerateNewLevel()
     {
-
         seedList.Add(GetNewSeed());
         floorNumber++;
 
@@ -79,13 +78,4 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    IEnumerator NewLevel()
-    {
-        
-
-        yield return new WaitForSeconds(1);
-        
-        GenerateNewLevel();
-    }
-    
 }
