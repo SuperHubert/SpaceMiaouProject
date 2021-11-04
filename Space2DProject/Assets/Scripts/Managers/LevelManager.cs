@@ -39,23 +39,16 @@ public class LevelManager : MonoBehaviour
     {
         Random.InitState(firstSeed);
         
-        Debug.Log("Init Seed : "+firstSeed);
-        
         int seed = Random.Range(0, 999999999);
-        
-        Debug.Log("First random : "+seed);
         
         for (int i = 0; i < floorNumber-1; i++)
         {
             seed = Random.Range(0, 999999999);
             Debug.Log(seed);
         }
-        Debug.Log("Chosen Random : "+seed);
 
         seed += firstSeed + floorNumber;
         
-        Debug.Log("Final seed :"+seed);
-
         return seed;
     }
 
