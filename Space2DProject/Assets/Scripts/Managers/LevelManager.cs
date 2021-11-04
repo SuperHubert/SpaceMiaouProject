@@ -72,6 +72,8 @@ public class LevelManager : MonoBehaviour
 
     void ClearLevel()
     {
+        //CLEAR NAVMESH
+        
         foreach (Transform child in script.GetGrid().parent)
         {
             foreach (Transform item in child)
