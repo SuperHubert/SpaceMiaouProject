@@ -31,7 +31,12 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            StartCoroutine(NewLevel());
+            ClearLevel();
+        }
+
+        if (Input.GetKey(KeyCode.B))
+        {
+            GenerateNewLevel();
         }
     }
 
@@ -76,7 +81,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator NewLevel()
     {
-        ClearLevel();
+        
 
         yield return new WaitForSeconds(1);
         
