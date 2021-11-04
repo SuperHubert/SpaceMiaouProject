@@ -30,14 +30,14 @@ public class LoadingManager : MonoBehaviour
 
     public void LoadScene(int sceneNumber)
     {
+        canvas.SetActive(true);
+        
         StartCoroutine(LoadAsynchronously(sceneNumber));
     }
 
     IEnumerator LoadAsynchronously(int sceneNumber)
     {
         AsyncOperation scene = SceneManager.LoadSceneAsync(sceneNumber);
-
-        canvas.SetActive(true);
         
         while (!scene.isDone)
         {
