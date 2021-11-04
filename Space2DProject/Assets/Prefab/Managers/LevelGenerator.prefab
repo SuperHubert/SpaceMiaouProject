@@ -66,7 +66,7 @@ MonoBehaviour:
   m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 2fe4a7822bb947849ae66898b8464342, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!114 &5940852392271806990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,11 +82,9 @@ MonoBehaviour:
   seed: 69
   numberOfRooms: 16
   parentName: Half
-  enemies: {fileID: 0}
-  items: {fileID: 0}
+  level: {fileID: 0}
   generationList: []
   roomPrefab: {fileID: 2866077658039817599, guid: 84f00f0d0d1e66e4197909394426ae06, type: 3}
-  grid: {fileID: 0}
 --- !u!114 &5940852392271806991
 MonoBehaviour:
   m_ObjectHideFlags: 0

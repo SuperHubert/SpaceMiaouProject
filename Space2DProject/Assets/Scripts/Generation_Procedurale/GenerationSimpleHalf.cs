@@ -8,32 +8,26 @@ public class GenerationSimpleHalf : MonoBehaviour
     [SerializeField] private int seed;
     [SerializeField] private int numberOfRooms;
     
-    [SerializeField] private string parentName;
-    [SerializeField] private Transform enemies;
-    [SerializeField] private Transform items;
-
+    [SerializeField] private Transform level;
+    private Transform grid;
+    private Transform enemies;
+    private Transform items;
+    
     Case[,] generationGrid;
     [SerializeField] private List<Case> generationList;
     [SerializeField] private GameObject roomPrefab;
-    [SerializeField] private Transform grid;
-    
+
     private int checkpointNumber;
     private bool checkNextInsteadOfPrevious = false;
-    void Start()
+    void Awake()
     {
-        GenerateRooms(numberOfRooms,grid,seed);
+        grid = level.GetChild(0);
+        enemies = level.GetChild(1);
+        items = level.GetChild(2);
+        //GenerateRooms(numberOfRooms,grid,seed);
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            GameObject newParent = Instantiate(new GameObject(parentName),grid);
-            GenerateRooms(numberOfRooms,newParent.transform,seed);
-        }
-    }
-
-    void GenerateRooms(int number,Transform parentObj,int genSeed)
+    
+    public void GenerateRooms(int number,Transform parentObj,int genSeed)
     {
         Random.InitState(genSeed);
         
@@ -275,6 +269,11 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         generationList.Clear();
+    }
+
+    public Transform GetGrid()
+    {
+        return grid;
     }
     
 }
