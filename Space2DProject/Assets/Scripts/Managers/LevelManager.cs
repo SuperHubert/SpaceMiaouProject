@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject levelGenerator;
     private GenerationSimpleHalf script;
     
     [SerializeField] private int firstSeed;
@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
-        script = levelGenerator.GetComponent<GenerationSimpleHalf>();
+        script = gameObject.GetComponent<GenerationSimpleHalf>();
         
         floorNumber = 0;
         
@@ -31,9 +31,8 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            NewLevel(); 
+            StartCoroutine(NewLevel());
         }
-        
     }
 
     int GetNewSeed()
@@ -60,20 +59,19 @@ public class LevelManager : MonoBehaviour
         return seed;
     }
 
-    void NewLevel()
+    void GenerateNewLevel()
     {
+
         seedList.Add(GetNewSeed());
         floorNumber++;
-        
-        ClearLevel();
-        
+
         script.GenerateRooms(numberOfRooms,script.GetGrid(),seedList[floorNumber]);
     }
 
     void ClearLevel()
     {
-        //CLEAR NAVMESH
-        
+        gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
+
         foreach (Transform child in script.GetGrid().parent)
         {
             foreach (Transform item in child)
@@ -82,6 +80,14 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    
+
+    IEnumerator NewLevel()
+    {
+        ClearLevel();
+
+        yield return new WaitForSeconds(1);
+        
+        GenerateNewLevel();
+    }
     
 }
