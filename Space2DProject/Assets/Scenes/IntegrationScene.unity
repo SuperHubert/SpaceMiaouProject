@@ -909,17 +909,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 2011434324}
     m_Modifications:
     - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
-      propertyPath: grid
+      propertyPath: level
       value: 
-      objectReference: {fileID: 4018421}
-    - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
-      propertyPath: items
-      value: 
-      objectReference: {fileID: 88203270}
-    - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
-      propertyPath: enemies
-      value: 
-      objectReference: {fileID: 812629224}
+      objectReference: {fileID: 108613583}
     - target: {fileID: 5940852392271807216, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: m_RootOrder
       value: 0
