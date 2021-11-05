@@ -62,8 +62,6 @@ public class LevelManager : MonoBehaviour
     {
         seedList.Add(GetNewSeed());
         floorNumber++;
-
-        LoadingManager.Instance.UpdateLoading();
         
         generator.GenerateRooms(numberOfRooms,generator.GetGrid(),seedList[floorNumber]);
 
