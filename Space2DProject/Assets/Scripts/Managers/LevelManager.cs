@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
         
         seedList.Add(firstSeed);
         
-        GenerateNewLevel();
+        generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
     }
     
     int GetNewSeed()

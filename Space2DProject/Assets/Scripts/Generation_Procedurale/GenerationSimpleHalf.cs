@@ -14,6 +14,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform grid;
     private Transform enemies;
     private Transform items;
+    [SerializeField] private Camera cameraMap;
     
     public Vector3 spawnPoint;
     [SerializeField] private GameObject firstRoomPrefab;
@@ -291,28 +292,12 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         RecenterLevel();
+        
+        SetCameraSize();
 
         StartCoroutine(BuildNavMesh());
     }
-
-    private void RecenterLevel()
-    {
-        int[] levelBounds = GetLevelSize();
-        
-        int levelMinY = levelBounds[1];
-        int levelMinX = levelBounds[3];
-       
-        int levelHeight = levelBounds[0] - levelMinY + 1;
-        int levelWidth = levelBounds[2] - levelMinX + 1;
-        int currentCenterPosX = generationList[0].position.x - levelMinX + 1;
-        int currentCenterPosY = generationList[0].position.y - levelMinY + 1;
-        
-        Vector2 targetPos = new Vector2((levelWidth / 2f)-currentCenterPosX, (levelHeight / 2f)-currentCenterPosY);
-        Debug.Log(targetPos);
-
-        level.transform.position = new Vector3((-targetPos.x*50)-25,(-targetPos.y*50)-25,0);
-    }
-
+    
     IEnumerator BuildNavMesh()
     {
         gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
@@ -355,12 +340,33 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         Random.state = randState;
+
+        spawnPoint = firstRoomPrefab.transform.position;
+        LevelManager.Instance.MovePlayer();
         
         CleanUpGrid();
-        
+
         UpdateProgress(1);
     }
 
+    private void RecenterLevel()
+    {
+        int[] levelBounds = GetLevelSize();
+        
+        int levelMinY = levelBounds[1];
+        int levelMinX = levelBounds[3];
+       
+        int levelHeight = levelBounds[0] - levelMinY + 1;
+        int levelWidth = levelBounds[2] - levelMinX + 1;
+        int currentCenterPosX = generationList[0].position.x - levelMinX + 1;
+        int currentCenterPosY = generationList[0].position.y - levelMinY + 1;
+        
+        Vector2 targetPos = new Vector2((levelWidth / 2f)-currentCenterPosX, (levelHeight / 2f)-currentCenterPosY);
+        Debug.Log(targetPos);
+
+        level.transform.position = new Vector3((-targetPos.x*50)-25,(-targetPos.y*50)-25,0);
+    }
+    
     private void CleanUpGrid()
     {
         for (int i = 0; i < (2*dungeonNumberOfRooms+1); i++)
@@ -413,8 +419,9 @@ public class GenerationSimpleHalf : MonoBehaviour
         Case room = generationList[0];
         
         GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(3).GetChild(0).gameObject, room.transform);
-        
-        spawnPoint = posObject.transform.position;
+        posObject.name = "aaaaaaa";
+
+        //spawnPoint = posObject.transform.position;
     }
 
     private void MovePortal()
@@ -432,5 +439,26 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         LoadingManager.Instance.UpdateLoading(progress);
     }
-    
+
+    private void SetCameraSize()
+    {
+        int[] levelBounds = GetLevelSize();
+        
+        int levelMinY = levelBounds[1];
+        int levelMinX = levelBounds[3];
+        
+        int levelHeight = levelBounds[0] - levelMinY + 1;
+        int levelWidth = levelBounds[2] - levelMinX + 1;
+
+        if (levelHeight > levelWidth)
+        {
+            cameraMap.orthographicSize = levelHeight * 25 + 10;
+        }
+        else
+        {
+            cameraMap.orthographicSize = levelWidth * 25 + 10;
+        }
+        
+        
+    }
 }
