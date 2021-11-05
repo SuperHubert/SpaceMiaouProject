@@ -49,5 +49,24 @@ public class LoadingManager : MonoBehaviour
         }
         
         canvas.SetActive(false);
+        progressBar.fillAmount = 0;
+    }
+
+    public void UpdateLoading(float progress = 0)
+    {
+        if (progress > 1)
+        {
+            canvas.SetActive(false);
+            return;
+        }
+        
+        if (canvas.activeSelf)
+        {
+            progressBar.fillAmount = progress;
+        }
+        else
+        {
+            canvas.SetActive(true);
+        }
     }
 }

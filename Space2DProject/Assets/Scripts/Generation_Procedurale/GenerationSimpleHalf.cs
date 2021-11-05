@@ -14,7 +14,11 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform grid;
     private Transform enemies;
     private Transform items;
+    
     public Vector3 spawnPoint;
+    [SerializeField] private GameObject firstRoomPrefab;
+    [SerializeField] private GameObject lastRoomPrefab;
+    private float progress = 0;
     
     Case[,] generationGrid;
     [SerializeField] private GameObject roomPrefab;
@@ -39,9 +43,7 @@ public class GenerationSimpleHalf : MonoBehaviour
 
     public void GenerateRooms(int number,Transform parentObj,int genSeed)
     {
-        level.position = Vector3.zero;
-
-        numberOfRooms = number;
+        ResetVariables(number);
         
         Random.InitState(genSeed);
         
@@ -84,7 +86,18 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         SetSpawnPoint();
         
+        MovePortal();
+        
         CleanUpGrid();
+    }
+
+    private void ResetVariables(int number)
+    {
+        firstRoomPrefab = null;
+        
+        level.position = Vector3.zero;
+
+        numberOfRooms = number;
     }
 
     private void SetGenerationGrid(int size)
@@ -252,7 +265,14 @@ public class GenerationSimpleHalf : MonoBehaviour
             {
                 Instantiate(item, room.transform.GetChild(1));
             }
+
+            if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
+            {
+                firstRoomPrefab = prefabRoom;
+            }
+            lastRoomPrefab = prefabRoom;
         }
+        
     }
 
     private void SpawnEnemiesAndItems()
@@ -263,10 +283,15 @@ public class GenerationSimpleHalf : MonoBehaviour
                 (room.caseUnder != null),
                 (room.caseLeft != null), (room.caseRight != null));
             
-            //Instantiates prefab enemy GameObjects
+            //Instantiates prefab enemy GameObjects (not for 1st room)
+            int i = 0;
             foreach (Transform item in prefabRoom.transform.GetChild(2))
             {
-                Instantiate(item, room.transform).parent = enemies;
+                if (i != 0)
+                {
+                    Instantiate(item, room.transform).parent = enemies;
+                }
+                i++;
             }
 
             //Instantiates prefab items GameObjects
@@ -352,13 +377,18 @@ public class GenerationSimpleHalf : MonoBehaviour
     {
         Case room = generationList[0];
         
-        GameObject prefabRoom = gameObject.GetComponent<TextureAssigner>().GetRoom((room.caseAbove != null),
-            (room.caseUnder != null),
-            (room.caseLeft != null), (room.caseRight != null));
-
-        prefabRoom = Instantiate(prefabRoom.transform.GetChild(3).GetChild(0).gameObject, room.transform);
+        GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(3).GetChild(0).gameObject, room.transform);
         
-        spawnPoint = prefabRoom.transform.position;
+        spawnPoint = posObject.transform.position;
+    }
+
+    void MovePortal()
+    {
+        Case room = generationList[numberOfRooms-1];
+        
+        GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(3).GetChild(0).gameObject, room.transform);
+
+        level.GetChild(3).position = posObject.transform.position;
     }
     
 }

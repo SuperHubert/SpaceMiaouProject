@@ -40,8 +40,6 @@ public class LevelManager : MonoBehaviour
         seedList.Add(firstSeed);
         
         GenerateNewLevel();
-        
-        //generator.GenerateRooms(numberOfRooms,generator.GetGrid(),firstSeed);
     }
     
     int GetNewSeed()
@@ -65,9 +63,13 @@ public class LevelManager : MonoBehaviour
         seedList.Add(GetNewSeed());
         floorNumber++;
 
+        LoadingManager.Instance.UpdateLoading();
+        
         generator.GenerateRooms(numberOfRooms,generator.GetGrid(),seedList[floorNumber]);
 
         player.position = generator.spawnPoint;
+        
+        LoadingManager.Instance.UpdateLoading(2);
     }
 
     void ClearLevel()
