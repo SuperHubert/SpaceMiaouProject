@@ -38,6 +38,8 @@ public class GenerationSimpleHalf : MonoBehaviour
 
     public void GenerateRooms(int number,Transform parentObj,int genSeed)
     {
+        level.position = Vector3.zero;
+
         numberOfRooms = number;
         
         Random.InitState(genSeed);
