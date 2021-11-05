@@ -7,8 +7,8 @@ using Random = UnityEngine.Random;
 
 public class GenerationSimpleHalf : MonoBehaviour
 {
-    private int seed;
-    private int numberOfRooms;
+    private int dungeonSeed;
+    private int dungeonNumberOfRooms;
     
     public Transform level;
     private Transform grid;
@@ -26,59 +26,31 @@ public class GenerationSimpleHalf : MonoBehaviour
     
     private int checkpointNumber;
     private bool checkNextInsteadOfPrevious = false;
+
+    private Random.State randState;
     private void Awake()
     {
         grid = level.GetChild(0);
         enemies = level.GetChild(1);
         items = level.GetChild(2);
     }
-
-    private void Update()
+    
+    public void GenerateRooms(int numberOfRooms,int seed)
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            RecenterLevel();
-        }
-    }
-
-    public void GenerateRooms(int number,Transform parentObj,int genSeed)
-    {
-        ResetVariables(number);
+        Random.InitState(seed);
         
-        Random.InitState(genSeed);
+        InitVariables(numberOfRooms);
+
+        StartCoroutine(PlaceRooms());
         
-        SetGenerationGrid(number);
+        /*
+        PlaceRooms();
         
-        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(number,number), 0,"0",parentObj);
-
-        for (int i = 1; i < number; i++)
-        {
-            checkpointNumber = selectedCase.generationNumber;
-            checkNextInsteadOfPrevious = false;
-            Vector2Int nextPos = GetNextPosition(selectedCase);
-
-            if (Random.Range(0, 2) == 1)
-            {
-                Case newRoom = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
-                UpdateAllSurroundingCases(newRoom);
-            }
-            else
-            {
-                selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),parentObj);
-                UpdateAllSurroundingCases(selectedCase);
-            }
-            
-        }
-
-        Random.State generationOver = Random.state;                                                                     
-
         UpdateRoomAppearance();
         
         RecenterLevel();
         
-        gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
-
-        Random.state = generationOver;
+        BuildNavMesh();
         
         SpawnEnemiesAndItems();
         
@@ -89,25 +61,67 @@ public class GenerationSimpleHalf : MonoBehaviour
         MovePortal();
         
         CleanUpGrid();
+        */
+        
     }
 
-    private void ResetVariables(int number)
+    public Transform GetGrid()
+    {
+        return grid;
+    }
+    
+    private void InitVariables(int number)
     {
         firstRoomPrefab = null;
         
         level.position = Vector3.zero;
 
-        numberOfRooms = number;
-    }
+        dungeonNumberOfRooms = number;
+        
+        generationGrid = new Case[2*(number)+1,2*(number)+1];
 
-    private void SetGenerationGrid(int size)
+        progress = 0;
+
+        UpdateProgress(0.01f);
+    }
+    
+    IEnumerator PlaceRooms()
     {
-        generationGrid = new Case[2*(size)+1,2*(size)+1];
+        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(dungeonNumberOfRooms,dungeonNumberOfRooms), 0,"0",grid);
+
+        for (int i = 1; i < dungeonNumberOfRooms; i++)
+        {
+            checkpointNumber = selectedCase.generationNumber;
+            checkNextInsteadOfPrevious = false;
+            Vector2Int nextPos = GetNextPosition(selectedCase);
+
+            if (Random.Range(0, 2) == 1)
+            {
+                Case newRoom = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),grid);
+                UpdateAllSurroundingCases(newRoom);
+            }
+            else
+            {
+                selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),grid);
+                UpdateAllSurroundingCases(selectedCase);
+            }
+
+            UpdateProgress(0.25f / dungeonNumberOfRooms);
+            yield return null;
+        }
+
+        randState = Random.state;
+
+        StartCoroutine(UpdateRoomAppearance());
+        
+        SetSpawnPoint();
+        
+        MovePortal();
     }
     
     private Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
     {
-        Case createdRoom = creator.CreateCase(coords,numberOfRooms,creationNumber);
+        Case createdRoom = creator.CreateCase(coords,dungeonNumberOfRooms,creationNumber);
         createdRoom.position = coords;
         createdRoom.name = caseName;
         createdRoom.transform.parent = caseParent;
@@ -245,7 +259,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
     }
     
-    private void UpdateRoomAppearance()
+    IEnumerator UpdateRoomAppearance()
     {
         foreach (Case room in generationList)
         {
@@ -271,11 +285,47 @@ public class GenerationSimpleHalf : MonoBehaviour
                 firstRoomPrefab = prefabRoom;
             }
             lastRoomPrefab = prefabRoom;
+
+            UpdateProgress(0.25f / dungeonNumberOfRooms);
+            yield return null;
         }
         
+        RecenterLevel();
+
+        StartCoroutine(BuildNavMesh());
     }
 
-    private void SpawnEnemiesAndItems()
+    private void RecenterLevel()
+    {
+        int[] levelBounds = GetLevelSize();
+        
+        int levelMinY = levelBounds[1];
+        int levelMinX = levelBounds[3];
+       
+        int levelHeight = levelBounds[0] - levelMinY + 1;
+        int levelWidth = levelBounds[2] - levelMinX + 1;
+        int currentCenterPosX = generationList[0].position.x - levelMinX + 1;
+        int currentCenterPosY = generationList[0].position.y - levelMinY + 1;
+        
+        Vector2 targetPos = new Vector2((levelWidth / 2f)-currentCenterPosX, (levelHeight / 2f)-currentCenterPosY);
+        Debug.Log(targetPos);
+
+        level.transform.position = new Vector3((-targetPos.x*50)-25,(-targetPos.y*50)-25,0);
+    }
+
+    IEnumerator BuildNavMesh()
+    {
+        gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
+        
+        UpdateProgress(0.39f);
+        yield return null;
+
+        Random.state = randState;
+        
+        StartCoroutine(SpawnEnemiesAndItems());
+    }
+    
+    IEnumerator SpawnEnemiesAndItems()
     {
         foreach (Case room in generationList)
         {
@@ -300,14 +350,22 @@ public class GenerationSimpleHalf : MonoBehaviour
                 Instantiate(item, room.transform).parent = items;
             }
             
+            UpdateProgress(0.1f/ dungeonNumberOfRooms);
+            yield return null;
         }
+        
+        Random.state = randState;
+        
+        CleanUpGrid();
+        
+        UpdateProgress(1);
     }
 
     private void CleanUpGrid()
     {
-        for (int i = 0; i < (2*numberOfRooms+1); i++)
+        for (int i = 0; i < (2*dungeonNumberOfRooms+1); i++)
         {
-            for (int j = 0; i < (2*numberOfRooms+1); i++)
+            for (int j = 0; i < (2*dungeonNumberOfRooms+1); i++)
             {
                 generationGrid[i, j] = null;
             }
@@ -315,12 +373,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         generationList.Clear();
     }
-
-    public Transform GetGrid()
-    {
-        return grid;
-    }
-
+    
     private int[] GetLevelSize()
     {
         int[] values = new int[4]; 
@@ -355,25 +408,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         return values;
     }
     
-    private void RecenterLevel()
-    {
-        int[] levelBounds = GetLevelSize();
-        
-        int levelMinY = levelBounds[1];
-        int levelMinX = levelBounds[3];
-       
-        int levelHeight = levelBounds[0] - levelMinY + 1;
-        int levelWidth = levelBounds[2] - levelMinX + 1;
-        int currentCenterPosX = generationList[0].position.x - levelMinX + 1;
-        int currentCenterPosY = generationList[0].position.y - levelMinY + 1;
-        
-        Vector2 targetPos = new Vector2((levelWidth / 2f)-currentCenterPosX, (levelHeight / 2f)-currentCenterPosY);
-        Debug.Log(targetPos);
-
-        level.transform.position = new Vector3((-targetPos.x*50)-25,(-targetPos.y*50)-25,0);
-    }
-
-    void SetSpawnPoint()
+    private void SetSpawnPoint()
     {
         Case room = generationList[0];
         
@@ -382,13 +417,20 @@ public class GenerationSimpleHalf : MonoBehaviour
         spawnPoint = posObject.transform.position;
     }
 
-    void MovePortal()
+    private void MovePortal()
     {
-        Case room = generationList[numberOfRooms-1];
+        Case room = generationList[dungeonNumberOfRooms-1];
         
         GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(3).GetChild(0).gameObject, room.transform);
 
         level.GetChild(3).position = posObject.transform.position;
+    }
+
+    private void UpdateProgress(float number)
+    {
+        progress += number;
+        
+        LoadingManager.Instance.UpdateLoading(progress);
     }
     
 }
