@@ -1,22 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class GenerationSimpleHalf : MonoBehaviour
 {
-    [SerializeField] private int seed;
-    [SerializeField] private int numberOfRooms;
+    private int seed;
+    private int numberOfRooms;
     
-    [SerializeField] private Transform level;
+    public Transform level;
     private Transform grid;
     private Transform enemies;
     private Transform items;
     
     Case[,] generationGrid;
-    [SerializeField] private List<Case> generationList;
     [SerializeField] private GameObject roomPrefab;
-
+    [SerializeField] private List<Case> generationList;
+    
     private int checkpointNumber;
     private bool checkNextInsteadOfPrevious = false;
     void Awake()
@@ -24,11 +26,20 @@ public class GenerationSimpleHalf : MonoBehaviour
         grid = level.GetChild(0);
         enemies = level.GetChild(1);
         items = level.GetChild(2);
-        //GenerateRooms(numberOfRooms,grid,seed);
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            RecenterLevel();
+        }
+    }
+
     public void GenerateRooms(int number,Transform parentObj,int genSeed)
     {
+        numberOfRooms = number;
+        
         Random.InitState(genSeed);
         
         SetGenerationGrid(number);
@@ -57,6 +68,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         Random.State generationOver = Random.state;                                                                     
 
         UpdateRoomAppearance();
+        
+        RecenterLevel();
         
         gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
 
@@ -274,6 +287,58 @@ public class GenerationSimpleHalf : MonoBehaviour
     public Transform GetGrid()
     {
         return grid;
+    }
+
+    int[] GetLevelSize()
+    {
+        int[] values = new int[4]; 
+        Case aya = generationList[0]; 
+        values[0] = aya.position.y; //top
+        values[1] = aya.position.y; //bot
+        values[2] = aya.position.x; //right
+        values[3] = aya.position.x; //left
+
+        foreach (Case item in generationList)
+        {
+            if (item.position.y > values[0])
+            {
+                values[0] = item.position.y;
+            }
+            if (item.position.y < values[1])
+            {
+                values[1] = item.position.y;
+            }
+            
+            if (item.position.x > values[2])
+            {
+                values[2] = item.position.x;
+            }
+            if (item.position.x < values[3])
+            {
+                values[3] = item.position.x;
+            }
+            
+        }
+        
+        return values;
+    }
+    
+    void RecenterLevel()
+    {
+        int[] levelBounds = GetLevelSize();
+        
+        int levelMinY = levelBounds[1];
+        int levelMinX = levelBounds[3];
+       
+        int levelHeight = levelBounds[0] - levelMinY + 1;
+        int levelWidth = levelBounds[2] - levelMinX + 1;
+        int currentCenterPosX = generationList[0].position.x - levelMinX + 1;
+        int currentCenterPosY = generationList[0].position.y - levelMinY + 1;
+        
+        Vector2 targetPos = new Vector2((levelWidth / 2f)-currentCenterPosX, (levelHeight / 2f)-currentCenterPosY);
+        Debug.Log(targetPos);
+
+        level.transform.position = new Vector3((-targetPos.x*50)-25,(-targetPos.y*50)-25,0);
     }
     
 }

@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    private GenerationSimpleHalf script;
+    private GenerationSimpleHalf generator;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
@@ -18,13 +18,13 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
-        script = gameObject.GetComponent<GenerationSimpleHalf>();
+        generator = gameObject.GetComponent<GenerationSimpleHalf>();
         
         floorNumber = 0;
         
         seedList.Add(firstSeed);
         
-        script.GenerateRooms(numberOfRooms,script.GetGrid(),firstSeed);
+        generator.GenerateRooms(numberOfRooms,generator.GetGrid(),firstSeed);
     }
 
     private void Update()
@@ -62,14 +62,14 @@ public class LevelManager : MonoBehaviour
         seedList.Add(GetNewSeed());
         floorNumber++;
 
-        script.GenerateRooms(numberOfRooms,script.GetGrid(),seedList[floorNumber]);
+        generator.GenerateRooms(numberOfRooms,generator.GetGrid(),seedList[floorNumber]);
     }
 
     void ClearLevel()
     {
         gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
 
-        foreach (Transform child in script.GetGrid().parent)
+        foreach (Transform child in generator.GetGrid().parent)
         {
             foreach (Transform item in child)
             {
@@ -77,5 +77,4 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-
 }
