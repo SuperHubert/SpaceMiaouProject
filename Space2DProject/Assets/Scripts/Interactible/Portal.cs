@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour, IInteractible
 {
-    
     public void OnInteraction()
     {
-        Debug.Log("bonk");
+        LevelManager.Instance.Generate();
     }
 }

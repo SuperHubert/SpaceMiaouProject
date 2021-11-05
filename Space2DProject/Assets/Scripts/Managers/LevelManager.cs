@@ -12,9 +12,22 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
 
-    private List<int> seedList = new List<int>();
+    [SerializeField] private List<int> seedList = new List<int>();
 
     private int floorNumber;
+
+    private bool canGenerate = true;
+    
+    #region Singleton
+
+    public static LevelManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    #endregion
     
     void Start()
     {
@@ -26,30 +39,16 @@ public class LevelManager : MonoBehaviour
         
         generator.GenerateRooms(numberOfRooms,generator.GetGrid(),firstSeed);
     }
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.A))
-        {
-            ClearLevel();
-        }
-
-        if (Input.GetKey(KeyCode.B))
-        {
-            GenerateNewLevel();
-        }
-    }
-
+    
     int GetNewSeed()
     {
         Random.InitState(firstSeed);
+
+        int seed = firstSeed;
         
-        int seed = Random.Range(0, 999999999);
-        
-        for (int i = 0; i < floorNumber-1; i++)
+        for (int i = 0; i < floorNumber+1; i++)
         {
             seed = Random.Range(0, 999999999);
-            Debug.Log(seed);
         }
 
         seed += firstSeed + floorNumber;
@@ -76,5 +75,26 @@ public class LevelManager : MonoBehaviour
                 Destroy(item.gameObject);
             }
         }
+    }
+
+    IEnumerator NewLevel()
+    {
+        ClearLevel();
+
+        yield return null;
+        
+        GenerateNewLevel();
+
+        canGenerate = true;
+    }
+
+    public void Generate()
+    {
+        if (canGenerate)
+        {
+            canGenerate = false;
+            StartCoroutine(NewLevel());
+        }
+        
     }
 }
