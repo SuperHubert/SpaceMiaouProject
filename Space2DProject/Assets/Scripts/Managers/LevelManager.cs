@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 public class LevelManager : MonoBehaviour
 {
     private GenerationSimpleHalf generator;
+
+    [SerializeField] private Transform player;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
@@ -37,7 +39,9 @@ public class LevelManager : MonoBehaviour
         
         seedList.Add(firstSeed);
         
-        generator.GenerateRooms(numberOfRooms,generator.GetGrid(),firstSeed);
+        GenerateNewLevel();
+        
+        //generator.GenerateRooms(numberOfRooms,generator.GetGrid(),firstSeed);
     }
     
     int GetNewSeed()
@@ -62,6 +66,8 @@ public class LevelManager : MonoBehaviour
         floorNumber++;
 
         generator.GenerateRooms(numberOfRooms,generator.GetGrid(),seedList[floorNumber]);
+
+        player.position = generator.spawnPoint;
     }
 
     void ClearLevel()

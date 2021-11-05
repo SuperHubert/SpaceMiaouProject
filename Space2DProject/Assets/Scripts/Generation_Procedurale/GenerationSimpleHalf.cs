@@ -14,6 +14,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform grid;
     private Transform enemies;
     private Transform items;
+    public Vector3 spawnPoint;
     
     Case[,] generationGrid;
     [SerializeField] private GameObject roomPrefab;
@@ -21,7 +22,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     
     private int checkpointNumber;
     private bool checkNextInsteadOfPrevious = false;
-    void Awake()
+    private void Awake()
     {
         grid = level.GetChild(0);
         enemies = level.GetChild(1);
@@ -79,15 +80,19 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         SpawnEnemiesAndItems();
         
+        Random.state = generationOver;
+        
+        SetSpawnPoint();
+        
         CleanUpGrid();
     }
 
-    void SetGenerationGrid(int size)
+    private void SetGenerationGrid(int size)
     {
         generationGrid = new Case[2*(size)+1,2*(size)+1];
     }
     
-    Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
+    private Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
     {
         Case createdRoom = creator.CreateCase(coords,numberOfRooms,creationNumber);
         createdRoom.position = coords;
@@ -100,7 +105,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         return generationGrid[coords.x, coords.y];
     }
 
-    Vector2Int GetNextPosition(Case currentRoom)
+    private Vector2Int GetNextPosition(Case currentRoom)
     {
         List<int> surroundingRoomsList = GetSurroundingCasesList(currentRoom);
 
@@ -135,7 +140,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
     }
     
-    List<int> GetSurroundingCasesList(Case targetCase)
+    private List<int> GetSurroundingCasesList(Case targetCase)
     {
         UpdateAllSurroundingCases(targetCase);
         List<int> caseList = new List<int>();
@@ -163,7 +168,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         return caseList;
     }
     
-    void UpdateAllSurroundingCases(Case targetCase)
+    private void UpdateAllSurroundingCases(Case targetCase)
     {
         if (generationGrid[targetCase.position.x, targetCase.position.y + 1] != null)
         {
@@ -183,7 +188,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
     }
     
-    Case GetCaseFromNumber(int number)
+    private Case GetCaseFromNumber(int number)
     {
         foreach (Case room in generationList)
         {
@@ -196,7 +201,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         return null;
     }
     
-    List<int> GetAvailablePositionsListFromUnavailablePositionsList(List<int> unavailablePositionsList)
+    private List<int> GetAvailablePositionsListFromUnavailablePositionsList(List<int> unavailablePositionsList)
     {
         List<int> availablePositionsList = new List<int>() {1,2,3,4};
         foreach (int position in unavailablePositionsList)
@@ -210,7 +215,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         return availablePositionsList;
     }
     
-    Vector2Int ConvertIntToPosition(int position,Case room)
+    private Vector2Int ConvertIntToPosition(int position,Case room)
     {
         switch (position)
         {
@@ -227,7 +232,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
     }
     
-    void UpdateRoomAppearance()
+    private void UpdateRoomAppearance()
     {
         foreach (Case room in generationList)
         {
@@ -250,7 +255,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
     }
 
-    void SpawnEnemiesAndItems()
+    private void SpawnEnemiesAndItems()
     {
         foreach (Case room in generationList)
         {
@@ -273,7 +278,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
     }
 
-    void CleanUpGrid()
+    private void CleanUpGrid()
     {
         for (int i = 0; i < (2*numberOfRooms+1); i++)
         {
@@ -291,7 +296,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         return grid;
     }
 
-    int[] GetLevelSize()
+    private int[] GetLevelSize()
     {
         int[] values = new int[4]; 
         Case aya = generationList[0]; 
@@ -325,7 +330,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         return values;
     }
     
-    void RecenterLevel()
+    private void RecenterLevel()
     {
         int[] levelBounds = GetLevelSize();
         
@@ -341,6 +346,19 @@ public class GenerationSimpleHalf : MonoBehaviour
         Debug.Log(targetPos);
 
         level.transform.position = new Vector3((-targetPos.x*50)-25,(-targetPos.y*50)-25,0);
+    }
+
+    void SetSpawnPoint()
+    {
+        Case room = generationList[0];
+        
+        GameObject prefabRoom = gameObject.GetComponent<TextureAssigner>().GetRoom((room.caseAbove != null),
+            (room.caseUnder != null),
+            (room.caseLeft != null), (room.caseRight != null));
+
+        prefabRoom = Instantiate(prefabRoom.transform.GetChild(3).GetChild(0).gameObject, room.transform);
+        
+        spawnPoint = prefabRoom.transform.position;
     }
     
 }

@@ -48,21 +48,21 @@ public class ObjectPooler : MonoBehaviour
 
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 positon, Quaternion rotation)
+    public GameObject SpawnFromPool(string objectTag, Vector3 position, Quaternion rotation)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(objectTag))
         {
             Debug.LogWarning("tag doesn't exist");
             return null;
         }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        GameObject objectToSpawn = poolDictionary[objectTag].Dequeue();
 
         objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = positon;
+        objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
+        poolDictionary[objectTag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
     }
