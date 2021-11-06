@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,11 +18,14 @@ public class MapManager : MonoBehaviour
             {
                 normalUI.SetActive(false);
                 mapUI.SetActive(true);
+                Time.timeScale = 0;
+
             }
             else
             {
                 normalUI.SetActive(true);
                 mapUI.SetActive(false);
+                Time.timeScale = 1;
             }
             
         }

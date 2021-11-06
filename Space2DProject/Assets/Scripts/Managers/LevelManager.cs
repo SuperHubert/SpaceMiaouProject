@@ -103,6 +103,10 @@ public class LevelManager : MonoBehaviour
             canGenerate = false;
             StartCoroutine(NewLevel());
         }
-        
+    }
+
+    public GameObject Player()
+    {
+        return player.gameObject;
     }
 }

@@ -325,16 +325,14 @@ public class GenerationSimpleHalf : MonoBehaviour
                 (room.caseLeft != null), (room.caseRight != null));
             
             //Instantiates prefab enemy GameObjects (not for 1st room)
-            int i = 0;
-            foreach (Transform item in prefabRoom.transform.GetChild(2))
+            if (room != generationList[0])
             {
-                if (i != 0)
+                foreach (Transform item in prefabRoom.transform.GetChild(2))
                 {
                     Instantiate(item, room.transform).parent = enemies;
                 }
-                i++;
             }
-
+            
             //Instantiates prefab items GameObjects
             foreach (Transform item in prefabRoom.transform.GetChild(3))
             {
