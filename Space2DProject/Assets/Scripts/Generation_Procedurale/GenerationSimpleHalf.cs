@@ -117,8 +117,6 @@ public class GenerationSimpleHalf : MonoBehaviour
         StartCoroutine(UpdateRoomAppearance());
         
         SetSpawnPoint();
-        
-        MovePortal();
     }
     
     private Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
@@ -291,6 +289,8 @@ public class GenerationSimpleHalf : MonoBehaviour
             UpdateProgress(0.25f / dungeonNumberOfRooms);
             yield return null;
         }
+        
+        MovePortal();
         
         RecenterLevel();
         
