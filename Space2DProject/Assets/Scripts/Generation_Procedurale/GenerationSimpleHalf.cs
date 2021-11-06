@@ -17,6 +17,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     [SerializeField] private Camera cameraMap;
 
     [SerializeField] private bool buildNavMesh = true;
+    [SerializeField] private bool movePlayer = true;
     
     [SerializeField] private GameObject firstRoomPrefab;
     [SerializeField] private GameObject lastRoomPrefab;
@@ -293,8 +294,12 @@ public class GenerationSimpleHalf : MonoBehaviour
         MovePortal();
         
         RecenterLevel();
-        
-        LevelManager.Instance.MovePlayer(level.GetChild(4));
+
+
+        if (movePlayer)
+        {
+            LevelManager.Instance.MovePlayer(level.GetChild(4));
+        }
         
         SetCameraSize();
 

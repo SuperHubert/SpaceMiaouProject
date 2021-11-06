@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private List<int> seedList = new List<int>();
 
-    private int floorNumber;
+    [SerializeField] private int floorNumber;
 
     private bool canGenerate = true;
     
@@ -108,5 +108,10 @@ public class LevelManager : MonoBehaviour
     public GameObject Player()
     {
         return player.gameObject;
+    }
+
+    public int FloorNumber()
+    {
+        return floorNumber;
     }
 }
