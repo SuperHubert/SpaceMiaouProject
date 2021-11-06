@@ -11,7 +11,7 @@ public class Chest : MonoBehaviour, IInteractible
 
     private void Start()
     {
-
+        
     }
 
     public void OnInteraction()
