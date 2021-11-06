@@ -15,8 +15,9 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform enemies;
     private Transform items;
     [SerializeField] private Camera cameraMap;
+
+    [SerializeField] private bool buildNavMesh = true;
     
-    public Vector3 spawnPoint;
     [SerializeField] private GameObject firstRoomPrefab;
     [SerializeField] private GameObject lastRoomPrefab;
     private float progress = 0;
@@ -293,6 +294,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         RecenterLevel();
         
+        LevelManager.Instance.MovePlayer(level.GetChild(4));
+        
         SetCameraSize();
 
         StartCoroutine(BuildNavMesh());
@@ -300,7 +303,10 @@ public class GenerationSimpleHalf : MonoBehaviour
     
     IEnumerator BuildNavMesh()
     {
-        gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
+        if (buildNavMesh)
+        {
+            gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
+        }
         
         UpdateProgress(0.39f);
         yield return null;
@@ -340,9 +346,6 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         Random.state = randState;
-
-        spawnPoint = firstRoomPrefab.transform.position;
-        LevelManager.Instance.MovePlayer();
         
         CleanUpGrid();
 
@@ -418,17 +421,16 @@ public class GenerationSimpleHalf : MonoBehaviour
     {
         Case room = generationList[0];
         
-        GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(3).GetChild(0).gameObject, room.transform);
-        posObject.name = "aaaaaaa";
+        GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(5).gameObject, room.transform);
 
-        //spawnPoint = posObject.transform.position;
+        level.GetChild(4).position = posObject.transform.position;
     }
 
     private void MovePortal()
     {
         Case room = generationList[dungeonNumberOfRooms-1];
         
-        GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(3).GetChild(0).gameObject, room.transform);
+        GameObject posObject = Instantiate(lastRoomPrefab.transform.GetChild(4).gameObject, room.transform);
 
         level.GetChild(3).position = posObject.transform.position;
     }

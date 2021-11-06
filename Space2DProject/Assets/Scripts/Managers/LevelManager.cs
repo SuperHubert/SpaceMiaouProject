@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     private GenerationSimpleHalf generator;
 
     [SerializeField] private Transform player;
+    [SerializeField] private Transform mainCamera;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
@@ -66,9 +67,9 @@ public class LevelManager : MonoBehaviour
         generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
     }
 
-    public void MovePlayer()
+    public void MovePlayer(Transform position)
     {
-        player.position = generator.spawnPoint;
+        mainCamera.position = player.position = position.position;
     }
 
     void ClearLevel()

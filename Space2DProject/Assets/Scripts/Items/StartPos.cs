@@ -6,6 +6,6 @@ public class StartPos : MonoBehaviour
 {
     void Start()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
