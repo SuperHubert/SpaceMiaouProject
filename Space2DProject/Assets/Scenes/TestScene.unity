@@ -628,7 +628,7 @@ PrefabInstance:
       objectReference: {fileID: 941791982}
     - target: {fileID: 2066300090379407896, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: firstSeed
-      value: 123
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 2066300090379407896, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: m_Enabled
@@ -652,11 +652,11 @@ PrefabInstance:
       objectReference: {fileID: 202095997}
     - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: movePlayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: buildNavMesh
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5940852392271807216, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: m_RootOrder

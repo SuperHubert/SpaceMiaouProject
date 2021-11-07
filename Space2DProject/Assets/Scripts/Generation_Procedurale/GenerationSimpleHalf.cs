@@ -22,11 +22,12 @@ public class GenerationSimpleHalf : MonoBehaviour
     [SerializeField] private GameObject firstRoomPrefab;
     [SerializeField] private GameObject lastRoomPrefab;
     private float progress = 0;
-    
+    private List<GameObject> chestList = new List<GameObject>();
+
     Case[,] generationGrid;
     [SerializeField] private GameObject roomPrefab;
     [SerializeField] private List<Case> generationList;
-    
+
     private int checkpointNumber;
     private bool checkNextInsteadOfPrevious = false;
 
@@ -72,6 +73,11 @@ public class GenerationSimpleHalf : MonoBehaviour
     {
         return grid;
     }
+
+    public void AddChest(GameObject chest)
+    {
+        chestList.Add(chest);
+    }
     
     private void InitVariables(int number)
     {
@@ -84,6 +90,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         generationGrid = new Case[2*(number)+1,2*(number)+1];
 
         progress = 0;
+
+        chestList.Clear();
 
         UpdateProgress(0.01f);
     }
@@ -350,6 +358,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         Random.state = randState;
         
+        DestroySomeChests();
+        
         CleanUpGrid();
 
         UpdateProgress(1);
@@ -465,5 +475,13 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         
+    }
+
+    private void DestroySomeChests()
+    {
+        foreach (GameObject item in chestList)
+        {
+            item.GetComponent<Chest>().UpdateChest();
+        }
     }
 }

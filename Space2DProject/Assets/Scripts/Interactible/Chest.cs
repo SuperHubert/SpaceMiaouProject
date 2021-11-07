@@ -13,12 +13,6 @@ public class Chest : MonoBehaviour, IInteractible
     private void Start()
     {
         floor = LevelManager.Instance.FloorNumber();
-
-        float probabilityToStay = ((floor+4) / (floor + 5f)) * 0.5f;
-        if (Random.Range(0f, 1f) > probabilityToStay)
-        {
-            Destroy(gameObject);
-        }
     }
 
     public void OnInteraction()
@@ -35,6 +29,16 @@ public class Chest : MonoBehaviour, IInteractible
         {
             LootManager.Instance.GetUpgrade(floor,transform.position);
             
+            Destroy(gameObject);
+        }
+    }
+
+    public void UpdateChest()
+    {
+        float probabilityToStay = ((floor+4) / (floor + 5f)) * 0.5f;
+        
+        if (Random.Range(0f, 1f) > probabilityToStay)
+        {
             Destroy(gameObject);
         }
     }
