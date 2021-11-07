@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LootManager : MonoBehaviour
 {
@@ -50,7 +51,24 @@ public class LootManager : MonoBehaviour
             Debug.Log("coin");
             Instantiate(coin,pos, quaternion.identity);
         }
+    }
+
+    public void GetUpgrade(int level,Vector3 pos)
+    {
+        int min = 1 + level;
+        int max = 3 + level;
+        if (max >= lootTable.Count)
+        {
+            max = lootTable.Count - 1;
+        }
+
+        if (max - min < 3)
+        {
+            min = max - 2;
+        }
         
-        
+        int bonk = Random.Range(min, max);
+
+        Instantiate(lootTable[bonk], pos, quaternion.identity);
     }
 }

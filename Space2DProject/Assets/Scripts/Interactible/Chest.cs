@@ -7,26 +7,35 @@ using Random = UnityEngine.Random;
 public class Chest : MonoBehaviour, IInteractible
 {
     private float[] table = {100f,0f};
+    private int floor;
     
 
     private void Start()
     {
-        
+        floor = LevelManager.Instance.FloorNumber();
+
+        float probabilityToStay = ((floor+4) / (floor + 5f)) * 0.5f;
+        if (Random.Range(0f, 1f) > probabilityToStay)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void OnInteraction()
     {
-        int floor = LevelManager.Instance.FloorNumber();
         float drop = Random.Range(0, 100);
         if (drop < LootManager.Instance.ConvertLevelToProbability(floor))
         {
             LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : Random.Range(1, 3),
                 transform.position);
+                
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("Dropped Upgrade");
+            LootManager.Instance.GetUpgrade(floor,transform.position);
+            
+            Destroy(gameObject);
         }
     }
 }
