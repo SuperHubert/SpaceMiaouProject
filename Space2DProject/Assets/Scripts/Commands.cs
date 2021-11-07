@@ -22,6 +22,21 @@ public class CommandBase
     }
 }
 
+public class Commands : CommandBase
+{
+    private Action command;
+        
+    public Commands(string id, string description, string format,Action command) : base(id, description, format)
+    {
+        this.command = command;
+    }
+
+    public void Invoke()
+    {
+        command.Invoke();
+    }
+}
+
 public class Commands<T1> : CommandBase
 {
     private Action<T1> command;
@@ -37,17 +52,17 @@ public class Commands<T1> : CommandBase
     }
 }
 
-public class Commands : CommandBase
+public class Commands<T1,T2> : CommandBase
 {
-    private Action command;
+    private Action<T1,T2> command;
         
-    public Commands(string id, string description, string format,Action command) : base(id, description, format)
+    public Commands(string id, string description, string format,Action<T1,T2> command) : base(id, description, format)
     {
         this.command = command;
     }
 
-    public void Invoke()
+    public void Invoke(T1 value1,T2 value2)
     {
-        command.Invoke();
+        command.Invoke(value1,value2);
     }
 }

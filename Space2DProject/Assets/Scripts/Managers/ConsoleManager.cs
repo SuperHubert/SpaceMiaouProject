@@ -11,17 +11,23 @@ public class ConsoleManager : MonoBehaviour
     [SerializeField] private string input;
 
     public static Commands HELP;
+    public static Commands NEXTLEVEL;   //generates new level
+    public static Commands<int,int> NEWLEVEL; // "LEVEL numberOfRooms seed" generates level based on room number and seed
+    
     public static Commands TEST;
     public static Commands TEST2;
     public static Commands TEST4;
     public static Commands<string> TEST3;
 
     public List<object> commandList;
+    
+    private Vector2 scroll;
 
 
     public void ToggleConsole()
     {
         showConsole = !showConsole;
+        input = "";
     }
 
     public void OnReturn()
@@ -39,9 +45,23 @@ public class ConsoleManager : MonoBehaviour
         {
             showHelp = true;
         });
+        
+        NEXTLEVEL = new Commands("newlevel", "generates next level of the current room", "nextlevel", () =>
+        {
+            LoadingManager.Instance.UpdateLoading();
+        
+            LevelManager.Instance.Generate();
+        });
+        
+        NEWLEVEL = new Commands<int,int>("set_gold", "generates a new level", "nextlevel int<number of rooms> int<seed>", (numberOfRooms,seed) =>
+        {
+            LevelManager.Instance.StartNewRun(numberOfRooms,seed);
+        });
+        
         TEST = new Commands("test", "a test", "test", () =>
         {
             Debug.Log("test");
+            Debug.Log("testAAAAAAAAAAA");
         });
         TEST2 = new Commands("yoink", "a test", "test", () =>
         {
@@ -59,6 +79,8 @@ public class ConsoleManager : MonoBehaviour
         commandList = new List<object>()
         {
             HELP,
+            NEXTLEVEL,
+            NEWLEVEL,
             TEST,
             TEST2,
             TEST3,
@@ -73,9 +95,6 @@ public class ConsoleManager : MonoBehaviour
             ToggleConsole();
         }
     }
-
-
-    private Vector2 scroll;
     
     private void OnGUI()
     {
@@ -141,6 +160,10 @@ public class ConsoleManager : MonoBehaviour
                 else if (commandBase is Commands<int> intCommand)
                 {
                     intCommand.Invoke(int.Parse(properties[1]));
+                }
+                else if (commandBase is Commands<int,int> intIntCommand)
+                {
+                    intIntCommand.Invoke(int.Parse(properties[1]),int.Parse(properties[2]));
                 }
             }
         }
