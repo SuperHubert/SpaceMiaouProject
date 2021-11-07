@@ -36,18 +36,23 @@ public class LevelManager : MonoBehaviour
     {
         generator = gameObject.GetComponent<GenerationSimpleHalf>();
         
-        StartNewRun(numberOfRooms,seedList[floorNumber]);
+        StartNewRun(numberOfRooms,firstSeed);
     }
 
     public void StartNewRun(int rooms, int seed)
     {
-        floorNumber = 0;
+        if (canGenerate)
+        {
+            floorNumber = 0;
         
-        seedList.Clear();
+            seedList.Clear();
         
-        seedList.Add(seed);
-        
-        generator.GenerateRooms(rooms,seed);
+            seedList.Add(seed);
+            
+            canGenerate = false;
+            
+            StartCoroutine(ResetRun(rooms,seed));
+        }
     }
     
     int GetNewSeed()
@@ -99,6 +104,17 @@ public class LevelManager : MonoBehaviour
         yield return null;
         
         GenerateNewLevel();
+
+        canGenerate = true;
+    }
+
+    IEnumerator ResetRun(int rooms, int seed)
+    {
+        ClearLevel();
+
+        yield return null;
+        
+        generator.GenerateRooms(rooms,seed);
 
         canGenerate = true;
     }
