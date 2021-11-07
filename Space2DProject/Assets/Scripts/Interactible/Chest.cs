@@ -16,10 +16,13 @@ public class Chest : MonoBehaviour, IInteractible
 
     public void OnInteraction()
     {
+        int floor = LevelManager.Instance.FloorNumber();
         float drop = Random.Range(0, 100);
-        if (drop < LootManager.Instance.ConvertLevelToProbability(LevelManager.Instance.FloorNumber()))
+        if (drop < LootManager.Instance.ConvertLevelToProbability(floor))
         {
-            Debug.Log("Dropped Coins");
+            LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : Random.Range(1, 3),
+                transform.position);
+            Destroy(gameObject);
         }
         else
         {

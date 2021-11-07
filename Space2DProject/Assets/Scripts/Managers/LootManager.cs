@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class LootManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> lootTable = new List<GameObject>();
+    private GameObject coin;
     
     #region Singleton
 
@@ -16,6 +19,11 @@ public class LootManager : MonoBehaviour
     }
 
     #endregion
+
+    private void Start()
+    {
+        coin = lootTable[0];
+    }
 
     public void GetLootTable(int level)
     {
@@ -32,5 +40,17 @@ public class LootManager : MonoBehaviour
         float probability = (1f / ((level / (level + 1f)) * (4f / 3f))) * 80;
 
         return probability;
+    }
+
+    public void GetCoins(int numberOfCoins,Vector3 pos)
+    {
+        Debug.Log(numberOfCoins);
+        for (int i = 0; i < numberOfCoins; i++)
+        {
+            Debug.Log("coin");
+            Instantiate(coin,pos, quaternion.identity);
+        }
+        
+        
     }
 }
