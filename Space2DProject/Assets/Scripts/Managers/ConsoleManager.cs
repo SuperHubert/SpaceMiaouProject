@@ -41,15 +41,17 @@ public class ConsoleManager : MonoBehaviour
     private static Commands GETNUMBEROFROOMS;
     private static Commands GETCURRENTFLOOR;
     private static Commands<int> SETFIRSTSEED;
+    private static Commands<int> FORCENEXTSEED;
     private static Commands<int> SETNUMBEROFROOMS;
 
     //Money Manager
-    private static Commands<int> GIVECOINS;
-    private static Commands<int> SETCOINS;
+    private static Commands<int> GIVECOINS; //WORKS ONLY FOR POSITIVE AMOUNT
+    private static Commands<int> SETCOINS; // NOT IMPLEMENTED
     
     //Hp Manager
     private static Commands<int> GIVEHP;
-    private static Commands<int> SETHP;
+    private static Commands<int> SETHP; // NOT IMPLEMENTED
+    private static Commands<int> SETMAXHP; // NOT IMPLEMENTED
 
     //Camera Manager
     private static Commands<string> CAMERAFOLLOW;
@@ -226,12 +228,69 @@ public class ConsoleManager : MonoBehaviour
                              LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms, first floor is floor 0)");
         });
         
+        SETFIRSTSEED = new Commands<int>("setseed", "Sets the first seed of the Level Manager", "setseed int<seed>", (seed) =>
+        {
+            LevelManager.Instance.SetSeedAndRoom(LevelManager.Instance.GetCurrentNumberOfRooms(), seed);
+                
+            consoleLines.Add("Seed has been set to "+seed);
+        });
         
+        FORCENEXTSEED = new Commands<int>("forceseed", "Forces the seed of the next floor", "forceseed int<seed>", (seed) =>
+        {
+            LevelManager.Instance.AddSeed(seed);
+            
+            consoleLines.Add("Next seed will be "+seed);
+        });
         
+        SETNUMBEROFROOMS = new Commands<int>("setnumberofrooms", "Sets the number of rooms for the next generations", "setnumberofrooms int<number of rooms>", (rooms) =>
+        {
+            LevelManager.Instance.SetSeedAndRoom(rooms,LevelManager.Instance.GetFirstSeed());
+            
+            consoleLines.Add("Number of rooms has been set to "+rooms+" (will take effect for next generations");
+        });
         
+        GIVECOINS = new Commands<int>("addcoins", "Gives a set amount of nyancoins", "addcoins int<amount of coins>", (amount) =>
+        {
+            if (amount > 0)
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    MoneyManager.Instance.PickupCoin();
+                }
+            }
+            
+            consoleLines.Add("Added "+amount+" nyancoins");
+        });
         
+        SETCOINS = new Commands<int>("setcoins", "Sets the amount of nyancoins", "setcoins int<amount of coins>", (amount) =>
+        {
+            consoleLines.Add("Nyancoins amount set to "+amount);
+        });
         
+        GIVEHP = new Commands<int>("givehp", "Gives a set amount of hp", "givehp int<amount of hp>", (amount) =>
+        {
+            //increase max hp ?
+            
+            LifeManager.Instance.TakeDamages(-amount);
 
+            consoleLines.Add("Gave "+amount+" hp");
+        });
+        
+        SETHP = new Commands<int>("sethp", "Sets your current amount of hp", "sethp int<amount of hp>", (amount) =>
+        {
+            consoleLines.Add("Hp set to "+amount+" hp");
+        });
+        
+        SETMAXHP = new Commands<int>("setmaxhp", "Sets your current amount of hp", "setmaxhp int<amount of hp>", (amount) =>
+        {
+            consoleLines.Add("Max Hp set to "+amount+" hp");
+        });
+        
+        
+        
+        
+        
+        
         commandList = new List<object>()
         {
             HELP,
@@ -251,13 +310,15 @@ public class ConsoleManager : MonoBehaviour
             GETSEED,
             GETNUMBEROFROOMS,
             GETCURRENTFLOOR,
-            /*
             SETFIRSTSEED,
+            FORCENEXTSEED, 
             SETNUMBEROFROOMS,
             GIVECOINS,
             SETCOINS,
             GIVEHP,
             SETHP,
+            SETMAXHP,
+            /*
             CAMERAFOLLOW,
             CAMERALOCK,
             TRUELOADINGIMAGE,
@@ -395,6 +456,11 @@ public class ConsoleManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void Print(string message)
+    {
+        consoleLines.Add(message);
     }
 }
 

@@ -134,9 +134,7 @@ public class LevelManager : MonoBehaviour
     {
         ClearLevel();
 
-        numberOfRooms = rooms;
-
-        firstSeed = seed;
+        SetSeedAndRoom(rooms,seed);
 
         yield return null;
         
@@ -206,5 +204,17 @@ public class LevelManager : MonoBehaviour
     public int GetCurrentFloorNumber()
     {
         return floorNumber;
+    }
+
+    public void SetSeedAndRoom(int rooms, int seed)
+    {
+        numberOfRooms = rooms;
+
+        firstSeed = seed;
+    }
+
+    public void AddSeed(int seed)
+    {
+        seedList.Add(seed);
     }
 }
