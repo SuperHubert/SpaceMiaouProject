@@ -1,37 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ConsoleManager : MonoBehaviour
 {
     private bool showConsole = false;
-    private bool showHelp = false;
     [SerializeField] private string input;
 
-    public static Commands HELP;
-    public static Commands NEXTLEVEL;   
-    public static Commands<int,int> NEWLEVEL;
+    private static Commands HELP;
+    private static Commands NEXTLEVEL;
+    private static Commands<int,int> NEWLEVEL;
+    private static Commands CLEARCONSOLE;
     
-    public List<object> commandList;
+    private List<object> commandList;
     [SerializeField] private List<string> consoleLines;
     
     private Vector2 scroll;
     
-    private float x;
-    private float y;
-    private float width;
-    private float height;
-
     private void Awake()
     {
         HELP = new Commands("help", "shows the list of all available commands", "help", () =>
         {
+            consoleLines.Add("");
             foreach (CommandBase command in commandList)
             {
                 consoleLines.Add($"{command.commandFormat} - {command.commandDescription}");
             }
+            consoleLines.Add("");
         });
         
         NEXTLEVEL = new Commands("nextlevel", "generates next level of the current room", "nextlevel", () =>
@@ -43,8 +41,17 @@ public class ConsoleManager : MonoBehaviour
         
         NEWLEVEL = new Commands<int,int>("newlevel", "generates a new level", "nextlevel int<number of rooms> int<seed>", (numberOfRooms,seed) =>
         {
+            consoleLines.Add("Starting a new run. "+numberOfRooms+" rooms, seed : "+seed);
+            
             LevelManager.Instance.StartNewRun(numberOfRooms,seed);
         });
+        
+        CLEARCONSOLE = new Commands("clear", "clears console", "clear", () =>
+        {
+            consoleLines.Clear();
+        });
+        
+        
         
 
         commandList = new List<object>()
@@ -52,17 +59,10 @@ public class ConsoleManager : MonoBehaviour
             HELP,
             NEXTLEVEL,
             NEWLEVEL,
+            CLEARCONSOLE
         };
     }
-
-    private void Start()
-    {
-        x = Screen.width / 16f;
-        y = Screen.height*3f/4f;
-        width = Screen.width/4f + y;
-        height = 200;
-    }
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -92,6 +92,11 @@ public class ConsoleManager : MonoBehaviour
     private void OnGUI()
     {
         if (!showConsole) return;
+        
+        float x = Screen.width / 16f;
+        float y = Screen.height*3f/4f;
+        float width = Screen.width/4f + y;
+        float height = 200;
         
         string label;
         
