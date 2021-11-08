@@ -55,6 +55,11 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(ResetRun(rooms,seed));
         }
     }
+
+    public Transform GetLastRoom()
+    {
+        return generator.GetLastRoom().transform;
+    }
     
     int GetNewSeed()
     {

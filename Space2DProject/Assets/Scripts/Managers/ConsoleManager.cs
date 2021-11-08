@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,9 +20,10 @@ public class ConsoleManager : MonoBehaviour
     //General
     private static Commands GOTOHUB;
     private static Commands GOTOLASTROOM;
-    private static Commands GODMODE;
-    private static Commands NOCLIP;
-    private static Commands<int> GIVEUPGRADE;
+    private static Commands GODMODE; //NOT IMPLEMENTED
+    private static Commands NOCLIP; //NOT IMPLEMENTED
+    private static Commands UPGRADELIST; //NOT IMPLEMENTED
+    private static Commands<int> GIVEUPGRADE; // NOT IMPLEMENTED
 
     //Level Manger
     private static Commands<int,int> NEWLEVEL;
@@ -85,7 +87,7 @@ public class ConsoleManager : MonoBehaviour
         }
         #endregion
         
-        HELP = new Commands("help", "shows the list of all available commands", "help", () =>
+        HELP = new Commands("help", "Shows the list of all available commands", "help", () =>
         {
             consoleLines.Add("");
             foreach (CommandBase command in commandList)
@@ -95,19 +97,53 @@ public class ConsoleManager : MonoBehaviour
             consoleLines.Add("");
         });
         
-        CLEARCONSOLE = new Commands("clear", "clears console", "clear", () =>
+        CLEARCONSOLE = new Commands("clear", "Clears console", "clear", () =>
         {
             consoleLines.Clear();
         });
         
-        GOTOHUB = new Commands("hub", "teleports to hub", "hub", () =>
+        GOTOHUB = new Commands("hub", "Teleports to the Hub", "hub", () =>
         {
+            consoleLines.Add("Going to Hub");
+            
             LevelManager.Instance.GoToHub();
         });
         
-        GOTOLASTROOM = new Commands("hub", "teleports to hub", "hub", () =>
+        GOTOLASTROOM = new Commands("lastroom", "Teleports to last room of the current floor", "lastroom", () =>
         {
-            LevelManager.Instance.GoToHub();
+            consoleLines.Add("Teleporting to last room");
+            
+            LevelManager.Instance.MovePlayer(LevelManager.Instance.GetLastRoom().transform);
+        });
+        
+        GODMODE = new Commands("godmode", "Toggles godmode", "godmode", () =>
+        {
+            if (true)
+            {
+                consoleLines.Add("Godmode ON");
+            }
+            else
+            {
+                consoleLines.Add("Godmode OFF");
+            }
+        });
+        
+        NOCLIP = new Commands("noclip", "Toggles noclip", "noclip", () =>
+        {
+            if (true)
+            {
+                consoleLines.Add("Noclip ON");
+            }
+            else
+            {
+                consoleLines.Add("Noclip OFF");
+            }
+        });
+        
+        GIVEUPGRADE = new Commands<int>("giveupgrade", "Spawns upgrade with corresponding id", "giveupgrade int<upgrade id>", (id) =>
+        {
+            consoleLines.Add("Spawned upgrade with id "+id);
+            
         });
         
         NEXTLEVEL = new Commands("nextlevel", "generates next level of the current room", "nextlevel", () =>
@@ -134,8 +170,8 @@ public class ConsoleManager : MonoBehaviour
             HELP,
             CLEARCONSOLE,
             GOTOHUB,
-            /*
             GOTOLASTROOM,
+            /*
             GODMODE,
             NOCLIP,
             GIVEUPGRADE,

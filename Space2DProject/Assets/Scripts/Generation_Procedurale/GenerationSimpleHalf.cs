@@ -74,7 +74,12 @@ public class GenerationSimpleHalf : MonoBehaviour
         return grid;
     }
 
-    public void AddChest(GameObject chest)
+    public GameObject GetLastRoom()
+    {
+        return grid.GetChild(dungeonNumberOfRooms-1).gameObject;
+    }
+    
+    private void AddChest(GameObject chest)
     {
         chestList.Add(chest);
     }
