@@ -8,6 +8,6 @@ public class Portal : MonoBehaviour, IInteractible
     {
         LoadingManager.Instance.UpdateLoading();
         
-        LevelManager.Instance.Generate();
+        LevelManager.Instance.GenerateNextLevel();
     }
 }

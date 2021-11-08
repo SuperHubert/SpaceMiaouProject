@@ -76,15 +76,7 @@ public class LevelManager : MonoBehaviour
         
         return seed;
     }
-
-    void GenerateNewLevel()
-    {
-        seedList.Add(GetNewSeed());
-        floorNumber++;
-        
-        generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
-    }
-
+    
     public void MovePlayer(Transform position)
     {
         mainCamera.position = player.position = position.position;
@@ -109,14 +101,42 @@ public class LevelManager : MonoBehaviour
 
         yield return null;
         
-        GenerateNewLevel();
+        floorNumber++;
+
+        if (floorNumber == seedList.Count)
+        {
+            seedList.Add(GetNewSeed());
+        }
+        
+        generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
 
         canGenerate = true;
     }
 
+    IEnumerator PreviousLevel()
+    {
+        ClearLevel();
+
+        yield return null;
+        
+        floorNumber--;
+        if (floorNumber < 0)
+        {
+            floorNumber = 0;
+        }
+        
+        generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
+
+        canGenerate = true;
+    }
+    
     IEnumerator ResetRun(int rooms, int seed)
     {
         ClearLevel();
+
+        numberOfRooms = rooms;
+
+        firstSeed = seed;
 
         yield return null;
         
@@ -125,12 +145,21 @@ public class LevelManager : MonoBehaviour
         canGenerate = true;
     }
 
-    public void Generate()
+    public void GenerateNextLevel()
     {
         if (canGenerate)
         {
             canGenerate = false;
             StartCoroutine(NewLevel());
+        }
+    }
+
+    public void GeneratePreviousLevel()
+    {
+        if (canGenerate)
+        {
+            canGenerate = false;
+            StartCoroutine(PreviousLevel());
         }
     }
 
@@ -147,5 +176,35 @@ public class LevelManager : MonoBehaviour
     public void GoToHub()
     {
         SceneManager.LoadScene(3);
+    }
+
+    public bool ToggleNavMesh()
+    {
+        return generator.ToggleNavMesH();
+    }
+
+    public bool ToggleTeleport()
+    {
+        return generator.ToggleTeleport();
+    }
+
+    public int GetCurrentSeed()
+    {
+        return seedList[floorNumber];
+    }
+
+    public int GetFirstSeed()
+    {
+        return firstSeed;
+    }
+
+    public int GetCurrentNumberOfRooms()
+    {
+        return numberOfRooms;
+    }
+    
+    public int GetCurrentFloorNumber()
+    {
+        return floorNumber;
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ConsoleManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class ConsoleManager : MonoBehaviour
     [SerializeField] private List<string> consoleLines;
     
     private Vector2 scroll;
+
+    private bool scrollToBottom;
+    
     //console
     private static Commands CLEARCONSOLE;
     private static Commands HELP;
@@ -29,8 +34,9 @@ public class ConsoleManager : MonoBehaviour
     private static Commands<int,int> NEWLEVEL;
     private static Commands NEXTLEVEL;
     private static Commands PREVIOUSLEVEL;
-    private static Commands<string> BUILDNAVMESH;
-    private static Commands<string> TELEPORTONNEWLEVELSPAWN;
+    private static Commands TOGGLENAVMESH;
+    private static Commands DESTROYNAVMESH;
+    private static Commands TOGGLETELEPORTONGENERATION;
     private static Commands GETSEED;
     private static Commands GETNUMBEROFROOMS;
     private static Commands GETCURRENTFLOOR;
@@ -140,25 +146,86 @@ public class ConsoleManager : MonoBehaviour
             }
         });
         
+        UPGRADELIST = new Commands("upgradelist", "Get the list of all upgrades", "upgradelist", () =>
+        {
+            consoleLines.Add("id - upgrade effect");
+        });
+        
         GIVEUPGRADE = new Commands<int>("giveupgrade", "Spawns upgrade with corresponding id", "giveupgrade int<upgrade id>", (id) =>
         {
             consoleLines.Add("Spawned upgrade with id "+id);
             
         });
         
-        NEXTLEVEL = new Commands("nextlevel", "generates next level of the current room", "nextlevel", () =>
-        {
-            LoadingManager.Instance.UpdateLoading();
-        
-            LevelManager.Instance.Generate();
-        });
-        
-        NEWLEVEL = new Commands<int,int>("newlevel", "generates a new level", "nextlevel int<number of rooms> int<seed>", (numberOfRooms,seed) =>
+        NEWLEVEL = new Commands<int,int>("newlevel", "generates a new run", "newlevel int<number of rooms> int<seed>", (numberOfRooms,seed) =>
         {
             consoleLines.Add("Starting a new run. "+numberOfRooms+" rooms, seed : "+seed);
             
             LevelManager.Instance.StartNewRun(numberOfRooms,seed);
         });
+        
+        NEXTLEVEL = new Commands("nextlevel", "Generates next level of the current run", "nextlevel", () =>
+        {
+            LoadingManager.Instance.UpdateLoading();
+        
+            LevelManager.Instance.GenerateNextLevel();
+        });
+        
+        PREVIOUSLEVEL = new Commands("previouslevel", "Generates previous level of the current run", "previouslevel", () =>
+        {
+            LoadingManager.Instance.UpdateLoading();
+        
+            LevelManager.Instance.GeneratePreviousLevel();
+        });
+        
+        TOGGLENAVMESH = new Commands("navmesh", "Toggles Navmesh building during floor generation", "navmesh", () =>
+        {
+            if (LevelManager.Instance.ToggleNavMesh())
+            {
+                consoleLines.Add("Navmesh building is now ON");
+            }
+            else
+            {
+                consoleLines.Add("Navmesh building is now OFF");
+            }
+        });
+        
+        DESTROYNAVMESH = new Commands("clearnavmesh", "Clears Navmesh data", "clearnavmesh", () =>
+        {
+            consoleLines.Add("Cleared Navmesh data");
+            
+            LevelManager.Instance.gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
+        });
+        
+        TOGGLETELEPORTONGENERATION = new Commands("teleportongeneration", "Toggles player teleportation on new floor generation (includes when taking portals)", "teleportongeneration", () =>
+        {
+            if (LevelManager.Instance.ToggleTeleport())
+            {
+                consoleLines.Add("Teleportation is now ON");
+            }
+            else
+            {
+                consoleLines.Add("Teleportation is now OFF");
+            }
+        });
+        
+        GETSEED = new Commands("seed", "Get seed of current floor", "seed", () =>
+        {
+            consoleLines.Add(LevelManager.Instance.GetCurrentSeed() + " (" +
+                             LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms)");
+        });
+        
+        GETNUMBEROFROOMS = new Commands("rooms", "Get seed of current floor", "rooms", () =>
+        {
+            consoleLines.Add(LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms");
+        });
+        
+        GETCURRENTFLOOR = new Commands("floor", "Get floor of current run", "floor", () =>
+        {
+            consoleLines.Add("Floor "+LevelManager.Instance.GetCurrentFloorNumber() + " of seed "+LevelManager.Instance.GetFirstSeed()+" (" +
+                             LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms, first floor is floor 0)");
+        });
+        
         
         
         
@@ -171,18 +238,20 @@ public class ConsoleManager : MonoBehaviour
             CLEARCONSOLE,
             GOTOHUB,
             GOTOLASTROOM,
-            /*
             GODMODE,
             NOCLIP,
+            UPGRADELIST,
             GIVEUPGRADE,
             NEWLEVEL,
             NEXTLEVEL,
             PREVIOUSLEVEL,
-            BUILDNAVMESH,
-            TELEPORTONNEWLEVELSPAWN,
+            TOGGLENAVMESH,
+            DESTROYNAVMESH,
+            TOGGLETELEPORTONGENERATION,
             GETSEED,
             GETNUMBEROFROOMS,
             GETCURRENTFLOOR,
+            /*
             SETFIRSTSEED,
             SETNUMBEROFROOMS,
             GIVECOINS,
@@ -228,6 +297,7 @@ public class ConsoleManager : MonoBehaviour
             consoleLines.Add(input);
             
             ExecuteInput();
+            scrollToBottom = true;
             
             input = "";
         }
@@ -257,15 +327,19 @@ public class ConsoleManager : MonoBehaviour
             label = $"{line}";
 
             Rect labelRect = new Rect(x+5f, 20 * i, viewport.width - height, 20);
+
+            if (scrollToBottom)
+            {
+                GUI.ScrollTo(labelRect);
+            }
             
-            GUI.ScrollTo(labelRect);
-                
             GUI.Label(labelRect,label);
                 
             i++;
         }
+        scrollToBottom = false;
         
-        GUI.EndScrollView();
+        GUI.EndScrollView(false);
 
         y += height;
         
@@ -286,56 +360,41 @@ public class ConsoleManager : MonoBehaviour
     private void ExecuteInput()
     {
         string[] properties = input.Split(' ');
-        
-        Debug.Log(properties.Length);
-        
-        foreach (CommandBase commandBase in commandList)
+
+        foreach (var commandBase in commandList.Cast<CommandBase>().Where(commandBase => properties[0] == commandBase.commandId))
         {
-            if (input.Contains(commandBase.commandId))
+            switch (properties.Length - 1)
             {
-                switch (properties.Length - 1)
-                {
-                    case 0:
-                        if (commandBase is Commands normalCommand)
-                        {
-                            normalCommand.Invoke();
-                        }
-                        break;
+                case 0:
+                    if (commandBase is Commands normalCommand)
+                    {
+                        normalCommand.Invoke();
+                    }
+                    break;
                     
-                    case 1:
-                        if (commandBase is Commands<string> stringCommand)
-                        {
-                            stringCommand.Invoke(properties[1]);
-                        }
-                        else if (commandBase is Commands<int> intCommand)
-                        {
-                            intCommand.Invoke(int.Parse(properties[1]));
-                        }
-                        break;
+                case 1:
+                    if (commandBase is Commands<string> stringCommand)
+                    {
+                        stringCommand.Invoke(properties[1]);
+                    }
+                    else if (commandBase is Commands<int> intCommand)
+                    {
+                        intCommand.Invoke(int.Parse(properties[1]));
+                    }
+                    break;
                     
-                    case 2:
-                        if (commandBase is Commands<int,int> intIntCommand)
-                        {
-                            intIntCommand.Invoke(int.Parse(properties[1]),int.Parse(properties[2]));
-                        }
-                        break;
+                case 2:
+                    if (commandBase is Commands<int,int> intIntCommand)
+                    {
+                        Debug.Log("YES");
+                        intIntCommand.Invoke(int.Parse(properties[1]),int.Parse(properties[2]));
+                    }
+                    break;
                     
-                    default:
-                        ConsoleLog("console too long");
-                        break;
-                }
-                
-                
-                
-                
-                
+                default:
+                    break;
             }
         }
-    }
-
-    private void ConsoleLog(string message)
-    {
-        Debug.Log(message);
     }
 }
 

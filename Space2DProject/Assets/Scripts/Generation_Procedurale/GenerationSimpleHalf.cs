@@ -78,6 +78,16 @@ public class GenerationSimpleHalf : MonoBehaviour
     {
         return grid.GetChild(dungeonNumberOfRooms-1).gameObject;
     }
+
+    public bool ToggleNavMesH()
+    {
+        return buildNavMesh = !buildNavMesh;
+    }
+
+    public bool ToggleTeleport()
+    {
+        return movePlayer = !movePlayer;
+    }
     
     private void AddChest(GameObject chest)
     {
