@@ -108,6 +108,8 @@ public class ConsoleManager : MonoBehaviour
             label = $"{line}";
 
             Rect labelRect = new Rect(x+5f, 20 * i, viewport.width - height, 20);
+            
+            GUI.ScrollTo(labelRect);
                 
             GUI.Label(labelRect,label);
                 
@@ -115,7 +117,7 @@ public class ConsoleManager : MonoBehaviour
         }
         
         GUI.EndScrollView();
-            
+
         y += height;
         
         GUI.Box(new Rect(x, y, width,30), "");
