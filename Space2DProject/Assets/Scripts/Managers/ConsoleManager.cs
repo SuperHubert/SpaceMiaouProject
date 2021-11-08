@@ -15,30 +15,23 @@ public class ConsoleManager : MonoBehaviour
     public static Commands<int,int> NEWLEVEL;
     
     public List<object> commandList;
+    [SerializeField] private List<string> consoleLines;
     
     private Vector2 scroll;
-
-
-    public void ToggleConsole()
-    {
-        showConsole = !showConsole;
-        input = "";
-    }
-
-    public void OnReturn()
-    {
-        if (showConsole)
-        {
-            ExecuteInput();
-            input = "";
-        }
-    }
+    
+    private float x;
+    private float y;
+    private float width;
+    private float height;
 
     private void Awake()
     {
         HELP = new Commands("help", "shows the list of all available commands", "help", () =>
         {
-            showHelp = true;
+            foreach (CommandBase command in commandList)
+            {
+                consoleLines.Add($"{command.commandFormat} - {command.commandDescription}");
+            }
         });
         
         NEXTLEVEL = new Commands("nextlevel", "generates next level of the current room", "nextlevel", () =>
@@ -62,6 +55,14 @@ public class ConsoleManager : MonoBehaviour
         };
     }
 
+    private void Start()
+    {
+        x = Screen.width / 16f;
+        y = Screen.height*3f/4f;
+        width = Screen.width/4f + y;
+        height = 200;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -70,46 +71,58 @@ public class ConsoleManager : MonoBehaviour
         }
     }
     
+    private void ToggleConsole()
+    {
+        showConsole = !showConsole;
+        input = "";
+    }
+
+    private void OnReturn()
+    {
+        if (showConsole)
+        {
+            consoleLines.Add(input);
+            
+            ExecuteInput();
+            
+            input = "";
+        }
+    }
+    
     private void OnGUI()
     {
         if (!showConsole) return;
+        
+        string label;
+        
+        y -= height;
+        GUI.Box(new Rect(x,y, width,height), "");
+        
+        Rect viewport = new Rect(x, 0, width - 30f, 20 * consoleLines.Count);
 
-        float x = Screen.width / 16f;
-        float y = Screen.height*3f/4f;
-        float width = Screen.width/4f + y;
-        float height = 100;
-
-        if (showHelp)
+        scroll = GUI.BeginScrollView(new Rect(x, y + 5f, width, height-10f), scroll, viewport);
+        
+        int i = 0;
+        foreach (string line  in consoleLines)
         {
-            y -= 100;
-            GUI.Box(new Rect(x,y, width,height), "");
+            label = $"{line}";
 
-            Rect viewport = new Rect(x, 0, width - 30f, 20 * commandList.Count);
-
-            scroll = GUI.BeginScrollView(new Rect(x, y + 5f, width, height-10f), scroll, viewport);
-
-            int i = 0;
-            foreach (CommandBase command in commandList)
-            {
-                string label = $"{command.commandFormat} - {command.commandDescription}";
-
-                Rect labelRect = new Rect(x+5f, 20 * i, viewport.width - 100, 20);
+            Rect labelRect = new Rect(x+5f, 20 * i, viewport.width - height, 20);
                 
-                GUI.Label(labelRect,label);
+            GUI.Label(labelRect,label);
                 
-                i++;
-            }
-            
-            GUI.EndScrollView();
-            
-            y += 100;
+            i++;
         }
+        
+        GUI.EndScrollView();
+            
+        y += height;
         
         GUI.Box(new Rect(x, y, width,30), "");
         GUI.backgroundColor = new Color(0, 0, 0, 0);
         
         Event e = Event.current;
-        if (e.keyCode == KeyCode.Return)
+        if (e.keyCode == KeyCode.Return && input != "")
         {
             OnReturn();
         }
