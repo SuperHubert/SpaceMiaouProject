@@ -66,13 +66,15 @@ public class ConsoleManager : MonoBehaviour
     private static Commands GETPOS;
 
     //Enemies
-    private static Commands<int> SPAWNENEMY;
-    private static Commands<int, float> DAMAGEENEMY;
-    private static Commands<int, float> KILLENEMY;
+    private static Commands ENEMYLIST; //NOT IMPLEMENTED
+    private static Commands<int,float,float> SPAWNENEMY; //NEED ENEMY LIST
+    private static Commands<int, float> DAMAGEENEMY; //NOT IMPLEMENTED AT ALL
+    private static Commands<int, float> KILLENEMY; //NOT IMPLEMENTED AT ALL
 
     //Items
-    private static Commands<int> SPAWNITEM;
-    private static Commands<float> DESTROYITEM;
+    private static Commands ITEMLIST; //NOT IMPLEMENTED
+    private static Commands<int,float,float> SPAWNITEM; //NEED ITEM LIST
+    private static Commands<float> DESTROYITEM; //NOT IMPLEMENTED AT ALL
 
     //Portal
     private static Commands FINDPORTAL;
@@ -377,8 +379,33 @@ public class ConsoleManager : MonoBehaviour
             Print("Player is at : "+LevelManager.Instance.GetPos().x+" "+ LevelManager.Instance.GetPos().y);
         });
 
+        ENEMYLIST = new Commands("enemylist", "Get the list of all enemies", "enemylist", () =>
+        {
+            int id = 1;
+            string enemyName = "name";
+            Print(id + " "+enemyName);
+        });
 
+        SPAWNENEMY = new Commands<int,float,float>("spawn", "Summons an enemy", "spawn int<enemy id> float<x coordinate> float<y coordinate>", (id,x,y) =>
+        {
+            //GameObject enemy = Instantiate(enemylist[id],new Vector3(x, y, 0),Quaternion.identity);
 
+            Print("Spawned "+"enemyName"+" at " + x + " " + y);
+        });
+
+        ITEMLIST = new Commands("itemlist", "Get the list of all interactible items", "itemlist", () =>
+        {
+            int id = 1;
+            string itemName = "name";
+            Print(id + " " + itemName);
+        });
+
+        SPAWNITEM = new Commands<int, float, float>("item", "Summons an enemy", "item int<enemy id> float<x coordinate> float<y coordinate>", (id, x, y) =>
+        {
+            //GameObject item = Instantiate(itemlist[id],new Vector3(x, y, 0),Quaternion.identity);
+
+            Print("Spawned " + "item" + " at " + x + " " + y);
+        });
 
 
         commandList = new List<object>()
@@ -401,7 +428,7 @@ public class ConsoleManager : MonoBehaviour
             GETNUMBEROFROOMS,
             GETCURRENTFLOOR,
             SETFIRSTSEED,
-            FORCENEXTSEED, 
+            FORCENEXTSEED,
             SETNUMBEROFROOMS,
             GIVECOINS,
             SETCOINS,
@@ -414,12 +441,12 @@ public class ConsoleManager : MonoBehaviour
             LOADINGMODE,
             TELEPORTPLAYER,
             GETPOS,
-            //ENEMYLIST
-            //SPAWNENEMY,
+            ENEMYLIST,
+            SPAWNENEMY,
             //DAMAGEENEMY,
             //KILLENEMY,
-            //ITEMLIST
-            //SPAWNITEM,
+            ITEMLIST,
+            SPAWNITEM,
             //DESTROYITEM,
             //FINDPORTAL,
             //TELEPORTTOPORTAL,
@@ -543,16 +570,23 @@ public class ConsoleManager : MonoBehaviour
                     {
                         intIntCommand.Invoke(int.Parse(properties[1]),int.Parse(properties[2]));
                     }
-                    else if (commandBase is Commands<float, float> floatFloatCommand)
+                    else if (commandBase is Commands<float, float> CoordsCommand)
                     {
-                        floatFloatCommand.Invoke(float.Parse(properties[1]), float.Parse(properties[2]));
+                        CoordsCommand.Invoke(float.Parse(properties[1]), float.Parse(properties[2]));
                     }
                     else if (commandBase is Commands<int, float> intFloatCommand)
                     {
                         intFloatCommand.Invoke(int.Parse(properties[1]), float.Parse(properties[2]));
                     }
                     break;
-                    
+
+                case 3:
+                    if (commandBase is Commands<int, float,float> intCoordsCommand)
+                    {
+                        intCoordsCommand.Invoke(int.Parse(properties[1]), float.Parse(properties[2]), float.Parse(properties[3]));
+                    }
+                    break;
+
                 default:
                     break;
             }
