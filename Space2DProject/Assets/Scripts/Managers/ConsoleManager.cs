@@ -645,5 +645,4 @@ public class ConsoleManager : MonoBehaviour
     {
         consoleLines.Add(message);
     }
-
 }
