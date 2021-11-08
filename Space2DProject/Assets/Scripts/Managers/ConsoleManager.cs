@@ -54,11 +54,12 @@ public class ConsoleManager : MonoBehaviour
     private static Commands<int> SETMAXHP; // NOT IMPLEMENTED
 
     //Camera Manager
-    private static Commands<string> CAMERAFOLLOW;
-    private static Commands<string> CAMERALOCK;
+    private static Commands<int> CAMERAMODE; //NOT IMPLEMENTED
+    private static Commands TOGGLECAMERALOCK; //NOT IMPLEMENTED
     
     //Loading Manager
-    private static Commands<string> TRUELOADINGIMAGE;
+    private static Commands TRUELOADINGIMAGE; //NOT IMPLEMENTED
+    private static Commands<int> LOADINGMODE;
     
     //Player
     private static Commands<int, int> TELEPORTPLAYER;
@@ -97,12 +98,12 @@ public class ConsoleManager : MonoBehaviour
         
         HELP = new Commands("help", "Shows the list of all available commands", "help", () =>
         {
-            consoleLines.Add("");
+            Print("");
             foreach (CommandBase command in commandList)
             {
-                consoleLines.Add($"{command.commandFormat} - {command.commandDescription}");
+                Print($"{command.commandFormat} - {command.commandDescription}");
             }
-            consoleLines.Add("");
+            Print("");
         });
         
         CLEARCONSOLE = new Commands("clear", "Clears console", "clear", () =>
@@ -112,14 +113,14 @@ public class ConsoleManager : MonoBehaviour
         
         GOTOHUB = new Commands("hub", "Teleports to the Hub", "hub", () =>
         {
-            consoleLines.Add("Going to Hub");
+            Print("Going to Hub");
             
             LevelManager.Instance.GoToHub();
         });
         
         GOTOLASTROOM = new Commands("lastroom", "Teleports to last room of the current floor", "lastroom", () =>
         {
-            consoleLines.Add("Teleporting to last room");
+            Print("Teleporting to last room");
             
             LevelManager.Instance.MovePlayer(LevelManager.Instance.GetLastRoom().transform);
         });
@@ -128,11 +129,11 @@ public class ConsoleManager : MonoBehaviour
         {
             if (true)
             {
-                consoleLines.Add("Godmode ON");
+                Print("Godmode ON");
             }
             else
             {
-                consoleLines.Add("Godmode OFF");
+                Print("Godmode OFF");
             }
         });
         
@@ -140,28 +141,28 @@ public class ConsoleManager : MonoBehaviour
         {
             if (true)
             {
-                consoleLines.Add("Noclip ON");
+                Print("Noclip ON");
             }
             else
             {
-                consoleLines.Add("Noclip OFF");
+                Print("Noclip OFF");
             }
         });
         
         UPGRADELIST = new Commands("upgradelist", "Get the list of all upgrades", "upgradelist", () =>
         {
-            consoleLines.Add("id - upgrade effect");
+            Print("id - upgrade effect");
         });
         
         GIVEUPGRADE = new Commands<int>("giveupgrade", "Spawns upgrade with corresponding id", "giveupgrade int<upgrade id>", (id) =>
         {
-            consoleLines.Add("Spawned upgrade with id "+id);
+            Print("Spawned upgrade with id "+id);
             
         });
         
         NEWLEVEL = new Commands<int,int>("newlevel", "generates a new run", "newlevel int<number of rooms> int<seed>", (numberOfRooms,seed) =>
         {
-            consoleLines.Add("Starting a new run. "+numberOfRooms+" rooms, seed : "+seed);
+            Print("Starting a new run. "+numberOfRooms+" rooms, seed : "+seed);
             
             LevelManager.Instance.StartNewRun(numberOfRooms,seed);
         });
@@ -184,17 +185,17 @@ public class ConsoleManager : MonoBehaviour
         {
             if (LevelManager.Instance.ToggleNavMesh())
             {
-                consoleLines.Add("Navmesh building is now ON");
+                Print("Navmesh building is now ON");
             }
             else
             {
-                consoleLines.Add("Navmesh building is now OFF");
+                Print("Navmesh building is now OFF");
             }
         });
         
         DESTROYNAVMESH = new Commands("clearnavmesh", "Clears Navmesh data", "clearnavmesh", () =>
         {
-            consoleLines.Add("Cleared Navmesh data");
+            Print("Cleared Navmesh data");
             
             LevelManager.Instance.gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
         });
@@ -203,28 +204,28 @@ public class ConsoleManager : MonoBehaviour
         {
             if (LevelManager.Instance.ToggleTeleport())
             {
-                consoleLines.Add("Teleportation is now ON");
+                Print("Teleportation is now ON");
             }
             else
             {
-                consoleLines.Add("Teleportation is now OFF");
+                Print("Teleportation is now OFF");
             }
         });
         
         GETSEED = new Commands("seed", "Get seed of current floor", "seed", () =>
         {
-            consoleLines.Add(LevelManager.Instance.GetCurrentSeed() + " (" +
+            Print(LevelManager.Instance.GetCurrentSeed() + " (" +
                              LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms)");
         });
         
         GETNUMBEROFROOMS = new Commands("rooms", "Get seed of current floor", "rooms", () =>
         {
-            consoleLines.Add(LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms");
+            Print(LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms");
         });
         
         GETCURRENTFLOOR = new Commands("floor", "Get floor of current run", "floor", () =>
         {
-            consoleLines.Add("Floor "+LevelManager.Instance.GetCurrentFloorNumber() + " of seed "+LevelManager.Instance.GetFirstSeed()+" (" +
+            Print("Floor "+LevelManager.Instance.GetCurrentFloorNumber() + " of seed "+LevelManager.Instance.GetFirstSeed()+" (" +
                              LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms, first floor is floor 0)");
         });
         
@@ -232,21 +233,21 @@ public class ConsoleManager : MonoBehaviour
         {
             LevelManager.Instance.SetSeedAndRoom(LevelManager.Instance.GetCurrentNumberOfRooms(), seed);
                 
-            consoleLines.Add("Seed has been set to "+seed);
+            Print("Seed has been set to "+seed);
         });
         
         FORCENEXTSEED = new Commands<int>("forceseed", "Forces the seed of the next floor", "forceseed int<seed>", (seed) =>
         {
             LevelManager.Instance.AddSeed(seed);
             
-            consoleLines.Add("Next seed will be "+seed);
+            Print("Next seed will be "+seed);
         });
         
         SETNUMBEROFROOMS = new Commands<int>("setnumberofrooms", "Sets the number of rooms for the next generations", "setnumberofrooms int<number of rooms>", (rooms) =>
         {
             LevelManager.Instance.SetSeedAndRoom(rooms,LevelManager.Instance.GetFirstSeed());
             
-            consoleLines.Add("Number of rooms has been set to "+rooms+" (will take effect for next generations");
+            Print("Number of rooms has been set to "+rooms+" (will take effect for next generations");
         });
         
         GIVECOINS = new Commands<int>("addcoins", "Gives a set amount of nyancoins", "addcoins int<amount of coins>", (amount) =>
@@ -259,12 +260,12 @@ public class ConsoleManager : MonoBehaviour
                 }
             }
             
-            consoleLines.Add("Added "+amount+" nyancoins");
+            Print("Added "+amount+" nyancoins");
         });
         
         SETCOINS = new Commands<int>("setcoins", "Sets the amount of nyancoins", "setcoins int<amount of coins>", (amount) =>
         {
-            consoleLines.Add("Nyancoins amount set to "+amount);
+            Print("Nyancoins amount set to "+amount);
         });
         
         GIVEHP = new Commands<int>("givehp", "Gives a set amount of hp", "givehp int<amount of hp>", (amount) =>
@@ -273,24 +274,98 @@ public class ConsoleManager : MonoBehaviour
             
             LifeManager.Instance.TakeDamages(-amount);
 
-            consoleLines.Add("Gave "+amount+" hp");
+            Print("Gave "+amount+" hp");
         });
         
         SETHP = new Commands<int>("sethp", "Sets your current amount of hp", "sethp int<amount of hp>", (amount) =>
         {
-            consoleLines.Add("Hp set to "+amount+" hp");
+            Print("Hp set to "+amount+" hp");
         });
         
         SETMAXHP = new Commands<int>("setmaxhp", "Sets your current amount of hp", "setmaxhp int<amount of hp>", (amount) =>
         {
-            consoleLines.Add("Max Hp set to "+amount+" hp");
+            Print("Max Hp set to "+amount+" hp");
         });
+
+        CAMERAMODE = new Commands<int>("cameramode", "Sets camera mode (0 follows the player, 1 doesn't", "cameramode int<mode>", (mode) =>
+        {
+            //ChangeCameraMode(mode)
+            switch (mode)
+            {
+                case 0:
+                    Print("Cameramode switched to 0 (follows player)");
+                    break;
+
+                case 1:
+                    Print("Cameramode switched to 1 (follows player)");
+                    break;
+
+                default:
+                    Print("invalid mode : " + mode);
+                    break;
+            }
         
-        
-        
-        
-        
-        
+        });
+
+        TOGGLECAMERALOCK = new Commands("cameralock", "Toggles camera controls", "cameralock", () =>
+        {
+            //ToggleCameraControls()
+            if (true)
+            {
+                Print("Camera controls are now ON");
+            }
+            else
+            {
+                Print("Camera controls are now OFF");
+            }
+        });
+
+        TRUELOADINGIMAGE = new Commands("trueloadingimage", "Toggles true loading image", "trueloadingimage", () =>
+         {
+             //ToggleLoadingImage()
+             if (true)
+             {
+                 Print("True image is now ON");
+             }
+             else
+             {
+                 Print("True image is now OFF");
+             }
+         });
+
+        LOADINGMODE = new Commands<int>("loadingmode", "Changes loading screen display (0 show all, 1 show nothing, 2 no image, 3 no progressbar)", "loadingmode int<mode>", (mode) =>
+        {
+            
+            switch (LoadingManager.Instance.ChangeLoadingMode(mode))
+            {
+                case 0:
+                    Print("Loadingmode switched to 0 (show all)");
+                    break;
+
+                case 1:
+                    Print("Loadingmode switched to 1 (show nothing)");
+                    break;
+
+                case 2:
+                    Print("Loadingmode switched to 2 (no image)");
+                    break;
+
+                case 3:
+                    Print("Loadingmode switched to 3 (no progress bar)");
+                    break;
+
+                default:
+                    Print("invalid mode : " + mode);
+                    break;
+            }
+        });
+
+
+
+
+
+
+
         commandList = new List<object>()
         {
             HELP,
@@ -318,22 +393,20 @@ public class ConsoleManager : MonoBehaviour
             GIVEHP,
             SETHP,
             SETMAXHP,
-            /*
-            CAMERAFOLLOW,
-            CAMERALOCK,
-            TRUELOADINGIMAGE,
-            TELEPORTPLAYER,
-            SPAWNENEMY,
-            DAMAGEENEMY,
-            KILLENEMY,
-            SPAWNITEM,
-            DESTROYITEM,
-            FINDPORTAL,
-            TELEPORTTOPORTAL,
-            TELEPORTPORTAL,
-            FINDSPAWNPOINT,
-            TELEPORTTOSPAWNPOINT
-            */
+            CAMERAMODE,
+            TOGGLECAMERALOCK,
+            //TRUELOADINGIMAGE,
+            //TELEPORTPLAYER,
+            //SPAWNENEMY,
+            //DAMAGEENEMY,
+            //KILLENEMY,
+            //SPAWNITEM,
+            //DESTROYITEM,
+            //FINDPORTAL,
+            //TELEPORTTOPORTAL,
+            //TELEPORTPORTAL,
+            //FINDSPAWNPOINT,
+            //TELEPORTTOSPAWNPOINT
         };
     }
     
@@ -355,7 +428,7 @@ public class ConsoleManager : MonoBehaviour
     {
         if (showConsole)
         {
-            consoleLines.Add(input);
+            Print(input);
             
             ExecuteInput();
             scrollToBottom = true;

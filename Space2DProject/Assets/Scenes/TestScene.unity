@@ -202,6 +202,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4773208683996054112, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
   m_PrefabInstance: {fileID: 694601361}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &338521954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1676448922396366101, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
+  m_PrefabInstance: {fileID: 1026896420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &559830544 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5940852392271807217, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
@@ -660,6 +671,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001822230}
     m_Modifications:
+    - target: {fileID: 2802006457157169180, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
+      propertyPath: backgroundImage
+      value: 
+      objectReference: {fileID: 338521954}
     - target: {fileID: 2802006457157169181, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: m_Name
       value: Loading Manager
