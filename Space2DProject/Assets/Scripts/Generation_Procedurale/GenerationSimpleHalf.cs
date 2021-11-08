@@ -349,7 +349,12 @@ public class GenerationSimpleHalf : MonoBehaviour
             //Instantiates prefab items GameObjects
             foreach (Transform item in prefabRoom.transform.GetChild(3))
             {
-                Instantiate(item, room.transform).parent = items;
+                Transform chest = Instantiate(item, room.transform);
+                chest.parent = items;
+                if (item.GetComponent<Chest>() != null)
+                {
+                    AddChest(chest.gameObject);
+                }
             }
             
             UpdateProgress(0.1f/ dungeonNumberOfRooms);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
@@ -136,5 +137,10 @@ public class LevelManager : MonoBehaviour
     public int FloorNumber()
     {
         return floorNumber;
+    }
+
+    public void GoToHub()
+    {
+        SceneManager.LoadScene(3);
     }
 }

@@ -1,14 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ConsoleManager : MonoBehaviour
 {
     private bool showConsole = false;
     [SerializeField] private string input;
+
+    public static ConsoleManager Instance;
     
     private List<object> commandList;
     [SerializeField] private List<string> consoleLines;
@@ -34,6 +32,8 @@ public class ConsoleManager : MonoBehaviour
     private static Commands GETSEED;
     private static Commands GETNUMBEROFROOMS;
     private static Commands GETCURRENTFLOOR;
+    private static Commands<int> SETFIRSTSEED;
+    private static Commands<int> SETNUMBEROFROOMS;
 
     //Money Manager
     private static Commands<int> GIVECOINS;
@@ -73,6 +73,18 @@ public class ConsoleManager : MonoBehaviour
     
     private void Awake()
     {
+        #region Singleton Don't Destroy On Load
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        #endregion
+        
         HELP = new Commands("help", "shows the list of all available commands", "help", () =>
         {
             consoleLines.Add("");
@@ -86,6 +98,16 @@ public class ConsoleManager : MonoBehaviour
         CLEARCONSOLE = new Commands("clear", "clears console", "clear", () =>
         {
             consoleLines.Clear();
+        });
+        
+        GOTOHUB = new Commands("hub", "teleports to hub", "hub", () =>
+        {
+            LevelManager.Instance.GoToHub();
+        });
+        
+        GOTOLASTROOM = new Commands("hub", "teleports to hub", "hub", () =>
+        {
+            LevelManager.Instance.GoToHub();
         });
         
         NEXTLEVEL = new Commands("nextlevel", "generates next level of the current room", "nextlevel", () =>
@@ -112,6 +134,7 @@ public class ConsoleManager : MonoBehaviour
             HELP,
             CLEARCONSOLE,
             GOTOHUB,
+            /*
             GOTOLASTROOM,
             GODMODE,
             NOCLIP,
@@ -124,6 +147,8 @@ public class ConsoleManager : MonoBehaviour
             GETSEED,
             GETNUMBEROFROOMS,
             GETCURRENTFLOOR,
+            SETFIRSTSEED,
+            SETNUMBEROFROOMS,
             GIVECOINS,
             SETCOINS,
             GIVEHP,
@@ -142,6 +167,7 @@ public class ConsoleManager : MonoBehaviour
             TELEPORTPORTAL,
             FINDSPAWNPOINT,
             TELEPORTTOSPAWNPOINT
+            */
         };
     }
     
