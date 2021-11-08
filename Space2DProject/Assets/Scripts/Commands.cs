@@ -66,3 +66,18 @@ public class Commands<T1,T2> : CommandBase
         command.Invoke(value1,value2);
     }
 }
+
+public class Commands<T1, T2,T3> : CommandBase
+{
+    private Action<T1, T2, T3> command;
+
+    public Commands(string id, string description, string format, Action<T1, T2, T3> command) : base(id, description, format)
+    {
+        this.command = command;
+    }
+
+    public void Invoke(T1 value1, T2 value2, T3 value3)
+    {
+        command.Invoke(value1, value2, value3);
+    }
+}

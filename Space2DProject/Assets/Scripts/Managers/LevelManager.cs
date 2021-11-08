@@ -217,4 +217,11 @@ public class LevelManager : MonoBehaviour
     {
         seedList.Add(seed);
     }
+
+    public Vector2 GetPos()
+    {
+        Transform pos = player.transform;
+        return new Vector2(pos.position.x, pos.position.y);
+    }
+
 }
