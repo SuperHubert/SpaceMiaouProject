@@ -36,7 +36,9 @@ public class LoadingManager : MonoBehaviour
 
     private void Start()
     {
-        //backgroundImage = canvas.transform.GetChild(0).GetComponent<Image>;
+        backgroundImage = canvas.transform.GetChild(0).gameObject.GetComponent<Image>();
+        progressBar = canvas.transform.GetChild(1).gameObject.GetComponent<Image>();
+        loadingText = canvas.transform.GetChild(2).gameObject;
     }
 
     public void LoadScene(int sceneNumber)
@@ -69,8 +71,9 @@ public class LoadingManager : MonoBehaviour
     void ChangeBools(bool canvas,bool image,bool progress)
     {
         showCanvas = canvas;
-        showImage = image;
+        backgroundImage.gameObject.SetActive(image);
         showProgress = progress;
+        progressBar.gameObject.SetActive(progress);
     }
 
     public void UpdateLoading(float progress = 0)
@@ -116,7 +119,7 @@ public class LoadingManager : MonoBehaviour
                 break;
 
             case 3:
-                ChangeBools(true, false, true);
+                ChangeBools(true, true, false);
                 break;
 
             default:

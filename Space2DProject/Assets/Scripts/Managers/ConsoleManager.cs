@@ -62,8 +62,9 @@ public class ConsoleManager : MonoBehaviour
     private static Commands<int> LOADINGMODE;
     
     //Player
-    private static Commands<int, int> TELEPORTPLAYER;
-    
+    private static Commands<float, float> TELEPORTPLAYER;
+    private static Commands GETPOS;
+
     //Enemies
     private static Commands<int> SPAWNENEMY;
     private static Commands<int, float> DAMAGEENEMY;
@@ -360,7 +361,21 @@ public class ConsoleManager : MonoBehaviour
             }
         });
 
+        TELEPORTPLAYER = new Commands<float,float>("tp", "Teleports player to coordinates", "tp float<x coordinate> float<y coordinate>", (x,y) =>
+        {
+            GameObject destination = Instantiate(new GameObject(),new Vector3(x,y,0),Quaternion.identity);
 
+            LevelManager.Instance.MovePlayer(destination.transform);
+
+            Destroy(destination);
+
+            Print("Teleported player to "+x+" "+y);
+        });
+
+        GETPOS = new Commands("getpos", "Get current player position", "getpos", () =>
+        {
+            Print("Player is at : "+LevelManager.Instance.GetPos().x+" "+ LevelManager.Instance.GetPos().y);
+        });
 
 
 
@@ -395,11 +410,15 @@ public class ConsoleManager : MonoBehaviour
             SETMAXHP,
             CAMERAMODE,
             TOGGLECAMERALOCK,
-            //TRUELOADINGIMAGE,
-            //TELEPORTPLAYER,
+            TRUELOADINGIMAGE,
+            LOADINGMODE,
+            TELEPORTPLAYER,
+            GETPOS,
+            //ENEMYLIST
             //SPAWNENEMY,
             //DAMAGEENEMY,
             //KILLENEMY,
+            //ITEMLIST
             //SPAWNITEM,
             //DESTROYITEM,
             //FINDPORTAL,
@@ -460,7 +479,7 @@ public class ConsoleManager : MonoBehaviour
         {
             label = $"{line}";
 
-            Rect labelRect = new Rect(x+5f, 20 * i, viewport.width - height, 20);
+            Rect labelRect = new Rect(x+5f, 20 * i, viewport.width - 10f, 20);
 
             if (scrollToBottom)
             {
@@ -493,6 +512,8 @@ public class ConsoleManager : MonoBehaviour
 
     private void ExecuteInput()
     {
+        input = input.Replace(".", ",");
+
         string[] properties = input.Split(' ');
 
         foreach (var commandBase in commandList.Cast<CommandBase>().Where(commandBase => properties[0] == commandBase.commandId))
@@ -520,8 +541,15 @@ public class ConsoleManager : MonoBehaviour
                 case 2:
                     if (commandBase is Commands<int,int> intIntCommand)
                     {
-                        Debug.Log("YES");
                         intIntCommand.Invoke(int.Parse(properties[1]),int.Parse(properties[2]));
+                    }
+                    else if (commandBase is Commands<float, float> floatFloatCommand)
+                    {
+                        floatFloatCommand.Invoke(float.Parse(properties[1]), float.Parse(properties[2]));
+                    }
+                    else if (commandBase is Commands<int, float> intFloatCommand)
+                    {
+                        intFloatCommand.Invoke(int.Parse(properties[1]), float.Parse(properties[2]));
                     }
                     break;
                     
@@ -535,5 +563,6 @@ public class ConsoleManager : MonoBehaviour
     {
         consoleLines.Add(message);
     }
+
 }
 
