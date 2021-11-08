@@ -9,16 +9,67 @@ public class ConsoleManager : MonoBehaviour
 {
     private bool showConsole = false;
     [SerializeField] private string input;
-
-    private static Commands HELP;
-    private static Commands NEXTLEVEL;
-    private static Commands<int,int> NEWLEVEL;
-    private static Commands CLEARCONSOLE;
     
     private List<object> commandList;
     [SerializeField] private List<string> consoleLines;
     
     private Vector2 scroll;
+    //console
+    private static Commands CLEARCONSOLE;
+    private static Commands HELP;
+    
+    //General
+    private static Commands GOTOHUB;
+    private static Commands GOTOLASTROOM;
+    private static Commands GODMODE;
+    private static Commands NOCLIP;
+    private static Commands<int> GIVEUPGRADE;
+
+    //Level Manger
+    private static Commands<int,int> NEWLEVEL;
+    private static Commands NEXTLEVEL;
+    private static Commands PREVIOUSLEVEL;
+    private static Commands<string> BUILDNAVMESH;
+    private static Commands<string> TELEPORTONNEWLEVELSPAWN;
+    private static Commands GETSEED;
+    private static Commands GETNUMBEROFROOMS;
+    private static Commands GETCURRENTFLOOR;
+
+    //Money Manager
+    private static Commands<int> GIVECOINS;
+    private static Commands<int> SETCOINS;
+    
+    //Hp Manager
+    private static Commands<int> GIVEHP;
+    private static Commands<int> SETHP;
+
+    //Camera Manager
+    private static Commands<string> CAMERAFOLLOW;
+    private static Commands<string> CAMERALOCK;
+    
+    //Loading Manager
+    private static Commands<string> TRUELOADINGIMAGE;
+    
+    //Player
+    private static Commands<int, int> TELEPORTPLAYER;
+    
+    //Enemies
+    private static Commands<int> SPAWNENEMY;
+    private static Commands<int, float> DAMAGEENEMY;
+    private static Commands<int, float> KILLENEMY;
+
+    //Items
+    private static Commands<int> SPAWNITEM;
+    private static Commands<float> DESTROYITEM;
+
+    //Portal
+    private static Commands FINDPORTAL;
+    private static Commands TELEPORTTOPORTAL;
+    private static Commands TELEPORTPORTAL;
+    
+    //Spawnpoint
+    private static Commands FINDSPAWNPOINT;
+    private static Commands TELEPORTTOSPAWNPOINT;
     
     private void Awake()
     {
@@ -30,6 +81,11 @@ public class ConsoleManager : MonoBehaviour
                 consoleLines.Add($"{command.commandFormat} - {command.commandDescription}");
             }
             consoleLines.Add("");
+        });
+        
+        CLEARCONSOLE = new Commands("clear", "clears console", "clear", () =>
+        {
+            consoleLines.Clear();
         });
         
         NEXTLEVEL = new Commands("nextlevel", "generates next level of the current room", "nextlevel", () =>
@@ -46,10 +102,7 @@ public class ConsoleManager : MonoBehaviour
             LevelManager.Instance.StartNewRun(numberOfRooms,seed);
         });
         
-        CLEARCONSOLE = new Commands("clear", "clears console", "clear", () =>
-        {
-            consoleLines.Clear();
-        });
+        
         
         
         
@@ -57,9 +110,38 @@ public class ConsoleManager : MonoBehaviour
         commandList = new List<object>()
         {
             HELP,
-            NEXTLEVEL,
+            CLEARCONSOLE,
+            GOTOHUB,
+            GOTOLASTROOM,
+            GODMODE,
+            NOCLIP,
+            GIVEUPGRADE,
             NEWLEVEL,
-            CLEARCONSOLE
+            NEXTLEVEL,
+            PREVIOUSLEVEL,
+            BUILDNAVMESH,
+            TELEPORTONNEWLEVELSPAWN,
+            GETSEED,
+            GETNUMBEROFROOMS,
+            GETCURRENTFLOOR,
+            GIVECOINS,
+            SETCOINS,
+            GIVEHP,
+            SETHP,
+            CAMERAFOLLOW,
+            CAMERALOCK,
+            TRUELOADINGIMAGE,
+            TELEPORTPLAYER,
+            SPAWNENEMY,
+            DAMAGEENEMY,
+            KILLENEMY,
+            SPAWNITEM,
+            DESTROYITEM,
+            FINDPORTAL,
+            TELEPORTTOPORTAL,
+            TELEPORTPORTAL,
+            FINDSPAWNPOINT,
+            TELEPORTTOSPAWNPOINT
         };
     }
     
