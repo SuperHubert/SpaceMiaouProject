@@ -224,9 +224,4 @@ public class LevelManager : MonoBehaviour
         return new Vector2(pos.position.x, pos.position.y);
     }
 
-    public Transform Level()
-    {
-        return generator.level;
-    }
-    
 }
