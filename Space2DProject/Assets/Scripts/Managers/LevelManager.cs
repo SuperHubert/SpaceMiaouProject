@@ -228,5 +228,10 @@ public class LevelManager : MonoBehaviour
     {
         return generator.level;
     }
+
+    public GenerationSimpleHalf Generator()
+    {
+        return generator;
+    }
     
 }

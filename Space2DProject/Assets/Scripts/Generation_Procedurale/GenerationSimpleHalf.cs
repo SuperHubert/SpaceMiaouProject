@@ -38,7 +38,113 @@ public class GenerationSimpleHalf : MonoBehaviour
         enemies = level.GetChild(1);
         items = level.GetChild(2);
     }
-    
+
+    public List<int> roomDispersion;
+    [SerializeField] private List<float> allRooms = new List<float> {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+    private void Start()
+    {
+        
+    }
+
+    public int numberOfInterations;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            for (int i = 0; i < numberOfInterations; i++)
+            {
+                RoomRepartition();
+            }
+            
+        }
+    }
+
+    private void RoomRepartition()
+    {
+        foreach (Transform child in GetGrid().parent)
+        { 
+            foreach (Transform item in child)
+            {
+                Destroy(item.gameObject);
+            }
+        }
+            
+        Random.InitState(Random.Range(0, 999999999));
+            
+        InitVariables(dungeonNumberOfRooms);
+            
+        //PlaceRooms
+        Case selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),new Vector2Int(dungeonNumberOfRooms,dungeonNumberOfRooms), 0,"0",grid);
+
+        for (int i = 1; i < dungeonNumberOfRooms; i++)
+        {
+            checkpointNumber = selectedCase.generationNumber;
+            checkNextInsteadOfPrevious = false;
+            Vector2Int nextPos = GetNextPosition(selectedCase);
+
+            if (Random.Range(0, 2) == 1)
+            {
+                Case newRoom = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),grid);
+                UpdateAllSurroundingCases(newRoom);
+            }
+            else
+            {
+                selectedCase = CreateRoom(roomPrefab.GetComponent<Case>(),nextPos, i, i.ToString(),grid);
+                UpdateAllSurroundingCases(selectedCase);
+            }
+                
+        }
+
+        randState = Random.state;
+
+        //UpdateRoomAppearance
+        foreach (Case room in generationList)
+        {
+            GetSurroundingCasesList(room);
+            room.CloseOutOfBoundsWalls();
+            
+            GameObject prefabRoom = gameObject.GetComponent<TextureAssigner>().GetRoom((room.caseAbove != null), (room.caseUnder != null),
+                    (room.caseLeft != null), (room.caseRight != null));
+
+            room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
+            
+            //Instantiates prefab tilemap UnWalkable
+            Instantiate(prefabRoom.transform.GetChild(0).GetChild(1),room.transform.GetChild(0));
+            
+            //Instantiates prefab collision GameObjects
+            foreach (Transform item in prefabRoom.transform.GetChild(1))
+            {
+                    Instantiate(item, room.transform.GetChild(1));
+            }
+
+            if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
+            {
+                firstRoomPrefab = prefabRoom;
+            }
+            lastRoomPrefab = prefabRoom;
+                
+        }
+            
+        CleanUpGrid();
+            
+        //Convert to percentage
+        int total = 0;
+        foreach (int number in roomDispersion)
+        {
+            total += number;
+        }
+
+        float numberorooms = 0;
+        for (int i = 0; i < roomDispersion.Count; i++)
+        {
+            allRooms[i] = 16*(float)roomDispersion[i] / total;
+            numberorooms += allRooms[i];
+        }
+
+        allRooms[15] = numberorooms;
+        allRooms[16]++;
+    }
     public void GenerateRooms(int numberOfRooms,int seed)
     {
         Random.InitState(seed);
