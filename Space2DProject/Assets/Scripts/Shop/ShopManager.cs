@@ -12,6 +12,23 @@ public class ShopManager : MonoBehaviour
         public bool Purchased = false;
     }
 
-    [SerializeField] List<ShopItem> ShopItemList;
+    [SerializeField] List<ShopItem> shopItemList;
+    private List<GameObject> upgradeList = new List<GameObject>();
+    private List<int> upgradePrice = new List<int>();
+
+    private void Start()
+    {
+        upgradeList = UpgradeList.Instance.GetUpgradeList();
+        upgradePrice = UpgradeList.Instance.GetUpgradePrice();
+    }
+
+
+
+    public void CloseShop()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
+
 
 }
