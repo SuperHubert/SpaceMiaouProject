@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
     {
         generator = gameObject.GetComponent<GenerationSimpleHalf>();
         
-        StartNewRun(numberOfRooms,firstSeed);
+        //StartNewRun(numberOfRooms,firstSeed);
     }
 
     public void StartNewRun(int rooms, int seed)
