@@ -421,7 +421,6 @@ public class TextureAssigner : MonoBehaviour
 
     private void CheckRefill(int b, int n)
     {
-        Debug.Log("PrefabGrid["+b+","+n+"].Count="+prefabGrid[b, n].Count);
         if (prefabGrid[b, n].Count == 0)
         {
             RefillPool(b, n);
@@ -432,19 +431,10 @@ public class TextureAssigner : MonoBehaviour
     private GameObject PickRoom(int region, int n)
     {
         CheckRefill(region,n);
-
-        int a = prefabGrid[region, n].Count - 1;
         
-        Debug.Log("a = "+a);
-        foreach (var VARIABLE in prefabGrid[region,n])
-        {
-            Debug.Log(VARIABLE);
-            
-        }
+        GameObject target = prefabGrid[region, n][Random.Range(0,prefabGrid[region, n].Count - 1)];
         
-        GameObject target = prefabGrid[region, 0][Random.Range(0,a)];
-        
-        prefabGrid[region, 0].Remove(target);
+        prefabGrid[region, n].Remove(target);
 
         return target;
     }

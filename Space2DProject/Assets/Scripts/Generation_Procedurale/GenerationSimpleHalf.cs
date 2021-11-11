@@ -412,7 +412,6 @@ public class GenerationSimpleHalf : MonoBehaviour
         int currentCenterPosY = generationList[0].position.y - levelMinY + 1;
         
         Vector2 targetPos = new Vector2((levelWidth / 2f)-currentCenterPosX, (levelHeight / 2f)-currentCenterPosY);
-        Debug.Log(targetPos);
 
         level.transform.position = new Vector3((-targetPos.x*50)-25,(-targetPos.y*50)-25,0);
     }
