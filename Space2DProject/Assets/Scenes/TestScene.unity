@@ -1322,7 +1322,7 @@ PrefabInstance:
       objectReference: {fileID: 202095997}
     - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: useOldMethod
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7983400261517997245, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: nyanCount
