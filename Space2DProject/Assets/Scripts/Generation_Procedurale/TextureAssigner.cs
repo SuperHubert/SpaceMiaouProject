@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TextureAssigner : MonoBehaviour
 {
@@ -74,6 +76,136 @@ public class TextureAssigner : MonoBehaviour
     [SerializeField] private List<GameObject> b3Ver12;
     [SerializeField] private List<GameObject> b3Ver13;
     [SerializeField] private List<GameObject> b3Ver14;
+    
+    //pools
+    private List<GameObject> b1V4;
+    private List<GameObject> b1V31;
+    private List<GameObject> b1V32;
+    private List<GameObject> b1V33;
+    private List<GameObject> b1V34;
+    private List<GameObject> b1V21;
+    private List<GameObject> b1V22;
+    private List<GameObject> b1V23;
+    private List<GameObject> b1V24;
+    private List<GameObject> b1V25;
+    private List<GameObject> b1V26;
+    private List<GameObject> b1V11;
+    private List<GameObject> b1V12;
+    private List<GameObject> b1V13;
+    private List<GameObject> b1V14;
+    private List<GameObject> b2V4;
+    private List<GameObject> b2V31;
+    private List<GameObject> b2V32;
+    private List<GameObject> b2V33;
+    private List<GameObject> b2V34;
+    private List<GameObject> b2V21;
+    private List<GameObject> b2V22;
+    private List<GameObject> b2V23;
+    private List<GameObject> b2V24;
+    private List<GameObject> b2V25;
+    private List<GameObject> b2V26;
+    private List<GameObject> b2V11;
+    private List<GameObject> b2V12;
+    private List<GameObject> b2V13;
+    private List<GameObject> b2V14;
+    private List<GameObject> b3V4;
+    private List<GameObject> b3V31;
+    private List<GameObject> b3V32; 
+    private List<GameObject> b3V33;
+    private List<GameObject> b3V34;
+    private List<GameObject> b3V21;
+    private List<GameObject> b3V22;
+    private List<GameObject> b3V23;
+    private List<GameObject> b3V24;
+    private List<GameObject> b3V25;
+    private List<GameObject> b3V26;
+    private List<GameObject> b3V11;
+    private List<GameObject> b3V12;
+    private List<GameObject> b3V13;
+    private List<GameObject> b3V14;
+
+    private void Start()
+    {
+        
+    }
+
+    public void RefillPool(int b, int n)
+    {
+        if (b == 1)
+        {
+            switch (n)
+            {
+                case 4:
+                    b1V4 = b1Ver4;
+                    break;
+                
+                case 31:
+                    b1V31 = b1Ver31;
+                    break;
+                
+                case 32:
+                    b1V32 = b1Ver32;
+                    break;
+                
+                case 33:
+                    b1V33 = b1Ver33;
+                    break;
+                
+                case 34:
+                    b1V34 = b1Ver34;
+                    break;
+                
+                case 11:
+                    b1V11 = b1Ver11;
+                    break;
+                
+                case 12:
+                    b1V12 = b1Ver11;
+                    break;
+                
+                case 13:
+                    b1V13 = b1Ver13;
+                    break;
+                
+                case 14:
+                    b1V14 = b1Ver14;
+                    break;
+                
+                case 21:
+                    b1V4 = b1Ver4;
+                    break;
+                
+                case 22:
+                    b1V4 = b1Ver4;
+                    break;
+                
+                case 23:
+                    b1V4 = b1Ver4;
+                    break;
+                
+                case 24:
+                    b1V4 = b1Ver4;
+                    break;
+                
+                case 25:
+                    b1V4 = b1Ver4;
+                    break;
+                
+                case 26:
+                    b1V4 = b1Ver4;
+                    break;
+                
+                
+            }
+        }
+        else if (b == 2)
+        {
+        }
+        else if (b == 3)
+        {
+            
+        }
+    }
 
     public GameObject GetRoom(bool isTop, bool isBot, bool isLeft, bool isRight)
     {
