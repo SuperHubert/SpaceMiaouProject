@@ -43,6 +43,8 @@ public class ConsoleManager : MonoBehaviour
     private static Commands<int> SETFIRSTSEED;
     private static Commands<int> FORCENEXTSEED;
     private static Commands<int> SETNUMBEROFROOMS;
+    private static Commands GETCURRENTMAXFLOORS;
+    private static Commands<int> SETMAXFLOORS;
 
     //Money Manager
     private static Commands<int> GIVECOINS; //WORKS ONLY FOR POSITIVE AMOUNT
@@ -85,6 +87,8 @@ public class ConsoleManager : MonoBehaviour
     private static Commands FINDSPAWNPOINT;
     private static Commands TELEPORTTOSPAWNPOINT;
     private static Commands<float, float> MOVESPAWNPOINT;
+
+    private LevelManager lb;
     
     private void Awake()
     {
@@ -99,7 +103,7 @@ public class ConsoleManager : MonoBehaviour
             Destroy(gameObject);
         }
         #endregion
-
+        
         #region Commands
         HELP = new Commands("help", "Shows the list of all available commands", "help", () =>
         {
@@ -120,14 +124,14 @@ public class ConsoleManager : MonoBehaviour
         {
             Print("Going to Hub");
             
-            LevelManager.Instance.GoToHub();
+            lb.GoToHub();
         });
         
         GOTOLASTROOM = new Commands("lastroom", "Teleports to last room of the current floor", "lastroom", () =>
         {
             Print("Teleporting to last room");
             
-            LevelManager.Instance.MovePlayer(LevelManager.Instance.GetLastRoom().transform);
+            lb.MovePlayer(lb.GetLastRoom().transform);
         });
         
         GODMODE = new Commands("godmode", "Toggles godmode", "godmode", () =>
@@ -169,26 +173,26 @@ public class ConsoleManager : MonoBehaviour
         {
             Print("Starting a new run. "+numberOfRooms+" rooms, seed : "+seed);
             
-            LevelManager.Instance.StartNewRun(numberOfRooms,seed);
+            lb.StartNewRun(numberOfRooms,seed);
         });
         
         NEXTLEVEL = new Commands("nextlevel", "Generates next level of the current run", "nextlevel", () =>
         {
             LoadingManager.Instance.UpdateLoading();
         
-            LevelManager.Instance.GenerateNextLevel();
+            lb.GenerateNextLevel();
         });
         
         PREVIOUSLEVEL = new Commands("previouslevel", "Generates previous level of the current run", "previouslevel", () =>
         {
             LoadingManager.Instance.UpdateLoading();
         
-            LevelManager.Instance.GeneratePreviousLevel();
+            lb.GeneratePreviousLevel();
         });
         
         TOGGLENAVMESH = new Commands("navmesh", "Toggles Navmesh building during floor generation", "navmesh", () =>
         {
-            if (LevelManager.Instance.ToggleNavMesh())
+            if (lb.ToggleNavMesh())
             {
                 Print("Navmesh building is now ON");
             }
@@ -202,12 +206,12 @@ public class ConsoleManager : MonoBehaviour
         {
             Print("Cleared Navmesh data");
             
-            LevelManager.Instance.gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
+            lb.gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
         });
         
         TOGGLETELEPORTONGENERATION = new Commands("teleportongeneration", "Toggles player teleportation on new floor generation (includes when taking portals)", "teleportongeneration", () =>
         {
-            if (LevelManager.Instance.ToggleTeleport())
+            if (lb.ToggleTeleport())
             {
                 Print("Teleportation is now ON");
             }
@@ -219,40 +223,50 @@ public class ConsoleManager : MonoBehaviour
         
         GETSEED = new Commands("seed", "Get seed of current floor", "seed", () =>
         {
-            Print(LevelManager.Instance.GetCurrentSeed() + " (" +
-                             LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms)");
+            Print(lb.GetCurrentSeed() + " (" +
+                             lb.GetCurrentNumberOfRooms() + " rooms)");
         });
         
         GETNUMBEROFROOMS = new Commands("rooms", "Get seed of current floor", "rooms", () =>
         {
-            Print(LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms");
+            Print(lb.GetCurrentNumberOfRooms() + " rooms");
         });
         
         GETCURRENTFLOOR = new Commands("floor", "Get floor of current run", "floor", () =>
         {
-            Print("Floor "+LevelManager.Instance.GetCurrentFloorNumber() + " of seed "+LevelManager.Instance.GetFirstSeed()+" (" +
-                             LevelManager.Instance.GetCurrentNumberOfRooms() + " rooms, first floor is floor 0)");
+            Print("Floor "+lb.GetCurrentFloorNumber() + " of seed "+lb.GetFirstSeed()+" (" +
+                             lb.GetCurrentNumberOfRooms() + " rooms, first floor is floor 0)");
         });
         
         SETFIRSTSEED = new Commands<int>("setseed", "Sets the first seed of the Level Manager", "setseed int<seed>", (seed) =>
         {
-            LevelManager.Instance.SetSeedAndRoom(LevelManager.Instance.GetCurrentNumberOfRooms(), seed);
+            lb.SetSeedAndRoom(lb.GetCurrentNumberOfRooms(), seed);
                 
             Print("Seed has been set to "+seed);
         });
         
         FORCENEXTSEED = new Commands<int>("forceseed", "Forces the seed of the next floor", "forceseed int<seed>", (seed) =>
         {
-            LevelManager.Instance.AddSeed(seed);
+            lb.AddSeed(seed);
             
             Print("Next seed will be "+seed);
         });
         
         SETNUMBEROFROOMS = new Commands<int>("setnumberofrooms", "Sets the number of rooms for the next generations", "setnumberofrooms int<number of rooms>", (rooms) =>
         {
-            LevelManager.Instance.SetSeedAndRoom(rooms,LevelManager.Instance.GetFirstSeed());
+            lb.SetSeedAndRoom(rooms,lb.GetFirstSeed());
             
-            Print("Number of rooms has been set to "+rooms+" (will take effect for next generations");
+            Print("Number of rooms has been set to "+rooms+" (will take effect for next generations)");
+        });
+        
+        GETCURRENTMAXFLOORS = new Commands("maxfloors", "Get the current number of maximum floors", "maxfloors", () =>
+        {
+            Print("Max Floors : "+lb.GetMaxFloors());
+        });
+        
+        SETMAXFLOORS = new Commands<int>("setmaxfloors", "Sets the max number of floors", "setmaxfloors int<number of rooms>", (number) =>
+        {
+            Print("Max number of floors has been set to "+lb.SetMaxFloors(number)+" (will take effect for next generations)");
         });
         
         GIVECOINS = new Commands<int>("addcoins", "Gives a set amount of nyancoins", "addcoins int<amount of coins>", (amount) =>
@@ -369,7 +383,7 @@ public class ConsoleManager : MonoBehaviour
         {
             GameObject destination = Instantiate(new GameObject(),new Vector3(x,y,0),Quaternion.identity);
 
-            LevelManager.Instance.MovePlayer(destination.transform);
+            lb.MovePlayer(destination.transform);
 
             Destroy(destination);
 
@@ -378,7 +392,7 @@ public class ConsoleManager : MonoBehaviour
 
         GETPOS = new Commands("getpos", "Get current player position", "getpos", () =>
         {
-            Print("Player is at : "+LevelManager.Instance.GetPos().x+" "+ LevelManager.Instance.GetPos().y);
+            Print("Player is at : "+lb.GetPos().x+" "+ lb.GetPos().y);
         });
 
         ENEMYLIST = new Commands("enemylist", "Get the list of all enemies", "enemylist", () =>
@@ -417,39 +431,39 @@ public class ConsoleManager : MonoBehaviour
         
         FINDPORTAL = new Commands("findportal", "Get coordinates of the portal of the current floor", "findportal", () =>
         {
-            Vector3 pos = LevelManager.Instance.Level().GetChild(3).position;
+            Vector3 pos = lb.Level().GetChild(3).position;
             
             Print("Found Portal at "+pos.x+" "+pos.y);
         });
         
         TELEPORTTOPORTAL = new Commands("gotoportal", "Teleports player to portal", "gotoportal", () =>
         {
-            LevelManager.Instance.MovePlayer(LevelManager.Instance.Level().GetChild(3));
+            lb.MovePlayer(lb.Level().GetChild(3));
             Print("Teleported Jones to portal");
         });
         
         MOVEPORTAL = new Commands<float,float>("moveportal", "Moves portal to coordinates", "moveportal float<x coordinates> float<y coordinates>", (x,y) =>
         {
-            LevelManager.Instance.Level().GetChild(3).position = new Vector3(x, y, 0);
+            lb.Level().GetChild(3).position = new Vector3(x, y, 0);
             Print("Moved portal to Jones");
         });
         
         FINDSPAWNPOINT = new Commands("findstart", "Get coordinates of the start position of the current floor", "findstart", () =>
         {
-            Vector3 pos = LevelManager.Instance.Level().GetChild(4).position;
+            Vector3 pos = lb.Level().GetChild(4).position;
             
             Print("Found start position at "+pos.x+" "+pos.y);
         });
         
         TELEPORTTOSPAWNPOINT = new Commands("gotostart", "Teleports player to start position", "gotostart", () =>
         {
-            LevelManager.Instance.MovePlayer(LevelManager.Instance.Level().GetChild(4));
+            lb.MovePlayer(lb.Level().GetChild(4));
             Print("Teleported Jones to start position");
         });
         
         MOVESPAWNPOINT = new Commands<float,float>("movestart", "Moves start position to coordinates", "movestart float<x coordinates> float<y coordinates>", (x,y) =>
         {
-            LevelManager.Instance.Level().GetChild(4).position = new Vector3(x, y, 0);
+            lb.Level().GetChild(4).position = new Vector3(x, y, 0);
             Print("Moved start position to Jones");
         });
         #endregion
@@ -477,6 +491,8 @@ public class ConsoleManager : MonoBehaviour
             SETFIRSTSEED,
             FORCENEXTSEED,
             SETNUMBEROFROOMS,
+            GETCURRENTMAXFLOORS,
+            SETMAXFLOORS,
             GIVECOINS,
             SETCOINS,
             GIVEHP,
@@ -503,7 +519,12 @@ public class ConsoleManager : MonoBehaviour
             MOVESPAWNPOINT,
         };
     }
-    
+
+    private void Start()
+    {
+        lb = LevelManager.Instance;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -522,8 +543,6 @@ public class ConsoleManager : MonoBehaviour
     {
         if (showConsole)
         {
-            Debug.Log("Executing command :"+input);
-            
             Print(input);
             
             ExecuteInput();
@@ -646,6 +665,7 @@ public class ConsoleManager : MonoBehaviour
     public void Print(string message)
     {
         consoleLines.Add(message);
+        Debug.Log("CONSOLE: "+message);
     }
 
 }

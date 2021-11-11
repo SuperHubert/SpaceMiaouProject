@@ -250,4 +250,21 @@ public class LevelManager : MonoBehaviour
         return floorNumber > (1f/3f) * maxFloors ? 1 : 0;
     }
 
+    public int GetMaxFloors()
+    {
+        return maxFloors;
+    }
+
+    public int SetMaxFloors(int n)
+    {
+        if (n >= 1)
+        {
+            maxFloors = n;
+        }
+        else
+        {
+            maxFloors = 1;
+        }
+        return maxFloors;
+    }
 }
