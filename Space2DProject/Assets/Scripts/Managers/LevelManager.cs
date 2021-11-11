@@ -102,8 +102,6 @@ public class LevelManager : MonoBehaviour
 
         yield return null;
         
-        floorNumber++;
-
         if (floorNumber == seedList.Count)
         {
             seedList.Add(GetNewSeed());
@@ -146,11 +144,23 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateNextLevel()
     {
-        if (canGenerate)
+        floorNumber++;
+
+        if (floorNumber < maxFloors)
         {
-            canGenerate = false;
-            StartCoroutine(NewLevel());
+            if (canGenerate)
+            {
+                canGenerate = false;
+                StartCoroutine(NewLevel());
+            }
         }
+        else
+        {
+            floorNumber--;
+            ConsoleManager.Instance.Print("Max Level Reached");
+        }
+
+        
     }
 
     public void GeneratePreviousLevel()
@@ -221,8 +231,8 @@ public class LevelManager : MonoBehaviour
 
     public Vector2 GetPos()
     {
-        Transform pos = player.transform;
-        return new Vector2(pos.position.x, pos.position.y);
+        Vector3 pos = player.transform.position;
+        return new Vector2(pos.x, pos.y);
     }
     
     public Transform Level()
