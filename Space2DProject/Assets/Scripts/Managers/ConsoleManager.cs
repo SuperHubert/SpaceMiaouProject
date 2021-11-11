@@ -25,10 +25,10 @@ public class ConsoleManager : MonoBehaviour
     //General
     private static Commands GOTOHUB;
     private static Commands GOTOLASTROOM;
-    private static Commands GODMODE; //NOT IMPLEMENTED
-    private static Commands NOCLIP; //NOT IMPLEMENTED
-    private static Commands UPGRADELIST; //NOT IMPLEMENTED
-    private static Commands<int> GIVEUPGRADE; // NOT IMPLEMENTED
+    private static Commands GODMODE; //Missing some code
+    private static Commands NOCLIP; //Missing some code
+    private static Commands UPGRADELIST; //Missing some code
+    private static Commands<int> GIVEUPGRADE; // Missing some code
 
     //Level Manger
     private static Commands<int,int> NEWLEVEL;
@@ -50,15 +50,15 @@ public class ConsoleManager : MonoBehaviour
     
     //Hp Manager
     private static Commands<int> GIVEHP;
-    private static Commands<int> SETHP; // NOT IMPLEMENTED
-    private static Commands<int> SETMAXHP; // NOT IMPLEMENTED
+    private static Commands<int> SETHP; // Missing some code
+    private static Commands<int> SETMAXHP; // Missing some code
 
     //Camera Manager
-    private static Commands<int> CAMERAMODE; //NOT IMPLEMENTED
-    private static Commands TOGGLECAMERALOCK; //NOT IMPLEMENTED
+    private static Commands<int> CAMERAMODE; //Missing some code
+    private static Commands TOGGLECAMERALOCK; //Missing some code
     
     //Loading Manager
-    private static Commands TRUELOADINGIMAGE; //NOT IMPLEMENTED
+    private static Commands TRUELOADINGIMAGE; //Missing some code
     private static Commands<int> LOADINGMODE;
     
     //Player
@@ -66,24 +66,29 @@ public class ConsoleManager : MonoBehaviour
     private static Commands GETPOS;
 
     //Enemies
-    private static Commands ENEMYLIST; //NOT IMPLEMENTED
+    private static Commands ENEMYLIST; //Missing some code
     private static Commands<int,float,float> SPAWNENEMY; //NEED ENEMY LIST
-    private static Commands<int, float> DAMAGEENEMY; //NOT IMPLEMENTED AT ALL
-    private static Commands<int, float> KILLENEMY; //NOT IMPLEMENTED AT ALL
+    private static Commands<int, float> DAMAGEENEMY; //Missing code
+    private static Commands<int, float> KILLENEMY; //Missing code
 
     //Items
-    private static Commands ITEMLIST; //NOT IMPLEMENTED
+    private static Commands ITEMLIST; //Missing some code
     private static Commands<int,float,float> SPAWNITEM; //NEED ITEM LIST
-    private static Commands<float> DESTROYITEM; //NOT IMPLEMENTED AT ALL
+    private static Commands<float> DESTROYITEM; //Missing some code
 
     //Portal
     private static Commands FINDPORTAL;
     private static Commands TELEPORTTOPORTAL;
-    private static Commands TELEPORTPORTAL;
+    private static Commands<float,float> MOVEPORTAL;
     
     //Spawnpoint
     private static Commands FINDSPAWNPOINT;
     private static Commands TELEPORTTOSPAWNPOINT;
+    private static Commands<float, float> MOVESPAWNPOINT;
+    
+    
+    //NewTextureAssigner
+    private static Commands GETPREFABGRID;
     
     private void Awake()
     {
@@ -98,7 +103,8 @@ public class ConsoleManager : MonoBehaviour
             Destroy(gameObject);
         }
         #endregion
-        
+
+        #region commands
         HELP = new Commands("help", "Shows the list of all available commands", "help", () =>
         {
             Print("");
@@ -406,6 +412,51 @@ public class ConsoleManager : MonoBehaviour
 
             Print("Spawned " + "item" + " at " + x + " " + y);
         });
+        
+        DESTROYITEM = new Commands<float>("destroy", "Destroy interactable items in range", "destroy float<range>", (range) =>
+        {
+            int x = 0;
+            Print("Destroyed "+x+" items");
+        });
+        
+        FINDPORTAL = new Commands("findportal", "Get coordinates of the portal of the current floor", "findportal", () =>
+        {
+            Vector3 pos = LevelManager.Instance.Level().GetChild(3).position;
+            
+            Print("Found Portal at "+pos.x+" "+pos.y);
+        });
+        
+        TELEPORTTOPORTAL = new Commands("gotoportal", "Teleports player to portal", "gotoportal", () =>
+        {
+            LevelManager.Instance.MovePlayer(LevelManager.Instance.Level().GetChild(3));
+            Print("Teleported Jones to portal");
+        });
+        
+        MOVEPORTAL = new Commands<float,float>("moveportal", "Moves portal to coordinates", "moveportal float<x coordinates> float<y coordinates>", (x,y) =>
+        {
+            LevelManager.Instance.Level().GetChild(3).position = new Vector3(x, y, 0);
+            Print("Moved portal to Jones");
+        });
+        
+        FINDSPAWNPOINT = new Commands("findstart", "Get coordinates of the start position of the current floor", "findstart", () =>
+        {
+            Vector3 pos = LevelManager.Instance.Level().GetChild(4).position;
+            
+            Print("Found start position at "+pos.x+" "+pos.y);
+        });
+        
+        TELEPORTTOSPAWNPOINT = new Commands("gotostart", "Teleports player to start position", "gotostart", () =>
+        {
+            LevelManager.Instance.MovePlayer(LevelManager.Instance.Level().GetChild(4));
+            Print("Teleported Jones to start position");
+        });
+        
+        MOVESPAWNPOINT = new Commands<float,float>("movestart", "Moves start position to coordinates", "movestart float<x coordinates> float<y coordinates>", (x,y) =>
+        {
+            LevelManager.Instance.Level().GetChild(4).position = new Vector3(x, y, 0);
+            Print("Moved start position to Jones");
+        });
+        #endregion
 
 
         commandList = new List<object>()
@@ -447,12 +498,13 @@ public class ConsoleManager : MonoBehaviour
             //KILLENEMY,
             ITEMLIST,
             SPAWNITEM,
-            //DESTROYITEM,
-            //FINDPORTAL,
-            //TELEPORTTOPORTAL,
-            //TELEPORTPORTAL,
-            //FINDSPAWNPOINT,
-            //TELEPORTTOSPAWNPOINT
+            DESTROYITEM,
+            FINDPORTAL,
+            TELEPORTTOPORTAL,
+            MOVEPORTAL,
+            FINDSPAWNPOINT,
+            TELEPORTTOSPAWNPOINT,
+            MOVESPAWNPOINT
         };
     }
     

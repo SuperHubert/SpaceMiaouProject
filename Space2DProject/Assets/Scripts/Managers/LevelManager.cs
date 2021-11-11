@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<int> seedList = new List<int>();
 
     [SerializeField] private int floorNumber;
+    [SerializeField] private int maxFloors = 3;
 
     private bool canGenerate = true;
     
@@ -222,6 +223,21 @@ public class LevelManager : MonoBehaviour
     {
         Transform pos = player.transform;
         return new Vector2(pos.position.x, pos.position.y);
+    }
+    
+    public Transform Level()
+    {
+        return generator.level;
+    }
+
+    public int GetBiome()
+    {
+        if (floorNumber > (2f / 3f) * maxFloors)
+        {
+            return 2;
+        }
+
+        return floorNumber > (1f/3f) * maxFloors ? 1 : 0;
     }
 
 }

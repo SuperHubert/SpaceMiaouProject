@@ -77,138 +77,225 @@ public class TextureAssigner : MonoBehaviour
     [SerializeField] private List<GameObject> b3Ver13;
     [SerializeField] private List<GameObject> b3Ver14;
     
-    //pools
-    private List<GameObject> b1V4;
-    private List<GameObject> b1V31;
-    private List<GameObject> b1V32;
-    private List<GameObject> b1V33;
-    private List<GameObject> b1V34;
-    private List<GameObject> b1V21;
-    private List<GameObject> b1V22;
-    private List<GameObject> b1V23;
-    private List<GameObject> b1V24;
-    private List<GameObject> b1V25;
-    private List<GameObject> b1V26;
-    private List<GameObject> b1V11;
-    private List<GameObject> b1V12;
-    private List<GameObject> b1V13;
-    private List<GameObject> b1V14;
-    private List<GameObject> b2V4;
-    private List<GameObject> b2V31;
-    private List<GameObject> b2V32;
-    private List<GameObject> b2V33;
-    private List<GameObject> b2V34;
-    private List<GameObject> b2V21;
-    private List<GameObject> b2V22;
-    private List<GameObject> b2V23;
-    private List<GameObject> b2V24;
-    private List<GameObject> b2V25;
-    private List<GameObject> b2V26;
-    private List<GameObject> b2V11;
-    private List<GameObject> b2V12;
-    private List<GameObject> b2V13;
-    private List<GameObject> b2V14;
-    private List<GameObject> b3V4;
-    private List<GameObject> b3V31;
-    private List<GameObject> b3V32; 
-    private List<GameObject> b3V33;
-    private List<GameObject> b3V34;
-    private List<GameObject> b3V21;
-    private List<GameObject> b3V22;
-    private List<GameObject> b3V23;
-    private List<GameObject> b3V24;
-    private List<GameObject> b3V25;
-    private List<GameObject> b3V26;
-    private List<GameObject> b3V11;
-    private List<GameObject> b3V12;
-    private List<GameObject> b3V13;
-    private List<GameObject> b3V14;
-
-    private void Start()
+    private List<GameObject>[,] prefabGrid = new List<GameObject>[3,15];
+    
+    public void FillAllPools()
     {
-        
-    }
-
-    public void RefillPool(int b, int n)
-    {
-        if (b == 1)
+        for (int i = 0; i < 3; i++)
         {
-            switch (n)
+            for (int j = 0; j < 15; j++)
             {
-                case 4:
-                    b1V4 = b1Ver4;
-                    break;
-                
-                case 31:
-                    b1V31 = b1Ver31;
-                    break;
-                
-                case 32:
-                    b1V32 = b1Ver32;
-                    break;
-                
-                case 33:
-                    b1V33 = b1Ver33;
-                    break;
-                
-                case 34:
-                    b1V34 = b1Ver34;
-                    break;
-                
-                case 11:
-                    b1V11 = b1Ver11;
-                    break;
-                
-                case 12:
-                    b1V12 = b1Ver11;
-                    break;
-                
-                case 13:
-                    b1V13 = b1Ver13;
-                    break;
-                
-                case 14:
-                    b1V14 = b1Ver14;
-                    break;
-                
-                case 21:
-                    b1V4 = b1Ver4;
-                    break;
-                
-                case 22:
-                    b1V4 = b1Ver4;
-                    break;
-                
-                case 23:
-                    b1V4 = b1Ver4;
-                    break;
-                
-                case 24:
-                    b1V4 = b1Ver4;
-                    break;
-                
-                case 25:
-                    b1V4 = b1Ver4;
-                    break;
-                
-                case 26:
-                    b1V4 = b1Ver4;
-                    break;
-                
-                
+                RefillPool(i,j);
             }
         }
-        else if (b == 2)
+    }
+
+    private void RefillPool(int b, int n)
+    {
+        switch (b)
         {
-        }
-        else if (b == 3)
-        {
-            
+            case 0:
+                switch (n)
+                {
+                    case 0:
+                        prefabGrid[0, 0] = b1Ver4;
+                        break;
+                
+                    case 1:
+                        prefabGrid[0, 1] = b1Ver31;
+                        break;
+                
+                    case 2:
+                        prefabGrid[0, 2] = b1Ver32;
+                        break;
+                
+                    case 3:
+                        prefabGrid[0, 3] = b1Ver33;
+                        break;
+                
+                    case 4:
+                        prefabGrid[0, 4] = b1Ver34;
+                        break;
+                
+                    case 5:
+                        prefabGrid[0, 5] = b1Ver21;
+                        break;
+                
+                    case 6:
+                        prefabGrid[0, 6] = b1Ver22;
+                        break;
+                
+                    case 7:
+                        prefabGrid[0, 7] = b1Ver23;
+                        break;
+                
+                    case 8:
+                        prefabGrid[0, 8] = b1Ver24;
+                        break;
+                
+                    case 9:
+                        prefabGrid[0, 9] = b1Ver25;
+                        break;
+                
+                    case 10:
+                        prefabGrid[0, 10] = b1Ver26;
+                        break;
+                
+                    case 11:
+                        prefabGrid[0, 11] = b1Ver11;
+                        break;
+                
+                    case 12:
+                        prefabGrid[0, 12] = b1Ver12;
+                        break;
+                
+                    case 13:
+                        prefabGrid[0, 13] = b1Ver13;
+                        break;
+                
+                    case 14:
+                        prefabGrid[0, 14] = b1Ver14;
+                        break;
+                }
+
+                break;
+            case 1:
+                switch (n)
+                {
+                    case 0:
+                        prefabGrid[1, 0] = b2Ver4;
+                        break;
+                
+                    case 1:
+                        prefabGrid[1, 1] = b2Ver31;
+                        break;
+                
+                    case 2:
+                        prefabGrid[1, 2] = b2Ver32;
+                        break;
+                
+                    case 3:
+                        prefabGrid[1, 3] = b2Ver33;
+                        break;
+                
+                    case 4:
+                        prefabGrid[1, 4] = b2Ver34;
+                        break;
+                
+                    case 5:
+                        prefabGrid[1, 5] = b2Ver21;
+                        break;
+                
+                    case 6:
+                        prefabGrid[1, 6] = b2Ver22;
+                        break;
+                
+                    case 7:
+                        prefabGrid[1, 7] = b2Ver23;
+                        break;
+                
+                    case 8:
+                        prefabGrid[1, 8] = b2Ver24;
+                        break;
+                
+                    case 9:
+                        prefabGrid[1, 9] = b2Ver25;
+                        break;
+                
+                    case 10:
+                        prefabGrid[1, 11] = b2Ver26;
+                        break;
+                
+                    case 11:
+                        prefabGrid[1, 11] = b2Ver11;
+                        break;
+                
+                    case 12:
+                        prefabGrid[1, 12] = b2Ver12;
+                        break;
+                
+                    case 13:
+                        prefabGrid[1, 13] = b2Ver13;
+                        break;
+                
+                    case 14:
+                        prefabGrid[1, 14] = b2Ver14;
+                        break;
+                }
+
+                break;
+            case 2:
+                switch (n)
+                {
+                    case 0:
+                        prefabGrid[2, 0] = b3Ver4;
+                        break;
+                
+                    case 1:
+                        prefabGrid[2, 1] = b3Ver31;
+                        break;
+                
+                    case 2:
+                        prefabGrid[2, 2] = b3Ver32;
+                        break;
+                
+                    case 3:
+                        prefabGrid[2, 3] = b3Ver33;
+                        break;
+                
+                    case 4:
+                        prefabGrid[2, 4] = b3Ver34;
+                        break;
+                
+                    case 5:
+                        prefabGrid[2, 5] = b3Ver21;
+                        break;
+                
+                    case 6:
+                        prefabGrid[2, 6] = b3Ver22;
+                        break;
+                
+                    case 7:
+                        prefabGrid[2, 7] = b3Ver23;
+                        break;
+                
+                    case 8:
+                        prefabGrid[2, 8] = b3Ver24;
+                        break;
+                
+                    case 9:
+                        prefabGrid[2, 9] = b3Ver25;
+                        break;
+                
+                    case 10:
+                        prefabGrid[2, 11] = b3Ver26;
+                        break;
+                
+                    case 11:
+                        prefabGrid[2, 11] = b3Ver11;
+                        break;
+                
+                    case 12:
+                        prefabGrid[2, 12] = b3Ver12;
+                        break;
+                
+                    case 13:
+                        prefabGrid[2, 13] = b3Ver13;
+                        break;
+                
+                    case 14:
+                        prefabGrid[2, 14] = b3Ver14;
+                        break;
+                }
+
+                break;
         }
     }
 
     public GameObject GetRoom(bool isTop, bool isBot, bool isLeft, bool isRight)
     {
+        int currentRegion = LevelManager.Instance.GetBiome();
+        
         int a = 1;
         int b = 1;
         int c = 1;
@@ -257,10 +344,91 @@ public class TextureAssigner : MonoBehaviour
         }
         else
         {
-            return allDirections[0];
+            Debug.Log("List Counts");
+            for (int i = 0; i < 15; i++)
+            {
+                Debug.Log(prefabGrid[currentRegion, i]);
+            }
+            
+            switch (spriteNumber)
+            {
+                case 2 * 3 * 5 * 7: //210
+                    CheckRefill(currentRegion,0);
+                    return prefabGrid[currentRegion, 0][Random.Range(0, prefabGrid[currentRegion, 0].Count)];
+                
+                case 2 * 5 * 7: //70
+                    CheckRefill(currentRegion,1);
+                    return prefabGrid[currentRegion, 1][Random.Range(0, prefabGrid[currentRegion, 1].Count)];
+                
+                case 3 * 5 * 7: //105
+                    CheckRefill(currentRegion,2);
+                    return prefabGrid[currentRegion, 2][Random.Range(0, prefabGrid[currentRegion, 2].Count)];
+                
+                case 2 * 3 * 7: //42
+                    CheckRefill(currentRegion,3);
+                    return prefabGrid[currentRegion, 3][Random.Range(0, prefabGrid[currentRegion, 3].Count)];
+                
+                case 2 * 3 * 5: //30
+                    CheckRefill(currentRegion,4);
+                    return prefabGrid[currentRegion, 4][Random.Range(0, prefabGrid[currentRegion, 4].Count)];
+
+                case 2 * 3: //6
+                    CheckRefill(currentRegion,5);
+                    return prefabGrid[currentRegion, 5][Random.Range(0, prefabGrid[currentRegion, 5].Count)];
+
+                case 5 * 7: //35
+                    CheckRefill(currentRegion,6);
+                    return prefabGrid[currentRegion, 6][Random.Range(0, prefabGrid[currentRegion, 6].Count)];
+
+                case 2 * 7: //14
+                    CheckRefill(currentRegion,7);
+                    return prefabGrid[currentRegion, 7][Random.Range(0, prefabGrid[currentRegion, 7].Count)];
+
+                case 2 * 5: //10
+                    CheckRefill(currentRegion,8);
+                    return prefabGrid[currentRegion, 8][Random.Range(0, prefabGrid[currentRegion, 8].Count)];
+
+                case 3 * 5: //15
+                    CheckRefill(currentRegion,9);
+                    return prefabGrid[currentRegion, 9][Random.Range(0, prefabGrid[currentRegion, 9].Count)];
+
+                case 3 * 7: //21
+                    CheckRefill(currentRegion,10);
+                    return prefabGrid[currentRegion, 10][Random.Range(0, prefabGrid[currentRegion, 10].Count)];
+
+                case 2:
+                    CheckRefill(currentRegion,11);
+                    return prefabGrid[currentRegion, 11][Random.Range(0, prefabGrid[currentRegion, 11].Count)];
+
+                case 7:
+                    CheckRefill(currentRegion,12);
+                    return prefabGrid[currentRegion, 12][Random.Range(0, prefabGrid[currentRegion, 12].Count)];
+
+                case 3:
+                    CheckRefill(currentRegion,13);
+                    return prefabGrid[currentRegion, 13][Random.Range(0, prefabGrid[currentRegion, 13].Count)];
+
+                case 5:
+                    CheckRefill(currentRegion,14);
+                    return prefabGrid[currentRegion, 14][Random.Range(0, prefabGrid[currentRegion, 14].Count)];
+
+                default:
+                    return prefabGrid[currentRegion, 0][Random.Range(0, prefabGrid[currentRegion, 0].Count)];
+                    
+            }
+        }
+    }
+
+    private void CheckRefill(int b, int n)
+    {
+        if (prefabGrid[b, n].Count < 1)
+        {
+            RefillPool(b, n);
         }
         
     }
+    
+    
     
     
 

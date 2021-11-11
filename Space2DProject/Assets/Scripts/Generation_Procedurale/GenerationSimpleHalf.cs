@@ -32,13 +32,20 @@ public class GenerationSimpleHalf : MonoBehaviour
     private bool checkNextInsteadOfPrevious = false;
 
     private Random.State randState;
+
+    private TextureAssigner textureAssigner;
     private void Awake()
     {
         grid = level.GetChild(0);
         enemies = level.GetChild(1);
         items = level.GetChild(2);
     }
-    
+
+    private void Start()
+    {
+        textureAssigner = gameObject.GetComponent<TextureAssigner>();
+    }
+
     public void GenerateRooms(int numberOfRooms,int seed)
     {
         Random.InitState(seed);
@@ -107,6 +114,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         progress = 0;
 
         chestList.Clear();
+        
+        textureAssigner.FillAllPools();
 
         UpdateProgress(0.01f);
     }
@@ -285,12 +294,14 @@ public class GenerationSimpleHalf : MonoBehaviour
     
     IEnumerator UpdateRoomAppearance()
     {
+        textureAssigner.FillAllPools();
+        
         foreach (Case room in generationList)
         {
             GetSurroundingCasesList(room);
             room.CloseOutOfBoundsWalls();
             
-            GameObject prefabRoom = gameObject.GetComponent<TextureAssigner>().GetRoom((room.caseAbove != null), (room.caseUnder != null),
+            GameObject prefabRoom = textureAssigner.GetRoom((room.caseAbove != null), (room.caseUnder != null),
                 (room.caseLeft != null), (room.caseRight != null));
 
             room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
@@ -346,9 +357,12 @@ public class GenerationSimpleHalf : MonoBehaviour
     
     IEnumerator SpawnEnemiesAndItems()
     {
+        textureAssigner.FillAllPools();
+        
         foreach (Case room in generationList)
         {
-            GameObject prefabRoom = gameObject.GetComponent<TextureAssigner>().GetRoom((room.caseAbove != null),
+
+            GameObject prefabRoom = textureAssigner.GetRoom((room.caseAbove != null),
                 (room.caseUnder != null),
                 (room.caseLeft != null), (room.caseRight != null));
             
@@ -405,6 +419,8 @@ public class GenerationSimpleHalf : MonoBehaviour
     
     private void CleanUpGrid()
     {
+        textureAssigner.FillAllPools();
+        
         for (int i = 0; i < (2*dungeonNumberOfRooms+1); i++)
         {
             for (int j = 0; i < (2*dungeonNumberOfRooms+1); i++)
