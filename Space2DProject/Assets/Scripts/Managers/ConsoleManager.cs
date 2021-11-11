@@ -86,10 +86,6 @@ public class ConsoleManager : MonoBehaviour
     private static Commands TELEPORTTOSPAWNPOINT;
     private static Commands<float, float> MOVESPAWNPOINT;
     
-    
-    //NewTextureAssigner
-    private static Commands GETPREFABGRID;
-    
     private void Awake()
     {
         #region Singleton Don't Destroy On Load
@@ -104,7 +100,7 @@ public class ConsoleManager : MonoBehaviour
         }
         #endregion
 
-        #region commands
+        #region Commands
         HELP = new Commands("help", "Shows the list of all available commands", "help", () =>
         {
             Print("");
@@ -504,7 +500,7 @@ public class ConsoleManager : MonoBehaviour
             MOVEPORTAL,
             FINDSPAWNPOINT,
             TELEPORTTOSPAWNPOINT,
-            MOVESPAWNPOINT
+            MOVESPAWNPOINT,
         };
     }
     
@@ -526,6 +522,8 @@ public class ConsoleManager : MonoBehaviour
     {
         if (showConsole)
         {
+            Debug.Log("Executing command :"+input);
+            
             Print(input);
             
             ExecuteInput();

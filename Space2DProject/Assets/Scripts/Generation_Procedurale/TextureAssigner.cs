@@ -88,6 +88,15 @@ public class TextureAssigner : MonoBehaviour
                 RefillPool(i,j);
             }
         }
+
+        Debug.Log("grid state");
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 15; j++)
+            {
+                Debug.Log(prefabGrid[i,j][0]);
+            }
+        }
     }
 
     private void RefillPool(int b, int n)
@@ -203,7 +212,7 @@ public class TextureAssigner : MonoBehaviour
                         break;
                 
                     case 10:
-                        prefabGrid[1, 11] = b2Ver26;
+                        prefabGrid[1, 10] = b2Ver26;
                         break;
                 
                     case 11:
@@ -268,7 +277,7 @@ public class TextureAssigner : MonoBehaviour
                         break;
                 
                     case 10:
-                        prefabGrid[2, 11] = b3Ver26;
+                        prefabGrid[2, 10] = b3Ver26;
                         break;
                 
                     case 11:
@@ -295,6 +304,7 @@ public class TextureAssigner : MonoBehaviour
     public GameObject GetRoom(bool isTop, bool isBot, bool isLeft, bool isRight)
     {
         int currentRegion = LevelManager.Instance.GetBiome();
+        Debug.Log("Region : "+currentRegion);
         
         int a = 1;
         int b = 1;
@@ -344,14 +354,9 @@ public class TextureAssigner : MonoBehaviour
         }
         else
         {
-            Debug.Log("List Counts");
-            for (int i = 0; i < 15; i++)
-            {
-                Debug.Log(prefabGrid[currentRegion, i]);
-            }
-            
             switch (spriteNumber)
             {
+                
                 case 2 * 3 * 5 * 7: //210
                     CheckRefill(currentRegion,0);
                     return prefabGrid[currentRegion, 0][Random.Range(0, prefabGrid[currentRegion, 0].Count)];
@@ -421,13 +426,13 @@ public class TextureAssigner : MonoBehaviour
 
     private void CheckRefill(int b, int n)
     {
+        /*
         if (prefabGrid[b, n].Count < 1)
         {
             RefillPool(b, n);
         }
-        
+        */
     }
-    
     
     
     
