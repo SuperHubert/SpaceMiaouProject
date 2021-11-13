@@ -12,6 +12,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] protected State currentState;
 
+    [SerializeField] private bool respawn = true;
+    
     protected int actionCdMax;
     protected int actionCd;
     
@@ -23,6 +25,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     private GameObject sleepTrigger;
     private GameObject respawnTrigger;
     private GameObject trigger;
+    
 
     protected void InitVariables()
     {
@@ -65,6 +68,12 @@ public abstract class EnemyBehaviour : MonoBehaviour
         sleepTrigger.SetActive(false);
         respawnTrigger.SetActive(true);
         
+        if (respawn && (LevelManager.Instance.Player().transform.position - respawnTrigger.transform.position).magnitude * 4 > respawnTrigger.transform.localScale.x)
+        {
+            Respawn();
+            return;
+        }
+        
         enemy.gameObject.SetActive(false);
         
         currentState = State.Dead;
@@ -74,6 +83,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public virtual void Respawn()
     {
+        if (!respawn) return;
+        
         respawnTrigger.SetActive(false);
 
         enemy.position = respawnTrigger.transform.position;

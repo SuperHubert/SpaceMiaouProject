@@ -431,6 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPerformingAction: 0
   currentState: 0
+  respawn: 1
 --- !u!1 &226136487 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9167739422473338115, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -1331,6 +1332,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 572364790}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: numberOfRooms
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6520009499888700270, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: HpList.Array.data[0]
       value: 
@@ -1442,7 +1447,7 @@ Transform:
   m_GameObject: {fileID: 1978077831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 250, y: 250, z: 1}
   m_Children: []
   m_Father: {fileID: 219982931}
   m_RootOrder: 1
