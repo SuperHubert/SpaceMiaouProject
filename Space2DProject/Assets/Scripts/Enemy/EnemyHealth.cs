@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    //Health
     [SerializeField]private int maxHealth = 3;
     [SerializeField]private int currentHealth;
 
@@ -19,8 +18,6 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        
-        enemyAnimator.SetTrigger("Hurt");
         
         if (currentHealth <= 0)
         {
@@ -37,8 +34,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Enemy died");
-        
         enemyAnimator.SetBool("IsDead", true);
         
         enemyBehaviour.Die();
