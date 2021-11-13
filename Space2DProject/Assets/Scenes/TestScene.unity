@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6964959226719486446, guid: 5215e99e4a5ee7448b415db4801f93bf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7398960008361233100, guid: 5215e99e4a5ee7448b415db4801f93bf, type: 3}
       propertyPath: m_IsActive
@@ -409,7 +409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219982930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: -2, z: 0}
+  m_LocalPosition: {x: 22.65, y: -10.81, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4521044081131368923}
@@ -429,9 +429,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2e432f9834ac849b31467b0218dc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPerformingAction: 0
   currentState: 0
   respawn: 1
+  hasAction: 1
+  actionCdMax: 10
+  actionCd: 0
+  isPerformingAction: 0
 --- !u!1 &226136487 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9167739422473338115, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -1326,7 +1329,7 @@ PrefabInstance:
       objectReference: {fileID: 941791982}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: mainCamera
@@ -1930,7 +1933,7 @@ Transform:
   m_GameObject: {fileID: 8305122162679489157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 22, y: 22, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1509534749860626081}
   m_RootOrder: 0
@@ -1974,7 +1977,7 @@ Transform:
   m_GameObject: {fileID: 300084585351161607}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 1509534749860626081}
   m_RootOrder: 1

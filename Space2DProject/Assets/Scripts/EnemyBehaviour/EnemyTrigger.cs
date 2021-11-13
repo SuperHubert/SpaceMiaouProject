@@ -8,10 +8,15 @@ public class EnemyTrigger : MonoBehaviour
     private enum Trigger {WakeUp, Sleep, Respawn, Action}
 
     [SerializeField] private Trigger state;
+    [SerializeField] private bool showTrigger;
     private EnemyBehaviour enemy;
+    private SpriteRenderer sprite;
 
     private void Start()
     {
+        sprite = gameObject.GetComponent<SpriteRenderer>();
+        sprite.enabled = showTrigger;
+        
         var parent = transform.parent;
         enemy = state == Trigger.Respawn ? parent.gameObject.GetComponent<EnemyBehaviour>() : parent.parent.parent.gameObject.GetComponent<EnemyBehaviour>();
     }
@@ -41,5 +46,12 @@ public class EnemyTrigger : MonoBehaviour
                 break;
 
         }
+    }
+
+    public bool ShowTrigger(bool b)
+    {
+        showTrigger = b;
+        sprite.enabled = showTrigger;
+        return sprite.enabled;
     }
 }

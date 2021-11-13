@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RangeEnemyBehaviour : MonoBehaviour, IEnemy
+public class RangeEnemyBehaviour : MonoBehaviour
 {
     [SerializeField] private Transform targetTransform;
     private Vector3 targetPosition;

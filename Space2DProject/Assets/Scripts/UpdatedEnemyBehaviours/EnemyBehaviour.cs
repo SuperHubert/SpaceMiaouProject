@@ -7,47 +7,57 @@ using UnityEngine.AI;
 public abstract class EnemyBehaviour : MonoBehaviour
 {
     protected enum State {Asleep, Awake, Dead};
-
-    public bool isPerformingAction = false;
-
+    
     [SerializeField] protected State currentState;
 
     [SerializeField] private bool respawn = true;
+
+    [SerializeField] protected bool hasAction;
+    [SerializeField] protected int actionCdMax;
+    [SerializeField] protected int actionCd;
+    [SerializeField] protected bool isPerformingAction = false;
+
+    protected NavMeshAgent agent;
+    protected EnemyHealth health;
+    [SerializeField] protected Transform player;
     
-    protected int actionCdMax;
-    protected int actionCd;
-    
-    private NavMeshAgent agent;
-    private EnemyHealth health;
-    
-    private Transform enemy;
+    [SerializeField] protected Transform enemy;
     private GameObject wakeUpTrigger;
     private GameObject sleepTrigger;
     private GameObject respawnTrigger;
-    private GameObject trigger;
+    private GameObject actionTrigger;
     
 
     protected void InitVariables()
     {
+        enemy = transform.GetChild(0);
+        
         agent = transform.GetChild(0).GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.SetDestination(transform.position);
-
-        enemy = transform.GetChild(0);
+        agent.SetDestination(enemy.position);
         
         health = enemy.gameObject.GetComponent<EnemyHealth>();
         
         (wakeUpTrigger = enemy.GetChild(0).GetChild(0).gameObject).SetActive(true);
         (sleepTrigger = enemy.GetChild(0).GetChild(1).gameObject).SetActive(false);
-        ( trigger= enemy.GetChild(0).GetChild(2).gameObject).SetActive(false);
+        (actionTrigger= enemy.GetChild(0).GetChild(2).gameObject).SetActive(false);
         (respawnTrigger = transform.GetChild(1).gameObject).SetActive(false);
+
+        player = LevelManager.Instance.Player().transform;
+        
+        if (hasAction)
+        {
+            actionCd = 0;
+            isPerformingAction = false;
+        }
     }
     
     public virtual void WakeUp()
     {
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(true);
+        actionTrigger.SetActive(hasAction);
         
         currentState = State.Awake;
     }
@@ -56,6 +66,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         sleepTrigger.SetActive(false);
         wakeUpTrigger.SetActive(true);
+        actionTrigger.SetActive(false);
+
+        agent.SetDestination(transform.position);
         
         currentState = State.Asleep;
         isPerformingAction = false;
@@ -66,7 +79,10 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(false);
+        actionTrigger.SetActive(false);
         respawnTrigger.SetActive(true);
+        
+        isPerformingAction = false;
         
         if (respawn && (LevelManager.Instance.Player().transform.position - respawnTrigger.transform.position).magnitude * 4 > respawnTrigger.transform.localScale.x)
         {
@@ -77,20 +93,14 @@ public abstract class EnemyBehaviour : MonoBehaviour
         enemy.gameObject.SetActive(false);
         
         currentState = State.Dead;
-        isPerformingAction = false;
-        
     }
 
     public virtual void Respawn()
     {
         if (!respawn) return;
         
-        respawnTrigger.SetActive(false);
-
-        enemy.position = respawnTrigger.transform.position;
-        
         enemy.gameObject.SetActive(true);
-        
+        enemy.position = respawnTrigger.transform.position;
         health.InitEnemy();
         
         currentState = State.Asleep;
@@ -99,14 +109,15 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public void ExecuteAction()
     {
-        if (actionCd == 0)
-        {
-            Action();
-        }
+        if (actionCd != 0) return;
+        isPerformingAction = true;
+        actionCd = actionCdMax;
+        Action();
     }
 
     public virtual void Action()
     {
+        if (isPerformingAction) return;
         Debug.Log("Action");
     }
 
