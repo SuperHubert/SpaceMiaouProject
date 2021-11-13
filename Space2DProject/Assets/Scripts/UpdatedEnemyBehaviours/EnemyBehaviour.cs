@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EnemyBehaviour : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     protected int actionCdMax;
     protected int actionCd;
-
-    public Vector3 spawnPoint;
-
+    
+    private NavMeshAgent agent;
+    private EnemyHealth health;
+    
+    private Transform enemy;
     private GameObject wakeUpTrigger;
     private GameObject sleepTrigger;
     private GameObject respawnTrigger;
@@ -23,42 +26,64 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     protected void InitVariables()
     {
-        Debug.Log(transform.GetChild(0));
-        (wakeUpTrigger = transform.GetChild(0).GetChild(0).gameObject).SetActive(true);
-        (sleepTrigger = transform.GetChild(0).GetChild(1).gameObject).SetActive(false);
-        (respawnTrigger = transform.GetChild(0).GetChild(2).gameObject).SetActive(false);
-        (trigger = transform.parent.GetChild(1).gameObject).SetActive(false);
+        agent = transform.GetChild(0).GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.SetDestination(transform.position);
+
+        enemy = transform.GetChild(0);
+        
+        health = enemy.gameObject.GetComponent<EnemyHealth>();
+        
+        (wakeUpTrigger = enemy.GetChild(0).GetChild(0).gameObject).SetActive(true);
+        (sleepTrigger = enemy.GetChild(0).GetChild(1).gameObject).SetActive(false);
+        ( trigger= enemy.GetChild(0).GetChild(2).gameObject).SetActive(false);
+        (respawnTrigger = transform.GetChild(1).gameObject).SetActive(false);
     }
     
     public virtual void WakeUp()
     {
-        currentState = State.Awake;
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(true);
+        
+        currentState = State.Awake;
     }
 
     public virtual void Sleep()
     {
+        sleepTrigger.SetActive(false);
+        wakeUpTrigger.SetActive(true);
+        
         currentState = State.Asleep;
         isPerformingAction = false;
-        wakeUpTrigger.SetActive(true);
-        sleepTrigger.SetActive(false);
+        
     }
 
     public virtual void Die()
     {
-        currentState = State.Dead;
-        isPerformingAction = false;
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(false);
         respawnTrigger.SetActive(true);
-        gameObject.SetActive(false);
+        
+        enemy.gameObject.SetActive(false);
+        
+        currentState = State.Dead;
+        isPerformingAction = false;
+        
     }
 
     public virtual void Respawn()
     {
+        respawnTrigger.SetActive(false);
+
+        enemy.position = respawnTrigger.transform.position;
+        
+        enemy.gameObject.SetActive(true);
+        
+        health.InitEnemy();
+        
         currentState = State.Asleep;
-        gameObject.SetActive(true);
+        
     }
 
     public void ExecuteAction()

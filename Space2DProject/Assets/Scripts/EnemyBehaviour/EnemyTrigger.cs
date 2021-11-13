@@ -12,7 +12,8 @@ public class EnemyTrigger : MonoBehaviour
 
     private void Start()
     {
-        enemy = transform.parent.parent.gameObject.GetComponent<EnemyBehaviour>();
+        var parent = transform.parent;
+        enemy = state == Trigger.Respawn ? parent.gameObject.GetComponent<EnemyBehaviour>() : parent.parent.parent.gameObject.GetComponent<EnemyBehaviour>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

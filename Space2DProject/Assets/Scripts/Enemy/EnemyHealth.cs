@@ -5,43 +5,42 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     //Health
-    public int maxHealth = 3;
-    public int currentHealth;
-    
-    //Animator
-    public Animator enemyAnimator;
+    [SerializeField]private int maxHealth = 3;
+    [SerializeField]private int currentHealth;
+
+    private Animator enemyAnimator;
+    private EnemyBehaviour enemyBehaviour;
     
     void Start()
     {
-        currentHealth = maxHealth;
+        InitEnemy();
     }
-
     
     public void TakeDamage(int damage)
     {
-        //Damage
         currentHealth -= damage;
         
-        //Hurt Animation
         enemyAnimator.SetTrigger("Hurt");
         
-        //Death
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    public void Die()
+    public void InitEnemy()
+    {
+        currentHealth = maxHealth;
+        enemyAnimator = gameObject.GetComponent<Animator>();
+        enemyBehaviour = transform.parent.gameObject.GetComponent<EnemyBehaviour>();
+    }
+
+    private void Die()
     {
         Debug.Log("Enemy died");
         
-        //Die Animation
         enemyAnimator.SetBool("IsDead", true);
         
-        //Disable Enemy
-        GetComponent<CircleCollider2D>().enabled = false;
-        this.enabled = false;
-        gameObject.SetActive(false);
+        enemyBehaviour.Die();
     }
 }
