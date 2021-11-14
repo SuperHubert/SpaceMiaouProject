@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences = new Queue<string>();
 
     [SerializeField] private bool instantDisplay = false;
+    private AudioManager am;
     
     #region Singleton
     public static DialogueManager Instance;
@@ -29,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     {
         speaker = dialogueCanvas.transform.GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
         dialogueText = dialogueCanvas.transform.GetChild(0).GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
+        am = AudioManager.Instance;
     }
 
     public void StartDialogue(Dialogues dialogue)
@@ -79,6 +81,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
+            am.Play(0);
             yield return null;
         }
     }
@@ -86,16 +89,5 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
-    }
-    
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            DisplayNextSentence();
-        }
     }
 }
