@@ -17,6 +17,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
             isPerformingAction = false;
             agent.acceleration = 8;
             agent.speed = 3.5f;
+            actionTrigger.SetActive(true);
         }
         
         if (currentState == State.Awake && !isPerformingAction)

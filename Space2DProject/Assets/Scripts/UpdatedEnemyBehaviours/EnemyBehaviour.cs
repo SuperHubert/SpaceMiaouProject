@@ -10,7 +10,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     
     [SerializeField] protected State currentState;
 
-    [SerializeField] private bool respawn = true;
+    [SerializeField] protected bool respawn = true;
 
     [SerializeField] protected bool hasAction;
     [SerializeField] protected int actionCdMax;
@@ -22,10 +22,10 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected Transform player;
     
     protected Transform enemy;
-    private GameObject wakeUpTrigger;
-    private GameObject sleepTrigger;
-    private GameObject respawnTrigger;
-    private GameObject actionTrigger;
+    protected GameObject wakeUpTrigger;
+    protected GameObject sleepTrigger;
+    protected GameObject respawnTrigger;
+    protected GameObject actionTrigger;
 
 
     private void Start()
@@ -119,6 +119,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         if (actionCd != 0) return;
         isPerformingAction = true;
         actionCd = actionCdMax;
+        actionTrigger.SetActive(false);
         Action();
     }
 

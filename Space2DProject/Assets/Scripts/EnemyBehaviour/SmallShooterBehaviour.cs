@@ -27,6 +27,18 @@ public class SmallShooterBehaviour : EnemyBehaviour
         
     }
     
+    public override void Action()
+    {
+        base.Action();
+        StartCoroutine(RunAway());
+    }
+
+    IEnumerator RunAway()
+    {
+        agent.SetDestination(enemy.position + (enemy.position - player.position).normalized * 3);
+        yield return null;
+    }
+    
     private void LookAt(Transform target)
     {
         Vector3 dir = target.position - enemy.position;
