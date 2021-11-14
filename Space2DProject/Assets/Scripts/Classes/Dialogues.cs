@@ -6,6 +6,7 @@ using UnityEngine;
 public class Dialogues
 {
     public string characterName;
+    public Sprite characterImage;
     
     [TextArea(3,10)]
     public List<string> sentences = new List<string>();
