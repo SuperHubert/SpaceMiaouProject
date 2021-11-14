@@ -13,29 +13,34 @@ public class SmallShooterBehaviour : EnemyBehaviour
     {
         if(currentState != State.Awake) return;
         LookAt(player);
-        
-        if (shootCd > 0) 
-        { 
-            shootCd--;
+        if (!IsStopped()) return;
+        if (isPerformingAction)
+        {
+            isPerformingAction = false;
         }
         else
         {
-            ShootBullet();
-            shootCd = shootCdMax;
+            if (shootCd > 0) 
+            { 
+                shootCd--;
+            }
+            else
+            {
+                ShootBullet();
+                shootCd = shootCdMax;
+            }
         }
-        
-        
     }
     
     public override void Action()
     {
-        if (isPerformingAction) return;
+        shootCd = shootCdMax;
         RunAway();
     }
 
     private void RunAway()
     {
-        agent.SetDestination(enemy.position + (enemy.position - player.position).normalized * 3);
+        agent.SetDestination(enemy.position + (enemy.position - player.position).normalized * 1);
     }
     
     private void LookAt(Transform target)
@@ -51,5 +56,12 @@ public class SmallShooterBehaviour : EnemyBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = (player.position - enemy.position).normalized*bulletSpeed;
         bullet.GetComponent<BulletDamage>().SetBulletDamage(bulletDamage);
         bullet.layer = 11;
+    }
+    
+    private bool IsStopped()
+    {
+        if (agent.pathPending) return false;
+        if (!(agent.remainingDistance <= agent.stoppingDistance)) return false;
+        return !agent.hasPath || agent.velocity.sqrMagnitude == 0f;
     }
 }

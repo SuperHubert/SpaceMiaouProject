@@ -31,6 +31,12 @@ public class EnemyTrigger : MonoBehaviour
             case Trigger.Action:
                 enemy.ExecuteAction();
                 break;
+            case Trigger.Sleep:
+                break;
+            case Trigger.Respawn:
+                break;
+            default:
+                break;
         }
     }
 
@@ -44,13 +50,19 @@ public class EnemyTrigger : MonoBehaviour
             case Trigger.Respawn:
                 enemy.Respawn();
                 break;
-
+            case Trigger.WakeUp:
+                break;
+            case Trigger.Action:
+                break;
+            default:
+                break;
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (state != Trigger.Action) return;
+        Debug.Log("staying)");
         enemy.ExecuteAction();
     }
 
