@@ -399,16 +399,12 @@ public class ConsoleManager : MonoBehaviour
 
         ENEMYLIST = new Commands("enemylist", "Get the list of all enemies", "enemylist", () =>
         {
-            int id = 1;
-            string enemyName = "name";
-            Print(id + " "+enemyName);
+            lb.gameObject.GetComponent<EnemyManager>().GetList();
         });
 
         SPAWNENEMY = new Commands<int,float,float>("spawn", "Summons an enemy", "spawn int<enemy id> float<x coordinate> float<y coordinate>", (id,x,y) =>
         {
-            //GameObject enemy = Instantiate(enemylist[id],new Vector3(x, y, 0),Quaternion.identity);
-
-            Print("Spawned "+"enemyName"+" at " + x + " " + y);
+            Print("Spawned "+lb.gameObject.GetComponent<EnemyManager>().SpawnEnemy(id, x, y).name+" at " + x + " " + y);
         });
         
         TOGGLESHOWTRIGGERS = new Commands("showtriggers", "Toggles rendering of enemy triggers", "showtriggers", () =>
@@ -417,7 +413,7 @@ public class ConsoleManager : MonoBehaviour
             
             IEnumerator ActivateTriggers()
             {
-                bool b = true;
+                var b = true;
                 foreach (Transform enemy in lb.Level().GetChild(1))
                 {
                     foreach (Transform trigger in enemy.GetChild(0).GetChild(0))
@@ -437,7 +433,7 @@ public class ConsoleManager : MonoBehaviour
                         }
                     }
 
-                    GameObject respawnTrigger = enemy.GetChild(1).gameObject;
+                    var respawnTrigger = enemy.GetChild(1).gameObject;
                     
                     if (respawnTrigger.activeSelf)
                     {

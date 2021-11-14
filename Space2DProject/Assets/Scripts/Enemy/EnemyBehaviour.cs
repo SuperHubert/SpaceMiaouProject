@@ -50,12 +50,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
         (respawnTrigger = transform.GetChild(1).gameObject).SetActive(false);
 
         player = LevelManager.Instance.Player().transform;
+
+        if (!hasAction) return;
         
-        if (hasAction)
-        {
-            actionCd = 0;
-            isPerformingAction = false;
-        }
+        actionCd = 0;
+        isPerformingAction = false;
     }
     
     public virtual void WakeUp()
@@ -116,7 +115,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public void ExecuteAction()
     {
-        if (actionCd != 0) return;
+        if (actionCd != 0 || !hasAction) return;
         isPerformingAction = true;
         actionCd = actionCdMax;
         Action();

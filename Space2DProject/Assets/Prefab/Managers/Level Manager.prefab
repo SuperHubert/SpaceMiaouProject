@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5940852392271806990}
   - component: {fileID: 5940852392271806991}
   - component: {fileID: 2066300090379407896}
+  - component: {fileID: 4883749890520021249}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -329,9 +330,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deeaf9553bc9bbf479e4e920e3255ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateOnStart: 1
   player: {fileID: 0}
   mainCamera: {fileID: 0}
   firstSeed: 69
   numberOfRooms: 16
   seedList: 
   floorNumber: 0
+  maxFloors: 3
+--- !u!114 &4883749890520021249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940852392271807217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b0a7621478d1842a2adcaf2b081cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyList:
+  - {fileID: 128166408706211309, guid: a78d5314158ed924abcde0f1c3d134a3, type: 3}
+  - {fileID: 4115104951797607834, guid: 85e0626ada38dca489529694ffcaa364, type: 3}
+  - {fileID: 34894788747437887, guid: 01b2288c4929f1047b90e64fea9a23e3, type: 3}
