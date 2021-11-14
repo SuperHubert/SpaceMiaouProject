@@ -29,14 +29,13 @@ public class SmallShooterBehaviour : EnemyBehaviour
     
     public override void Action()
     {
-        base.Action();
-        StartCoroutine(RunAway());
+        if (isPerformingAction) return;
+        RunAway();
     }
 
-    IEnumerator RunAway()
+    private void RunAway()
     {
         agent.SetDestination(enemy.position + (enemy.position - player.position).normalized * 3);
-        yield return null;
     }
     
     private void LookAt(Transform target)
@@ -50,7 +49,6 @@ public class SmallShooterBehaviour : EnemyBehaviour
     {
         bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", enemy.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = (player.position - enemy.position).normalized*bulletSpeed;
-        ConsoleManager.Instance.Print(bullet.GetComponent<Rigidbody2D>().velocity.ToString());
         bullet.GetComponent<BulletDamage>().SetBulletDamage(bulletDamage);
         bullet.layer = 11;
     }

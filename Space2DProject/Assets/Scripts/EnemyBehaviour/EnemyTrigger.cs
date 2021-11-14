@@ -48,6 +48,12 @@ public class EnemyTrigger : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (state != Trigger.Action) return;
+        enemy.ExecuteAction();
+    }
+
     public bool ToggleShowTrigger()
     {
         showTrigger = !showTrigger;

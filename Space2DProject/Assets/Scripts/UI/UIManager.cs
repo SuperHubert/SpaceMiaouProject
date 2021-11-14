@@ -20,27 +20,23 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHpUI(int pvAvant,int pvApres)
     {
-        Debug.Log(pvAvant + " " + pvApres);
-
-        if (!(pvAvant == pvApres))
+        if (pvAvant == pvApres) return;
+        if (pvAvant > pvApres)
         {
-            if (pvAvant > pvApres)
-            {
 
-                for (int i = pvAvant - 1; i > pvApres - 1; i--)
-                {
-                    HpList[i].GetComponent<Animator>().SetTrigger("Off");
-                }
-            }
-            else
+            for (int i = pvAvant - 1; i > pvApres - 1; i--)
             {
-                for (int i = pvAvant; i < pvApres; i++)
-                {
-                    HpList[i].GetComponent<Animator>().SetTrigger("On");
-                }
+                HpList[i].GetComponent<Animator>().SetTrigger("Off");
             }
         }
-        
+        else
+        {
+            for (int i = pvAvant; i < pvApres; i++)
+            {
+                HpList[i].GetComponent<Animator>().SetTrigger("On");
+            }
+        }
+
     }
 
 }

@@ -119,14 +119,13 @@ public abstract class EnemyBehaviour : MonoBehaviour
         if (actionCd != 0) return;
         isPerformingAction = true;
         actionCd = actionCdMax;
-        actionTrigger.SetActive(false);
         Action();
     }
 
     public virtual void Action()
     {
         if (isPerformingAction) return;
-        Debug.Log("Action");
+        actionTrigger.SetActive(false);
     }
 
 }
