@@ -10,12 +10,15 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI speaker;
     private TextMeshProUGUI dialogueText;
 
-    private Coroutine runningCoroutine;
-
+    private Coroutine typingCoroutine;
+    
     private Queue<string> sentences = new Queue<string>();
 
     [SerializeField] private bool instantDisplay = false;
+    [SerializeField] private float timeBetweenLetters = 0.005f;
     private AudioManager am;
+    private bool isDoneTyping = true;
+    private Coroutine soundCoroutine;
     
     #region Singleton
     public static DialogueManager Instance;
@@ -67,23 +70,40 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         
-        if (runningCoroutine != null)
+        if (typingCoroutine != null)
         {
-            StopCoroutine(runningCoroutine);
+            StopCoroutine(typingCoroutine);
         }
         
-        runningCoroutine = StartCoroutine(TypeSentence(sentence));
+        if (soundCoroutine != null)
+        {
+            StopCoroutine(soundCoroutine);
+        }
+        
+        typingCoroutine = StartCoroutine(TypeSentence(sentence));
+        soundCoroutine = StartCoroutine(PlayTypingSound());
     }
-
-    IEnumerator TypeSentence(string sentence)
+    
+    private IEnumerator PlayTypingSound()
+    {
+        do
+        {
+            am.Play(0);
+            yield return new WaitForSeconds(0.2f);
+        } while (!isDoneTyping);
+        
+    }
+    
+    private IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
+        isDoneTyping = false;
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            am.Play(0);
-            yield return null;
+            yield return new WaitForSeconds(timeBetweenLetters);;
         }
+        isDoneTyping = true;
     }
 
     void EndDialogue()

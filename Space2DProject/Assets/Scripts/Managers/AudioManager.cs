@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
         }
         #endregion
         
-        foreach (Sound s in sounds)
+        foreach (var s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -44,15 +44,14 @@ public class AudioManager : MonoBehaviour
     public void Play(int id)
     {
         if(id>=sounds.Count || id<0) return;
-        if(sounds[id].source.isPlaying) return;
+        //if(sounds[id].source.isPlaying) return;
         sounds[id].source.Play();
     }
 
-    private void Update()
+    public void Stop(int id)
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Play(0);
-        }
+        if(id>=sounds.Count || id<0) return;
+        //if(sounds[id].source.isPlaying) return;
+        sounds[id].source.Stop();
     }
 }
