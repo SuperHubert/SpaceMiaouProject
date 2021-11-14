@@ -15,20 +15,25 @@ public abstract class EnemyBehaviour : MonoBehaviour
     [SerializeField] protected bool hasAction;
     [SerializeField] protected int actionCdMax;
     [SerializeField] protected int actionCd;
-    [SerializeField] protected bool isPerformingAction = false;
+    protected bool isPerformingAction = false;
 
     protected NavMeshAgent agent;
     protected EnemyHealth health;
-    [SerializeField] protected Transform player;
+    protected Transform player;
     
-    [SerializeField] protected Transform enemy;
+    protected Transform enemy;
     private GameObject wakeUpTrigger;
     private GameObject sleepTrigger;
     private GameObject respawnTrigger;
     private GameObject actionTrigger;
-    
 
-    protected void InitVariables()
+
+    private void Start()
+    {
+        InitVariables();
+    }
+
+    protected virtual void InitVariables()
     {
         enemy = transform.GetChild(0);
         

@@ -1,27 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBehaviour : EnemyBehaviour
+public class SmallDashingBehaviour : EnemyBehaviour
 {
-    // Start is called before the first frame update
-    
-    public GameObject epic;
-        
-    private void Start()
-    {
-        InitVariables();
-    }
-
-    public override void Action()
-    {
-        base.Action();
-        StartCoroutine(DashAttack());
-    }
-
     private void Update()
     {
+        if(currentState != State.Awake) return;
+        
         if (actionCd > 0)
         {
             actionCd--;
@@ -37,6 +23,12 @@ public class TestBehaviour : EnemyBehaviour
         {
             agent.SetDestination(player.position);
         }
+    }
+    
+    public override void Action()
+    {
+        base.Action();
+        StartCoroutine(DashAttack());
     }
 
     private IEnumerator DashAttack()

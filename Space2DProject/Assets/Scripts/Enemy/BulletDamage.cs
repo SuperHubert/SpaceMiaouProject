@@ -9,7 +9,11 @@ public class BulletDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        LifeManager.Instance.TakeDamages(bulletDamage);
+        if (other.gameObject.layer == 6)
+        {
+            LifeManager.Instance.TakeDamages(bulletDamage);
+        }
+        
         gameObject.SetActive(false);
     }
     
