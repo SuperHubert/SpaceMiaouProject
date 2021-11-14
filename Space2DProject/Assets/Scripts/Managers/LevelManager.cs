@@ -131,6 +131,17 @@ public class LevelManager : MonoBehaviour
 
         canGenerate = true;
     }
+
+    IEnumerator CurrentLevel()
+    {
+        ClearLevel();
+
+        yield return null;
+        
+        generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
+
+        canGenerate = true;
+    }
     
     IEnumerator ResetRun(int rooms, int seed)
     {
@@ -151,11 +162,9 @@ public class LevelManager : MonoBehaviour
 
         if (floorNumber < maxFloors)
         {
-            if (canGenerate)
-            {
-                canGenerate = false;
-                StartCoroutine(NewLevel());
-            }
+            if (!canGenerate) return;
+            canGenerate = false;
+            StartCoroutine(NewLevel());
         }
         else
         {
@@ -168,11 +177,16 @@ public class LevelManager : MonoBehaviour
 
     public void GeneratePreviousLevel()
     {
-        if (canGenerate)
-        {
-            canGenerate = false;
-            StartCoroutine(PreviousLevel());
-        }
+        if (!canGenerate) return;
+        canGenerate = false;
+        StartCoroutine(PreviousLevel());
+    }
+
+    public void ReloadLevel()
+    {
+        if (!canGenerate) return;
+        canGenerate = false;
+        StartCoroutine(CurrentLevel());
     }
 
     public GameObject Player()

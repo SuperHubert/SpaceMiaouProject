@@ -60,6 +60,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if (!dialogueCanvas.activeSelf)
+        {
+            dialogueCanvas.SetActive(true);
+        }
+        
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -113,5 +118,11 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
+    }
+
+    public bool ToggleInstantTyping()
+    {
+        instantDisplay = !instantDisplay;
+        return instantDisplay;
     }
 }
