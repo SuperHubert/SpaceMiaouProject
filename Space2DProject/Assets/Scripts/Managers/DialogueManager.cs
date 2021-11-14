@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialogueCanvas;
     private TextMeshProUGUI speaker;
     private TextMeshProUGUI dialogueText;
+    private Image portraitRender;
 
     private Coroutine typingCoroutine;
     
@@ -33,6 +34,8 @@ public class DialogueManager : MonoBehaviour
     {
         speaker = dialogueCanvas.transform.GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
         dialogueText = dialogueCanvas.transform.GetChild(0).GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
+        portraitRender = dialogueCanvas.transform.GetChild(0).GetChild(1).GetChild(0).gameObject
+            .GetComponent<Image>();
         am = AudioManager.Instance;
     }
 
@@ -41,7 +44,8 @@ public class DialogueManager : MonoBehaviour
         dialogueCanvas.SetActive(true);
         
         speaker.text = dialogue.characterName;
-        
+        portraitRender.sprite = dialogue.characterImage;
+
         sentences.Clear();
 
         foreach (var sentence in dialogue.sentences)
