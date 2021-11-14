@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 771193293}
   - component: {fileID: 771193292}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Loading Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,8 +356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 771193291}
-  backgroundImage: {fileID: 0}
-  progressBar: {fileID: 1389029271}
 --- !u!1 &8013728393671299275
 GameObject:
   m_ObjectHideFlags: 0
