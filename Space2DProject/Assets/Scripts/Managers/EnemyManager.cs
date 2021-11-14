@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -16,23 +17,30 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    public GameObject SpawnEnemy(int id, float x, float y)
+    public void SpawnEnemy(int id, float x, float y)
     {
-        Instantiate(enemyList[id],new Vector3(x, y, 0),Quaternion.identity);
-        
-        return enemyList[id];
-    }
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+        if (id >= enemyList.Count)
+        {
+            ConsoleManager.Instance.Print("Invalid id, use 'enemylist' for a list of all enemies");
+            return;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        var spawnPoint = new Vector3(x, y, 0);
+
+        if (!IsOnNavMesh(spawnPoint))
+        {
+            ConsoleManager.Instance.Print("Invalid Coordinates, must be in the region");
+            return;
+        }
         
+        Instantiate(enemyList[id],spawnPoint, Quaternion.identity,LevelManager.Instance.Level().GetChild(1));
+
+        ConsoleManager.Instance.Print("Spawned " + enemyList[id].name + " at " + x + " " + y);
+        ConsoleManager.Instance.Print("Kind of Broken");
+    }
+    
+    private bool IsOnNavMesh(Vector3 targetDestination)
+    {
+        return NavMesh.SamplePosition(targetDestination, out _, 1f, NavMesh.AllAreas);
     }
 }

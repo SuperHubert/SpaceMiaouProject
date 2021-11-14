@@ -404,7 +404,7 @@ public class ConsoleManager : MonoBehaviour
 
         SPAWNENEMY = new Commands<int,float,float>("spawn", "Summons an enemy", "spawn int<enemy id> float<x coordinate> float<y coordinate>", (id,x,y) =>
         {
-            Print("Spawned "+lb.gameObject.GetComponent<EnemyManager>().SpawnEnemy(id, x, y).name+" at " + x + " " + y);
+            lb.gameObject.GetComponent<EnemyManager>().SpawnEnemy(id,x,y);
         });
         
         TOGGLESHOWTRIGGERS = new Commands("showtriggers", "Toggles rendering of enemy triggers", "showtriggers", () =>
