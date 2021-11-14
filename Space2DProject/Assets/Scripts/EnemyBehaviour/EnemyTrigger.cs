@@ -48,9 +48,9 @@ public class EnemyTrigger : MonoBehaviour
         }
     }
 
-    public bool ShowTrigger(bool b)
+    public bool ToggleShowTrigger()
     {
-        showTrigger = b;
+        showTrigger = !showTrigger;
         sprite.enabled = showTrigger;
         return sprite.enabled;
     }

@@ -77,6 +77,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public virtual void Die()
     {
+        agent.SetDestination(transform.position);
+        
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(false);
         actionTrigger.SetActive(false);

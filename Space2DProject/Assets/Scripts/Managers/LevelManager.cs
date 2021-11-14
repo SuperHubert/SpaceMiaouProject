@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
 {
     private GenerationSimpleHalf generator;
 
+    [SerializeField] private bool generateOnStart = true;
+
     [SerializeField] private Transform player;
     [SerializeField] private Transform mainCamera;
     
@@ -37,7 +39,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         generator = gameObject.GetComponent<GenerationSimpleHalf>();
-        
+
+        if (!generateOnStart) return;
         StartNewRun(numberOfRooms,firstSeed);
     }
 

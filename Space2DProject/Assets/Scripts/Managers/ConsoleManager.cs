@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -72,6 +73,7 @@ public class ConsoleManager : MonoBehaviour
     private static Commands<int,float,float> SPAWNENEMY; //NEED ENEMY LIST
     private static Commands<int, float> DAMAGEENEMY; //Missing code
     private static Commands<int, float> KILLENEMY; //Missing code
+    private static Commands TOGGLESHOWTRIGGERS;
 
     //Items
     private static Commands ITEMLIST; //Missing some code
@@ -408,6 +410,52 @@ public class ConsoleManager : MonoBehaviour
 
             Print("Spawned "+"enemyName"+" at " + x + " " + y);
         });
+        
+        TOGGLESHOWTRIGGERS = new Commands("showtriggers", "Toggles rendering of enemy triggers", "showtriggers", () =>
+        {
+            StartCoroutine(ActivateTriggers());
+            
+            IEnumerator ActivateTriggers()
+            {
+                bool b = true;
+                foreach (Transform enemy in lb.Level().GetChild(1))
+                {
+                    foreach (Transform trigger in enemy.GetChild(0).GetChild(0))
+                    {
+                    
+                        if (trigger.gameObject.activeSelf)
+                        {
+                            trigger.gameObject.GetComponent<EnemyTrigger>().ToggleShowTrigger().ToString();
+                        }
+                        else
+                        {
+                            trigger.gameObject.SetActive(true);
+                            yield return null;
+                            trigger.gameObject.GetComponent<EnemyTrigger>().ToggleShowTrigger().ToString();
+                            yield return null;
+                            trigger.gameObject.SetActive(false);
+                        }
+                    }
+
+                    GameObject respawnTrigger = enemy.GetChild(1).gameObject;
+                    
+                    if (respawnTrigger.activeSelf)
+                    {
+                        b = respawnTrigger.GetComponent<EnemyTrigger>().ToggleShowTrigger();
+                    }
+                    else
+                    {
+                        respawnTrigger.SetActive(true);
+                        yield return null;
+                        b = respawnTrigger.GetComponent<EnemyTrigger>().ToggleShowTrigger();
+                        yield return null;
+                        respawnTrigger.SetActive(false);
+                    }
+                }
+
+                Print(b ? "Trigger rendering is now ON" : "Trigger rendering is now OFF");
+            }
+        });
 
         ITEMLIST = new Commands("itemlist", "Get the list of all interactible items", "itemlist", () =>
         {
@@ -508,6 +556,7 @@ public class ConsoleManager : MonoBehaviour
             SPAWNENEMY,
             //DAMAGEENEMY,
             //KILLENEMY,
+            TOGGLESHOWTRIGGERS,
             ITEMLIST,
             SPAWNITEM,
             DESTROYITEM,
