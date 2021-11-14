@@ -12,7 +12,18 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        #region Singleton Don't Destroy On Load
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        #endregion
         
         foreach (Sound s in sounds)
         {
@@ -20,17 +31,19 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
         }
     }
 
     public void Play(string id)
     {
-        Sound s = Array.Find<Sound>(sounds.ToArray(), sound => sound.name == id);
-        s.source.Play();
+        var s = Array.Find<Sound>(sounds.ToArray(), sound => sound.name == id);
+        s?.source.Play();
     }
     
     public void Play(int id)
     {
+        if(id>=sounds.Count || id<0) return;
         if(sounds[id].source.isPlaying) return;
         sounds[id].source.Play();
     }

@@ -29,6 +29,7 @@ public class LoadingManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
         
     }
