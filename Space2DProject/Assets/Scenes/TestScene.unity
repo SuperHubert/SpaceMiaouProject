@@ -188,7 +188,7 @@ SpriteRenderer:
   m_Size: {x: 50, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &4771107
@@ -1424,12 +1424,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    characterName: Nyaster X
-    characterImage: {fileID: 21300000, guid: 9a76f574ef85577449dbc57d48dca202, type: 3}
+    characterName: Bob
+    characterImage: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
     sentences:
-    - Salut a toi jeune entrepreneur
-    - Sais tu que je mange tes morts
-    - allez, a+
+    - Bonjour
+    - Je suis Bob
 --- !u!114 &1318879395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,11 +1994,11 @@ PrefabInstance:
       objectReference: {fileID: 572364790}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: numberOfRooms
-      value: 4
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: generateOnStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6520009499888700270, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: HpList.Array.data[0]
