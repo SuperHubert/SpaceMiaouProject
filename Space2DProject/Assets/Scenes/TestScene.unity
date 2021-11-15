@@ -1554,6 +1554,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 941791982}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: firstSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1631,7 +1635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: useOldMethod
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7484005596252100590, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_RootOrder
