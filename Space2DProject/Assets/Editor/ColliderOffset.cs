@@ -45,7 +45,7 @@ public class ColliderOffset : MonoBehaviour
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
     }
 
-    [MenuItem("Custom/PolygonCollider2D/2. Non Alignés +0.12")]
+    [MenuItem("Custom/PolygonCollider2D/2. Non Alignés +0.12 (+0.82 aux Alignés)")]
     private static void Offset12PolyPaths()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
@@ -90,7 +90,7 @@ public class ColliderOffset : MonoBehaviour
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
     }
     
-    [MenuItem("Custom/PolygonCollider2D/2. Non Alignés +0.82")]
+    [MenuItem("Custom/PolygonCollider2D/2. Non Alignés +0.82 (+0.12 aux Alignés)")]
     private static void Offset82PolyPaths()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
@@ -173,7 +173,7 @@ public class ColliderOffset : MonoBehaviour
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
     }
 
-    [MenuItem("Custom/EdgeCollider2D/2. Non Alignés +0.12")]
+    [MenuItem("Custom/EdgeCollider2D/2. Non Alignés +0.12 (+0.82 aux Alignés)")]
     private static void Offset82EdgePoints2()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
@@ -216,7 +216,7 @@ public class ColliderOffset : MonoBehaviour
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
     }
 
-    [MenuItem("Custom/EdgeCollider2D/2. Non Alignés +0.82")]
+    [MenuItem("Custom/EdgeCollider2D/2. Non Alignés +0.82 (+0.12 aux Alignés)")]
     private static void Offset12EdgePoints2()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
