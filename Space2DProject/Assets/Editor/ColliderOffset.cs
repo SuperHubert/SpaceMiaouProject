@@ -9,12 +9,10 @@ public class ColliderOffset : MonoBehaviour
 {
     #region PolygonColliders
     
-    [MenuItem("Assets/SuperNami/PolygonCollider2D/1. Alignement")]
+    [MenuItem("Custom/PolygonCollider2D/1. Alignement")]
     private static void SnapPolyPaths()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
-        var polygonCount = 0;
-        var pathCount = 0;
         foreach (var go in gos)
         {
             var polys = go.GetComponentsInChildren<PolygonCollider2D>(false);
@@ -37,26 +35,20 @@ public class ColliderOffset : MonoBehaviour
                         }
 
                         path[p] = new Vector2(x, y);
-                        pathCount++;
                     }
 
                     poly.SetPath(n, path);
                 }
-
-                polygonCount++;
             }
         }
 
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-        Debug.LogFormat("Snapped {0} paths across {1} poly colliders.", pathCount, polygonCount);
     }
 
-    [MenuItem("Assets/SuperNami/PolygonCollider2D/2. Non Alignés +0.12")]
+    [MenuItem("Custom/PolygonCollider2D/2. Non Alignés +0.12")]
     private static void Offset12PolyPaths()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
-        var polygonCount = 0;
-        var pathCount = 0;
         foreach (var go in gos)
         {
             var polys = go.GetComponentsInChildren<PolygonCollider2D>(false);
@@ -88,26 +80,20 @@ public class ColliderOffset : MonoBehaviour
                         }
 
                         path[p] = new Vector2(x, y);
-                        pathCount++;
                     }
 
                     poly.SetPath(n, path);
                 }
-
-                polygonCount++;
             }
         }
 
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-        Debug.LogFormat("Snapped {0} paths across {1} poly colliders.", pathCount, polygonCount);
     }
     
-    [MenuItem("Assets/SuperNami/PolygonCollider2D/2. Non Alignés +0.82")]
+    [MenuItem("Custom/PolygonCollider2D/2. Non Alignés +0.82")]
     private static void Offset82PolyPaths()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
-        var polygonCount = 0;
-        var pathCount = 0;
         foreach (var go in gos)
         {
             var polys = go.GetComponentsInChildren<PolygonCollider2D>(false);
@@ -139,30 +125,24 @@ public class ColliderOffset : MonoBehaviour
                         }
 
                         path[p] = new Vector2(x, y);
-                        pathCount++;
                     }
 
                     poly.SetPath(n, path);
                 }
-
-                polygonCount++;
             }
         }
 
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-        Debug.LogFormat("Snapped {0} paths across {1} poly colliders.", pathCount, polygonCount);
     }
     
     #endregion
 
     #region EdgeColliders
     
-    [MenuItem("Assets/SuperNami/EdgeCollider2D/1. Alignement")]
+    [MenuItem("Custom/EdgeCollider2D/1. Alignement")]
     private static void SnapEdgePoints()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
-        var edgeColliderCount = 0;
-        var pointCount = 0;
         foreach (var go in gos)
         {
             var edges = go.GetComponentsInChildren<EdgeCollider2D>(false);
@@ -177,26 +157,23 @@ public class ColliderOffset : MonoBehaviour
                     var x = pt.x;
                     var y = pt.y;
                     var rest = pt.y % 1;
-                    if (rest != 0 && rest != 0.82f && rest != 0.12f)
+                    if (rest != 0)
                     {
                         x = Mathf.Round(pt.x);
                         y = Mathf.Round(pt.y);
                     }
 
                     newPoints[pi] = new Vector2(x, y);
-                    pointCount++;
                 }
 
                 edge.points = newPoints;
-                edgeColliderCount++;
             }
         }
 
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-        Debug.LogFormat("Snapped {0} points across {1} edge colliders.", pointCount, edgeColliderCount);
     }
 
-    [MenuItem("Assets/SuperNami/EdgeCollider2D/2. Non Alignés +0.12")]
+    [MenuItem("Custom/EdgeCollider2D/2. Non Alignés +0.12")]
     private static void Offset82EdgePoints2()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
@@ -239,7 +216,7 @@ public class ColliderOffset : MonoBehaviour
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
     }
 
-    [MenuItem("Assets/SuperNami/EdgeCollider2D/2. Non Alignés +0.82")]
+    [MenuItem("Custom/EdgeCollider2D/2. Non Alignés +0.82")]
     private static void Offset12EdgePoints2()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
@@ -285,12 +262,10 @@ public class ColliderOffset : MonoBehaviour
     
     #region BoxPoly
     
-    [MenuItem("Assets/SuperNami/PolygonCollider2D/BOX +0.82 +0.12")]
+    [MenuItem("Custom/PolygonCollider2D/BOX +0.82 +0.12")]
     private static void OffsetBoxPolyPaths()
     {
         var gos = SceneManager.GetActiveScene().GetRootGameObjects();
-        var polygonCount = 0;
-        var pathCount = 0;
         foreach (var go in gos)
         {
             var polys = go.GetComponentsInChildren<PolygonCollider2D>(false);
@@ -320,18 +295,14 @@ public class ColliderOffset : MonoBehaviour
                         }
 
                         path[p] = new Vector2(x, y);
-                        pathCount++;
                     }
 
                     poly.SetPath(n, path);
                 }
-
-                polygonCount++;
             }
         }
 
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-        Debug.LogFormat("Snapped {0} paths across {1} poly colliders.", pathCount, polygonCount);
     }
     
     #endregion
