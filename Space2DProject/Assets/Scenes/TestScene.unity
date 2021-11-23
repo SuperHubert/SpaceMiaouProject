@@ -1428,7 +1428,7 @@ PrefabInstance:
       objectReference: {fileID: 572364790}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: numberOfRooms
-      value: 16
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: generateOnStart

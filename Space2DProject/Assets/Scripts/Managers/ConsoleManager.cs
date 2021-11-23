@@ -179,9 +179,9 @@ public class ConsoleManager : MonoBehaviour
         
         NEWLEVEL = new Commands<int,int>("newlevel", "generates a new run", "newlevel int<number of rooms> int<seed>", (numberOfRooms,seed) =>
         {
-            Print("Starting a new run. "+numberOfRooms+" rooms, seed : "+seed);
-            
             lm.StartNewRun(numberOfRooms,seed);
+            
+            Print("Starting a new run. "+lm.GetCurrentNumberOfRooms()+" rooms, seed : "+lm.GetCurrentSeed());
         });
         
         NEXTLEVEL = new Commands("nextlevel", "Generates next level of the current run", "nextlevel", () =>
