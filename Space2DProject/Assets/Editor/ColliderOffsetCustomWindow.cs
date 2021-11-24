@@ -211,9 +211,10 @@ public class ColliderOffsetCustomWindow : EditorWindow
                     newPoints = new Vector2[points.Length];
                     
                     var firstY = (int) Mathf.Round(points[0].y);
-                    if (firstY > 0)
+                    Debug.Log(firstY);
+                    if (firstY > 0 && firstY < 24.5f)
                     {
-                        Debug.Log("First Y > 0, switching offset");
+                        Debug.Log("First Y > 0 (and < 24.5f), switching offset");
                         offset = inWallOffset;
                         offset2 = inLevelOffset;
                     }
@@ -228,16 +229,15 @@ public class ColliderOffsetCustomWindow : EditorWindow
                 points = edge.points;
                 newPoints = new Vector2[points.Length];
                 
+                
                 #region main offset
-
                 for (var pi = 1; pi < points.Length; pi++)
                 {
                     var currentPoint = points[pi];
-                    var previousPoint = points[pi - 1];
+                    var previousPoint = points[points.Length - 1];
 
                     var x = currentPoint.x;
                     var y = currentPoint.y;
-
                     if (x > previousPoint.x)
                     {
                         y = currentPoint.y + offset;
