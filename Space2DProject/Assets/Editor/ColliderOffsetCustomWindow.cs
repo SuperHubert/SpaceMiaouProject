@@ -6,9 +6,6 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class ColliderOffsetCustomWindow : EditorWindow
 {
-    //private List<PolygonCollider2D> PolyColList = new List<PolygonCollider2D>();
-    //private List<EdgeCollider2D> EdgeColList = new List<EdgeCollider2D>();
-
     [MenuItem("Window/Collider Offset")]
     public static void ShowWindow()
     {
@@ -187,34 +184,49 @@ public class ColliderOffsetCustomWindow : EditorWindow
 
                 var offset = inLevelOffset;
                 var offset2 = inWallOffset;;
+
+                var firstX = (int) Mathf.Round(points[0].x); 
+                var lastX = (int) Mathf.Round(points[points.Length - 1].x);
                 
-                if ((!(points[0].x + 25f == 0 || points[0].x - 2f == 0)) || ((Mathf.Round(points[0].x) == Mathf.Round(points[points.Length-1].x) && Mathf.Round(points[0].y) > Mathf.Round(points[points.Length-1].y))))
+                if (firstX != lastX)
                 {
-                    for (var pi = 0; pi < points.Length; pi++)
+                    Debug.Log("First X != Last X");
+                    if (lastX < firstX)
                     {
-                        var pt = points[pi];
-                        var x = pt.x;
-                        var y = pt.y;
+                        Debug.Log("First X > Last X, inverting");
+                        for (var pi = 0; pi < points.Length; pi++)
+                        {
+                            var pt = points[pi];
+                            var x = pt.x;
+                            var y = pt.y;
 
-                        newPoints[pi] = new Vector2(x, y);
+                            newPoints[pi] = new Vector2(x, y);
+                        }
+
+                        System.Array.Reverse(newPoints);
+                        edge.points = newPoints; 
                     }
-
-                    System.Array.Reverse(newPoints);
-
-                    edge.points = newPoints;
                     
-                    offset = inLevelOffset;
-                    offset2 = inWallOffset;
-
-                    if (newPoints[0].y > 0 && newPoints[newPoints.Length - 1].y > 0)
+                    points = edge.points;
+                    newPoints = new Vector2[points.Length];
+                    
+                    var firstY = (int) Mathf.Round(points[0].y);
+                    if (firstY > 0)
                     {
+                        Debug.Log("First Y > 0, switching offset");
                         offset = inWallOffset;
                         offset2 = inLevelOffset;
                     }
+                    
                 }
-
+                else
+                {
+                    Debug.Log("First X == Last X");
+                    
+                }
+                
                 points = edge.points;
-                newPoints[0] = points[0];
+                newPoints = new Vector2[points.Length];
                 
                 #region main offset
 
@@ -262,7 +274,13 @@ public class ColliderOffsetCustomWindow : EditorWindow
 
                 #endregion
                 
+                
             }
         }
+    }
+
+    private static bool IsEqualTo(float input, int number)
+    {
+        return (input < number + 0.5f && input > number - 0.5f);
     }
 }
