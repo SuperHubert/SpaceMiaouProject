@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -16,15 +17,22 @@ public class ColliderOffsetCustomWindow : EditorWindow
 
     private void OnGUI()
     {
-        GUILayout.Label("Colliders :", EditorStyles.boldLabel);
-
-        if (GUILayout.Button("Snap Colliders and Offset", GUILayout.Width(200), GUILayout.Height(20)))
+        GUILayout.Label("All Colliders :", EditorStyles.boldLabel);
+        if (GUILayout.Button("Snap ALL Colliders and Offset", GUILayout.Width(200), GUILayout.Height(20)))
+        {
+            UpdatedAutoEdgeSnapper(Selection.gameObjects, 0.82f, 0.12f);
+            SnapPolyPaths(Selection.gameObjects,0.82f, 0.12f);
+        }
+        GUILayout.Space(20);
+        
+        GUILayout.Label("Edge Colliders :", EditorStyles.boldLabel);
+        if (GUILayout.Button("Snap Edges and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
             UpdatedAutoEdgeSnapper(Selection.gameObjects, 0.82f, 0.12f);
         }
-
+        GUILayout.Space(20);
+        
         GUILayout.Label("Polygon Colliders :", EditorStyles.boldLabel);
-
         if (GUILayout.Button("Snap Polygons and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
             SnapPolyPaths(Selection.gameObjects,0.82f, 0.12f);
@@ -42,6 +50,11 @@ public class ColliderOffsetCustomWindow : EditorWindow
             {
                 var pos = poly.gameObject.transform.position;
                 poly.gameObject.transform.position = new Vector3(Mathf.Round(pos.x),Mathf.Round(pos.y),0f);
+                poly.gameObject.layer = 13;
+                if (poly.gameObject.transform.parent.gameObject.layer != 13)
+                {
+                    poly.gameObject.transform.parent.gameObject.layer = 13;
+                }
             }
             
             #region alignement
@@ -129,6 +142,15 @@ public class ColliderOffsetCustomWindow : EditorWindow
         {
             var edges = go.GetComponentsInChildren<EdgeCollider2D>(false);
 
+            foreach (var edge in edges)
+            {
+                edge.gameObject.layer = 13;
+                if (edge.gameObject.transform.parent.gameObject.layer != 13)
+                {
+                    edge.gameObject.transform.parent.gameObject.layer = 13;
+                }
+            }
+
             #region alignement
 
             foreach (var edge in edges)
@@ -163,9 +185,10 @@ public class ColliderOffsetCustomWindow : EditorWindow
                 var points = edge.points;
                 var newPoints = new Vector2[points.Length];
 
-                #region make Edges start from Left
-
-                if (!(points[0].x + 25f == 0 || points[0].x - 2f == 0))
+                var offset = inLevelOffset;
+                var offset2 = inWallOffset;;
+                
+                if ((!(points[0].x + 25f == 0 || points[0].x - 2f == 0)) || ((Mathf.Round(points[0].x) == Mathf.Round(points[points.Length-1].x) && Mathf.Round(points[0].y) > Mathf.Round(points[points.Length-1].y))))
                 {
                     for (var pi = 0; pi < points.Length; pi++)
                     {
@@ -179,26 +202,20 @@ public class ColliderOffsetCustomWindow : EditorWindow
                     System.Array.Reverse(newPoints);
 
                     edge.points = newPoints;
-                }
+                    
+                    offset = inLevelOffset;
+                    offset2 = inWallOffset;
 
-                #endregion
+                    if (newPoints[0].y > 0 && newPoints[newPoints.Length - 1].y > 0)
+                    {
+                        offset = inWallOffset;
+                        offset2 = inLevelOffset;
+                    }
+                }
 
                 points = edge.points;
                 newPoints[0] = points[0];
-
-                #region change base offset
-
-                var offset = inLevelOffset;
-                var offset2 = inWallOffset;
-
-                if (newPoints[0].y > 0)
-                {
-                    offset = inWallOffset;
-                    offset2 = inLevelOffset;
-                }
-
-                #endregion
-
+                
                 #region main offset
 
                 for (var pi = 1; pi < points.Length; pi++)
@@ -244,7 +261,7 @@ public class ColliderOffsetCustomWindow : EditorWindow
                 edge.points = newPoints;
 
                 #endregion
-
+                
             }
         }
     }
