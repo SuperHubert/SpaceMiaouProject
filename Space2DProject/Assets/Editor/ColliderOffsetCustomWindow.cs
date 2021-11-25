@@ -14,10 +14,11 @@ public class ColliderOffsetCustomWindow : EditorWindow
 
     private void OnGUI()
     {
+        
         GUILayout.Label("All Colliders :", EditorStyles.boldLabel);
         if (GUILayout.Button("Snap ALL Colliders and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
-            UpdatedAutoEdgeSnapper(Selection.gameObjects, 0.82f, 0.12f);
+            UpdatedAutoEdgeSnapperV2(Selection.gameObjects, 0.82f, 0.12f);
             SnapPolyPaths(Selection.gameObjects,0.82f, 0.12f);
         }
         GUILayout.Space(20);
@@ -25,7 +26,7 @@ public class ColliderOffsetCustomWindow : EditorWindow
         GUILayout.Label("Edge Colliders :", EditorStyles.boldLabel);
         if (GUILayout.Button("Snap Edges and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
-            UpdatedAutoEdgeSnapper(Selection.gameObjects, 0.82f, 0.12f);
+            UpdatedAutoEdgeSnapperV2(Selection.gameObjects, 0.82f, 0.12f);
         }
         GUILayout.Space(20);
         
@@ -34,6 +35,8 @@ public class ColliderOffsetCustomWindow : EditorWindow
         {
             SnapPolyPaths(Selection.gameObjects,0.82f, 0.12f);
         }
+
+        GUILayout.Space(20);
     }
 
 
@@ -132,8 +135,8 @@ public class ColliderOffsetCustomWindow : EditorWindow
 
         }
     }
-
-    private static void UpdatedAutoEdgeSnapper(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
+    
+    private static void UpdatedAutoEdgeSnapperV2(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
     {
         foreach (var go in gos)
         {
@@ -183,7 +186,7 @@ public class ColliderOffsetCustomWindow : EditorWindow
                 var newPoints = new Vector2[points.Length];
 
                 var offset = inLevelOffset;
-                var offset2 = inWallOffset;;
+                var offset2 = inWallOffset;
 
                 var firstX = (int) Mathf.Round(points[0].x); 
                 var lastX = (int) Mathf.Round(points[points.Length - 1].x);
@@ -208,79 +211,78 @@ public class ColliderOffsetCustomWindow : EditorWindow
                     }
                     
                     points = edge.points;
-                    newPoints = new Vector2[points.Length];
-                    
-                    var firstY = (int) Mathf.Round(points[0].y);
-                    Debug.Log(firstY);
-                    if (firstY > 0 && firstY < 24.5f)
+
+                    var startsMidLeft = (points[0].y > 0 && points[0].y < 5 && points[0].x < 0);
+                    var startsBotLeft = (points[0].y < -24 && points[0].x < 0);
+                    var startsTopRight = (points[0].y > 24 && points[0].x > 0);
+
+                    if (startsMidLeft || startsBotLeft || startsTopRight)
                     {
-                        Debug.Log("First Y > 0 (and < 24.5f), switching offset");
                         offset = inWallOffset;
                         offset2 = inLevelOffset;
                     }
-                    
+
                 }
                 else
                 {
-                    Debug.Log("First X == Last X");
+                    var firstY = (int) Mathf.Round(points[0].y); 
+                    var lastY = (int) Mathf.Round(points[points.Length - 1].y);
+                    if (lastX < firstX)
+                    {
+                        Debug.Log("First Y > Last Y, inverting");
+                        for (var pi = 0; pi < points.Length; pi++)
+                        {
+                            var pt = points[pi];
+                            var x = pt.x;
+                            var y = pt.y;
+
+                            newPoints[pi] = new Vector2(x, y);
+                        }
+
+                        System.Array.Reverse(newPoints);
+                        edge.points = newPoints; 
+                    }
                     
+                    points = edge.points;
+
+                    var startsMidRight = (0 < points[0].y && points[0].y < 5 && points[0].x > 0);
+                    var startsBotLeft = (points[0].y < -24 && points[0].x < 0);
+
+                    if (startsMidRight || startsBotLeft )
+                    {
+                        offset = inWallOffset;
+                        offset2 = inLevelOffset;
+                    }
                 }
                 
                 points = edge.points;
-                newPoints = new Vector2[points.Length];
+                newPoints = points;
                 
-                
-                #region main offset
                 for (var pi = 1; pi < points.Length; pi++)
                 {
                     var currentPoint = points[pi];
-                    var previousPoint = points[points.Length - 1];
+                    var previousPoint = points[pi - 1];
 
                     var x = currentPoint.x;
-                    var y = currentPoint.y;
+                    float y;
                     if (x > previousPoint.x)
                     {
                         y = currentPoint.y + offset;
+                        newPoints[pi] = new Vector2(x, y);
                         newPoints[pi - 1] = new Vector2(previousPoint.x, y);
                     }
-
-                    newPoints[pi] = new Vector2(x, y);
-                }
-
-                points = newPoints;
-
-                #endregion
-
-                #region opposite offset
-
-                newPoints = new Vector2[points.Length];
-
-                for (var pi = 0; pi < points.Length; pi++)
-                {
-                    var currentPoint = points[pi];
-
-                    var x = currentPoint.x;
-                    var y = currentPoint.y;
-
-                    if (currentPoint.y % 1f == 0 && currentPoint.y + 25f != 0 && currentPoint.y - 25f != 0)
+                    else
                     {
                         y = currentPoint.y + offset2;
+                        if (y < 25)
+                        {
+                            newPoints[pi] = new Vector2(x, y); 
+                        }
                     }
-
-                    newPoints[pi] = new Vector2(x, y);
                 }
-
+                
                 edge.points = newPoints;
-
-                #endregion
-                
-                
             }
         }
-    }
-
-    private static bool IsEqualTo(float input, int number)
-    {
-        return (input < number + 0.5f && input > number - 0.5f);
     }
 }
