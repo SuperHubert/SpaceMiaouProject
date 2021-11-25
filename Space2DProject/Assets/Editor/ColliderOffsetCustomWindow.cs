@@ -6,6 +6,10 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class ColliderOffsetCustomWindow : EditorWindow
 {
+    private float levelOffsetInput = 0.12f;
+    private float wallOffsetInput = 0.82f;
+    
+    
     [MenuItem("Window/Collider Offset")]
     public static void ShowWindow()
     {
@@ -18,25 +22,27 @@ public class ColliderOffsetCustomWindow : EditorWindow
         GUILayout.Label("All Colliders :", EditorStyles.boldLabel);
         if (GUILayout.Button("Snap ALL Colliders and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
-            UpdatedAutoEdgeSnapperV2(Selection.gameObjects, 0.82f, 0.12f);
-            SnapPolyPathsV2(Selection.gameObjects,0.82f, 0.12f);
+            UpdatedAutoEdgeSnapperV2(Selection.gameObjects, wallOffsetInput, levelOffsetInput);
+            SnapPolyPathsV2(Selection.gameObjects,wallOffsetInput, levelOffsetInput);
         }
         GUILayout.Space(20);
         
         GUILayout.Label("Edge Colliders :", EditorStyles.boldLabel);
         if (GUILayout.Button("Snap Edges and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
-            UpdatedAutoEdgeSnapperV2(Selection.gameObjects, 0.82f, 0.12f);
+            UpdatedAutoEdgeSnapperV2(Selection.gameObjects, wallOffsetInput, levelOffsetInput);
         }
         GUILayout.Space(20);
         
         GUILayout.Label("Polygon Colliders :", EditorStyles.boldLabel);
         if (GUILayout.Button("Snap Polygons and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
-            SnapPolyPathsV2(Selection.gameObjects,0.82f, 0.12f);
+            SnapPolyPathsV2(Selection.gameObjects,wallOffsetInput, levelOffsetInput);
         }
 
         GUILayout.Space(20);
+        levelOffsetInput = EditorGUILayout.Slider("Level Offset", levelOffsetInput,0f,1f);
+        wallOffsetInput = EditorGUILayout.Slider("Wall Offset", wallOffsetInput,0f,1f);
     }
     
     private static void SnapPolyPathsV2(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
