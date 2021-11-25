@@ -49,6 +49,13 @@ public class LevelManager : MonoBehaviour
     public void StartNewRun(int rooms, int seed)
     {
         if (!canGenerate) return;
+
+        if (rooms < 0)
+        {
+            rooms = -rooms;
+            seed = (int) Time.realtimeSinceStartup;
+        }
+        
         floorNumber = 0;
         
         seedList.Clear();

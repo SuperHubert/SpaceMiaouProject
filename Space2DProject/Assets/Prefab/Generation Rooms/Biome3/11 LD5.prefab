@@ -570,6 +570,85 @@ Transform:
   m_Father: {fileID: 61253862060729231}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7024168185677561162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2589230370387781585}
+  - component: {fileID: 219961553280699288}
+  m_Layer: 13
+  m_Name: Exterior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2589230370387781585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024168185677561162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 902930391652558880}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &219961553280699288
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024168185677561162}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 2, y: 25}
+  - {x: 2, y: 18.82}
+  - {x: 3, y: 18.82}
+  - {x: 3, y: 17.82}
+  - {x: 4, y: 17.82}
+  - {x: 4, y: 15.82}
+  - {x: 5, y: 15.82}
+  - {x: 5, y: 14.82}
+  - {x: 6, y: 14.82}
+  - {x: 6, y: 13.82}
+  - {x: 7, y: 13.82}
+  - {x: 7, y: 11.12}
+  - {x: 4, y: 11.12}
+  - {x: 4, y: 10.12}
+  - {x: 3, y: 10.12}
+  - {x: 3, y: 9.12}
+  - {x: -1, y: 9.12}
+  - {x: -1, y: 10.12}
+  - {x: -2, y: 10.12}
+  - {x: -2, y: 14.82}
+  - {x: -1, y: 14.82}
+  - {x: -1, y: 15.82}
+  - {x: -0, y: 15.82}
+  - {x: -0, y: 16.12}
+  - {x: -1, y: 16.12}
+  - {x: -1, y: 18.12}
+  - {x: -2, y: 18.12}
+  - {x: -2, y: 25}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &7429053948347810756
 GameObject:
   m_ObjectHideFlags: 0
@@ -100738,7 +100817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 902930391652558880}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collisions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100755,7 +100834,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2589230370387781585}
   m_Father: {fileID: 61253862060729231}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
