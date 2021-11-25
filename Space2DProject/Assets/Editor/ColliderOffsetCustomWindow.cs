@@ -19,7 +19,7 @@ public class ColliderOffsetCustomWindow : EditorWindow
         if (GUILayout.Button("Snap ALL Colliders and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
             UpdatedAutoEdgeSnapperV2(Selection.gameObjects, 0.82f, 0.12f);
-            SnapPolyPaths(Selection.gameObjects,0.82f, 0.12f);
+            SnapPolyPathsV2(Selection.gameObjects,0.82f, 0.12f);
         }
         GUILayout.Space(20);
         
@@ -33,30 +33,27 @@ public class ColliderOffsetCustomWindow : EditorWindow
         GUILayout.Label("Polygon Colliders :", EditorStyles.boldLabel);
         if (GUILayout.Button("Snap Polygons and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
-            SnapPolyPaths(Selection.gameObjects,0.82f, 0.12f);
+            SnapPolyPathsV2(Selection.gameObjects,0.82f, 0.12f);
         }
 
         GUILayout.Space(20);
     }
-
-
-    private static void SnapPolyPaths(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
+    
+    private static void SnapPolyPathsV2(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
     {
         foreach (var go in gos)
         {
             var polys = go.GetComponentsInChildren<PolygonCollider2D>(false);
-
+            
             foreach (var poly in polys)
             {
-                var pos = poly.gameObject.transform.position;
-                poly.gameObject.transform.position = new Vector3(Mathf.Round(pos.x),Mathf.Round(pos.y),0f);
                 poly.gameObject.layer = 13;
                 if (poly.gameObject.transform.parent.gameObject.layer != 13)
                 {
                     poly.gameObject.transform.parent.gameObject.layer = 13;
                 }
             }
-            
+
             #region alignement
 
             foreach (var poly in polys)
@@ -85,54 +82,93 @@ public class ColliderOffsetCustomWindow : EditorWindow
             }
 
             #endregion
-
             
             foreach (var poly in polys)
             {
+
                 
                 for (var n = 0; n < poly.pathCount; n++)
                 {
-                    
                     var path = poly.GetPath(n);
                     
                     var offset = inLevelOffset;
                     var offset2 = inWallOffset;
                     
-                    #region main offset
-
-                    for (var p = 1; p < path.Length-1; p++)
+                    var highestPoint = 0;
+                    for (var p = 0; p < path.Length; p++)
                     {
-                        var currentPoint = path[p];
-                        var previousPoint = path[p - 1];
+                        if (path[p].y > path[highestPoint].y)
+                        {
+                            highestPoint = p;
+                        } 
+                        
+                    }
 
-                        if (!(currentPoint.x > previousPoint.x)) continue;
-                        path[p].y = currentPoint.y + offset;
-                        path[p-1].y = currentPoint.y + offset;
+                    var newPoints = new Vector2[path.Length];
+                    
+                    for (int i = highestPoint; i < path.Length; i++)
+                    {
+                        newPoints[i - highestPoint] = path[i];
+                    }
+                    for (int i = 0 ; i < highestPoint; i++)
+                    {
+                        newPoints[path.Length - highestPoint + i] = path[i];
                     }
                     
-                    poly.SetPath(n, path);
+                    poly.SetPath(n, newPoints);
+                    
+                    path = poly.GetPath(n);
+                    
+                    if (Mathf.RoundToInt(path[0].y) != Mathf.RoundToInt(path[1].y))
+                    {
+                        for (int i = 1; i < path.Length; i++)
+                        {
+                            newPoints[i - 1] = path[i];
+                        }
+                        for (int i = 0 ; i < 1; i++)
+                        {
+                            newPoints[path.Length - 1 + i] = path[i];
+                        }
 
-                    #endregion
+                        System.Array.Reverse(newPoints);
+                        poly.SetPath(n, newPoints);
+                    }
 
-                    #region second offset
-
-                    for (var pi = 0; pi < path.Length; pi++)
+                    if (Mathf.RoundToInt(path[0].x) > Mathf.RoundToInt(path[1].x))
+                    {
+                        offset = inWallOffset;
+                        offset2 = inLevelOffset;
+                    }
+                    
+                    for (var pi = 1; pi < path.Length; pi++)
                     {
                         var currentPoint = path[pi];
-                        
-                        if (currentPoint.y % 1f == 0 && currentPoint.y + 25f != 0 && currentPoint.y - 25f != 0)
+                        var previousPoint = path[pi - 1];
+
+                        var x = currentPoint.x;
+                        float y;
+                        if (x > previousPoint.x)
                         {
-                            path[pi].y = currentPoint.y + offset2;
+                            y = currentPoint.y + offset;
+                            newPoints[pi] = new Vector2(x, y);
+                            newPoints[pi - 1] = new Vector2(previousPoint.x, y);
+                        }
+                        else
+                        {
+                            y = currentPoint.y + offset2;
+                            if (y < 25)
+                            {
+                                newPoints[pi] = new Vector2(x, y); 
+                            }
                         }
                     }
-                    
-                    poly.SetPath(n, path);
 
-                    #endregion
+                    newPoints[0].y = newPoints[1].y;
+                    
+                    poly.SetPath(n, newPoints);
                     
                 }
             }
-
         }
     }
     
