@@ -39,10 +39,128 @@ public class ColliderOffsetCustomWindow : EditorWindow
         {
             SnapPolyPathsV2(Selection.gameObjects,wallOffsetInput, levelOffsetInput);
         }
-
         GUILayout.Space(20);
+        
+        GUILayout.Label("All Colliders :", EditorStyles.boldLabel);
+        if (GUILayout.Button("Invert Colliders", GUILayout.Width(200), GUILayout.Height(20)))
+        {
+            InvertColliders(Selection.gameObjects,wallOffsetInput, levelOffsetInput);
+        }
+        GUILayout.Space(20);
+        
         levelOffsetInput = EditorGUILayout.Slider("Level Offset", levelOffsetInput,0f,1f);
         wallOffsetInput = EditorGUILayout.Slider("Wall Offset", wallOffsetInput,0f,1f);
+    }
+
+    private static void InvertColliders(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
+    {
+        foreach (var go in gos)
+        {
+            var polys = go.GetComponentsInChildren<PolygonCollider2D>(false);
+
+            foreach (var poly in polys)
+            {
+                poly.gameObject.layer = 13;
+                if (poly.gameObject.transform.parent.gameObject.layer != 13)
+                {
+                    poly.gameObject.transform.parent.gameObject.layer = 13;
+                }
+
+                for (var n = 0; n < poly.pathCount; n++)
+                {
+                    var path = poly.GetPath(n);
+
+                    float rest;
+                    for (var p = 0; p < path.Length; p++)
+                    {
+                        
+                        rest = path[p].y % 1;
+                        if (inWallOffset - 0.01f < rest && rest < inWallOffset + 0.01f )
+                        {
+                            path[p].y = Mathf.RoundToInt(path[p].y);
+                            path[p].y -= 1;
+                            path[p].y += inLevelOffset;
+                        }
+                        else if (inLevelOffset - 0.01f < rest && rest < inLevelOffset + 0.01f )
+                        {
+                            path[p].y = Mathf.RoundToInt(path[p].y);
+                            path[p].y += inWallOffset;
+                        }
+                        else
+                        {
+                            Debug.Log(-1*rest);
+                            rest *= -1;
+
+                            if (1 - inLevelOffset - 0.01f < rest && rest < 1 - inLevelOffset + 0.01f)
+                            {
+                                path[p].y = Mathf.RoundToInt(path[p].y);
+                                path[p].y += inWallOffset;
+                            }
+                            else if (1 - inWallOffset - 0.01f < rest && rest < 1 - inWallOffset + 0.01f)
+                            {
+                                path[p].y = Mathf.RoundToInt(path[p].y);
+                                path[p].y -= 1;
+                                path[p].y += inLevelOffset;
+                            }
+                            
+                        }
+                    }
+                    
+                    poly.SetPath(n, path);
+                    
+                }
+            }
+            
+            var edges = go.GetComponentsInChildren<EdgeCollider2D>(false);
+
+            foreach (var edge in edges)
+            {
+                edge.gameObject.layer = 13;
+                if (edge.gameObject.transform.parent.gameObject.layer != 13)
+                {
+                    edge.gameObject.transform.parent.gameObject.layer = 13;
+                }
+                
+                var points = edge.points;
+
+                float rest;
+                for (var pi = 0; pi < points.Length; pi++)
+                {
+                    rest = points[pi].y % 1;
+                    if (inWallOffset - 0.01f < rest && rest < inWallOffset + 0.01f )
+                    {
+                        points[pi].y = Mathf.RoundToInt(points[pi].y);
+                        points[pi].y -= 1;
+                        points[pi].y += inLevelOffset;
+                    }
+                    else if (inLevelOffset - 0.01f < rest && rest < inLevelOffset + 0.01f )
+                    {
+                        points[pi].y = Mathf.RoundToInt(points[pi].y);
+                        points[pi].y += inWallOffset;
+                    }
+                    else
+                    {
+                        Debug.Log(-1*rest);
+                        rest *= -1;
+
+                        if (1 - inLevelOffset - 0.01f < rest && rest < 1 - inLevelOffset + 0.01f)
+                        {
+                            points[pi].y = Mathf.RoundToInt(points[pi].y);
+                            points[pi].y += inWallOffset;
+                        }
+                        else if (1 - inWallOffset - 0.01f < rest && rest < 1 - inWallOffset + 0.01f)
+                        {
+                            points[pi].y = Mathf.RoundToInt(points[pi].y);
+                            points[pi].y -= 1;
+                            points[pi].y += inLevelOffset;
+                        }
+                            
+                    }
+                }
+                
+                edge.points = points; 
+            }
+        }
     }
     
     private static void SnapPolyPathsV2(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
