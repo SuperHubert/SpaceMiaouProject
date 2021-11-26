@@ -105,6 +105,11 @@ public class ColliderOffsetCustomWindow : EditorWindow
                             
                         }
                     }
+
+                    if (path[0] == path[1])
+                    {
+                        path[0].y += 1;
+                    }
                     
                     poly.SetPath(n, path);
                     
