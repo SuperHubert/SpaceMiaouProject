@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Tilemaps;
 
 [CanEditMultipleObjects]
 public class ColliderOffsetCustomWindow : EditorWindow
 {
     private float levelOffsetInput = 0.12f;
     private float wallOffsetInput = 0.82f;
-    
     
     [MenuItem("Window/Collider Offset")]
     public static void ShowWindow()
@@ -18,15 +18,6 @@ public class ColliderOffsetCustomWindow : EditorWindow
 
     private void OnGUI()
     {
-        
-        GUILayout.Label("All Colliders :", EditorStyles.boldLabel);
-        if (GUILayout.Button("Snap ALL Colliders and Offset", GUILayout.Width(200), GUILayout.Height(20)))
-        {
-            UpdatedAutoEdgeSnapperV2(Selection.gameObjects, wallOffsetInput, levelOffsetInput);
-            SnapPolyPathsV2(Selection.gameObjects,wallOffsetInput, levelOffsetInput);
-        }
-        GUILayout.Space(20);
-        
         GUILayout.Label("Edge Colliders :", EditorStyles.boldLabel);
         if (GUILayout.Button("Snap Edges and Offset", GUILayout.Width(200), GUILayout.Height(20)))
         {
@@ -41,7 +32,7 @@ public class ColliderOffsetCustomWindow : EditorWindow
         }
         GUILayout.Space(20);
         
-        GUILayout.Label("All Colliders :", EditorStyles.boldLabel);
+        GUILayout.Label("Fixes :", EditorStyles.boldLabel);
         if (GUILayout.Button("Invert Colliders", GUILayout.Width(200), GUILayout.Height(20)))
         {
             InvertColliders(Selection.gameObjects,wallOffsetInput, levelOffsetInput);
@@ -50,6 +41,130 @@ public class ColliderOffsetCustomWindow : EditorWindow
         
         levelOffsetInput = EditorGUILayout.Slider("Level Offset", levelOffsetInput,0f,1f);
         wallOffsetInput = EditorGUILayout.Slider("Wall Offset", wallOffsetInput,0f,1f);
+        GUILayout.Space(20);
+        
+        GUILayout.Label("TileMap :", EditorStyles.boldLabel);
+        if (GUILayout.Button("Bind Tilemap", GUILayout.Width(200), GUILayout.Height(20)))
+        {
+            BindTilemap(Selection.gameObjects);
+        }
+        if (GUILayout.Button("Fill Tilemap (Experimental)", GUILayout.Width(200), GUILayout.Height(20)))
+        {
+            FillTilemap(Selection.gameObjects);
+        }
+    }
+
+    private static void BindTilemap(IEnumerable<GameObject> gos)
+    {
+        foreach (var go in gos)
+        {
+            var tilemap = go.GetComponentInChildren<Tilemap>(false);
+
+            TileBase unwalkableTile = tilemap.GetTilesBlock(tilemap.cellBounds)[0];
+
+            if (unwalkableTile == null)
+            {
+                if (tilemap.HasTile(new Vector3Int(-50, -5, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-50, -5, 0));
+                }
+                else if (tilemap.HasTile(new Vector3Int(-50, 4, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-50, 4, 0));
+                }
+                else if (tilemap.HasTile(new Vector3Int(49, -5, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(49, -5, 0));
+                }
+                else if (tilemap.HasTile(new Vector3Int(49, 4, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(49, 4, 0));
+                }
+                else if (tilemap.HasTile(new Vector3Int(-5, 49, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-5, 49, 0));
+                }
+                else if (tilemap.HasTile(new Vector3Int(4, 49, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(4, 49, 0));
+                }
+                else if (tilemap.HasTile(new Vector3Int(-5, -50, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-5, -50, 0));
+                }
+                else if (tilemap.HasTile(new Vector3Int(4, -50, 0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(4, -50, 0));
+                }
+            }
+
+
+            tilemap.SetTile(new Vector3Int(-50, 49, 0), unwalkableTile);
+            tilemap.SetTile(new Vector3Int(-50, -50, 0), unwalkableTile);
+            tilemap.SetTile(new Vector3Int(49, 49, 0), unwalkableTile);
+            tilemap.SetTile(new Vector3Int(49, -50, 0), unwalkableTile);
+            
+            tilemap.CompressBounds();
+        }
+    }
+    
+    private static void FillTilemap(IEnumerable<GameObject> gos)
+    {
+        foreach (var go in gos)
+        {
+            var tilemap = go.GetComponentInChildren<Tilemap>(false);
+
+            TileBase unwalkableTile = tilemap.GetTilesBlock(tilemap.cellBounds)[0];
+
+            if (unwalkableTile == null)
+            {
+                if (tilemap.HasTile(new Vector3Int(-50,-5,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-50, -5, 0));
+                }
+                else if(tilemap.HasTile(new Vector3Int(-50,4,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-50,4,0));
+                }
+                else if(tilemap.HasTile(new Vector3Int(49,-5,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(49,-5,0));
+                }
+                else if(tilemap.HasTile(new Vector3Int(49,4,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(49,4,0));
+                }
+                else if(tilemap.HasTile(new Vector3Int(-5,49,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-5,49,0));
+                }
+                else if(tilemap.HasTile(new Vector3Int(4,49,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(4,49,0));
+                }
+                else if(tilemap.HasTile(new Vector3Int(-5,-50,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(-5,-50,0));
+                }
+                else if(tilemap.HasTile(new Vector3Int(4,-50,0)))
+                {
+                    unwalkableTile = tilemap.GetTile(new Vector3Int(4,-50,0));
+                }
+            }
+            
+            tilemap.SetTile(new Vector3Int(-50,49,0), unwalkableTile);
+            tilemap.SetTile(new Vector3Int(-50,-50,0), unwalkableTile);
+            tilemap.SetTile(new Vector3Int(49,49,0), unwalkableTile);
+            tilemap.SetTile(new Vector3Int(49,-50,0), unwalkableTile);
+            
+            tilemap.CompressBounds();
+
+            tilemap.FloodFill(new Vector3Int(-49,-49,0), unwalkableTile);
+            tilemap.FloodFill(new Vector3Int(-49,48,0), unwalkableTile);
+            tilemap.FloodFill(new Vector3Int(48,48,0), unwalkableTile);
+            tilemap.FloodFill(new Vector3Int(48,-49,0), unwalkableTile);
+            
+        }
     }
 
     private static void InvertColliders(IEnumerable<GameObject> gos, float inWallOffset, float inLevelOffset)
