@@ -266,12 +266,14 @@ public class LevelManager : MonoBehaviour
 
     public int GetBiome()
     {
-        if (floorNumber > (2f / 3f) * maxFloors)
-        {
-            return 2;
-        }
+        var floor = floorNumber + 1;
 
-        return floorNumber > (1f/3f) * maxFloors ? 1 : 0;
+        if (floor <= maxFloors * 1 / 3)
+        {
+            return 0;
+        }
+                
+        return floor <= maxFloors * 2 / 3 ? 1 : 2;
     }
 
     public int GetMaxFloors()
