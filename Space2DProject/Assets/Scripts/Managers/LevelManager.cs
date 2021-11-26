@@ -35,8 +35,8 @@ public class LevelManager : MonoBehaviour
     }
 
     #endregion
-    
-    void Start()
+
+    private void Start()
     {
         generator = gameObject.GetComponent<GenerationSimpleHalf>();
         
@@ -71,8 +71,8 @@ public class LevelManager : MonoBehaviour
     {
         return generator.GetLastRoom().transform;
     }
-    
-    int GetNewSeed()
+
+    private int GetNewSeed()
     {
         Random.InitState(firstSeed);
 
@@ -93,7 +93,7 @@ public class LevelManager : MonoBehaviour
         mainCamera.position = player.position = position.position;
     }
 
-    void ClearLevel()
+    private void ClearLevel()
     {
         gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
 
@@ -283,14 +283,7 @@ public class LevelManager : MonoBehaviour
 
     public int SetMaxFloors(int n)
     {
-        if (n >= 1)
-        {
-            maxFloors = n;
-        }
-        else
-        {
-            maxFloors = 1;
-        }
+        maxFloors = n >= 1 ? n : 1;
         return maxFloors;
     }
 }
