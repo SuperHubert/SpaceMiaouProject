@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+    public float reductionTotal = 0;
+
   [System.Serializable] class ShopItem
     {
         public Sprite Image;
