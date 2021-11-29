@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
     private GenerationSimpleHalf generator;
+
+    [SerializeField] private GameObject bossFightObj;
+    private BossFight bossfight;
 
     [SerializeField] private bool generateOnStart = true;
 
@@ -22,10 +26,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private int floorNumber;
     [SerializeField] private int maxFloors = 3;
-
-    [SerializeField] private GameObject bossRoom;
-    [SerializeField] private GameObject bossStartRoom;
-
+    
     private bool canGenerate = true;
     
     #region Singleton
@@ -42,6 +43,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         generator = gameObject.GetComponent<GenerationSimpleHalf>();
+        bossfight = bossFightObj.GetComponent<BossFight>();
         
         seedList.Add(firstSeed);
         
@@ -69,12 +71,7 @@ public class LevelManager : MonoBehaviour
             
         StartCoroutine(ResetRun(rooms,seed));
     }
-
-    public Transform GetLastRoom()
-    {
-        return generator.GetLastRoom().transform;
-    }
-
+    
     private int GetNewSeed()
     {
         Random.InitState(firstSeed);
@@ -90,11 +87,6 @@ public class LevelManager : MonoBehaviour
         
         return seed;
     }
-    
-    public void MovePlayer(Transform position)
-    {
-        mainCamera.position = player.position = position.position;
-    }
 
     private void ClearLevel()
     {
@@ -108,8 +100,8 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-
-    IEnumerator NewLevel()
+    
+    private IEnumerator NewLevel()
     {
         ClearLevel();
 
@@ -125,11 +117,16 @@ public class LevelManager : MonoBehaviour
         canGenerate = true;
     }
 
-    IEnumerator PreviousLevel()
+    private IEnumerator PreviousLevel()
     {
         ClearLevel();
 
         yield return null;
+
+        if (floorNumber == maxFloors)
+        {
+            bossfight.CancelBossFight();
+        }
         
         floorNumber--;
         if (floorNumber < 0)
@@ -142,7 +139,7 @@ public class LevelManager : MonoBehaviour
         canGenerate = true;
     }
 
-    IEnumerator CurrentLevel()
+    private IEnumerator CurrentLevel()
     {
         ClearLevel();
 
@@ -153,7 +150,7 @@ public class LevelManager : MonoBehaviour
         canGenerate = true;
     }
     
-    IEnumerator ResetRun(int rooms, int seed)
+    private IEnumerator ResetRun(int rooms, int seed)
     {
         ClearLevel();
 
@@ -165,7 +162,7 @@ public class LevelManager : MonoBehaviour
 
         canGenerate = true;
     }
-
+    
     public void GenerateNextLevel()
     {
         floorNumber++;
@@ -178,24 +175,27 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            //start Coroutine(StartBossLevel)
+            
             ClearLevel();
-
-            //ClearLevel
+            
+            bossfight.ActivateBossFight();
+            //start Coroutine(StartBossLevel) with loading
             //Instantiate rooms at correct pos (shop too)
             //Instantiate(bossRoom);
             //Instantiate(bossStartRoom);
             //Deactivate Portal
             //Boss Parameters (other script)
-            
-            
-            floorNumber--;
+            //floorNumber--;
             ConsoleManager.Instance.Print("Max Level Reached");
         }
-
         
     }
 
+    public void MovePlayer(Transform position)
+    {
+        mainCamera.position = player.position = position.position;
+    }
+    
     public void GeneratePreviousLevel()
     {
         if (!canGenerate) return;
@@ -208,6 +208,11 @@ public class LevelManager : MonoBehaviour
         if (!canGenerate) return;
         canGenerate = false;
         StartCoroutine(CurrentLevel());
+    }
+    
+    public Transform GetLastRoom()
+    {
+        return generator.GetLastRoom().transform;
     }
 
     public GameObject Player()
