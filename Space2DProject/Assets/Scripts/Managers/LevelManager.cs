@@ -23,6 +23,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int floorNumber;
     [SerializeField] private int maxFloors = 3;
 
+    [SerializeField] private GameObject bossRoom;
+    [SerializeField] private GameObject bossStartRoom;
+
     private bool canGenerate = true;
     
     #region Singleton
@@ -175,6 +178,17 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            //start Coroutine(StartBossLevel)
+            ClearLevel();
+
+            //ClearLevel
+            //Instantiate rooms at correct pos (shop too)
+            //Instantiate(bossRoom);
+            //Instantiate(bossStartRoom);
+            //Deactivate Portal
+            //Boss Parameters (other script)
+            
+            
             floorNumber--;
             ConsoleManager.Instance.Print("Max Level Reached");
         }
