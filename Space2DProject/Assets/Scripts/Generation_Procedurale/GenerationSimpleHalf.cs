@@ -14,6 +14,16 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform grid;
     private Transform enemies;
     private Transform items;
+    private Transform spawnPoint;
+    private Transform portalPos;
+    private int roomSpriteRendersIndex;
+    private int roomTilemapsIndex;
+    private int roomCollisionsIndex;
+    private int roomEnemiesIndex;
+    private int roomOtherIndex;
+    private int roomPortalIndex;
+    private int roomSpawnIndex;
+    private int roomShopIndex;
     [SerializeField] private Camera cameraMap;
 
     [SerializeField] private bool buildNavMesh = true;
@@ -39,6 +49,16 @@ public class GenerationSimpleHalf : MonoBehaviour
         grid = level.GetChild(0);
         enemies = level.GetChild(1);
         items = level.GetChild(2);
+        spawnPoint = level.GetChild(4);
+        portalPos = level.GetChild(3);
+
+        roomSpriteRendersIndex = 0;
+        roomTilemapsIndex = 1;
+        roomCollisionsIndex = 2;
+        roomEnemiesIndex = 3;
+        roomOtherIndex = 4;
+        roomPortalIndex = 5;
+        roomSpawnIndex = 6;
     }
 
     private void Start()
@@ -307,12 +327,18 @@ public class GenerationSimpleHalf : MonoBehaviour
             room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
             
             //Instantiates prefab tilemap UnWalkable
-            Instantiate(prefabRoom.transform.GetChild(0).GetChild(1),room.transform.GetChild(0));
+            Instantiate(prefabRoom.transform.GetChild(roomTilemapsIndex).GetChild(1),room.transform.GetChild(roomTilemapsIndex));
             
             //Instantiates prefab collision GameObjects
-            foreach (Transform item in prefabRoom.transform.GetChild(1))
+            foreach (Transform collisionObj in prefabRoom.transform.GetChild(roomCollisionsIndex))
             {
-                Instantiate(item, room.transform.GetChild(1));
+                Instantiate(collisionObj, room.transform.GetChild(roomCollisionsIndex));
+            }
+            
+            //Instantiates prefab Sprite Renderers GameObjects
+            foreach (Transform spriteRenObj in prefabRoom.transform.GetChild(roomSpriteRendersIndex))
+            {
+                Instantiate(spriteRenObj, room.transform.GetChild(roomSpriteRendersIndex));
             }
 
             if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
@@ -328,11 +354,10 @@ public class GenerationSimpleHalf : MonoBehaviour
         MovePortal();
         
         RecenterLevel();
-
-
+        
         if (movePlayer)
         {
-            LevelManager.Instance.MovePlayer(level.GetChild(4));
+            LevelManager.Instance.MovePlayer(spawnPoint);
         }
         
         SetCameraSize();
@@ -369,18 +394,18 @@ public class GenerationSimpleHalf : MonoBehaviour
             //Instantiates prefab enemy GameObjects (not for 1st room)
             if (room != generationList[0])
             {
-                foreach (Transform item in prefabRoom.transform.GetChild(2))
+                foreach (Transform enemyObj in prefabRoom.transform.GetChild(roomEnemiesIndex))
                 {
-                    Instantiate(item, room.transform).parent = enemies;
+                    Instantiate(enemyObj, room.transform).parent = enemies;
                 }
             }
             
             //Instantiates prefab items GameObjects
-            foreach (Transform item in prefabRoom.transform.GetChild(3))
+            foreach (Transform otherObj in prefabRoom.transform.GetChild(roomOtherIndex))
             {
-                Transform chest = Instantiate(item, room.transform);
+                Transform chest = Instantiate(otherObj, room.transform);
                 chest.parent = items;
-                if (item.GetComponent<Chest>() != null)
+                if (otherObj.GetComponent<Chest>() != null)
                 {
                     AddChest(chest.gameObject);
                 }
@@ -471,16 +496,16 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(5).gameObject, room.transform);
 
-        level.GetChild(4).position = posObject.transform.position;
+        spawnPoint.position = posObject.transform.position;
     }
 
     private void MovePortal()
     {
         Case room = generationList[dungeonNumberOfRooms-1];
         
-        GameObject posObject = Instantiate(lastRoomPrefab.transform.GetChild(4).gameObject, room.transform);
+        GameObject posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomPortalIndex).gameObject, room.transform);
 
-        level.GetChild(3).position = posObject.transform.position;
+        portalPos.position = posObject.transform.position;
     }
 
     private void UpdateProgress(float number)
