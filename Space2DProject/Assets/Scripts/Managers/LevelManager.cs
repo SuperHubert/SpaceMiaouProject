@@ -179,15 +179,33 @@ public class LevelManager : MonoBehaviour
             ClearLevel();
             
             bossfight.ActivateBossFight();
-            //start Coroutine(StartBossLevel) with loading
-            //Instantiate rooms at correct pos (shop too)
-            //Instantiate(bossRoom);
-            //Instantiate(bossStartRoom);
-            //Deactivate Portal
+            StartCoroutine(BossFightNavMesh());
+            
+            generator.GeneratorSettingsForBoss();
+            
             //Boss Parameters (other script)
+            
             //floorNumber--;
             ConsoleManager.Instance.Print("Max Level Reached");
         }
+        
+    }
+
+    IEnumerator BossFightNavMesh()
+    {
+        for (var i = 0; i < 60; i++)
+        {
+            if (i == 12)
+            {
+                gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
+            }
+            LoadingManager.Instance.UpdateLoading(i/60f);
+            yield return null;
+        }
+        
+        MovePlayer(bossfight.SpawnBossAndReturnStartPos());
+        
+        LoadingManager.Instance.UpdateLoading(2);
         
     }
 

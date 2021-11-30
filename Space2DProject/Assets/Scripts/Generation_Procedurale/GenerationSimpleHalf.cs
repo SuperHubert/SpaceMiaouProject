@@ -507,7 +507,7 @@ public class GenerationSimpleHalf : MonoBehaviour
 
         portalPos.position = posObject.transform.position;
     }
-
+    
     private void UpdateProgress(float number)
     {
         progress += number;
@@ -543,5 +543,14 @@ public class GenerationSimpleHalf : MonoBehaviour
         {
             item.GetComponent<Chest>().UpdateChest();
         }
+    }
+    
+    public void GeneratorSettingsForBoss()
+    {
+        portalPos.position = new Vector3(0, -150, 0);
+        
+        cameraMap.orthographicSize = 25 + 10;
+        
+        //maybe more stuff
     }
 }

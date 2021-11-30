@@ -8,4 +8,11 @@ public class BossTempBehaviour : EnemyBehaviour
     {
         if(currentState != State.Awake) return;
     }
+
+    public override void Die()
+    {
+        base.Die();
+        
+        ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
+    }
 }

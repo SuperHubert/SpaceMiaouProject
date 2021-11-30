@@ -467,12 +467,17 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572364786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.71, y: -0.88, z: -10}
+  m_LocalPosition: {x: 10.66, y: -0.07, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &644596807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 718113479626864122, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
+  m_PrefabInstance: {fileID: 1799044343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &649474861 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1856619107758349768, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -1156,6 +1161,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 789629440150758453, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766067948408826575, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169571116612638849, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
 --- !u!1 &1825018308
@@ -1494,7 +1511,7 @@ PrefabInstance:
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: bossFightObj
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 644596807}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: numberOfRooms
       value: -16
@@ -1542,7 +1559,7 @@ PrefabInstance:
     - target: {fileID: 6617073259897082749, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 23800000, guid: b84d4225d3b1db941a456fabc5d92057, type: 2}
     - target: {fileID: 6617073259897082750, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: level
       value: 

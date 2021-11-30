@@ -8,11 +8,13 @@ public class BossFight : MonoBehaviour
     
     private GameObject bossRoom;
     private GameObject bossStartRoom;
+    private GameObject bossObj;
     private Transform startPos;
     
     void Start()
     {
         bossRoom = transform.GetChild(0).gameObject;
+        bossObj = bossRoom.transform.GetChild(2).gameObject;
         bossStartRoom = transform.GetChild(1).gameObject;
         startPos = bossStartRoom.transform.GetChild(2);
     }
@@ -24,24 +26,21 @@ public class BossFight : MonoBehaviour
     
     public void ActivateBossFight(bool yes = true)
     {
-        StartCoroutine(FakeLoading());
         bossRoom.SetActive(yes);
         bossStartRoom.SetActive(yes);
-        LevelManager.Instance.MovePlayer(startPos);
     }
-    private IEnumerator FakeLoading(float frames = 60f)
+
+    public Transform SpawnBossAndReturnStartPos()
     {
-        for (var i = 0; i < frames; i++)
-        {
-            LoadingManager.Instance.UpdateLoading(i/frames);
-            yield return null;
-        }
-        LoadingManager.Instance.UpdateLoading(2);
+        bossObj.SetActive(true);
+        return startPos;
     }
-    
-    public void CancelBossFight(bool yes = true)
+
+    public void CancelBossFight()
     {
         ActivateBossFight(false);
+        bossObj.SetActive(false);
+        //+reset boss stats
     }
 
     public bool IsInBossFight()
