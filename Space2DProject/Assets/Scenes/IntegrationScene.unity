@@ -235,6 +235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
+    - target: {fileID: 2545915620620602385, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
 --- !u!4 &361762124 stripped
@@ -547,6 +551,10 @@ PrefabInstance:
       propertyPath: cameraMap
       value: 
       objectReference: {fileID: 1199111347}
+    - target: {fileID: 7484005596252100590, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7983400261517997245, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: nyanCount
       value: 
@@ -639,6 +647,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1557975824, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5629675976314166463, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
       propertyPath: m_RootOrder
       value: 2
