@@ -400,7 +400,7 @@ public class GenerationSimpleHalf : MonoBehaviour
                 {
                     Transform instantiatedEnemy = Instantiate(enemyObj, room.transform);
                     instantiatedEnemy.parent = enemies;
-                    instantiatedEnemy.GetChild(0).GetChild(1).parent = healthBarCanvas;
+                    instantiatedEnemy.GetChild(0).GetChild(1).SetParent(healthBarCanvas);
                 }
             }
             
