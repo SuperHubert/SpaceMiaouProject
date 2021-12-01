@@ -7,7 +7,16 @@ public class ShopManager : MonoBehaviour
 {
     public float reductionTotal = 0;
 
-  [System.Serializable] class ShopItem
+    #region Singleton
+    public static ShopManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+
+    [System.Serializable] class ShopItem
     {
         public Sprite Image;
         public int Price;
@@ -16,4 +25,18 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] List<ShopItem> ShopItemList;
 
+
+    public void ReductionPickI()
+    {
+        reductionTotal ++;
+        Debug.Log("Reduction +1");
+
+    }
+
+    public void ReductionPickII()
+    {
+        reductionTotal++;
+        Debug.Log("Reduction +2");
+
+    }
 }

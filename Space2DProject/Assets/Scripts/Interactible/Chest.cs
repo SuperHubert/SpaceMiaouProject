@@ -8,6 +8,7 @@ public class Chest : MonoBehaviour, IInteractible
 {
     private float[] table = {100f,0f};
     private int floor;
+    public static float fortuneUpgrade = 0;
     
 
     private void Start()
@@ -35,11 +36,16 @@ public class Chest : MonoBehaviour, IInteractible
 
     public void UpdateChest()
     {
-        float probabilityToStay = ((floor+4) / (floor + 5f)) * 0.5f;
+        float probabilityToStay = ((floor + (4f + 5 * fortuneUpgrade)) / (floor + (5f + 5 * fortuneUpgrade))) * 0.5f;
         
         if (Random.Range(0f, 1f) > probabilityToStay)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void AddFortune(float f)
+    {
+        fortuneUpgrade += f;
     }
 }

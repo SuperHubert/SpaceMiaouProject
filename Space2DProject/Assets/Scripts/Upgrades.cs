@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Upgrades : MonoBehaviour
 {
+    [SerializeField] private GameObject chestobj;
+    private Chest chest;
+
+    private void Start()
+    {
+        chest = chestobj.GetComponent<Chest>();
+    }
+
     public void Upgrade1()
     {
         Debug.Log("Got Upgrade 1");    
@@ -82,16 +90,19 @@ public class Upgrades : MonoBehaviour
     public void Fortune1()
     {
         Debug.Log("Fortune I");
+        chest.AddFortune(1);
     }
 
     public void Fortune2()
     {
         Debug.Log("Fortune II");
+        chest.AddFortune(2);
     }
 
     public void Fortune3()
     {
         Debug.Log("Fortune III");
+        chest.AddFortune(3);
     }
 
     public void Javel1()
@@ -112,11 +123,13 @@ public class Upgrades : MonoBehaviour
     public void Reductions1()
     {
         Debug.Log("Reductions I");
+        ShopManager.Instance.ReductionPickI();
     }
 
     public void Reductions2()
     {
         Debug.Log("Reductions II");
+        ShopManager.Instance.ReductionPickII();
     }
 
     public void SoapAmmo1()

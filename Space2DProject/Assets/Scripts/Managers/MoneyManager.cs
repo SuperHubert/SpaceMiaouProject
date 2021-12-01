@@ -36,5 +36,7 @@ public class MoneyManager : MonoBehaviour
         nyanCount.text = nyanCoins.ToString();
         coinAnim.SetTrigger(GainPick);
     }
+
+ 
     
 }
