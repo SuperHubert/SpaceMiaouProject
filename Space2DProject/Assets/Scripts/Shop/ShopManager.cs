@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
 {
@@ -18,12 +19,25 @@ public class ShopManager : MonoBehaviour
 
     [System.Serializable] class ShopItem
     {
+        [SerializeField] private UnityEvent upgrade = new UnityEvent();
         public Sprite Image;
-        public int Price;
-        public bool Purchased = false;
+        public int basePrice;
+        private int actualPrice;
     }
 
     [SerializeField] List<ShopItem> ShopItemList;
+    List<ShopItem> ShopItemList2;
+
+    private void Start()
+    {
+        DuplicateList();
+    }
+
+    public void DuplicateList()
+    {
+        ShopItemList2 = ShopItemList;
+    }
+
 
 
     public void ReductionPickI()
@@ -39,4 +53,6 @@ public class ShopManager : MonoBehaviour
         Debug.Log("Reduction +2");
 
     }
+
+
 }

@@ -6,9 +6,21 @@ public class Upgrades : MonoBehaviour
 {
     [SerializeField] private GameObject chestobj;
     private Chest chest;
+    [SerializeField] private bool isChest = true;
+    public static float fortuneUpgrade = 0;
+
+    #region Singleton
+    public static Upgrades Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
 
     private void Start()
     {
+        if (!isChest) return;
         chest = chestobj.GetComponent<Chest>();
     }
 
@@ -90,19 +102,19 @@ public class Upgrades : MonoBehaviour
     public void Fortune1()
     {
         Debug.Log("Fortune I");
-        chest.AddFortune(1);
+        fortuneUpgrade += 1;
     }
 
     public void Fortune2()
     {
         Debug.Log("Fortune II");
-        chest.AddFortune(2);
+        fortuneUpgrade += 2;
     }
 
     public void Fortune3()
     {
         Debug.Log("Fortune III");
-        chest.AddFortune(3);
+        fortuneUpgrade += 3;
     }
 
     public void Javel1()
@@ -140,5 +152,10 @@ public class Upgrades : MonoBehaviour
     public void SoapAmmo2()
     {
         Debug.Log("Recharge de Savon II");
+    }
+
+    public float GetFortuneLevel()
+    {
+        return fortuneUpgrade;
     }
 }

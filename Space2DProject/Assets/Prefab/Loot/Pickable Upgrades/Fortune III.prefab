@@ -126,7 +126,7 @@ MonoBehaviour:
   upgrade:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6953144985163207374}
+      - m_Target: {fileID: 2340910093457116432, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
         m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
         m_MethodName: Fortune3
         m_Mode: 1
@@ -150,3 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28c066058dc12b48b852afa99e5f6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chestobj: {fileID: 0}
+  isChest: 1
