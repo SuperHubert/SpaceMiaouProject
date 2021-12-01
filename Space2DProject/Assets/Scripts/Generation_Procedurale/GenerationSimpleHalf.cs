@@ -16,6 +16,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform items;
     private Transform spawnPoint;
     private Transform portalPos;
+    private Transform healthBarCanvas;
     private int roomSpriteRendersIndex;
     private int roomTilemapsIndex;
     private int roomCollisionsIndex;
@@ -51,6 +52,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         items = level.GetChild(2);
         spawnPoint = level.GetChild(4);
         portalPos = level.GetChild(3);
+        healthBarCanvas = level.GetChild(5);
 
         roomSpriteRendersIndex = 0;
         roomTilemapsIndex = 1;
@@ -396,7 +398,9 @@ public class GenerationSimpleHalf : MonoBehaviour
             {
                 foreach (Transform enemyObj in prefabRoom.transform.GetChild(roomEnemiesIndex))
                 {
-                    Instantiate(enemyObj, room.transform).parent = enemies;
+                    Transform instantiatedEnemy = Instantiate(enemyObj, room.transform);
+                    instantiatedEnemy.parent = enemies;
+                    instantiatedEnemy.GetChild(0).GetChild(1).parent = healthBarCanvas;
                 }
             }
             

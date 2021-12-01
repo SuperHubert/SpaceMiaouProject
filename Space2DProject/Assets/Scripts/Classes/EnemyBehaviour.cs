@@ -6,9 +6,9 @@ using UnityEngine.AI;
 
 public abstract class EnemyBehaviour : MonoBehaviour
 {
-    protected enum State {Asleep, Awake, Dead};
+    public enum State {Asleep, Awake, Dead};
     
-    [SerializeField] protected State currentState;
+    [SerializeField] public State currentState;
 
     [SerializeField] protected bool respawn = true;
 
@@ -50,7 +50,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         (respawnTrigger = transform.GetChild(1).gameObject).SetActive(false);
 
         player = LevelManager.Instance.Player().transform;
-
+        
         if (!hasAction) return;
         
         actionCd = 0;

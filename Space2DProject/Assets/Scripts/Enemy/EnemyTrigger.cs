@@ -62,7 +62,6 @@ public class EnemyTrigger : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if (state != Trigger.Action) return;
-        Debug.Log("staying)");
         enemy.ExecuteAction();
     }
 
