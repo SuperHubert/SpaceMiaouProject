@@ -121,7 +121,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         Action();
     }
 
-    public virtual void Action()
+    protected virtual void Action()
     {
         if (isPerformingAction) return;
         actionTrigger.SetActive(false);

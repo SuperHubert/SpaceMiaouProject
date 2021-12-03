@@ -31,8 +31,8 @@ public class SmallShooterBehaviour : EnemyBehaviour
             }
         }
     }
-    
-    public override void Action()
+
+    protected override void Action()
     {
         shootCd = shootCdMax;
         RunAway();
