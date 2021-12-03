@@ -50,6 +50,9 @@ MonoBehaviour:
   hasAction: 0
   actionCdMax: 0
   actionCd: 0
+  enemyTransform: {fileID: 5375301399049469144}
+  triggersTransform: {fileID: 7760028483843397388}
+  respawnTriggerTransform: {fileID: 2921922867600059612}
 --- !u!1 &261067632358338427
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,10 +21,12 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected EnemyHealth health;
     protected Transform player;
     
-    protected Transform enemy;
-    protected GameObject wakeUpTrigger;
-    protected GameObject sleepTrigger;
-    protected GameObject respawnTrigger;
+    [SerializeField] protected Transform enemyTransform;
+    [SerializeField] protected Transform triggersTransform;
+    [SerializeField] protected Transform respawnTriggerTransform;
+    private GameObject wakeUpTrigger;
+    private GameObject sleepTrigger;
+    private GameObject respawnTrigger;
     protected GameObject actionTrigger;
 
 
@@ -35,19 +37,17 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     protected virtual void InitVariables()
     {
-        enemy = transform.GetChild(0);
-        
         agent = transform.GetChild(0).GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.SetDestination(enemy.position);
+        agent.SetDestination(enemyTransform.position);
         
-        health = enemy.gameObject.GetComponent<EnemyHealth>();
+        health = enemyTransform.gameObject.GetComponent<EnemyHealth>();
         
-        (wakeUpTrigger = enemy.GetChild(0).GetChild(0).gameObject).SetActive(true);
-        (sleepTrigger = enemy.GetChild(0).GetChild(1).gameObject).SetActive(false);
-        (actionTrigger= enemy.GetChild(0).GetChild(2).gameObject).SetActive(false);
-        (respawnTrigger = transform.GetChild(1).gameObject).SetActive(false);
+        (wakeUpTrigger = triggersTransform.GetChild(0).gameObject).SetActive(true);
+        (sleepTrigger = triggersTransform.GetChild(1).gameObject).SetActive(false);
+        (actionTrigger= triggersTransform.GetChild(2).gameObject).SetActive(false);
+        (respawnTrigger = respawnTriggerTransform.gameObject).SetActive(false);
 
         player = LevelManager.Instance.Player().transform;
         
@@ -96,7 +96,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
             return;
         }
         
-        enemy.gameObject.SetActive(false);
+        enemyTransform.gameObject.SetActive(false);
         
         currentState = State.Dead;
     }
@@ -105,8 +105,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         if (!respawn) return;
         
-        enemy.gameObject.SetActive(true);
-        enemy.position = respawnTrigger.transform.position;
+        enemyTransform.gameObject.SetActive(true);
+        enemyTransform.position = respawnTrigger.transform.position;
         health.InitEnemy();
         
         currentState = State.Asleep;

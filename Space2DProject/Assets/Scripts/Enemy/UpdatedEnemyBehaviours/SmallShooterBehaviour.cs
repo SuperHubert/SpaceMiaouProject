@@ -40,20 +40,20 @@ public class SmallShooterBehaviour : EnemyBehaviour
 
     private void RunAway()
     {
-        agent.SetDestination(enemy.position + (enemy.position - player.position).normalized * 1);
+        agent.SetDestination(enemyTransform.position + (enemyTransform.position - player.position).normalized * 1);
     }
     
     private void LookAt(Transform target)
     {
-        Vector3 dir = target.position - enemy.position;
+        Vector3 dir = target.position - enemyTransform.position;
         float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
-        enemy.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        enemyTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
     
     private void ShootBullet()
     {
-        bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", enemy.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody2D>().velocity = (player.position - enemy.position).normalized*bulletSpeed;
+        bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", enemyTransform.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().velocity = (player.position - enemyTransform.position).normalized*bulletSpeed;
         bullet.GetComponent<BulletDamage>().SetBulletDamage(bulletDamage);
         bullet.layer = 11;
     }

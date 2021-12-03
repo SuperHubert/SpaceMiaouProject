@@ -329,6 +329,9 @@ MonoBehaviour:
   hasAction: 1
   actionCdMax: 0
   actionCd: 0
+  enemyTransform: {fileID: 551184654111338515}
+  triggersTransform: {fileID: 3308241362344263529}
+  respawnTriggerTransform: {fileID: 4115104952742007616}
   bulletSpeed: 10
   bulletDamage: 1
   shootCdMax: 50
