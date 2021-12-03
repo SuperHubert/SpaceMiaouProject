@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class LifeManager : MonoBehaviour
@@ -27,7 +24,7 @@ public class LifeManager : MonoBehaviour
     
    public void TakeDamages(int damages)
     {
-        int previousHP = lifeBar;
+        var previousHp = lifeBar;
         lifeBar -= damages;
         if (lifeBar > maxHP)
         {
@@ -37,7 +34,7 @@ public class LifeManager : MonoBehaviour
         {
             lifeBar = 0;
         }
-        UIManager.Instance.UpdateHpUI(previousHP, lifeBar);
+        UIManager.Instance.UpdateHpUI(previousHp, lifeBar);
 
     } 
 
