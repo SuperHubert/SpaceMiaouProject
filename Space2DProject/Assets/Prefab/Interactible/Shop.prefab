@@ -49,7 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reductionTotal: 0
   ShopItemList:
-  - upgrade:
+  - name: Heal I
+    Image: {fileID: 0}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -64,9 +68,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Heal II
     Image: {fileID: 0}
-    basePrice: 3
-  - upgrade:
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -81,9 +87,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Heal III
     Image: {fileID: 0}
-    basePrice: 4
-  - upgrade:
+    basePrice: 5
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -98,9 +106,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Speed I
     Image: {fileID: 0}
-    basePrice: 5
-  - upgrade:
+    basePrice: 2
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -115,9 +125,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Speed II
     Image: {fileID: 0}
-    basePrice: 2
-  - upgrade:
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -132,9 +144,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Speed III
     Image: {fileID: 0}
-    basePrice: 3
-  - upgrade:
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -149,9 +163,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Broom Damage I
     Image: {fileID: 0}
-    basePrice: 4
-  - upgrade:
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -166,9 +182,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Broom Damage II
     Image: {fileID: 0}
-    basePrice: 3
-  - upgrade:
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -183,9 +201,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Broom Damages III
     Image: {fileID: 0}
-    basePrice: 4
-  - upgrade:
+    basePrice: 6
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -200,9 +220,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Dash Cooldown I
     Image: {fileID: 0}
-    basePrice: 6
-  - upgrade:
+    basePrice: 2
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -217,9 +239,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Dash Cooldown II
     Image: {fileID: 0}
-    basePrice: 2
-  - upgrade:
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -234,9 +258,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Dash Cooldown III
     Image: {fileID: 0}
-    basePrice: 4
-  - upgrade:
+    basePrice: 5
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -251,9 +277,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Fortune I
     Image: {fileID: 0}
-    basePrice: 5
-  - upgrade:
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -268,9 +296,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Fortune II
     Image: {fileID: 0}
-    basePrice: 3
-  - upgrade:
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -285,9 +315,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Fortune III
     Image: {fileID: 0}
-    basePrice: 4
-  - upgrade:
+    basePrice: 5
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -302,9 +334,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: 'Bleach '
     Image: {fileID: 0}
-    basePrice: 5
-  - upgrade:
+    basePrice: 2
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -319,9 +353,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Spray Damage I
     Image: {fileID: 0}
     basePrice: 2
-  - upgrade:
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -336,9 +372,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Spray Damage II
     Image: {fileID: 0}
-    basePrice: 2
-  - upgrade:
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -353,9 +391,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Better Prices I
     Image: {fileID: 0}
     basePrice: 3
-  - upgrade:
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -370,9 +410,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Better Prices II
     Image: {fileID: 0}
-    basePrice: 3
-  - upgrade:
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -387,9 +429,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Soap Gain I
     Image: {fileID: 0}
-    basePrice: 4
-  - upgrade:
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -404,9 +448,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Soap Gain II
     Image: {fileID: 0}
-    basePrice: 3
-  - upgrade:
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2340910093457116432}
@@ -421,8 +467,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    Image: {fileID: 0}
-    basePrice: 4
 --- !u!114 &2340910093457116432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +547,12 @@ MonoBehaviour:
   shopUI: {fileID: 0}
   shopManager: {fileID: 2233394246705086647}
   exitButton: {fileID: 0}
+  textList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!61 &1101935766226791751
 BoxCollider2D:
   m_ObjectHideFlags: 0
