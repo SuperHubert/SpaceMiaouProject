@@ -7,16 +7,23 @@ public class Root : MonoBehaviour
 {
     [SerializeField] private GameObject warningObj;
     [SerializeField] private GameObject rootObj;
+    private CircleCollider2D collider;
     
     [SerializeField] private int damage = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Spawn());
+        collider = gameObject.GetComponent<CircleCollider2D>();
+        collider.enabled = false;
     }
 
-    IEnumerator Spawn()
+    public void Spawn()
+    {
+        StartCoroutine(SpawnRoutine());
+    }
+
+    IEnumerator SpawnRoutine()
     {
         //play animation
         //wait for animation to finish
@@ -28,11 +35,18 @@ public class Root : MonoBehaviour
         
         warningObj.SetActive(false);
         rootObj.SetActive(true);
+
+        collider.enabled = true;
+        
         
         yield return new WaitForSeconds(1f);
         
-        Destroy(gameObject);
+        warningObj.SetActive(true);
+        rootObj.SetActive(false);
         
+        collider.enabled = false;
+        
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

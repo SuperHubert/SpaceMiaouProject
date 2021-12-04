@@ -21,6 +21,7 @@ public class EvilTreeBehaviour : EnemyBehaviour
         
         var targetPos = player.position;
 
-        Instantiate(rootPrefab, targetPos,Quaternion.identity);
+        var spawnedObj = ObjectPooler.Instance.SpawnFromPool("Root", targetPos, Quaternion.identity);
+        spawnedObj.GetComponent<Root>().Spawn();
     }
 }

@@ -406,9 +406,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2594063668490503302}
   - component: {fileID: 2594063668490503301}
-  - component: {fileID: 2594063668490503307}
   - component: {fileID: 3699975922957870004}
   - component: {fileID: 2594063668490503298}
+  - component: {fileID: 1062605183}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -455,22 +455,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!58 &2594063668490503307
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2594063668490503296}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!95 &3699975922957870004
 Animator:
   serializedVersion: 3
@@ -508,6 +492,32 @@ MonoBehaviour:
   healthBarOffset: 0.6
   maxHealth: 3
   currentHealth: 0
+--- !u!61 &1062605183
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594063668490503296}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.011269569, y: 1.2734361}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4958506, y: 2.960866}
+  m_EdgeRadius: 0
 --- !u!1 &2755622330264474162
 GameObject:
   m_ObjectHideFlags: 0

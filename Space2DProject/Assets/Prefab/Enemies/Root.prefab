@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7065144723312377874}
   - component: {fileID: 7065144723312377875}
+  - component: {fileID: 6288545954692715559}
   m_Layer: 12
   m_Name: Root
   m_TagString: Untagged
@@ -229,3 +230,19 @@ MonoBehaviour:
   warningObj: {fileID: 7065144721518664595}
   rootObj: {fileID: 7065144722053446701}
   damage: 1
+--- !u!58 &6288545954692715559
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7065144723312377873}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
