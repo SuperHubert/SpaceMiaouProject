@@ -6,12 +6,13 @@ using UnityEngine.AI;
 public class FollowPlayer : MonoBehaviour
 {
     private NavMeshAgent agent;
-    [SerializeField] private Transform player;
+    private Transform player;
     
     // Start is called before the first frame update
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
+        player = LevelManager.Instance.Player().transform;
     }
 
     // Update is called once per frame
@@ -19,4 +20,5 @@ public class FollowPlayer : MonoBehaviour
     {
         agent.SetDestination(player.position);
     }
+
 }

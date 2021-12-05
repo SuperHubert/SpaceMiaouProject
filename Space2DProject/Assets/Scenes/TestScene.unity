@@ -423,6 +423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 13 LD4
       objectReference: {fileID: 0}
+    - target: {fileID: 1390091858274596710, guid: 99d6109a212a2df418e8b577e0b48300, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99d6109a212a2df418e8b577e0b48300, type: 3}
 --- !u!4 &473086873 stripped
@@ -657,6 +661,11 @@ RectTransform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7287700369200821009, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
   m_PrefabInstance: {fileID: 694601361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &870516218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8800626576278873563, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+  m_PrefabInstance: {fileID: 8800626577019101217}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &941613403 stripped
 GameObject:
@@ -1503,12 +1512,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: maxFloors
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 572364790}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: playerFall
+      value: 
+      objectReference: {fileID: 870516218}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: floorNumber
       value: 0
@@ -1522,8 +1535,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: playerFollower
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: generateOnStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626731551357216020, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: pools.Array.size
@@ -1894,5 +1911,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8800626576278873564, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+      propertyPath: follower
+      value: 
+      objectReference: {fileID: 4154322715901416326, guid: d4d7938015cbc9c4282e1a2a6b5162de, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}

@@ -6,6 +6,8 @@ using UnityEngine;
 public class Fall : MonoBehaviour
 {
     [SerializeField] private GameObject tpTarget;
+    [SerializeField] private GameObject follower;
+    private GameObject currentFollower;
 
     private Transform player;
     private Transform pointBotLeft;
@@ -17,6 +19,7 @@ public class Fall : MonoBehaviour
         pointBotLeft = transform.GetChild(0);
         pointTopRight = transform.GetChild(1);
         player = transform.parent;
+        currentFollower = Instantiate(follower, player.position, Quaternion.identity);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -31,5 +34,11 @@ public class Fall : MonoBehaviour
     {
         player.position = tpTarget.transform.position;
         canFall = true;
+    }
+
+    public void ResetFollower()
+    {
+        Destroy(currentFollower);
+        currentFollower = Instantiate(follower, player.position, Quaternion.identity);
     }
 }
