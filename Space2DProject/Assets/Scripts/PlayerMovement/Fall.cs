@@ -25,12 +25,10 @@ public class Fall : MonoBehaviour
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
         canFall = false;
         DoTheFalling();
-        Debug.Log("Overlap");
     }
 
     public void DoTheFalling()
     {
-        Debug.Log("fall");
         player.position = tpTarget.transform.position;
         canFall = true;
     }
