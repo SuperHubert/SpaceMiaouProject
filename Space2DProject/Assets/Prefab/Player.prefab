@@ -205,7 +205,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -269,7 +269,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -544,6 +544,10 @@ MonoBehaviour:
   isSpecialAttacking: 0
   canSpecialAttack: 1
   specialAttackCoolDown: 2
+  baseRightCollider: {fileID: 7701683658996652597}
+  baseLeftCollider: {fileID: 3670718848343679485}
+  baseUpCollider: {fileID: 1272243284189037122}
+  baseDownCollider: {fileID: 8800196449721614723}
   hits: []
   damage: 10
   specialDamage: 10
@@ -559,7 +563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2affb570fe9ba9049a373aaad95e63d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
   isSpraying: 0
   slider: {fileID: 0}
   maxSpray: 100
@@ -605,7 +608,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -669,7 +672,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

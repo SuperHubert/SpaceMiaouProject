@@ -4829,6 +4829,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1272243284189037122, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2733514716031713738, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
       propertyPath: baseUpCollider
       value: 
@@ -4845,6 +4849,10 @@ PrefabInstance:
       propertyPath: baseRightCollider
       value: 
       objectReference: {fileID: 1097477305}
+    - target: {fileID: 3670718848343679485, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5629675976314166463, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4897,6 +4905,14 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 1747498272}
+    - target: {fileID: 7701683658996652597, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800196449721614723, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
 --- !u!1 &1446451444
