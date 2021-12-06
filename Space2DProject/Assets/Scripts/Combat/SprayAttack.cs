@@ -7,8 +7,6 @@ using Random = UnityEngine.Random;
 
 public class SprayAttack : MonoBehaviour
 {
-    public Transform firePoint;
-
     public bool isSpraying;
     private bool canShoot = true;
 
