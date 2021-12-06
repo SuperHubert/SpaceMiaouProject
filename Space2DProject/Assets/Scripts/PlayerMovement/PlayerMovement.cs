@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector2.zero;
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
         {
-            if (GetComponent<PlayerCombat>().isAttacking == false)
+            if (GetComponent<Combat>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)
             {
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;  

@@ -1,0 +1,492 @@
+fileFormatVersion: 2
+guid: 525f8d41dc1eb8a47ae151bd712d00f3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4727051723997343037
+    second: Dash- face g- spritesheet_0
+  - first:
+      213: -1066123774928613494
+    second: Dash- face g- spritesheet_1
+  - first:
+      213: -1257200828906581449
+    second: Dash- face g- spritesheet_2
+  - first:
+      213: -9083216786107317361
+    second: Dash- face g- spritesheet_3
+  - first:
+      213: -807384746167978693
+    second: Dash- face g- spritesheet_4
+  - first:
+      213: 8478188227897178795
+    second: Dash- face g- spritesheet_5
+  - first:
+      213: 8754772735785798875
+    second: Dash- face g- spritesheet_6
+  - first:
+      213: 5561650730310151915
+    second: Dash- face g- spritesheet_7
+  - first:
+      213: 1351452926282870736
+    second: Dash- face g- spritesheet_10
+  - first:
+      213: -6793425643129347387
+    second: Dash- face g- spritesheet_13
+  - first:
+      213: -1123407766312660852
+    second: Dash- face g- spritesheet_14
+  - first:
+      213: -2298712697206928179
+    second: Dash- face g- spritesheet_15
+  - first:
+      213: 4997196842381789200
+    second: Dash- face g- spritesheet_16
+  - first:
+      213: -4508799427566302718
+    second: Dash- face g- spritesheet_17
+  - first:
+      213: 5425154031854970042
+    second: Dash- face g- spritesheet_18
+  - first:
+      213: -5198471674728643194
+    second: Dash- face g- spritesheet_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 49
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c29d348083266eb0800000000000000
+      internalID: -4727051723997343037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 49
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f08c4431e5431f0800000000000000
+      internalID: -1066123774928613494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 49
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73252bdc1868d8ee0800000000000000
+      internalID: -1257200828906581449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 49
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83453e357ee1f180800000000000000
+      internalID: -9083216786107317361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 49
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b35b69fd9d79bc4f0800000000000000
+      internalID: -807384746167978693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 57
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baab5be164398a570800000000000000
+      internalID: 8478188227897178795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 52
+        width: 55
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc89cd1b633f7970800000000000000
+      internalID: 8754772735785798875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 54
+        width: 56
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beeade05fd3fe2d40800000000000000
+      internalID: 5561650730310151915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 58
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dfa0c1b64351c210800000000000000
+      internalID: 1351452926282870736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 58
+        width: 55
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2ee35ee57e8b1a0800000000000000
+      internalID: -6793425643129347387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 56
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80d40fa69ad860f0800000000000000
+      internalID: -1123407766312660852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 49
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc0d422bf45910e0800000000000000
+      internalID: -2298712697206928179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 49
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018ced64d0c995540800000000000000
+      internalID: 4997196842381789200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1687
+        y: 49
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a0d6c2fc68d61c0800000000000000
+      internalID: -4508799427566302718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 50
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab46e7829d40a4b40800000000000000
+      internalID: 5425154031854970042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash- face g- spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 50
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6858ed4fd815bd7b0800000000000000
+      internalID: -5198471674728643194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

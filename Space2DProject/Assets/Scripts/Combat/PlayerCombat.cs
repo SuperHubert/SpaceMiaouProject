@@ -12,69 +12,58 @@ public class PlayerCombat : MonoBehaviour
     public bool isAttacking;
 
     // Attack
-    
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
 
-    public float hitBoxRange;
-    public float attackRange;
-    
     //Damage
     public int attackDamage = 1;
-    
-    //Enemies
-    public LayerMask enemyLayers;
-    
-    //Direction
+
+    //AttackColliders
+    public String weaponEquipped;
+    public GameObject clawCollider;
+    public GameObject broomCollider;
 
     void Update()
     {
         if (Time.time >= nextAttackTime)
         {
-            if (Input.GetButtonDown("Attack") && !isAttacking)
+            if (Input.GetButtonDown("BaseAttack") && !isAttacking)
             {
                 AnimPlayer();
                 isAttacking = true;
-
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                
+                if (weaponEquipped == "Claws")
+                {
+                    Invoke("ResetAttack", 0.5f);
+                    clawCollider.GetComponent<ClawAttack>().dealDamage();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
+                
+                if (weaponEquipped == "Broom")
+                {
+                    Invoke("ResetAttack", 0.8f);
+                    broomCollider.GetComponent<BroomAttack>().dealDamage();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
+                
             }
         }
     }
 
-    void Attack()
-    {
-        //Enemies detection
-        
-        Collider2D[] enemiesHit = 
-            Physics2D.OverlapCircleAll(transform.position + GetComponent<PlayerMovement>().lastDirection * hitBoxRange, attackRange, enemyLayers);
-
-        //Enemies damage
-
-        foreach (Collider2D enemy in enemiesHit)
-        {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
-            Debug.Log("tuché");
-            
-        }
-        
-        Invoke("ResetAttack", 0.5f);
-
-        //Attack animations
-    }
-
     void AnimPlayer()
     {
-        animPlayer.SetTrigger("ClawAttack");
+        if (weaponEquipped == "Claws")
+        {
+            animPlayer.SetTrigger("ClawAttack");
+        }
+        else if (weaponEquipped == "Broom")
+        {
+            animPlayer.SetTrigger("BroomAttack");
+        }
     }
     
     void ResetAttack()
     {
         isAttacking = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position + GetComponent<PlayerMovement>().lastDirection * hitBoxRange, attackRange);
     }
 }
