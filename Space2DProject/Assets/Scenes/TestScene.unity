@@ -1088,17 +1088,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173850448}
   m_CullTransparentMesh: 1
---- !u!1 &199388760 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2233394246705086644, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
-  m_PrefabInstance: {fileID: 69780790}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &199388763 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2350670521089478828, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
   m_PrefabInstance: {fileID: 69780790}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199388760}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd40a3e48cd5421408bb4b80380d7795, type: 3}
@@ -2453,9 +2448,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 199388760}
+      - m_Target: {fileID: 199388763}
         m_TargetAssemblyTypeName: ShopInteraction, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Button
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3273,9 +3268,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 199388760}
+      - m_Target: {fileID: 199388763}
         m_TargetAssemblyTypeName: ShopInteraction, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Button
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4947,9 +4942,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 199388760}
+      - m_Target: {fileID: 199388763}
         m_TargetAssemblyTypeName: ShopInteraction, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Button
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5538,9 +5533,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 199388760}
+      - m_Target: {fileID: 199388763}
         m_TargetAssemblyTypeName: ShopInteraction, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ButtonHeal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
