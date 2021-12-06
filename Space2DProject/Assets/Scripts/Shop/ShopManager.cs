@@ -23,7 +23,8 @@ public class ShopManager : MonoBehaviour
         public Sprite Image;
         public int basePrice;
         public int actualPrice;
-        [SerializeField] private UnityEvent upgrade = new UnityEvent();
+        public UnityEvent upgrade = new UnityEvent();
+        public bool isBought = false;
 
     }
 
