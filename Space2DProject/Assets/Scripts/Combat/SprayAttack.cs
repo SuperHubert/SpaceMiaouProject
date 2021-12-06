@@ -13,6 +13,8 @@ public class SprayAttack : MonoBehaviour
     public Slider slider;
     public int maxSpray = 100;
     public float currentSpray;
+
+    public float sprayAttackAxis;
     
 
     void Start()
@@ -23,12 +25,12 @@ public class SprayAttack : MonoBehaviour
     void Update()
     {
         SprayingAttack();
-        slider.value = currentSpray / maxSpray;
+        //slider.value = currentSpray / maxSpray;
     }
 
     void SprayingAttack()
     {
-        if (Input.GetAxisRaw("SprayAttack") > 0 && GetComponent<Combat>().isAttacking == false &&
+        if (sprayAttackAxis > 0 && GetComponent<Combat>().isAttacking == false &&
             GetComponent<Combat>().isSpecialAttacking == false)
         {
             isSpraying = true;

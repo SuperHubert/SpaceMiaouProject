@@ -26,6 +26,12 @@ public class Combat : MonoBehaviour
     //Damage
     public int damage = 10;
     public int specialDamage = 10;
+
+    public bool rightAttack;
+    public bool leftAttack;
+    public bool uptAttack;
+    public bool downAttack;
+    public bool specialAttack;
     
 
     void Start()
@@ -41,7 +47,7 @@ public class Combat : MonoBehaviour
     
     void BasicAttack()
     {
-        if (Input.GetButtonDown("RightAttack") && isAttacking == false)
+        if (rightAttack && isAttacking == false)
         {
             isAttacking = true;
             Invoke("ResetAttack", 0.5f);
@@ -59,7 +65,7 @@ public class Combat : MonoBehaviour
         }
         
             
-        if (Input.GetButtonDown("LeftAttack") && isAttacking == false)
+        if (leftAttack && isAttacking == false)
         {
             isAttacking = true;
             Invoke("ResetAttack", 0.5f);
@@ -77,7 +83,7 @@ public class Combat : MonoBehaviour
         }
         
         
-        if (Input.GetButtonDown("UpAttack") && isAttacking == false)
+        if (uptAttack && isAttacking == false)
         {
             isAttacking = true;
             Invoke("ResetAttack", 0.5f);
@@ -95,7 +101,7 @@ public class Combat : MonoBehaviour
         }
         
         
-        if (Input.GetButtonDown("DownAttack") && isAttacking == false)
+        if (downAttack && isAttacking == false)
         {
             isAttacking = true;
             Invoke("ResetAttack", 0.5f);
@@ -115,7 +121,7 @@ public class Combat : MonoBehaviour
 
     void SpecialAttack()
     {
-        if (Input.GetButtonDown("SpecialAttack") && !isAttacking && canSpecialAttack)
+        if (specialAttack && !isAttacking && canSpecialAttack)
         {
             isSpecialAttacking = true;
             canSpecialAttack = false;

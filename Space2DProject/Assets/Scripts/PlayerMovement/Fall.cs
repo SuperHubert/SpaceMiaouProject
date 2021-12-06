@@ -7,7 +7,7 @@ public class Fall : MonoBehaviour
 {
     [SerializeField] private GameObject tpTarget;
     [SerializeField] private GameObject follower;
-    private GameObject currentFollower;
+    [SerializeField] private GameObject currentFollower;
 
     private Transform player;
     private Transform pointBotLeft;

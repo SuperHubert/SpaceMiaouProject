@@ -19,7 +19,7 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.position);
+        //agent.SetDestination(player.position);
     }
     
 }
