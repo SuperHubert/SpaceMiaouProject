@@ -94,9 +94,10 @@ public class ConsoleManager : MonoBehaviour
     //Dialogues
     private static Commands TOGGLEINSTANTTEXT;
 
-    private LevelManager lm;
+    private LevelManager levelm;
     private LoadingManager loadingm;
-    private DialogueManager dm;
+    private DialogueManager dialoguem;
+    private LifeManager lifem;
     
     private void Awake()
     {
@@ -132,26 +133,20 @@ public class ConsoleManager : MonoBehaviour
         {
             Print("Going to Hub");
             
-            lm.GoToHub();
+            levelm.GoToHub();
         });
         
         GOTOLASTROOM = new Commands("lastroom", "Teleports to last room of the current floor", "lastroom", () =>
         {
             Print("Teleporting to last room");
             
-            lm.MovePlayer(lm.GetLastRoom().transform);
+            levelm.MovePlayer(levelm.GetLastRoom().transform);
         });
         
         GODMODE = new Commands("godmode", "Toggles godmode", "godmode", () =>
         {
-            if (true)
-            {
-                Print("Godmode ON");
-            }
-            else
-            {
-                Print("Godmode OFF");
-            }
+            lifem.isInGodMode = !lifem.isInGodMode;
+            Print(lifem.isInGodMode ? "Godmode ON" : "Godmode OFF");
         });
         
         NOCLIP = new Commands("noclip", "Toggles noclip", "noclip", () =>
@@ -179,95 +174,95 @@ public class ConsoleManager : MonoBehaviour
         
         NEWLEVEL = new Commands<int,int>("newlevel", "generates a new run", "newlevel int<number of rooms> int<seed>", (numberOfRooms,seed) =>
         {
-            lm.StartNewRun(numberOfRooms,seed);
+            levelm.StartNewRun(numberOfRooms,seed);
             
-            Print("Starting a new run. "+lm.GetCurrentNumberOfRooms()+" rooms, seed : "+lm.GetCurrentSeed());
+            Print("Starting a new run. "+levelm.GetCurrentNumberOfRooms()+" rooms, seed : "+levelm.GetCurrentSeed());
         });
         
         NEXTLEVEL = new Commands("nextlevel", "Generates next level of the current run", "nextlevel", () =>
         {
             loadingm.UpdateLoading();
         
-            lm.GenerateNextLevel();
+            levelm.GenerateNextLevel();
         });
         
         PREVIOUSLEVEL = new Commands("previouslevel", "Generates previous level of the current run", "previouslevel", () =>
         {
             loadingm.UpdateLoading();
         
-            lm.GeneratePreviousLevel();
+            levelm.GeneratePreviousLevel();
         });
         
         RELOADLEVEL = new Commands("reloadlevel", "Reloads the current level of the current run", "reloadlevel", () =>
         {
             loadingm.UpdateLoading();
         
-            lm.ReloadLevel();
+            levelm.ReloadLevel();
         });
         
         TOGGLENAVMESH = new Commands("navmesh", "Toggles Navmesh building during floor generation", "navmesh", () =>
         {
-            Print(lm.ToggleNavMesh() ? "Navmesh building is now ON" : "Navmesh building is now OFF");
+            Print(levelm.ToggleNavMesh() ? "Navmesh building is now ON" : "Navmesh building is now OFF");
         });
         
         DESTROYNAVMESH = new Commands("clearnavmesh", "Clears Navmesh data", "clearnavmesh", () =>
         {
             Print("Cleared Navmesh data");
             
-            lm.gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
+            levelm.gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
         });
         
         TOGGLETELEPORTONGENERATION = new Commands("teleportongeneration", "Toggles player teleportation on new floor generation (includes when taking portals)", "teleportongeneration", () =>
         {
-            Print(lm.ToggleTeleport() ? "Teleportation is now ON" : "Teleportation is now OFF");
+            Print(levelm.ToggleTeleport() ? "Teleportation is now ON" : "Teleportation is now OFF");
         });
         
         GETSEED = new Commands("seed", "Get seed of current floor", "seed", () =>
         {
-            Print(lm.GetCurrentSeed() + " (" +
-                             lm.GetCurrentNumberOfRooms() + " rooms)");
+            Print(levelm.GetCurrentSeed() + " (" +
+                             levelm.GetCurrentNumberOfRooms() + " rooms)");
         });
         
         GETNUMBEROFROOMS = new Commands("rooms", "Get seed of current floor", "rooms", () =>
         {
-            Print(lm.GetCurrentNumberOfRooms() + " rooms");
+            Print(levelm.GetCurrentNumberOfRooms() + " rooms");
         });
         
         GETCURRENTFLOOR = new Commands("floor", "Get floor of current run", "floor", () =>
         {
-            Print("Floor "+lm.GetCurrentFloorNumber() + " of seed "+lm.GetFirstSeed()+" (" +
-                             lm.GetCurrentNumberOfRooms() + " rooms, first floor is floor 0)");
+            Print("Floor "+levelm.GetCurrentFloorNumber() + " of seed "+levelm.GetFirstSeed()+" (" +
+                             levelm.GetCurrentNumberOfRooms() + " rooms, first floor is floor 0)");
         });
         
         SETFIRSTSEED = new Commands<int>("setseed", "Sets the first seed of the Level Manager", "setseed int<seed>", (seed) =>
         {
-            lm.SetSeedAndRoom(lm.GetCurrentNumberOfRooms(), seed);
+            levelm.SetSeedAndRoom(levelm.GetCurrentNumberOfRooms(), seed);
                 
             Print("Seed has been set to "+seed);
         });
         
         FORCENEXTSEED = new Commands<int>("forceseed", "Forces the seed of the next floor", "forceseed int<seed>", (seed) =>
         {
-            lm.AddSeed(seed);
+            levelm.AddSeed(seed);
             
             Print("Next seed will be "+seed);
         });
         
         SETNUMBEROFROOMS = new Commands<int>("setnumberofrooms", "Sets the number of rooms for the next generations", "setnumberofrooms int<number of rooms>", (rooms) =>
         {
-            lm.SetSeedAndRoom(rooms,lm.GetFirstSeed());
+            levelm.SetSeedAndRoom(rooms,levelm.GetFirstSeed());
             
             Print("Number of rooms has been set to "+rooms+" (will take effect for next generations)");
         });
         
         GETCURRENTMAXFLOORS = new Commands("maxfloors", "Get the current number of maximum floors", "maxfloors", () =>
         {
-            Print("Max Floors : "+lm.GetMaxFloors());
+            Print("Max Floors : "+levelm.GetMaxFloors());
         });
         
         SETMAXFLOORS = new Commands<int>("setmaxfloors", "Sets the max number of floors", "setmaxfloors int<number of rooms>", (number) =>
         {
-            Print("Max number of floors has been set to "+lm.SetMaxFloors(number)+" (will take effect for next generations)");
+            Print("Max number of floors has been set to "+levelm.SetMaxFloors(number)+" (will take effect for next generations)");
         });
         
         GIVECOINS = new Commands<int>("addcoins", "Gives a set amount of nyancoins", "addcoins int<amount of coins>", (amount) =>
@@ -384,7 +379,7 @@ public class ConsoleManager : MonoBehaviour
         {
             GameObject destination = Instantiate(new GameObject(),new Vector3(x,y,0),Quaternion.identity);
 
-            lm.MovePlayer(destination.transform);
+            levelm.MovePlayer(destination.transform);
 
             Destroy(destination);
 
@@ -393,17 +388,17 @@ public class ConsoleManager : MonoBehaviour
 
         GETPOS = new Commands("getpos", "Get current player position", "getpos", () =>
         {
-            Print("Player is at : "+lm.GetPos().x+" "+ lm.GetPos().y);
+            Print("Player is at : "+levelm.GetPos().x+" "+ levelm.GetPos().y);
         });
 
         ENEMYLIST = new Commands("enemylist", "Get the list of all enemies", "enemylist", () =>
         {
-            lm.gameObject.GetComponent<EnemyManager>().GetList();
+            levelm.gameObject.GetComponent<EnemyManager>().GetList();
         });
 
         SPAWNENEMY = new Commands<int,float,float>("spawn", "Summons an enemy", "spawn int<enemy id> float<x coordinate> float<y coordinate>", (id,x,y) =>
         {
-            lm.gameObject.GetComponent<EnemyManager>().SpawnEnemy(id,x,y);
+            levelm.gameObject.GetComponent<EnemyManager>().SpawnEnemy(id,x,y);
         });
         
         TOGGLESHOWTRIGGERS = new Commands("showtriggers", "Toggles rendering of enemy triggers", "showtriggers", () =>
@@ -413,7 +408,7 @@ public class ConsoleManager : MonoBehaviour
             IEnumerator ActivateTriggers()
             {
                 var b = true;
-                foreach (Transform enemy in lm.Level().GetChild(1))
+                foreach (Transform enemy in levelm.Level().GetChild(1))
                 {
                     foreach (Transform trigger in enemy.GetChild(0).GetChild(0))
                     {
@@ -474,45 +469,45 @@ public class ConsoleManager : MonoBehaviour
         
         FINDPORTAL = new Commands("findportal", "Get coordinates of the portal of the current floor", "findportal", () =>
         {
-            Vector3 pos = lm.Level().GetChild(3).position;
+            Vector3 pos = levelm.Level().GetChild(3).position;
             
             Print("Found Portal at "+pos.x+" "+pos.y);
         });
         
         TELEPORTTOPORTAL = new Commands("gotoportal", "Teleports player to portal", "gotoportal", () =>
         {
-            lm.MovePlayer(lm.Level().GetChild(3));
+            levelm.MovePlayer(levelm.Level().GetChild(3));
             Print("Teleported Jones to portal");
         });
         
         MOVEPORTAL = new Commands<float,float>("moveportal", "Moves portal to coordinates", "moveportal float<x coordinates> float<y coordinates>", (x,y) =>
         {
-            lm.Level().GetChild(3).position = new Vector3(x, y, 0);
+            levelm.Level().GetChild(3).position = new Vector3(x, y, 0);
             Print("Moved portal to Jones");
         });
         
         FINDSPAWNPOINT = new Commands("findstart", "Get coordinates of the start position of the current floor", "findstart", () =>
         {
-            var pos = lm.Level().GetChild(4).position;
+            var pos = levelm.Level().GetChild(4).position;
             
             Print("Found start position at "+pos.x+" "+pos.y);
         });
         
         TELEPORTTOSPAWNPOINT = new Commands("gotostart", "Teleports player to start position", "gotostart", () =>
         {
-            lm.MovePlayer(lm.Level().GetChild(4));
+            levelm.MovePlayer(levelm.Level().GetChild(4));
             Print("Teleported Jones to start position");
         });
         
         MOVESPAWNPOINT = new Commands<float,float>("movestart", "Moves start position to coordinates", "movestart float<x coordinates> float<y coordinates>", (x,y) =>
         {
-            lm.Level().GetChild(4).position = new Vector3(x, y, 0);
+            levelm.Level().GetChild(4).position = new Vector3(x, y, 0);
             Print("Moved start position to Jones");
         });
         
         TOGGLEINSTANTTEXT = new Commands("instantdisplay", "Toggles instant display for dialogues", "instantdisplay", () =>
         {
-            Print(dm.ToggleInstantTyping() ? "Instant display is now ON" : "Instant display is now OFF");
+            Print(dialoguem.ToggleInstantTyping() ? "Instant display is now ON" : "Instant display is now OFF");
         });
         #endregion
 
@@ -573,9 +568,10 @@ public class ConsoleManager : MonoBehaviour
 
     private void Start()
     {
-        lm = LevelManager.Instance;
+        levelm = LevelManager.Instance;
         loadingm = LoadingManager.Instance;
-        dm = DialogueManager.Instance;
+        dialoguem = DialogueManager.Instance;
+        lifem = LifeManager.Instance;
     }
 
     private void Update()
