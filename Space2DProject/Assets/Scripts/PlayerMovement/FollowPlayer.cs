@@ -19,6 +19,7 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!InputManager.canInput) return;
         //agent.SetDestination(player.position);
     }
     

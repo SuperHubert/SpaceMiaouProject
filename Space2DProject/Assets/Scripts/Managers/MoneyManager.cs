@@ -10,11 +10,7 @@ public class MoneyManager : MonoBehaviour
     [SerializeField] private Image movingCoin;
     [SerializeField] private Animator coinAnim;
     [SerializeField] private TextMeshProUGUI nyanCount;
-  
-
-
-    public Transform playerTransform;
-
+    
     private static readonly int GainPick = Animator.StringToHash("GainPick");
 
     #region Singleton

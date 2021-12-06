@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public bool canInput = true;
+    public static bool canInput = false;
     public GameObject playerObj;
 
     private SprayAttack sprayAttack;

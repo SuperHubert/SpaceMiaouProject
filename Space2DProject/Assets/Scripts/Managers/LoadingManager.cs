@@ -47,6 +47,7 @@ public class LoadingManager : MonoBehaviour
         if (showCanvas)
         {
             canvas.SetActive(true);
+            InputManager.canInput = false;
         }
 
         StartCoroutine(LoadAsynchronously(sceneNumber));
@@ -66,6 +67,7 @@ public class LoadingManager : MonoBehaviour
         }
         
         canvas.SetActive(false);
+        InputManager.canInput = true;
         progressBar.fillAmount = 0;
     }
 
@@ -87,6 +89,7 @@ public class LoadingManager : MonoBehaviour
         if (progress > 1)
         {
             canvas.SetActive(false);
+            InputManager.canInput = true;
             return;
         }
         
@@ -100,6 +103,7 @@ public class LoadingManager : MonoBehaviour
         else
         {
             canvas.SetActive(true);
+            InputManager.canInput = true;
         }
     }
 
