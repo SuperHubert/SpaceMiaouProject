@@ -15,6 +15,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform enemies;
     private Transform items;
     private Transform spawnPoint;
+    private Transform shopPos;
     private Transform portalPos;
     private Transform healthBarCanvas;
     private int roomSpriteRendersIndex;
@@ -53,6 +54,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         spawnPoint = level.GetChild(4);
         portalPos = level.GetChild(3);
         healthBarCanvas = level.GetChild(5);
+        shopPos = level.GetChild(6);
 
         roomSpriteRendersIndex = 0;
         roomTilemapsIndex = 1;
@@ -61,6 +63,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         roomOtherIndex = 4;
         roomPortalIndex = 5;
         roomSpawnIndex = 6;
+        roomShopIndex = 7;
     }
 
     private void Start()
@@ -171,7 +174,7 @@ public class GenerationSimpleHalf : MonoBehaviour
 
         StartCoroutine(UpdateRoomAppearance());
         
-        SetSpawnPoint();
+        SetSpawnAndShopPoints();
     }
     
     private Case CreateRoom(Case creator,Vector2Int coords,int creationNumber, string caseName ,Transform caseParent)
@@ -494,13 +497,17 @@ public class GenerationSimpleHalf : MonoBehaviour
         return values;
     }
     
-    private void SetSpawnPoint()
+    private void SetSpawnAndShopPoints()
     {
         Case room = generationList[0];
         
         GameObject posObject = Instantiate(firstRoomPrefab.transform.GetChild(roomSpawnIndex).gameObject, room.transform);
 
         spawnPoint.position = posObject.transform.position;
+        
+        posObject = Instantiate(firstRoomPrefab.transform.GetChild(roomShopIndex).gameObject, room.transform);
+        
+        shopPos.position = posObject.transform.position;
     }
 
     private void MovePortal()
