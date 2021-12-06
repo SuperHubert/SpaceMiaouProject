@@ -14,7 +14,7 @@ public class SprayAttack : MonoBehaviour
     public int maxSpray = 100;
     public float currentSpray;
 
-    public float sprayAttackAxis;
+    [HideInInspector] public float sprayAttackAxis;
     
 
     void Start()

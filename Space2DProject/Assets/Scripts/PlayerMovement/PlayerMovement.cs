@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
     //Animations
     [SerializeField] private Animator animPlayer;
     public int playerDirection = 0;
+    
+    //Inputs
+    public float horizontalAxis;
+    public float verticalAxis;
+    public bool dash;
 
     void Start()
     {
@@ -40,16 +45,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        inputMovement.x = Input.GetAxisRaw("Horizontal");
-        inputMovement.y = Input.GetAxisRaw("Vertical");
+        inputMovement.x = horizontalAxis;
+        inputMovement.y = verticalAxis;
         
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.3f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.3f)
+        if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
         {
             lastDirection = inputMovement;
         }
         inputMovement.Normalize();
         
-        if (Input.GetButtonDown("Dash"))
+        if (dash)
         {
             if (dashCd <= 0)
             {

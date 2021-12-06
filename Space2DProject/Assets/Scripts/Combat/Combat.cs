@@ -27,11 +27,11 @@ public class Combat : MonoBehaviour
     public int damage = 10;
     public int specialDamage = 10;
 
-    public bool rightAttack;
-    public bool leftAttack;
-    public bool uptAttack;
-    public bool downAttack;
-    public bool specialAttack;
+    [HideInInspector] public bool rightAttack;
+    [HideInInspector] public bool leftAttack;
+    [HideInInspector] public bool uptAttack;
+    [HideInInspector] public bool downAttack;
+    [HideInInspector] public bool specialAttack;
     
 
     void Start()

@@ -9,9 +9,11 @@ public class DisplayInteracion : MonoBehaviour
     private GameObject objectToInteractWith;
     private bool canInteract = false;
 
+    [HideInInspector] public bool interact;
+
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && canInteract)
+        if (interact && canInteract)
         {
             objectToInteractWith.GetComponent<IInteractible>().OnInteraction();
         }
