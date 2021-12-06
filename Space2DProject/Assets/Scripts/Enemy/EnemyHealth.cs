@@ -39,6 +39,8 @@ public class EnemyHealth : MonoBehaviour
         hpPos.z = 0f;
         hpPos.y += healthBarOffset;
 
+        hpPos = Camera.main.WorldToScreenPoint(hpPos);
+        
         healthBarObj.transform.position = hpPos;
     }
 

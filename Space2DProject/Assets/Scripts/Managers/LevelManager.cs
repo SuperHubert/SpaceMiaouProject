@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private bool generateOnStart = true;
 
     [SerializeField] private Transform player;
+    [SerializeField] private GameObject playerFall;
     [SerializeField] private Transform mainCamera;
     
     [SerializeField] private int firstSeed;
@@ -44,7 +45,7 @@ public class LevelManager : MonoBehaviour
     {
         generator = gameObject.GetComponent<GenerationSimpleHalf>();
         bossfight = bossFightObj.GetComponent<BossFight>();
-        
+
         seedList.Add(firstSeed);
         
         if (!generateOnStart) return;
@@ -212,6 +213,10 @@ public class LevelManager : MonoBehaviour
     public void MovePlayer(Transform position)
     {
         mainCamera.position = player.position = position.position;
+        if (playerFall != null && playerFall.GetComponent<Fall>() != null)
+        {
+            playerFall.GetComponent<Fall>().ResetFollower();
+        }
     }
     
     public void GeneratePreviousLevel()

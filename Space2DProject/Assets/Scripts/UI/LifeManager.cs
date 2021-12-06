@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class LifeManager : MonoBehaviour
 {
     public int lifeBar = 9;
+    public int damagesPepito = 1;
     public int maxHP = 9;
-    public bool isInGodMode = false;
 
     #region Singleton
     public static LifeManager Instance;
@@ -19,10 +16,15 @@ public class LifeManager : MonoBehaviour
     }
     #endregion
     
+    public void TestDamages()
+    {
+        TakeDamages(damagesPepito);
+        
+    }
+    
    public void TakeDamages(int damages)
     {
-        if(isInGodMode) return;
-        int previousHP = lifeBar;
+        var previousHp = lifeBar;
         lifeBar -= damages;
         if (lifeBar > maxHP)
         {
@@ -32,7 +34,9 @@ public class LifeManager : MonoBehaviour
         {
             lifeBar = 0;
         }
-        UIManager.Instance.UpdateHpUI(previousHP, lifeBar);
+        UIManager.Instance.UpdateHpUI(previousHp, lifeBar);
+
     } 
-   
+
+
 }

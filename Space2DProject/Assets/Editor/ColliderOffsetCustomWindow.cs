@@ -30,6 +30,11 @@ public class ColliderOffsetCustomWindow : EditorWindow
         {
             SnapPolyPathsV2(Selection.gameObjects,wallOffsetInput, levelOffsetInput);
         }
+        
+        if (GUILayout.Button("Snap Poly", GUILayout.Width(200), GUILayout.Height(20)))
+        {
+            SnapPolyPaths(Selection.gameObjects);
+        }
         GUILayout.Space(20);
         
         GUILayout.Label("Fixes :", EditorStyles.boldLabel);
@@ -411,6 +416,48 @@ public class ColliderOffsetCustomWindow : EditorWindow
                     
                     poly.SetPath(n, newPoints);
                     
+                }
+            }
+        }
+    }
+    
+    private static void SnapPolyPaths(IEnumerable<GameObject> gos)
+    {
+        foreach (var go in gos)
+        {
+            var polys = go.GetComponentsInChildren<PolygonCollider2D>(false);
+            
+            foreach (var poly in polys)
+            {
+                poly.gameObject.layer = 13;
+                if (poly.gameObject.transform.parent.gameObject.layer != 13)
+                {
+                    poly.gameObject.transform.parent.gameObject.layer = 13;
+                }
+            }
+            
+            foreach (var poly in polys)
+            {
+                for (var n = 0; n < poly.pathCount; n++)
+                {
+                    var path = poly.GetPath(n);
+                    for (var p = 0; p < path.Length; p++)
+                    {
+                        var v2 = path[p];
+
+                        var x = v2.x;
+                        var y = v2.y;
+                        var rest = y % 1;
+                        if (rest != 0)
+                        {
+                            x = Mathf.Round(v2.x);
+                            y = Mathf.Round(v2.y);
+                        }
+
+                        path[p] = new Vector2(x, y);
+                    }
+
+                    poly.SetPath(n, path);
                 }
             }
         }

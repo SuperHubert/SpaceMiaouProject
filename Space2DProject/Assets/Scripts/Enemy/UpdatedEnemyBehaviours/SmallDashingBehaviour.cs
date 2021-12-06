@@ -25,8 +25,8 @@ public class SmallDashingBehaviour : EnemyBehaviour
             agent.SetDestination(player.position);
         }
     }
-    
-    public override void Action()
+
+    protected override void Action()
     {
         base.Action();
         StartCoroutine(DashAttack());
@@ -37,10 +37,11 @@ public class SmallDashingBehaviour : EnemyBehaviour
         agent.velocity = Vector3.zero;
         agent.acceleration = 100;
         agent.speed = 20;
+
+        var currentPos = enemyTransform.position;
+        var target = currentPos + (player.position - currentPos).normalized * 3;
         
-        Vector3 target = enemy.position + (player.position - enemy.position).normalized * 3;
-        
-        agent.SetDestination(enemy.position + (player.position - enemy.position).normalized * -1);
+        agent.SetDestination(currentPos + (player.position - currentPos).normalized * -1);
         
         yield return new WaitForSeconds(0.1f);
 

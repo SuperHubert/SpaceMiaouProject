@@ -24,8 +24,8 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
             agent.SetDestination(player.position);
         }
     }
-    
-    public override void Action()
+
+    protected override void Action()
     {
         base.Action();
         //StartCoroutine(Attack());
