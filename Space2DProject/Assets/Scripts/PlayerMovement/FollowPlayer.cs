@@ -9,14 +9,12 @@ public class FollowPlayer : MonoBehaviour
     private NavMeshAgent agent;
     private Transform player;
     
-    // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         player = LevelManager.Instance.Player().transform;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(!InputManager.canInput) return;

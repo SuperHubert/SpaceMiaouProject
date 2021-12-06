@@ -203,14 +203,7 @@ public class GenerationSimpleHalf : MonoBehaviour
             }
             else
             {
-                if (checkNextInsteadOfPrevious)
-                {
-                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber + 1);
-                }
-                else
-                {
-                    currentRoom = GetCaseFromNumber(currentRoom.generationNumber - 1);
-                }
+                currentRoom = checkNextInsteadOfPrevious ? GetCaseFromNumber(currentRoom.generationNumber + 1) : GetCaseFromNumber(currentRoom.generationNumber - 1);
             }
             
             return GetNextPosition(currentRoom);
@@ -421,6 +414,9 @@ public class GenerationSimpleHalf : MonoBehaviour
             UpdateProgress(0.1f/ dungeonNumberOfRooms);
             yield return null;
         }
+
+        ObjectPooler.Instance.SpawnFromPool("Follower", LevelManager.Instance.Player().transform.position,
+            Quaternion.identity);
         
         Random.state = randState;
         

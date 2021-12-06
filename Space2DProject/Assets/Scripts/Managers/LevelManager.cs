@@ -215,7 +215,7 @@ public class LevelManager : MonoBehaviour
         mainCamera.position = player.position = position.position;
         if (playerFall != null && playerFall.GetComponent<Fall>() != null)
         {
-            playerFall.GetComponent<Fall>().ResetFollower();
+            //playerFall.GetComponent<Fall>().ResetFollower();
         }
     }
     
