@@ -98,6 +98,7 @@ public class ConsoleManager : MonoBehaviour
     private LoadingManager loadingm;
     private DialogueManager dialoguem;
     private LifeManager lifem;
+    private bool noclip = false;
     
     private void Awake()
     {
@@ -151,14 +152,9 @@ public class ConsoleManager : MonoBehaviour
         
         NOCLIP = new Commands("noclip", "Toggles noclip", "noclip", () =>
         {
-            if (true)
-            {
-                Print("Noclip ON");
-            }
-            else
-            {
-                Print("Noclip OFF");
-            }
+            noclip = !noclip;
+            Physics2D.IgnoreLayerCollision(6,13,noclip);
+            Print(noclip ? "Noclip ON" : "Noclip OFF");
         });
         
         UPGRADELIST = new Commands("upgradelist", "Get the list of all upgrades", "upgradelist", () =>
