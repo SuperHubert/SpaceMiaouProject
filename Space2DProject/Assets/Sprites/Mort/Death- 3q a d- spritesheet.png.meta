@@ -1,0 +1,1524 @@
+fileFormatVersion: 2
+guid: 3298d31da22c6d947a9fe982c110069e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1527550669043898958
+    second: Death- 3q a d- spritesheet_0
+  - first:
+      213: 6872895081601584674
+    second: Death- 3q a d- spritesheet_1
+  - first:
+      213: -8440425669051095016
+    second: Death- 3q a d- spritesheet_2
+  - first:
+      213: 8881659665609792983
+    second: Death- 3q a d- spritesheet_3
+  - first:
+      213: -1868439914105341869
+    second: Death- 3q a d- spritesheet_4
+  - first:
+      213: 61151074478477603
+    second: Death- 3q a d- spritesheet_5
+  - first:
+      213: 1274804927936664099
+    second: Death- 3q a d- spritesheet_6
+  - first:
+      213: -4078531643085126735
+    second: Death- 3q a d- spritesheet_7
+  - first:
+      213: -2214345436789914369
+    second: Death- 3q a d- spritesheet_8
+  - first:
+      213: -7529988853944769433
+    second: Death- 3q a d- spritesheet_9
+  - first:
+      213: 425133066164078052
+    second: Death- 3q a d- spritesheet_10
+  - first:
+      213: 2993977728402158601
+    second: Death- 3q a d- spritesheet_11
+  - first:
+      213: 7634144586432732231
+    second: Death- 3q a d- spritesheet_12
+  - first:
+      213: 7579276878492462410
+    second: Death- 3q a d- spritesheet_13
+  - first:
+      213: 4369696894272739361
+    second: Death- 3q a d- spritesheet_14
+  - first:
+      213: -2809715935556926628
+    second: Death- 3q a d- spritesheet_15
+  - first:
+      213: 3401988357225143187
+    second: Death- 3q a d- spritesheet_16
+  - first:
+      213: -5372452746327819391
+    second: Death- 3q a d- spritesheet_17
+  - first:
+      213: -8118294820594627933
+    second: Death- 3q a d- spritesheet_18
+  - first:
+      213: 1305690469088220906
+    second: Death- 3q a d- spritesheet_19
+  - first:
+      213: 2499363830033372909
+    second: Death- 3q a d- spritesheet_20
+  - first:
+      213: 7920899378265476801
+    second: Death- 3q a d- spritesheet_21
+  - first:
+      213: -3535067579666648458
+    second: Death- 3q a d- spritesheet_22
+  - first:
+      213: 1552938998103119336
+    second: Death- 3q a d- spritesheet_23
+  - first:
+      213: -392395955608733733
+    second: Death- 3q a d- spritesheet_24
+  - first:
+      213: 2617639250324719449
+    second: Death- 3q a d- spritesheet_25
+  - first:
+      213: -4824787881750366222
+    second: Death- 3q a d- spritesheet_26
+  - first:
+      213: -1889710750302450611
+    second: Death- 3q a d- spritesheet_27
+  - first:
+      213: 1473619516058347835
+    second: Death- 3q a d- spritesheet_28
+  - first:
+      213: 4481554978639832764
+    second: Death- 3q a d- spritesheet_29
+  - first:
+      213: 6379532526170463466
+    second: Death- 3q a d- spritesheet_30
+  - first:
+      213: -8482007574945616750
+    second: Death- 3q a d- spritesheet_31
+  - first:
+      213: 4978116281263438006
+    second: Death- 3q a d- spritesheet_32
+  - first:
+      213: 4345980148277491138
+    second: Death- 3q a d- spritesheet_33
+  - first:
+      213: 788282553818178164
+    second: Death- 3q a d- spritesheet_34
+  - first:
+      213: 4777176835617577234
+    second: Death- 3q a d- spritesheet_35
+  - first:
+      213: -5320065919704876016
+    second: Death- 3q a d- spritesheet_36
+  - first:
+      213: -1092757965499993429
+    second: Death- 3q a d- spritesheet_37
+  - first:
+      213: -7330772236318466089
+    second: Death- 3q a d- spritesheet_38
+  - first:
+      213: -8051964467509681534
+    second: Death- 3q a d- spritesheet_39
+  - first:
+      213: 2423803449075837758
+    second: Death- 3q a d- spritesheet_40
+  - first:
+      213: 8777104564732540409
+    second: Death- 3q a d- spritesheet_41
+  - first:
+      213: 4783426054635139006
+    second: Death- 3q a d- spritesheet_42
+  - first:
+      213: 2863553529384370113
+    second: Death- 3q a d- spritesheet_43
+  - first:
+      213: 1561133983404991471
+    second: Death- 3q a d- spritesheet_44
+  - first:
+      213: -6781595546540431728
+    second: Death- 3q a d- spritesheet_45
+  - first:
+      213: -540581187827268426
+    second: Death- 3q a d- spritesheet_46
+  - first:
+      213: -3950305839429087377
+    second: Death- 3q a d- spritesheet_47
+  - first:
+      213: 3408917897898448380
+    second: Death- 3q a d- spritesheet_48
+  - first:
+      213: 73030033697087856
+    second: Death- 3q a d- spritesheet_49
+  - first:
+      213: 87321527386964349
+    second: Death- 3q a d- spritesheet_50
+  - first:
+      213: -43788697828831801
+    second: Death- 3q a d- spritesheet_51
+  - first:
+      213: -7391809464607633201
+    second: Death- 3q a d- spritesheet_52
+  - first:
+      213: -4074506540389922851
+    second: Death- 3q a d- spritesheet_53
+  - first:
+      213: -7304733943794975614
+    second: Death- 3q a d- spritesheet_54
+  - first:
+      213: 4954277086847795487
+    second: Death- 3q a d- spritesheet_55
+  - first:
+      213: 2687825085243703942
+    second: Death- 3q a d- spritesheet_56
+  - first:
+      213: -6112303015043674380
+    second: Death- 3q a d- spritesheet_57
+  - first:
+      213: -4385474690898395052
+    second: Death- 3q a d- spritesheet_58
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 16
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a95cc7d33f23510800000000000000
+      internalID: 1527550669043898958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 16
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e446d99ad616f50800000000000000
+      internalID: 6872895081601584674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 16
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818ee13c2959dda80800000000000000
+      internalID: -8440425669051095016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 16
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd1698a86ef14b70800000000000000
+      internalID: 8881659665609792983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 16
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 358f69b2cc7f116e0800000000000000
+      internalID: -1868439914105341869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 16
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3215ce7049049d000800000000000000
+      internalID: 61151074478477603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 15
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3221597e35401b110800000000000000
+      internalID: 1274804927936664099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 9
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b388b064152667c0800000000000000
+      internalID: -4078531643085126735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 9
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4412eae801541e0800000000000000
+      internalID: -2214345436789914369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 9
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 764a8fd680b108790800000000000000
+      internalID: -7529988853944769433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 9
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e58bfe654066e500800000000000000
+      internalID: 425133066164078052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 9
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90477d691eebc8920800000000000000
+      internalID: 2993977728402158601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 9
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c5b4ecd0ee1f960800000000000000
+      internalID: 7634144586432732231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 9
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4defdc0a200f2960800000000000000
+      internalID: 7579276878492462410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 9
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12811477c2844ac30800000000000000
+      internalID: 4369696894272739361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 9
+        width: 34
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53006d3e32e109d0800000000000000
+      internalID: -2809715935556926628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b5b6ae26a463f20800000000000000
+      internalID: 3401988357225143187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18bfe8211b63175b0800000000000000
+      internalID: -5372452746327819391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa409c8fd5065f80800000000000000
+      internalID: -8118294820594627933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 9
+        width: 34
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae6dd94509ebe1210800000000000000
+      internalID: 1305690469088220906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de6599549268fa220800000000000000
+      internalID: 2499363830033372909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 9
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce402f8400bced60800000000000000
+      internalID: 7920899378265476801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 9
+        width: 37
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67238f014cae0fec0800000000000000
+      internalID: -3535067579666648458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 1490
+        y: 9
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e599cb7ac52d8510800000000000000
+      internalID: 1552938998103119336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd734a615fded8af0800000000000000
+      internalID: -392395955608733733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95789b18709b35420800000000000000
+      internalID: 2617639250324719449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f7f8affbf8ea0db0800000000000000
+      internalID: -4824787881750366222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 1746
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c4cffa51666c5e0800000000000000
+      internalID: -1889710750302450611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b39adbc6429537410800000000000000
+      internalID: 1473619516058347835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb6e53f328ea13e30800000000000000
+      internalID: 4481554978639832764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 1938
+        y: 9
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aecd0774807a88850800000000000000
+      internalID: 6379532526170463466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 2002
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29ca139dc0bd94a80800000000000000
+      internalID: -8482007574945616750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 2067
+        y: 9
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8bb43f162d51540800000000000000
+      internalID: 4978116281263438006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 2131
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c5bafa3be5005c30800000000000000
+      internalID: 4345980148277491138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 2194
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47268f26eca80fa00800000000000000
+      internalID: 788282553818178164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 9
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 219d53c7501fb4240800000000000000
+      internalID: 4777176835617577234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 2323
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c3452ab345b26b0800000000000000
+      internalID: -5320065919704876016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 2386
+        y: 9
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2f4e88b6eb5d0f0800000000000000
+      internalID: -1092757965499993429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 2450
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df11fcbd7dd34a90800000000000000
+      internalID: -7330772236318466089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 2515
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282a40a5afca14090800000000000000
+      internalID: -8051964467509681534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 2579
+        y: 9
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3b2883256413a120800000000000000
+      internalID: 2423803449075837758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 2642
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5b759391a8ec970800000000000000
+      internalID: 8777104564732540409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 2707
+        y: 9
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebf20eb27a4226240800000000000000
+      internalID: 4783426054635139006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 2771
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf754263c26db720800000000000000
+      internalID: 2863553529384370113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 2834
+        y: 9
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe325af26134aa510800000000000000
+      internalID: 1561133983404991471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0962616e7cee2e1a0800000000000000
+      internalID: -6781595546540431728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 2963
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b40c4716487f78f0800000000000000
+      internalID: -540581187827268426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 3027
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f8da6c4c1bd29c0800000000000000
+      internalID: -3950305839429087377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 3090
+        y: 9
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf555b454c8ee4f20800000000000000
+      internalID: 3408917897898448380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 3155
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0712370cd64730100800000000000000
+      internalID: 73030033697087856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 3219
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71052d677a363100800000000000000
+      internalID: 87321527386964349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 3282
+        y: 9
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd4cbc496e646ff0800000000000000
+      internalID: -43788697828831801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 3346
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc011b694740b6990800000000000000
+      internalID: -7391809464607633201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 3411
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd78d01a3e17477c0800000000000000
+      internalID: -4074506540389922851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 3475
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28cbc552e2f50aa90800000000000000
+      internalID: -7304733943794975614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 3538
+        y: 9
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f118b68f2c021c440800000000000000
+      internalID: 4954277086847795487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 3603
+        y: 9
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 682c550aca21d4520800000000000000
+      internalID: 2687825085243703942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 3667
+        y: 9
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fec5cccaccbc2ba0800000000000000
+      internalID: -6112303015043674380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death- 3q a d- spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 3730
+        y: 9
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450098df00aa323c0800000000000000
+      internalID: -4385474690898395052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
