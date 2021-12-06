@@ -4,8 +4,8 @@ using UnityEngine;
 public class LifeManager : MonoBehaviour
 {
     public int lifeBar = 9;
-    public int damagesPepito = 1;
     public int maxHP = 9;
+    public bool isInGodMode = false;
 
     #region Singleton
     public static LifeManager Instance;
@@ -16,14 +16,9 @@ public class LifeManager : MonoBehaviour
     }
     #endregion
     
-    public void TestDamages()
-    {
-        TakeDamages(damagesPepito);
-        
-    }
-    
    public void TakeDamages(int damages)
     {
+        if(isInGodMode) return;
         var previousHp = lifeBar;
         lifeBar -= damages;
         if (lifeBar > maxHP)

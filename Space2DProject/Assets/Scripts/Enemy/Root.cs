@@ -7,15 +7,15 @@ public class Root : MonoBehaviour
 {
     [SerializeField] private GameObject warningObj;
     [SerializeField] private GameObject rootObj;
-    private CircleCollider2D collider;
+    private CircleCollider2D circleCollider;
     
     [SerializeField] private int damage = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        collider = gameObject.GetComponent<CircleCollider2D>();
-        collider.enabled = false;
+        circleCollider = gameObject.GetComponent<CircleCollider2D>();
+        circleCollider.enabled = false;
     }
 
     public void Spawn()
@@ -36,7 +36,7 @@ public class Root : MonoBehaviour
         warningObj.SetActive(false);
         rootObj.SetActive(true);
 
-        collider.enabled = true;
+        circleCollider.enabled = true;
         
         
         yield return new WaitForSeconds(1f);
@@ -44,7 +44,7 @@ public class Root : MonoBehaviour
         warningObj.SetActive(true);
         rootObj.SetActive(false);
         
-        collider.enabled = false;
+        circleCollider.enabled = false;
         
         gameObject.SetActive(false);
     }
