@@ -415,8 +415,9 @@ public class GenerationSimpleHalf : MonoBehaviour
             yield return null;
         }
 
-        ObjectPooler.Instance.SpawnFromPool("Follower", LevelManager.Instance.Player().transform.position,
+        GameObject follower = ObjectPooler.Instance.SpawnFromPool("Follower", LevelManager.Instance.Player().transform.position,
             Quaternion.identity);
+        follower.GetComponent<FollowPlayer>().Init();
         
         Random.state = randState;
         

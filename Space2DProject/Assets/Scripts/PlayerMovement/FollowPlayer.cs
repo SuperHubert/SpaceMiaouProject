@@ -8,17 +8,25 @@ public class FollowPlayer : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Transform player;
-    
-    public void Init()
+    public bool canMove = false;
+
+    private void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         player = LevelManager.Instance.Player().transform;
+        Fall.currentFollower = gameObject;
+        canMove = false;
+    }
+
+    public void Init()
+    {
+        canMove = false;
     }
     
     void Update()
     {
-        if(!InputManager.canInput) return;
-        //agent.SetDestination(player.position);
+        if(!InputManager.canInput || agent == null || !canMove) return;
+        agent.SetDestination(player.position);
     }
     
 }
