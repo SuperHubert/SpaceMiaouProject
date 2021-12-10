@@ -7,14 +7,14 @@ using UnityEngine.AI;
 public class FollowPlayer : MonoBehaviour
 {
     private NavMeshAgent agent;
-    private Transform player;
+    public Transform player;
     public bool canMove = false;
 
     private void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         player = LevelManager.Instance.Player().transform;
-        Fall.currentFollower = gameObject;
+        //player.gameObject.GetComponent<>().currentFollower = gameObject;
         canMove = false;
     }
 
@@ -28,5 +28,10 @@ public class FollowPlayer : MonoBehaviour
         if(!InputManager.canInput || agent == null || !canMove) return;
         agent.SetDestination(player.position);
     }
-    
+
+    public void WarpToPlayer()
+    {
+        agent.Warp(player.position);
+    }
+
 }

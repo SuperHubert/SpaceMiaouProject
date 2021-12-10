@@ -8,8 +8,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    //Player GameObject
+    //Player RigidBody
     private Rigidbody2D rb;
+    [SerializeField] private Fall fall;
     
     //normal movement
     public float speed = 10f;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     //dash related
     public float dashSpeed = 40f;
-    bool dashing = false;
+    public bool dashing = false;
     private float dashInternalCd;
     public float dashInternalCdMax = 0.1f;
     private float dashCd;
@@ -40,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         dashInternalCd = 0;
         dashCd = 0;
-
     }
 
     private void Update()
@@ -73,13 +73,13 @@ public class PlayerMovement : MonoBehaviour
         //Dash
         dashCd -= Time.fixedDeltaTime;
         
-
         if (dashing)
         {
             if (dashInternalCd>dashInternalCdMax)
             {
                 rb.velocity = Vector2.zero;
                 dashing = false;
+                StartCoroutine(fall.TeleportFollower());
             }
             else
             {
