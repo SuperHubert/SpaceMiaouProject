@@ -17,11 +17,6 @@ public class FollowPlayer : MonoBehaviour
         //player.gameObject.GetComponent<>().currentFollower = gameObject;
         canMove = false;
     }
-
-    public void Init()
-    {
-        canMove = false;
-    }
     
     void Update()
     {
