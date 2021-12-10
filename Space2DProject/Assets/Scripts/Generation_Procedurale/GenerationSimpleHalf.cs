@@ -27,6 +27,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private int roomSpawnIndex;
     private int roomShopIndex;
     [SerializeField] private Camera cameraMap;
+    [SerializeField] private FollowPlayer followPlayer;
 
     [SerializeField] private bool buildNavMesh = true;
     [SerializeField] private bool movePlayer = true;
@@ -416,6 +417,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         Random.state = randState;
+
+        followPlayer.isInHub = false;
         
         DestroySomeChests();
         

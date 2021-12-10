@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject playerFall;
     [SerializeField] private Transform mainCamera;
+    [SerializeField] private FollowPlayer playerFollower;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
@@ -55,6 +56,7 @@ public class LevelManager : MonoBehaviour
     public void StartNewRun(int rooms, int seed)
     {
         if (!canGenerate) return;
+        playerFollower.isInHub = true;
 
         if (rooms < 0)
         {

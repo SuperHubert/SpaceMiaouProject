@@ -370,10 +370,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2802006457157169180, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
-      propertyPath: backgroundImage
-      value: 
-      objectReference: {fileID: 1786564199}
     - target: {fileID: 2802006457157169181, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: m_Name
       value: Loading Manager
@@ -521,6 +517,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8800626576278873563, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
   m_PrefabInstance: {fileID: 553990178}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &553990181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4865300751528322497, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+  m_PrefabInstance: {fileID: 553990178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500995194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6ba6cda9986ee40aae4754529d26f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &563656167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 273499834543205587, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
@@ -750,8 +757,12 @@ PrefabInstance:
       objectReference: {fileID: 690081017}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: numberOfRooms
-      value: 4
+      value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: playerFollower
+      value: 
+      objectReference: {fileID: 553990181}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: generateOnStart
       value: 1
@@ -844,6 +855,10 @@ PrefabInstance:
       propertyPath: buildNavMesh
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6617073259897082750, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: followPlayer
+      value: 
+      objectReference: {fileID: 553990181}
     - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: useOldMethod
       value: 0
@@ -1340,17 +1355,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1786564199 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1676448922396366101, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
-  m_PrefabInstance: {fileID: 191331129}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1835024844 stripped

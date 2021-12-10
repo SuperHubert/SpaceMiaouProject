@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28c066058dc12b48b852afa99e5f6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestobj: {fileID: 0}
+  chestobj: {fileID: 6989400957057662163, guid: 3dc1172269ae7894892df57ae29c1a64, type: 3}
   isChest: 1

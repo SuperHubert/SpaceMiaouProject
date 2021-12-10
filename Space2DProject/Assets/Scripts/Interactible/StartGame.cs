@@ -5,7 +5,7 @@ public class StartGame : MonoBehaviour, IInteractible
 {
     public void OnInteraction()
     {
-        LoadingManager.Instance.UpdateLoading();
+        LoadingManager.Instance.UpdateLoading(0.01f);
         
         SceneManager.LoadScene(4);
     }
