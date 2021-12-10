@@ -1,15 +1,12 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fall : MonoBehaviour
 {
-    [SerializeField] private GameObject tpTarget;
-    [SerializeField] private GameObject follower;
     public GameObject currentFollower;
-
-    private Transform player;
+    private FollowPlayer follow;
+    private PlayerMovement playerMovement;
+    
     private Transform pointBotLeft;
     private Transform pointTopRight;
     private bool canFall = true;
@@ -18,20 +15,34 @@ public class Fall : MonoBehaviour
     {
         pointBotLeft = transform.GetChild(0);
         pointTopRight = transform.GetChild(1);
-        player = transform.parent;
+        follow = currentFollower.GetComponent<FollowPlayer>();
+        playerMovement = transform.parent.gameObject.GetComponent<PlayerMovement>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.layer != 13) return;
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
+        if (playerMovement.dashing) return;
         canFall = false;
         DoTheFalling();
     }
 
     public void DoTheFalling()
     {
-        //player.position = tpTarget.transform.position;
+        transform.parent.position = currentFollower.transform.position;
         canFall = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        StartCoroutine(TeleportFollower());
+    }
+
+    public IEnumerator TeleportFollower(bool instant = false)
+    {
+        if(instant) yield return null;
+        follow.WarpToPlayer();
+        follow.canMove = true;
     }
 }

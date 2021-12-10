@@ -414,9 +414,6 @@ public class GenerationSimpleHalf : MonoBehaviour
             UpdateProgress(0.1f/ dungeonNumberOfRooms);
             yield return null;
         }
-
-        ObjectPooler.Instance.SpawnFromPool("Follower", LevelManager.Instance.Player().transform.position,
-            Quaternion.identity);
         
         Random.state = randState;
         

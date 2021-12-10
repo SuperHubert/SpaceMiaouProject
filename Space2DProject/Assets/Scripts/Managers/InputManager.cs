@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public static bool canInput = false;
+    public static bool canInput = true;
+    public bool canInputMirror;
     public GameObject playerObj;
 
     private SprayAttack sprayAttack;
@@ -23,6 +24,7 @@ public class InputManager : MonoBehaviour
     
     void Update()
     {
+        canInputMirror = canInput;
         if(!canInput) return;
         
         sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
@@ -37,6 +39,7 @@ public class InputManager : MonoBehaviour
         
         playerMovement.horizontalAxis = Input.GetAxisRaw("Horizontal");
         playerMovement.verticalAxis = Input.GetAxisRaw("Vertical");
-        playerMovement.dash = Input.GetButtonDown("Dash");
+        //playerMovement.dash = Input.GetButtonDown("Dash");
+        playerMovement.dash = Input.GetMouseButtonDown(1);
     }
 }
