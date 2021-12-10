@@ -24,9 +24,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         Time.timeScale = 0;
 
         displayList.Clear();
-        displayList = shopManager.DisplayItems(0,1,5);
+        //displayList = shopManager.DisplayItems(0,1,5);
 
-        //displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetCurrentSeed(), 5);
+        displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetCurrentSeed(), 5);
 
         for (int i = 0; i < textList.Count; i++)
         {

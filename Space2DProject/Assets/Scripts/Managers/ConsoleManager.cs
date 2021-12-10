@@ -98,6 +98,7 @@ public class ConsoleManager : MonoBehaviour
     private LoadingManager loadingm;
     private DialogueManager dialoguem;
     private LifeManager lifem;
+    private MoneyManager moneym;
     private bool noclip = false;
     
     private void Awake()
@@ -267,7 +268,7 @@ public class ConsoleManager : MonoBehaviour
             {
                 for (int i = 0; i < amount; i++)
                 {
-                    MoneyManager.Instance.PickupCoin();
+                    moneym.PickupCoin();
                 }
             }
             
@@ -276,6 +277,7 @@ public class ConsoleManager : MonoBehaviour
         
         SETCOINS = new Commands<int>("setcoins", "Sets the amount of nyancoins", "setcoins int<amount of coins>", (amount) =>
         {
+            moneym.SetCoins(amount);
             Print("Nyancoins amount set to "+amount);
         });
         
@@ -568,6 +570,7 @@ public class ConsoleManager : MonoBehaviour
         loadingm = LoadingManager.Instance;
         dialoguem = DialogueManager.Instance;
         lifem = LifeManager.Instance;
+        moneym = MoneyManager.Instance;
     }
 
     private void Update()

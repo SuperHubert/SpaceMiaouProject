@@ -5,6 +5,7 @@ public class LoadingLevelData : MonoBehaviour
 {
     public int seed;
     public int numberOfRooms;
+    public int maxFloors;
 
     #region Singleton Don't Destroy On Load
     public static LoadingLevelData Instance;
@@ -26,6 +27,11 @@ public class LoadingLevelData : MonoBehaviour
     #endregion
 
     void Start()
+    {
+        ResetData();
+    }
+
+    public void ResetData()
     {
         DateTime dateTime = DateTime.Now;
         int seconds = dateTime.Second;

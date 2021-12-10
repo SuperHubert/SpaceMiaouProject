@@ -20,11 +20,13 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         if(!InputManager.canInput || agent == null || !canMove || isInHub) return;
-        agent.SetDestination(player.position);
+        if(transform.position == player.position) return;
+        //agent.Warp(player.position);
     }
 
     public void WarpToPlayer()
     {
+        if(transform.position == player.position) return;
         agent.Warp(player.position);
     }
 

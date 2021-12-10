@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     //Player RigidBody
     private Rigidbody2D rb;
     [SerializeField] private Fall fall;
-    
+
     //normal movement
     public float speed = 10f;
     public Vector3 inputMovement;
@@ -87,6 +87,11 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = inputMovement * dashSpeed;
             }
         }
+        else
+        {
+            
+        }
+        
     }
 
     void MovePlayer()

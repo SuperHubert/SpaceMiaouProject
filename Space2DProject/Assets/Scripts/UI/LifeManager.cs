@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,7 +38,17 @@ public class LifeManager : MonoBehaviour
    public void Die()
    {
        Time.timeScale = 1f;
-       SceneManager.LoadScene(3);
+
+       StartCoroutine(PlayDyingAnimation());
+
+   }
+
+   IEnumerator PlayDyingAnimation()
+   {
+       yield return new WaitForSeconds(0.5f);
+       LoadingManager.Instance.UpdateLoading();
+       LoadingLevelData.Instance.ResetData();
+       LoadingManager.Instance.LoadScene(3);
    }
 
 

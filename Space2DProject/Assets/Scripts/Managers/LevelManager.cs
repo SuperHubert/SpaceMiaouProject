@@ -60,8 +60,8 @@ public class LevelManager : MonoBehaviour
         if (rooms < 0)
         {
             rooms = LoadingLevelData.Instance.numberOfRooms;
-
             seed = LoadingLevelData.Instance.seed;
+            maxFloors = LoadingLevelData.Instance.maxFloors;
         }
         
         floorNumber = 0;
