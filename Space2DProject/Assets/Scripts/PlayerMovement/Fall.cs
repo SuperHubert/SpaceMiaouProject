@@ -39,9 +39,9 @@ public class Fall : MonoBehaviour
         StartCoroutine(TeleportFollower());
     }
 
-    public IEnumerator TeleportFollower()
+    public IEnumerator TeleportFollower(bool instant = false)
     {
-        yield return null;
+        if(instant) yield return null;
         follow.WarpToPlayer();
         follow.canMove = true;
     }
