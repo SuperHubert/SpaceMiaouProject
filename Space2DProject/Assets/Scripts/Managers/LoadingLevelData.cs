@@ -1,17 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class LoadingLevelData : MonoBehaviour
 {
-    void Start()
+    public int seed;
+    public int numberOfRooms;
+
+    #region Singleton Don't Destroy On Load
+    public static LoadingLevelData Instance;
+
+    private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         
     }
+    #endregion
 
-    
-    void Update()
+    void Start()
     {
-        
+        DateTime dateTime = DateTime.Now;
+        int seconds = dateTime.Second;
+        int minutes = 100*dateTime.Minute;
+        int hours = 10000*dateTime.Hour;
+        int days = 1000000*dateTime.Day;
+        int months = 100000000*dateTime.Month;
+        seed = seconds+minutes+hours+days+months;
     }
 }

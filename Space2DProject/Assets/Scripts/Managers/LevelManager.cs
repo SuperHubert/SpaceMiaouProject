@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -60,8 +59,9 @@ public class LevelManager : MonoBehaviour
 
         if (rooms < 0)
         {
-            rooms = -rooms;
-            seed = (int) Time.realtimeSinceStartup;
+            rooms = LoadingLevelData.Instance.numberOfRooms;
+
+            seed = LoadingLevelData.Instance.seed;
         }
         
         floorNumber = 0;

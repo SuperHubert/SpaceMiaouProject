@@ -36,6 +36,7 @@ public class LifeManager : MonoBehaviour
 
    public void Die()
    {
+       Time.timeScale = 1f;
        SceneManager.LoadScene(3);
    }
 
