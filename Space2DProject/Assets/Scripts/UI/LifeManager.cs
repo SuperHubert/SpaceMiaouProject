@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class LifeManager : MonoBehaviour
 {
@@ -28,10 +28,16 @@ public class LifeManager : MonoBehaviour
         else if (lifeBar < 0)
         {
             lifeBar = 0;
+            Die();
         }
         UIManager.Instance.UpdateHpUI(previousHp, lifeBar);
 
-    } 
+    }
+
+   public void Die()
+   {
+       SceneManager.LoadScene(3);
+   }
 
 
 }
