@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class CommandBase
 {
@@ -22,11 +19,11 @@ public class CommandBase
     }
 }
 
-public class Commands : CommandBase
+public class Command : CommandBase
 {
     private Action command;
         
-    public Commands(string id, string description, string format,Action command) : base(id, description, format)
+    public Command(string id, string description, string format,Action command) : base(id, description, format)
     {
         this.command = command;
     }
@@ -37,11 +34,11 @@ public class Commands : CommandBase
     }
 }
 
-public class Commands<T1> : CommandBase
+public class Command<T1> : CommandBase
 {
     private Action<T1> command;
         
-    public Commands(string id, string description, string format,Action<T1> command) : base(id, description, format)
+    public Command(string id, string description, string format,Action<T1> command) : base(id, description, format)
     {
         this.command = command;
     }
@@ -52,11 +49,11 @@ public class Commands<T1> : CommandBase
     }
 }
 
-public class Commands<T1,T2> : CommandBase
+public class Command<T1,T2> : CommandBase
 {
     private Action<T1,T2> command;
         
-    public Commands(string id, string description, string format,Action<T1,T2> command) : base(id, description, format)
+    public Command(string id, string description, string format,Action<T1,T2> command) : base(id, description, format)
     {
         this.command = command;
     }
@@ -67,11 +64,11 @@ public class Commands<T1,T2> : CommandBase
     }
 }
 
-public class Commands<T1, T2,T3> : CommandBase
+public class Command<T1, T2,T3> : CommandBase
 {
     private Action<T1, T2, T3> command;
 
-    public Commands(string id, string description, string format, Action<T1, T2, T3> command) : base(id, description, format)
+    public Command(string id, string description, string format, Action<T1, T2, T3> command) : base(id, description, format)
     {
         this.command = command;
     }
