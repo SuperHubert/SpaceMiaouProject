@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossFight : MonoBehaviour
@@ -10,7 +8,8 @@ public class BossFight : MonoBehaviour
     private GameObject bossStartRoom;
     private GameObject bossObj;
     private Transform startPos;
-    
+    public GameObject playerFollower;
+
     void Start()
     {
         bossRoom = transform.GetChild(0).gameObject;
@@ -26,8 +25,12 @@ public class BossFight : MonoBehaviour
     
     public void ActivateBossFight(bool yes = true)
     {
+        bossRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossRoom.SetActive(yes);
+        bossStartRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossStartRoom.SetActive(yes);
+        playerFollower.SetActive(!yes);
+        
     }
 
     public Transform SpawnBossAndReturnStartPos()

@@ -178,8 +178,6 @@ public class LevelManager : MonoBehaviour
         {
             
             ClearLevel();
-            
-            bossfight.ActivateBossFight();
             StartCoroutine(BossFightNavMesh());
             
             generator.GeneratorSettingsForBoss();
@@ -194,10 +192,12 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator BossFightNavMesh()
     {
+        bossfight.ActivateBossFight();
         for (var i = 0; i < 60; i++)
         {
             if (i == 12)
             {
+                yield return null;
                 gameObject.GetComponent<NavMeshSurface2d>().BuildNavMesh();
             }
             LoadingManager.Instance.UpdateLoading(i/60f);
