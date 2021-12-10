@@ -430,6 +430,7 @@ public class ColliderOffsetCustomWindow : EditorWindow
             foreach (var poly in polys)
             {
                 poly.gameObject.layer = 13;
+                poly.isTrigger = true;
                 if (poly.gameObject.transform.parent.gameObject.layer != 13)
                 {
                     poly.gameObject.transform.parent.gameObject.layer = 13;
