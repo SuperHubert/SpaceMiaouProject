@@ -17,6 +17,8 @@ public class BossFight : MonoBehaviour
         bossObj = bossRoom.transform.GetChild(2).gameObject;
         bossStartRoom = transform.GetChild(1).gameObject;
         startPos = bossStartRoom.transform.GetChild(2);
+        bossStartRoom.SetActive(false);
+        bossRoom.SetActive(false);
     }
     
     void Update()
@@ -33,12 +35,15 @@ public class BossFight : MonoBehaviour
         healthBar.rectTransform.localScale = Vector3.one;
         healthBar.rectTransform.sizeDelta = new Vector2(810, 30);
 
+        LevelManager.Instance.Level().GetChild(6).position = yes ? new Vector3(-5,-40,0) : LevelManager.Instance.Level().GetChild(6).position;
+        
+        
         bossRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossRoom.SetActive(yes);
         bossStartRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossStartRoom.SetActive(yes);
         playerFollower.SetActive(!yes);
-        
+
     }
 
     public Transform SpawnBossAndReturnStartPos()
