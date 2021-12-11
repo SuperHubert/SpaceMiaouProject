@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     void MovePlayer()
     {
         rb.velocity = Vector2.zero;
+        if(!InputManager.canInput) return;
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
         {
             if (GetComponent<Combat>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)

@@ -32,13 +32,18 @@ public class Fall : MonoBehaviour
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
         if (playerMovement.dashing) return;
         canFall = false;
-        DoTheFalling();
+        StartCoroutine(DoTheFalling());
     }
 
-    public void DoTheFalling()
+    IEnumerator DoTheFalling()
     {
+        //play Animation;
+        InputManager.canInput = false;
+        yield return new WaitForSeconds(1f);
+        LifeManager.Instance.TakeDamages(1);
         transform.parent.position = currentFollower.transform.position;
         canFall = true;
+        InputManager.canInput = true;
     }
     
 
