@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossFight : MonoBehaviour
 {
@@ -25,6 +26,13 @@ public class BossFight : MonoBehaviour
     
     public void ActivateBossFight(bool yes = true)
     {
+        Transform bossHealth = bossRoom.transform.GetChild(2).GetChild(0).GetChild(1);
+        bossHealth.parent = yes ? LevelManager.Instance.Level().GetChild(5) : bossHealth.parent;
+        bossHealth.localPosition = new Vector3(0,-320,0);
+        var healthBar = bossHealth.GetComponent<Image>();
+        healthBar.rectTransform.localScale = Vector3.one;
+        healthBar.rectTransform.sizeDelta = new Vector2(810, 30);
+
         bossRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossRoom.SetActive(yes);
         bossStartRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;

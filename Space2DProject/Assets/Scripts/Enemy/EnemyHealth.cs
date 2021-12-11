@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]private int maxHealth = 3;
     [SerializeField]private int currentHealth;
 
+    [SerializeField]private bool moveHealthBar = true;
+    
     private Animator enemyAnimator;
     private EnemyBehaviour enemyBehaviour;
     
@@ -25,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        if (enemyBehaviour.currentState != EnemyBehaviour.State.Dead)
+        if (enemyBehaviour.currentState != EnemyBehaviour.State.Dead && moveHealthBar)
         {
             UpdateHealthBarPosition();
         }
@@ -42,12 +41,6 @@ public class EnemyHealth : MonoBehaviour
         hpPos = Camera.main.WorldToScreenPoint(hpPos);
         
         healthBarObj.transform.position = hpPos;
-    }
-
-    private void ResizeHealthBar()
-    {
-        healthBar.rectTransform.localScale = Vector3.one;
-        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
     }
     
     public void InitEnemy()
@@ -76,6 +69,12 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+    }
+    
+    private void ResizeHealthBar()
+    {
+        healthBar.rectTransform.localScale = Vector3.one;
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
     }
     
     private void Die()
