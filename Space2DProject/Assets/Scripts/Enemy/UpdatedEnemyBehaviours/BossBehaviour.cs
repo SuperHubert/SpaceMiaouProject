@@ -40,7 +40,8 @@ public class BossBehaviour : EnemyBehaviour
     public override void Die()
     {
         base.Die();
-        
+        healthBarBack.SetActive(false);
+        LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,5,0);
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
     }
 

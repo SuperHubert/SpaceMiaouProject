@@ -179,7 +179,7 @@ public class LevelManager : MonoBehaviour
             canGenerate = false;
             StartCoroutine(NewLevel());
         }
-        else
+        else if (floorNumber == maxFloors)
         {
             
             ClearLevel();
@@ -192,7 +192,12 @@ public class LevelManager : MonoBehaviour
             //floorNumber--;
             ConsoleManager.Instance.Print("Max Level Reached");
         }
+        else
+        {
+            LifeManager.Instance.Die();
+        }
         
+
     }
 
     IEnumerator BossFightNavMesh()
