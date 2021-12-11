@@ -25,7 +25,6 @@ public class SprayAttack : MonoBehaviour
     void Update()
     {
         SprayingAttack();
-        //slider.value = currentSpray / maxSpray;
     }
 
     void SprayingAttack()
@@ -46,12 +45,19 @@ public class SprayAttack : MonoBehaviour
                 canShoot = false;
                 StartCoroutine(ResetSpray());
             }
+            
+            UpdateSprayBar();
         }
 
         else
         {
             isSpraying = false;
         }
+    }
+
+    public void UpdateSprayBar()
+    {
+        slider.value = currentSpray / maxSpray;
     }
 
     IEnumerator ResetSpray()
