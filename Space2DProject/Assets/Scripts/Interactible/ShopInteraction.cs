@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +23,31 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         Time.timeScale = 0;
 
         displayList.Clear();
-        //displayList = shopManager.DisplayItems(0,1,5);
+
+        displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetCurrentSeed(), 5);
+
+        for (int i = 0; i < textList.Count; i++)
+        {
+            displayList[i].actualPrice = displayList[i].basePrice - shopManager.reductionTotal;
+            if(displayList[i].actualPrice <= 0) 
+            { 
+                displayList[i].actualPrice = 1; 
+            }
+            textList[i].text = displayList[i].actualPrice.ToString();
+            testNameList[i].text = displayList[i].name;
+            soldOutList[i].SetActive(false);
+            if (displayList[i].isBought)
+            {
+                soldOutList[i].SetActive(true);
+            }
+            nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
+
+        }
+    }
+
+    public void RefreshShop()
+    {
+        displayList.Clear();
 
         displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetCurrentSeed(), 5);
 
@@ -52,12 +75,18 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         shopUI.SetActive(false);
         Time.timeScale = 1;
     }
-
-  
+    
     public void ButtonHeal()
     {
-        //Heal
-        Debug.Log("Heal");
+        
+        if (!CanBuy(5)) return;
+        Debug.Log("item bought)");
+        MoneyManager.Instance.nyanCoins -= displayList[5].actualPrice;
+        displayList[5].isBought = true;
+        soldOutList[5].SetActive(true);
+        LifeManager.Instance.TakeDamages(-1);
+        nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
+        RefreshShop();
     }
 
     public void Button(int index)
@@ -69,7 +98,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         soldOutList[index].SetActive(true);
         displayList[index].upgrade.Invoke();
         nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
-
+        RefreshShop();
     }
 
     private bool CanBuy(int index)

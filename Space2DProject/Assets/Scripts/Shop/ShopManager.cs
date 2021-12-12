@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
@@ -38,7 +36,7 @@ public class ShopManager : MonoBehaviour
 
     public void ReductionPickII()
     {
-        reductionTotal ++;
+        reductionTotal += 2;
     }
 
     public List<ShopItem> DisplayItems(int floor, int seed, int size)
@@ -83,8 +81,5 @@ public class ShopManager : MonoBehaviour
 
         return returnList;
     }
-
-
-
-
+    
 }

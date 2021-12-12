@@ -11,6 +11,7 @@ public class Upgrades : MonoBehaviour
     private PlayerMovement playerMovement;
     private Combat combat;
     private SprayAttack sprayAttack;
+    private ShopManager shopManager;
 
     #region Singleton
     public static Upgrades Instance;
@@ -27,7 +28,8 @@ public class Upgrades : MonoBehaviour
         playerMovement = LevelManager.Instance.Player().GetComponent<PlayerMovement>();
         combat = LevelManager.Instance.Player().GetComponent<Combat>();
         sprayAttack = LevelManager.Instance.Player().GetComponent<SprayAttack>();
-        
+        shopManager = ShopManager.Instance;
+
         if (!isChest) return;
         chest = chestobj.GetComponent<Chest>();
     }
