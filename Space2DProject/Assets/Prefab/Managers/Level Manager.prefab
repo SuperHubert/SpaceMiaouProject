@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: {fileID: 0}
   cameraMap: {fileID: 0}
+  followPlayer: {fileID: 0}
   buildNavMesh: 1
   movePlayer: 1
   firstRoomPrefab: {fileID: 0}
@@ -331,9 +332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deeaf9553bc9bbf479e4e920e3255ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossFightObj: {fileID: 0}
   generateOnStart: 1
   player: {fileID: 0}
+  playerFall: {fileID: 0}
   mainCamera: {fileID: 0}
+  playerFollower: {fileID: 0}
   firstSeed: 69
   numberOfRooms: 16
   seedList: 
@@ -369,9 +373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable:
   - {fileID: 8120647478929362232, guid: 75dc8af53f61e254b98294d867b554fe, type: 3}
-  - {fileID: 5224369354100557123, guid: 45c0c4197a2c9864b8a73835f2779e59, type: 3}
-  - {fileID: 3801023885166886874, guid: 94651c925b0c02443bda7e4bf4ff9ba7, type: 3}
-  - {fileID: 1418570053643379540, guid: 541a41731aa9e0d469feb22851e45d04, type: 3}
   - {fileID: 5954353768743213136, guid: 4ee303cbd2a908e4e97a2ff3b4857838, type: 3}
   - {fileID: 8881873614474221816, guid: f05238c15cd0b704a99a78a232962847, type: 3}
   - {fileID: 322916405173144754, guid: 0321c6576b55ef343ba9c111d675af50, type: 3}

@@ -48,15 +48,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[1].tag
-      value: Root
+      value: Player Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[2].tag
-      value: Player Bullet
+      value: Root
       objectReference: {fileID: 0}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[3].tag
@@ -64,11 +64,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[1].size
-      value: 25
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[2].size
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[3].size
@@ -77,11 +77,11 @@ PrefabInstance:
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[1].prefab
       value: 
-      objectReference: {fileID: 7065144723312377873, guid: 29bc1dd010351224eae1c1a765ccb92e, type: 3}
+      objectReference: {fileID: 3422628233388230462, guid: fc758047bb73c1d43b917063e7a7dd46, type: 3}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[2].prefab
       value: 
-      objectReference: {fileID: 3422628233388230462, guid: fc758047bb73c1d43b917063e7a7dd46, type: 3}
+      objectReference: {fileID: 7065144723312377873, guid: 29bc1dd010351224eae1c1a765ccb92e, type: 3}
     - target: {fileID: 4319525942313015712, guid: c87c81bd1e381d0439b38700977c560b, type: 3}
       propertyPath: pools.Array.data[3].prefab
       value: 
@@ -248,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2066300090379407896, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: numberOfRooms
-      value: 1
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5940852392271806990, guid: dafd1d80571726947bf9694516ba4f6b, type: 3}
       propertyPath: level
