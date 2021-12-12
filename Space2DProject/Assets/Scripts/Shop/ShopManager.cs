@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
         reductionTotal += 2;
     }
 
-    public List<ShopItem> DisplayItems(int floor, int seed, int size = 5)
+    public List<ShopItem> SetNewDisplayItems(int floor, int seed, int size = 5)
     {
         ShopItemList2.Clear();
         foreach (var newItem in ShopItemList.Select(item => new ShopItem
@@ -103,7 +103,17 @@ public class ShopManager : MonoBehaviour
             }
         }
 
-        returnList.Add(ShopItemList[0]);
+        var healItem = new ShopItem
+        {
+            name = ShopItemList[0].name,
+            image = ShopItemList[0].image,
+            basePrice = ShopItemList[0].basePrice,
+            actualPrice = ShopItemList[0].actualPrice,
+            upgrade = ShopItemList[0].upgrade,
+            isBought = ShopItemList[0].isBought
+        };
+        
+        returnList.Add(healItem);
         
         return returnList;
     }

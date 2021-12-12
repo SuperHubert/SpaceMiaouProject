@@ -30,7 +30,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         if (displayList.Count == 0)
         {
-            displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetFirstSeed(), 5);
+            displayList = shopManager.SetNewDisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetFirstSeed(), 5);
         }
         //displayList.Clear();
         
