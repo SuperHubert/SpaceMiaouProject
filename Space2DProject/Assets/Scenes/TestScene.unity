@@ -1190,6 +1190,10 @@ PrefabInstance:
       propertyPath: mapManager
       value: 
       objectReference: {fileID: 1154810103}
+    - target: {fileID: 2092646708, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: shopInteraction
+      value: 
+      objectReference: {fileID: 1188501823}
     - target: {fileID: 695442015184322028, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: target
       value: 

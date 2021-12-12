@@ -1,5 +1,5 @@
- using System;
- using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -18,18 +18,23 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
-    [HideInInspector] public bool closeShopInput = false;
+    private bool canOpenShop = true;
+    public bool closeShopInput = false;
 
 
     private void Update()
     {
-        if(!closeShopInput || !shopUI.activeSelf) return;
-        OnInteraction();
+        if (!closeShopInput || !shopUI.activeSelf) return;
+        
+        shopUI.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void OnInteraction()
     {
-        if(shopUI.activeSelf) return;
+        if(shopUI.activeSelf || !canOpenShop) return;
+
+        StartCoroutine(InteractionCooldown());
         shopUI.SetActive(true);
         selectedButton.Select();
         Time.timeScale = 0;
@@ -87,9 +92,14 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         if (index < 0 || index >= displayList.Count) return false;
         if (displayList[index].isBought) return false;
-        if (displayList[index].actualPrice <= MoneyManager.Instance.nyanCoins) return true;
-        return false;
-        
+        return displayList[index].actualPrice <= MoneyManager.Instance.nyanCoins;
+    }
+
+    IEnumerator InteractionCooldown()
+    {
+        canOpenShop = false;
+        yield return new WaitForSeconds(0.05f);
+        canOpenShop = true;
     }
 
 }
