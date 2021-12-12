@@ -51,7 +51,6 @@ public class InputManager : MonoBehaviour
         
         
         if(mapManager == null) return;
-        //mapManager.mapInput = Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton7);
         mapManager.mapInput = Input.GetButtonDown("DisplayMap") || Input.GetKeyDown(KeyCode.JoystickButton7);
     }
 }

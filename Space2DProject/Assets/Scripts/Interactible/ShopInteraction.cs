@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+ using System;
+ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -7,7 +8,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 {
     public GameObject shopUI;
     public ShopManager shopManager;
-    public Button exitButton;
+    public Button selectedButton;
     public TextMeshProUGUI nyanCountShop;
 
     public List<TextMeshProUGUI> textList;
@@ -16,11 +17,21 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public List<GameObject> soldOutList;
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
-    
+
+    [HideInInspector] public bool closeShopInput = false;
+
+
+    private void Update()
+    {
+        if(!closeShopInput || !shopUI.activeSelf) return;
+        OnInteraction();
+    }
 
     public void OnInteraction()
     {
+        if(shopUI.activeSelf) return;
         shopUI.SetActive(true);
+        selectedButton.Select();
         Time.timeScale = 0;
 
         RefreshShop();
@@ -32,8 +43,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         {
             displayList = shopManager.SetNewDisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetFirstSeed(), 5);
         }
-        //displayList.Clear();
-        
+
         for (int i = 0; i < textList.Count; i++)
         {
             displayList[i].actualPrice = displayList[i].basePrice - shopManager.reductionTotal;
@@ -60,17 +70,6 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         Time.timeScale = 1;
     }
     
-    public void ButtonHeal()
-    {
-        if (!CanBuy(5)) return;
-        Debug.Log("item bought)");
-        MoneyManager.Instance.nyanCoins -= displayList[5].actualPrice;
-        displayList[5].isBought = true;
-        soldOutList[5].SetActive(true);
-        LifeManager.Instance.TakeDamages(-1);
-        nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
-        RefreshShop();
-    }
 
     public void Button(int index)
     {
