@@ -7,27 +7,27 @@ public class MapManager : MonoBehaviour
 {
     [SerializeField] private GameObject normalUI;
     [SerializeField] private GameObject mapUI;
-    private bool fullIsOn = false;
+    private bool bigMapIsActive = false;
+
+    public bool mapInput = false;
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (!mapInput) return;
+        
+        bigMapIsActive = !bigMapIsActive;
+        if (bigMapIsActive)
         {
-            fullIsOn = !fullIsOn;
-            if (fullIsOn)
-            {
-                normalUI.SetActive(false);
-                mapUI.SetActive(true);
-                Time.timeScale = 0;
+            normalUI.SetActive(false);
+            mapUI.SetActive(true);
+            Time.timeScale = 0;
 
-            }
-            else
-            {
-                normalUI.SetActive(true);
-                mapUI.SetActive(false);
-                Time.timeScale = 1;
-            }
-            
+        }
+        else
+        {
+            normalUI.SetActive(true);
+            mapUI.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 }
