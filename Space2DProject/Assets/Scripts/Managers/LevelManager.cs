@@ -194,7 +194,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            LifeManager.Instance.Die();
+            LifeManager.Instance.Die(true);
         }
         
 

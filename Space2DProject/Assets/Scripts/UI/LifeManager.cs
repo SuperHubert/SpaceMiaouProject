@@ -35,20 +35,21 @@ public class LifeManager : MonoBehaviour
 
     }
 
-   public void Die()
+   public void Die(bool instant = false)
    {
        Time.timeScale = 1f;
-
-       StartCoroutine(PlayDyingAnimation());
-
+       InputManager.canInput = false;
+       StartCoroutine(PlayDyingAnimation(instant));
    }
 
-   IEnumerator PlayDyingAnimation()
+   IEnumerator PlayDyingAnimation(bool instant = false)
    {
+       if (!instant) yield return new WaitForSeconds(1.5f);
        yield return new WaitForSeconds(0.5f);
        LoadingManager.Instance.UpdateLoading();
        LoadingLevelData.Instance.ResetData();
        LoadingManager.Instance.LoadScene(3);
+       InputManager.canInput = true;
    }
 
 

@@ -24,6 +24,7 @@ public class SprayAttack : MonoBehaviour
     
     void Update()
     {
+        if(!InputManager.canInput) return;
         SprayingAttack();
     }
 
