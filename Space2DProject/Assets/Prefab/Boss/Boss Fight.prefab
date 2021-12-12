@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 20194152}
   - component: {fileID: 20194151}
   - component: {fileID: 20194150}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Bot  Right Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 607890854}
   - component: {fileID: 607890855}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 801563489}
   - component: {fileID: 801563488}
   - component: {fileID: 801563487}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Top Right Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 1147175274}
   - component: {fileID: 1147175276}
   - component: {fileID: 1147175275}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 1368750003}
   - component: {fileID: 1368750002}
   - component: {fileID: 1368750001}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Bot  Left Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408970203}
   - component: {fileID: 1408970204}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 1610363840}
   - component: {fileID: 1610363839}
   - component: {fileID: 1610363838}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Teleported Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789368882}
   - component: {fileID: 1789368883}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +847,7 @@ GameObject:
   - component: {fileID: 1841074673}
   - component: {fileID: 1841074672}
   - component: {fileID: 1841074671}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Top Left Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1895525854}
   - component: {fileID: 1895525855}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59471,6 +59471,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5913702786315291673, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913702786315291673, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -59553,6 +59557,10 @@ PrefabInstance:
     - target: {fileID: 8363824820737979903, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137531190529820270, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9184636547331138157, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
       propertyPath: maxHealth
