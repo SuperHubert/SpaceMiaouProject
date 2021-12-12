@@ -1,11 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossBehaviour : EnemyBehaviour
 {
     [SerializeField] private GameObject healthBarBack;
-    [SerializeField] private GameObject closeAttack;
-    
+    [SerializeField] private GameObject teleportedAttack;
+    [SerializeField] private List<GameObject> attackList = new List<GameObject>();
+    [SerializeField] private List<GameObject> usableAttacks = new List<GameObject>();
+
+
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -21,6 +25,7 @@ public class BossBehaviour : EnemyBehaviour
         }
         
         if(IsAlreadyAttacking()) return;
+        StartCoroutine(CloseAttack(ChooseRandomAttack()));
         
     }
 
@@ -34,7 +39,7 @@ public class BossBehaviour : EnemyBehaviour
     protected override void Action()
     {
         base.Action();
-        StartCoroutine(CloseAttack());
+        StartCoroutine(CloseAttack(attackList[0]));
     }
 
     public override void Die()
@@ -45,25 +50,60 @@ public class BossBehaviour : EnemyBehaviour
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
     }
 
-    IEnumerator CloseAttack()
+    IEnumerator CloseAttack(GameObject obj)
     {
-        closeAttack.SetActive(true);
-        closeAttack.GetComponent<CircleCollider2D>().enabled = false;
-        closeAttack.GetComponent<SpriteRenderer>().color = Color.yellow;
+        obj.SetActive(true);
+        obj.GetComponent<Collider2D>().enabled = false;
+        obj.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        obj.GetComponent<SpriteRenderer>().color = Color.yellow;
         //play Angry Animation
         yield return new WaitForSeconds(2f);
         //play Attack Animation
-        closeAttack.GetComponent<CircleCollider2D>().enabled = true;
-        closeAttack.GetComponent<SpriteRenderer>().color = Color.red;
-        closeAttack.GetComponent<CloseUpAttack>().canDamage = true;
+        obj.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        obj.GetComponent<Collider2D>().enabled = true;
+        obj.GetComponent<SpriteRenderer>().color = Color.red;
+        obj.GetComponent<DamageOnTriggerStay>().canDamage = true;
         yield return new WaitForSeconds(1f);
         //back to normal
-        closeAttack.SetActive(false);
+        obj.SetActive(false);
         
     }
 
     private bool IsAlreadyAttacking()
     {
-        return closeAttack.activeSelf;
+        bool returnValue = false;
+        foreach (var attack in attackList)
+        {
+            if (attack.activeSelf) returnValue = true;
+        }
+        return returnValue;
+    }
+
+    private GameObject ChooseRandomAttack()
+    {
+        if (Random.Range(0, 2) == 1)
+        {
+            teleportedAttack.transform.position = LevelManager.Instance.Player().transform.position;
+            return teleportedAttack;
+        }
+        else
+        {
+            while (true)
+            {
+                if (usableAttacks.Count != 0)
+                {
+                    GameObject returnObj = usableAttacks[Random.Range(0, usableAttacks.Count)];
+                    usableAttacks.Remove(returnObj);
+                    return returnObj;
+                }
+                else
+                {
+                    foreach (var attack in attackList)
+                    {
+                        usableAttacks.Add(attack);
+                    }
+                }
+            }
+        }
     }
 }
