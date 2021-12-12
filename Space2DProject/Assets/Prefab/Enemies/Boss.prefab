@@ -527,6 +527,9 @@ MonoBehaviour:
   healthBarLenght: 100
   healthBarWidth: 20
   healthBarOffset: 0.6
+  isBurning: 0
+  burnRate: 1
+  burnDamage: 0.02
   maxHealth: 3
   currentHealth: 0
   moveHealthBar: 1

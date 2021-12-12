@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -7,11 +5,14 @@ public class BulletController : MonoBehaviour
     public float bulletForce = 2f;
     public Vector2 direction;
 
-    public int damage = 3;
-    
+    public float damage = 3;
+
+    public bool burn;
+    public float burnDamage = 0.02f;
+
     void OnEnable()
     {
-        Invoke("Destroy", 0.8f);
+        Invoke(nameof(Destroy), 0.8f);
     }
     
     void Update()
@@ -21,11 +22,13 @@ public class BulletController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 7)
-        {
-            other.GetComponent<EnemyHealth>().TakeDamage(damage);
-            gameObject.SetActive(false);
-        }
+        if (other.gameObject.layer != 7) return;
+        
+        other.GetComponent<EnemyHealth>().TakeDamage(damage);
+        gameObject.SetActive(false);
+        if(!burn) return;
+        
+        other.GetComponent<EnemyHealth>().Burn(burnDamage);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

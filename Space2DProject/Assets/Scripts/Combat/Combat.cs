@@ -24,8 +24,11 @@ public class Combat : MonoBehaviour
     public List<Collider2D> hits;
 
     //Damage
-    public int damage = 10;
-    public int specialDamage = 10;
+    public float damage = 10;
+    public float specialDamage = 10;
+
+    public float sprayGainNormal = 15f;
+    public float sprayGainSpecial = 20f;
 
     [HideInInspector] public bool rightAttack;
     [HideInInspector] public bool leftAttack;
@@ -50,7 +53,7 @@ public class Combat : MonoBehaviour
         if (rightAttack && isAttacking == false)
         {
             isAttacking = true;
-            Invoke("ResetAttack", 0.5f);
+            Invoke(nameof(ResetAttack), 0.5f);
 
             Physics2D.OverlapCollider(baseRightCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -59,7 +62,7 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += 15;
+                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
                     GetComponent<SprayAttack>().UpdateSprayBar();
                 }
             }
@@ -69,7 +72,7 @@ public class Combat : MonoBehaviour
         if (leftAttack && isAttacking == false)
         {
             isAttacking = true;
-            Invoke("ResetAttack", 0.5f);
+            Invoke(nameof(ResetAttack), 0.5f);
             
             Physics2D.OverlapCollider(baseLeftCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -78,7 +81,7 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += 15;
+                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
                     GetComponent<SprayAttack>().UpdateSprayBar();
                 }
             }
@@ -88,7 +91,7 @@ public class Combat : MonoBehaviour
         if (uptAttack && isAttacking == false)
         {
             isAttacking = true;
-            Invoke("ResetAttack", 0.5f);
+            Invoke(nameof(ResetAttack), 0.5f);
             
             Physics2D.OverlapCollider(baseUpCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -97,7 +100,7 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += 15;
+                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
                     GetComponent<SprayAttack>().UpdateSprayBar();
                 }
             }
@@ -107,7 +110,7 @@ public class Combat : MonoBehaviour
         if (downAttack && isAttacking == false)
         {
             isAttacking = true;
-            Invoke("ResetAttack", 0.5f);
+            Invoke(nameof(ResetAttack), 0.5f);
             
             Physics2D.OverlapCollider(baseDownCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -116,7 +119,7 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += 15;
+                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
                     GetComponent<SprayAttack>().UpdateSprayBar();
                 }
             }
@@ -132,10 +135,10 @@ public class Combat : MonoBehaviour
             
             GetComponent<PlayerMovement>().speed = 2;
 
-            Invoke("WaveAttack", 0.3f);
-            Invoke("WaveAttack", 0.6f);
-            Invoke("ResetAttack", 0.9f);
-            Invoke("ResetSpecialAttack", specialAttackCoolDown);
+            Invoke(nameof(WaveAttack), 0.3f);
+            Invoke(nameof(WaveAttack), 0.6f);
+            Invoke(nameof(ResetAttack), 0.9f);
+            Invoke(nameof(ResetSpecialAttack), specialAttackCoolDown);
         }
     }
 
@@ -149,7 +152,7 @@ public class Combat : MonoBehaviour
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage);
                 enemy.GetComponent<Rigidbody2D>().AddForce( (enemy.transform.position - transform.position).normalized* force);
-                GetComponent<SprayAttack>().currentSpray += 20;
+                GetComponent<SprayAttack>().currentSpray += sprayGainSpecial;
             }
         }
     }

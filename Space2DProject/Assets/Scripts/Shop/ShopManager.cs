@@ -34,15 +34,11 @@ public class ShopManager : MonoBehaviour
      public void ReductionPickI()
     {
         reductionTotal ++;
-        Debug.Log("Reduction +1");
-
     }
 
     public void ReductionPickII()
     {
         reductionTotal ++;
-        Debug.Log("Reduction +2");
-
     }
 
     public List<ShopItem> DisplayItems(int floor, int seed, int size)

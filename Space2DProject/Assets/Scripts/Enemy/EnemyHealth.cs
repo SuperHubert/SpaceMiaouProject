@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +10,15 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float healthBarWidth = 20f;
     [SerializeField] private float healthBarOffset = 0.6f;
 
-    [SerializeField]private int maxHealth = 3;
-    [SerializeField]private int currentHealth;
+    public bool isBurning = false;
+    public float burnRate = 1f;
+    private Coroutine burnRoutine;
+
+    [SerializeField]private float maxHealth = 3;
+    [SerializeField]private float currentHealth;
 
     [SerializeField]private bool moveHealthBar = true;
-    
+
     private Animator enemyAnimator;
     private EnemyBehaviour enemyBehaviour;
     
@@ -51,11 +56,13 @@ public class EnemyHealth : MonoBehaviour
         
         healthBar = healthBarObj.GetComponent<Image>();
         healthBarObj.SetActive(false);
+
+        isBurning = false;
         
         ResizeHealthBar();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         ResizeHealthBar();
         
@@ -63,7 +70,7 @@ public class EnemyHealth : MonoBehaviour
         
         currentHealth -= damage;
 
-        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        healthBar.fillAmount = currentHealth / maxHealth;
         
         if (currentHealth <= 0)
         {
@@ -82,7 +89,29 @@ public class EnemyHealth : MonoBehaviour
         enemyAnimator.SetBool("IsDead", true);
         
         enemyBehaviour.Die();
+
+        isBurning = false;
         
         healthBarObj.SetActive(false);
+        
+        StopCoroutine(burnRoutine);
     }
+
+    public void Burn(float burnDamage = 0.02f)
+    {
+        isBurning = true;
+        if(burnRoutine != null) return;
+        burnRoutine = StartCoroutine(BurnRoutine(burnDamage));
+    }
+
+    private IEnumerator BurnRoutine(float burnDamage = 0.02f)
+    {
+        while (isBurning)
+        {
+            Debug.Log("burn tick");
+            TakeDamage(maxHealth * burnDamage);
+            yield return new WaitForSeconds(burnRate);
+        }
+    }
+    
 }
