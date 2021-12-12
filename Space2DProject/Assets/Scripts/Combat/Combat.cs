@@ -79,6 +79,7 @@ public class Combat : MonoBehaviour
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
                     GetComponent<SprayAttack>().currentSpray += 15;
+                    GetComponent<SprayAttack>().UpdateSprayBar();
                 }
             }
         }
@@ -97,6 +98,7 @@ public class Combat : MonoBehaviour
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
                     GetComponent<SprayAttack>().currentSpray += 15;
+                    GetComponent<SprayAttack>().UpdateSprayBar();
                 }
             }
         }
@@ -115,6 +117,7 @@ public class Combat : MonoBehaviour
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
                     GetComponent<SprayAttack>().currentSpray += 15;
+                    GetComponent<SprayAttack>().UpdateSprayBar();
                 }
             }
         }
