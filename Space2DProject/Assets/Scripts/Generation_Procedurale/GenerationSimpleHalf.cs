@@ -500,7 +500,7 @@ public class GenerationSimpleHalf : MonoBehaviour
 
         spawnPoint.position = posObject.transform.position;
         
-        //posObject = Instantiate(firstRoomPrefab.transform.GetChild(roomShopIndex).gameObject, room.transform);
+        posObject = Instantiate(firstRoomPrefab.transform.GetChild(roomShopIndex).gameObject, room.transform);
         
         shopPos.position = posObject.transform.position;
     }
