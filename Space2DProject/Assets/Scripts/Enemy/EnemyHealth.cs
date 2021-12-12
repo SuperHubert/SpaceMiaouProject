@@ -94,7 +94,7 @@ public class EnemyHealth : MonoBehaviour
         
         healthBarObj.SetActive(false);
         
-        StopCoroutine(burnRoutine);
+        if(burnRoutine != null) StopCoroutine(burnRoutine);
     }
 
     public void Burn(float burnDamage = 0.02f)

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class FollowPlayer : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class FollowPlayer : MonoBehaviour
 
     public void WarpToPlayer()
     {
-        if(transform.position == player.position) return;
+        if(transform.position == player.position || SceneManager.GetActiveScene().buildIndex == 3) return;
         agent.Warp(player.position);
     }
 

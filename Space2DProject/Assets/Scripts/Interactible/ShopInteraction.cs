@@ -11,6 +11,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public TextMeshProUGUI nyanCountShop;
 
     public List<TextMeshProUGUI> textList;
+    public List<Image> imageList;
     public List<TextMeshProUGUI> testNameList;
     public List<GameObject> soldOutList;
 
@@ -22,35 +23,17 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         shopUI.SetActive(true);
         Time.timeScale = 0;
 
-        displayList.Clear();
-
-        displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetCurrentSeed(), 5);
-
-        for (int i = 0; i < textList.Count; i++)
-        {
-            displayList[i].actualPrice = displayList[i].basePrice - shopManager.reductionTotal;
-            if(displayList[i].actualPrice <= 0) 
-            { 
-                displayList[i].actualPrice = 1; 
-            }
-            textList[i].text = displayList[i].actualPrice.ToString();
-            testNameList[i].text = displayList[i].name;
-            soldOutList[i].SetActive(false);
-            if (displayList[i].isBought)
-            {
-                soldOutList[i].SetActive(true);
-            }
-            nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
-
-        }
+        RefreshShop();
     }
 
-    public void RefreshShop()
+    private void RefreshShop()
     {
-        displayList.Clear();
-
-        displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetCurrentSeed(), 5);
-
+        if (displayList.Count == 0)
+        {
+            displayList = shopManager.DisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetFirstSeed(), 5);
+        }
+        //displayList.Clear();
+        
         for (int i = 0; i < textList.Count; i++)
         {
             displayList[i].actualPrice = displayList[i].basePrice - shopManager.reductionTotal;
@@ -67,6 +50,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
             }
             nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
 
+            imageList[i].sprite = displayList[i].image;
         }
     }
 
@@ -78,7 +62,6 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     
     public void ButtonHeal()
     {
-        
         if (!CanBuy(5)) return;
         Debug.Log("item bought)");
         MoneyManager.Instance.nyanCoins -= displayList[5].actualPrice;

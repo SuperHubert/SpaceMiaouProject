@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2233394246705086646}
+  - component: {fileID: 2454684539902858669}
   - component: {fileID: 2233394246705086647}
   - component: {fileID: 2340910093457116432}
-  - component: {fileID: 2454684539902858669}
   - component: {fileID: 2350670521089478828}
   - component: {fileID: 1101935766226791751}
   m_Layer: 14
@@ -35,452 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2233394246705086647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2233394246705086644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b72b903467b2945936ca445461cafe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reductionTotal: 0
-  ShopItemList:
-  - name: Heal I
-    Image: {fileID: 0}
-    basePrice: 3
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Heal1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Heal II
-    Image: {fileID: 0}
-    basePrice: 4
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Heal2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Heal III
-    Image: {fileID: 0}
-    basePrice: 5
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Heal3
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Speed I
-    Image: {fileID: 0}
-    basePrice: 2
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Speed1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Speed II
-    Image: {fileID: 0}
-    basePrice: 3
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Speed2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Speed III
-    Image: {fileID: 0}
-    basePrice: 4
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Speed3
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Broom Damage I
-    Image: {fileID: 0}
-    basePrice: 3
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: DamagesBalai1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Broom Damage II
-    Image: {fileID: 0}
-    basePrice: 4
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: DamagesBalai2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Broom Damages III
-    Image: {fileID: 0}
-    basePrice: 6
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: DamagesBalai3
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Dash Cooldown I
-    Image: {fileID: 0}
-    basePrice: 2
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: RechargeDash1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Dash Cooldown II
-    Image: {fileID: 0}
-    basePrice: 4
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: RechargeDash2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Dash Cooldown III
-    Image: {fileID: 0}
-    basePrice: 5
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: RechargeDash3
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Fortune I
-    Image: {fileID: 0}
-    basePrice: 3
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Fortune1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Fortune II
-    Image: {fileID: 0}
-    basePrice: 4
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Fortune2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Fortune III
-    Image: {fileID: 0}
-    basePrice: 5
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Fortune3
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: 'Bleach '
-    Image: {fileID: 0}
-    basePrice: 2
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Javel1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Spray Damage I
-    Image: {fileID: 0}
-    basePrice: 2
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: DamagesSpray1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Spray Damage II
-    Image: {fileID: 0}
-    basePrice: 3
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: DamagesSpray2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Better Prices I
-    Image: {fileID: 0}
-    basePrice: 3
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Reductions1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Better Prices II
-    Image: {fileID: 0}
-    basePrice: 4
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: Reductions2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Soap Gain I
-    Image: {fileID: 0}
-    basePrice: 3
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: SoapAmmo1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Soap Gain II
-    Image: {fileID: 0}
-    basePrice: 4
-    actualPrice: 0
-    upgrade:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2340910093457116432}
-          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-          m_MethodName: SoapAmmo2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &2340910093457116432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2233394246705086644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e28c066058dc12b48b852afa99e5f6cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chestobj: {fileID: 6989400957057662163, guid: 3dc1172269ae7894892df57ae29c1a64, type: 3}
-  isChest: 0
 --- !u!212 &2454684539902858669
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -532,6 +86,475 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2233394246705086647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233394246705086644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b72b903467b2945936ca445461cafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reductionTotal: 0
+  ShopItemList:
+  - name: Heal I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Heal1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Heal II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Heal2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Heal III
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 5
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Heal3
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Speed I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 2
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Speed1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Speed II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Speed2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Speed III
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Speed3
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Broom Damage I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: DamagesBalai1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Broom Damage II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: DamagesBalai2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Broom Damages III
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 6
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: DamagesBalai3
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Dash Cooldown I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 2
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: RechargeDash1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Dash Cooldown II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: RechargeDash2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Dash Cooldown III
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 5
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: RechargeDash3
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Fortune I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Fortune1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Fortune II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Fortune2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Fortune III
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 5
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Fortune3
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: 'Bleach '
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 2
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Javel1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Spray Damage I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 2
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: DamagesSpray1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Spray Damage II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: DamagesSpray2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Better Prices I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Reductions1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Better Prices II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: Reductions2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Soap Gain I
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 3
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: SoapAmmo1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  - name: Soap Gain II
+    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    basePrice: 4
+    actualPrice: 0
+    upgrade:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2340910093457116432}
+          m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+          m_MethodName: SoapAmmo2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    isBought: 0
+  ShopItemList2: []
+--- !u!114 &2340910093457116432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233394246705086644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28c066058dc12b48b852afa99e5f6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestobj: {fileID: 6989400957057662163, guid: 3dc1172269ae7894892df57ae29c1a64, type: 3}
+  isChest: 0
 --- !u!114 &2350670521089478828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,12 +570,17 @@ MonoBehaviour:
   shopUI: {fileID: 0}
   shopManager: {fileID: 2233394246705086647}
   exitButton: {fileID: 0}
+  nyanCountShop: {fileID: 0}
   textList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  imageList: []
+  testNameList: []
+  soldOutList: []
+  displayList: []
 --- !u!61 &1101935766226791751
 BoxCollider2D:
   m_ObjectHideFlags: 0
