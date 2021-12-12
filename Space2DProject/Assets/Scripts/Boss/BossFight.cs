@@ -21,11 +21,6 @@ public class BossFight : MonoBehaviour
         bossRoom.SetActive(false);
     }
     
-    void Update()
-    {
-        
-    }
-    
     public void ActivateBossFight(bool yes = true)
     {
         Transform bossHealth = bossRoom.transform.GetChild(2).GetChild(0).GetChild(1);
