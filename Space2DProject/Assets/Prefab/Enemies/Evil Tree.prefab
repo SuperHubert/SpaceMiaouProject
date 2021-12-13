@@ -40,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830735091937383002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108263563801864154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -278,6 +278,7 @@ MonoBehaviour:
   hasAction: 1
   actionCdMax: 100
   actionCd: 0
+  animator: {fileID: 0}
   enemyTransform: {fileID: 2594063668490503302}
   triggersTransform: {fileID: 698338668102077436}
   respawnTriggerTransform: {fileID: 2108263563801864149}
@@ -322,7 +323,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2204795691360601239}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -490,8 +491,11 @@ MonoBehaviour:
   healthBarLenght: 100
   healthBarWidth: 20
   healthBarOffset: 0.6
+  isBurning: 0
+  burnRate: 1
   maxHealth: 3
   currentHealth: 0
+  moveHealthBar: 1
 --- !u!61 &1062605183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -748,7 +752,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7927379949912332248}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
