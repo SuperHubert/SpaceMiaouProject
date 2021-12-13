@@ -115,7 +115,7 @@ public class DialogueManager : MonoBehaviour
         isDoneTyping = true;
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
     }
