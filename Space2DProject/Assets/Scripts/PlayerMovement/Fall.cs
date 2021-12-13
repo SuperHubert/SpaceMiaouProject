@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,11 +6,15 @@ public class Fall : MonoBehaviour
     public GameObject currentFollower;
     private FollowPlayer follow;
     private PlayerMovement playerMovement;
+
+    public float teleportCooldown = 1f;
     
     private Transform pointBotLeft;
     private Transform pointTopRight;
     private bool canFall = true;
 
+    private Coroutine teleportFollowerRoutine;
+    
     void Start()
     {
         pointBotLeft = transform.GetChild(0);
@@ -22,8 +25,8 @@ public class Fall : MonoBehaviour
 
     private void Update()
     {
-        if(!canFall) return;
-        follow.WarpToPlayer();
+        if(teleportFollowerRoutine != null) return;
+        teleportFollowerRoutine = StartCoroutine(TeleportRoutine());
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -57,5 +60,14 @@ public class Fall : MonoBehaviour
         if(instant) yield return null;
         follow.WarpToPlayer();
         follow.canMove = true;
+    }
+
+    IEnumerator TeleportRoutine()
+    {
+        while (!canFall && follow.canMove)
+        {
+            follow.WarpToPlayer();
+            yield return new WaitForSeconds(teleportCooldown);
+        }
     }
 }

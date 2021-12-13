@@ -3,6 +3,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static bool canInput = true;
+    public static bool canMove = true;
     public GameObject playerObj;
 
     [SerializeField] private bool showKeycodes = false;
@@ -13,9 +14,7 @@ public class InputManager : MonoBehaviour
     private PlayerMovement playerMovement;
     [SerializeField] private MapManager mapManager;
     [SerializeField] private ShopInteraction shopInteraction;
-
     
-
     void Start()
     {
         sprayAttack = playerObj.GetComponent<SprayAttack>();
@@ -54,11 +53,14 @@ public class InputManager : MonoBehaviour
         }
         
         displayInteraction.interact = Input.GetButtonDown("Fire1");
+
+        if (canMove)
+        {
+            playerMovement.horizontalAxis = Input.GetAxisRaw("Horizontal");
+            playerMovement.verticalAxis = Input.GetAxisRaw("Vertical");
+            playerMovement.dash = Input.GetMouseButtonDown(1) || Input.GetAxisRaw("Dash") > 0;
+        }
         
-        playerMovement.horizontalAxis = Input.GetAxisRaw("Horizontal");
-        playerMovement.verticalAxis = Input.GetAxisRaw("Vertical");
-        //playerMovement.dash = Input.GetButtonDown("Dash");
-        playerMovement.dash = Input.GetMouseButtonDown(1);
 
         
         if (mapManager != null)
