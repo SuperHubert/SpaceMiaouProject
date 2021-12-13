@@ -44,6 +44,8 @@ public class Combat : MonoBehaviour
         if (Input.GetButtonDown("RightAttack") && isAttacking == false)
         {
             isAttacking = true;
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("RightBaseAttack");
             Invoke("ResetAttack", 0.5f);
 
             Physics2D.OverlapCollider(baseRightCollider, new ContactFilter2D().NoFilter(), hits);
@@ -62,6 +64,8 @@ public class Combat : MonoBehaviour
         if (Input.GetButtonDown("LeftAttack") && isAttacking == false)
         {
             isAttacking = true;
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("LeftBaseAttack");
             Invoke("ResetAttack", 0.5f);
             
             Physics2D.OverlapCollider(baseLeftCollider, new ContactFilter2D().NoFilter(), hits);
@@ -80,6 +84,8 @@ public class Combat : MonoBehaviour
         if (Input.GetButtonDown("UpAttack") && isAttacking == false)
         {
             isAttacking = true;
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("BackBaseAttack");
             Invoke("ResetAttack", 0.5f);
             
             Physics2D.OverlapCollider(baseUpCollider, new ContactFilter2D().NoFilter(), hits);
@@ -98,6 +104,8 @@ public class Combat : MonoBehaviour
         if (Input.GetButtonDown("DownAttack") && isAttacking == false)
         {
             isAttacking = true;
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("FrontBaseAttack");
             Invoke("ResetAttack", 0.5f);
             
             Physics2D.OverlapCollider(baseDownCollider, new ContactFilter2D().NoFilter(), hits);
@@ -120,6 +128,9 @@ public class Combat : MonoBehaviour
             isSpecialAttacking = true;
             canSpecialAttack = false;
             
+            playerAnimator.Play("SpinAttack");
+            playerAnimator.SetBool("IsAttacking", true);
+            
             GetComponent<PlayerMovement>().speed = 2;
 
             Invoke("WaveAttack", 0.3f);
@@ -132,7 +143,7 @@ public class Combat : MonoBehaviour
     public void WaveAttack()
     {
         Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.5f);
-        
+
         foreach (Collider2D enemy in hit)
         {
             if (enemy.gameObject.layer == 7)
@@ -147,6 +158,7 @@ public class Combat : MonoBehaviour
     void ResetAttack()
     {
         isAttacking = false;
+        playerAnimator.SetBool("IsAttacking", false);
         GetComponent<PlayerMovement>().speed = 7;
     }
 

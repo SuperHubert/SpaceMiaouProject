@@ -40,22 +40,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        inputMovement.x = Input.GetAxisRaw("Horizontal");
-        inputMovement.y = Input.GetAxisRaw("Vertical");
-        
+        if (!dashing)
+        {
+            inputMovement.x = Input.GetAxisRaw("Horizontal");
+            inputMovement.y = Input.GetAxisRaw("Vertical");   
+        }
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.3f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.3f)
         {
             lastDirection = inputMovement;
+            animPlayer.SetFloat("Move X",lastDirection.x);
+            animPlayer.SetFloat("Move Y",lastDirection.y);
         }
         inputMovement.Normalize();
         
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetAxisRaw("Dash") > 0)
         {
             if (dashCd <= 0)
             {
                 dashCd = dashCdMax;
                 dashInternalCd = 0;
                 dashing = true;
+                
+                animPlayer.SetBool("IsDashing", true);
             }
         }
     }
@@ -63,11 +69,9 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
-        AnimationPlayer();
-        
+
         //Dash
         dashCd -= Time.fixedDeltaTime;
-        
 
         if (dashing)
         {
@@ -75,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 dashing = false;
+                animPlayer.SetBool("IsDashing", false);
             }
             else
             {
@@ -101,17 +106,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void AnimationPlayer()
+    /*void AnimationPlayer()
     {
-        if (inputMovement.x > deadZone)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (inputMovement.x < -deadZone)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-
         if (inputMovement.y < -deadZone && Mathf.Abs(inputMovement.x) < deadZone)
         {
             if (playerDirection != 0)
@@ -152,5 +148,5 @@ public class PlayerMovement : MonoBehaviour
                 animPlayer.SetTrigger("GoingUpSide");
             }
         }
-    }
+    }*/
 }
