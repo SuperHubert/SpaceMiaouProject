@@ -41,6 +41,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         agent.SetDestination(enemyTransform.position);
         
         health = enemyTransform.gameObject.GetComponent<EnemyHealth>();
+
+        animator = enemyTransform.gameObject.GetComponent<Animator>();
         
         (wakeUpTrigger = triggersTransform.GetChild(0).gameObject).SetActive(true);
         (sleepTrigger = triggersTransform.GetChild(1).gameObject).SetActive(false);

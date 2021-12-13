@@ -164,6 +164,7 @@ MonoBehaviour:
   hasAction: 1
   actionCdMax: 100
   actionCd: 0
+  animator: {fileID: 3449102410432137046}
   enemyTransform: {fileID: 4574160820572332132}
   triggersTransform: {fileID: 1528311748300533534}
   respawnTriggerTransform: {fileID: 128166407243924279}
@@ -513,7 +514,7 @@ Animator:
   m_GameObject: {fileID: 4574160820572332130}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9aeff5a6c7c485842b0b857eb5635af7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 11c4c6eb85e4c794fa52868e64fe68bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -538,8 +539,11 @@ MonoBehaviour:
   healthBarLenght: 100
   healthBarWidth: 20
   healthBarOffset: 0.6
+  isBurning: 0
+  burnRate: 1
   maxHealth: 3
   currentHealth: 0
+  moveHealthBar: 1
 --- !u!1 &5409453648579458295
 GameObject:
   m_ObjectHideFlags: 0
