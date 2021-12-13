@@ -68,6 +68,8 @@ public class EnemyHealth : MonoBehaviour
         
         healthBarObj.SetActive(true);
         
+        enemyAnimator.SetTrigger("TakeDamage");
+        
         currentHealth -= damage;
 
         healthBar.fillAmount = currentHealth / maxHealth;
@@ -76,6 +78,8 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+        
+        enemyAnimator.ResetTrigger("TakeDamage");
     }
     
     private void ResizeHealthBar()

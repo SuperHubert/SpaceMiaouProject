@@ -17,7 +17,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected NavMeshAgent agent;
     protected EnemyHealth health;
     protected Transform player;
-    
+
+    [SerializeField] protected Animator animator;
     [SerializeField] protected Transform enemyTransform;
     [SerializeField] protected Transform triggersTransform;
     [SerializeField] protected Transform respawnTriggerTransform;
@@ -101,6 +102,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public virtual void Respawn()
     {
         if (!respawn) return;
+        
+        animator.SetBool("isDead",false);
         
         enemyTransform.gameObject.SetActive(true);
         enemyTransform.position = respawnTrigger.transform.position;

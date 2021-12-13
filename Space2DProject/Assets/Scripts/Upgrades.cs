@@ -6,13 +6,7 @@ public class Upgrades : MonoBehaviour
     private Chest chest;
     [SerializeField] private bool isChest = true;
     public static float fortuneUpgrade = 0;
-
-    private LifeManager lifem;
-    private PlayerMovement playerMovement;
-    private Combat combat;
-    private SprayAttack sprayAttack;
-    private ShopManager shopManager;
-
+    
     #region Singleton
     public static Upgrades Instance;
 
@@ -24,12 +18,6 @@ public class Upgrades : MonoBehaviour
 
     private void Start()
     {
-        lifem = LifeManager.Instance;
-        playerMovement = LevelManager.Instance.Player().GetComponent<PlayerMovement>();
-        combat = LevelManager.Instance.Player().GetComponent<Combat>();
-        sprayAttack = LevelManager.Instance.Player().GetComponent<SprayAttack>();
-        shopManager = ShopManager.Instance;
-
         if (!isChest) return;
         chest = chestobj.GetComponent<Chest>();
     }
@@ -51,73 +39,79 @@ public class Upgrades : MonoBehaviour
 
     public void Heal1()
     {
-        lifem.TakeDamages(-1);
+        LifeManager.Instance.TakeDamages(-1);
         Debug.Log("Got Heal I");
     }
 
     public void Heal2()
     {
-        lifem.TakeDamages(-2);
+        LifeManager.Instance.TakeDamages(-2);
         Debug.Log("Got Heal II");
     }
 
     public void Heal3()
     {
-        lifem.TakeDamages(-3);
+        LifeManager.Instance.TakeDamages(-3);
         Debug.Log("Got Heal III");
     }
 
     public void Speed1()
     {
-        playerMovement.speed += playerMovement.speed * 5f/100f;
+        var levelm = LevelManager.Instance.Player().GetComponent<PlayerMovement>();
+        levelm.speed += levelm.speed * 5f/100f;
         Debug.Log("Got Speed I");
     }
 
     public void Speed2()
     {
-        playerMovement.speed += playerMovement.speed * 10f/100f;
+        var levelm = LevelManager.Instance.Player().GetComponent<PlayerMovement>();
+        levelm.speed += levelm.speed * 10f/100f;
         Debug.Log("Got Speed II");
     }
 
     public void Speed3()
     {
-        playerMovement.speed += playerMovement.speed * 15f/100f;
+        var levelm = LevelManager.Instance.Player().GetComponent<PlayerMovement>();
+        levelm.speed += levelm.speed * 15f/100f;
         Debug.Log("Got Speed III");
     }
 
     public void DamagesBalai1()
     {
+        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
         combat.damage += combat.damage * 5f / 100f;
         Debug.Log("Damages Balai I");
     }
 
     public void DamagesBalai2()
     {
+        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
         combat.damage += combat.damage * 10f / 100f;
         Debug.Log("Damages Balai II");
     }
 
     public void DamagesBalai3()
     {
+        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
         combat.damage += combat.damage * 15f / 100f;
         Debug.Log("Damages Balai III");
     }
 
     public void RechargeDash1()
     {
-        playerMovement.dashCdMax -= playerMovement.dashCdMax * 5f / 100f;
+        LevelManager.Instance.Player().GetComponent<PlayerMovement>().dashCdMax -= LevelManager.Instance.Player().GetComponent<PlayerMovement>().dashCdMax * 5f / 100f;
         Debug.Log("Recharge Dash I");
     }
 
     public void RechargeDash2()
     {
-        playerMovement.dashCdMax -= playerMovement.dashCdMax * 10f / 100f;
+        LevelManager.Instance.Player().GetComponent<PlayerMovement>().dashCdMax -= LevelManager.Instance.Player().GetComponent<PlayerMovement>().dashCdMax * 10f / 100f;
         Debug.Log("Recharge Dash II");
     }
 
     public void RechargeDash3()
     {
-        playerMovement.dashCdMax -= playerMovement.dashCdMax * 15f / 100f;
+        LevelManager.Instance.Player().GetComponent<PlayerMovement>().dashCdMax -= LevelManager.Instance.Player().GetComponent<PlayerMovement>().dashCdMax * 15f / 100f;
         Debug.Log("Recharge Dash III");
     }
 
@@ -141,6 +135,7 @@ public class Upgrades : MonoBehaviour
 
     public void Javel1()
     {
+        var sprayAttack = LevelManager.Instance.Player().GetComponent<SprayAttack>();
         if (sprayAttack.burn)
         {
             sprayAttack.burnDamage += 0.01f;
@@ -155,12 +150,14 @@ public class Upgrades : MonoBehaviour
 
     public void DamagesSpray1()
     {
+        var sprayAttack = LevelManager.Instance.Player().GetComponent<SprayAttack>();
         sprayAttack.damage += sprayAttack.damage * 5f / 100f;
         Debug.Log("Damages Spray I");
     }
 
     public void DamagesSpray2()
     {
+        var sprayAttack = LevelManager.Instance.Player().GetComponent<SprayAttack>();
         sprayAttack.damage += sprayAttack.damage * 10f / 100f;
         Debug.Log("Damages Spray II");
     }
@@ -179,6 +176,7 @@ public class Upgrades : MonoBehaviour
 
     public void SoapAmmo1()
     {
+        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
         combat.sprayGainNormal += combat.sprayGainNormal * 5f / 100f;
         combat.sprayGainSpecial += combat.sprayGainSpecial * 5f / 100f;
         Debug.Log("Recharge de Savon I");
@@ -186,6 +184,7 @@ public class Upgrades : MonoBehaviour
 
     public void SoapAmmo2()
     {
+        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
         combat.sprayGainNormal += combat.sprayGainNormal * 10f / 100f;
         combat.sprayGainSpecial += combat.sprayGainSpecial * 10f / 100f;
         Debug.Log("Recharge de Savon II");
