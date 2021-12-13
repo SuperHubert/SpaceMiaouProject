@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,8 +6,6 @@ public class Chest : MonoBehaviour, IInteractible
     private float[] table = {100f,0f};
     private int floor;
     
-    
-
     private void Start()
     {
         floor = LevelManager.Instance.FloorNumber();

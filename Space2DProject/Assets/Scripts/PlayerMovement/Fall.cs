@@ -13,7 +13,7 @@ public class Fall : MonoBehaviour
     private Transform pointTopRight;
     private bool canFall = true;
 
-    private Coroutine teleportFollowerRoutine;
+    public Coroutine teleportFollowerRoutine;
     
     void Start()
     {
@@ -22,13 +22,7 @@ public class Fall : MonoBehaviour
         follow = currentFollower.GetComponent<FollowPlayer>();
         playerMovement = transform.parent.gameObject.GetComponent<PlayerMovement>();
     }
-
-    private void Update()
-    {
-        if(teleportFollowerRoutine != null) return;
-        teleportFollowerRoutine = StartCoroutine(TeleportRoutine());
-    }
-
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.layer != 13) return;
@@ -49,7 +43,6 @@ public class Fall : MonoBehaviour
         InputManager.canInput = true;
     }
     
-
     private void OnTriggerExit2D(Collider2D other)
     {
         StartCoroutine(TeleportFollower());
@@ -57,17 +50,8 @@ public class Fall : MonoBehaviour
 
     public IEnumerator TeleportFollower(bool instant = false)
     {
-        if(instant) yield return null;
+        if(instant)yield return null;
         follow.WarpToPlayer();
         follow.canMove = true;
-    }
-
-    IEnumerator TeleportRoutine()
-    {
-        while (!canFall && follow.canMove)
-        {
-            follow.WarpToPlayer();
-            yield return new WaitForSeconds(teleportCooldown);
-        }
     }
 }
