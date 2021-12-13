@@ -645,6 +645,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1917384626}
     - target: {fileID: 273499834543205587, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: nyanCount
+      value: 
+      objectReference: {fileID: 2140388289}
+    - target: {fileID: 273499834543205587, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: exitButton
       value: 
       objectReference: {fileID: 1528518381}

@@ -10,6 +10,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public ShopManager shopManager;
     public Button selectedButton;
     public TextMeshProUGUI nyanCountShop;
+    public TextMeshProUGUI nyanCount;
 
     public List<TextMeshProUGUI> textList;
     public List<Image> imageList;
@@ -85,6 +86,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         soldOutList[index].SetActive(true);
         displayList[index].upgrade.Invoke();
         nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
+        nyanCount.text = MoneyManager.Instance.nyanCoins.ToString();
         RefreshShop();
     }
 
