@@ -1,9 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SmallDashingBehaviour : EnemyBehaviour
 {
+    public GameObject point;
+    
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -15,6 +16,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         else
         {
             isPerformingAction = false;
+            agent.stoppingDistance = 0f;
             agent.acceleration = 8;
             agent.speed = 3.5f;
             actionTrigger.SetActive(true);
@@ -37,11 +39,15 @@ public class SmallDashingBehaviour : EnemyBehaviour
         agent.velocity = Vector3.zero;
         agent.acceleration = 100;
         agent.speed = 20;
+        agent.stoppingDistance = 1f;
 
-        var currentPos = enemyTransform.position;
-        var target = currentPos + (player.position - currentPos).normalized * 3;
+        var enemyTransformPosition = enemyTransform.position;
+        var playerPos = player.position;
+        var target = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * 5;
         
-        agent.SetDestination(currentPos + (player.position - currentPos).normalized * -1);
+        Debug.DrawRay(enemyTransformPosition, (playerPos - enemyTransformPosition).normalized * 5, Color.green, 4, false);
+        
+        agent.SetDestination(enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1);
         
         yield return new WaitForSeconds(0.1f);
 
