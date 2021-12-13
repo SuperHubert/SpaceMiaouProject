@@ -63,6 +63,7 @@ public class InputManager : MonoBehaviour
         
         if (mapManager != null)
         {
+            mapManager.mapExitInput = Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.JoystickButton1);
             mapManager.mapInput = Input.GetButtonDown("DisplayMap") || Input.GetKeyDown(KeyCode.JoystickButton7);
         }
         

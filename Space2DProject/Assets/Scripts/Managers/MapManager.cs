@@ -7,11 +7,18 @@ public class MapManager : MonoBehaviour
     private bool bigMapIsActive = false;
 
     public bool mapInput = false;
+    public bool mapExitInput = false;
     
     void Update()
     {
-        if (!mapInput) return;
-        
+        if (mapInput || (bigMapIsActive && mapExitInput))
+        {
+            DisplayShop();
+        }
+    }
+
+    private void DisplayShop()
+    {
         bigMapIsActive = !bigMapIsActive;
         if (bigMapIsActive)
         {
