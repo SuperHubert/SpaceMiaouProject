@@ -636,6 +636,10 @@ PrefabInstance:
       propertyPath: followPlayer
       value: 
       objectReference: {fileID: 409208227}
+    - target: {fileID: 8364773362135438210, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 2027238829}
     - target: {fileID: 8364773362135438211, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.03
@@ -2728,6 +2732,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 600786663}
     - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.21
       objectReference: {fileID: 0}
@@ -3244,6 +3252,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d7a6113c98b7e458e9234095d792a7, type: 3}
+--- !u!114 &2027238829 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4246240060020039889, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+  m_PrefabInstance: {fileID: 550244340}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4355f0fa3e2ee9e4297dbabcf463f8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042878910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2509088219761027982, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}

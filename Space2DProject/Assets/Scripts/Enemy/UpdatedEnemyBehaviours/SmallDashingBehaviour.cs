@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class SmallDashingBehaviour : EnemyBehaviour
 {
-    public GameObject point;
-    
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -25,6 +23,10 @@ public class SmallDashingBehaviour : EnemyBehaviour
         if (currentState == State.Awake && !isPerformingAction)
         {
             agent.SetDestination(player.position);
+            
+            //animator direction
+            //look left or right
+            animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
         }
     }
 
@@ -36,6 +38,8 @@ public class SmallDashingBehaviour : EnemyBehaviour
 
     private IEnumerator DashAttack()
     {
+        animator.SetTrigger("Attack");
+        
         agent.velocity = Vector3.zero;
         agent.acceleration = 100;
         agent.speed = 20;
@@ -52,5 +56,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         yield return new WaitForSeconds(0.1f);
 
         agent.SetDestination(target);
+        
+        animator.ResetTrigger("Attack");
     }
 }
