@@ -6,6 +6,8 @@ public class LifeManager : MonoBehaviour
     public int lifeBar = 9;
     public int maxHP = 9;
     public bool isInGodMode = false;
+    public bool canTakeDamge = true;
+    public float invulTime = 1f;
 
     #region Singleton
     public static LifeManager Instance;
@@ -18,7 +20,8 @@ public class LifeManager : MonoBehaviour
     
    public void TakeDamages(int damages)
     {
-        if(isInGodMode) return;
+        if(isInGodMode || !canTakeDamge) return;
+        StartCoroutine(InvulFrames());
         var previousHp = lifeBar;
         lifeBar -= damages;
         if (lifeBar > maxHP)
@@ -49,6 +52,13 @@ public class LifeManager : MonoBehaviour
        LoadingLevelData.Instance.ResetData();
        LoadingManager.Instance.LoadScene(3);
        InputManager.canInput = true;
+   }
+
+   IEnumerator InvulFrames()
+   {
+       canTakeDamge = false;
+       yield return new WaitForSeconds(invulTime);
+       canTakeDamge = true;
    }
 
 
