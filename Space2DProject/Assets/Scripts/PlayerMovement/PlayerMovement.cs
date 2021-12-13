@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         inputMovement.y = verticalAxis;
         
         InputManager.canMove = !dashing;
-        
+
         if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
         {
             lastDirection = inputMovement;
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
                 dashCd = dashCdMax;
                 dashInternalCd = 0;
                 dashing = true;
-                
+
                 animPlayer.SetBool("IsDashing", true);
             }
         }
@@ -79,11 +79,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 dashing = false;
+                LifeManager.Instance.canTakeDamge = true;
                 StartCoroutine(fall.TeleportFollower());
                 animPlayer.SetBool("IsDashing", false);
             }
             else
             {
+                LifeManager.Instance.canTakeDamge = false;
                 animPlayer.SetBool("IsDashing", true);
                 animPlayer.SetBool("IsWalking", false);
                 dashInternalCd += Time.fixedDeltaTime;
