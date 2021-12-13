@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -5,10 +8,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    //Player RigidBody
+    //Player GameObject
     private Rigidbody2D rb;
-    [SerializeField] private Fall fall;
-
+    
     //normal movement
     public float speed = 10f;
     public Vector3 inputMovement;
@@ -18,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     //dash related
     public float dashSpeed = 40f;
-    public bool dashing = false;
+    bool dashing = false;
     private float dashInternalCd;
     public float dashInternalCdMax = 0.1f;
     private float dashCd;
@@ -27,37 +29,39 @@ public class PlayerMovement : MonoBehaviour
     //Animations
     [SerializeField] private Animator animPlayer;
     public int playerDirection = 0;
-    
-    //Inputs
-    public float horizontalAxis;
-    public float verticalAxis;
-    public bool dash;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         dashInternalCd = 0;
         dashCd = 0;
+
     }
 
     private void Update()
     {
-        inputMovement.x = horizontalAxis;
-        inputMovement.y = verticalAxis;
-        
-        if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
+        if (!dashing)
+        {
+            inputMovement.x = Input.GetAxisRaw("Horizontal");
+            inputMovement.y = Input.GetAxisRaw("Vertical");   
+        }
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.3f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.3f)
         {
             lastDirection = inputMovement;
+            animPlayer.SetFloat("Move X",lastDirection.x);
+            animPlayer.SetFloat("Move Y",lastDirection.y);
         }
         inputMovement.Normalize();
         
-        if (dash)
+        if (Input.GetAxisRaw("Dash") > 0)
         {
             if (dashCd <= 0)
             {
                 dashCd = dashCdMax;
                 dashInternalCd = 0;
                 dashing = true;
+                
+                animPlayer.SetBool("IsDashing", true);
             }
         }
     }
@@ -65,18 +69,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
-        AnimationPlayer();
-        
+
         //Dash
         dashCd -= Time.fixedDeltaTime;
-        
+
         if (dashing)
         {
             if (dashInternalCd>dashInternalCdMax)
             {
                 rb.velocity = Vector2.zero;
                 dashing = false;
-                StartCoroutine(fall.TeleportFollower());
+                animPlayer.SetBool("IsDashing", false);
             }
             else
             {
@@ -84,17 +87,11 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = inputMovement * dashSpeed;
             }
         }
-        else
-        {
-            
-        }
-        
     }
 
     void MovePlayer()
     {
         rb.velocity = Vector2.zero;
-        if(!InputManager.canInput) return;
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
         {
             if (GetComponent<Combat>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)
@@ -109,17 +106,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void AnimationPlayer()
+    /*void AnimationPlayer()
     {
-        if (inputMovement.x > deadZone)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (inputMovement.x < -deadZone)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-
         if (inputMovement.y < -deadZone && Mathf.Abs(inputMovement.x) < deadZone)
         {
             if (playerDirection != 0)
@@ -160,5 +148,5 @@ public class PlayerMovement : MonoBehaviour
                 animPlayer.SetTrigger("GoingUpSide");
             }
         }
-    }
+    }*/
 }

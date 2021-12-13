@@ -24,17 +24,8 @@ public class Combat : MonoBehaviour
     public List<Collider2D> hits;
 
     //Damage
-    public float damage = 10;
-    public float specialDamage = 10;
-
-    public float sprayGainNormal = 15f;
-    public float sprayGainSpecial = 20f;
-
-    [HideInInspector] public bool rightAttack;
-    [HideInInspector] public bool leftAttack;
-    [HideInInspector] public bool uptAttack;
-    [HideInInspector] public bool downAttack;
-    [HideInInspector] public bool specialAttack;
+    public int damage = 10;
+    public int specialDamage = 10;
     
 
     void Start()
@@ -50,10 +41,12 @@ public class Combat : MonoBehaviour
     
     void BasicAttack()
     {
-        if (rightAttack && isAttacking == false)
+        if (Input.GetButtonDown("RightAttack") && isAttacking == false)
         {
             isAttacking = true;
-            Invoke(nameof(ResetAttack), 0.5f);
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("RightBaseAttack");
+            Invoke("ResetAttack", 0.5f);
 
             Physics2D.OverlapCollider(baseRightCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -62,17 +55,18 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
-                    GetComponent<SprayAttack>().UpdateSprayBar();
+                    GetComponent<SprayAttack>().currentSpray += 15;
                 }
             }
         }
         
             
-        if (leftAttack && isAttacking == false)
+        if (Input.GetButtonDown("LeftAttack") && isAttacking == false)
         {
             isAttacking = true;
-            Invoke(nameof(ResetAttack), 0.5f);
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("LeftBaseAttack");
+            Invoke("ResetAttack", 0.5f);
             
             Physics2D.OverlapCollider(baseLeftCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -81,17 +75,18 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
-                    GetComponent<SprayAttack>().UpdateSprayBar();
+                    GetComponent<SprayAttack>().currentSpray += 15;
                 }
             }
         }
         
         
-        if (uptAttack && isAttacking == false)
+        if (Input.GetButtonDown("UpAttack") && isAttacking == false)
         {
             isAttacking = true;
-            Invoke(nameof(ResetAttack), 0.5f);
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("BackBaseAttack");
+            Invoke("ResetAttack", 0.5f);
             
             Physics2D.OverlapCollider(baseUpCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -100,17 +95,18 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
-                    GetComponent<SprayAttack>().UpdateSprayBar();
+                    GetComponent<SprayAttack>().currentSpray += 15;
                 }
             }
         }
         
         
-        if (downAttack && isAttacking == false)
+        if (Input.GetButtonDown("DownAttack") && isAttacking == false)
         {
             isAttacking = true;
-            Invoke(nameof(ResetAttack), 0.5f);
+            playerAnimator.SetBool("IsAttacking", true);
+            playerAnimator.Play("FrontBaseAttack");
+            Invoke("ResetAttack", 0.5f);
             
             Physics2D.OverlapCollider(baseDownCollider, new ContactFilter2D().NoFilter(), hits);
 
@@ -119,8 +115,7 @@ public class Combat : MonoBehaviour
                 if (enemy.gameObject.layer == 7)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
-                    GetComponent<SprayAttack>().UpdateSprayBar();
+                    GetComponent<SprayAttack>().currentSpray += 15;
                 }
             }
         }
@@ -128,31 +123,34 @@ public class Combat : MonoBehaviour
 
     void SpecialAttack()
     {
-        if (specialAttack && !isAttacking && canSpecialAttack)
+        if (Input.GetButtonDown("SpecialAttack") && !isAttacking && canSpecialAttack)
         {
             isSpecialAttacking = true;
             canSpecialAttack = false;
             
+            playerAnimator.Play("SpinAttack");
+            playerAnimator.SetBool("IsAttacking", true);
+            
             GetComponent<PlayerMovement>().speed = 2;
 
-            Invoke(nameof(WaveAttack), 0.3f);
-            Invoke(nameof(WaveAttack), 0.6f);
-            Invoke(nameof(ResetAttack), 0.9f);
-            Invoke(nameof(ResetSpecialAttack), specialAttackCoolDown);
+            Invoke("WaveAttack", 0.3f);
+            Invoke("WaveAttack", 0.6f);
+            Invoke("ResetAttack", 0.9f);
+            Invoke("ResetSpecialAttack", specialAttackCoolDown);
         }
     }
 
     public void WaveAttack()
     {
         Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.5f);
-        
+
         foreach (Collider2D enemy in hit)
         {
             if (enemy.gameObject.layer == 7)
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage);
                 enemy.GetComponent<Rigidbody2D>().AddForce( (enemy.transform.position - transform.position).normalized* force);
-                GetComponent<SprayAttack>().currentSpray += sprayGainSpecial;
+                GetComponent<SprayAttack>().currentSpray += 20;
             }
         }
     }
@@ -160,6 +158,7 @@ public class Combat : MonoBehaviour
     void ResetAttack()
     {
         isAttacking = false;
+        playerAnimator.SetBool("IsAttacking", false);
         GetComponent<PlayerMovement>().speed = 7;
     }
 
