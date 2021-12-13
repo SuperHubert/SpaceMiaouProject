@@ -12,6 +12,11 @@ public class SmallShooterBehaviour : EnemyBehaviour
     void Update()
     {
         if(currentState != State.Awake) return;
+        
+        //animator direction
+        //look left or right
+        animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
+        
         LookAt(player);
         if (!IsStopped()) return;
         if (isPerformingAction)
@@ -26,6 +31,7 @@ public class SmallShooterBehaviour : EnemyBehaviour
             }
             else
             {
+                animator.ResetTrigger("Attack");
                 ShootBullet();
                 shootCd = shootCdMax;
             }
@@ -52,6 +58,7 @@ public class SmallShooterBehaviour : EnemyBehaviour
     
     private void ShootBullet()
     {
+        animator.SetTrigger("Attack");
         bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", enemyTransform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = (player.position - enemyTransform.position).normalized*bulletSpeed;
         bullet.GetComponent<BulletDamage>().SetBulletDamage(bulletDamage);
