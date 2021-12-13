@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -8,8 +5,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    //Player GameObject
+    //Player RigidBody
     private Rigidbody2D rb;
+    [SerializeField] private Fall fall;
     
     //normal movement
     public float speed = 10f;
@@ -20,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     //dash related
     public float dashSpeed = 40f;
-    bool dashing = false;
+    public bool dashing = false;
     private float dashInternalCd;
     public float dashInternalCdMax = 0.1f;
     private float dashCd;
@@ -29,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
     //Animations
     [SerializeField] private Animator animPlayer;
     public int playerDirection = 0;
+        
+    //Inputs
+    public float horizontalAxis;
+    public float verticalAxis;
+    public bool dash;
 
     void Start()
     {
@@ -40,12 +43,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!dashing)
-        {
-            inputMovement.x = Input.GetAxisRaw("Horizontal");
-            inputMovement.y = Input.GetAxisRaw("Vertical");   
-        }
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.3f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.3f)
+        inputMovement.x = horizontalAxis;
+        inputMovement.y = verticalAxis;
+        
+        if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
         {
             lastDirection = inputMovement;
             animPlayer.SetFloat("Move X",lastDirection.x);
@@ -79,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 dashing = false;
+                StartCoroutine(fall.TeleportFollower());
                 animPlayer.SetBool("IsDashing", false);
             }
             else
@@ -92,6 +94,9 @@ public class PlayerMovement : MonoBehaviour
     void MovePlayer()
     {
         rb.velocity = Vector2.zero;
+        
+        if(!InputManager.canInput) return;
+        
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
         {
             if (GetComponent<Combat>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)

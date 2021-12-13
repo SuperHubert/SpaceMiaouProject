@@ -421,7 +421,7 @@ Animator:
   m_GameObject: {fileID: 5629675976314166469}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2bd24dda29479eb4db4993f278438f70, type: 2}
+  m_Controller: {fileID: 9100000, guid: b7933abea4df4f74188137366640f3b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -558,6 +558,8 @@ MonoBehaviour:
   hits: []
   damage: 10
   specialDamage: 10
+  sprayGainNormal: 15
+  sprayGainSpecial: 20
   rightAttack: 0
   leftAttack: 0
   uptAttack: 0
@@ -575,10 +577,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2affb570fe9ba9049a373aaad95e63d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 3
   isSpraying: 0
   slider: {fileID: 0}
   maxSpray: 100
   currentSpray: 0
+  burn: 0
+  burnDamage: 0.02
   sprayAttackAxis: 0
 --- !u!1 &6095275311435496822
 GameObject:
