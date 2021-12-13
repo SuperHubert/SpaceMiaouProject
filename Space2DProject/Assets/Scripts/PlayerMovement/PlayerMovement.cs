@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //Player RigidBody
     private Rigidbody2D rb;
-    [SerializeField] private Fall fall;
+    public Fall fall;
     
     //normal movement
     public float speed = 10f;
@@ -80,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 dashing = false;
                 LifeManager.Instance.canTakeDamge = true;
-                StartCoroutine(fall.TeleportFollower());
                 animPlayer.SetBool("IsDashing", false);
             }
             else

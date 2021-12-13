@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletDamage : MonoBehaviour
@@ -9,11 +6,17 @@ public class BulletDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6)
+        switch (other.gameObject.layer)
         {
-            LifeManager.Instance.TakeDamages(bulletDamage);
+            case 13:
+                return;
+            case 6:
+                LifeManager.Instance.TakeDamages(bulletDamage);
+                break;
+            default:
+                break;
         }
-        
+
         gameObject.SetActive(false);
     }
     

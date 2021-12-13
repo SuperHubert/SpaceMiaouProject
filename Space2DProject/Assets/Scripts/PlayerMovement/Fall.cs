@@ -43,15 +43,15 @@ public class Fall : MonoBehaviour
         InputManager.canInput = true;
     }
     
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        StartCoroutine(TeleportFollower());
-    }
-
     public IEnumerator TeleportFollower(bool instant = false)
     {
         if(instant)yield return null;
         follow.WarpToPlayer();
         follow.canMove = true;
+    }
+
+    public void ResetFollowerPos()
+    {
+        StartCoroutine(TeleportFollower());
     }
 }
