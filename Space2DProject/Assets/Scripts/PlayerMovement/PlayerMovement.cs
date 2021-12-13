@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         inputMovement.x = horizontalAxis;
         inputMovement.y = verticalAxis;
         
+        InputManager.canMove = !dashing;
+        
         if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
         {
             lastDirection = inputMovement;
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         }
         inputMovement.Normalize();
         
-        if (Input.GetAxisRaw("Dash") > 0)
+        if (dash)
         {
             if (dashCd <= 0)
             {
@@ -69,9 +71,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
-
-        //Dash
         dashCd -= Time.fixedDeltaTime;
 
         if (dashing)
@@ -85,9 +84,15 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                animPlayer.SetBool("IsDashing", true);
+                animPlayer.SetBool("IsWalking", false);
                 dashInternalCd += Time.fixedDeltaTime;
                 rb.velocity = inputMovement * dashSpeed;
             }
+        }
+        else
+        {
+            MovePlayer();
         }
     }
 
@@ -110,48 +115,4 @@ public class PlayerMovement : MonoBehaviour
             animPlayer.SetBool("IsWalking",false);
         }
     }
-
-    /*void AnimationPlayer()
-    {
-        if (inputMovement.y < -deadZone && Mathf.Abs(inputMovement.x) < deadZone)
-        {
-            if (playerDirection != 0)
-            {
-                playerDirection = 0;
-                animPlayer.SetTrigger("GoingDown");
-            }
-        }
-        else if (inputMovement.y > deadZone && Mathf.Abs(inputMovement.x) < deadZone)
-        {
-            if (playerDirection != 1)
-            {
-                playerDirection = 1;
-                animPlayer.SetTrigger("GoingUp");
-            }
-        }
-        else if (Mathf.Abs(inputMovement.y) < deadZone && Mathf.Abs(inputMovement.x) > deadZone)
-        {
-            if (playerDirection != 2)
-            {
-                playerDirection = 2;
-                animPlayer.SetTrigger("GoingSide");
-            }
-        }
-        else if (inputMovement.y < -deadZone && Mathf.Abs(inputMovement.x) > deadZone)
-        {
-            if (playerDirection != 3)
-            {
-                playerDirection = 3;
-                animPlayer.SetTrigger("GoingDownSide");
-            }
-        }
-        else if (inputMovement.y > deadZone && Mathf.Abs(inputMovement.x) > deadZone)
-        {
-            if (playerDirection != 4)
-            {
-                playerDirection = 4;
-                animPlayer.SetTrigger("GoingUpSide");
-            }
-        }
-    }*/
 }
