@@ -445,10 +445,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 954675329}
-        m_TargetAssemblyTypeName: LoadingManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
+      - m_Target: {fileID: 1551703250}
+        m_TargetAssemblyTypeName: ManagerMenu, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -653,17 +653,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
---- !u!114 &954675329 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2802006457157169180, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
-  m_PrefabInstance: {fileID: 954675328}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1193d1eec05406e43b03be0a544ef999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1022183508
 GameObject:
   m_ObjectHideFlags: 0
