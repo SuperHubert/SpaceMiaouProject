@@ -29,9 +29,10 @@ public class PlayerMovement : MonoBehaviour
     public int playerDirection = 0;
         
     //Inputs
-    public float horizontalAxis;
-    public float verticalAxis;
-    public bool dash;
+    [HideInInspector] public float horizontalAxis;
+    [HideInInspector] public float verticalAxis;
+    [HideInInspector] public bool dash;
+    [HideInInspector] public float shootingAxis;
 
     void Start()
     {
@@ -91,8 +92,9 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = inputMovement * dashSpeed;
             }
         }
-        else
+        else if(shootingAxis <= 0)
         {
+            
             MovePlayer();
         }
     }

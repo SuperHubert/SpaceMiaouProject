@@ -41,6 +41,7 @@ public class InputManager : MonoBehaviour
             if (!shopInteraction.shopUI.activeSelf)
             {
                 sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
+                playerMovement.shootingAxis = Input.GetAxisRaw("SprayAttack");
 
                 combat.rightAttack = Input.GetButtonDown("RightAttack");
                 combat.leftAttack = Input.GetButtonDown("LeftAttack");
