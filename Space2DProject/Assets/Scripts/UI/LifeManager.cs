@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +10,13 @@ public class LifeManager : MonoBehaviour
     public bool canTakeDamge = true;
     public float invulTime = 1f;
 
+    [SerializeField] private Material flashMaterial;
+    public float flashDuration = 0.1f;
+
+    private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
+
     #region Singleton
     public static LifeManager Instance;
 
@@ -17,13 +25,23 @@ public class LifeManager : MonoBehaviour
         Instance = this;
     }
     #endregion
-    
-   public void TakeDamages(int damages)
+
+    private void Start()
+    {
+        spriteRenderer = LevelManager.Instance.Player().GetComponent<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
+    }
+
+    public void TakeDamages(int damages)
     {
         if(isInGodMode || !canTakeDamge) return;
-        StartCoroutine(InvulFrames());
         var previousHp = lifeBar;
         lifeBar -= damages;
+        if (damages > 0)
+        {
+            Flash();
+            StartCoroutine(InvulFrames());
+        }
         if (lifeBar > maxHP)
         {
             lifeBar = maxHP;
@@ -59,6 +77,21 @@ public class LifeManager : MonoBehaviour
        canTakeDamge = false;
        yield return new WaitForSeconds(invulTime);
        canTakeDamge = true;
+   }
+
+   private void Flash()
+   {
+       if(flashRoutine != null) StopCoroutine(flashRoutine);
+       flashRoutine = StartCoroutine(FlashRoutine());
+   }
+   
+   IEnumerator FlashRoutine()
+   {
+       spriteRenderer.material = flashMaterial;
+       yield return new WaitForSeconds(0.1f);
+       spriteRenderer.material = originalMaterial;
+       flashRoutine = null;
+
    }
 
 
