@@ -45,8 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeBar: 9
-  damagesPepito: 1
   maxHP: 9
+  isInGodMode: 0
+  canTakeDamge: 1
+  invulTime: 1
+  flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
+  flashDuration: 0.1
 --- !u!114 &6043002544381492803
 MonoBehaviour:
   m_ObjectHideFlags: 0
