@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = inputMovement * dashSpeed;
             }
         }
-        else if(shootingAxis <= 0)
+        else
         {
             
             MovePlayer();
@@ -103,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         
+        if(!(shootingAxis <= 0)) return;
         if(!InputManager.canInput) return;
         
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
@@ -110,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
             if (GetComponent<Combat>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)
             {
                 animPlayer.SetBool("IsWalking",true); 
-                rb.velocity = inputMovement * speed;  
+                rb.velocity = inputMovement * speed;
             }
         }
         else
