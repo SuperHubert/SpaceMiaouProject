@@ -85,7 +85,7 @@ public class LifeManager : MonoBehaviour
    private void Flash()
    {
        if(flashRoutine != null) StopCoroutine(flashRoutine);
-       mainCamera.DOShakePosition(1f,1,1,0,true);
+       mainCamera.DOShakePosition(0.05f,new Vector3(0.1f,0.4f,0),8,0,true);
        flashRoutine = StartCoroutine(FlashRoutine());
    }
    
@@ -95,8 +95,19 @@ public class LifeManager : MonoBehaviour
        yield return new WaitForSeconds(0.1f);
        spriteRenderer.material = originalMaterial;
        flashRoutine = null;
-
    }
 
+   //testing camera shake values
+   /*
+   public float duration;
+   public Vector3 strength;
+   public int vibration;
+   public bool fadeOut;
+   
+   public void TestShake()
+   {
+       mainCamera.DOShakePosition(duration,strength,vibration,0,fadeOut);
+   }
+    */
 
 }
