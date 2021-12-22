@@ -338,4 +338,9 @@ public class LevelManager : MonoBehaviour
         maxFloors = n >= 1 ? n : 1;
         return maxFloors;
     }
+
+    public Camera Camera()
+    {
+        return mainCamera.gameObject.GetComponent<Camera>();
+    }
 }

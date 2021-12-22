@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class LifeManager : MonoBehaviour
 
     [SerializeField] private Material flashMaterial;
     public float flashDuration = 0.1f;
+    private Camera mainCamera;
 
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
@@ -30,6 +32,7 @@ public class LifeManager : MonoBehaviour
     {
         spriteRenderer = LevelManager.Instance.Player().GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
+        mainCamera = LevelManager.Instance.Camera();
     }
 
     public void TakeDamages(int damages)
@@ -82,6 +85,7 @@ public class LifeManager : MonoBehaviour
    private void Flash()
    {
        if(flashRoutine != null) StopCoroutine(flashRoutine);
+       mainCamera.DOShakePosition(1f,1,1,0,true);
        flashRoutine = StartCoroutine(FlashRoutine());
    }
    
