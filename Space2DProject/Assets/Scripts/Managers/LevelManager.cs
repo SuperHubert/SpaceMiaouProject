@@ -105,6 +105,11 @@ public class LevelManager : MonoBehaviour
                 Destroy(item.gameObject);
             }
         }
+
+        foreach (Transform item in ObjectPooler.Instance.transform)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
     
     private IEnumerator NewLevel()
