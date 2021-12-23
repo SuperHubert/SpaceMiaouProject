@@ -4,6 +4,7 @@ public class InputManager : MonoBehaviour
 {
     public static bool canInput = true;
     public static bool canMove = true;
+    public bool isMoving;
     public GameObject playerObj;
 
     [SerializeField] private bool showKeycodes = false;
@@ -60,6 +61,8 @@ public class InputManager : MonoBehaviour
             playerMovement.horizontalAxis = Input.GetAxisRaw("Horizontal");
             playerMovement.verticalAxis = Input.GetAxisRaw("Vertical");
             playerMovement.dash = Input.GetMouseButtonDown(1) || Input.GetAxisRaw("Dash") > 0;
+
+            isMoving = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
         }
         
 
