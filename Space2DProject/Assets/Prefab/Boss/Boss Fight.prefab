@@ -59422,6 +59422,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[6527].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 1845239712089385792, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2761103262469202098, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
       propertyPath: m_Type
       value: 3
@@ -59685,6 +59689,7 @@ MonoBehaviour:
   hasAction: 1
   actionCdMax: 1000
   actionCd: 0
+  animator: {fileID: 0}
   enemyTransform: {fileID: 6127475852584846714}
   triggersTransform: {fileID: 8367945653262511790}
   respawnTriggerTransform: {fileID: 3971334482882860414}
