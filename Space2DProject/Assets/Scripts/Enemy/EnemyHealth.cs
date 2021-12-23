@@ -6,8 +6,8 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private Transform healthBarTransform;
     private GameObject healthBarObj;
-    private Image healthBarFrontObj;
-    private Image healthBarBackObj;
+    private Image healthBarFrontImg;
+    private Image healthBarBackImg;
     private Camera cam;
     [SerializeField] private float healthBarLenght = 100f;
     [SerializeField] private float healthBarWidth = 20f;
@@ -37,6 +37,12 @@ public class EnemyHealth : MonoBehaviour
             UpdateHealthBarPosition();
         }
         
+        
+        if (healthBarBackImg.fillAmount != healthBarFrontImg.fillAmount)
+        {
+            HealthDecreaseEffect();
+        }
+
     }
 
     private void UpdateHealthBarPosition()
@@ -53,8 +59,8 @@ public class EnemyHealth : MonoBehaviour
     
     public void InitEnemy()
     {
-        healthBarFrontObj = healthBarTransform.GetChild(1).GetComponent<Image>();
-        healthBarBackObj = healthBarTransform.GetChild(0).GetComponent<Image>();
+        healthBarFrontImg = healthBarTransform.GetChild(1).GetComponent<Image>();
+        healthBarBackImg = healthBarTransform.GetChild(0).GetComponent<Image>();
 
         currentHealth = maxHealth;
         enemyAnimator = gameObject.GetComponent<Animator>();
@@ -80,7 +86,7 @@ public class EnemyHealth : MonoBehaviour
         
         currentHealth -= damage;
 
-        healthBarFrontObj.fillAmount = currentHealth / maxHealth;
+        healthBarFrontImg.fillAmount = currentHealth / maxHealth;
         
         if (currentHealth <= 0)
         {
@@ -92,10 +98,10 @@ public class EnemyHealth : MonoBehaviour
     
     private void ResizeHealthBar()
     {
-        healthBarFrontObj.rectTransform.localScale = Vector3.one;
-        healthBarFrontObj.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
-        healthBarBackObj.rectTransform.localScale = Vector3.one;
-        healthBarBackObj.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
+        healthBarFrontImg.rectTransform.localScale = Vector3.one;
+        healthBarFrontImg.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
+        healthBarBackImg.rectTransform.localScale = Vector3.one;
+        healthBarBackImg.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
     }
     
     private void Die()
@@ -126,6 +132,12 @@ public class EnemyHealth : MonoBehaviour
             TakeDamage(maxHealth * burnDamage);
             yield return new WaitForSeconds(burnRate);
         }
+    }
+
+    private void HealthDecreaseEffect()
+    {
+        healthBarBackImg.fillAmount = Mathf.Lerp (healthBarBackImg.fillAmount, healthBarFrontImg.fillAmount, 1f * Time.deltaTime);
+        
     }
     
 }
