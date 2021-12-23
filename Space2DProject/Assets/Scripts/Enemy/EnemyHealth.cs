@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject healthBarObj;
-    private Image healthBar;
+    [SerializeField] private Transform healthBarTransform;
+    private GameObject healthBarObj;
+    private Image healthBarFrontObj;
+    private Image healthBarBackObj;
+    private Camera cam;
     [SerializeField] private float healthBarLenght = 100f;
     [SerializeField] private float healthBarWidth = 20f;
     [SerializeField] private float healthBarOffset = 0.6f;
@@ -43,21 +46,26 @@ public class EnemyHealth : MonoBehaviour
         hpPos.z = 0f;
         hpPos.y += healthBarOffset;
 
-        hpPos = Camera.main.WorldToScreenPoint(hpPos);
+        hpPos = cam.WorldToScreenPoint(hpPos);
         
         healthBarObj.transform.position = hpPos;
     }
     
     public void InitEnemy()
     {
+        healthBarFrontObj = healthBarTransform.GetChild(1).GetComponent<Image>();
+        healthBarBackObj = healthBarTransform.GetChild(0).GetComponent<Image>();
+
         currentHealth = maxHealth;
         enemyAnimator = gameObject.GetComponent<Animator>();
         enemyBehaviour = transform.parent.gameObject.GetComponent<EnemyBehaviour>();
-        
-        healthBar = healthBarObj.GetComponent<Image>();
+
+        healthBarObj = healthBarTransform.gameObject;
         healthBarObj.SetActive(false);
 
         isBurning = false;
+
+        cam = Camera.main;
         
         ResizeHealthBar();
     }
@@ -72,7 +80,7 @@ public class EnemyHealth : MonoBehaviour
         
         currentHealth -= damage;
 
-        healthBar.fillAmount = currentHealth / maxHealth;
+        healthBarFrontObj.fillAmount = currentHealth / maxHealth;
         
         if (currentHealth <= 0)
         {
@@ -84,8 +92,10 @@ public class EnemyHealth : MonoBehaviour
     
     private void ResizeHealthBar()
     {
-        healthBar.rectTransform.localScale = Vector3.one;
-        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
+        healthBarFrontObj.rectTransform.localScale = Vector3.one;
+        healthBarFrontObj.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
+        healthBarBackObj.rectTransform.localScale = Vector3.one;
+        healthBarBackObj.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
     }
     
     private void Die()

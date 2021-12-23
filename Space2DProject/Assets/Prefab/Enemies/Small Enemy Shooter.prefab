@@ -102,12 +102,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551184654111338517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf1ff6d1f0f84949a11e375bb5b222b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarObj: {fileID: 7138537811175518622}
+  healthBarTransform: {fileID: 492327369749331465}
   healthBarLenght: 100
   healthBarWidth: 20
   healthBarOffset: 0.6
