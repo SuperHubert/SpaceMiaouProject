@@ -504,8 +504,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 698338668102077436}
-  - {fileID: 1923760016172220057}
   - {fileID: 7418177931464936700}
+  - {fileID: 1923760016172220057}
   m_Father: {fileID: 2108263565553342734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -568,6 +568,7 @@ MonoBehaviour:
   healthBarOffset: 0.6
   isBurning: 0
   burnRate: 1
+  canTakeDamage: 0
   maxHealth: 3
   currentHealth: 0
   moveHealthBar: 1
@@ -626,7 +627,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 2594063668490503302}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2385343913735767878
 SpriteRenderer:
@@ -743,7 +744,7 @@ RectTransform:
   - {fileID: 1306933349064317056}
   - {fileID: 2200824051674956378}
   m_Father: {fileID: 2594063668490503302}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

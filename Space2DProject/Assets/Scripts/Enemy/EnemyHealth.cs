@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     public float burnRate = 1f;
     private Coroutine burnRoutine;
 
+    public bool canTakeDamage = true;
     [SerializeField]private float maxHealth = 3;
     [SerializeField]private float currentHealth;
 
@@ -78,22 +79,31 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        ResizeHealthBar();
-        
-        healthBarObj.SetActive(true);
-        
-        enemyAnimator.SetTrigger("TakeDamage");
-        
-        currentHealth -= damage;
-
-        healthBarFrontImg.fillAmount = currentHealth / maxHealth;
-        
-        if (currentHealth <= 0)
+        if (canTakeDamage)
         {
-            Die();
+            ResizeHealthBar();
+        
+            healthBarObj.SetActive(true);
+        
+            enemyAnimator.SetTrigger("TakeDamage");
+        
+            currentHealth -= damage;
+
+            healthBarFrontImg.fillAmount = currentHealth / maxHealth;
+        
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+        
+            enemyAnimator.ResetTrigger("TakeDamage");
+        }
+        else
+        {
+            //play sound and particle
         }
         
-        enemyAnimator.ResetTrigger("TakeDamage");
+        
     }
     
     private void ResizeHealthBar()
