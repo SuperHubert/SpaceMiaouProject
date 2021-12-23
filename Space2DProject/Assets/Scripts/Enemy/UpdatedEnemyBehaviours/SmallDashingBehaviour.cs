@@ -55,8 +55,9 @@ public class SmallDashingBehaviour : EnemyBehaviour
         
         yield return new WaitForSeconds(0.1f);
 
-        agent.SetDestination(target);
+        if (gameObject.activeSelf) agent.SetDestination(target);
         
         animator.ResetTrigger("Attack");
+        
     }
 }
