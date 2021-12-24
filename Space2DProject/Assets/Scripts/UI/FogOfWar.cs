@@ -11,9 +11,9 @@ public class FogOfWar : MonoBehaviour
     public RectTransform targetImage;
 
     public InputManager inputManager;
-    public int levelHeight;
-    public int levelWidth;
+    public int levelSize;
     private Transform player;
+    public Vector2 pos;
     
     Texture2D texture;
 
@@ -44,7 +44,6 @@ public class FogOfWar : MonoBehaviour
     
     void Update()
     {
-
         if (inputManager.isMoving)
         {
             //var inputPos = Input.mousePosition;
@@ -52,37 +51,43 @@ public class FogOfWar : MonoBehaviour
             // Convert mouse point to our target map-revealing position
             //RectTransformUtility.ScreenPointToLocalPointInRectangle(targetImage, inputPos, null, out localPoint);
 
-            localPoint = player.position;
+            //localPoint = player.position;
             
-            Debug.Log(localPoint);
-            // set our current render texture for drawing
-            RenderTexture.active = targetRender;
-
-            // Draw circle to reveal content
-            int xPos = Mathf.RoundToInt((localPoint.x / targetImage.sizeDelta.x) * (float)targetRender.width);
-            int yPos = Mathf.RoundToInt((localPoint.y / targetImage.sizeDelta.y) * (float)targetRender.height);
-            
-            float circle = 2 * Mathf.PI * 5;
-            
-            for (int i = 0; i < CircleRadius*2; i++)
-            {
-                for (int j = 0; j < CircleRadius*2; j++)
-                {
-                    int targetX = i - CircleRadius;
-                    int targetY = j - CircleRadius;
-
-                    float distance = Mathf.Sqrt((targetX * targetX) + (targetY * targetY));
-                    if (distance < CircleRadius)
-                    {
-                        texture.SetPixel(xPos+targetX, yPos+targetY, Color.black);
-                    }
-                }    
-            }
-            
-            // Don't forget to apply the result
-            texture.Apply();
-
-            RenderTexture.active = null;
+            //UpdateMapFog(pos);
         }
+    }
+
+    public void UpdateMapFog(Vector2 point)
+    {
+        
+        localPoint = point * 330 / levelSize + Vector2.one * 330;
+        // set our current render texture for drawing
+        RenderTexture.active = targetRender;
+
+        // Draw circle to reveal content
+        int xPos = Mathf.RoundToInt((localPoint.x / targetImage.sizeDelta.x) * (float)targetRender.width);
+        int yPos = Mathf.RoundToInt((localPoint.y / targetImage.sizeDelta.y) * (float)targetRender.height);
+            
+        float circle = 2 * Mathf.PI * 5;
+            
+        for (int i = 0; i < CircleRadius*2; i++)
+        {
+            for (int j = 0; j < CircleRadius*2; j++)
+            {
+                int targetX = i - CircleRadius;
+                int targetY = j - CircleRadius;
+
+                float distance = Mathf.Sqrt((targetX * targetX) + (targetY * targetY));
+                if (distance < CircleRadius)
+                {
+                    texture.SetPixel(xPos+targetX, yPos+targetY, Color.black);
+                }
+            }    
+        }
+            
+        // Don't forget to apply the result
+        texture.Apply();
+
+        RenderTexture.active = null;
     }
 }

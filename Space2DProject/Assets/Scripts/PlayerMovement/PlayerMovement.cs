@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     //Animations
     [SerializeField] private Animator animPlayer;
     public int playerDirection = 0;
+    
+    //fog of war
+    [SerializeField] private FogOfWar fogOfWar;
         
     //Inputs
     [HideInInspector] public float horizontalAxis;
@@ -118,5 +121,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animPlayer.SetBool("IsWalking",false);
         }
+        
+        if(fogOfWar != null) fogOfWar.UpdateMapFog(transform.position);
     }
 }

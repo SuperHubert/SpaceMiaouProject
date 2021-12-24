@@ -27,6 +27,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private int roomShopIndex;
     [SerializeField] private Camera cameraMap;
     [SerializeField] private FollowPlayer followPlayer;
+    [SerializeField] private FogOfWar fogOfWar;
 
     [SerializeField] private bool buildNavMesh = true;
     [SerializeField] private bool movePlayer = true;
@@ -534,13 +535,14 @@ public class GenerationSimpleHalf : MonoBehaviour
         if (levelHeight > levelWidth)
         {
             cameraMap.orthographicSize = levelHeight * 25 + 10;
+            fogOfWar.levelSize = levelHeight * 25 + 10;
         }
         else
         {
             cameraMap.orthographicSize = levelWidth * 25 + 10;
+            fogOfWar.levelSize = levelWidth * 25 + 10;
         }
-        
-        
+
     }
 
     private void DestroySomeChests()
