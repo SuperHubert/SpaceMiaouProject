@@ -457,6 +457,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         generationList.Clear();
+        
+        fogOfWar.ClearFog();
     }
     
     private int[] GetLevelSize()

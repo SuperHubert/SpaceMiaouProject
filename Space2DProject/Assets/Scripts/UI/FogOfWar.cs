@@ -39,9 +39,8 @@ public class FogOfWar : MonoBehaviour
         int yPos = Mathf.RoundToInt((localPoint.y / targetImage.sizeDelta.y) * (float)targetRender.height);
             
         float circle = 2 * Mathf.PI * 5;
-
-        //revealSize = ((levelSize - 10)/25) * 70;
-        revealSize = (int)((25f/(float)(levelSize - 10))*70f);
+        
+        revealSize = (int)((25f/(float)(levelSize - 10))*80f);
         circleRadiusAfter = circleRadius * revealSize;
             
         for (int i = 0; i < circleRadiusAfter*2; i++)
