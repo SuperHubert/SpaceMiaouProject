@@ -12,49 +12,19 @@ public class FogOfWar : MonoBehaviour
 
     public InputManager inputManager;
     public int levelSize;
-    private Transform player;
-    public Vector2 pos;
-    
+    public int revealSize;
+
     Texture2D texture;
 
     private Camera main;
     private Vector2 localPoint;
 
-    public int CircleRadius = 5;
+    public int circleRadius = 5;
+    private int circleRadiusAfter;
     
     void Start()
     {
-        //main = Camera.main;
-
-        player = LevelManager.Instance.Player().transform;
-        
-        texture = new Texture2D (targetRender.width, targetRender.height);
-        var clearColors = new Color[targetRender.width * targetRender.height];
-        
-        // clear initial image
-        for (int i = 0; i < clearColors.Length; i++)
-        {
-            clearColors[i] = Color.clear;
-        }
-        texture.SetPixels(0,0,targetRender.width, targetRender.height, clearColors);
-        texture.Apply();
-        
-        rawImage.texture = texture;
-    }
-    
-    void Update()
-    {
-        if (inputManager.isMoving)
-        {
-            //var inputPos = Input.mousePosition;
-
-            // Convert mouse point to our target map-revealing position
-            //RectTransformUtility.ScreenPointToLocalPointInRectangle(targetImage, inputPos, null, out localPoint);
-
-            //localPoint = player.position;
-            
-            //UpdateMapFog(pos);
-        }
+        ClearFog();
     }
 
     public void UpdateMapFog(Vector2 point)
@@ -69,16 +39,20 @@ public class FogOfWar : MonoBehaviour
         int yPos = Mathf.RoundToInt((localPoint.y / targetImage.sizeDelta.y) * (float)targetRender.height);
             
         float circle = 2 * Mathf.PI * 5;
+
+        //revealSize = ((levelSize - 10)/25) * 70;
+        revealSize = (int)((25f/(float)(levelSize - 10))*70f);
+        circleRadiusAfter = circleRadius * revealSize;
             
-        for (int i = 0; i < CircleRadius*2; i++)
+        for (int i = 0; i < circleRadiusAfter*2; i++)
         {
-            for (int j = 0; j < CircleRadius*2; j++)
+            for (int j = 0; j < circleRadiusAfter*2; j++)
             {
-                int targetX = i - CircleRadius;
-                int targetY = j - CircleRadius;
+                int targetX = i - circleRadiusAfter;
+                int targetY = j - circleRadiusAfter;
 
                 float distance = Mathf.Sqrt((targetX * targetX) + (targetY * targetY));
-                if (distance < CircleRadius)
+                if (distance < circleRadiusAfter)
                 {
                     texture.SetPixel(xPos+targetX, yPos+targetY, Color.black);
                 }
@@ -89,5 +63,21 @@ public class FogOfWar : MonoBehaviour
         texture.Apply();
 
         RenderTexture.active = null;
+    }
+
+    public void ClearFog()
+    {
+        texture = new Texture2D (targetRender.width, targetRender.height);
+        var clearColors = new Color[targetRender.width * targetRender.height];
+        
+        // clear initial image
+        for (int i = 0; i < clearColors.Length; i++)
+        {
+            clearColors[i] = Color.clear;
+        }
+        texture.SetPixels(0,0,targetRender.width, targetRender.height, clearColors);
+        texture.Apply();
+        
+        rawImage.texture = texture;
     }
 }
