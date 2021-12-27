@@ -506,6 +506,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         posObject = Instantiate(firstRoomPrefab.transform.GetChild(roomShopIndex).gameObject, room.transform);
         
         shopPos.position = posObject.transform.position;
+        
+        shopPos.gameObject.GetComponent<ShopInteraction>().UpdateAppearance();
     }
 
     private void MovePortal()

@@ -593,11 +593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 946781597884646544, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: maxFloors
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 946781597884646544, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: numberOfRooms
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1676448922396366101, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: m_Sprite

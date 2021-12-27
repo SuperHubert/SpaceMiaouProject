@@ -35,16 +35,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         Time.timeScale = 1;
         StartCoroutine(InteractionCooldown());
     }
-
-    public void OnInteraction()
-    {
-        if(shopUI.activeSelf || !canOpenShop) return;
-        
-        StartCoroutine(InteractionAnimation());
-
-        RefreshShop();
-    }
-
+    
     private void RefreshShop()
     {
         if (displayList.Count == 0)
@@ -71,26 +62,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
             imageList[i].sprite = displayList[i].image;
         }
     }
-
-    public void CloseShop()
-    {
-        shopUI.SetActive(false);
-        Time.timeScale = 1;
-    }
     
-
-    public void Button(int index)
-    {
-        if (!CanBuy(index)) return;
-        Debug.Log("item bought)");
-        MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
-        displayList[index].isBought = true;
-        soldOutList[index].SetActive(true);
-        displayList[index].upgrade.Invoke();
-        nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
-        nyanCount.text = MoneyManager.Instance.nyanCoins.ToString();
-        RefreshShop();
-    }
 
     private bool CanBuy(int index)
     {
@@ -121,5 +93,67 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         Time.timeScale = 0;
 
     }
+    
+    public void OnInteraction()
+    {
+        if(shopUI.activeSelf || !canOpenShop) return;
+        
+        StartCoroutine(InteractionAnimation());
 
+        RefreshShop();
+    }
+
+    public void CloseShop()
+    {
+        shopUI.SetActive(false);
+        Time.timeScale = 1;
+    }
+    
+    public void Button(int index)
+    {
+        if (!CanBuy(index)) return;
+        Debug.Log("item bought)");
+        MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
+        displayList[index].isBought = true;
+        soldOutList[index].SetActive(true);
+        displayList[index].upgrade.Invoke();
+        nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
+        nyanCount.text = MoneyManager.Instance.nyanCoins.ToString();
+        RefreshShop();
+    }
+
+    public void UpdateAppearance()
+    {
+        var biome = LevelManager.Instance.GetBiome();
+        
+        Debug.Log("biome: "+biome);
+        
+        switch (biome)
+        {
+            case 0:
+                var floorNumber = LevelManager.Instance.GetCurrentFloorNumber();
+                gameObject.SetActive((floorNumber != 0));
+                if (floorNumber != 0) return;
+                
+                animator.SetLayerWeight (2, 0f);
+                animator.SetLayerWeight (1, 1f);
+                break;
+            case 1:
+                gameObject.SetActive(true);
+                animator.SetLayerWeight (2, 1f);
+                animator.SetLayerWeight (1, 0f);
+                break;
+            case 2:
+                gameObject.SetActive(true);
+                animator.SetLayerWeight (2, 0f);
+                animator.SetLayerWeight (1, 1f);
+                break;
+            default:
+                gameObject.SetActive(true);
+                animator.SetLayerWeight (2, 0f);
+                animator.SetLayerWeight (1, 1f);
+                break;
+        }
+
+    }
 }
