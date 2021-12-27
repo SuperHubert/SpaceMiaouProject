@@ -609,14 +609,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1549231077371170579, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1549231077371170579, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
-      propertyPath: healthBarTransform
-      value: 
-      objectReference: {fileID: 1070088975}
     - target: {fileID: 1766067948408826575, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -625,17 +617,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2500785629239665777, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
-      propertyPath: m_Name
-      value: BackBar
-      objectReference: {fileID: 0}
     - target: {fileID: 3171329203767571124, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5119729796043872533, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
-      propertyPath: m_Name
-      value: FrontBar
       objectReference: {fileID: 0}
     - target: {fileID: 6796499133524534252, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
       propertyPath: m_IsActive
@@ -1100,11 +1084,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7287700369200821009, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
   m_PrefabInstance: {fileID: 1397800929}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1070088975 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1085498232965367211, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
-  m_PrefabInstance: {fileID: 542688642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1078844051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 382072220224300531, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -1145,7 +1124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 946781597884646544, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: numberOfRooms
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2802006457157169181, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: m_Name
