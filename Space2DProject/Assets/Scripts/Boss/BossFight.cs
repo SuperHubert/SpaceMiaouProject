@@ -39,6 +39,8 @@ public class BossFight : MonoBehaviour
         bossStartRoom.SetActive(yes);
         playerFollower.SetActive(!yes);
 
+        isInBossFight = yes;
+
     }
 
     public Transform SpawnBossAndReturnStartPos()
@@ -59,10 +61,5 @@ public class BossFight : MonoBehaviour
     public bool IsInBossFight()
     {
         return isInBossFight;
-    }
-
-    public void StartBossFight()
-    {
-        isInBossFight = true;
     }
 }

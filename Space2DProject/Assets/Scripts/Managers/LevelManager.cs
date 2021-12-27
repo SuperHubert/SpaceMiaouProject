@@ -348,4 +348,9 @@ public class LevelManager : MonoBehaviour
     {
         return mainCamera.gameObject.GetComponent<Camera>();
     }
+
+    public bool IsInBossFight()
+    {
+        return bossfight.IsInBossFight();
+    }
 }
