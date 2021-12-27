@@ -126,8 +126,6 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         var biome = LevelManager.Instance.GetBiome();
         
-        Debug.Log("biome: "+biome);
-        
         switch (biome)
         {
             case 0:
