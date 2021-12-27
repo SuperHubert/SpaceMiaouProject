@@ -201,6 +201,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 908625875}
     - target: {fileID: 91235626176457170, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1495564765885764668, guid: 3e40b5bba0542cf4a84ee1cd12f8391a, type: 3}
+    - target: {fileID: 91235626176457170, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
@@ -387,6 +391,14 @@ PrefabInstance:
     - target: {fileID: 2545915620620602385, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: m_Name
       value: Level (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179036082384195896, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2607956
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179036082384195896, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.3696022
       objectReference: {fileID: 0}
     - target: {fileID: 4443492621118356680, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: ShopItemList.Array.data[0].image
@@ -1644,11 +1656,11 @@ PrefabInstance:
       objectReference: {fileID: 1903540876}
     - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.1
+      value: -4.874
       objectReference: {fileID: 0}
     - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.46
+      value: -40.594
       objectReference: {fileID: 0}
     - target: {fileID: 8800626575084868212, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_Name

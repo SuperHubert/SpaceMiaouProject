@@ -22,21 +22,24 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     private bool canOpenShop = true;
     public bool closeShopInput = false;
+    private static readonly int PickUpAnimation = Animator.StringToHash("PickUpAnimation");
 
 
     private void Update()
     {
         if (!closeShopInput || !shopUI.activeSelf) return;
         
+        
+        LevelManager.Instance.Player().SetActive(true);
         shopUI.SetActive(false);
         Time.timeScale = 1;
+        StartCoroutine(InteractionCooldown());
     }
 
     public void OnInteraction()
     {
         if(shopUI.activeSelf || !canOpenShop) return;
-
-        StartCoroutine(InteractionCooldown());
+        
         StartCoroutine(InteractionAnimation());
 
         RefreshShop();
@@ -98,18 +101,25 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     IEnumerator InteractionCooldown()
     {
-        canOpenShop = false;
         yield return new WaitForSeconds(0.05f);
         canOpenShop = true;
     }
 
     IEnumerator InteractionAnimation()
     {
-        animator.SetTrigger("PlayAnimation");
-        yield return new WaitForSeconds(1f);
+        canOpenShop = false;
+        LevelManager.Instance.Player().SetActive(false);
+        Vector3 pos = transform.position;
+        Debug.Log(pos);
+        LevelManager.Instance.Player().transform.position = new Vector3(pos.x+0.126f,pos.y-0.594f,0);
+        InputManager.canInput = false;
+        animator.SetTrigger(PickUpAnimation);
+        yield return new WaitForSeconds(1.05f);
+        InputManager.canInput = true;
         shopUI.SetActive(true);
         selectedButton.Select();
         Time.timeScale = 0;
+
     }
 
 }

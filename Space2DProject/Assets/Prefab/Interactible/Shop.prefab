@@ -573,6 +573,7 @@ MonoBehaviour:
   selectedButton: {fileID: 0}
   nyanCountShop: {fileID: 0}
   nyanCount: {fileID: 0}
+  animator: {fileID: 3304569764049068382}
   textList:
   - {fileID: 0}
   - {fileID: 0}
