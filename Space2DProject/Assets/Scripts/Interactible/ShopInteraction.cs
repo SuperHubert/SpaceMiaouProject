@@ -11,6 +11,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public Button selectedButton;
     public TextMeshProUGUI nyanCountShop;
     public TextMeshProUGUI nyanCount;
+    public Animator animator;
 
     public List<TextMeshProUGUI> textList;
     public List<Image> imageList;
@@ -36,9 +37,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         if(shopUI.activeSelf || !canOpenShop) return;
 
         StartCoroutine(InteractionCooldown());
-        shopUI.SetActive(true);
-        selectedButton.Select();
-        Time.timeScale = 0;
+        StartCoroutine(InteractionAnimation());
 
         RefreshShop();
     }
@@ -102,6 +101,15 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         canOpenShop = false;
         yield return new WaitForSeconds(0.05f);
         canOpenShop = true;
+    }
+
+    IEnumerator InteractionAnimation()
+    {
+        animator.SetTrigger("PlayAnimation");
+        yield return new WaitForSeconds(1f);
+        shopUI.SetActive(true);
+        selectedButton.Select();
+        Time.timeScale = 0;
     }
 
 }

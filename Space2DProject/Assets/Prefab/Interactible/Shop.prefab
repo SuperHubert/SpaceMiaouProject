@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2340910093457116432}
   - component: {fileID: 2350670521089478828}
   - component: {fileID: 1101935766226791751}
+  - component: {fileID: 3304569764049068382}
   m_Layer: 14
   m_Name: Shop
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2233394246705086644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 070093121c323f0458ae4c9ee24895e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +102,7 @@ MonoBehaviour:
   reductionTotal: 0
   ShopItemList:
   - name: Heal I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 3
     actualPrice: 0
     upgrade:
@@ -121,7 +122,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Heal II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 4
     actualPrice: 0
     upgrade:
@@ -141,7 +142,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Heal III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 5
     actualPrice: 0
     upgrade:
@@ -161,7 +162,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Speed I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 2
     actualPrice: 0
     upgrade:
@@ -181,7 +182,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Speed II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 3
     actualPrice: 0
     upgrade:
@@ -201,7 +202,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Speed III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 4
     actualPrice: 0
     upgrade:
@@ -221,7 +222,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Broom Damage I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 3
     actualPrice: 0
     upgrade:
@@ -241,7 +242,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Broom Damage II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 4
     actualPrice: 0
     upgrade:
@@ -261,7 +262,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Broom Damages III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 6
     actualPrice: 0
     upgrade:
@@ -281,7 +282,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Dash Cooldown I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 2
     actualPrice: 0
     upgrade:
@@ -301,7 +302,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Dash Cooldown II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 4
     actualPrice: 0
     upgrade:
@@ -321,7 +322,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Dash Cooldown III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 5
     actualPrice: 0
     upgrade:
@@ -341,7 +342,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Fortune I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 3
     actualPrice: 0
     upgrade:
@@ -361,7 +362,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Fortune II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 4
     actualPrice: 0
     upgrade:
@@ -381,7 +382,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Fortune III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 5
     actualPrice: 0
     upgrade:
@@ -401,7 +402,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: 'Bleach '
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 2
     actualPrice: 0
     upgrade:
@@ -421,7 +422,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Spray Damage I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 2
     actualPrice: 0
     upgrade:
@@ -441,7 +442,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Spray Damage II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 3
     actualPrice: 0
     upgrade:
@@ -461,7 +462,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Better Prices I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 3
     actualPrice: 0
     upgrade:
@@ -481,7 +482,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Better Prices II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 4
     actualPrice: 0
     upgrade:
@@ -501,7 +502,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Soap Gain I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 3
     actualPrice: 0
     upgrade:
@@ -521,7 +522,7 @@ MonoBehaviour:
           m_CallState: 2
     isBought: 0
   - name: Soap Gain II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 0}
     basePrice: 4
     actualPrice: 0
     upgrade:
@@ -569,8 +570,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopUI: {fileID: 0}
   shopManager: {fileID: 2233394246705086647}
-  exitButton: {fileID: 0}
+  selectedButton: {fileID: 0}
   nyanCountShop: {fileID: 0}
+  nyanCount: {fileID: 0}
   textList:
   - {fileID: 0}
   - {fileID: 0}
@@ -581,6 +583,7 @@ MonoBehaviour:
   testNameList: []
   soldOutList: []
   displayList: []
+  closeShopInput: 0
 --- !u!61 &1101935766226791751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -598,7 +601,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -607,3 +610,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &3304569764049068382
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233394246705086644}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 575a62ab4744b764eba2e970b5078fb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
