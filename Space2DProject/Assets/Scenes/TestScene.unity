@@ -754,22 +754,6 @@ PrefabInstance:
       propertyPath: generateOnStart
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3626731551357216020, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: pools.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626731551357216020, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: pools.Array.data[3].tag
-      value: Dust
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626731551357216020, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: pools.Array.data[3].size
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626731551357216020, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: pools.Array.data[3].prefab
-      value: 
-      objectReference: {fileID: 3662350605876692763, guid: ca7a8a23b6fd4df4892f2aa28a22fe95, type: 3}
     - target: {fileID: 6520009499888700257, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: fadeOut
       value: 1

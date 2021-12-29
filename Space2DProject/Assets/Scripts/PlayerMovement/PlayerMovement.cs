@@ -119,11 +119,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;
-                
-                if (DetectTurn())
-                {
-                    PlayDust();
-                }
+
+                PlayCorrectDustAnim();
+                    
+                previousHorizontalAxis = horizontalAxis;
+                previousVerticalAxis = verticalAxis;
             }
             
         }
@@ -138,15 +138,57 @@ public class PlayerMovement : MonoBehaviour
         if(fogOfWar != null) fogOfWar.UpdateMapFog(transform.position);
     }
 
-    bool DetectTurn()
+    void PlayCorrectDustAnim()
     {
-        return true;
+        //var currentSign = Mathf.Sign(horizontalAxis);
+        //var previousSign = Mathf.Sign(previousHorizontalAxis);
+        //droite : Mathf.Sign(horizontalAxis) = 1
+        //gauche : Mathf.Sign(horizontalAxis) = -1
+        //haut : Mathf.Sign(verticalAxis) = 1
+        //bas : Mathf.Sign(verticalAxis) = -1
+        
+        if(ObjectPooler.Instance == null) return;
+        
+        var prevHAxis = Mathf.Sign(previousHorizontalAxis);
+        var prevVAxis = Mathf.Sign(previousVerticalAxis);
+        var currentHAxis = Mathf.Sign(horizontalAxis);
+        var currentVAxis = Mathf.Sign(verticalAxis);
+
+        if (prevHAxis != currentHAxis)
+        {
+            PlayDustH(prevHAxis > 0);
+        }
+        
+        if (prevVAxis != currentVAxis)
+        {
+            PlayDustV(prevVAxis > 0);
+        }
+        
     }
 
-    void PlayDust()
+    void PlayDustH(bool rightSide)
+    {
+        GameObject dustObj = ObjectPooler.Instance.SpawnFromPool("Dust", transform.position + new Vector3(0, -0.5f, 0),
+            Quaternion.Euler(new Vector3(-90f,0,0)));
+        if (dustObj == null) return;
+        ParticleSystem ps = dustObj.GetComponent<ParticleSystem>();
+        if(ps == null) return;
+        var vol = ps.velocityOverLifetime;
+        vol.x = rightSide ? new ParticleSystem.MinMaxCurve(0.15f) : new ParticleSystem.MinMaxCurve(-0.15f);
+        
+        if(!ps.isPlaying) ps.Play();
+    }
+    
+    void PlayDustV(bool topSide)
     {
         GameObject dustObj = ObjectPooler.Instance.SpawnFromPool("Dust", transform.position + new Vector3(0, -0.5f, 0),
             Quaternion.identity);
-        dustObj.GetComponent<ParticleSystem>().Play();
+        if (dustObj == null) return;
+        ParticleSystem ps = dustObj.GetComponent<ParticleSystem>();
+        if(ps == null) return;
+        var vol = ps.velocityOverLifetime;
+        vol.x = topSide ? new ParticleSystem.MinMaxCurve(0.15f) : new ParticleSystem.MinMaxCurve(-0.15f);
+        
+        if(!ps.isPlaying) ps.Play();
     }
 }
