@@ -30,10 +30,15 @@ public class PlayerMovement : MonoBehaviour
     
     //fog of war
     [SerializeField] private FogOfWar fogOfWar;
+    
+    //Particules
+    //[SerializeField] private ParticleSystem dust;
         
     //Inputs
     [HideInInspector] public float horizontalAxis;
+    private float previousHorizontalAxis;
     [HideInInspector] public float verticalAxis;
+    private float previousVerticalAxis;
     [HideInInspector] public bool dash;
     [HideInInspector] public float shootingAxis;
 
@@ -97,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            
             MovePlayer();
         }
     }
@@ -115,13 +119,34 @@ public class PlayerMovement : MonoBehaviour
             {
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;
+                
+                if (DetectTurn())
+                {
+                    PlayDust();
+                }
             }
+            
         }
         else
         {
             animPlayer.SetBool("IsWalking",false);
         }
         
+        
+        
+        
         if(fogOfWar != null) fogOfWar.UpdateMapFog(transform.position);
+    }
+
+    bool DetectTurn()
+    {
+        return true;
+    }
+
+    void PlayDust()
+    {
+        GameObject dustObj = ObjectPooler.Instance.SpawnFromPool("Dust", transform.position + new Vector3(0, -0.5f, 0),
+            Quaternion.identity);
+        dustObj.GetComponent<ParticleSystem>().Play();
     }
 }
