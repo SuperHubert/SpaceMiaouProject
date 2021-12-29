@@ -119,9 +119,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;
-
+                
                 PlayCorrectDustAnim();
-                    
+                
                 previousHorizontalAxis = horizontalAxis;
                 previousVerticalAxis = verticalAxis;
             }
@@ -131,9 +131,6 @@ public class PlayerMovement : MonoBehaviour
         {
             animPlayer.SetBool("IsWalking",false);
         }
-        
-        
-        
         
         if(fogOfWar != null) fogOfWar.UpdateMapFog(transform.position);
     }
@@ -148,12 +145,13 @@ public class PlayerMovement : MonoBehaviour
         //bas : Mathf.Sign(verticalAxis) = -1
         
         if(ObjectPooler.Instance == null) return;
-        
-        var prevHAxis = Mathf.Sign(previousHorizontalAxis);
-        var prevVAxis = Mathf.Sign(previousVerticalAxis);
+
         var currentHAxis = Mathf.Sign(horizontalAxis);
         var currentVAxis = Mathf.Sign(verticalAxis);
-
+        var prevHAxis = Mathf.Sign(previousHorizontalAxis);
+        var prevVAxis = Mathf.Sign(previousVerticalAxis);
+        
+        
         if (prevHAxis != currentHAxis)
         {
             PlayDustH(prevHAxis > 0);
@@ -163,7 +161,6 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayDustV(prevVAxis > 0);
         }
-        
     }
 
     void PlayDustH(bool rightSide)
