@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterDistort Seb
+  m_Shader: {fileID: -6465566751694194690, guid: 49d06a02d6833b8408277fef05bea303, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_4a399f9d3f424afc9d60d70c6b23a46e:
+        m_Texture: {fileID: 2800000, guid: 14f7bb5479161b5419da46ed3addfc88, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_7d52a71c978e4f0f89812454a0ff059b:
+        m_Texture: {fileID: 8400000, guid: 6c202ba6affdeb44c8547ae7ddc15289, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_2be4daf8d9ad42dd8605627e2844827a: 0.1
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - Color_04675ad3647c4b69803ba92aa4d3e1c7: {r: 0.6313726, g: 0.7058824, b: 0.7843138, a: 1}
+    - Color_2bed92adc0344c558700bdf8fc2b01cc: {r: 0.6235294, g: 0.7333333, b: 0.8039216, a: 1}
+    - Color_9b59919e3d554592aca9ac6d36670dca: {r: 0.4588236, g: 0.6117647, b: 0.8039216, a: 1}
+    - Vector2_be1c874236ac46faa4dd5a84cf9727a8: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
