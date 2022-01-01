@@ -55,4 +55,4 @@ MonoBehaviour:
     size: 100
   - tag: Dust
     prefab: {fileID: 3662350605876692763, guid: ca7a8a23b6fd4df4892f2aa28a22fe95, type: 3}
-    size: 50
+    size: 10

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,37 +7,46 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public List<GameObject> HpList;
+    private List<Animator> HpAnims = new List<Animator>();
 
 
     #region Singleton
+
     public static UIManager Instance;
 
     private void Awake()
     {
         Instance = this;
     }
+
     #endregion
 
-
-    public void UpdateHpUI(int pvAvant,int pvApres)
+    private void Start()
     {
-        if (pvAvant == pvApres) return;
-        if (pvAvant > pvApres)
+        foreach (var obj in HpList)
         {
-
-            for (int i = pvAvant - 1; i > pvApres - 1; i--)
-            {
-                HpList[i].GetComponent<Animator>().SetTrigger("Off");
-            }
+            HpAnims.Add(obj.GetComponent<Animator>());
         }
-        else
-        {
-            for (int i = pvAvant; i < pvApres; i++)
-            {
-                HpList[i].GetComponent<Animator>().SetTrigger("On");
-            }
-        }
+        
 
     }
 
+    public void SetHpUI(int number, bool hpGain)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            if (i < number)
+            {
+                if (hpGain)
+                {
+                    HpAnims[i].Rebind();
+                    HpAnims[i].Update(0f);
+                }
+            }
+            else
+            {
+                HpAnims[i].SetTrigger("Off");
+            }
+        }
+    }
 }

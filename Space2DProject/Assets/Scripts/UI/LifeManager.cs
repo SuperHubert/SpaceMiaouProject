@@ -38,7 +38,6 @@ public class LifeManager : MonoBehaviour
     public void TakeDamages(int damages)
     {
         if(isInGodMode || !canTakeDamge) return;
-        var previousHp = lifeBar;
         lifeBar -= damages;
         if (damages > 0)
         {
@@ -54,7 +53,9 @@ public class LifeManager : MonoBehaviour
             lifeBar = 0;
             Die();
         }
-        UIManager.Instance.UpdateHpUI(previousHp, lifeBar);
+
+        UIManager.Instance.SetHpUI(lifeBar, !(damages > 0));
+        
 
     }
 
