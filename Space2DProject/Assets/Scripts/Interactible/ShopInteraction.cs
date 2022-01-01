@@ -28,12 +28,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     private void Update()
     {
         if (!closeShopInput || !shopUI.activeSelf) return;
-        
-        
-        LevelManager.Instance.Player().SetActive(true);
-        shopUI.SetActive(false);
-        Time.timeScale = 1;
-        StartCoroutine(InteractionCooldown());
+
+        CloseShop();
+
     }
     
     private void RefreshShop()
@@ -105,8 +102,10 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public void CloseShop()
     {
+        LevelManager.Instance.Player().SetActive(true);
         shopUI.SetActive(false);
         Time.timeScale = 1;
+        StartCoroutine(InteractionCooldown());
     }
     
     public void Button(int index)

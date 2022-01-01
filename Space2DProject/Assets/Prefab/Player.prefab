@@ -516,9 +516,11 @@ MonoBehaviour:
   dashCdMax: 1
   animPlayer: {fileID: 5629675976314166459}
   playerDirection: 0
+  fogOfWar: {fileID: 0}
   horizontalAxis: 0
   verticalAxis: 0
   dash: 0
+  shootingAxis: 0
 --- !u!114 &1631967610
 MonoBehaviour:
   m_ObjectHideFlags: 0

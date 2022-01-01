@@ -30,10 +30,15 @@ public class PlayerMovement : MonoBehaviour
     
     //fog of war
     [SerializeField] private FogOfWar fogOfWar;
+    
+    //Particules
+    //[SerializeField] private ParticleSystem dust;
         
     //Inputs
     [HideInInspector] public float horizontalAxis;
+    private float previousHorizontalAxis;
     [HideInInspector] public float verticalAxis;
+    private float previousVerticalAxis;
     [HideInInspector] public bool dash;
     [HideInInspector] public float shootingAxis;
 
@@ -97,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            
             MovePlayer();
         }
     }
@@ -115,7 +119,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;
+                
+                PlayCorrectDustAnim();
+                
+                previousHorizontalAxis = horizontalAxis;
+                previousVerticalAxis = verticalAxis;
             }
+            
         }
         else
         {
@@ -123,5 +133,59 @@ public class PlayerMovement : MonoBehaviour
         }
         
         if(fogOfWar != null) fogOfWar.UpdateMapFog(transform.position);
+    }
+
+    void PlayCorrectDustAnim()
+    {
+        //var currentSign = Mathf.Sign(horizontalAxis);
+        //var previousSign = Mathf.Sign(previousHorizontalAxis);
+        //droite : Mathf.Sign(horizontalAxis) = 1
+        //gauche : Mathf.Sign(horizontalAxis) = -1
+        //haut : Mathf.Sign(verticalAxis) = 1
+        //bas : Mathf.Sign(verticalAxis) = -1
+        
+        if(ObjectPooler.Instance == null) return;
+
+        var currentHAxis = Mathf.Sign(horizontalAxis);
+        var currentVAxis = Mathf.Sign(verticalAxis);
+        var prevHAxis = Mathf.Sign(previousHorizontalAxis);
+        var prevVAxis = Mathf.Sign(previousVerticalAxis);
+        
+        
+        if (prevHAxis != currentHAxis)
+        {
+            PlayDustH(prevHAxis > 0);
+        }
+        
+        if (prevVAxis != currentVAxis)
+        {
+            PlayDustV(prevVAxis > 0);
+        }
+    }
+
+    void PlayDustH(bool rightSide)
+    {
+        GameObject dustObj = ObjectPooler.Instance.SpawnFromPool("Dust", transform.position + new Vector3(0, -0.5f, 0),
+            Quaternion.Euler(new Vector3(-90f,0,0)));
+        if (dustObj == null) return;
+        ParticleSystem ps = dustObj.GetComponent<ParticleSystem>();
+        if(ps == null) return;
+        var vol = ps.velocityOverLifetime;
+        vol.x = rightSide ? new ParticleSystem.MinMaxCurve(0.15f) : new ParticleSystem.MinMaxCurve(-0.15f);
+        
+        if(!ps.isPlaying) ps.Play();
+    }
+    
+    void PlayDustV(bool topSide)
+    {
+        GameObject dustObj = ObjectPooler.Instance.SpawnFromPool("Dust", transform.position + new Vector3(0, -0.5f, 0),
+            Quaternion.identity);
+        if (dustObj == null) return;
+        ParticleSystem ps = dustObj.GetComponent<ParticleSystem>();
+        if(ps == null) return;
+        var vol = ps.velocityOverLifetime;
+        vol.x = topSide ? new ParticleSystem.MinMaxCurve(0.15f) : new ParticleSystem.MinMaxCurve(-0.15f);
+        
+        if(!ps.isPlaying) ps.Play();
     }
 }
