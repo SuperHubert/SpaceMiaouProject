@@ -88,12 +88,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 dashing = false;
-                LifeManager.Instance.canTakeDamge = true;
+                if(LifeManager.Instance != null) LifeManager.Instance.canTakeDamge = true;
                 animPlayer.SetBool("IsDashing", false);
             }
             else
             {
-                LifeManager.Instance.canTakeDamge = false;
+                if(LifeManager.Instance != null) LifeManager.Instance.canTakeDamge = false;
                 animPlayer.SetBool("IsDashing", true);
                 animPlayer.SetBool("IsWalking", false);
                 dashInternalCd += Time.fixedDeltaTime;
