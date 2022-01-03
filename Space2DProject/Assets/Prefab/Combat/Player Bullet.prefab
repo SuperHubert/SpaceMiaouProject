@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletForce: 25
   direction: {x: 0, y: 0}
+  rb: {fileID: 275258425955820598}
   damage: 3
   burn: 0
   burnDamage: 0.02

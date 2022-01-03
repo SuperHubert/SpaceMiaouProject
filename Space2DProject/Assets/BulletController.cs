@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
     public float bulletForce = 2f;
     public Vector2 direction;
+    public Rigidbody2D rb;
 
     public float damage = 3;
 
@@ -17,10 +19,6 @@ public class BulletController : MonoBehaviour
         Invoke(nameof(Destroy), 0.8f);
     }
     
-    void Update()
-    {
-        
-    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -35,7 +33,8 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        gameObject.SetActive(false);
+        rb.velocity = Vector2.zero;
+        //gameObject.SetActive(false);
     }
 
     private void Destroy()
