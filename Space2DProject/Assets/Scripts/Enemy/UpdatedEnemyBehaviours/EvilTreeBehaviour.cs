@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class EvilTreeBehaviour : EnemyBehaviour
 {
-    [SerializeField] private GameObject rootPrefab;
+    //[SerializeField] private Animator animator;
 
     private void Update()
     {
+        animator.SetBool("Awake", true);
+        
         if (currentState != State.Awake) return;
 
         if (actionCd > 0)

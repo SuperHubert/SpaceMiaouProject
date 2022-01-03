@@ -88,12 +88,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 dashing = false;
-                LifeManager.Instance.canTakeDamge = true;
+                if(LifeManager.Instance != null) LifeManager.Instance.canTakeDamge = true;
                 animPlayer.SetBool("IsDashing", false);
             }
             else
             {
-                LifeManager.Instance.canTakeDamge = false;
+                if(LifeManager.Instance != null) LifeManager.Instance.canTakeDamge = false;
                 animPlayer.SetBool("IsDashing", true);
                 animPlayer.SetBool("IsWalking", false);
                 dashInternalCd += Time.fixedDeltaTime;
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
         {
-            if (GetComponent<Combat>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)
+            if (GetComponent<Combat2>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)
             {
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;

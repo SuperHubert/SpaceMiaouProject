@@ -9,15 +9,25 @@ public class SmallShooterBehaviour : EnemyBehaviour
     [SerializeField] private int bulletDamage = 1;
     [SerializeField] private int shootCdMax;
     [SerializeField] private int shootCd;
+    //[SerializeField] private Animator animator;
     void Update()
     {
         if(currentState != State.Awake) return;
         
         //animator direction
-        //look left or right
-        animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
+        Vector2 orientation = new Vector2(player.position.x - transform.GetChild(0).position.x,
+            player.position.y - transform.GetChild(0).position.y).normalized;
         
-        LookAt(player);
+        animator.SetFloat("Horizontal",orientation.x);
+        animator.SetFloat("Vertical",orientation.y);
+        
+        animator.SetFloat("MoveH",-orientation.x);
+        animator.SetFloat("MoveV",-orientation.y);
+        
+        //look left or right
+        //animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
+        
+        //LookAt(player);
         if (!IsStopped()) return;
         if (isPerformingAction)
         {
@@ -31,7 +41,6 @@ public class SmallShooterBehaviour : EnemyBehaviour
             }
             else
             {
-                animator.ResetTrigger("Attack");
                 ShootBullet();
                 shootCd = shootCdMax;
             }
@@ -47,18 +56,20 @@ public class SmallShooterBehaviour : EnemyBehaviour
     private void RunAway()
     {
         agent.SetDestination(enemyTransform.position + (enemyTransform.position - player.position).normalized * 1);
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isWalking", true);
     }
     
-    private void LookAt(Transform target)
+    /*private void LookAt(Transform target)
     {
         Vector3 dir = target.position - enemyTransform.position;
         float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
         enemyTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
+    }*/
     
     private void ShootBullet()
     {
-        animator.SetTrigger("Attack");
+        animator.SetBool("isAttacking", true);
         bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", enemyTransform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = (player.position - enemyTransform.position).normalized*bulletSpeed;
         bullet.GetComponent<BulletDamage>().SetBulletDamage(bulletDamage);

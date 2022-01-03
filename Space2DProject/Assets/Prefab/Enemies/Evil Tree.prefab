@@ -328,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108263565553342735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3006887, y: 12.21, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2594063668490503302}
@@ -353,11 +353,10 @@ MonoBehaviour:
   hasAction: 1
   actionCdMax: 100
   actionCd: 0
-  animator: {fileID: 0}
+  animator: {fileID: 8267407442873659567}
   enemyTransform: {fileID: 2594063668490503302}
   triggersTransform: {fileID: 698338668102077436}
   respawnTriggerTransform: {fileID: 2108263563801864149}
-  rootPrefab: {fileID: 7065144723312377873, guid: 29bc1dd010351224eae1c1a765ccb92e, type: 3}
 --- !u!1 &2204795691360601239
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +481,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2594063668490503302}
   - component: {fileID: 2594063668490503301}
-  - component: {fileID: 3699975922957870004}
   - component: {fileID: 2594063668490503298}
   - component: {fileID: 1062605183}
   m_Layer: 7
@@ -531,25 +529,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &3699975922957870004
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2594063668490503296}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9aeff5a6c7c485842b0b857eb5635af7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2594063668490503298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,10 +547,11 @@ MonoBehaviour:
   healthBarOffset: 0.6
   isBurning: 0
   burnRate: 1
-  canTakeDamage: 0
+  canTakeDamage: 1
   maxHealth: 3
   currentHealth: 0
   moveHealthBar: 1
+  enemyAnimator: {fileID: 8267407442873659567}
 --- !u!61 &1062605183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -608,6 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923760016172220057}
   - component: {fileID: 2385343913735767878}
+  - component: {fileID: 8267407442873659567}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -623,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2755622330264474162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.26, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 2594063668490503302}
@@ -669,7 +650,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -1550561805913869720, guid: 4732085ead78dee41b81320f8c52f053, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -680,6 +661,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8267407442873659567
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755622330264474162}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8623068b2bc75ad429b56347b5d32c21, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3981951235126260066
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.600689, y: -11.01}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9120297490185245892

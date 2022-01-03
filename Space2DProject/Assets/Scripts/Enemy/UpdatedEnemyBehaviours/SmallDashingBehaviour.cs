@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class SmallDashingBehaviour : EnemyBehaviour
 {
+    //[SerializeField] private Animator animator;
+    
     private void Update()
     {
         if(currentState != State.Awake) return;
-        
+
         if (actionCd > 0)
         {
             actionCd--;
@@ -25,8 +27,17 @@ public class SmallDashingBehaviour : EnemyBehaviour
             agent.SetDestination(player.position);
             
             //animator direction
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isWalking", true);
+
+            Vector2 orientation = new Vector2(player.position.x - transform.GetChild(0).position.x,
+                player.position.y - transform.GetChild(0).position.y).normalized;
+            
+            animator.SetFloat("Horizontal",orientation.x);
+            animator.SetFloat("Vertical",orientation.y);
+
             //look left or right
-            animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
+            //animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
         }
     }
 
@@ -38,7 +49,8 @@ public class SmallDashingBehaviour : EnemyBehaviour
 
     private IEnumerator DashAttack()
     {
-        animator.SetTrigger("Attack");
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacking", true);
         
         agent.velocity = Vector3.zero;
         agent.acceleration = 100;
@@ -55,9 +67,6 @@ public class SmallDashingBehaviour : EnemyBehaviour
         
         yield return new WaitForSeconds(0.1f);
 
-        if (gameObject.activeSelf) agent.SetDestination(target);
-        
-        animator.ResetTrigger("Attack");
-        
+        agent.SetDestination(target);
     }
 }
