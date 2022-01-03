@@ -25,7 +25,8 @@ public class BulletController : MonoBehaviour
         if (other.gameObject.layer != 7) return;
         
         other.GetComponent<EnemyHealth>().TakeDamage(damage);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        rb.velocity = Vector2.zero;
         if(!burn) return;
         
         other.GetComponent<EnemyHealth>().Burn(burnDamage);
@@ -34,12 +35,20 @@ public class BulletController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         rb.velocity = Vector2.zero;
+        animator.SetTrigger("Pop");
         //gameObject.SetActive(false);
     }
 
     private void Destroy()
     {
         //animator.Play("PopBulles");
+        gameObject.SetActive(false);
+    }
+
+    IEnumerator PlayPopAnim()
+    {
+        animator.SetTrigger("Pop");
+        yield return new WaitForSeconds(0.1f);
         gameObject.SetActive(false);
     }
 }
