@@ -3575,10 +3575,6 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 0.87339574
       objectReference: {fileID: 0}
-    - target: {fileID: 7900229132931265597, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: damage
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8800626575084868212, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_Name
       value: Player Stuff
