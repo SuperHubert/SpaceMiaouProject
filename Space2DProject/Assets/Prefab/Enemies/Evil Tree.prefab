@@ -357,7 +357,6 @@ MonoBehaviour:
   enemyTransform: {fileID: 2594063668490503302}
   triggersTransform: {fileID: 698338668102077436}
   respawnTriggerTransform: {fileID: 2108263563801864149}
-  rootPrefab: {fileID: 7065144723312377873, guid: 29bc1dd010351224eae1c1a765ccb92e, type: 3}
 --- !u!1 &2204795691360601239
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,13 +541,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf1ff6d1f0f84949a11e375bb5b222b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarTransform: {fileID: 7418177931464936700}
+  healthBarObj: {fileID: 6887284030086667846}
   healthBarLenght: 100
   healthBarWidth: 20
   healthBarOffset: 0.6
   isBurning: 0
   burnRate: 1
-  canTakeDamage: 0
   maxHealth: 3
   currentHealth: 0
   moveHealthBar: 1
