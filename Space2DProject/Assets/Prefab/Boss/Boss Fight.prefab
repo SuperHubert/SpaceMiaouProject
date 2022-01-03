@@ -1147,6 +1147,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2735254510360598033, guid: d227426eadc24f343b72d7470027d495, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2735254510360598035, guid: d227426eadc24f343b72d7470027d495, type: 3}
       propertyPath: m_Name
       value: StartingRoom
@@ -59421,6 +59425,10 @@ PrefabInstance:
     - target: {fileID: 976773680, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
       propertyPath: m_Tiles.Array.data[6527].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799044346, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1845239712089385792, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
       propertyPath: m_AnchoredPosition.y
