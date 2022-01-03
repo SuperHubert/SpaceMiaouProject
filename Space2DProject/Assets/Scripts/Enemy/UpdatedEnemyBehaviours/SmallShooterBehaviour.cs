@@ -9,7 +9,7 @@ public class SmallShooterBehaviour : EnemyBehaviour
     [SerializeField] private int bulletDamage = 1;
     [SerializeField] private int shootCdMax;
     [SerializeField] private int shootCd;
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Animator animator;
     void Update()
     {
         if(currentState != State.Awake) return;

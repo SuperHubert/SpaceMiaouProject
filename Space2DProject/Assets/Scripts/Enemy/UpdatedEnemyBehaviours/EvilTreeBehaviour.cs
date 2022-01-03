@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class EvilTreeBehaviour : EnemyBehaviour
 {
-    [SerializeField] private GameObject rootPrefab;
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Animator animator;
 
     private void Update()
     {

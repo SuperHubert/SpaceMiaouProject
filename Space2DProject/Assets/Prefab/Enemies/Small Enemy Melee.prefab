@@ -509,6 +509,7 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   moveHealthBar: 1
+  enemyAnimator: {fileID: 8814842633766742458}
 --- !u!70 &3065176857007853181
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

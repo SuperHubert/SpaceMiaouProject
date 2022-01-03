@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SmallDashingBehaviour : EnemyBehaviour
 {
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Animator animator;
     
     private void Update()
     {
