@@ -4,6 +4,8 @@ using UnityEngine;
 public class Fall : MonoBehaviour
 {
     public GameObject currentFollower;
+    public GameObject fallAnimObj;
+    private Animator fallAnim;
     private FollowPlayer follow;
     private PlayerMovement playerMovement;
 
@@ -11,6 +13,8 @@ public class Fall : MonoBehaviour
     
     private Transform pointBotLeft;
     private Transform pointTopRight;
+    private Transform playerTransform;
+    private GameObject playerObj;
     private bool canFall = true;
 
     public Coroutine teleportFollowerRoutine;
@@ -20,7 +24,10 @@ public class Fall : MonoBehaviour
         pointBotLeft = transform.GetChild(0);
         pointTopRight = transform.GetChild(1);
         follow = currentFollower.GetComponent<FollowPlayer>();
-        playerMovement = transform.parent.gameObject.GetComponent<PlayerMovement>();
+        playerTransform = transform.parent;
+        playerObj = playerTransform.gameObject;
+        playerMovement = playerObj.GetComponent<PlayerMovement>();
+        fallAnim = fallAnimObj.GetComponent<Animator>();
     }
     
     private void OnTriggerStay2D(Collider2D other)
@@ -29,20 +36,24 @@ public class Fall : MonoBehaviour
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
         if (playerMovement.dashing) return;
         canFall = false;
+        
+        fallAnimObj.transform.position = transform.position;
+        fallAnim.Play("Noyade");
+        InputManager.canInput = false;
+        playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = false;
         StartCoroutine(DoTheFalling());
     }
 
     IEnumerator DoTheFalling()
     {
-        //play Animation;
-        InputManager.canInput = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
+        playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = true;
         LifeManager.Instance.TakeDamages(1);
-        transform.parent.position = currentFollower.transform.position;
+        playerTransform.position = currentFollower.transform.position;
         canFall = true;
         InputManager.canInput = true;
     }
-    
+
     public IEnumerator TeleportFollower(bool instant = false)
     {
         if(instant)yield return null;
