@@ -397,7 +397,9 @@ public class GenerationSimpleHalf : MonoBehaviour
                 {
                     Transform instantiatedEnemy = Instantiate(enemyObj, room.transform);
                     instantiatedEnemy.parent = enemies;
-                    instantiatedEnemy.GetChild(0).GetChild(1).SetParent(healthBarCanvas);
+                    //instantiatedEnemy.GetChild(0).GetChild(1).SetParent(healthBarCanvas);
+                    Debug.Log(instantiatedEnemy.GetChild(0));
+                    instantiatedEnemy.GetChild(0).GetComponent<EnemyHealth>().healthBarTransform.SetParent(healthBarCanvas);
                 }
             }
             
