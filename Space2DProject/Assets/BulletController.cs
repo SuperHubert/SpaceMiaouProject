@@ -27,6 +27,7 @@ public class BulletController : MonoBehaviour
         other.GetComponent<EnemyHealth>().TakeDamage(damage);
         //gameObject.SetActive(false);
         rb.velocity = Vector2.zero;
+        animator.SetTrigger("Pop");
         if(!burn) return;
         
         other.GetComponent<EnemyHealth>().Burn(burnDamage);
