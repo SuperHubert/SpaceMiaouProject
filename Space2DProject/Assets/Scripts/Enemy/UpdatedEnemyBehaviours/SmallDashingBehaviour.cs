@@ -78,7 +78,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
 
     IEnumerator PlayAnim()
     {
-        animator.Play("Bob_Death");
+        animator.Play("Poupi_Death");
         animator.SetBool("isDead", true);
         yield return new WaitForSeconds(1f);
         base.Die();
