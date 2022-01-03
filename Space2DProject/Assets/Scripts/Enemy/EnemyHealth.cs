@@ -4,11 +4,8 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private Transform healthBarTransform;
-    private GameObject healthBarObj;
-    private Image healthBarFrontImg;
-    private Image healthBarBackImg;
-    private Camera cam;
+    [SerializeField] private GameObject healthBarObj;
+    private Image healthBar;
     [SerializeField] private float healthBarLenght = 100f;
     [SerializeField] private float healthBarWidth = 20f;
     [SerializeField] private float healthBarOffset = 0.6f;
@@ -17,13 +14,12 @@ public class EnemyHealth : MonoBehaviour
     public float burnRate = 1f;
     private Coroutine burnRoutine;
 
-    public bool canTakeDamage = true;
     [SerializeField]private float maxHealth = 3;
     [SerializeField]private float currentHealth;
 
     [SerializeField]private bool moveHealthBar = true;
 
-    private Animator enemyAnimator;
+    public Animator enemyAnimator;
     private EnemyBehaviour enemyBehaviour;
     
     void Start()
@@ -38,12 +34,6 @@ public class EnemyHealth : MonoBehaviour
             UpdateHealthBarPosition();
         }
         
-        
-        if (healthBarBackImg.fillAmount != healthBarFrontImg.fillAmount)
-        {
-            HealthDecreaseEffect();
-        }
-
     }
 
     private void UpdateHealthBarPosition()
@@ -53,70 +43,53 @@ public class EnemyHealth : MonoBehaviour
         hpPos.z = 0f;
         hpPos.y += healthBarOffset;
 
-        hpPos = cam.WorldToScreenPoint(hpPos);
+        hpPos = Camera.main.WorldToScreenPoint(hpPos);
         
         healthBarObj.transform.position = hpPos;
     }
     
     public void InitEnemy()
     {
-        healthBarFrontImg = healthBarTransform.GetChild(1).GetComponent<Image>();
-        healthBarBackImg = healthBarTransform.GetChild(0).GetComponent<Image>();
-
         currentHealth = maxHealth;
-        enemyAnimator = gameObject.GetComponent<Animator>();
         enemyBehaviour = transform.parent.gameObject.GetComponent<EnemyBehaviour>();
-
-        healthBarObj = healthBarTransform.gameObject;
+        
+        healthBar = healthBarObj.GetComponent<Image>();
         healthBarObj.SetActive(false);
 
         isBurning = false;
-
-        cam = Camera.main;
         
         ResizeHealthBar();
     }
 
     public void TakeDamage(float damage)
     {
-        if (canTakeDamage)
-        {
-            ResizeHealthBar();
+        ResizeHealthBar();
         
-            healthBarObj.SetActive(true);
+        healthBarObj.SetActive(true);
         
-            enemyAnimator.SetTrigger("TakeDamage");
+        enemyAnimator.SetTrigger("TakeDamage");
         
-            currentHealth -= damage;
+        currentHealth -= damage;
 
-            healthBarFrontImg.fillAmount = currentHealth / maxHealth;
+        healthBar.fillAmount = currentHealth / maxHealth;
         
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
-        
-            enemyAnimator.ResetTrigger("TakeDamage");
-        }
-        else
+        if (currentHealth <= 0)
         {
-            //play sound and particle
+            Die();
         }
         
-        
+        enemyAnimator.ResetTrigger("TakeDamage");
     }
     
     private void ResizeHealthBar()
     {
-        healthBarFrontImg.rectTransform.localScale = Vector3.one;
-        healthBarFrontImg.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
-        healthBarBackImg.rectTransform.localScale = Vector3.one;
-        healthBarBackImg.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
+        healthBar.rectTransform.localScale = Vector3.one;
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
     }
     
     private void Die()
     {
-        enemyAnimator.SetBool("IsDead", true);
+        enemyAnimator.SetTrigger("Dead");
         
         enemyBehaviour.Die();
 
@@ -143,11 +116,4 @@ public class EnemyHealth : MonoBehaviour
             yield return new WaitForSeconds(burnRate);
         }
     }
-
-    private void HealthDecreaseEffect()
-    {
-        healthBarBackImg.fillAmount = Mathf.Lerp (healthBarBackImg.fillAmount, healthBarFrontImg.fillAmount, 1f * Time.deltaTime);
-        
-    }
-    
 }

@@ -10,6 +10,8 @@ public class BulletController : MonoBehaviour
     public bool burn;
     public float burnDamage = 0.02f;
 
+    public Animator animator;
+
     void OnEnable()
     {
         Invoke(nameof(Destroy), 0.8f);
@@ -38,6 +40,7 @@ public class BulletController : MonoBehaviour
 
     private void Destroy()
     {
+        //animator.Play("PopBulles");
         gameObject.SetActive(false);
     }
 }

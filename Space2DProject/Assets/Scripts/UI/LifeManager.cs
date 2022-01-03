@@ -19,6 +19,8 @@ public class LifeManager : MonoBehaviour
     private Material originalMaterial;
     private Coroutine flashRoutine;
 
+    public Animator anim;
+
     #region Singleton
     public static LifeManager Instance;
 
@@ -61,6 +63,7 @@ public class LifeManager : MonoBehaviour
 
    public void Die(bool instant = false)
    {
+       GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
        Time.timeScale = 1f;
        InputManager.canInput = false;
        StartCoroutine(PlayDyingAnimation(instant));
