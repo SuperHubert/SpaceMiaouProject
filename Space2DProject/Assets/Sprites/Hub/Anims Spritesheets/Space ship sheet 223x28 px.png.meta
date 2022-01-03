@@ -1,0 +1,1044 @@
+fileFormatVersion: 2
+guid: 9fd60b6aeeb01e741bb4de873f74fe35
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7660818371602819262
+    second: Space ship sheet 223x28 px_0
+  - first:
+      213: 1253759123857401
+    second: Space ship sheet 223x28 px_1
+  - first:
+      213: -1529083385269042978
+    second: Space ship sheet 223x28 px_2
+  - first:
+      213: -1734533808230701040
+    second: Space ship sheet 223x28 px_3
+  - first:
+      213: 5815514576245210145
+    second: Space ship sheet 223x28 px_4
+  - first:
+      213: 6139155312442971824
+    second: Space ship sheet 223x28 px_5
+  - first:
+      213: 7645882754353994000
+    second: Space ship sheet 223x28 px_6
+  - first:
+      213: -2804060800335400524
+    second: Space ship sheet 223x28 px_7
+  - first:
+      213: 3738634939401495910
+    second: Space ship sheet 223x28 px_8
+  - first:
+      213: 8276945842203649416
+    second: Space ship sheet 223x28 px_9
+  - first:
+      213: -129054119087552678
+    second: Space ship sheet 223x28 px_10
+  - first:
+      213: -6980848767717976682
+    second: Space ship sheet 223x28 px_11
+  - first:
+      213: 1439993342801921706
+    second: Space ship sheet 223x28 px_12
+  - first:
+      213: 6547604458020073389
+    second: Space ship sheet 223x28 px_13
+  - first:
+      213: -1523258331195864116
+    second: Space ship sheet 223x28 px_14
+  - first:
+      213: -499783960918437980
+    second: Space ship sheet 223x28 px_15
+  - first:
+      213: 8051630964833336287
+    second: Space ship sheet 223x28 px_16
+  - first:
+      213: 7386992188907720990
+    second: Space ship sheet 223x28 px_17
+  - first:
+      213: 7238601036698810725
+    second: Space ship sheet 223x28 px_18
+  - first:
+      213: 674380272978943667
+    second: Space ship sheet 223x28 px_19
+  - first:
+      213: 4002912047685238977
+    second: Space ship sheet 223x28 px_20
+  - first:
+      213: -5526087918825293459
+    second: Space ship sheet 223x28 px_21
+  - first:
+      213: 1963913465434932744
+    second: Space ship sheet 223x28 px_22
+  - first:
+      213: 4274579373689355635
+    second: Space ship sheet 223x28 px_23
+  - first:
+      213: 1778857674192166430
+    second: Space ship sheet 223x28 px_24
+  - first:
+      213: 4416278656689148870
+    second: Space ship sheet 223x28 px_25
+  - first:
+      213: 8882516883629735695
+    second: Space ship sheet 223x28 px_26
+  - first:
+      213: 2289538140595928277
+    second: Space ship sheet 223x28 px_27
+  - first:
+      213: -1149466721556277070
+    second: Space ship sheet 223x28 px_28
+  - first:
+      213: 4504643324432381664
+    second: Space ship sheet 223x28 px_29
+  - first:
+      213: -4425302768273111786
+    second: Space ship sheet 223x28 px_30
+  - first:
+      213: 808127865683431432
+    second: Space ship sheet 223x28 px_31
+  - first:
+      213: -65461054947922419
+    second: Space ship sheet 223x28 px_32
+  - first:
+      213: 4111008951152954450
+    second: Space ship sheet 223x28 px_33
+  - first:
+      213: -2437982542963196598
+    second: Space ship sheet 223x28 px_34
+  - first:
+      213: -4842612673468050726
+    second: Space ship sheet 223x28 px_35
+  - first:
+      213: 1172621504700713920
+    second: Space ship sheet 223x28 px_36
+  - first:
+      213: 3337596559019309734
+    second: Space ship sheet 223x28 px_37
+  - first:
+      213: -3356756583487724201
+    second: Space ship sheet 223x28 px_38
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb82c2068b1b05a60800000000000000
+      internalID: 7660818371602819262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_1
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff163b8944740000800000000000000
+      internalID: 1253759123857401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_2
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0461533ca97cae0800000000000000
+      internalID: -1529083385269042978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_3
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018e08df0b2bde7e0800000000000000
+      internalID: -1734533808230701040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_4
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12cb337f1bbd4b050800000000000000
+      internalID: 5815514576245210145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_5
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b69d13ea39a23550800000000000000
+      internalID: 6139155312442971824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_6
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0191e8ffad1ab1a60800000000000000
+      internalID: 7645882754353994000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_7
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b139630f89f519d0800000000000000
+      internalID: -2804060800335400524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_8
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 665e3e35bac42e330800000000000000
+      internalID: 3738634939401495910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_9
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 885e1bde36e9dd270800000000000000
+      internalID: 8276945842203649416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_10
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a574cf266f1853ef0800000000000000
+      internalID: -129054119087552678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_11
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6955279280b0f1f90800000000000000
+      internalID: -6980848767717976682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_12
+      rect:
+        serializedVersion: 2
+        x: 2676
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa6c2acd052ebf310800000000000000
+      internalID: 1439993342801921706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_13
+      rect:
+        serializedVersion: 2
+        x: 2899
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dafec0a5093cdda50800000000000000
+      internalID: 6547604458020073389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_14
+      rect:
+        serializedVersion: 2
+        x: 3122
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb8aeb4e9c4cdae0800000000000000
+      internalID: -1523258331195864116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_15
+      rect:
+        serializedVersion: 2
+        x: 3345
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4afc401b2296019f0800000000000000
+      internalID: -499783960918437980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_16
+      rect:
+        serializedVersion: 2
+        x: 3568
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb3d6104b32dbf60800000000000000
+      internalID: 8051630964833336287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_17
+      rect:
+        serializedVersion: 2
+        x: 3791
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e111e62024ed38660800000000000000
+      internalID: 7386992188907720990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_18
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569f4378a4da47460800000000000000
+      internalID: 7238601036698810725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_19
+      rect:
+        serializedVersion: 2
+        x: 4237
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bed0760941eb5900800000000000000
+      internalID: 674380272978943667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_20
+      rect:
+        serializedVersion: 2
+        x: 4460
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0096d8c433d8730800000000000000
+      internalID: 4002912047685238977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_21
+      rect:
+        serializedVersion: 2
+        x: 4683
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6937d8f0546f43b0800000000000000
+      internalID: -5526087918825293459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_22
+      rect:
+        serializedVersion: 2
+        x: 4906
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8060bdc34e8314b10800000000000000
+      internalID: 1963913465434932744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_23
+      rect:
+        serializedVersion: 2
+        x: 5129
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d37fcea4b525b30800000000000000
+      internalID: 4274579373689355635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_24
+      rect:
+        serializedVersion: 2
+        x: 5352
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e933041a5cfa810800000000000000
+      internalID: 1778857674192166430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_25
+      rect:
+        serializedVersion: 2
+        x: 5575
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c398113a06c94d30800000000000000
+      internalID: 4416278656689148870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_26
+      rect:
+        serializedVersion: 2
+        x: 5798
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0ff8284b0a054b70800000000000000
+      internalID: 8882516883629735695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_27
+      rect:
+        serializedVersion: 2
+        x: 6021
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcbde1fec216cf10800000000000000
+      internalID: 2289538140595928277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_28
+      rect:
+        serializedVersion: 2
+        x: 6244
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b8518c5b164c00f0800000000000000
+      internalID: -1149466721556277070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_29
+      rect:
+        serializedVersion: 2
+        x: 6467
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e670a8ac35b38e30800000000000000
+      internalID: 4504643324432381664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_30
+      rect:
+        serializedVersion: 2
+        x: 6690
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6154789149a2692c0800000000000000
+      internalID: -4425302768273111786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_31
+      rect:
+        serializedVersion: 2
+        x: 6913
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 800d72f130c073b00800000000000000
+      internalID: 808127865683431432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_32
+      rect:
+        serializedVersion: 2
+        x: 7136
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ee431748f671ff0800000000000000
+      internalID: -65461054947922419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_33
+      rect:
+        serializedVersion: 2
+        x: 7359
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c4ce92cdc3d0930800000000000000
+      internalID: 4111008951152954450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_34
+      rect:
+        serializedVersion: 2
+        x: 7582
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d331e4bcb8a2ed0800000000000000
+      internalID: -2437982542963196598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_35
+      rect:
+        serializedVersion: 2
+        x: 7805
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad2d1254e659bccb0800000000000000
+      internalID: -4842612673468050726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_36
+      rect:
+        serializedVersion: 2
+        x: 8028
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb8ba3bb0df54010800000000000000
+      internalID: 1172621504700713920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_37
+      rect:
+        serializedVersion: 2
+        x: 8251
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa79e71366815e20800000000000000
+      internalID: 3337596559019309734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space ship sheet 223x28 px_38
+      rect:
+        serializedVersion: 2
+        x: 8474
+        y: 0
+        width: 223
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755a2c31ca76a61d0800000000000000
+      internalID: -3356756583487724201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
