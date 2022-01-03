@@ -69,4 +69,18 @@ public class SmallDashingBehaviour : EnemyBehaviour
 
         if(enemy.activeSelf && currentState != State.Dead) agent.SetDestination(target);
     }
+    
+    public override void Die()
+    {
+        currentState = State.Dead;
+        StartCoroutine(PlayAnim());
+    }
+
+    IEnumerator PlayAnim()
+    {
+        animator.Play("Poupi_Death");
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(1f);
+        base.Die();
+    }
 }

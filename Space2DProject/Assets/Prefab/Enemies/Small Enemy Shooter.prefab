@@ -363,7 +363,7 @@ MonoBehaviour:
   respawnTriggerTransform: {fileID: 4115104952742007616}
   bulletSpeed: 10
   bulletDamage: 1
-  shootCdMax: 50
+  shootCdMax: 60
   shootCd: 0
 --- !u!1 &4115104952742007631
 GameObject:

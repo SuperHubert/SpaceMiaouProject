@@ -61,6 +61,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     
     public virtual void WakeUp()
     {
+        if (currentState == State.Dead) return;
+        
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(true);
         actionTrigger.SetActive(hasAction);
@@ -118,6 +120,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public void ExecuteAction()
     {
+        if (currentState == State.Dead) return;
         if (actionCd != 0 || !hasAction) return;
         isPerformingAction = true;
         actionCd = actionCdMax;

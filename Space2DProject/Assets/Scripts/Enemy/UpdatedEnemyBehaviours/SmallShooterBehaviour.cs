@@ -82,4 +82,18 @@ public class SmallShooterBehaviour : EnemyBehaviour
         if (!(agent.remainingDistance <= agent.stoppingDistance)) return false;
         return !agent.hasPath || agent.velocity.sqrMagnitude == 0f;
     }
+    
+    public override void Die()
+    {
+        currentState = State.Dead;
+        StartCoroutine(PlayAnim());
+    }
+
+    IEnumerator PlayAnim()
+    {
+        animator.Play("Bob_Death");
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(1f);
+        base.Die();
+    }
 }
