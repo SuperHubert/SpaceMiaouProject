@@ -20,6 +20,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] protected Animator animator;
     [SerializeField] protected Transform enemyTransform;
+    protected GameObject enemy;
     [SerializeField] protected Transform triggersTransform;
     [SerializeField] protected Transform respawnTriggerTransform;
     private GameObject wakeUpTrigger;
@@ -39,10 +40,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.SetDestination(enemyTransform.position);
+        enemy = enemyTransform.gameObject;
         
-        health = enemyTransform.gameObject.GetComponent<EnemyHealth>();
+        health = enemy.GetComponent<EnemyHealth>();
 
-        animator = enemyTransform.gameObject.GetComponent<Animator>();
+        animator = enemy.GetComponent<Animator>();
         
         (wakeUpTrigger = triggersTransform.GetChild(0).gameObject).SetActive(true);
         (sleepTrigger = triggersTransform.GetChild(1).gameObject).SetActive(false);
@@ -50,7 +52,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         (respawnTrigger = respawnTriggerTransform.gameObject).SetActive(false);
 
         player = LevelManager.Instance.Player().transform;
-        
+
         if (!hasAction) return;
         
         actionCd = 0;
@@ -97,7 +99,6 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
         
         enemyTransform.gameObject.SetActive(false);
-        
         currentState = State.Dead;
     }
 

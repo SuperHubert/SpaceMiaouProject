@@ -134,11 +134,6 @@ public class Combat2 : MonoBehaviour
                 }
             }
         }
-
-        if (GetComponent<LifeManager>().isDying)
-        {
-            playerAnimator.Play("FrontDeath");
-        }
     }
 
     void SpecialAttack()

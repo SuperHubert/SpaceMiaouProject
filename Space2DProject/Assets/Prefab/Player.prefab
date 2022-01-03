@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 1631967610}
   - component: {fileID: 2733514716031713738}
   - component: {fileID: 6471309387829931658}
+  - component: {fileID: 1693735764161799996}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -540,7 +541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5629675976314166469}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f978cca56d65640b36e4cea9e2006f, type: 3}
   m_Name: 
@@ -585,6 +586,40 @@ MonoBehaviour:
   burn: 0
   burnDamage: 0.02
   sprayAttackAxis: 0
+--- !u!114 &1693735764161799996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629675976314166469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f99d9ccacab3b49bc0d61291dcf7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 5629675976314166459}
+  isAttacking: 0
+  force: 1
+  isSpecialAttacking: 0
+  canSpecialAttack: 1
+  specialAttackCoolDown: 2
+  baseRightCollider: {fileID: 7701683658996652597}
+  baseLeftCollider: {fileID: 3670718848343679485}
+  baseUpCollider: {fileID: 1272243284189037122}
+  baseDownCollider: {fileID: 8800196449721614723}
+  hits: []
+  specialFX: {fileID: 649608801789586204, guid: dd05e02ef9b14ec4794132fb65d67036, type: 3}
+  baseFX: {fileID: 5887807797639799553, guid: 2a962cf8f34898448b166cbcedb55d0f, type: 3}
+  damage: 1
+  specialDamage: 10
+  sprayGainNormal: 15
+  sprayGainSpecial: 20
+  rightAttack: 0
+  leftAttack: 0
+  uptAttack: 0
+  downAttack: 0
+  specialAttack: 0
 --- !u!1 &6095275311435496822
 GameObject:
   m_ObjectHideFlags: 0

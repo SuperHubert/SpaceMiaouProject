@@ -124,7 +124,6 @@ GameObject:
   m_Component:
   - component: {fileID: 128166408706211308}
   - component: {fileID: 1124755158298945988}
-  - component: {fileID: 6925258930034147024}
   m_Layer: 7
   m_Name: Small Enemy Melee
   m_TagString: Untagged
@@ -165,29 +164,11 @@ MonoBehaviour:
   hasAction: 1
   actionCdMax: 100
   actionCd: 0
-  animator: {fileID: 3449102410432137046}
+  animator: {fileID: 8814842633766742458}
   enemyTransform: {fileID: 4574160820572332132}
   triggersTransform: {fileID: 1528311748300533534}
   respawnTriggerTransform: {fileID: 128166407243924279}
---- !u!95 &6925258930034147024
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128166408706211309}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8883b645daca0c84d86aaa5cb8c60ed0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  animator: {fileID: 8814842633766742458}
 --- !u!1 &152095299244580981
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +440,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4574160820572332132}
   - component: {fileID: 4574160820572332135}
-  - component: {fileID: 3449102410432137046}
   - component: {fileID: 4574160820572332128}
   - component: {fileID: 3065176857007853181}
   m_Layer: 7
@@ -508,25 +488,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &3449102410432137046
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4574160820572332130}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11c4c6eb85e4c794fa52868e64fe68bb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4574160820572332128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,7 +609,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7799594439327740694}
-  - component: {fileID: 3499106321106765822}
+  - component: {fileID: 8814842633766742458}
+  - component: {fileID: 3099521010827628536}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -665,12 +627,31 @@ Transform:
   m_GameObject: {fileID: 7510463245951345723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4574160820572332132}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3499106321106765822
+--- !u!95 &8814842633766742458
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510463245951345723}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8883b645daca0c84d86aaa5cb8c60ed0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &3099521010827628536
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -709,13 +690,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: a5a82f2c0a7c25243a20135ab45c52f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 275258425955820598}
   - component: {fileID: 6027554344136705203}
   - component: {fileID: 6153822253515722691}
-  - component: {fileID: -2927288604034727421}
   - component: {fileID: -1815529701142884900}
   m_Layer: 10
   m_Name: Player Bullet
@@ -142,22 +141,6 @@ MonoBehaviour:
   burn: 0
   burnDamage: 0.02
   animator: {fileID: -1815529701142884900}
---- !u!111 &-2927288604034727421
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3422628233388230462}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b248e7f405a229f41b5f51ac30596329, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: b248e7f405a229f41b5f51ac30596329, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &-1815529701142884900
 Animator:
   serializedVersion: 3

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 649608801291791906}
   - component: {fileID: 649608801291791904}
   - component: {fileID: 649608801291791907}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slash-special
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4836,7 +4836,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4871,7 +4871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 649608801789586205}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FX-Slash-special
   m_TagString: Untagged
   m_Icon: {fileID: 0}

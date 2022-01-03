@@ -40,7 +40,7 @@ public class BulletController : MonoBehaviour
 
     private void Destroy()
     {
-        animator.Play("PopBulles");
+        //animator.Play("PopBulles");
         gameObject.SetActive(false);
     }
 }

@@ -6,7 +6,6 @@ public class LifeManager : MonoBehaviour
     public int lifeBar = 9;
     public int maxHP = 9;
     public bool isInGodMode = false;
-    public bool isDying;
 
     public Animator anim;
 
@@ -39,7 +38,7 @@ public class LifeManager : MonoBehaviour
 
    public void Die(bool instant = false)
    {
-       isDying = true;
+       GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
        Time.timeScale = 1f;
        InputManager.canInput = false;
        StartCoroutine(PlayDyingAnimation(instant));
@@ -53,7 +52,6 @@ public class LifeManager : MonoBehaviour
        LoadingLevelData.Instance.ResetData();
        LoadingManager.Instance.LoadScene(3);
        InputManager.canInput = true;
-       isDying = false;
    }
 
 

@@ -8,6 +8,7 @@ public class Root : MonoBehaviour
     [SerializeField] private GameObject warningObj;
     [SerializeField] private GameObject rootObj;
     private CircleCollider2D circleCollider;
+    private Animator animator;
     
     [SerializeField] private int damage = 1;
 
@@ -16,6 +17,7 @@ public class Root : MonoBehaviour
     {
         circleCollider = gameObject.GetComponent<CircleCollider2D>();
         circleCollider.enabled = false;
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void Spawn()
@@ -30,19 +32,22 @@ public class Root : MonoBehaviour
         //damage
         //play animation
         //die
-        
+
         yield return new WaitForSeconds(1f);
         
-        warningObj.SetActive(false);
+        //warningObj.SetActive(false);
         rootObj.SetActive(true);
+        animator.SetTrigger("Eat");
 
         circleCollider.enabled = true;
         
         
-        yield return new WaitForSeconds(1f);
         
-        warningObj.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        
+        //warningObj.SetActive(true);
         rootObj.SetActive(false);
+        
         
         circleCollider.enabled = false;
         

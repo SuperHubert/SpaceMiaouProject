@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField]private bool moveHealthBar = true;
 
-    private Animator enemyAnimator;
+    public Animator enemyAnimator;
     private EnemyBehaviour enemyBehaviour;
     
     void Start()
@@ -51,7 +51,6 @@ public class EnemyHealth : MonoBehaviour
     public void InitEnemy()
     {
         currentHealth = maxHealth;
-        enemyAnimator = gameObject.GetComponent<Animator>();
         enemyBehaviour = transform.parent.gameObject.GetComponent<EnemyBehaviour>();
         
         healthBar = healthBarObj.GetComponent<Image>();
@@ -90,7 +89,7 @@ public class EnemyHealth : MonoBehaviour
     
     private void Die()
     {
-        enemyAnimator.SetBool("IsDead", true);
+        enemyAnimator.SetTrigger("Dead");
         
         enemyBehaviour.Die();
 
@@ -117,5 +116,4 @@ public class EnemyHealth : MonoBehaviour
             yield return new WaitForSeconds(burnRate);
         }
     }
-    
 }
