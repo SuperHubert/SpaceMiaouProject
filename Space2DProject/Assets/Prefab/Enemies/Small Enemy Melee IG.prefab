@@ -131,7 +131,7 @@ MonoBehaviour:
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 3
+  maxHealth: 30
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 7114000372021665573}
@@ -145,7 +145,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

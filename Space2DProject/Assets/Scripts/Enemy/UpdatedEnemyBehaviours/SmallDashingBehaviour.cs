@@ -67,6 +67,6 @@ public class SmallDashingBehaviour : EnemyBehaviour
         
         yield return new WaitForSeconds(0.1f);
 
-        agent.SetDestination(target);
+        if(enemy.activeSelf && currentState != State.Dead) agent.SetDestination(target);
     }
 }
