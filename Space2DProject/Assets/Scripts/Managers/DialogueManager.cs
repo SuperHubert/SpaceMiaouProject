@@ -6,7 +6,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueCanvas;
+    public GameObject dialogueCanvas;
     private TextMeshProUGUI speaker;
     private TextMeshProUGUI dialogueText;
     private Image portraitRender;
@@ -21,12 +21,22 @@ public class DialogueManager : MonoBehaviour
     private bool isDoneTyping = true;
     private Coroutine soundCoroutine;
     
-    #region Singleton
+    #region Singleton Don't Destroy On Load
     public static DialogueManager Instance;
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
     }
     #endregion
     
