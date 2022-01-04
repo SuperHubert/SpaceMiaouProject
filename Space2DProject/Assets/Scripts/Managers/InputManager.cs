@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private bool showKeycodes = false;
     
     private SprayAttack sprayAttack;
-    private Combat combat;
+    private Combat2 combat;
     private DisplayInteracion displayInteraction;
     private PlayerMovement playerMovement;
     [SerializeField] private MapManager mapManager;
@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         sprayAttack = playerObj.GetComponent<SprayAttack>();
-        combat = playerObj.GetComponent<Combat>();
+        combat = playerObj.GetComponent<Combat2>();
         displayInteraction = playerObj.GetComponent<DisplayInteracion>();
         playerMovement = playerObj.GetComponent<PlayerMovement>();
     }
@@ -59,11 +59,8 @@ public class InputManager : MonoBehaviour
             {
                 sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
                 playerMovement.shootingAxis = Input.GetAxisRaw("SprayAttack");
-
-                combat.rightAttack = Input.GetButtonDown("RightAttack");
-                combat.leftAttack = Input.GetButtonDown("LeftAttack");
-                combat.uptAttack = Input.GetButtonDown("UpAttack");
-                combat.downAttack = Input.GetButtonDown("DownAttack");
+                
+                combat.baseAttack = Input.GetButtonDown("BaseAttack");
                 combat.specialAttack = Input.GetButtonDown("SpecialAttack");
             }
             

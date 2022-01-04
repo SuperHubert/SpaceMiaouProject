@@ -38,29 +38,25 @@ public class Combat2 : MonoBehaviour
     public float sprayGainNormal = 15f;
     public float sprayGainSpecial = 20f;
 
-    [HideInInspector] public bool rightAttack;
+    public bool baseAttack;
+    public bool specialAttack;
+    
     [HideInInspector] public bool leftAttack;
     [HideInInspector] public bool uptAttack;
     [HideInInspector] public bool downAttack;
-    [HideInInspector] public bool specialAttack;
- 
-    void Start()
-    {
-        
-    }
-
-   
+    
+    
     void Update()
     {
-        attackDirection = GetComponent<PlayerMovement>().lastDirection;
         BasicAttack();
         SpecialAttack();
     }
 
     void BasicAttack()
     {
-        if (Input.GetButtonDown("BaseAttack") && !isAttacking)
+        if (baseAttack && !isAttacking)
         {
+            attackDirection = GetComponent<PlayerMovement>().lastDirection;
             isAttacking = true;
             playerAnimator.SetBool("IsAttacking", true);
             Invoke("ResetAttack", 0.5f);
@@ -138,7 +134,7 @@ public class Combat2 : MonoBehaviour
 
     void SpecialAttack()
     {
-        if (Input.GetButtonDown("SpecialAttack") && !isAttacking && canSpecialAttack)
+        if (specialAttack && !isAttacking && canSpecialAttack)
         {
             isSpecialAttacking = true;
             canSpecialAttack = false;
