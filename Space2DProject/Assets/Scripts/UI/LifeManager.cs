@@ -73,6 +73,7 @@ public class LifeManager : MonoBehaviour
    {
        if (!instant) yield return new WaitForSeconds(1.5f);
        yield return new WaitForSeconds(0.5f);
+       DialogueManager.Instance.EndDialogue();
        LoadingManager.Instance.UpdateLoading();
        LoadingLevelData.Instance.ResetData();
        LoadingManager.Instance.LoadScene(3);

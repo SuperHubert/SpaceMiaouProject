@@ -50,20 +50,6 @@ public class InputManager : MonoBehaviour
         {
             displayInteraction.interact = false;
         }
-
-        /*
-        if (DialogueManager.Instance.dialogueCanvas.activeSelf )
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                DialogueManager.Instance.DisplayNextSentence();
-            }
-        }
-        else
-        {
-            displayInteraction.interact = Input.GetButtonDown("Fire1");
-        }
-        */
         
         if(!canInput) return;
         
