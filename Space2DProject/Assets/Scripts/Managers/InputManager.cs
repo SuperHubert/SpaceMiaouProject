@@ -34,6 +34,36 @@ public class InputManager : MonoBehaviour
                     Debug.Log("KeyCode down: " + kcode);
             }
         }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (DialogueManager.Instance.dialogueCanvas.activeSelf)
+            {
+                DialogueManager.Instance.DisplayNextSentence();
+            }
+            else
+            {
+                displayInteraction.interact = true;
+            }
+        }
+        else
+        {
+            displayInteraction.interact = false;
+        }
+
+        /*
+        if (DialogueManager.Instance.dialogueCanvas.activeSelf )
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                DialogueManager.Instance.DisplayNextSentence();
+            }
+        }
+        else
+        {
+            displayInteraction.interact = Input.GetButtonDown("Fire1");
+        }
+        */
         
         if(!canInput) return;
         
@@ -54,7 +84,6 @@ public class InputManager : MonoBehaviour
             shopInteraction.closeShopInput = Input.GetKeyDown(KeyCode.JoystickButton1);
         }
         
-        displayInteraction.interact = Input.GetButtonDown("Fire1");
 
         if (canMove)
         {
@@ -64,8 +93,6 @@ public class InputManager : MonoBehaviour
 
             isMoving = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
         }
-        
-
         
         if (mapManager != null)
         {

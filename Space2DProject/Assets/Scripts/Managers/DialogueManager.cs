@@ -7,6 +7,7 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject dialogueCanvas;
+    private GameObject nextButton;
     private TextMeshProUGUI speaker;
     private TextMeshProUGUI dialogueText;
     private Image portraitRender;
@@ -17,9 +18,11 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private bool instantDisplay = false;
     [SerializeField] private float timeBetweenLetters = 0.005f;
+    [SerializeField] private float timeBetweenBlinks = 0.5f;
     private AudioManager am;
     private bool isDoneTyping = true;
     private Coroutine soundCoroutine;
+    private Coroutine nextBlinkRoutine;
     
     #region Singleton Don't Destroy On Load
     public static DialogueManager Instance;
@@ -47,6 +50,7 @@ public class DialogueManager : MonoBehaviour
         portraitRender = dialogueCanvas.transform.GetChild(0).GetChild(1).GetChild(0).gameObject
             .GetComponent<Image>();
         am = AudioManager.Instance;
+        nextButton = dialogueCanvas.transform.GetChild(0).GetChild(4).gameObject;
     }
 
     public void StartDialogue(Dialogues dialogue)
@@ -75,6 +79,8 @@ public class DialogueManager : MonoBehaviour
             dialogueCanvas.SetActive(true);
         }
         
+        if(nextBlinkRoutine != null) StopCoroutine(nextBlinkRoutine);
+        
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -99,6 +105,8 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(soundCoroutine);
         }
         
+        
+        
         typingCoroutine = StartCoroutine(TypeSentence(sentence));
         soundCoroutine = StartCoroutine(PlayTypingSound());
     }
@@ -115,6 +123,8 @@ public class DialogueManager : MonoBehaviour
     
     private IEnumerator TypeSentence(string sentence)
     {
+        if(nextBlinkRoutine != null) StopCoroutine(nextBlinkRoutine);
+        nextButton.SetActive(false);
         dialogueText.text = "";
         isDoneTyping = false;
         foreach (char letter in sentence.ToCharArray())
@@ -123,6 +133,19 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenLetters);;
         }
         isDoneTyping = true;
+        yield return new WaitForSeconds(timeBetweenBlinks);
+        nextBlinkRoutine = StartCoroutine(NextBlinkRoutine());
+    }
+
+    private IEnumerator NextBlinkRoutine()
+    {
+        while (isDoneTyping)
+        {
+            nextButton.SetActive(true);
+            yield return new WaitForSeconds(timeBetweenBlinks);
+            nextButton.SetActive(false);
+            yield return new WaitForSeconds(timeBetweenBlinks);
+        }
     }
 
     public void EndDialogue()
