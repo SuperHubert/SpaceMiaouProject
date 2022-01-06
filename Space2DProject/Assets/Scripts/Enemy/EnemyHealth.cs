@@ -117,7 +117,7 @@ public class EnemyHealth : MonoBehaviour
     
     private void Die()
     {
-        enemyAnimator.SetTrigger("Dead");
+        //enemyAnimator.SetTrigger("Dead");
         
         enemyBehaviour.Die();
 

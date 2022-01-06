@@ -73,6 +73,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
     public override void Die()
     {
         currentState = State.Dead;
+        agent.isStopped = true;
         StartCoroutine(PlayAnim());
     }
 

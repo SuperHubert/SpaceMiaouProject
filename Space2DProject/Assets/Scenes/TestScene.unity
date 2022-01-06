@@ -1093,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4 LD5f
       objectReference: {fileID: 0}
+    - target: {fileID: 7138781478674079658, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}
 --- !u!114 &899322556 stripped

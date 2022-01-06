@@ -85,7 +85,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public virtual void Die()
     {
-        agent.SetDestination(transform.position);
+        //animator.SetTrigger("Dead");
+
+        agent.Warp(transform.position);
         
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(false);
@@ -109,6 +111,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         if (!respawn) return;
         
         animator.SetBool("isDead",false);
+
+        agent.isStopped = false;
         
         enemyTransform.gameObject.SetActive(true);
         enemyTransform.position = respawnTrigger.transform.position;
