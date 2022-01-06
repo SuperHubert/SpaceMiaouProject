@@ -17,11 +17,12 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     
     public List<TextMeshProUGUI> textList;
     public List<Image> imageList;
+    public List<GameObject> buttonList = new List<GameObject>();
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
+    public Image itemImage;
     //public List<TextMeshProUGUI> testNameList;
     public List<GameObject> soldOutList;
-    public TextMeshProUGUI descriptionText;
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
@@ -33,13 +34,24 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     private void Update()
     {
         if (!shopUI.activeSelf) return;
-
-        if (EventSystem.current.currentSelectedGameObject != previousSelectedObj)
+        
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (previousSelectedObj == null)
+            {
+                selectedButton.Select();;
+            }
+            else
+            {
+                previousSelectedObj.GetComponent<Button>().Select();
+            }
+            
+        }
+        else if (EventSystem.current.currentSelectedGameObject != previousSelectedObj)
         {
             previousSelectedObj = EventSystem.current.currentSelectedGameObject;
             UpdateDescription();
         }
-
 
         if (!closeShopInput) return;
         CloseShop();
@@ -105,8 +117,13 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     private void UpdateDescription()
     {
-        
-        Debug.Log("bonk");
+        for (int i = 0; i < buttonList.Count; i++)
+        {
+            if (buttonList[i] != previousSelectedObj) continue;
+            itemName.text = displayList[i].name;
+            itemDescription.text = displayList[i].description;
+            itemImage.sprite = displayList[i].image;
+        }
     }
     
     public void OnInteraction()
