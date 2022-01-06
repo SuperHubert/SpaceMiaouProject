@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class ShopInteraction : MonoBehaviour, IInteractible
@@ -9,14 +10,16 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public GameObject shopUI;
     public ShopManager shopManager;
     public Button selectedButton;
+    private GameObject previousSelectedObj;
     public TextMeshProUGUI nyanCountShop;
     public TextMeshProUGUI nyanCount;
     public Animator animator;
-
+    
     public List<TextMeshProUGUI> textList;
     public List<Image> imageList;
     public List<TextMeshProUGUI> testNameList;
     public List<GameObject> soldOutList;
+    public TextMeshProUGUI descriptionText;
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
@@ -27,8 +30,16 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     private void Update()
     {
-        if (!closeShopInput || !shopUI.activeSelf) return;
+        if (!shopUI.activeSelf) return;
 
+        if (EventSystem.current.currentSelectedGameObject != previousSelectedObj)
+        {
+            previousSelectedObj = EventSystem.current.currentSelectedGameObject;
+            UpdateDescription();
+        }
+
+
+        if (!closeShopInput) return;
         CloseShop();
 
     }
@@ -79,7 +90,6 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         canOpenShop = false;
         LevelManager.Instance.Player().SetActive(false);
         Vector3 pos = transform.position;
-        Debug.Log(pos);
         LevelManager.Instance.Player().transform.position = new Vector3(pos.x+0.126f,pos.y-0.594f,0);
         InputManager.canInput = false;
         animator.SetTrigger(PickUpAnimation);
@@ -89,6 +99,11 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         selectedButton.Select();
         Time.timeScale = 0;
 
+    }
+
+    private void UpdateDescription()
+    {
+        Debug.Log("bonk");
     }
     
     public void OnInteraction()
@@ -153,4 +168,5 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         }
 
     }
+
 }
