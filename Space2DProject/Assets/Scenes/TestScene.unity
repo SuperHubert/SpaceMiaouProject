@@ -1848,10 +1848,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 134682645412097206, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2588635905832172939, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: slider
       value: 
       objectReference: {fileID: 600786663}
+    - target: {fileID: 3365560717773139575, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3747763753785216955, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: fogOfWar
       value: 
@@ -1863,6 +1871,10 @@ PrefabInstance:
     - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_LocalPosition.y
       value: -13.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580066380633843705, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8800626575084868212, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_Name

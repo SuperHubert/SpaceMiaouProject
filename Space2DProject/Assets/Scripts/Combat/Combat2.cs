@@ -63,6 +63,9 @@ public class Combat2 : MonoBehaviour
 
             if (attackDirection.x > 0 && Mathf.Abs(attackDirection.x) > Mathf.Abs(attackDirection.y))
             {
+                NewAttack(baseRightCollider, "RightBaseAttack",new Vector3(0.5f,0,0),Quaternion.Euler(0,0,-90));
+                
+                /*
                 Physics2D.OverlapCollider(baseRightCollider, new ContactFilter2D().NoFilter(), hits);
                 Debug.Log("D");
                 playerAnimator.Play("RightBaseAttack");
@@ -77,9 +80,13 @@ public class Combat2 : MonoBehaviour
                         GetComponent<SprayAttack>().UpdateSprayBar();
                     }
                 }
+                */
             }
             else if (attackDirection.x < 0 && Mathf.Abs(attackDirection.x) > Mathf.Abs(attackDirection.y))
             {
+                NewAttack(baseLeftCollider, "LeftBaseAttack",new Vector3(-0.5f,0,0),Quaternion.Euler(0,0,90));
+                
+                /*
                 Physics2D.OverlapCollider(baseLeftCollider, new ContactFilter2D().NoFilter(), hits);
                 Debug.Log("G");
                 playerAnimator.Play("LeftBaseAttack");
@@ -94,9 +101,13 @@ public class Combat2 : MonoBehaviour
                         GetComponent<SprayAttack>().UpdateSprayBar();
                     }
                 }
+                */
             }
             else if (attackDirection.y > 0 && Mathf.Abs(attackDirection.y) > Mathf.Abs(attackDirection.x))
             {
+                NewAttack(baseUpCollider, "BackBaseAttack",new Vector3(0,0.4f,0),Quaternion.identity);
+                
+                /*
                 Physics2D.OverlapCollider(baseUpCollider, new ContactFilter2D().NoFilter(), hits);
                 Debug.Log("H");
                 playerAnimator.Play("BackBaseAttack");
@@ -111,9 +122,13 @@ public class Combat2 : MonoBehaviour
                         GetComponent<SprayAttack>().UpdateSprayBar();
                     }
                 }
+                */
             }
             else if (attackDirection.y < 0 && Mathf.Abs(attackDirection.y) > Mathf.Abs(attackDirection.x))
             {
+                NewAttack(baseDownCollider,"FrontBaseAttack",new Vector3(0,-0.5f,0),Quaternion.Euler(0,0,180));
+                
+                /*
                 Physics2D.OverlapCollider(baseDownCollider, new ContactFilter2D().NoFilter(), hits);
                 Debug.Log("B");
                 playerAnimator.Play("FrontBaseAttack");
@@ -128,6 +143,25 @@ public class Combat2 : MonoBehaviour
                         GetComponent<SprayAttack>().UpdateSprayBar();
                     }
                 }
+                */
+            }
+        }
+    }
+
+    void NewAttack(Collider2D col,string stateName,Vector3 pos, Quaternion rot)
+    {
+        Physics2D.OverlapCollider(col, new ContactFilter2D().NoFilter(), hits);
+        Debug.Log("D");
+        playerAnimator.Play(stateName);
+        Destroy(Instantiate(baseFX, transform.position+ pos, rot, gameObject.transform), 0.5f);
+                
+        foreach (Collider2D enemy in hits)
+        {
+            if (enemy.gameObject.layer == 7)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
+                GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
+                GetComponent<SprayAttack>().UpdateSprayBar();
             }
         }
     }
