@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     private GameObject sleepTrigger;
     private GameObject respawnTrigger;
     protected GameObject actionTrigger;
+
+    public bool stunned = false;
 
 
     private void Start()
@@ -85,7 +88,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public virtual void Die()
     {
-        agent.SetDestination(transform.position);
+        //animator.SetTrigger("Dead");
+
+        agent.Warp(transform.position);
         
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(false);
@@ -111,6 +116,14 @@ public abstract class EnemyBehaviour : MonoBehaviour
         animator.SetBool("isDead",false);
         
         enemyTransform.gameObject.SetActive(true);
+        
+        agent.isStopped = false;
+        
+        wakeUpTrigger.SetActive(true);
+        sleepTrigger.SetActive(false);
+        actionTrigger.SetActive(false);
+        respawnTrigger.SetActive(false);
+        
         enemyTransform.position = respawnTrigger.transform.position;
         health.InitEnemy();
         
@@ -131,6 +144,26 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         if (isPerformingAction) return;
         actionTrigger.SetActive(false);
+    }
+
+    public void Stun(float duration = 1f)
+    {
+        if(!stunned) StartCoroutine(StunRoutine(duration));
+    }
+
+    IEnumerator StunRoutine(float duration = 1f)
+    {
+        stunned = true;
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
+        yield return new WaitForSeconds(duration);
+        agent.isStopped = false;
+        stunned = false;
+    }
+
+    public void KnockBack(float force = 1f)
+    {
+        
     }
 
 }

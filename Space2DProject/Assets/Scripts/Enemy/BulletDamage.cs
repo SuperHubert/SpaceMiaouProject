@@ -24,4 +24,9 @@ public class BulletDamage : MonoBehaviour
     {
         bulletDamage = damage;
     }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        gameObject.SetActive(false);
+    }
 }

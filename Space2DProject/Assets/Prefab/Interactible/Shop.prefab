@@ -104,6 +104,7 @@ MonoBehaviour:
   - name: Heal I
     image: {fileID: 0}
     basePrice: 3
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -124,6 +125,7 @@ MonoBehaviour:
   - name: Heal II
     image: {fileID: 0}
     basePrice: 4
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -144,6 +146,7 @@ MonoBehaviour:
   - name: Heal III
     image: {fileID: 0}
     basePrice: 5
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -164,6 +167,7 @@ MonoBehaviour:
   - name: Speed I
     image: {fileID: 0}
     basePrice: 2
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -184,6 +188,7 @@ MonoBehaviour:
   - name: Speed II
     image: {fileID: 0}
     basePrice: 3
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -204,6 +209,7 @@ MonoBehaviour:
   - name: Speed III
     image: {fileID: 0}
     basePrice: 4
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -224,6 +230,7 @@ MonoBehaviour:
   - name: Broom Damage I
     image: {fileID: 0}
     basePrice: 3
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -244,6 +251,7 @@ MonoBehaviour:
   - name: Broom Damage II
     image: {fileID: 0}
     basePrice: 4
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -264,6 +272,7 @@ MonoBehaviour:
   - name: Broom Damages III
     image: {fileID: 0}
     basePrice: 6
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -284,6 +293,7 @@ MonoBehaviour:
   - name: Dash Cooldown I
     image: {fileID: 0}
     basePrice: 2
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -304,6 +314,7 @@ MonoBehaviour:
   - name: Dash Cooldown II
     image: {fileID: 0}
     basePrice: 4
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -324,6 +335,7 @@ MonoBehaviour:
   - name: Dash Cooldown III
     image: {fileID: 0}
     basePrice: 5
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -344,6 +356,7 @@ MonoBehaviour:
   - name: Fortune I
     image: {fileID: 0}
     basePrice: 3
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -364,6 +377,7 @@ MonoBehaviour:
   - name: Fortune II
     image: {fileID: 0}
     basePrice: 4
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -384,6 +398,7 @@ MonoBehaviour:
   - name: Fortune III
     image: {fileID: 0}
     basePrice: 5
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -404,6 +419,7 @@ MonoBehaviour:
   - name: 'Bleach '
     image: {fileID: 0}
     basePrice: 2
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -424,6 +440,7 @@ MonoBehaviour:
   - name: Spray Damage I
     image: {fileID: 0}
     basePrice: 2
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -444,6 +461,7 @@ MonoBehaviour:
   - name: Spray Damage II
     image: {fileID: 0}
     basePrice: 3
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -464,6 +482,7 @@ MonoBehaviour:
   - name: Better Prices I
     image: {fileID: 0}
     basePrice: 3
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -484,6 +503,7 @@ MonoBehaviour:
   - name: Better Prices II
     image: {fileID: 0}
     basePrice: 4
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -504,6 +524,7 @@ MonoBehaviour:
   - name: Soap Gain I
     image: {fileID: 0}
     basePrice: 3
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -524,6 +545,7 @@ MonoBehaviour:
   - name: Soap Gain II
     image: {fileID: 0}
     basePrice: 4
+    description: does something
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -581,8 +603,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   imageList: []
-  testNameList: []
+  buttonList: []
+  itemName: {fileID: 0}
+  itemDescription: {fileID: 0}
+  itemImage: {fileID: 0}
   soldOutList: []
+  baseButtonSprite: {fileID: 21300000, guid: de8b187f08a37da4080e1d6f2b7ecb54, type: 3}
+  soldOutSprite: {fileID: 21300000, guid: 544662833044aba4a95cda8d30d31580, type: 3}
   displayList: []
   closeShopInput: 0
 --- !u!61 &1101935766226791751
@@ -602,7 +629,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.96}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

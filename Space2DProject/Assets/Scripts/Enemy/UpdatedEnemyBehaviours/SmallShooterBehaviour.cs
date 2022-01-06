@@ -86,6 +86,8 @@ public class SmallShooterBehaviour : EnemyBehaviour
     public override void Die()
     {
         currentState = State.Dead;
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
         StartCoroutine(PlayAnim());
     }
 

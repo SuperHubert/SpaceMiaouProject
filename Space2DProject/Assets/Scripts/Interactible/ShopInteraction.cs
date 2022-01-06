@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class ShopInteraction : MonoBehaviour, IInteractible
@@ -9,14 +10,22 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public GameObject shopUI;
     public ShopManager shopManager;
     public Button selectedButton;
+    private GameObject previousSelectedObj;
     public TextMeshProUGUI nyanCountShop;
     public TextMeshProUGUI nyanCount;
     public Animator animator;
-
+    
     public List<TextMeshProUGUI> textList;
     public List<Image> imageList;
-    public List<TextMeshProUGUI> testNameList;
+    public List<GameObject> buttonList = new List<GameObject>();
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemDescription;
+    public Image itemImage;
+    //public List<TextMeshProUGUI> testNameList;
     public List<GameObject> soldOutList;
+
+    public Sprite baseButtonSprite;
+    public Sprite soldOutSprite;
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
@@ -27,8 +36,27 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     private void Update()
     {
-        if (!closeShopInput || !shopUI.activeSelf) return;
+        if (!shopUI.activeSelf) return;
+        
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (previousSelectedObj == null)
+            {
+                selectedButton.Select();;
+            }
+            else
+            {
+                previousSelectedObj.GetComponent<Button>().Select();
+            }
+            
+        }
+        else if (EventSystem.current.currentSelectedGameObject != previousSelectedObj)
+        {
+            previousSelectedObj = EventSystem.current.currentSelectedGameObject;
+            UpdateDescription();
+        }
 
+        if (!closeShopInput) return;
         CloseShop();
 
     }
@@ -48,11 +76,15 @@ public class ShopInteraction : MonoBehaviour, IInteractible
                 displayList[i].actualPrice = 1; 
             }
             textList[i].text = displayList[i].actualPrice.ToString();
-            testNameList[i].text = displayList[i].name;
-            soldOutList[i].SetActive(false);
+            //testNameList[i].text = displayList[i].name;
+            
+            //soldOutList[i].SetActive(false);
+            buttonList[i].GetComponent<Image>().sprite = baseButtonSprite;
+            
             if (displayList[i].isBought)
             {
-                soldOutList[i].SetActive(true);
+                buttonList[i].GetComponent<Image>().sprite = soldOutSprite;
+                //soldOutList[i].SetActive(true);
             }
             nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
 
@@ -78,8 +110,8 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         canOpenShop = false;
         LevelManager.Instance.Player().SetActive(false);
+        UIManager.Instance.normalUI.SetActive(false);
         Vector3 pos = transform.position;
-        Debug.Log(pos);
         LevelManager.Instance.Player().transform.position = new Vector3(pos.x+0.126f,pos.y-0.594f,0);
         InputManager.canInput = false;
         animator.SetTrigger(PickUpAnimation);
@@ -89,6 +121,17 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         selectedButton.Select();
         Time.timeScale = 0;
 
+    }
+
+    private void UpdateDescription()
+    {
+        for (int i = 0; i < buttonList.Count; i++)
+        {
+            if (buttonList[i] != previousSelectedObj) continue;
+            itemName.text = displayList[i].name;
+            itemDescription.text = displayList[i].description;
+            itemImage.sprite = displayList[i].image;
+        }
     }
     
     public void OnInteraction()
@@ -103,6 +146,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public void CloseShop()
     {
         LevelManager.Instance.Player().SetActive(true);
+        UIManager.Instance.normalUI.SetActive(true);
         shopUI.SetActive(false);
         Time.timeScale = 1;
         StartCoroutine(InteractionCooldown());
@@ -111,10 +155,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public void Button(int index)
     {
         if (!CanBuy(index)) return;
-        Debug.Log("item bought)");
         MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
         displayList[index].isBought = true;
-        soldOutList[index].SetActive(true);
+        //soldOutList[index].SetActive(true);
         displayList[index].upgrade.Invoke();
         nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
         nyanCount.text = MoneyManager.Instance.nyanCoins.ToString();
@@ -153,4 +196,5 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         }
 
     }
+
 }
