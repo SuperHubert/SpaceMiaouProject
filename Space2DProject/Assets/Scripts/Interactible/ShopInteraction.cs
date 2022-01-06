@@ -17,7 +17,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     
     public List<TextMeshProUGUI> textList;
     public List<Image> imageList;
-    public List<TextMeshProUGUI> testNameList;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemDescription;
+    //public List<TextMeshProUGUI> testNameList;
     public List<GameObject> soldOutList;
     public TextMeshProUGUI descriptionText;
 
@@ -59,7 +61,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
                 displayList[i].actualPrice = 1; 
             }
             textList[i].text = displayList[i].actualPrice.ToString();
-            testNameList[i].text = displayList[i].name;
+            //testNameList[i].text = displayList[i].name;
             soldOutList[i].SetActive(false);
             if (displayList[i].isBought)
             {
@@ -103,6 +105,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     private void UpdateDescription()
     {
+        
         Debug.Log("bonk");
     }
     
