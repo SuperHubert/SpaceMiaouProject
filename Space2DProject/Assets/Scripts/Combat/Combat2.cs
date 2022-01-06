@@ -165,7 +165,7 @@ public class Combat2 : MonoBehaviour
             if (enemy.gameObject.layer == 7)
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage);
-                enemy.GetComponent<Rigidbody2D>().AddForce( (enemy.transform.position - transform.position).normalized* force);
+                if(enemy.GetComponent<Rigidbody2D>() != null) enemy.GetComponent<Rigidbody2D>().AddForce( (enemy.transform.position - transform.position).normalized* force);
                 GetComponent<SprayAttack>().currentSpray += sprayGainSpecial;
                 GetComponent<SprayAttack>().UpdateSprayBar();
             }
