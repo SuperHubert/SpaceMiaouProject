@@ -200,11 +200,14 @@ public class Combat2 : MonoBehaviour
                 GetComponent<SprayAttack>().UpdateSprayBar();
             }
         }
+        
+        LifeManager.Instance.canTakeDamge = false;
     }
     
     void ResetAttack()
     {
         isAttacking = false;
+        LifeManager.Instance.canTakeDamge = true;
         playerAnimator.SetBool("IsAttacking", false);
         GetComponent<PlayerMovement>().speed = 7;
     }
