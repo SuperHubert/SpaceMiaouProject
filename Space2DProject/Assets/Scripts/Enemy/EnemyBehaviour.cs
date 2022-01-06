@@ -161,4 +161,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
         stunned = false;
     }
 
+    public void KnockBack(float force = 1f)
+    {
+        
+    }
+
 }
