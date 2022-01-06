@@ -1029,6 +1029,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827856575}
     m_Modifications:
+    - target: {fileID: 3834921960653506250, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3967754078215960340, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}
       propertyPath: m_Radius
       value: 0.1
@@ -1099,7 +1103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7138781478674079658, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}
       propertyPath: maxHealth
-      value: 1
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}

@@ -78,7 +78,7 @@ public class EnemyHealth : MonoBehaviour
         ResizeHealthBar();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage,bool stun = false, float duration = 1)
     {
         if (canTakeDamage)
         {
@@ -91,10 +91,14 @@ public class EnemyHealth : MonoBehaviour
             currentHealth -= damage;
 
             healthBarFrontImg.fillAmount = currentHealth / maxHealth;
-        
+            
             if (currentHealth <= 0)
             {
                 Die();
+            }
+            else if(stun)
+            {
+                enemyBehaviour.Stun(duration);
             }
         
             enemyAnimator.ResetTrigger("TakeDamage");

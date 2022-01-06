@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     private GameObject sleepTrigger;
     private GameObject respawnTrigger;
     protected GameObject actionTrigger;
+
+    public bool stunned = false;
 
 
     private void Start()
@@ -141,6 +144,21 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         if (isPerformingAction) return;
         actionTrigger.SetActive(false);
+    }
+
+    public void Stun(float duration = 1f)
+    {
+        if(!stunned) StartCoroutine(StunRoutine(duration));
+    }
+
+    IEnumerator StunRoutine(float duration = 1f)
+    {
+        stunned = true;
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
+        yield return new WaitForSeconds(duration);
+        agent.isStopped = false;
+        stunned = false;
     }
 
 }
