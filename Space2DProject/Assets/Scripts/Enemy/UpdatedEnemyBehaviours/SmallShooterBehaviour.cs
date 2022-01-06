@@ -60,13 +60,6 @@ public class SmallShooterBehaviour : EnemyBehaviour
         animator.SetBool("isWalking", true);
     }
     
-    /*private void LookAt(Transform target)
-    {
-        Vector3 dir = target.position - enemyTransform.position;
-        float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
-        enemyTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }*/
-    
     private void ShootBullet()
     {
         animator.SetBool("isAttacking", true);

@@ -188,14 +188,14 @@ public class Combat2 : MonoBehaviour
     void WaveAttack()
     {
         Destroy(Instantiate(specialFX, transform.position, Quaternion.identity, gameObject.transform), 1f);
-        Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.5f);
+        Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.6f);
 
         foreach (Collider2D enemy in hit)
         {
             if (enemy.gameObject.layer == 7)
             {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage);
-                if(enemy.GetComponent<Rigidbody2D>() != null) enemy.GetComponent<Rigidbody2D>().AddForce( (enemy.transform.position - transform.position).normalized* force);
+                enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
+                //enemy.GetComponent<EnemyHealth>().KnockBack(enemy.transform.position + (enemy.transform.position - transform.position).normalized * 2);
                 GetComponent<SprayAttack>().currentSpray += sprayGainSpecial;
                 GetComponent<SprayAttack>().UpdateSprayBar();
             }

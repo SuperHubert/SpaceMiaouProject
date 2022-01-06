@@ -149,11 +149,15 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     
-    
     private void HealthDecreaseEffect()
     {
         healthBarBackImg.fillAmount = Mathf.Lerp (healthBarBackImg.fillAmount, healthBarFrontImg.fillAmount, 1f * Time.deltaTime);
         
+    }
+
+    public void KnockBack(Vector3 pos, float duration = 1f)
+    {
+        enemyBehaviour.KnockBack(pos,duration);
     }
 
 }

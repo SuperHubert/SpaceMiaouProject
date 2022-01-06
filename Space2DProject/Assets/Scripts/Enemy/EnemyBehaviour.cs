@@ -146,12 +146,12 @@ public abstract class EnemyBehaviour : MonoBehaviour
         actionTrigger.SetActive(false);
     }
 
-    public void Stun(float duration = 1f)
+    public virtual void Stun(float duration = 1f)
     {
         if(!stunned) StartCoroutine(StunRoutine(duration));
     }
 
-    IEnumerator StunRoutine(float duration = 1f)
+    public virtual IEnumerator StunRoutine(float duration = 1f)
     {
         stunned = true;
         agent.velocity = Vector3.zero;
@@ -161,8 +161,22 @@ public abstract class EnemyBehaviour : MonoBehaviour
         stunned = false;
     }
 
-    public void KnockBack(float force = 1f)
+    public virtual void KnockBack(Vector3 pos, float duration = 0.75f)
     {
+        StartCoroutine(KnockBackRoutine(pos,duration));
+    }
+
+    public virtual IEnumerator KnockBackRoutine(Vector3 pos,float duration)
+    {
+        agent.velocity = Vector3.zero;
+        agent.SetDestination(enemyTransform.position);
+        yield return null;
+        agent.acceleration = 100;
+        agent.speed = 20;
+        agent.stoppingDistance = 1f;
+        agent.SetDestination(pos);
+        yield return new WaitForSeconds(duration);
+        agent.SetDestination(enemyTransform.position);
         
     }
 
