@@ -24,6 +24,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     //public List<TextMeshProUGUI> testNameList;
     public List<GameObject> soldOutList;
 
+    public Sprite baseButtonSprite;
+    public Sprite soldOutSprite;
+
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
     private bool canOpenShop = true;
@@ -74,10 +77,14 @@ public class ShopInteraction : MonoBehaviour, IInteractible
             }
             textList[i].text = displayList[i].actualPrice.ToString();
             //testNameList[i].text = displayList[i].name;
-            soldOutList[i].SetActive(false);
+            
+            //soldOutList[i].SetActive(false);
+            buttonList[i].GetComponent<Image>().sprite = baseButtonSprite;
+            
             if (displayList[i].isBought)
             {
-                soldOutList[i].SetActive(true);
+                buttonList[i].GetComponent<Image>().sprite = soldOutSprite;
+                //soldOutList[i].SetActive(true);
             }
             nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
 
@@ -103,6 +110,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         canOpenShop = false;
         LevelManager.Instance.Player().SetActive(false);
+        UIManager.Instance.normalUI.SetActive(false);
         Vector3 pos = transform.position;
         LevelManager.Instance.Player().transform.position = new Vector3(pos.x+0.126f,pos.y-0.594f,0);
         InputManager.canInput = false;
@@ -138,6 +146,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public void CloseShop()
     {
         LevelManager.Instance.Player().SetActive(true);
+        UIManager.Instance.normalUI.SetActive(true);
         shopUI.SetActive(false);
         Time.timeScale = 1;
         StartCoroutine(InteractionCooldown());
@@ -146,10 +155,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public void Button(int index)
     {
         if (!CanBuy(index)) return;
-        Debug.Log("item bought)");
         MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
         displayList[index].isBought = true;
-        soldOutList[index].SetActive(true);
+        //soldOutList[index].SetActive(true);
         displayList[index].upgrade.Invoke();
         nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
         nyanCount.text = MoneyManager.Instance.nyanCoins.ToString();

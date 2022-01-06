@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public List<GameObject> HpList;
     private List<Animator> HpAnims = new List<Animator>();
+    public GameObject normalUI;
 
 
     #region Singleton
