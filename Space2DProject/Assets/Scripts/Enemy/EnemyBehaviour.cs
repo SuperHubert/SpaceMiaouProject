@@ -111,10 +111,16 @@ public abstract class EnemyBehaviour : MonoBehaviour
         if (!respawn) return;
         
         animator.SetBool("isDead",false);
-
-        agent.isStopped = false;
         
         enemyTransform.gameObject.SetActive(true);
+        
+        agent.isStopped = false;
+        
+        wakeUpTrigger.SetActive(true);
+        sleepTrigger.SetActive(false);
+        actionTrigger.SetActive(false);
+        respawnTrigger.SetActive(false);
+        
         enemyTransform.position = respawnTrigger.transform.position;
         health.InitEnemy();
         

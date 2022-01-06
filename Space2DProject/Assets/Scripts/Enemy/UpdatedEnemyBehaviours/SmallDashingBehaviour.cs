@@ -73,6 +73,10 @@ public class SmallDashingBehaviour : EnemyBehaviour
     public override void Die()
     {
         currentState = State.Dead;
+        agent.stoppingDistance = 0f;
+        agent.acceleration = 8;
+        agent.speed = 3.5f;
+        agent.velocity = Vector3.zero;
         agent.isStopped = true;
         StartCoroutine(PlayAnim());
     }
