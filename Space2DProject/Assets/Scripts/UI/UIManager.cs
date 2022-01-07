@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class UIManager : MonoBehaviour
     public List<GameObject> HpList;
     private List<Animator> HpAnims = new List<Animator>();
     public GameObject normalUI;
+    public int score;
+    public TextMeshProUGUI scoreText;
 
 
     #region Singleton
@@ -25,8 +28,6 @@ public class UIManager : MonoBehaviour
         {
             HpAnims.Add(obj.GetComponent<Animator>());
         }
-        
-
     }
 
     public void SetHpUI(int number, bool hpGain)
@@ -46,5 +47,12 @@ public class UIManager : MonoBehaviour
                 HpAnims[i].SetTrigger("Off");
             }
         }
+    }
+
+    public void IncreaseScore(int number)
+    {
+        score += number;
+        if (number == 0) score = 0;
+        scoreText.text = "Score : " + score;
     }
 }

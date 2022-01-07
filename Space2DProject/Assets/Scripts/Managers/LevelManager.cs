@@ -55,7 +55,6 @@ public class LevelManager : MonoBehaviour
     {
         if (!canGenerate) return;
         playerFollower.isInHub = true;
-
         if (rooms < 0)
         {
             if (LoadingLevelData.Instance != null)
@@ -170,6 +169,8 @@ public class LevelManager : MonoBehaviour
         yield return null;
         
         generator.GenerateRooms(rooms,seed);
+        
+        UIManager.Instance.IncreaseScore(0);
 
         canGenerate = true;
     }

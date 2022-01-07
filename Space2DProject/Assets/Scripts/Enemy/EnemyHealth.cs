@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     public bool canTakeDamage = true;
     [SerializeField]private float maxHealth = 3;
     [SerializeField]private float currentHealth;
+    private bool isDying = false;
 
     [SerializeField]private bool moveHealthBar = true;
 
@@ -74,6 +75,8 @@ public class EnemyHealth : MonoBehaviour
         isBurning = false;
         
         cam = Camera.main;
+
+        isDying = false;
         
         ResizeHealthBar();
     }
@@ -92,7 +95,7 @@ public class EnemyHealth : MonoBehaviour
 
             healthBarFrontImg.fillAmount = currentHealth / maxHealth;
             
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !isDying)
             {
                 Die();
             }
@@ -121,7 +124,9 @@ public class EnemyHealth : MonoBehaviour
     
     private void Die()
     {
-        //enemyAnimator.SetTrigger("Dead");
+        isDying = true;
+        
+        UIManager.Instance.IncreaseScore((int)maxHealth);
         
         enemyBehaviour.Die();
 

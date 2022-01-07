@@ -595,6 +595,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5262667498829909145, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
   m_PrefabInstance: {fileID: 385766012}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &385766022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3491922780188974443, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+  m_PrefabInstance: {fileID: 385766012}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &430110694 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4745632883511375322, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -1621,6 +1632,10 @@ PrefabInstance:
       propertyPath: normalUI
       value: 
       objectReference: {fileID: 898381630}
+    - target: {fileID: 6520009499888700270, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 385766022}
     - target: {fileID: 6520009499888700270, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: HpList.Array.data[0]
       value: 
