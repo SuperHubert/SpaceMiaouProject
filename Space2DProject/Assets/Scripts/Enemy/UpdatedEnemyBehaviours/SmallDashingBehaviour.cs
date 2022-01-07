@@ -41,6 +41,12 @@ public class SmallDashingBehaviour : EnemyBehaviour
         }
     }
 
+    protected override void InitVariables()
+    {
+        base.InitVariables();
+        enemy.GetComponent<Collider2D>().enabled = true;
+    }
+
     protected override void Action()
     {
         base.Action();
@@ -74,6 +80,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
     
     public override void Die()
     {
+        enemy.GetComponent<Collider2D>().enabled = false;
         currentState = State.Dead;
         agent.stoppingDistance = 0f;
         agent.acceleration = 8;
