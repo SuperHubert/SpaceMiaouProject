@@ -16,10 +16,16 @@ public class Chest : MonoBehaviour, IInteractible
         col = GetComponent<Collider2D>();
 
     }
+    
 
-    public void OnInteraction()
+    IEnumerator PlayOpenAnim()
     {
-        col.enabled = false;
+        anim.SetTrigger("Open");
+        yield return new WaitForSeconds(0.95f);
+    }
+
+    private void SpawnItems()
+    {
         float drop = Random.Range(0, 100);
         if (drop < LootManager.Instance.ConvertLevelToProbability(floor))
         {
@@ -34,7 +40,11 @@ public class Chest : MonoBehaviour, IInteractible
             
             //Destroy(gameObject);
         }
-
+    }
+    
+    public void OnInteraction()
+    {
+        col.enabled = false;
         StartCoroutine(PlayOpenAnim());
     }
 
@@ -69,11 +79,5 @@ public class Chest : MonoBehaviour, IInteractible
                 anim.SetLayerWeight (1, 1f);
                 break;
         }
-    }
-
-    IEnumerator PlayOpenAnim()
-    {
-        anim.SetTrigger("Open");
-        yield return new WaitForSeconds(1.250f);
     }
 }

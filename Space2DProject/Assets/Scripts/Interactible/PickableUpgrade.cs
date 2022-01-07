@@ -10,4 +10,9 @@ public class PickableUpgrade : MonoBehaviour, IInteractible
         upgrade.Invoke();
         Destroy(gameObject);
     }
+
+    public void PlayDropAnim()
+    {
+        
+    }
 }
