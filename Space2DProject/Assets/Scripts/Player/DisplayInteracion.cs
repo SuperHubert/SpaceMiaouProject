@@ -12,7 +12,7 @@ public class DisplayInteracion : MonoBehaviour
     {
         if (!interact || !canInteract) return;
         
-        objectToInteractWith.GetComponent<IInteractible>().OnInteraction();
+        if(objectToInteractWith != null )objectToInteractWith.GetComponent<IInteractible>().OnInteraction();
         pressButton.SetActive(false);
     }
 
