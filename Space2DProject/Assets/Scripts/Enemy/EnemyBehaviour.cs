@@ -106,6 +106,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
         
         enemyTransform.gameObject.SetActive(false);
+        
         currentState = State.Dead;
     }
 

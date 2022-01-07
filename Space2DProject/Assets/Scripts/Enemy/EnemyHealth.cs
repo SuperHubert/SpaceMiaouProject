@@ -86,12 +86,12 @@ public class EnemyHealth : MonoBehaviour
         if (canTakeDamage)
         {
             ResizeHealthBar();
-        
-            healthBarObj.SetActive(true);
-        
+            
             enemyAnimator.SetTrigger("TakeDamage");
         
             currentHealth -= damage;
+            
+            healthBarObj.SetActive(currentHealth > 0);
 
             healthBarFrontImg.fillAmount = currentHealth / maxHealth;
             
@@ -125,8 +125,10 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         isDying = true;
-        
+
         UIManager.Instance.IncreaseScore((int)maxHealth);
+        
+        healthBarObj.SetActive(false);
         
         enemyBehaviour.Die();
 
