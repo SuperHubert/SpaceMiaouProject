@@ -48,7 +48,7 @@ MonoBehaviour:
   currentState: 0
   respawn: 1
   hasAction: 1
-  actionCdMax: 100
+  actionCdMax: 150
   actionCd: 0
   animator: {fileID: 7114000372021665573}
   enemyTransform: {fileID: 4438055802179560057}

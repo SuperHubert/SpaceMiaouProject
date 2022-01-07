@@ -54,8 +54,8 @@ public class SmallDashingBehaviour : EnemyBehaviour
         
         agent.velocity = Vector3.zero;
         agent.acceleration = 100;
-        agent.speed = 20;
-        agent.stoppingDistance = 1f;
+        agent.speed = 10;
+        agent.stoppingDistance = 1.5f;
 
         var enemyTransformPosition = enemyTransform.position;
         var playerPos = player.position;
@@ -68,6 +68,8 @@ public class SmallDashingBehaviour : EnemyBehaviour
         yield return new WaitForSeconds(0.1f);
 
         if(enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(target);
+        
+        yield return new WaitForSeconds(0.1f);
     }
     
     public override void Die()
