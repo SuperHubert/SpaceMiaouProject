@@ -54,6 +54,7 @@ MonoBehaviour:
   enemyTransform: {fileID: 4438055802179560057}
   triggersTransform: {fileID: 2225490474295227216}
   respawnTriggerTransform: {fileID: 6201864753320988105}
+  stunned: 0
 --- !u!1 &1697389571299705708
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,6 +67,7 @@ GameObject:
   - component: {fileID: 1953369980548672841}
   - component: {fileID: 6463092082602619044}
   - component: {fileID: 6010281503785982382}
+  - component: {fileID: 3427387771673118897}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -151,6 +153,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 0.6}
   m_Direction: 0
+--- !u!114 &3427387771673118897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697389571299705708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575ccd494e101484cb518b50d078ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &1924729776669349723
 GameObject:
   m_ObjectHideFlags: 0
