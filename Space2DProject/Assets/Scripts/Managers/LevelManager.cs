@@ -200,6 +200,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            //JOUER LA CINEMATIQUE LA
             LifeManager.Instance.Die(true);
         }
         
