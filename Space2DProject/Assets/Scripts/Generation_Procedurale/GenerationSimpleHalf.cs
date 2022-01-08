@@ -315,6 +315,8 @@ public class GenerationSimpleHalf : MonoBehaviour
     {
         textureAssigner.FillAllPools();
         
+        LevelManager.Instance.ChangeBackgroundColor();
+        
         foreach (Case room in generationList)
         {
             GetSurroundingCasesList(room);

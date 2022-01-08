@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
@@ -18,6 +19,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject playerFall;
     [SerializeField] private Transform mainCamera;
     [SerializeField] private FollowPlayer playerFollower;
+
+    [SerializeField] private RawImage minimapBackground;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
@@ -145,7 +148,7 @@ public class LevelManager : MonoBehaviour
         }
         
         generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
-
+        
         canGenerate = true;
     }
 
@@ -169,7 +172,7 @@ public class LevelManager : MonoBehaviour
         yield return null;
         
         generator.GenerateRooms(rooms,seed);
-        
+
         UIManager.Instance.IncreaseScore(0);
 
         canGenerate = true;
@@ -205,6 +208,21 @@ public class LevelManager : MonoBehaviour
         }
         
 
+    }
+
+    public void ChangeBackgroundColor()
+    {
+        var biome = GetBiome();
+        var cam = mainCamera.GetComponent<Camera>();
+        Debug.Log(cam);
+        Debug.Log(biome);
+        minimapBackground.color = biome switch
+        {
+            0 => cam.backgroundColor = new Color(0.03137255f,0.09019608f,0.145098f,0),
+            1 => cam.backgroundColor = new Color(0.3960784f,0.05882353f,0.09411765f,0),
+            2 => cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f,0),
+            _ => cam.backgroundColor = new Color(0.03137255f,0.09019608f,0.145098f,0)
+        };
     }
 
     IEnumerator BossFightNavMesh()
