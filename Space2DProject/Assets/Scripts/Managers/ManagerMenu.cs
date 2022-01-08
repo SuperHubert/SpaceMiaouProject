@@ -12,6 +12,26 @@ public class ManagerMenu : MonoBehaviour
     {
         firstSelectedButton.Select();
     }
+    
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (previousSelectedObj == null)
+            {
+                firstSelectedButton.Select();;
+            }
+            else
+            {
+                previousSelectedObj.GetComponent<Button>().Select();
+            }
+            
+        }
+        else if (EventSystem.current.currentSelectedGameObject != previousSelectedObj)
+        {
+            previousSelectedObj = EventSystem.current.currentSelectedGameObject;
+        }
+    }
 
     public void PlayGame()
     {
@@ -32,25 +52,5 @@ public class ManagerMenu : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
-    }
-
-    private void Update()
-    {
-        if (EventSystem.current.currentSelectedGameObject == null)
-        {
-            if (previousSelectedObj == null)
-            {
-                firstSelectedButton.Select();;
-            }
-            else
-            {
-                previousSelectedObj.GetComponent<Button>().Select();
-            }
-            
-        }
-        else if (EventSystem.current.currentSelectedGameObject != previousSelectedObj)
-        {
-            previousSelectedObj = EventSystem.current.currentSelectedGameObject;
-        }
     }
 }
