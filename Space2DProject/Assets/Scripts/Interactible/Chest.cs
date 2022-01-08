@@ -16,32 +16,28 @@ public class Chest : MonoBehaviour, IInteractible
         col = GetComponent<Collider2D>();
 
     }
-    
-
     IEnumerator PlayOpenAnim()
     {
         anim.SetTrigger("Open");
-        yield return new WaitForSeconds(0.95f);
-    }
-
-    private void SpawnItems()
-    {
+        
         float drop = Random.Range(0, 100);
         if (drop < LootManager.Instance.ConvertLevelToProbability(floor))
         {
-            LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : Random.Range(1, 3),
+            var bonk = LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : Random.Range(1, 3),
                 transform.position);
-                
-            //Destroy(gameObject);
+            yield return new WaitForSeconds(1.25f);
+            foreach (var obj in bonk)
+            {
+                obj.GetComponent<Collider2D>().enabled = true;
+            }
         }
         else
         {
             LootManager.Instance.GetUpgrade(floor,transform.position);
-            
-            //Destroy(gameObject);
         }
+        
+        yield return new WaitForSeconds(0.95f);
     }
-    
     public void OnInteraction()
     {
         col.enabled = false;

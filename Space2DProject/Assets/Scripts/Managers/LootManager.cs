@@ -43,14 +43,17 @@ public class LootManager : MonoBehaviour
         return probability;
     }
 
-    public void GetCoins(int numberOfCoins,Vector3 pos)
+    public List<GameObject> GetCoins(int numberOfCoins,Vector3 pos)
     {
         Debug.Log(numberOfCoins);
+        var returnList = new List<GameObject>();
         for (int i = 0; i < numberOfCoins; i++)
         {
             Debug.Log("coin");
-            Instantiate(coin,pos, quaternion.identity);
+            returnList.Add(Instantiate(coin, pos, quaternion.identity));
         }
+
+        return returnList;
     }
 
     public void GetUpgrade(int level,Vector3 pos)
