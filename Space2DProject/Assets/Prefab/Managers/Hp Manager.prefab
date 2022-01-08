@@ -49,8 +49,10 @@ MonoBehaviour:
   isInGodMode: 0
   canTakeDamge: 1
   invulTime: 1
+  deathObj: {fileID: 4031187297786249503, guid: bac0eba2eb9dd5349b5375d76d7ba375, type: 3}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
   flashDuration: 0.1
+  anim: {fileID: 0}
 --- !u!114 &6043002544381492803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,3 +75,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  normalUI: {fileID: 0}
+  score: 0
+  scoreText: {fileID: 0}

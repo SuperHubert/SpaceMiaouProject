@@ -11,6 +11,8 @@ public class LifeManager : MonoBehaviour
     public bool canTakeDamge = true;
     public float invulTime = 1f;
 
+    [SerializeField] private GameObject deathObj;
+
     [SerializeField] private Material flashMaterial;
     public float flashDuration = 0.1f;
     private Camera mainCamera;
@@ -50,7 +52,7 @@ public class LifeManager : MonoBehaviour
         {
             lifeBar = maxHP;
         }
-        else if (lifeBar < 0)
+        else if (lifeBar <= 0)
         {
             lifeBar = 0;
             Die();
@@ -62,22 +64,28 @@ public class LifeManager : MonoBehaviour
     }
 
    public void Die(bool instant = false)
-   {
-       GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
+   { 
+       //LevelManager.Instance.Player().GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
+       LevelManager.Instance.Player().SetActive(false);
+       LoadingLevelData.Instance.score = UIManager.Instance.score;
        Time.timeScale = 1f;
        InputManager.canInput = false;
-       StartCoroutine(PlayDyingAnimation(instant));
+       StartCoroutine(PlayDyingAnimation());
    }
 
    IEnumerator PlayDyingAnimation(bool instant = false)
    {
-       if (!instant) yield return new WaitForSeconds(1.5f);
+       if (!instant)
+       {
+           Instantiate(deathObj,LevelManager.Instance.Player().transform.position,Quaternion.identity);
+           yield return new WaitForSeconds(3.5f);
+       }
        yield return new WaitForSeconds(0.5f);
        UIManager.Instance.IncreaseScore(0);
        DialogueManager.Instance.EndDialogue();
        LoadingManager.Instance.UpdateLoading();
        LoadingLevelData.Instance.ResetData();
-       LoadingManager.Instance.LoadScene(3);
+       LoadingManager.Instance.LoadScene(5);
        InputManager.canInput = true;
    }
 
