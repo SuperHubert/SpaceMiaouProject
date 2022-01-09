@@ -100,13 +100,7 @@ public class LevelManager : MonoBehaviour
     {
         gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
 
-        foreach (Transform child in generator.GetGrid().parent)
-        {
-            foreach (Transform item in child)
-            {
-                Destroy(item.gameObject);
-            }
-        }
+        generator.CleanUpObjects();
 
         foreach (Transform item in ObjectPooler.Instance.transform)
         {

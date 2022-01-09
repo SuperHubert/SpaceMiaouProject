@@ -17,6 +17,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform shopPos;
     private Transform portalPos;
     private Transform healthBarCanvas;
+    private Transform lights;
     private int roomSpriteRendersIndex;
     private int roomTilemapsIndex;
     private int roomCollisionsIndex;
@@ -568,5 +569,28 @@ public class GenerationSimpleHalf : MonoBehaviour
         cameraMap.orthographicSize = 25 + 10;
         
         //maybe more stuff
+    }
+
+    public void CleanUpObjects()
+    {
+        foreach (Transform child in grid)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in enemies)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in items)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (lights == null) return;
+        foreach (Transform child in lights)
+        { 
+            Destroy(child.gameObject);
+        }
+
     }
 }
