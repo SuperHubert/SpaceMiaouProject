@@ -108,7 +108,7 @@ public class ShopManager : MonoBehaviour
             name = ShopItemList[0].name,
             image = ShopItemList[0].image,
             basePrice = ShopItemList[0].basePrice,
-            description = "[Appears in every shop]",
+            description = "Heal 1 Life [Appears in every shop]",
             actualPrice = ShopItemList[0].actualPrice,
             upgrade = ShopItemList[0].upgrade,
             isBought = ShopItemList[0].isBought
