@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -21,6 +22,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private FollowPlayer playerFollower;
 
     [SerializeField] private RawImage minimapBackground;
+    [SerializeField] private Light2D globalLight;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
@@ -210,13 +212,25 @@ public class LevelManager : MonoBehaviour
         var cam = mainCamera.GetComponent<Camera>();
         Debug.Log(cam);
         Debug.Log(biome);
-        minimapBackground.color = biome switch
+        switch (biome)
         {
-            0 => cam.backgroundColor = new Color(0.03137255f,0.09019608f,0.145098f,0),
-            1 => cam.backgroundColor = new Color(0.3960784f,0.05882353f,0.09411765f,0),
-            2 => cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f,0),
-            _ => cam.backgroundColor = new Color(0.03137255f,0.09019608f,0.145098f,0)
-        };
+            case 0:
+                minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 0);
+                globalLight.color = Color.white;
+                break;
+            case 1:
+                minimapBackground.color = cam.backgroundColor = new Color(0.3960784f, 0.05882353f, 0.09411765f, 0);
+                globalLight.color = new Color(0.8396226f,0.6663744f,0.4475347f, 1);
+                break;
+            case 2:
+                minimapBackground.color = cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f, 0);
+                globalLight.color = Color.white;
+                break;
+            default:
+                minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 0);
+                globalLight.color = Color.white;
+                break;
+        }
     }
 
     IEnumerator BossFightNavMesh()

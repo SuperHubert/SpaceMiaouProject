@@ -1811,6 +1811,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1017999290}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: globalLight
+      value: 
+      objectReference: {fileID: 1463351942}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: bossFightObj
       value: 
       objectReference: {fileID: 75195319}
