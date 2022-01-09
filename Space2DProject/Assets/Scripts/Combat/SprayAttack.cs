@@ -65,6 +65,7 @@ public class SprayAttack : MonoBehaviour
 
     public void UpdateSprayBar()
     {
+        if (currentSpray > maxSpray) currentSpray = maxSpray;
         slider.value = currentSpray / maxSpray;
     }
 
