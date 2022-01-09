@@ -85,6 +85,7 @@ MonoBehaviour:
   level: {fileID: 0}
   cameraMap: {fileID: 0}
   followPlayer: {fileID: 0}
+  fogOfWar: {fileID: 0}
   buildNavMesh: 1
   movePlayer: 1
   firstRoomPrefab: {fileID: 0}
@@ -294,6 +295,11 @@ MonoBehaviour:
   playerFall: {fileID: 0}
   mainCamera: {fileID: 0}
   playerFollower: {fileID: 0}
+  minimapBackground: {fileID: 0}
+  globalLight: {fileID: 0}
+  portalBiome1: {fileID: 21300000, guid: 7eea68ec573e30141bd896ee1e449ea6, type: 3}
+  portalBiome2: {fileID: 21300000, guid: 085d524d09dda124bbe7acaf77e83037, type: 3}
+  portalBiome3: {fileID: 21300000, guid: d34fca60b27863147a8694e7b6a91531, type: 3}
   firstSeed: 69
   numberOfRooms: 16
   seedList: 

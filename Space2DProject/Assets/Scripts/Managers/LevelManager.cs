@@ -23,6 +23,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private RawImage minimapBackground;
     [SerializeField] private Light2D globalLight;
+    [SerializeField] private Sprite portalBiome1;
+    [SerializeField] private Sprite portalBiome2;
+    [SerializeField] private Sprite portalBiome3;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
@@ -210,25 +213,28 @@ public class LevelManager : MonoBehaviour
     {
         var biome = GetBiome();
         var cam = mainCamera.GetComponent<Camera>();
-        Debug.Log(cam);
-        Debug.Log(biome);
+        var portalSpriteRenderer = generator.level.GetChild(3).GetComponent<SpriteRenderer>();
         switch (biome)
         {
             case 0:
                 minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 0);
                 globalLight.color = Color.white;
+                portalSpriteRenderer.sprite = portalBiome1;
                 break;
             case 1:
                 minimapBackground.color = cam.backgroundColor = new Color(0.3960784f, 0.05882353f, 0.09411765f, 0);
                 globalLight.color = new Color(0.8396226f,0.6663744f,0.4475347f, 1);
+                portalSpriteRenderer.sprite = portalBiome2;
                 break;
             case 2:
                 minimapBackground.color = cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f, 0);
                 globalLight.color = Color.white;
+                portalSpriteRenderer.sprite = portalBiome3;
                 break;
             default:
                 minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 0);
                 globalLight.color = Color.white;
+                portalSpriteRenderer.sprite = portalBiome1;
                 break;
         }
     }
