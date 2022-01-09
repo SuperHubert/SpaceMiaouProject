@@ -1926,46 +1926,6 @@ PrefabInstance:
       propertyPath: followPlayer
       value: 
       objectReference: {fileID: 1764349729}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: useOldMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver4.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver12.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver24.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver34.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver4.Array.data[0]
-      value: 
-      objectReference: {fileID: 8725725207868173899, guid: efcecf40cbf1530499efad06c3c6ed89, type: 3}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver4.Array.data[1]
-      value: 
-      objectReference: {fileID: 6498211490458390588, guid: e7fd3609947a8b946853416b6f5efac6, type: 3}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver4.Array.data[2]
-      value: 
-      objectReference: {fileID: 8404871324626534143, guid: c0a8085e19d837d4ebf1c4b41beb1ba0, type: 3}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver4.Array.data[3]
-      value: 
-      objectReference: {fileID: 2015526224669411458, guid: 8a8c5be9a4e0aa743b5b247ce3027751, type: 3}
-    - target: {fileID: 6617073259897082751, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: b1Ver34.Array.data[0]
-      value: 
-      objectReference: {fileID: 5713374221132255987, guid: 48558ab274d711c4787b07d624034df1, type: 3}
     - target: {fileID: 7484005596906413670, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_IsActive
       value: 1

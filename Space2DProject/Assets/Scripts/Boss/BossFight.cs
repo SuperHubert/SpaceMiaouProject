@@ -32,6 +32,7 @@ public class BossFight : MonoBehaviour
 
         LevelManager.Instance.Level().GetChild(6).position = new Vector3(-5,-40,0);
         LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,50,0);
+        LevelManager.Instance.Level().GetChild(7).position = new Vector3(0,50,0);
         
         bossRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossRoom.SetActive(yes);

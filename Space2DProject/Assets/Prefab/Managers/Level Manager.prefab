@@ -180,7 +180,11 @@ MonoBehaviour:
   - {fileID: 3865417857991898078, guid: 2f3f8d8110b99dd42b1b0e98b86e18c8, type: 3}
   - {fileID: 3813306253620380701, guid: 40968c2d1e111b743a533f5c3263d7f5, type: 3}
   - {fileID: 2056553921587132423, guid: 45db086700a53094c92f0867b6b57d80, type: 3}
-  b1Ver4: []
+  b1Ver4:
+  - {fileID: 8725725207868173899, guid: efcecf40cbf1530499efad06c3c6ed89, type: 3}
+  - {fileID: 6498211490458390588, guid: e7fd3609947a8b946853416b6f5efac6, type: 3}
+  - {fileID: 8404871324626534143, guid: c0a8085e19d837d4ebf1c4b41beb1ba0, type: 3}
+  - {fileID: 2015526224669411458, guid: 8a8c5be9a4e0aa743b5b247ce3027751, type: 3}
   b1Ver31:
   - {fileID: 5413313178159561782, guid: 96345f2b06670724795afbf0047e773a, type: 3}
   - {fileID: 5619327191945026177, guid: 0a334b07c161e3c408eaec24dcfda6bd, type: 3}
@@ -189,7 +193,8 @@ MonoBehaviour:
   - {fileID: 5876084445961683811, guid: 68ffe2b744d79f34c8af0ae9cf79ce40, type: 3}
   b1Ver33:
   - {fileID: 1101565691399217013, guid: 469420ccc4eda1a44b2d2f04122a6c14, type: 3}
-  b1Ver34: []
+  b1Ver34:
+  - {fileID: 5713374221132255987, guid: 48558ab274d711c4787b07d624034df1, type: 3}
   b1Ver21:
   - {fileID: 7171600881412037748, guid: abbb6ee3c74a366439d231ec863fb22d, type: 3}
   b1Ver22:
@@ -198,7 +203,6 @@ MonoBehaviour:
   - {fileID: 5505419183239541532, guid: b7ebb58822232124489b21c9a63b8c64, type: 3}
   b1Ver24:
   - {fileID: 3656742117810010668, guid: 9059a4bd571c5ec4e9a462bd92297262, type: 3}
-  - {fileID: 6894654003919462521, guid: ddff03d99d79bd84d8d20cf9b3eebbf7, type: 3}
   b1Ver25:
   - {fileID: 5412835793782931130, guid: 30c531bdbe408a64aa9344e68e178005, type: 3}
   b1Ver26:
@@ -207,7 +211,6 @@ MonoBehaviour:
   - {fileID: 5967875725512681892, guid: 69a2e9cc2f3464f4db065d42833e6cde, type: 3}
   b1Ver12:
   - {fileID: 890058871905647881, guid: 7daa63ec535455d4e91fad9fb5721997, type: 3}
-  - {fileID: 4609911621382385617, guid: c80cd74d8fe8efa478d3f9337697bae5, type: 3}
   b1Ver13:
   - {fileID: 4077715859240780027, guid: 863e709d42176af4ca1be2931ec91211, type: 3}
   b1Ver14:
@@ -300,6 +303,9 @@ MonoBehaviour:
   portalBiome1: {fileID: 21300000, guid: 7eea68ec573e30141bd896ee1e449ea6, type: 3}
   portalBiome2: {fileID: 21300000, guid: 085d524d09dda124bbe7acaf77e83037, type: 3}
   portalBiome3: {fileID: 21300000, guid: d34fca60b27863147a8694e7b6a91531, type: 3}
+  towerBiome1: {fileID: 21300000, guid: 33dfb673f1f0cec47a26791686c00fb2, type: 3}
+  towerBiome2: {fileID: 21300000, guid: f0488d53396733747b007ad819c1b986, type: 3}
+  towerBiome3: {fileID: 21300000, guid: 438cb547a8c29674ebd8330ffe07b61c, type: 3}
   firstSeed: 69
   numberOfRooms: 16
   seedList: 

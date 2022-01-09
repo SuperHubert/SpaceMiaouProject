@@ -33,8 +33,8 @@ public class SprayAttack : MonoBehaviour
 
     void SprayingAttack()
     {
-        if (sprayAttackAxis > 0 && GetComponent<Combat>().isAttacking == false &&
-            GetComponent<Combat>().isSpecialAttacking == false)
+        if (sprayAttackAxis > 0 && GetComponent<Combat2>().isAttacking == false &&
+            GetComponent<Combat2>().isSpecialAttacking == false)
         {
             isSpraying = true;
             if (canShoot && currentSpray > 0)

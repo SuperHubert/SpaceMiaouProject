@@ -18,6 +18,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform portalPos;
     private Transform healthBarCanvas;
     private Transform lights;
+    private Transform tower;
     private int roomSpriteRendersIndex;
     private int roomTilemapsIndex;
     private int roomCollisionsIndex;
@@ -26,6 +27,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private int roomPortalIndex;
     private int roomSpawnIndex;
     private int roomShopIndex;
+    private int roomTowerIndex;
     [SerializeField] private Camera cameraMap;
     [SerializeField] private FollowPlayer followPlayer;
     [SerializeField] private FogOfWar fogOfWar;
@@ -57,6 +59,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         portalPos = level.GetChild(3);
         healthBarCanvas = level.GetChild(5);
         shopPos = level.GetChild(6);
+        tower = level.GetChild(7);
 
         roomSpriteRendersIndex = 0;
         roomTilemapsIndex = 1;
@@ -66,6 +69,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         roomPortalIndex = 5;
         roomSpawnIndex = 6;
         roomShopIndex = 7;
+        roomTowerIndex = 8;
     }
 
     private void Start()
@@ -522,6 +526,11 @@ public class GenerationSimpleHalf : MonoBehaviour
         GameObject posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomPortalIndex).gameObject, room.transform);
 
         portalPos.position = posObject.transform.position;
+        
+        //posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomTowerIndex).gameObject, room.transform);
+        posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomSpawnIndex).gameObject, room.transform);
+        
+        tower.position = posObject.transform.position;
     }
     
     private void UpdateProgress(float number)
@@ -586,6 +595,10 @@ public class GenerationSimpleHalf : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        tower.GetComponent<Collider2D>().enabled = true;
+        tower.GetChild(0).gameObject.SetActive(false);
+        portalPos.GetComponent<Collider2D>().enabled = false;
+        
         if (lights == null) return;
         foreach (Transform child in lights)
         { 
