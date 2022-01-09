@@ -12,6 +12,7 @@ public class CanGoBehind : MonoBehaviour
 
     private void Start()
     {
+        if (player == null) player = LevelManager.Instance.Player().transform;
         renderer = gameObject.GetComponent<SpriteRenderer>();
         baseLayer = renderer.sortingOrder;
     }

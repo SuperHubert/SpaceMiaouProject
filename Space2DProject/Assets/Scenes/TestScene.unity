@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 409208227}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: generateOnStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: minimapBackground
@@ -1106,7 +1106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5038008198469081414, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7138781478674079658, guid: 2f4b00f6f2fcfa24298d5ac3bd6de611, type: 3}
       propertyPath: maxHealth
@@ -2055,11 +2055,11 @@ PrefabInstance:
       objectReference: {fileID: 1903540876}
     - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.83
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: -2.017
       objectReference: {fileID: 0}
     - target: {fileID: 6580066380633843705, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_Layer

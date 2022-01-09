@@ -384,6 +384,8 @@ GameObject:
   - component: {fileID: 9143766090537389839}
   - component: {fileID: 2373537118565057131}
   - component: {fileID: 6521914564625401045}
+  - component: {fileID: 8336869994145552897}
+  - component: {fileID: 5620690891368572842}
   m_Layer: 14
   m_Name: Tower
   m_TagString: Untagged
@@ -495,6 +497,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9376807, y: 0.48664343}
   m_EdgeRadius: 0
+--- !u!68 &8336869994145552897
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156038838675469327}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.094, y: -1.56}
+  - {x: 1.062, y: -1.56}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &5620690891368572842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156038838675469327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dedb7cea5364ce4894a1163a94055e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  offset: -1.09
 --- !u!1 &8364773362135438209
 GameObject:
   m_ObjectHideFlags: 0
