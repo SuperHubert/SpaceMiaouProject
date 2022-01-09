@@ -90,4 +90,10 @@ public class SmallDashingBehaviour : EnemyBehaviour
         yield return new WaitForSeconds(1f);
         base.Die();
     }
+    
+    public override void Stun(float duration = 1)
+        {
+            animator.SetBool("Damage", true);
+            base.Stun(duration);
+        }
 }

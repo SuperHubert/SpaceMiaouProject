@@ -91,4 +91,12 @@ public class SmallShooterBehaviour : EnemyBehaviour
         yield return new WaitForSeconds(1f);
         base.Die();
     }
+    
+    public override void Stun(float duration = 1)
+    {
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isWalking", false);
+        animator.SetBool("Damage", true);
+        base.Stun(duration);
+    }
 }
