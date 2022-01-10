@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: testNameList.Array.data[5]
       value: 
       objectReference: {fileID: 935019183}
+    - target: {fileID: 2373537118565057131, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 908625875}
     - target: {fileID: 2545915620620602384, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: m_RootOrder
       value: 1
