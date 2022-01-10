@@ -165,7 +165,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
         yield return new WaitForSeconds(duration);
-        agent.isStopped = false;
+        if(agent.isOnNavMesh) agent.isStopped = false;
         stunned = false;
         animator.SetBool("Damage", false);
     }

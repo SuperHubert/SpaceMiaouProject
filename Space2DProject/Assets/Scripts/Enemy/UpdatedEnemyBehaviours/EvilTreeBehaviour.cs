@@ -4,7 +4,6 @@ using UnityEngine;
 public class EvilTreeBehaviour : EnemyBehaviour
 {
     //[SerializeField] private Animator animator;
-
     private void Update()
     {
         animator.SetBool("Awake", true);
@@ -17,6 +16,12 @@ public class EvilTreeBehaviour : EnemyBehaviour
         }
     }
 
+    protected override void InitVariables()
+    {
+        UpdateAppearance();
+        base.InitVariables();
+    }
+
     protected override void Action()
     {
         base.Action();
@@ -25,5 +30,35 @@ public class EvilTreeBehaviour : EnemyBehaviour
 
         var spawnedObj = ObjectPooler.Instance.SpawnFromPool("Root", targetPos, Quaternion.identity);
         spawnedObj.GetComponent<Root>().Spawn();
+    }
+    
+    private void UpdateAppearance()
+    {
+        var biome = LevelManager.Instance.GetBiome();
+        
+        switch (biome)
+        {
+            case 0:
+                animator.SetLayerWeight (1, 1f);
+                animator.SetLayerWeight (2, 0f);
+                animator.SetLayerWeight (3, 0f);
+                break;
+            case 1:
+                animator.SetLayerWeight (1, 0f);
+                animator.SetLayerWeight (2, 1f);
+                animator.SetLayerWeight (3, 0f);
+                break;
+            case 2:
+                animator.SetLayerWeight (1, 0);
+                animator.SetLayerWeight (2, 0f);
+                animator.SetLayerWeight (3, 1f);
+                break;
+            default:
+                animator.SetLayerWeight (1, 1f);
+                animator.SetLayerWeight (2, 0f);
+                animator.SetLayerWeight (3, 0f);
+                break;
+        }
+
     }
 }

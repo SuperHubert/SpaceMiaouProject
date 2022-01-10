@@ -69,7 +69,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         
         Debug.DrawRay(enemyTransformPosition, (playerPos - enemyTransformPosition).normalized * 5, Color.green, 4, false);
         
-        agent.SetDestination(enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1);
+        if(agent.isOnNavMesh) agent.SetDestination(enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1);
         
         yield return new WaitForSeconds(0.1f);
 

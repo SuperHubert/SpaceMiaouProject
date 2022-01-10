@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
     {
         speaker = dialogueCanvas.transform.GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
         dialogueText = dialogueCanvas.transform.GetChild(0).GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
-        portraitRender = dialogueCanvas.transform.GetChild(0).GetChild(1).GetChild(0).gameObject
+        portraitRender = dialogueCanvas.transform.GetChild(0).GetChild(2).GetChild(0).gameObject
             .GetComponent<Image>();
         am = AudioManager.Instance;
         nextButton = dialogueCanvas.transform.GetChild(0).GetChild(4).gameObject;
