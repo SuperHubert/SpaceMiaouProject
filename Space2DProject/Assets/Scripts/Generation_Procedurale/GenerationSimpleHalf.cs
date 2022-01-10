@@ -582,6 +582,10 @@ public class GenerationSimpleHalf : MonoBehaviour
 
     public void CleanUpObjects()
     {
+        foreach (Transform child in healthBarCanvas)
+        {
+            Destroy(child.gameObject);
+        }
         foreach (Transform child in grid)
         {
             Destroy(child.gameObject);

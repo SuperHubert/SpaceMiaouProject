@@ -129,7 +129,8 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Destroy(healthBarObj);
+            enemyBehaviour.cleared = true;
+            healthBarObj.SetActive(false);
         }
 
         enemyBehaviour.Die(!increaseScore);

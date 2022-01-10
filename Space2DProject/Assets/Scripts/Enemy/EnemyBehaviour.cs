@@ -31,6 +31,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public bool stunned = false;
 
+    public bool cleared = false;
+
 
     private void Start()
     {
@@ -117,6 +119,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public virtual void Respawn()
     {
         if (!respawn) return;
+        if(cleared) return;
         
         animator.SetBool("isDead",false);
         

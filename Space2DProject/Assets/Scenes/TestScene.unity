@@ -842,6 +842,10 @@ PrefabInstance:
       propertyPath: minimapBackground
       value: 
       objectReference: {fileID: 1397800930}
+    - target: {fileID: 1692501033473191522, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6520009499888700257, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: fadeOut
       value: 1
@@ -1700,6 +1704,10 @@ PrefabInstance:
     - target: {fileID: 4773208683996054112, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648038401108266267, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6989513542562367575, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_AnchorMax.x
