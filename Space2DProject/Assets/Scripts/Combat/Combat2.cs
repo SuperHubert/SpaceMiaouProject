@@ -63,7 +63,7 @@ public class Combat2 : MonoBehaviour
 
             if (attackDirection.x > 0 && Mathf.Abs(attackDirection.x) > Mathf.Abs(attackDirection.y))
             {
-                NewAttack(baseRightCollider, "RightBaseAttack",new Vector3(0.5f,0,0),Quaternion.Euler(0,0,-90));
+                NewAttack(baseRightCollider, "RightBaseAttack",new Vector3(0.7f,-0.3f,0),Quaternion.Euler(0,0,-40));
                 
                 /*
                 Physics2D.OverlapCollider(baseRightCollider, new ContactFilter2D().NoFilter(), hits);
@@ -84,7 +84,7 @@ public class Combat2 : MonoBehaviour
             }
             else if (attackDirection.x < 0 && Mathf.Abs(attackDirection.x) > Mathf.Abs(attackDirection.y))
             {
-                NewAttack(baseLeftCollider, "LeftBaseAttack",new Vector3(-0.5f,0,0),Quaternion.Euler(0,0,90));
+                NewAttack(baseLeftCollider, "LeftBaseAttack",new Vector3(-0.7f,-0.3f,0),Quaternion.Euler(0,0,140));
                 
                 /*
                 Physics2D.OverlapCollider(baseLeftCollider, new ContactFilter2D().NoFilter(), hits);
@@ -105,7 +105,7 @@ public class Combat2 : MonoBehaviour
             }
             else if (attackDirection.y > 0 && Mathf.Abs(attackDirection.y) > Mathf.Abs(attackDirection.x))
             {
-                NewAttack(baseUpCollider, "BackBaseAttack",new Vector3(0,0.4f,0),Quaternion.identity);
+                NewAttack(baseUpCollider, "BackBaseAttack",new Vector3(0,0.45f,0),Quaternion.Euler(0,0,50));
                 
                 /*
                 Physics2D.OverlapCollider(baseUpCollider, new ContactFilter2D().NoFilter(), hits);
@@ -126,7 +126,7 @@ public class Combat2 : MonoBehaviour
             }
             else if (attackDirection.y < 0 && Mathf.Abs(attackDirection.y) > Mathf.Abs(attackDirection.x))
             {
-                NewAttack(baseDownCollider,"FrontBaseAttack",new Vector3(0,-0.5f,0),Quaternion.Euler(0,0,180));
+                NewAttack(baseDownCollider,"FrontBaseAttack",new Vector3(0,-0.65f,0),Quaternion.Euler(0,0,230));
                 
                 /*
                 Physics2D.OverlapCollider(baseDownCollider, new ContactFilter2D().NoFilter(), hits);
