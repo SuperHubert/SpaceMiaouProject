@@ -164,6 +164,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(duration);
         agent.isStopped = false;
         stunned = false;
+        animator.SetBool("Damage", false);
     }
 
     public virtual void KnockBack(Vector3 pos, float duration = 0.75f)

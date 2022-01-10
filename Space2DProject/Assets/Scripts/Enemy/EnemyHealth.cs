@@ -86,9 +86,7 @@ public class EnemyHealth : MonoBehaviour
         if (canTakeDamage)
         {
             ResizeHealthBar();
-            
-            enemyAnimator.SetTrigger("TakeDamage");
-        
+
             currentHealth -= damage;
             
             healthBarObj.SetActive(currentHealth > 0);
@@ -103,8 +101,6 @@ public class EnemyHealth : MonoBehaviour
             {
                 enemyBehaviour.Stun(duration);
             }
-        
-            enemyAnimator.ResetTrigger("TakeDamage");
         }
         else
         {
