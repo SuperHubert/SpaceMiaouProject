@@ -616,15 +616,15 @@ MonoBehaviour:
   hits: []
   specialFX: {fileID: 649608801789586204, guid: dd05e02ef9b14ec4794132fb65d67036, type: 3}
   baseFX: {fileID: 5887807797639799553, guid: 2a962cf8f34898448b166cbcedb55d0f, type: 3}
-  damage: 1
-  specialDamage: 10
+  damage: 10
+  specialDamage: 15
   sprayGainNormal: 15
-  sprayGainSpecial: 20
-  rightAttack: 0
+  sprayGainSpecial: 25
+  baseAttack: 0
+  specialAttack: 0
   leftAttack: 0
   uptAttack: 0
   downAttack: 0
-  specialAttack: 0
 --- !u!1 &6095275311435496822
 GameObject:
   m_ObjectHideFlags: 0

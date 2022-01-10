@@ -1397,10 +1397,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6463092082602619044, guid: a78d5314158ed924abcde0f1c3d134a3, type: 3}
-      propertyPath: maxHealth
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78d5314158ed924abcde0f1c3d134a3, type: 3}
 --- !u!1 &597116582 stripped
@@ -2707,18 +2703,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 551184654111338519, guid: 85e0626ada38dca489529694ffcaa364, type: 3}
-      propertyPath: maxHealth
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115104951797607832, guid: 85e0626ada38dca489529694ffcaa364, type: 3}
-      propertyPath: shootCdMax
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115104951797607832, guid: 85e0626ada38dca489529694ffcaa364, type: 3}
-      propertyPath: bulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4115104951797607834, guid: 85e0626ada38dca489529694ffcaa364, type: 3}
       propertyPath: m_Name
       value: Small Enemy Shooter
@@ -3617,14 +3601,6 @@ PrefabInstance:
     - target: {fileID: 7747864509007827267, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 0.87339574
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900229132931265597, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: damage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900229132931265597, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: specialDamage
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8800626575084868212, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_Name
