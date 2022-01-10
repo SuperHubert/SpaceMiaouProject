@@ -73,6 +73,12 @@ public class Cinematic : MonoBehaviour
     public void NextImage()
     {
         index++;
+        if (index >= 6)
+        {
+            SceneManager.LoadScene(3);
+            return;
+        }
+        
         if (index > 2 && !LoadingLevelData.Instance.hasLaunchedGame)
         {
             LoadingLevelData.Instance.hasLaunchedGame = true;

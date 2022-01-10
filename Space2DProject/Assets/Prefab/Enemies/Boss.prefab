@@ -51,11 +51,12 @@ MonoBehaviour:
   hasAction: 1
   actionCdMax: 1000
   actionCd: 0
-  animator: {fileID: 0}
+  animator: {fileID: 1626493658977388909}
   enemyTransform: {fileID: 5375301399049469144}
   triggersTransform: {fileID: 7760028483843397388}
   respawnTriggerTransform: {fileID: 2921922867600059612}
   stunned: 0
+  cleared: 0
   healthBarBack: {fileID: 4738843464200919630}
   teleportedAttack: {fileID: 0}
   attackList:
