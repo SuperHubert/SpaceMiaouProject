@@ -1,18 +1,21 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Tower : MonoBehaviour,IInteractible
 {
     private GameObject laserObj;
     private Collider2D portalCollider2D;
+    public Camera cam;
     
     private void Start()
     {
         laserObj = transform.GetChild(0).gameObject;
         portalCollider2D = transform.parent.GetChild(3).GetComponent<Collider2D>();
     }
-
+    
     public void OnInteraction()
     {
+        cam.DOShakePosition(1f,new Vector3(0.1f,0.4f,0),8,0,true);
         laserObj.SetActive(true);
         portalCollider2D.enabled = true;
         gameObject.GetComponent<Collider2D>().enabled = false;
