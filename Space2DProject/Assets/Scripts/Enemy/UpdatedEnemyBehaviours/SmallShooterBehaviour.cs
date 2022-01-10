@@ -76,7 +76,7 @@ public class SmallShooterBehaviour : EnemyBehaviour
         return !agent.hasPath || agent.velocity.sqrMagnitude == 0f;
     }
     
-    public override void Die()
+    public override void Die(bool destroy = false)
     {
         currentState = State.Dead;
         agent.velocity = Vector3.zero;

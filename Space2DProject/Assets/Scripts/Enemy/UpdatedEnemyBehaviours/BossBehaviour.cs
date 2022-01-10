@@ -42,7 +42,7 @@ public class BossBehaviour : EnemyBehaviour
         StartCoroutine(CloseAttack(attackList[0]));
     }
 
-    public override void Die()
+    public override void Die(bool destroy = false)
     {
         base.Die();
         healthBarBack.SetActive(false);

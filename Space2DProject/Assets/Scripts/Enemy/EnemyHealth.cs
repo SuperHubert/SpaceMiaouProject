@@ -126,16 +126,20 @@ public class EnemyHealth : MonoBehaviour
     {
         isDying = true;
 
-        if(increaseScore) UIManager.Instance.IncreaseScore((int)maxHealth);
-        
-        healthBarObj.SetActive(false);
-        
-        enemyBehaviour.Die();
+        if (increaseScore)
+        {
+            UIManager.Instance.IncreaseScore((int)maxHealth);
+            healthBarObj.SetActive(false);
+        }
+        else
+        {
+            Destroy(healthBarObj);
+        }
+
+        enemyBehaviour.Die(!increaseScore);
 
         isBurning = false;
-        
-        healthBarObj.SetActive(false);
-        
+
         if(burnRoutine != null) StopCoroutine(burnRoutine);
     }
 

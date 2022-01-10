@@ -78,7 +78,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         yield return new WaitForSeconds(0.1f);
     }
     
-    public override void Die()
+    public override void Die(bool destroy = false)
     {
         enemy.GetComponent<Collider2D>().enabled = false;
         currentState = State.Dead;

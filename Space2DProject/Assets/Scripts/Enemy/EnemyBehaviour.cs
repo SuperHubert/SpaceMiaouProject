@@ -86,7 +86,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         
     }
 
-    public virtual void Die()
+    public virtual void Die(bool destroy = false)
     {
         //animator.SetTrigger("Dead");
 
@@ -106,6 +106,10 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
         
         enemyTransform.gameObject.SetActive(false);
+        if (destroy)
+        {
+            Destroy(gameObject);
+        }
         
         currentState = State.Dead;
     }
