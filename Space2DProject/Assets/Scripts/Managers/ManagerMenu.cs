@@ -35,7 +35,15 @@ public class ManagerMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        LoadingManager.Instance.LoadScene(3);
+        if (LoadingLevelData.Instance.hasLaunchedGame)
+        {
+            LoadingManager.Instance.LoadScene(3);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+        }
+        
     }
 
     public void QuitGame()

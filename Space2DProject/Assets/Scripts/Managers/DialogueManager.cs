@@ -45,12 +45,12 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
-        speaker = dialogueCanvas.transform.GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
-        dialogueText = dialogueCanvas.transform.GetChild(0).GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
+        speaker = dialogueCanvas.transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>();
+        dialogueText = dialogueCanvas.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>();
         portraitRender = dialogueCanvas.transform.GetChild(0).GetChild(2).GetChild(0).gameObject
             .GetComponent<Image>();
         am = AudioManager.Instance;
-        nextButton = dialogueCanvas.transform.GetChild(0).GetChild(4).gameObject;
+        nextButton = dialogueCanvas.transform.GetChild(0).GetChild(5).gameObject;
     }
 
     public void StartDialogue(Dialogues dialogue)

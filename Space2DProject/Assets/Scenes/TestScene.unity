@@ -954,10 +954,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 130
       objectReference: {fileID: 0}
-    - target: {fileID: 7484005596906413668, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: m_Color.a
-      value: 0.627451
-      objectReference: {fileID: 0}
     - target: {fileID: 7492854094071601168, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -974,14 +970,6 @@ PrefabInstance:
       propertyPath: movingCoin
       value: 
       objectReference: {fileID: 1605610891}
-    - target: {fileID: 9105878199717730902, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 36e3027ec443e6b4aad3df886394adbb, type: 3}
-    - target: {fileID: 9105878199717730902, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
 --- !u!114 &550244341 stripped

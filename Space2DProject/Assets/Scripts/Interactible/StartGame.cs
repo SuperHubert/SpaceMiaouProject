@@ -1,16 +1,33 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour, IInteractible
 {
+    [SerializeField] private GameObject player;
+    [SerializeField] GameObject rayObj;
+    [SerializeField] Transform tpPos;
+    
     public void OnInteraction()
     {
-        StartCoroutine(StartTheGameDelay());
+        StartCoroutine(AnimationRoutine());
     }
 
-    private IEnumerator StartTheGameDelay()
+    IEnumerator AnimationRoutine()
     {
+        player.transform.position = tpPos.transform.position;
+        player.SetActive(false);
+        tpPos.gameObject.SetActive(true);
+        rayObj.SetActive(true);
+        
+        yield return new WaitForSeconds(0.11f);
+        
+        tpPos.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(1.22f);
+        
+        rayObj.SetActive(false);
         LoadingManager.Instance.UpdateLoading();
         yield return new WaitForSeconds(0.05f);
         SceneManager.LoadScene(4);
