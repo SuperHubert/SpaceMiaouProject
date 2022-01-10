@@ -81,7 +81,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         wakeUpTrigger.SetActive(true);
         actionTrigger.SetActive(false);
 
-        agent.SetDestination(transform.position);
+        if(agent.isOnNavMesh) agent.SetDestination(transform.position);
         
         currentState = State.Asleep;
         isPerformingAction = false;
@@ -90,6 +90,11 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public virtual void Die(bool destroy = false)
     {
+        if (destroy)
+        {
+            Destroy(gameObject);
+        }
+        
         //animator.SetTrigger("Dead");
 
         agent.Warp(transform.position);
@@ -108,11 +113,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
         
         enemyTransform.gameObject.SetActive(false);
-        if (destroy)
-        {
-            Destroy(gameObject);
-        }
-        
+
         currentState = State.Dead;
     }
 
@@ -125,7 +126,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         
         enemyTransform.gameObject.SetActive(true);
         
-        agent.isStopped = false;
+        if(agent.isOnNavMesh) agent.isStopped = false;
         
         wakeUpTrigger.SetActive(true);
         sleepTrigger.SetActive(false);
@@ -163,7 +164,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         stunned = true;
         agent.velocity = Vector3.zero;
-        agent.isStopped = true;
+        if(agent.isOnNavMesh) agent.isStopped = true;
         yield return new WaitForSeconds(duration);
         if(agent.isOnNavMesh) agent.isStopped = false;
         stunned = false;
@@ -178,14 +179,14 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public virtual IEnumerator KnockBackRoutine(Vector3 pos,float duration)
     {
         agent.velocity = Vector3.zero;
-        agent.SetDestination(enemyTransform.position);
+        if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
         yield return null;
         agent.acceleration = 100;
         agent.speed = 20;
         agent.stoppingDistance = 1f;
-        agent.SetDestination(pos);
+        if(agent.isOnNavMesh) agent.SetDestination(pos);
         yield return new WaitForSeconds(duration);
-        agent.SetDestination(enemyTransform.position);
+        if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
         
     }
 

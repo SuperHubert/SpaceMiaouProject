@@ -80,7 +80,7 @@ public class SmallShooterBehaviour : EnemyBehaviour
     {
         currentState = State.Dead;
         agent.velocity = Vector3.zero;
-        agent.isStopped = true;
+        if(agent.isOnNavMesh) agent.isStopped = true;
         StartCoroutine(PlayAnim());
     }
 

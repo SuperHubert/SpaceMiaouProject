@@ -24,7 +24,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         
         if (currentState == State.Awake && !isPerformingAction)
         {
-            agent.SetDestination(player.position);
+            if(agent.isOnNavMesh) agent.SetDestination(player.position);
             
             //animator direction
             animator.SetBool("isAttacking", false);
@@ -86,7 +86,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         agent.acceleration = 8;
         agent.speed = 3.5f;
         agent.velocity = Vector3.zero;
-        agent.isStopped = true;
+        if(agent.isOnNavMesh) agent.isStopped = true;
         StartCoroutine(PlayAnim());
     }
 
