@@ -122,11 +122,11 @@ public class EnemyHealth : MonoBehaviour
         healthBarBackImg.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
     }
     
-    private void Die()
+    public void Die(bool increaseScore = true)
     {
         isDying = true;
 
-        UIManager.Instance.IncreaseScore((int)maxHealth);
+        if(increaseScore) UIManager.Instance.IncreaseScore((int)maxHealth);
         
         healthBarObj.SetActive(false);
         
