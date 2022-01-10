@@ -28,7 +28,7 @@ public class StartGame : MonoBehaviour, IInteractible
         yield return new WaitForSeconds(1.22f);
         
         rayObj.SetActive(false);
-        LoadingManager.Instance.UpdateLoading();
+        LoadingManager.Instance.canvas.SetActive(true);
         yield return new WaitForSeconds(0.05f);
         SceneManager.LoadScene(4);
     }

@@ -9,7 +9,7 @@ public class Cinematic : MonoBehaviour
 {
     public Image image;
     public TextMeshProUGUI text;
-    public int index;
+    private int index = -1;
 
     [SerializeField] private float timeBetweenLetters = 0.005f;
     [SerializeField] private float timeBetweenBlinks = 0.5f;
@@ -23,8 +23,7 @@ public class Cinematic : MonoBehaviour
     }
 
     public List<CinematicItem> itemList = new List<CinematicItem>();
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         if (LoadingLevelData.Instance.hasLaunchedGame)
@@ -33,13 +32,13 @@ public class Cinematic : MonoBehaviour
         }
         else
         {
-            GoToImage(0);
+            StartCoroutine(BeginCutscene());
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        if(!image.gameObject.activeSelf) return;
         if (Input.GetKeyDown(KeyCode.A))
         {
             PreviousImage();
@@ -61,6 +60,8 @@ public class Cinematic : MonoBehaviour
 
     public void GoToImage(int number)
     {
+        image.gameObject.SetActive(true);
+        text.gameObject.SetActive(true);
         index = number;
         image.sprite = itemList[number].sprite;
         text.text = itemList[number].description;
@@ -95,5 +96,11 @@ public class Cinematic : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenLetters);;
         }
         isDoneTyping = true;
+    }
+
+    private IEnumerator BeginCutscene()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GoToImage(0);
     }
 }

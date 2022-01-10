@@ -78,21 +78,21 @@ public class Upgrades : MonoBehaviour
 
     public void DamagesBalai1()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
+        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
         combat.damage += combat.damage * 5f / 100f;
         Debug.Log("Damages Balai I");
     }
 
     public void DamagesBalai2()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
+        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
         combat.damage += combat.damage * 10f / 100f;
         Debug.Log("Damages Balai II");
     }
 
     public void DamagesBalai3()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
+        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
         combat.damage += combat.damage * 15f / 100f;
         Debug.Log("Damages Balai III");
     }
@@ -176,7 +176,7 @@ public class Upgrades : MonoBehaviour
 
     public void SoapAmmo1()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
+        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
         combat.sprayGainNormal += combat.sprayGainNormal * 5f / 100f;
         combat.sprayGainSpecial += combat.sprayGainSpecial * 5f / 100f;
         Debug.Log("Recharge de Savon I");
@@ -184,7 +184,7 @@ public class Upgrades : MonoBehaviour
 
     public void SoapAmmo2()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat>();
+        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
         combat.sprayGainNormal += combat.sprayGainNormal * 10f / 100f;
         combat.sprayGainSpecial += combat.sprayGainSpecial * 10f / 100f;
         Debug.Log("Recharge de Savon II");

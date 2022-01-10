@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
-    [SerializeField] private GameObject canvas;
+    public GameObject canvas;
     private Image backgroundImage;
     private Image progressBar;
     private GameObject loadingText;

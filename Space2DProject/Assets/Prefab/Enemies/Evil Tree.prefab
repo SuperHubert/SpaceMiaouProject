@@ -329,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 2108263565553342735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 2594063668490503302}
   - {fileID: 2108263563801864149}
@@ -357,6 +357,8 @@ MonoBehaviour:
   enemyTransform: {fileID: 2594063668490503302}
   triggersTransform: {fileID: 698338668102077436}
   respawnTriggerTransform: {fileID: 2108263563801864149}
+  stunned: 0
+  cleared: 0
 --- !u!1 &2204795691360601239
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +607,7 @@ Transform:
   m_GameObject: {fileID: 2755622330264474162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2594063668490503302}
   m_RootOrder: 2
