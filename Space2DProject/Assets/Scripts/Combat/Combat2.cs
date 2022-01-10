@@ -188,7 +188,7 @@ public class Combat2 : MonoBehaviour
     void WaveAttack()
     {
         Destroy(Instantiate(specialFX, transform.position, Quaternion.identity, gameObject.transform), 1f);
-        Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.6f);
+        Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.8f);
 
         foreach (Collider2D enemy in hit)
         {
