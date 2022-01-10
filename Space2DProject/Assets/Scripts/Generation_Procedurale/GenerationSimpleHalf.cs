@@ -528,7 +528,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         portalPos.position = posObject.transform.position;
         
         //posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomTowerIndex).gameObject, room.transform);
-        posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomSpawnIndex).gameObject, room.transform);
+        posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomTowerIndex).gameObject, room.transform);
         
         tower.position = posObject.transform.position;
     }

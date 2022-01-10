@@ -194,7 +194,7 @@ public class Combat2 : MonoBehaviour
         {
             if (enemy.gameObject.layer == 7)
             {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
+                if(enemy.GetComponent<EnemyHealth>() != null) enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
                 //enemy.GetComponent<EnemyHealth>().KnockBack(enemy.transform.position + (enemy.transform.position - transform.position).normalized * 2);
                 GetComponent<SprayAttack>().currentSpray += sprayGainSpecial;
                 GetComponent<SprayAttack>().UpdateSprayBar();

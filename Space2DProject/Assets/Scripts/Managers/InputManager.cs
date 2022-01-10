@@ -72,7 +72,7 @@ public class InputManager : MonoBehaviour
         {
             playerMovement.horizontalAxis = Input.GetAxisRaw("Horizontal");
             playerMovement.verticalAxis = Input.GetAxisRaw("Vertical");
-            playerMovement.dash = Input.GetMouseButtonDown(1) || Input.GetAxisRaw("Dash") > 0;
+            playerMovement.dash = Input.GetMouseButtonDown(1) || Input.GetAxisRaw("Dash") > 0 || Input.GetAxisRaw("Dash2") > 0;
 
             isMoving = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
         }
