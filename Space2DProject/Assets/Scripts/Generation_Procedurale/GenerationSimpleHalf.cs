@@ -148,6 +148,8 @@ public class GenerationSimpleHalf : MonoBehaviour
 
         chestList.Clear();
         
+        mapIcons.ClearChestsIcons();
+        
         textureAssigner.FillAllPools();
 
         UpdateProgress(0.01f);
@@ -433,6 +435,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         DestroySomeChests();
         
+        mapIcons.UpdateChests(fogOfWar.levelSize);
+        
         CleanUpGrid();
 
         UpdateProgress(1);
@@ -569,7 +573,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     {
         foreach (GameObject item in chestList)
         {
-            item.GetComponent<Chest>().UpdateChest();
+            item.GetComponent<Chest>().UpdateChest(mapIcons);
         }
     }
     

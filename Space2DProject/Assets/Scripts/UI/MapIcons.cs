@@ -22,19 +22,29 @@ public class MapIcons : MonoBehaviour
         jonesIcon.position = position;
     }
 
-    public void AddChest()
+    public void AddChest(GameObject chest)
     {
-        
+        chestList.Add(chest.transform);
     }
 
-    public void UpdateChests()
+    public void UpdateChests(float levelSize)
     {
-        
+        Vector2 position = Vector2.zero;
+        foreach (var chest in chestList)
+        {
+            position = (Vector2)chest.position * 330 / levelSize + new Vector2(640, 360);
+            chest.GetComponent<Chest>().linkedIcon = Instantiate(chestIconPrefab, position, Quaternion.identity, chestParent);
+        }
+        chestList.Clear();
     }
 
-    public void ClearChests()
+    public void ClearChestsIcons()
     {
-        
+        if(chestParent.childCount == 0) return;
+        foreach (Transform icon in chestParent)
+        {
+            Destroy(icon.gameObject);
+        }
     }
     
     

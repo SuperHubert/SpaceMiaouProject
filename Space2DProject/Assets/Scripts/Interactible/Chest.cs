@@ -8,6 +8,7 @@ public class Chest : MonoBehaviour, IInteractible
     private int floor;
     private Animator anim;
     private Collider2D col;
+    public GameObject linkedIcon;
     
     private void Start()
     {
@@ -41,10 +42,11 @@ public class Chest : MonoBehaviour, IInteractible
     public void OnInteraction()
     {
         col.enabled = false;
+        linkedIcon.SetActive(false);
         StartCoroutine(PlayOpenAnim());
     }
 
-    public void UpdateChest()
+    public void UpdateChest(MapIcons mapIcons)
     {
         float fortuneUpgrade = Upgrades.Instance.GetFortuneLevel();
         float probabilityToStay = ((floor + (4f + 5 * fortuneUpgrade)) / (floor + (5f + 5 * fortuneUpgrade))) * (0.5f+(fortuneUpgrade/(fortuneUpgrade + 2f))*0.5f);
@@ -52,6 +54,10 @@ public class Chest : MonoBehaviour, IInteractible
         if (Random.Range(0f, 1f) > probabilityToStay)
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            mapIcons.AddChest(gameObject);
         }
         
         var biome = LevelManager.Instance.GetBiome();

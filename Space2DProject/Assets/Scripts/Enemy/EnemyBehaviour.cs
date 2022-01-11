@@ -44,7 +44,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         agent = transform.GetChild(0).GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.SetDestination(enemyTransform.position);
+        if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
         enemy = enemyTransform.gameObject;
         
         health = enemy.GetComponent<EnemyHealth>();

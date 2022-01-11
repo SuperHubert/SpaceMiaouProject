@@ -2277,9 +2277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jonesIcon: {fileID: 3959209559720656139}
-  chestIconPrefab: {fileID: 0}
+  chestIconPrefab: {fileID: 4168996990812809247, guid: 5bc69df072253c841a84861a0f4ac581, type: 3}
+  chestParent: {fileID: 4243230730830806706}
   chestList: []
-  work: 0
 --- !u!1 &1890284173492691406
 GameObject:
   m_ObjectHideFlags: 0
