@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Image hpImage;
+    public Image hpImageBack;
     
     public GameObject normalUI;
     public GameObject pauseUI;
@@ -31,6 +32,11 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         Pause();
+        if (Math.Abs(hpImage.fillAmount - hpImageBack.fillAmount) > 0.0001f)
+        {
+            HealthDecreaseEffect();
+        }
+        
     }
     
 
@@ -59,5 +65,10 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+    
+    private void HealthDecreaseEffect()
+    {
+        if(hpImage != null) hpImageBack.fillAmount = Mathf.Lerp (hpImageBack.fillAmount, hpImage.fillAmount, 3f * Time.deltaTime);
     }
 }

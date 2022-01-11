@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
@@ -109,6 +110,8 @@ public class LifeManager : MonoBehaviour
        spriteRenderer.material = originalMaterial;
        flashRoutine = null;
    }
+   
+   
 
    //testing camera shake values
    /*
