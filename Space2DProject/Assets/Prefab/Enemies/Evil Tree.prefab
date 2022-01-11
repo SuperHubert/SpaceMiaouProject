@@ -554,6 +554,8 @@ MonoBehaviour:
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 8267407442873659567}
+  flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
+  flashDuration: 0.1
 --- !u!61 &1062605183
 BoxCollider2D:
   m_ObjectHideFlags: 0

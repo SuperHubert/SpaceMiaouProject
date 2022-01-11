@@ -27,6 +27,11 @@ public class EnemyHealth : MonoBehaviour
     public Animator enemyAnimator;
     private EnemyBehaviour enemyBehaviour;
     
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
+    
     void Start()
     {
         InitEnemy();
@@ -78,6 +83,8 @@ public class EnemyHealth : MonoBehaviour
 
         isDying = false;
         
+        if(spriteRenderer != null) originalMaterial = spriteRenderer.material;
+        
         ResizeHealthBar();
     }
 
@@ -92,6 +99,8 @@ public class EnemyHealth : MonoBehaviour
             healthBarObj.SetActive(currentHealth > 0);
 
             healthBarFrontImg.fillAmount = currentHealth / maxHealth;
+
+            Flash();
             
             if (currentHealth <= 0 && !isDying)
             {
@@ -160,6 +169,21 @@ public class EnemyHealth : MonoBehaviour
     private void HealthDecreaseEffect()
     {
         if(healthBarBackImg != null) healthBarBackImg.fillAmount = Mathf.Lerp (healthBarBackImg.fillAmount, healthBarFrontImg.fillAmount, 1f * Time.deltaTime);
+    }
+    
+    private void Flash()
+    {
+        if (spriteRenderer == null) return;
+        if(flashRoutine != null) StopCoroutine(flashRoutine);
+        flashRoutine = StartCoroutine(FlashRoutine());
+    }
+   
+    IEnumerator FlashRoutine()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.material = originalMaterial;
+        flashRoutine = null;
     }
 
     public void KnockBack(Vector3 pos, float duration = 1f)

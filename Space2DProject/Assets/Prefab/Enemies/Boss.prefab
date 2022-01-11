@@ -475,6 +475,8 @@ MonoBehaviour:
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 1626493658977388909}
+  flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
+  spriteRenderer: {fileID: 4850765531351431426}
 --- !u!60 &7726723576336425657
 PolygonCollider2D:
   m_ObjectHideFlags: 0

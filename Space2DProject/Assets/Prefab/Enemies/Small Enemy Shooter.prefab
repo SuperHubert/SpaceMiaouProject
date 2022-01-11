@@ -97,6 +97,9 @@ MonoBehaviour:
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 3978072682437876789}
+  flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
+  flashDuration: 0.05
+  spriteRenderer: {fileID: 4433037488844149721}
 --- !u!1 &1376833891981886967
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +365,7 @@ MonoBehaviour:
   triggersTransform: {fileID: 3308241362344263529}
   respawnTriggerTransform: {fileID: 4115104952742007616}
   stunned: 0
+  cleared: 0
   bulletSpeed: 5
   bulletDamage: 1
   shootCdMax: 120

@@ -55,6 +55,7 @@ MonoBehaviour:
   triggersTransform: {fileID: 2225490474295227216}
   respawnTriggerTransform: {fileID: 6201864753320988105}
   stunned: 0
+  cleared: 0
 --- !u!1 &1697389571299705708
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +138,9 @@ MonoBehaviour:
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 7114000372021665573}
+  flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
+  flashDuration: 0.05
+  spriteRenderer: {fileID: 4586342183853149042}
 --- !u!70 &6010281503785982382
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

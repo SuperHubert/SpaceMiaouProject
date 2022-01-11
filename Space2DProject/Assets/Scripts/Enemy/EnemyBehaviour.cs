@@ -19,7 +19,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected EnemyHealth health;
     protected Transform player;
 
-    [SerializeField] protected Animator animator;
+    public Animator animator;
     [SerializeField] protected Transform enemyTransform;
     protected GameObject enemy;
     [SerializeField] protected Transform triggersTransform;
