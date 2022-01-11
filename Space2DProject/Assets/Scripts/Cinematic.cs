@@ -72,24 +72,34 @@ public class Cinematic : MonoBehaviour
     
     public void NextImage()
     {
-        index++;
-        if (index >= 6)
+        if (isDoneTyping)
         {
-            SceneManager.LoadScene(3);
-            return;
+            index++;
+            if (index >= 6)
+            {
+                SceneManager.LoadScene(3);
+                return;
+            }
+        
+            if (index > 2 && !LoadingLevelData.Instance.hasLaunchedGame)
+            {
+                LoadingLevelData.Instance.hasLaunchedGame = true;
+                SceneManager.LoadScene(3);
+                return;
+            }
+            if (index >= itemList.Count) index = itemList.Count - 1;
+            image.sprite = itemList[index].sprite;
+
+            if(typingCoroutine != null) StopCoroutine(typingCoroutine);
+            typingCoroutine = StartCoroutine(TypeSentence(itemList[index].description));
+        }
+        else
+        {
+            if(typingCoroutine != null) StopCoroutine(typingCoroutine);
+            isDoneTyping = true;
+            text.text = itemList[index].description;
         }
         
-        if (index > 2 && !LoadingLevelData.Instance.hasLaunchedGame)
-        {
-            LoadingLevelData.Instance.hasLaunchedGame = true;
-            SceneManager.LoadScene(3);
-            return;
-        }
-        if (index >= itemList.Count) index = itemList.Count - 1;
-        image.sprite = itemList[index].sprite;
-
-        if(typingCoroutine != null) StopCoroutine(typingCoroutine);
-        typingCoroutine = StartCoroutine(TypeSentence(itemList[index].description));
     }
     
     private IEnumerator TypeSentence(string sentence)
