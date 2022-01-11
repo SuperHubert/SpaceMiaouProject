@@ -7,7 +7,7 @@ public class ManagerMenu : MonoBehaviour
 {
     [SerializeField] private Button firstSelectedButton;
     
-    private GameObject previousSelectedObj;
+    public GameObject previousSelectedObj;
     private void Start()
     {
         firstSelectedButton.Select();

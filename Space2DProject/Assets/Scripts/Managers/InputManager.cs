@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     private PlayerMovement playerMovement;
     [SerializeField] private MapManager mapManager;
     [SerializeField] private ShopInteraction shopInteraction;
+    [SerializeField] private UIManager uiManager;
     
     void Start()
     {
@@ -35,6 +36,11 @@ public class InputManager : MonoBehaviour
             }
         }
 
+        if(uiManager != null) uiManager.pauseInput = (Input.GetKeyDown(KeyCode.JoystickButton6) || Input.GetKeyDown(KeyCode.Escape));
+        
+        if(uiManager != null && uiManager.pauseUI.activeSelf) return;
+        
+        
         if (Input.GetButtonDown("Fire1"))
         {
             if (DialogueManager.Instance.dialogueCanvas.activeSelf)

@@ -1,12 +1,18 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public List<GameObject> HpList;
     private List<Animator> HpAnims = new List<Animator>();
+    
     public GameObject normalUI;
+    public GameObject pauseUI;
+    public bool pauseInput;
+
     public int score;
     public TextMeshProUGUI scoreText;
 
@@ -28,6 +34,11 @@ public class UIManager : MonoBehaviour
         {
             HpAnims.Add(obj.GetComponent<Animator>());
         }
+    }
+
+    private void Update()
+    {
+        Pause();
     }
 
     public void SetHpUI(int number, bool hpGain)
@@ -54,5 +65,20 @@ public class UIManager : MonoBehaviour
         score += number;
         if (number == 0) score = 0;
         scoreText.text = "Score : " + score;
+    }
+
+    public void Pause(bool force = false)
+    {
+        if (!pauseInput && !force) return;
+        pauseUI.SetActive(!pauseUI.activeSelf);
+        if (pauseUI.activeSelf)
+        {
+            pauseUI.transform.GetChild(1).GetChild(0).GetComponent<Button>().Select();
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 }
