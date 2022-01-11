@@ -8,9 +8,11 @@ public class StartGame : MonoBehaviour, IInteractible
     [SerializeField] private GameObject player;
     [SerializeField] GameObject rayObj;
     [SerializeField] Transform tpPos;
+    [SerializeField] Transform parent;
     
     public void OnInteraction()
     {
+        if(parent != null) transform.SetParent(parent);
         StartCoroutine(AnimationRoutine());
     }
 
