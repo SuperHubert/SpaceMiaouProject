@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,25 +22,25 @@ public class FogOfWar : MonoBehaviour
 
     public int circleRadius = 5;
     private int circleRadiusAfter;
+
+    private MapIcons mapIcons;
     
     void Start()
     {
+        mapIcons = gameObject.GetComponent<MapIcons>();
         ClearFog();
     }
 
     public void UpdateMapFog(Vector2 point)
     {
-        
+        if (levelSize == 0) return;
         localPoint = point * 330 / levelSize + Vector2.one * 330;
-        // set our current render texture for drawing
         RenderTexture.active = targetRender;
 
         // Draw circle to reveal content
         int xPos = Mathf.RoundToInt((localPoint.x / targetImage.sizeDelta.x) * (float)targetRender.width);
         int yPos = Mathf.RoundToInt((localPoint.y / targetImage.sizeDelta.y) * (float)targetRender.height);
-            
-        //float circle = 2 * Mathf.PI * 5;
-        
+
         revealSize = (int)((25f/(float)(levelSize - 10))*80f);
         circleRadiusAfter = circleRadius * revealSize;
             
@@ -62,6 +63,8 @@ public class FogOfWar : MonoBehaviour
         texture.Apply();
 
         RenderTexture.active = null;
+        
+        mapIcons.UpdateJonesIconPos(levelSize);
     }
 
     public void ClearFog()
@@ -78,5 +81,14 @@ public class FogOfWar : MonoBehaviour
         texture.Apply();
         
         rawImage.texture = texture;
+    }
+
+    public void MoveOnMap(Transform reference, Transform target)
+    {
+        var refPos = reference.position;
+        int xPos = Mathf.RoundToInt((refPos.x / targetImage.sizeDelta.x) * (float)targetRender.width);
+        int yPos = Mathf.RoundToInt((refPos.y / targetImage.sizeDelta.y) * (float)targetRender.height);
+
+        target.position = new Vector3(xPos, yPos, 0);
     }
 }

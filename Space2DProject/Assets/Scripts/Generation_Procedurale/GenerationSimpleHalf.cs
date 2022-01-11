@@ -31,6 +31,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     [SerializeField] private Camera cameraMap;
     [SerializeField] private FollowPlayer followPlayer;
     [SerializeField] private FogOfWar fogOfWar;
+    private MapIcons mapIcons;
 
     [SerializeField] private bool buildNavMesh = true;
     [SerializeField] private bool movePlayer = true;
@@ -75,6 +76,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private void Start()
     {
         textureAssigner = gameObject.GetComponent<TextureAssigner>();
+        mapIcons = fogOfWar.gameObject.GetComponent<MapIcons>();
     }
 
     public void GenerateRooms(int numberOfRooms,int seed)
