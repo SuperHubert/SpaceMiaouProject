@@ -14,11 +14,11 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform enemies;
     private Transform items;
     private Transform spawnPoint;
-    private Transform shopPos;
-    private Transform portalPos;
+    private Transform shopTransform;
+    private Transform portalTransform;
     private Transform healthBarCanvas;
-    private Transform lights;
-    private Transform tower;
+    private Transform lightsTransform;
+    private Transform towerTransform;
     private int roomSpriteRendersIndex;
     private int roomTilemapsIndex;
     private int roomCollisionsIndex;
@@ -57,10 +57,10 @@ public class GenerationSimpleHalf : MonoBehaviour
         enemies = level.GetChild(1);
         items = level.GetChild(2);
         spawnPoint = level.GetChild(4);
-        portalPos = level.GetChild(3);
+        portalTransform = level.GetChild(3);
         healthBarCanvas = level.GetChild(5);
-        shopPos = level.GetChild(6);
-        tower = level.GetChild(7);
+        shopTransform = level.GetChild(6);
+        towerTransform = level.GetChild(7);
 
         roomSpriteRendersIndex = 0;
         roomTilemapsIndex = 1;
@@ -434,8 +434,16 @@ public class GenerationSimpleHalf : MonoBehaviour
         followPlayer.isInHub = false;
         
         DestroySomeChests();
+
+        var levelSize = fogOfWar.levelSize;
         
-        mapIcons.UpdateChests(fogOfWar.levelSize);
+        mapIcons.UpdateChests(levelSize);
+        
+        mapIcons.MoveShopIcon(shopTransform,levelSize,shopTransform.gameObject.activeSelf);
+        
+        mapIcons.MoveTowerIcon(towerTransform,levelSize);
+        
+        mapIcons.MovePortalIcon(portalTransform,levelSize);
         
         CleanUpGrid();
 
@@ -520,9 +528,9 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         posObject = Instantiate(firstRoomPrefab.transform.GetChild(roomShopIndex).gameObject, room.transform);
         
-        shopPos.position = posObject.transform.position;
+        shopTransform.position = posObject.transform.position;
         
-        shopPos.gameObject.GetComponent<ShopInteraction>().UpdateAppearance();
+        shopTransform.gameObject.GetComponent<ShopInteraction>().UpdateAppearance();
     }
 
     private void MovePortal()
@@ -531,12 +539,12 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         GameObject posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomPortalIndex).gameObject, room.transform);
 
-        portalPos.position = posObject.transform.position;
+        portalTransform.position = posObject.transform.position;
         
         //posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomTowerIndex).gameObject, room.transform);
         posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomTowerIndex).gameObject, room.transform);
         
-        tower.position = posObject.transform.position;
+        towerTransform.position = posObject.transform.position;
     }
     
     private void UpdateProgress(float number)
@@ -579,7 +587,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     
     public void GeneratorSettingsForBoss()
     {
-        portalPos.position = new Vector3(0, -150, 0);
+        portalTransform.position = new Vector3(0, -150, 0);
         
         cameraMap.orthographicSize = 25 + 10;
         
@@ -605,12 +613,12 @@ public class GenerationSimpleHalf : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        tower.GetComponent<Collider2D>().enabled = true;
-        tower.GetChild(0).gameObject.SetActive(false);
-        portalPos.GetComponent<Collider2D>().enabled = false;
+        towerTransform.GetComponent<Collider2D>().enabled = true;
+        towerTransform.GetChild(0).gameObject.SetActive(false);
+        portalTransform.GetComponent<Collider2D>().enabled = false;
         
-        if (lights == null) return;
-        foreach (Transform child in lights)
+        if (lightsTransform == null) return;
+        foreach (Transform child in lightsTransform)
         { 
             Destroy(child.gameObject);
         }

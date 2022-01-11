@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +33,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     private bool canOpenShop = true;
     public bool closeShopInput = false;
     private static readonly int PickUpAnimation = Animator.StringToHash("PickUpAnimation");
-
+    
 
     private void Update()
     {
@@ -173,8 +174,6 @@ public class ShopInteraction : MonoBehaviour, IInteractible
             case 0:
                 var floorNumber = LevelManager.Instance.GetCurrentFloorNumber();
                 gameObject.SetActive((floorNumber != 0));
-                if (floorNumber != 0) return;
-                
                 animator.SetLayerWeight (2, 0f);
                 animator.SetLayerWeight (1, 1f);
                 break;
