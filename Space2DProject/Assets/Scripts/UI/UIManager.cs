@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
         
     }
     
-
     public void UpdateHp(float progress)
     {
         hpImage.fillAmount = progress;

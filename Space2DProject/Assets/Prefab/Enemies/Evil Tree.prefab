@@ -555,7 +555,7 @@ MonoBehaviour:
   moveHealthBar: 1
   enemyAnimator: {fileID: 8267407442873659567}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
-  flashDuration: 0.1
+  spriteRenderer: {fileID: 0}
 --- !u!61 &1062605183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: 1923760016172220057}
   - component: {fileID: 2385343913735767878}
   - component: {fileID: 8267407442873659567}
+  - component: {fileID: 2053716553367689036}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -684,6 +685,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2053716553367689036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755622330264474162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dedb7cea5364ce4894a1163a94055e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  offset: -0.29
 --- !u!1 &3981951235126260066
 GameObject:
   m_ObjectHideFlags: 0
