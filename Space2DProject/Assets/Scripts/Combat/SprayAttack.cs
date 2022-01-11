@@ -10,7 +10,7 @@ public class SprayAttack : MonoBehaviour
     public bool isSpraying;
     private bool canShoot = true;
 
-    public Slider slider;
+    public Image sprayImage;
     public float maxSpray = 100;
     public float currentSpray;
 
@@ -66,7 +66,7 @@ public class SprayAttack : MonoBehaviour
     public void UpdateSprayBar()
     {
         if (currentSpray > maxSpray) currentSpray = maxSpray;
-        slider.value = currentSpray / maxSpray;
+        sprayImage.fillAmount = (float)currentSpray / maxSpray;
     }
 
     IEnumerator ResetSpray()

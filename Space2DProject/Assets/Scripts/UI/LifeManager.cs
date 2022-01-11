@@ -57,7 +57,7 @@ public class LifeManager : MonoBehaviour
             Die();
         }
 
-        UIManager.Instance.SetHpUI(lifeBar, !(damages > 0));
+        UIManager.Instance.UpdateHp((float)lifeBar/maxHP);
         
 
     }

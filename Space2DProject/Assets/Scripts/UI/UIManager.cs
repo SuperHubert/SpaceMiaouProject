@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public List<GameObject> HpList;
-    private List<Animator> HpAnims = new List<Animator>();
+    public Image hpImage;
     
     public GameObject normalUI;
     public GameObject pauseUI;
@@ -27,37 +26,17 @@ public class UIManager : MonoBehaviour
     }
 
     #endregion
-
-    private void Start()
-    {
-        foreach (var obj in HpList)
-        {
-            HpAnims.Add(obj.GetComponent<Animator>());
-        }
-    }
+    
 
     private void Update()
     {
         Pause();
     }
+    
 
-    public void SetHpUI(int number, bool hpGain)
+    public void UpdateHp(float progress)
     {
-        for (int i = 0; i < 9; i++)
-        {
-            if (i < number)
-            {
-                if (hpGain)
-                {
-                    HpAnims[i].Rebind();
-                    HpAnims[i].Update(0f);
-                }
-            }
-            else
-            {
-                HpAnims[i].SetTrigger("Off");
-            }
-        }
+        hpImage.fillAmount = progress;
     }
 
     public void IncreaseScore(int number)
