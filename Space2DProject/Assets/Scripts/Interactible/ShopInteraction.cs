@@ -22,8 +22,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
     public Image itemImage;
-    //public List<TextMeshProUGUI> testNameList;
-    public List<GameObject> soldOutList;
+
+    public TextMeshProUGUI inventoryText;
+    public List<ShopManager.ShopItem> inventory;
 
     public Sprite baseButtonSprite;
     public Sprite soldOutSprite;
@@ -134,7 +135,21 @@ public class ShopInteraction : MonoBehaviour, IInteractible
             itemImage.sprite = displayList[i].image;
         }
     }
-    
+
+    private void UpdateInventory()
+    {
+        string returnText = "";
+
+        if (inventory.Count == 0) returnText = "(No Upgrades)";
+        foreach (var item in inventory)
+        {
+            returnText += "-" + item.name + "\n";
+        }
+
+        inventoryText.text = returnText;
+
+    }
+
     public void OnInteraction()
     {
         if(shopUI.activeSelf || !canOpenShop) return;
@@ -149,6 +164,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         LevelManager.Instance.Player().SetActive(true);
         UIManager.Instance.normalUI.SetActive(true);
         shopUI.SetActive(false);
+        UpdateInventory();
         Time.timeScale = 1;
         StartCoroutine(InteractionCooldown());
     }
@@ -158,6 +174,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         if (!CanBuy(index)) return;
         MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
         displayList[index].isBought = true;
+        if(displayList[index].track) inventory.Add(displayList[index]);
         //soldOutList[index].SetActive(true);
         displayList[index].upgrade.Invoke();
         nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();

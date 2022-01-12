@@ -121,6 +121,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 0
     isBought: 0
   - name: Heal II
     image: {fileID: 21300000, guid: 6618f77945ff1b14f9f1861c2508c3ab, type: 3}
@@ -142,6 +143,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 0
     isBought: 0
   - name: Heal III
     image: {fileID: 21300000, guid: 913633eab67b77848b1a0102f479db35, type: 3}
@@ -163,6 +165,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 0
     isBought: 0
   - name: Speed I
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
@@ -184,6 +187,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Speed II
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
@@ -205,6 +209,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Speed III
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
@@ -226,6 +231,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Broom Damage I
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
@@ -247,6 +253,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Broom Damage II
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
@@ -268,6 +275,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Broom Damages III
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
@@ -289,6 +297,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Dash Cooldown I
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
@@ -310,6 +319,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Dash Cooldown II
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
@@ -331,6 +341,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Dash Cooldown III
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
@@ -352,6 +363,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Fortune I
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
@@ -373,6 +385,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Fortune II
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
@@ -394,6 +407,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Fortune III
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
@@ -415,6 +429,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: 'Bleach '
     image: {fileID: 21300000, guid: eb7b966f7e0fa3e4cb82e34dfcac4bf6, type: 3}
@@ -436,6 +451,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Spray Damage I
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
@@ -457,6 +473,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Spray Damage II
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
@@ -478,6 +495,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Better Prices I
     image: {fileID: 21300000, guid: f98f05007731d6d4c87aaef8bec40e04, type: 3}
@@ -499,6 +517,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Better Prices II
     image: {fileID: 21300000, guid: 0b8b5ef32035dc0459a0c1767b51270d, type: 3}
@@ -520,6 +539,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Soap Gain I
     image: {fileID: 21300000, guid: c8efb72c596502f4bb767ea2ec0098c5, type: 3}
@@ -541,6 +561,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Soap Gain II
     image: {fileID: 21300000, guid: 6647c385b2850904b868006c64bbda4a, type: 3}
@@ -562,6 +583,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   ShopItemList2: []
 --- !u!114 &2340910093457116432

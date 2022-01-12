@@ -25,6 +25,7 @@ public class ShopManager : MonoBehaviour
         public string description = "does something";
         public int actualPrice;
         public UnityEvent upgrade = new UnityEvent();
+        public bool track = true;
         public bool isBought = false;
 
     }
@@ -76,6 +77,7 @@ public class ShopManager : MonoBehaviour
                         basePrice = item.basePrice,
                         actualPrice = item.actualPrice,
                         upgrade = item.upgrade,
+                        track = item.track,
                         isBought = item.isBought
                     }))
                     {
@@ -111,7 +113,9 @@ public class ShopManager : MonoBehaviour
             description = "Heal 1 Life [Appears in every shop]",
             actualPrice = ShopItemList[0].actualPrice,
             upgrade = ShopItemList[0].upgrade,
-            isBought = ShopItemList[0].isBought
+            track = false,
+            isBought = ShopItemList[0].isBought,
+            
         };
         
         returnList.Add(healItem);
