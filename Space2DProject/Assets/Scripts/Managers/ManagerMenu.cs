@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 public class ManagerMenu : MonoBehaviour
 {
     [SerializeField] private Button firstSelectedButton;
-    
     public GameObject previousSelectedObj;
+    
+    [SerializeField] private GameObject inputImage;
     private void Start()
     {
         firstSelectedButton.Select();
@@ -60,5 +61,17 @@ public class ManagerMenu : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void DisplayInput(bool forceOff = false)
+    {
+        if (forceOff)
+        {
+            inputImage.SetActive(false);
+        }
+        else
+        {
+            inputImage.SetActive(!inputImage.activeSelf);
+        }
     }
 }

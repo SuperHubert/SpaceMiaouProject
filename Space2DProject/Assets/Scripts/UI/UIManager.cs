@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     
     public GameObject normalUI;
     public GameObject pauseUI;
+    public GameObject inputImage;
     public bool pauseInput;
 
     public int score;
@@ -62,6 +63,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            inputImage.SetActive(false);
             Time.timeScale = 1;
         }
     }
