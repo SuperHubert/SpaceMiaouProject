@@ -757,6 +757,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &385766033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1135402704544024730, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+  m_PrefabInstance: {fileID: 385766012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &430110694 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4745632883511375322, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -2088,6 +2093,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 718113479626864116, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
+      propertyPath: mapHider
+      value: 
+      objectReference: {fileID: 385766033}
     - target: {fileID: 718113479626864116, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
       propertyPath: playerFollower
       value: 

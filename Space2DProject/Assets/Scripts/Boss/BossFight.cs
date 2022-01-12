@@ -10,6 +10,7 @@ public class BossFight : MonoBehaviour
     private GameObject bossObj;
     private Transform startPos;
     public GameObject playerFollower;
+    public GameObject mapHider;
 
     void Start()
     {
@@ -39,7 +40,8 @@ public class BossFight : MonoBehaviour
         bossStartRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossStartRoom.SetActive(yes);
         playerFollower.SetActive(!yes);
-
+        mapHider.SetActive(yes);
+        
         isInBossFight = yes;
 
     }

@@ -1256,6 +1256,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 718113479626864116, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
+      propertyPath: mapHider
+      value: 
+      objectReference: {fileID: 1397800933}
+    - target: {fileID: 718113479626864116, guid: c42ecd4b2ebe4ec40a8943039dea75ef, type: 3}
       propertyPath: playerFollower
       value: 
       objectReference: {fileID: 409208226}
@@ -2818,7 +2822,7 @@ PrefabInstance:
       objectReference: {fileID: 1188501823}
     - target: {fileID: 4773208683996054112, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4794878909039128671, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_Color.b
@@ -2908,6 +2912,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1397800933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1135402704544024730, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+  m_PrefabInstance: {fileID: 1397800929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1443115467 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7046068858986662419, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
