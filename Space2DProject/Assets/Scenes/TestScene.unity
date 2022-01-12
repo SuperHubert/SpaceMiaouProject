@@ -1007,6 +1007,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &408965484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5874211203301034358, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+  m_PrefabInstance: {fileID: 1397800929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a8458296b473942a36eefa44c0a1e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &409208226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4865300751528322500, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
@@ -1478,6 +1489,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 463589145}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: fogImage
+      value: 
+      objectReference: {fileID: 707337152}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 908625876}
@@ -1499,7 +1514,7 @@ PrefabInstance:
       objectReference: {fileID: 409208227}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: generateOnStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: minimapBackground
@@ -1863,6 +1878,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704435202}
   m_CullTransparentMesh: 1
+--- !u!114 &707337152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4794878909039128671, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+  m_PrefabInstance: {fileID: 1397800929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &725756473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2823389970596841350, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -2440,11 +2466,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 771193291, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 946781597884646544, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: maxFloors
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 946781597884646544, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: numberOfRooms
@@ -2617,6 +2643,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 212929540}
     - target: {fileID: 1108469905, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: reverse
+      value: 
+      objectReference: {fileID: 408965484}
+    - target: {fileID: 1108469905, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: jonesIcon
       value: 
       objectReference: {fileID: 0}
@@ -2720,6 +2750,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1997971423101345846, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: m_Name
+      value: Fog Color
+      objectReference: {fileID: 0}
     - target: {fileID: 2062910515460076547, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2748,10 +2782,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4794878909039128671, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794878909039128671, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794878909039128671, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.70980394
+      objectReference: {fileID: 0}
     - target: {fileID: 5142379834669565576, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5874211203301034358, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 550244341}
     - target: {fileID: 6989513542562367575, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2784,7 +2834,8 @@ PrefabInstance:
       propertyPath: m_FillOrigin
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7405637921312776621, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
 --- !u!114 &1397800930 stripped
 MonoBehaviour:

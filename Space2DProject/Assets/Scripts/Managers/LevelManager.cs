@@ -22,7 +22,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private FollowPlayer playerFollower;
 
     [SerializeField] private RawImage minimapBackground;
+    [SerializeField] private RawImage mapBackground;
+    [SerializeField] private Camera mapCamera;
     [SerializeField] private Light2D globalLight;
+    [SerializeField] private Image fogImage;
     [SerializeField] private Sprite portalBiome1;
     [SerializeField] private Sprite portalBiome2;
     [SerializeField] private Sprite portalBiome3;
@@ -222,28 +225,32 @@ public class LevelManager : MonoBehaviour
         switch (biome)
         {
             case 0:
-                minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
                 globalLight.color = Color.white;
                 portalSpriteRenderer.sprite = portalBiome1;
                 towerSpriteRenderer.sprite = towerBiome1;
+                fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
                 break;
             case 1:
-                minimapBackground.color = cam.backgroundColor = new Color(0.3960784f, 0.05882353f, 0.09411765f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.3960784f, 0.05882353f, 0.09411765f, 1);
                 globalLight.color = new Color(0.8396226f,0.6663744f,0.4475347f, 1);
                 portalSpriteRenderer.sprite = portalBiome2;
                 towerSpriteRenderer.sprite = towerBiome2;
+                fogImage.color = new Color(1f,0f,0.1058824f,1);
                 break;
             case 2:
-                minimapBackground.color = cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f, 1);
                 globalLight.color = Color.white;
                 portalSpriteRenderer.sprite = portalBiome3;
                 towerSpriteRenderer.sprite = towerBiome3;
+                fogImage.color = new Color(0.7098039f,0.7098039f,0.7098039f,1f);
                 break;
             default:
-                minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
                 globalLight.color = Color.white;
                 portalSpriteRenderer.sprite = portalBiome1;
                 towerSpriteRenderer.sprite = towerBiome1;
+                fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
                 break;
         }
     }

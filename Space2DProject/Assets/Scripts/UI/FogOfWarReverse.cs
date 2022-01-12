@@ -1,15 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FogOfWar : MonoBehaviour
+public class FogOfWarReverse : MonoBehaviour
 {
-
     // Component for the mask
     public RawImage rawImage;
     // Place to draw our revealing smudges
     public RenderTexture targetRender;
     public RectTransform targetImage;
-    public FogOfWarReverse reverse;
 
     public InputManager inputManager;
     public int levelSize;
@@ -55,7 +53,7 @@ public class FogOfWar : MonoBehaviour
                 float distance = Mathf.Sqrt((targetX * targetX) + (targetY * targetY));
                 if (distance < circleRadiusAfter)
                 {
-                    texture.SetPixel(xPos+targetX, yPos+targetY, Color.black);
+                    texture.SetPixel(xPos+targetX, yPos+targetY, Color.clear);
                 }
             }    
         }
@@ -66,8 +64,6 @@ public class FogOfWar : MonoBehaviour
         RenderTexture.active = null;
         
         mapIcons.UpdateJonesIconPos(levelSize);
-        
-        reverse.UpdateMapFog(point);
     }
 
     public void ClearFog()
@@ -78,14 +74,12 @@ public class FogOfWar : MonoBehaviour
         // clear initial image
         for (int i = 0; i < clearColors.Length; i++)
         {
-            clearColors[i] = Color.clear;
+            clearColors[i] = Color.black;
         }
         texture.SetPixels(0,0,targetRender.width, targetRender.height, clearColors);
         texture.Apply();
         
         rawImage.texture = texture;
-        
-        reverse.ClearFog();
     }
 
     public void MoveOnMap(Transform reference, Transform target)
