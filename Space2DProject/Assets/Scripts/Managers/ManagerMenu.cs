@@ -36,6 +36,7 @@ public class ManagerMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        LoadingLevelData.Instance.creditsGoToMenu = false;
         if (LoadingLevelData.Instance.hasLaunchedGame)
         {
             LoadingManager.Instance.LoadScene(3);
@@ -73,5 +74,11 @@ public class ManagerMenu : MonoBehaviour
         {
             inputImage.SetActive(!inputImage.activeSelf);
         }
+    }
+
+    public void GoToCredits()
+    {
+        LoadingLevelData.Instance.creditsGoToMenu = true;
+        SceneManager.LoadScene(7);
     }
 }

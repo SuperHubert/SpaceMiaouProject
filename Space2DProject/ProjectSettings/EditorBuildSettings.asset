@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Cinematics.unity
     guid: a338473f1d476914d8363ed24a49a320
   - enabled: 1
+    path: Assets/Scenes/CreditScene.unity
+    guid: 6d996af775313a046938ee293e533fd6
+  - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 6eef894ef0e3f8d4b8c8c7f9613dee76
   m_configObjects: {}

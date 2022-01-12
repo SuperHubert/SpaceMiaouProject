@@ -9,7 +9,7 @@ public class Cinematic : MonoBehaviour
 {
     public Image image;
     public TextMeshProUGUI text;
-    private int index = -1;
+    [SerializeField] private int index = -1;
 
     [SerializeField] private float timeBetweenLetters = 0.005f;
     [SerializeField] private float timeBetweenBlinks = 0.5f;
@@ -77,7 +77,7 @@ public class Cinematic : MonoBehaviour
             index++;
             if (index >= 6)
             {
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(7);
                 return;
             }
         
