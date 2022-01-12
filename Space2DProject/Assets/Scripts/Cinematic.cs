@@ -26,6 +26,7 @@ public class Cinematic : MonoBehaviour
     
     void Start()
     {
+        LoadingManager.Instance.UpdateLoading(2);
         if (LoadingLevelData.Instance.hasLaunchedGame)
         {
             GoToImage(3);

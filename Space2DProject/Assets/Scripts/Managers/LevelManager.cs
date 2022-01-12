@@ -209,7 +209,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             //JOUER LA CINEMATIQUE LA
-            LoadingManager.Instance.UpdateLoading(2);
+            LoadingManager.Instance.UpdateLoading(0);
             SceneManager.LoadScene(6);
         }
         

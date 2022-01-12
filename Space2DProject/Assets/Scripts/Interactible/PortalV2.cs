@@ -35,8 +35,8 @@ public class PortalV2 : MonoBehaviour, IInteractible
         
         yield return new WaitForSeconds(1.22f);
         
-        LevelManager.Instance.Player().SetActive(true);
         LoadingManager.Instance.UpdateLoading();
         LevelManager.Instance.GenerateNextLevel();
+        LevelManager.Instance.Player().SetActive(true);
     }
 }
