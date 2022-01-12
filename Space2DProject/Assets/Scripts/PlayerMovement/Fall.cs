@@ -36,22 +36,28 @@ public class Fall : MonoBehaviour
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
         if (playerMovement.dashing) return;
         canFall = false;
+        InputManager.canInput = false;
+        InputManager.canMove = false;
+        
         
         fallAnimObj.transform.position = transform.position;
         fallAnim.Play("Noyade");
-        InputManager.canInput = false;
+        
         playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = false;
         StartCoroutine(DoTheFalling());
     }
 
     IEnumerator DoTheFalling()
     {
+        fallAnim.Play("Noyade");
         yield return new WaitForSeconds(2.5f);
         playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = true;
         LifeManager.Instance.TakeDamages(1);
         playerTransform.position = currentFollower.transform.position;
         canFall = true;
         InputManager.canInput = true;
+        InputManager.canMove = true;
+        playerObj.SetActive(true);
     }
 
     public IEnumerator TeleportFollower(bool instant = false)

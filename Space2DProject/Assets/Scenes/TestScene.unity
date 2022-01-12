@@ -1493,6 +1493,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 707337152}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: mapCamera
+      value: 
+      objectReference: {fileID: 1885841089}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 908625876}
@@ -1508,6 +1512,10 @@ PrefabInstance:
       propertyPath: bossFightObj
       value: 
       objectReference: {fileID: 1154857201}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: mapBackground
+      value: 
+      objectReference: {fileID: 1283471944}
     - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: playerFollower
       value: 
@@ -2598,6 +2606,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7883165023691188291, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
   m_PrefabInstance: {fileID: 1397800929}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1283471944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4011922764671716595, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+  m_PrefabInstance: {fileID: 1397800929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1327118863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9207568952892934234, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}

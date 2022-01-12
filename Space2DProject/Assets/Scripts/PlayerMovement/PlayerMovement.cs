@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         inputMovement.x = horizontalAxis;
         inputMovement.y = verticalAxis;
         
+        if(!InputManager.canInput) return;
         InputManager.canMove = !dashing;
 
         if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
