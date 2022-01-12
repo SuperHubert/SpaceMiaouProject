@@ -13,12 +13,12 @@ public class MapManager : MonoBehaviour
     {
         if (mapInput || (bigMapIsActive && mapExitInput))
         {
-            if (LevelManager.Instance.IsInBossFight()) return;
-            DisplayShop();
+            //if (LevelManager.Instance.IsInBossFight()) return;
+            DisplayMap();
         }
     }
 
-    private void DisplayShop()
+    private void DisplayMap()
     {
         bigMapIsActive = !bigMapIsActive;
         if (bigMapIsActive)

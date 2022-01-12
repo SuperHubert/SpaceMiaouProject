@@ -179,7 +179,8 @@ public class ConsoleManager : MonoBehaviour
         {
             loadingm.UpdateLoading();
         
-            levelm.GenerateNextLevel();
+            levelm.Level().GetChild(3).GetComponent<PortalV2>().OnInteraction();
+            //levelm.GenerateNextLevel();
         });
         
         PREVIOUSLEVEL = new Command("previouslevel", "Generates previous level of the current run", "previouslevel", () =>

@@ -142,7 +142,6 @@ public class LoadingManager : MonoBehaviour
     {
         if(controllers.Count == 0) RefillControllers();
         RuntimeAnimatorController controller = controllers[Random.Range(0, controllers.Count)];
-        Debug.Log(controller);
         animator.runtimeAnimatorController = controller;
         controllers.Remove(controller);
     }

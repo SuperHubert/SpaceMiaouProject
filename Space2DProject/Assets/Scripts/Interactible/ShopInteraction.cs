@@ -68,6 +68,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         if (displayList.Count == 0)
         {
             displayList = shopManager.SetNewDisplayItems(LevelManager.Instance.GetCurrentFloorNumber(), LevelManager.Instance.GetFirstSeed(), 5);
+            Debug.Log("Updated shop");
         }
 
         for (int i = 0; i < textList.Count; i++)
@@ -78,15 +79,11 @@ public class ShopInteraction : MonoBehaviour, IInteractible
                 displayList[i].actualPrice = 1; 
             }
             textList[i].text = displayList[i].actualPrice.ToString();
-            //testNameList[i].text = displayList[i].name;
-            
-            //soldOutList[i].SetActive(false);
             buttonList[i].GetComponent<Image>().sprite = baseButtonSprite;
             
             if (displayList[i].isBought)
             {
                 buttonList[i].GetComponent<Image>().sprite = soldOutSprite;
-                //soldOutList[i].SetActive(true);
             }
             nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
 
