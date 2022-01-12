@@ -498,18 +498,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 771193291, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 946781597884646544, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
-      propertyPath: maxFloors
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 946781597884646544, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
-      propertyPath: numberOfRooms
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2802006457157169181, guid: 88677525443cca9408f6b8a5cf7cbd86, type: 3}
       propertyPath: m_Name
       value: Loading Manager

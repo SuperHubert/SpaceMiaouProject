@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +11,9 @@ public class LoadingManager : MonoBehaviour
     private Image backgroundImage;
     private Image progressBar;
     public Animator animator;
+    public List<RuntimeAnimatorController> controllersReserve;
+    [SerializeField] private List<RuntimeAnimatorController> controllers = new List<RuntimeAnimatorController>();
+
 
     private bool showCanvas = true;
     private bool showImage = true;
@@ -38,6 +42,7 @@ public class LoadingManager : MonoBehaviour
     {
         backgroundImage = canvas.transform.GetChild(0).gameObject.GetComponent<Image>();
         progressBar = canvas.transform.GetChild(1).gameObject.GetComponent<Image>();
+        RefillControllers();
     }
 
     public void LoadScene(int sceneNumber)
@@ -87,7 +92,7 @@ public class LoadingManager : MonoBehaviour
         if (progress > 1)
         {
             canvas.SetActive(false);
-            RotationItem(Random.Range(1, 6));
+            RotationItem();
             InputManager.canInput = true;
             return;
         }
@@ -133,17 +138,21 @@ public class LoadingManager : MonoBehaviour
         return mode;
     }
 
-    public void RotationItem(int item)
+    public void RotationItem()
     {
-        for (int i = 1; i < 6; i++)
+        if(controllers.Count == 0) RefillControllers();
+        RuntimeAnimatorController controller = controllers[Random.Range(0, controllers.Count)];
+        Debug.Log(controller);
+        animator.runtimeAnimatorController = controller;
+        controllers.Remove(controller);
+    }
+
+    private void RefillControllers()
+    {
+        controllers.Clear();
+        foreach (var controller in controllersReserve)
         {
-            Debug.Log(i + " "+item);
-            animator.SetLayerWeight(i, 1f);
-            if (i == item)
-            {
-                animator.SetLayerWeight(i, 1f);
-            }
-            
+            controllers.Add(controller);
         }
     }
 }

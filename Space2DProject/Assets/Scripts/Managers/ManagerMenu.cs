@@ -37,6 +37,7 @@ public class ManagerMenu : MonoBehaviour
     public void PlayGame()
     {
         LoadingLevelData.Instance.creditsGoToMenu = false;
+        LoadingManager.Instance.RotationItem();
         if (LoadingLevelData.Instance.hasLaunchedGame)
         {
             LoadingManager.Instance.LoadScene(3);

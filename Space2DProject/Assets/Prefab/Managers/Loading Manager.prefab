@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &771193295
 RectTransform:
   m_ObjectHideFlags: 0
@@ -392,6 +392,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 771193291}
   animator: {fileID: 1265499706478720133}
+  controllersReserve:
+  - {fileID: 9100000, guid: a39bf8b3973ee4f4ba0a4f37400c2234, type: 2}
+  - {fileID: 9100000, guid: 4c7e44d3f9decdc4b886173cfb8ecfb0, type: 2}
+  - {fileID: 9100000, guid: 782bea41a8e0acb4e9a45a3260130c44, type: 2}
+  - {fileID: 9100000, guid: 9435085f020e809469dc96988c89091c, type: 2}
+  - {fileID: 9100000, guid: eb9850fe029d77a478bc83e11ca54170, type: 2}
+  controllers: []
 --- !u!114 &946781597884646544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,8 +412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 0
-  numberOfRooms: 0
-  maxFloors: 0
+  numberOfRooms: 7
+  maxFloors: 3
   score: 0
   hasLaunchedGame: 0
   creditsGoToMenu: 1
