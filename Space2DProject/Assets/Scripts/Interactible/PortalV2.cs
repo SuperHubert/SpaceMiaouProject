@@ -5,13 +5,13 @@ public class PortalV2 : MonoBehaviour, IInteractible
 {
     [SerializeField] private FollowPlayer followPlayer;
     [SerializeField] private ShopInteraction shopInteraction;
-    private GameObject rayObj;
+    private Animator animator;
     private Transform tpPos;
 
     private void Start()
     {
-        rayObj = transform.GetChild(0).gameObject;
         tpPos = transform.GetChild(1);
+        animator = gameObject.GetComponent<Animator>();
     }
 
     public void OnInteraction()
@@ -21,6 +21,8 @@ public class PortalV2 : MonoBehaviour, IInteractible
         DialogueManager.Instance.EndDialogue();
         
         shopInteraction.displayList.Clear();
+        
+        animator.SetTrigger("Trigger");
 
         StartCoroutine(AnimationRoutine());
     }
@@ -30,15 +32,9 @@ public class PortalV2 : MonoBehaviour, IInteractible
         LevelManager.Instance.MovePlayer(tpPos);
         LevelManager.Instance.Player().SetActive(false);
         tpPos.gameObject.SetActive(true);
-        rayObj.SetActive(true);
         
-        yield return new WaitForSeconds(0.11f);
-        
-        tpPos.gameObject.SetActive(false);
-
         yield return new WaitForSeconds(1.22f);
         
-        rayObj.SetActive(false);
         LevelManager.Instance.Player().SetActive(true);
         LoadingManager.Instance.UpdateLoading();
         LevelManager.Instance.GenerateNextLevel();

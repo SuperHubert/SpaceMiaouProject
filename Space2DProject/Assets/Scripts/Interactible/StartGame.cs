@@ -20,8 +20,9 @@ public class StartGame : MonoBehaviour, IInteractible
     IEnumerator AnimationRoutine()
     {
         player.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.22f);
         LoadingManager.Instance.canvas.SetActive(true);
-        //SceneManager.LoadScene(4);
+        yield return null;
+        SceneManager.LoadScene(4);
     }
 }

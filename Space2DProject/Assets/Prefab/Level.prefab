@@ -280,7 +280,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5398668143317360175}
   - component: {fileID: 2178058960628724604}
-  - component: {fileID: 3260416012213184504}
   m_Layer: 0
   m_Name: Portal Ray
   m_TagString: Untagged
@@ -353,25 +352,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3260416012213184504
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097725463250085942}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1511e85b57615684f889b7a47b5f6caa, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6156038838675469327
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6c2b1fbee5b9e4da0c424f736e0bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!61 &6521914564625401045
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -545,6 +526,7 @@ GameObject:
   - component: {fileID: 8364773362135438208}
   - component: {fileID: 8364773362135438213}
   - component: {fileID: 5683647496741122166}
+  - component: {fileID: 5458092360265095132}
   m_Layer: 14
   m_Name: Portal
   m_TagString: Untagged
@@ -659,6 +641,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followPlayer: {fileID: 0}
   shopInteraction: {fileID: 273499834543205587}
+--- !u!95 &5458092360265095132
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8364773362135438209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: faf3a24258d495847971412d0c9427ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8453805979113851985
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +670,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3198638974089790541}
   - component: {fileID: 6728737467620990442}
-  - component: {fileID: 2518044996236437866}
   m_Layer: 6
   m_Name: PlayerPos
   m_TagString: Untagged
@@ -742,25 +742,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2518044996236437866
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8453805979113851985}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7958286980be50b4fb04efcdffc6eb9e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2545915622002670719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -902,11 +883,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
---- !u!4 &4443492621118356681 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2233394246705086646, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
-  m_PrefabInstance: {fileID: 2545915622002670719}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &273499834543205587 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2350670521089478828, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
@@ -918,6 +894,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd40a3e48cd5421408bb4b80380d7795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &4443492621118356681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2233394246705086646, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
+  m_PrefabInstance: {fileID: 2545915622002670719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4223183491328878859
 PrefabInstance:
   m_ObjectHideFlags: 0
