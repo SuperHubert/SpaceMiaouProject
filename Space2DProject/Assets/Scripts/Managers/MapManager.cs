@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     
     void Update()
     {
-        if (mapInput || (bigMapIsActive && mapExitInput))
+        if ((mapInput || (bigMapIsActive && mapExitInput)) && !ShopManager.Instance.shopCanvas.activeSelf)
         {
             //if (LevelManager.Instance.IsInBossFight()) return;
             DisplayMap();

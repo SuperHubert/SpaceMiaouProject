@@ -844,6 +844,10 @@ PrefabInstance:
       value: -0.3696022
       objectReference: {fileID: 0}
     - target: {fileID: 4443492621118356680, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: shopCanvas
+      value: 
+      objectReference: {fileID: 907438271}
+    - target: {fileID: 4443492621118356680, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: ShopItemList.Array.data[8].name
       value: Broom Damage III
       objectReference: {fileID: 0}

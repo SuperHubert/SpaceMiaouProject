@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     public int reductionTotal = 0;
+    public GameObject shopCanvas;
 
     #region Singleton
     public static ShopManager Instance;
