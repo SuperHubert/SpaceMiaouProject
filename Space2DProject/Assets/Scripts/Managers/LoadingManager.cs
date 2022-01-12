@@ -2,13 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class LoadingManager : MonoBehaviour
 {
     public GameObject canvas;
     private Image backgroundImage;
     private Image progressBar;
-    private GameObject loadingText;
+    public Animator animator;
 
     private bool showCanvas = true;
     private bool showImage = true;
@@ -37,7 +38,6 @@ public class LoadingManager : MonoBehaviour
     {
         backgroundImage = canvas.transform.GetChild(0).gameObject.GetComponent<Image>();
         progressBar = canvas.transform.GetChild(1).gameObject.GetComponent<Image>();
-        loadingText = canvas.transform.GetChild(2).gameObject;
     }
 
     public void LoadScene(int sceneNumber)
@@ -87,6 +87,7 @@ public class LoadingManager : MonoBehaviour
         if (progress > 1)
         {
             canvas.SetActive(false);
+            RotationItem(Random.Range(1, 6));
             InputManager.canInput = true;
             return;
         }
@@ -132,5 +133,17 @@ public class LoadingManager : MonoBehaviour
         return mode;
     }
 
-    
+    public void RotationItem(int item)
+    {
+        for (int i = 1; i < 6; i++)
+        {
+            Debug.Log(i + " "+item);
+            animator.SetLayerWeight(i, 1f);
+            if (i == item)
+            {
+                animator.SetLayerWeight(i, 1f);
+            }
+            
+        }
+    }
 }

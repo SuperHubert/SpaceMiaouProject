@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 2669599174282918702}
   - component: {fileID: 8272211024107783852}
   - component: {fileID: 7555491100731780958}
+  - component: {fileID: 1265499706478720133}
   m_Layer: 5
   m_Name: Rotating Item
   m_TagString: Untagged
@@ -325,6 +326,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1265499706478720133
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133752681974548090}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9435085f020e809469dc96988c89091c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2802006457157169181
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 771193291}
+  animator: {fileID: 1265499706478720133}
 --- !u!114 &946781597884646544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,6 +409,7 @@ MonoBehaviour:
   maxFloors: 0
   score: 0
   hasLaunchedGame: 0
+  creditsGoToMenu: 1
 --- !u!1 &8013728393671299275
 GameObject:
   m_ObjectHideFlags: 0
