@@ -21,5 +21,6 @@ public class CanGoBehind : MonoBehaviour
     void Update()
     {
         renderer.sortingOrder = player.position.y < transform.position.y + offset ? baseLayer : 7;
+        //renderer.sortingOrder = player.position.y < transform.position.y + offset ? 7 : baseLayer;
     }
 }

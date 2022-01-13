@@ -14,13 +14,17 @@ public class DamageOnTriggerEnter : MonoBehaviour
     private void Start()
     {
         playerTransform = LevelManager.Instance.Player().transform;
-        collider = gameObject.GetComponent<BoxCollider2D>();
-        yPos = collider.offset.y;
+        if (gameObject.GetComponent<BoxCollider2D>() != null)
+        {
+            collider = gameObject.GetComponent<BoxCollider2D>();
+            yPos = collider.offset.y;
+        }
+        
     }
 
     private void Update()
     {
-        if(!feetHitbox) return;
+        if(!feetHitbox || collider == null) return;
         if (playerTransform.position.y < transform.position.y + detectOffset)
         {
             collider.offset = Vector2.right * yPos + Vector2.up * moveOffset;
