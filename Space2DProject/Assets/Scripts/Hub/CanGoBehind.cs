@@ -7,6 +7,7 @@ public class CanGoBehind : MonoBehaviour
 {
     public Transform player;
     public float offset = 0;
+    public int layer = 7;
     private SpriteRenderer renderer;
     private int baseLayer;
 
@@ -20,7 +21,7 @@ public class CanGoBehind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        renderer.sortingOrder = player.position.y < transform.position.y + offset ? baseLayer : 7;
+        renderer.sortingOrder = player.position.y < transform.position.y + offset ? baseLayer : layer;
         //renderer.sortingOrder = player.position.y < transform.position.y + offset ? 7 : baseLayer;
     }
 }
