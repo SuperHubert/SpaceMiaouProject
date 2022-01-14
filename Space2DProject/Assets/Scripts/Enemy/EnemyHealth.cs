@@ -31,6 +31,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
     private Coroutine flashRoutine;
+
+    [SerializeField] private bool bossHealth = false;
+    
     
     void Start()
     {
@@ -189,6 +192,11 @@ public class EnemyHealth : MonoBehaviour
     public void KnockBack(Vector3 pos, float duration = 1f)
     {
         enemyBehaviour.KnockBack(pos,duration);
+    }
+
+    public int CurrentHp()
+    {
+        return (int)currentHealth;
     }
 
 }

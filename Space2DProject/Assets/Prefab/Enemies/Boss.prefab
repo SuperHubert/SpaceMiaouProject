@@ -465,13 +465,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarTransform: {fileID: 1189429767819852809}
-  healthBarLenght: 100
+  healthBarLenght: 800
   healthBarWidth: 20
   healthBarOffset: 0.6
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 3
+  maxHealth: 500
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 1626493658977388909}
