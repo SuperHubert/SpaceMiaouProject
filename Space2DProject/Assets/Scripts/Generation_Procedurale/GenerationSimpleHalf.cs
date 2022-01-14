@@ -62,6 +62,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         healthBarCanvas = level.GetChild(5);
         shopTransform = level.GetChild(6);
         towerTransform = level.GetChild(7);
+        lightsTransform = level.GetChild(8);
 
         roomSpriteRendersIndex = 0;
         roomTilemapsIndex = 1;
@@ -353,15 +354,6 @@ public class GenerationSimpleHalf : MonoBehaviour
                 Instantiate(spriteRenObj, room.transform.GetChild(roomSpriteRendersIndex));
             }
             
-            //Instantiates prefab Lights GameObjects
-            if (prefabRoom.transform.childCount >= 10)
-            {
-                foreach (Transform lightObj in prefabRoom.transform.GetChild(roomSpriteRendersIndex))
-                {
-                    Instantiate(lightObj, room.transform.GetChild(roomOtherIndex));
-                }
-            }
-            
             if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
             {
                 firstRoomPrefab = prefabRoom;
@@ -433,6 +425,16 @@ public class GenerationSimpleHalf : MonoBehaviour
                 if (otherObj.GetComponent<Chest>() != null)
                 {
                     AddChest(chest.gameObject);
+                }
+            }
+            
+            //Instantiates prefab Lights GameObjects
+            if (prefabRoom.transform.childCount >= 10)
+            {
+                foreach (Transform lightObj in prefabRoom.transform.GetChild(roomLightsIndex))
+                {
+                    Transform lightT = Instantiate(lightObj, room.transform);
+                    lightT.parent = lightsTransform;
                 }
             }
             
