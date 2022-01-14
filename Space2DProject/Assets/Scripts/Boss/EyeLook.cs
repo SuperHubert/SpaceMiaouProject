@@ -24,7 +24,7 @@ public class EyeLook : MonoBehaviour
     
     void Start()
     {
-        
+        if (player == null) player = LevelManager.Instance.Player().transform;
     }
 
     void Update()
