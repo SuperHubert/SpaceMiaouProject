@@ -1088,6 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerFollower: {fileID: 0}
+  mapHider: {fileID: 0}
 --- !u!1001 &718113480811963559
 PrefabInstance:
   m_ObjectHideFlags: 0
