@@ -28,6 +28,7 @@ public class GenerationSimpleHalf : MonoBehaviour
     private int roomSpawnIndex;
     private int roomShopIndex;
     private int roomTowerIndex;
+    private int roomLightsIndex;
     [SerializeField] private Camera cameraMap;
     [SerializeField] private FollowPlayer followPlayer;
     [SerializeField] private FogOfWar fogOfWar;
@@ -71,6 +72,7 @@ public class GenerationSimpleHalf : MonoBehaviour
         roomSpawnIndex = 6;
         roomShopIndex = 7;
         roomTowerIndex = 8;
+        roomLightsIndex = 9;
     }
 
     private void Start()
@@ -350,7 +352,16 @@ public class GenerationSimpleHalf : MonoBehaviour
             {
                 Instantiate(spriteRenObj, room.transform.GetChild(roomSpriteRendersIndex));
             }
-
+            
+            //Instantiates prefab Lights GameObjects
+            if (prefabRoom.transform.childCount >= 10)
+            {
+                foreach (Transform lightObj in prefabRoom.transform.GetChild(roomSpriteRendersIndex))
+                {
+                    Instantiate(lightObj, room.transform.GetChild(roomOtherIndex));
+                }
+            }
+            
             if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
             {
                 firstRoomPrefab = prefabRoom;
