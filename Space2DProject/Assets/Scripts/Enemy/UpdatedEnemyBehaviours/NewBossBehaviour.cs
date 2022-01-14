@@ -6,12 +6,12 @@ public class NewBossBehaviour : EnemyBehaviour
 {
     [SerializeField] private GameObject healthBarBack;
     [SerializeField] private GameObject rockAttackPrefab;
-    private EnemyHealth health;
     private ObjectPooler pooler;
 
     public int phase = 0;
 
-    private bool rockRoutineRunning;
+    public float rockAttackCdMax;
+    private float rockAttackCd;
 
     protected override void InitVariables()
     {
@@ -33,7 +33,15 @@ public class NewBossBehaviour : EnemyBehaviour
             actionTrigger.SetActive(true);
         }
 
-        if (!rockRoutineRunning) StartCoroutine(SimpleRockAttack());
+        if (rockAttackCd > 0)
+        {
+            rockAttackCd--;
+        }
+        else
+        {
+            rockAttackCd = rockAttackCdMax;
+            pooler.SpawnFromPool("Rock", player.position, Quaternion.identity);
+        }
 
         //if(IsAlreadyAttacking()) return;
         //StartCoroutine(CloseAttack(ChooseRandomAttack()));
@@ -60,18 +68,18 @@ public class NewBossBehaviour : EnemyBehaviour
         LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
     }
-
-    private void CheckPhase()
+    
+    IEnumerator MultipleRocksAttack()
     {
-        
+        GameObject rock = Instantiate(rockAttackPrefab, player.position, Quaternion.identity);
+        yield return new WaitForSeconds(2f);
+        Destroy(rock);
     }
 
-    IEnumerator SimpleRockAttack()
+    public void TriggerNextPhase()
     {
-        rockRoutineRunning = true;
-        GameObject rock = pooler.SpawnFromPool("Rock", player.position, Quaternion.identity);
-        yield return new WaitForSeconds(1.5f);
-        Destroy(rock);
-        rockRoutineRunning = false;
+        phase++;
+        StartCoroutine(MultipleRocksAttack());
+        Debug.Log("nextPhase");
     }
 }

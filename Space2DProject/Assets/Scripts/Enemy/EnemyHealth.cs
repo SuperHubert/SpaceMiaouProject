@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,11 +35,14 @@ public class EnemyHealth : MonoBehaviour
     private Coroutine flashRoutine;
 
     [SerializeField] private bool bossHealth = false;
-    
-    
+    private NewBossBehaviour bossBehaviour;
+    [SerializeField] private List<int> phaseThresholds = new List<int>();
+
+
     void Start()
     {
         InitEnemy();
+        if (bossHealth) bossBehaviour = transform.parent.GetComponent<NewBossBehaviour>();
     }
 
     private void Update()
@@ -104,6 +109,8 @@ public class EnemyHealth : MonoBehaviour
             healthBarFrontImg.fillAmount = currentHealth / maxHealth;
 
             Flash();
+            
+            if(bossHealth) CheckPhase();
             
             if (currentHealth <= 0 && !isDying)
             {
@@ -194,9 +201,11 @@ public class EnemyHealth : MonoBehaviour
         enemyBehaviour.KnockBack(pos,duration);
     }
 
-    public int CurrentHp()
+    public void CheckPhase()
     {
-        return (int)currentHealth;
-    }
+        if(bossBehaviour.phase >= phaseThresholds.Count) return;
+        if (currentHealth < phaseThresholds[bossBehaviour.phase]) bossBehaviour.TriggerNextPhase();
+
+}
 
 }

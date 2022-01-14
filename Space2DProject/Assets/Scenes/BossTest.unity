@@ -103220,7 +103220,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248161881}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -103228,8 +103228,8 @@ Transform:
   - {fileID: 259641968}
   - {fileID: 2014464163}
   - {fileID: 8409878917683308077}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1758260821}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1262232402 stripped
 Transform:
@@ -104028,7 +104028,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595733325}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -104044,8 +104044,8 @@ Transform:
   - {fileID: 1262232402}
   - {fileID: 653096133}
   - {fileID: 1576965953}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1758260821}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!4 &1600046909 stripped
 Transform:
@@ -104449,6 +104449,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2370912824571862447, guid: 9a5a45b1bc5c9d649bd23abb2c48ab24, type: 3}
   m_PrefabInstance: {fileID: 1361874364}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1758260820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1758260821}
+  m_Layer: 0
+  m_Name: Attacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1758260821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758260820}
+  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1793539133}
+  - {fileID: 1248161882}
+  - {fileID: 1595733326}
+  - {fileID: 1854045848}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1771835066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2370912824571862447, guid: 9a5a45b1bc5c9d649bd23abb2c48ab24, type: 3}
@@ -104538,7 +104572,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793539132}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -104546,8 +104580,8 @@ Transform:
   - {fileID: 1584655903}
   - {fileID: 793990105}
   - {fileID: 1600046909}
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 1758260821}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!4 &1798043093 stripped
 Transform:
@@ -104676,7 +104710,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854045847}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -104692,8 +104726,8 @@ Transform:
   - {fileID: 729885794}
   - {fileID: 1122699922}
   - {fileID: 2050236414}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 1758260821}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855725325 stripped
 GameObject:
@@ -105710,13 +105744,14 @@ MonoBehaviour:
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 500
+  maxHealth: 1000
   currentHealth: 0
   moveHealthBar: 0
   enemyAnimator: {fileID: 1178983510}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
   spriteRenderer: {fileID: 1178983509}
   bossHealth: 1
+  phaseThresholds: bc02000058020000f4010000900100002c010000c8000000960000006400000032000000
 --- !u!212 &1906766483416609567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -105809,7 +105844,7 @@ MonoBehaviour:
   stunned: 0
   cleared: 0
   healthBarBack: {fileID: 6659583063967608596}
-  rockAttackPrefab: {fileID: 5979208715033799408, guid: 4d102e178761d8545a1915b746cc3a53, type: 3}
+  rockAttackPrefab: {fileID: 1350921697886652889, guid: 4686ed29a65d1d24cbfd1bfca2afe463, type: 3}
   phase: 0
 --- !u!222 &2093921496809710367
 CanvasRenderer:
