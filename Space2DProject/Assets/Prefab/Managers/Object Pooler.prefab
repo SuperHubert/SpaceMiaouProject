@@ -56,3 +56,6 @@ MonoBehaviour:
   - tag: Dust
     prefab: {fileID: 3662350605876692763, guid: ca7a8a23b6fd4df4892f2aa28a22fe95, type: 3}
     size: 10
+  - tag: Rock
+    prefab: {fileID: 5979208715033799408, guid: 4d102e178761d8545a1915b746cc3a53, type: 3}
+    size: 25
