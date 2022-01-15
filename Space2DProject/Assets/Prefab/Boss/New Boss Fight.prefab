@@ -100285,7 +100285,7 @@ GameObject:
   - component: {fileID: 3598728632605855940}
   - component: {fileID: 7680579425706361626}
   - component: {fileID: 7613480792185012336}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100300,7 +100300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3783142244849805427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: 3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3687515801289649153}
@@ -100620,7 +100620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6261848302358424113
 Transform:
   m_ObjectHideFlags: 0
@@ -100732,7 +100732,7 @@ GameObject:
   - component: {fileID: 3687515801289649153}
   - component: {fileID: 6191531256142764715}
   - component: {fileID: 8436587813993923966}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CinematicIntro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100798,7 +100798,7 @@ MonoBehaviour:
   tower: {fileID: 3783142244849805427}
   door: {fileID: 1699014553601174202}
   camManager: {fileID: 0}
-  boss: {fileID: 0}
+  boss: {fileID: 3199879220906779548}
   dialogue01:
     characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
@@ -100916,7 +100916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7090367515377529418
 Transform:
   m_ObjectHideFlags: 0
@@ -101001,6 +101001,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7090367515377529418}
     m_Modifications:
+    - target: {fileID: 5106779425085537405, guid: 06f4e2e4da2d7f34fa3156610511beb7, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106779425085537405, guid: 06f4e2e4da2d7f34fa3156610511beb7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
     - target: {fileID: 5469158257048236242, guid: 06f4e2e4da2d7f34fa3156610511beb7, type: 3}
       propertyPath: m_Name
       value: Boss Arena
@@ -101108,6 +101116,18 @@ PrefabInstance:
       propertyPath: attacks.Array.data[0]
       value: 
       objectReference: {fileID: 7886418496825879891, guid: f4b069af52fee3841b36eef676529e90, type: 3}
+    - target: {fileID: 6912049193946385738, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912049194478969305, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912049194478969306, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3032511510801142330, guid: dac2750d93f937f40a9bbc19cf4ddc4e, type: 3}
     - target: {fileID: 8957348000516559653, guid: a666927c188cf5140ad44412a738259b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -101154,6 +101174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a666927c188cf5140ad44412a738259b, type: 3}
+--- !u!1 &3199879220906779548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6912049194478969309, guid: a666927c188cf5140ad44412a738259b, type: 3}
+  m_PrefabInstance: {fileID: 8323999204061790785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3479602654528252852 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4886054859038878197, guid: a666927c188cf5140ad44412a738259b, type: 3}
