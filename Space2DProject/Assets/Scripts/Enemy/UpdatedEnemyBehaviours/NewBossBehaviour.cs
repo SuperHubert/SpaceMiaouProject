@@ -64,6 +64,9 @@ public class NewBossBehaviour : EnemyBehaviour
         LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,5,0);
         LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
+        part1Triggers.SetActive(false);
+        part2Triggers.SetActive(false);
+        rockFalls = false;
     }
     
     
@@ -92,25 +95,33 @@ public class NewBossBehaviour : EnemyBehaviour
                 closeUpAttack.SetActive(false);
                 break;
             case 2:
-                StartCoroutine(MultipleRocksAttack());
+                StartCoroutine(SimpleRocksAttack());
                 break;
             case 3:
                 StartCoroutine(MultipleRocksAttack());
                 animator.SetTrigger("EyeOFF");
-                arena.SetActive(arenaMode = rockFalls = true);
+                arena.SetActive(arenaMode = true);
                 part1Triggers.SetActive(false);
                 
                 //spawn mob
                 break;
             case 4:
+                animator.SetTrigger("SpikesON");
+                part1Triggers.SetActive(true);
                 break;
             case 5:
+                rockFalls = true;
+                StartCoroutine(MultipleRocksAttack());
                 break;
             case 6:
+                part1Triggers.SetActive(false);
+                part2Triggers.SetActive(true);
                 break;
             case 7:
+                StartCoroutine(MultipleRocksAttack());
                 break;
             case 8:
+                StartCoroutine(MultipleRocksAttack());
                 break;
             default:
                 break;
@@ -120,6 +131,9 @@ public class NewBossBehaviour : EnemyBehaviour
     public void ExitArenaMode()
     {
         arenaMode = false;
+        animator.SetTrigger("EyeON");
+        animator.SetTrigger("SpikesON");
+        part1Triggers.SetActive(true);
         Debug.Log("Arena Completed");
     }
 }

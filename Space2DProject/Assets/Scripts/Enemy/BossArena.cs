@@ -18,7 +18,7 @@ public class BossArena : MonoBehaviour
         bool returnValue = true;
         foreach (Transform child in transform)
         {
-            if (child.gameObject.activeSelf) returnValue = false;
+            if (child.GetChild(0).gameObject.activeSelf) returnValue = false;
         }
 
         return returnValue;

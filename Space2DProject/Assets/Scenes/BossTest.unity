@@ -104141,14 +104141,14 @@ MonoBehaviour:
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 1000
+  maxHealth: 800
   currentHealth: 0
   moveHealthBar: 0
   enemyAnimator: {fileID: 1178983510}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
   spriteRenderer: {fileID: 1178983509}
   bossHealth: 1
-  phaseThresholds: 8403000020030000bc02000058020000f4010000900100002c010000c800000064000000
+  phaseThresholds: ee020000bc02000058020000f4010000900100002c010000c80000006400000032000000
 --- !u!212 &1906766483416609567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -104762,10 +104762,6 @@ PrefabInstance:
     - target: {fileID: 5469158257048236242, guid: 06f4e2e4da2d7f34fa3156610511beb7, type: 3}
       propertyPath: m_Name
       value: Arena
-      objectReference: {fileID: 0}
-    - target: {fileID: 5469158257048236242, guid: 06f4e2e4da2d7f34fa3156610511beb7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5469158257048236243, guid: 06f4e2e4da2d7f34fa3156610511beb7, type: 3}
       propertyPath: m_RootOrder
