@@ -101,17 +101,16 @@ public class NewBossBehaviour : EnemyBehaviour
                 break;
             case 3:
                 StartCoroutine(MultipleRocksAttack());
-                animator.SetTrigger("EyeOFF");
-                arena.SetActive(arenaMode = true);
-                part1Triggers.SetActive(false);
-                
                 //spawn mob
                 break;
             case 4:
-                animator.SetTrigger("SpikesON");
-                part1Triggers.SetActive(true);
+                animator.SetTrigger("EyeOFF");
+                arena.SetActive(arenaMode = true);
+                part1Triggers.SetActive(false);
                 break;
             case 5:
+                animator.SetTrigger("SpikesON");
+                part1Triggers.SetActive(true);
                 rockFalls = true;
                 StartCoroutine(SimpleRocksAttack());
                 break;
@@ -120,9 +119,6 @@ public class NewBossBehaviour : EnemyBehaviour
                 part2Triggers.SetActive(true);
                 break;
             case 7:
-                StartCoroutine(MultipleRocksAttack());
-                break;
-            case 8:
                 StartCoroutine(MultipleRocksAttack());
                 break;
             default:

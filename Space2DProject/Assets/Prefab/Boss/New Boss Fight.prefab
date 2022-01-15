@@ -100518,7 +100518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6261848302358424113
 Transform:
   m_ObjectHideFlags: 0
@@ -100716,7 +100716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7090367515377529418
 Transform:
   m_ObjectHideFlags: 0
@@ -100872,6 +100872,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7090367515377529418}
     m_Modifications:
+    - target: {fileID: 254206665611235995, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4886054859038878197, guid: a666927c188cf5140ad44412a738259b, type: 3}
       propertyPath: arena
       value: 
@@ -100884,10 +100888,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5236249419338612324, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: phaseThresholds.Array.data[3]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236249419338612324, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: phaseThresholds.Array.data[4]
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 6912049193028085317, guid: a666927c188cf5140ad44412a738259b, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6912049193445896964, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: cooldownMax
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912049193445896964, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 7886418496825879891, guid: f4b069af52fee3841b36eef676529e90, type: 3}
     - target: {fileID: 8957348000516559653, guid: a666927c188cf5140ad44412a738259b, type: 3}
       propertyPath: m_RootOrder
       value: 2
