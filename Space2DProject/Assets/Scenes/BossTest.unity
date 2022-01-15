@@ -17439,9 +17439,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacks:
-  - {fileID: 1135817833863250335, guid: 236baf119d1d7e14eb6d0134836c0f69, type: 3}
-  - {fileID: 7390719188367090946, guid: 9c4dea655593d954ba591ce1fa546403, type: 3}
-  - {fileID: 5325244486427517026, guid: cbd6434e9fa00b548b231365e344c8f9, type: 3}
   - {fileID: 8630247956855462212, guid: 1cee88c6f7c26194fb0825593bbc7e0a, type: 3}
   - {fileID: 7035205061500290719, guid: 92f3394a371e4324daed2a457819bb8c, type: 3}
   cooldownMax: 700
@@ -104295,14 +104292,14 @@ MonoBehaviour:
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 800
+  maxHealth: 600
   currentHealth: 0
   moveHealthBar: 0
   enemyAnimator: {fileID: 1178983510}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
   spriteRenderer: {fileID: 1178983509}
   bossHealth: 1
-  phaseThresholds: ee020000bc02000058020000f4010000900100002c010000c80000006400000032000000
+  phaseThresholds: 26020000c2010000900100005e0100002c010000c800000064000000
 --- !u!212 &1906766483416609567
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -191,6 +191,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (spriteRenderer == null) return;
         if(flashRoutine != null) StopCoroutine(flashRoutine);
+        if(bossHealth && currentHealth <= 0) spriteRenderer.material = originalMaterial;
         flashRoutine = StartCoroutine(FlashRoutine());
     }
    

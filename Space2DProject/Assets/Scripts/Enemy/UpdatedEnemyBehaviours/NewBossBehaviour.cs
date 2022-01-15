@@ -64,6 +64,7 @@ public class NewBossBehaviour : EnemyBehaviour
         LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,5,0);
         LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
+        animator.SetTrigger("Die");
         part1Triggers.SetActive(false);
         part2Triggers.SetActive(false);
         closeUpAttack.SetActive(false);
