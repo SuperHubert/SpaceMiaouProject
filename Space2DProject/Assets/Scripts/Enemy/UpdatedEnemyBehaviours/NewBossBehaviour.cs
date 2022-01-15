@@ -66,6 +66,7 @@ public class NewBossBehaviour : EnemyBehaviour
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
         part1Triggers.SetActive(false);
         part2Triggers.SetActive(false);
+        closeUpAttack.SetActive(false);
         rockFalls = false;
     }
     
@@ -111,7 +112,7 @@ public class NewBossBehaviour : EnemyBehaviour
                 break;
             case 5:
                 rockFalls = true;
-                StartCoroutine(MultipleRocksAttack());
+                StartCoroutine(SimpleRocksAttack());
                 break;
             case 6:
                 part1Triggers.SetActive(false);
