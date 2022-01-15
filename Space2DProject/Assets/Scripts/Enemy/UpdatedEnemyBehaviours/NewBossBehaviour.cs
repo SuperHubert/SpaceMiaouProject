@@ -12,7 +12,7 @@ public class NewBossBehaviour : EnemyBehaviour
     [SerializeField] private GameObject part1Triggers;
     [SerializeField] private GameObject arena;
     [SerializeField] private GameObject part2Triggers;
-    
+
     public int phase = 0;
     public bool arenaMode = false;
 
@@ -42,12 +42,6 @@ public class NewBossBehaviour : EnemyBehaviour
                 StartCoroutine(SimpleRocksAttack());
             }
         }
-        
-        if(arenaMode) return;
-
-        //if(IsAlreadyAttacking()) return;
-        //StartCoroutine(CloseAttack(ChooseRandomAttack()));
-
     }
 
     public override void WakeUp()
@@ -61,8 +55,10 @@ public class NewBossBehaviour : EnemyBehaviour
     {
         base.Die();
         healthBarBack.SetActive(false);
-        LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,5,0);
-        LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
+        var portal = LevelManager.Instance.Level().GetChild(3).gameObject;
+        portal.transform.position = Vector3.up;
+        portal.GetComponent<SpriteRenderer>().enabled = false;
+        portal.GetComponent<Animator>().SetTrigger("Spawn");
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
         animator.SetTrigger("Die");
         part1Triggers.SetActive(false);
