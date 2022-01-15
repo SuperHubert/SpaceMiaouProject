@@ -1,7 +1,61 @@
 fileFormatVersion: 2
 guid: ef206d85f9e78534dabeb7259fb65616
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7248446187517635643
+    second: ruinbiome3_0
+  - first:
+      213: 6713224209653222663
+    second: ruinbiome3_1
+  - first:
+      213: 5113502270480004568
+    second: ruinbiome3_2
+  - first:
+      213: -8214926435193474028
+    second: ruinbiome3_3
+  - first:
+      213: 5622413018080711689
+    second: ruinbiome3_4
+  - first:
+      213: 255288879997134632
+    second: ruinbiome3_5
+  - first:
+      213: 9167564467772997963
+    second: ruinbiome3_6
+  - first:
+      213: -8407172681359485693
+    second: ruinbiome3_7
+  - first:
+      213: -685488378148235539
+    second: ruinbiome3_8
+  - first:
+      213: -8967172330581298494
+    second: ruinbiome3_9
+  - first:
+      213: -5237402438202560456
+    second: ruinbiome3_10
+  - first:
+      213: -8780241568266118131
+    second: ruinbiome3_11
+  - first:
+      213: -2659381938460039160
+    second: ruinbiome3_12
+  - first:
+      213: 56121948572185505
+    second: ruinbiome3_13
+  - first:
+      213: 8658065023542093679
+    second: ruinbiome3_14
+  - first:
+      213: 2384291834166342451
+    second: ruinbiome3_15
+  - first:
+      213: 6441987918955503861
+    second: ruinbiome3_16
+  - first:
+      213: -7371797864476258515
+    second: ruinbiome3_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +95,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -65,7 +119,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -77,7 +131,31 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -89,7 +167,385 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ruinbiome3_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3ce5845767a79460800000000000000
+      internalID: 7248446187517635643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70dcee9b9d92a2d50800000000000000
+      internalID: 6713224209653222663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_2
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 16
+        width: 87
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d53d16f83fc6f640800000000000000
+      internalID: 5113502270480004568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_3
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414b3568ee7befd80800000000000000
+      internalID: -8214926435193474028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_4
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9049b33e9d2d60e40800000000000000
+      internalID: 5622413018080711689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_5
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827265f32e7fa8300800000000000000
+      internalID: 255288879997134632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_6
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 16
+        width: 88
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b414a15cf4bb93f70800000000000000
+      internalID: 9167564467772997963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_7
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 16
+        width: 87
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305133a4df8b35b80800000000000000
+      internalID: -8407172681359485693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_8
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de6d0d2b3f7ac76f0800000000000000
+      internalID: -685488378148235539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_9
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c27df386443e8380800000000000000
+      internalID: -8967172330581298494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_10
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830fb2d3b320157b0800000000000000
+      internalID: -5237402438202560456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_11
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 16
+        width: 87
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c116930d0562680800000000000000
+      internalID: -8780241568266118131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_12
+      rect:
+        serializedVersion: 2
+        x: 1564
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808effb873af71bd0800000000000000
+      internalID: -2659381938460039160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_13
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a37fb86d9267c000800000000000000
+      internalID: 56121948572185505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_14
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f67e57a3440a72870800000000000000
+      internalID: 8658065023542093679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_15
+      rect:
+        serializedVersion: 2
+        x: 1948
+        y: 16
+        width: 88
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33379586ac4b61120800000000000000
+      internalID: 2384291834166342451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_16
+      rect:
+        serializedVersion: 2
+        x: 2077
+        y: 16
+        width: 87
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f063b491e9866950800000000000000
+      internalID: 6441987918955503861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinbiome3_17
+      rect:
+        serializedVersion: 2
+        x: 2204
+        y: 16
+        width: 89
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2fc8e356ec12b990800000000000000
+      internalID: -7371797864476258515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
