@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,10 +33,16 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
     private Coroutine flashRoutine;
-    
+
+    [SerializeField] private bool bossHealth = false;
+    private NewBossBehaviour bossBehaviour;
+    [SerializeField] private List<int> phaseThresholds = new List<int>();
+
+
     void Start()
     {
         InitEnemy();
+        if (bossHealth) bossBehaviour = transform.parent.GetComponent<NewBossBehaviour>();
     }
 
     private void Update()
@@ -92,6 +100,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canTakeDamage)
         {
+            if (bossHealth && bossBehaviour.arenaMode)
+            {
+                //playSound and particule
+                return;
+            }
+            
             ResizeHealthBar();
 
             currentHealth -= damage;
@@ -101,6 +115,8 @@ public class EnemyHealth : MonoBehaviour
             healthBarFrontImg.fillAmount = currentHealth / maxHealth;
 
             Flash();
+            
+            if(bossHealth) CheckPhase();
             
             if (currentHealth <= 0 && !isDying)
             {
@@ -175,7 +191,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if (spriteRenderer == null) return;
         if(flashRoutine != null) StopCoroutine(flashRoutine);
-        flashRoutine = StartCoroutine(FlashRoutine());
+        if(bossHealth && currentHealth <= 0) spriteRenderer.material = originalMaterial;
+        if(enemyBehaviour.gameObject.activeSelf) flashRoutine = StartCoroutine(FlashRoutine());
     }
    
     IEnumerator FlashRoutine()
@@ -190,5 +207,12 @@ public class EnemyHealth : MonoBehaviour
     {
         enemyBehaviour.KnockBack(pos,duration);
     }
+
+    public void CheckPhase()
+    {
+        if(bossBehaviour.phase >= phaseThresholds.Count) return;
+        if (currentHealth < phaseThresholds[bossBehaviour.phase]) bossBehaviour.TriggerNextPhase();
+
+}
 
 }

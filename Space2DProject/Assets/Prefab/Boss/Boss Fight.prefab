@@ -1088,6 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerFollower: {fileID: 0}
+  mapHider: {fileID: 0}
 --- !u!1001 &718113480811963559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59639,16 +59640,8 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9184636547331138157, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
-      propertyPath: maxHealth
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184636547331138157, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
       propertyPath: moveHealthBar
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184636547331138157, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}
-      propertyPath: healthBarLenght
-      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b0b9e8672ad3644b46247060ac0d79, type: 3}

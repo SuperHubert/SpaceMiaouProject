@@ -48,9 +48,14 @@ public class BossFight : MonoBehaviour
 
     public Transform SpawnBossAndReturnStartPos()
     {
+        
+        return startPos;
+    }
+
+    public void SpawnBoss()
+    {
         bossObj.SetActive(true);
         bossObj.transform.GetChild(0).GetComponent<EnemyHealth>().InitEnemy();
-        return startPos;
     }
 
     public void CancelBossFight()

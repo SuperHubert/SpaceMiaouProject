@@ -15,7 +15,7 @@ public class EnemyTrigger : MonoBehaviour
     private void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        sprite.enabled = showTrigger;
+        if(sprite != null) sprite.enabled = showTrigger;
         
         var parent = transform.parent;
         enemy = state == Trigger.Respawn ? parent.gameObject.GetComponent<EnemyBehaviour>() : parent.parent.parent.gameObject.GetComponent<EnemyBehaviour>();
