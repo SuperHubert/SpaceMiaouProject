@@ -226,7 +226,7 @@ public class LevelManager : MonoBehaviour
         {
             case 0:
                 mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
-                globalLight.color = Color.white;
+                globalLight.color = new Color(0.4237718f,0.7010058f,0.8396226f,1);
                 portalSpriteRenderer.sprite = portalBiome1;
                 towerSpriteRenderer.sprite = towerBiome1;
                 fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
