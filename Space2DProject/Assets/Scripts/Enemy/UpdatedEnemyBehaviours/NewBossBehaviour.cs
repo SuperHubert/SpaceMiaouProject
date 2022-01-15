@@ -8,6 +8,8 @@ public class NewBossBehaviour : EnemyBehaviour
     [SerializeField] private GameObject rockAttackPrefab;
     private ObjectPooler pooler;
 
+    [SerializeField] private GameObject closeRocks;
+
     public int phase = 0;
 
     public float rockAttackCdMax;
@@ -23,16 +25,6 @@ public class NewBossBehaviour : EnemyBehaviour
     {
         if(currentState != State.Awake) return;
         
-        if (actionCd > 0)
-        {
-            actionCd--;
-        }
-        else
-        {
-            isPerformingAction = false;
-            actionTrigger.SetActive(true);
-        }
-
         if (rockAttackCd > 0)
         {
             rockAttackCd--;
@@ -61,6 +53,7 @@ public class NewBossBehaviour : EnemyBehaviour
     protected override void Action()
     {
         base.Action();
+        StartCoroutine(CloseRocks());
     }
 
     public override void Die(bool destroy = false)
@@ -70,6 +63,14 @@ public class NewBossBehaviour : EnemyBehaviour
         LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,5,0);
         LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
+    }
+
+    public float value;
+    IEnumerator CloseRocks()
+    {
+        closeRocks.SetActive(true);
+        yield return new WaitForSeconds(value);
+        closeRocks.SetActive(false);
     }
     
     IEnumerator SimpleRocksAttack()

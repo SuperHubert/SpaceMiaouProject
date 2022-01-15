@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2370912824571862446}
   - component: {fileID: 1899350044491958838}
   - component: {fileID: -1188307997081677715}
-  m_Layer: 0
+  - component: {fileID: 4587530689813349941}
+  m_Layer: 9
   m_Name: Root BL v1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +112,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2370912824571862445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -129,16 +130,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.53125, y: 0.546875}
-      - {x: -0.21875, y: 0.546875}
-      - {x: -0.84375, y: -0.046875}
-      - {x: -0.84375, y: -0.515625}
-      - {x: -0.78125, y: -0.546875}
-      - {x: -0.34375, y: -0.546875}
-      - {x: 0.125, y: -0.234375}
-      - {x: 0.8125, y: -0.140625}
-      - {x: 0.8125, y: 0.140625}
-      - {x: 0.75, y: 0.453125}
+    - - {x: -0.4634223, y: -0.1397152}
+      - {x: -0.053052902, y: 0.0662961}
+      - {x: 0.23418093, y: 0.2631054}
+      - {x: 0.69836044, y: 0.1854744}
+      - {x: 0.4944229, y: 0.4813447}
+      - {x: -0.01975441, y: 0.39852762}
+      - {x: -0.24524069, y: 0.25547838}
+      - {x: -0.631825, y: 0.0061063766}
+      - {x: -0.79606724, y: -0.26131535}
 --- !u!114 &-1188307997081677715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +154,20 @@ MonoBehaviour:
   player: {fileID: 0}
   offset: 0
   layer: 7
+--- !u!114 &4587530689813349941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370912824571862445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575ccd494e101484cb518b50d078ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  feetHitbox: 0
+  hitboxMove: 0
+  detectOffset: 0
+  moveOffset: 0
