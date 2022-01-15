@@ -101,7 +101,7 @@ public class NewBossBehaviour : EnemyBehaviour
                 break;
             case 4:
                 animator.SetTrigger("EyeOFF");
-                arena.SetActive(arenaMode = true);
+                EnterArenaMode();
                 part1Triggers.SetActive(false);
                 break;
             case 5:
@@ -122,6 +122,16 @@ public class NewBossBehaviour : EnemyBehaviour
         }
     }
 
+    private void EnterArenaMode()
+    {
+        arena.SetActive(arenaMode = true);
+        Transform parent = LevelManager.Instance.Level().GetChild(5);
+        foreach (Transform child in arena.transform)
+        {
+            child.GetChild(0).GetComponent<EnemyHealth>().healthBarTransform.SetParent(parent);
+        }
+    }
+    
     public void ExitArenaMode()
     {
         arenaMode = false;
