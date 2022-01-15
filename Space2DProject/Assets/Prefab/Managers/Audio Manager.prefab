@@ -50,3 +50,57 @@ MonoBehaviour:
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
+  - name: BossDialogue
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: BossPhaseChange
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: BossAttack
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: HubOST
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: Biome1OST
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: Biome2OST
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: Biome3OST
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: BossFightOST
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
