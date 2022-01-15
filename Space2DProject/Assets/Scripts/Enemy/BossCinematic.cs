@@ -8,6 +8,7 @@ public class BossCinematic : MonoBehaviour
     public BossFight bossFight;
     private Transform camTransform;
     public GameObject tower;
+    public Transform door;
     public CameraManager camManager;
     public GameObject boss;
     private Animator bossAnimator;
@@ -63,6 +64,10 @@ public class BossCinematic : MonoBehaviour
         gameObject.GetComponent<Collider2D>().enabled = false;
         UIManager.Instance.normalUI.SetActive(true);
         LevelManager.Instance.Player().transform.position = new Vector3(0,-12,0);
+        foreach (Transform child in door)
+        {
+            child.gameObject.SetActive(true);
+        }
         yield return new WaitForSeconds(1f);
         bossAnimator.SetTrigger("Idle");
     }
