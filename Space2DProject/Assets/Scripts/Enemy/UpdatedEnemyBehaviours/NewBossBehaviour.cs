@@ -12,7 +12,6 @@ public class NewBossBehaviour : EnemyBehaviour
     [SerializeField] private GameObject part1Triggers;
     [SerializeField] private GameObject arena;
     [SerializeField] private GameObject part2Triggers;
-
     public int phase = 0;
     public bool arenaMode = false;
 

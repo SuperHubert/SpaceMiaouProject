@@ -7,9 +7,10 @@ using UnityEngine;
 public class Arena : MonoBehaviour
 {
     public Transform level;
-    public List<Animator> doors;
-    private List<Transform> enemies;
+    private List<Animator> doors = new List<Animator>();
+    private List<Transform> enemies = new List<Transform>();
     private bool activated = false;
+    private bool completed = false;
 
     private void Start()
     {
@@ -18,9 +19,11 @@ public class Arena : MonoBehaviour
 
     void Update()
     {
-        if (!CheckIfKidsAreDead() || !activated) return;
+        if(completed) return;
+        if(!activated) return;
+        if (!CheckIfKidsAreDead()) return;
+        completed = true;
         OpenDoors();
-        gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -78,11 +81,27 @@ public class Arena : MonoBehaviour
 
     private void CloseDoors()
     {
-        Debug.Log("Door Closed");
+        foreach (Transform door in transform.GetChild(0))
+        {
+            if (door.GetComponent<Collider2D>()!= null) door.GetComponent<Collider2D>().enabled = true;
+        }
+        foreach (var animator in doors)
+        {
+            animator.SetBool("Opened",false);
+        }
     }
     
     private void OpenDoors()
     {
-        Debug.Log("Door Opened");
+        Debug.Log("bonk");
+        foreach (Transform door in transform.GetChild(0))
+        {
+            if (door.GetComponent<Collider2D>()!= null) door.GetComponent<Collider2D>().enabled = false;
+        }
+
+        foreach (var animator in doors)
+        {
+            animator.SetBool("Opened",true);
+        }
     }
 }

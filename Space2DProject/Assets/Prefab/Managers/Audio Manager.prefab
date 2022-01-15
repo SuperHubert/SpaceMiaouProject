@@ -50,3 +50,9 @@ MonoBehaviour:
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
+  - name: Nyam
+    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
+    volume: 0.8
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
