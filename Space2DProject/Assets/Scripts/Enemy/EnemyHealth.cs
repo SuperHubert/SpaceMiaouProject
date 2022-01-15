@@ -100,6 +100,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canTakeDamage)
         {
+            if (bossHealth && bossBehaviour.arenaMode)
+            {
+                //playSound and particule
+                return;
+            }
+            
             ResizeHealthBar();
 
             currentHealth -= damage;

@@ -7,13 +7,18 @@ public class NewBossBehaviour : EnemyBehaviour
     [SerializeField] private GameObject healthBarBack;
     [SerializeField] private GameObject rockAttackPrefab;
     private ObjectPooler pooler;
-
-    [SerializeField] private GameObject closeRocks;
-
+    
+    [SerializeField] private GameObject closeUpAttack;
+    [SerializeField] private GameObject part1Triggers;
+    [SerializeField] private GameObject arena;
+    [SerializeField] private GameObject part2Triggers;
+    
     public int phase = 0;
+    public bool arenaMode = false;
 
     public float rockAttackCdMax;
     private float rockAttackCd;
+    private bool rockFalls = false;
 
     protected override void InitVariables()
     {
@@ -24,19 +29,21 @@ public class NewBossBehaviour : EnemyBehaviour
     private void Update()
     {
         if(currentState != State.Awake) return;
-        
+
         if (rockAttackCd > 0)
         {
             rockAttackCd--;
         }
         else
         {
-            if (phase > 2)
+            if (rockFalls)
             {
                 rockAttackCd = rockAttackCdMax;
                 StartCoroutine(SimpleRocksAttack());
             }
         }
+        
+        if(arenaMode) return;
 
         //if(IsAlreadyAttacking()) return;
         //StartCoroutine(CloseAttack(ChooseRandomAttack()));
@@ -49,13 +56,7 @@ public class NewBossBehaviour : EnemyBehaviour
         healthBarBack.SetActive(true);
         healthBarBack.transform.GetChild(0).gameObject.SetActive(true);
     }
-
-    protected override void Action()
-    {
-        base.Action();
-        StartCoroutine(CloseRocks());
-    }
-
+    
     public override void Die(bool destroy = false)
     {
         base.Die();
@@ -64,14 +65,7 @@ public class NewBossBehaviour : EnemyBehaviour
         LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
     }
-
-    public float value;
-    IEnumerator CloseRocks()
-    {
-        closeRocks.SetActive(true);
-        yield return new WaitForSeconds(value);
-        closeRocks.SetActive(false);
-    }
+    
     
     IEnumerator SimpleRocksAttack()
     {
@@ -90,7 +84,42 @@ public class NewBossBehaviour : EnemyBehaviour
     public void TriggerNextPhase()
     {
         phase++;
-        StartCoroutine(MultipleRocksAttack());
-        Debug.Log("nextPhase");
+        switch (phase)
+        {
+            case 1:
+                StartCoroutine(SimpleRocksAttack());
+                part1Triggers.SetActive(true);
+                closeUpAttack.SetActive(false);
+                break;
+            case 2:
+                StartCoroutine(MultipleRocksAttack());
+                break;
+            case 3:
+                StartCoroutine(MultipleRocksAttack());
+                animator.SetTrigger("EyeOFF");
+                arena.SetActive(arenaMode = rockFalls = true);
+                part1Triggers.SetActive(false);
+                
+                //spawn mob
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void ExitArenaMode()
+    {
+        arenaMode = false;
+        Debug.Log("Arena Completed");
     }
 }
