@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6462983563063154155}
   - component: {fileID: 8586412402467205839}
-  m_Layer: 0
+  - component: {fileID: 566165472}
+  - component: {fileID: 566165473}
+  m_Layer: 14
   m_Name: Ruine Cerf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +85,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &566165472
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365766500168030934}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.47387123, y: -0.4015875}
+  - {x: 0.44962883, y: -0.40139484}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &566165473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365766500168030934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dedb7cea5364ce4894a1163a94055e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  offset: 0
+  layer: 7
 --- !u!1 &611103971048042811
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6067511335169370026}
   - component: {fileID: 6618128257624378687}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cerf Oeil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
