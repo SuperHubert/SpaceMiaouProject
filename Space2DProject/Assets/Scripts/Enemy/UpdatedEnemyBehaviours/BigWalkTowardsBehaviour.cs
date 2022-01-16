@@ -25,7 +25,6 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         {
             if(agent.isOnNavMesh) agent.SetDestination(player.position);
             
-            animator.SetBool("isAttacking", false);
             animator.SetBool("isWalking", true);
             
             Vector2 orientation = new Vector2(player.position.x - transform.GetChild(0).position.x,
@@ -46,24 +45,25 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
     
     private IEnumerator Attack()
     {
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isAttacking", true);
-        
         if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
         yield return new WaitUntil(() => !ondeDeChoc.activeSelf);
         //leve la tete et la frappe sur le sol
+        isPerformingAction = true;
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacking", true);
         
         // changer tout les animator. pour coller avec l'animator
-        animator.enabled = true;
-        animator.Rebind();
-        animator.Update(0f);
-        yield return new WaitForSeconds(0.833f);
+        //animator.enabled = true;
+        //animator.Rebind();
+        //animator.Update(0f);
+        // yield return new WaitForSeconds(0.833f);
         ondeDeChoc.transform.position = enemyTransform.position;
         ondeDeChoc.SetActive(true);
+        // animator.enabled = false;
+        yield return new WaitForSeconds(1.2f);
         isPerformingAction = false;
-        animator.enabled = false;
-        yield return new WaitForSeconds(2f);
         ondeDeChoc.SetActive(false);
+        animator.SetBool("isAttacking", false);
     }
     
     public override void Die(bool destroy = false)

@@ -1403,6 +1403,10 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1697389571299705708, guid: a78d5314158ed924abcde0f1c3d134a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3065176857007853181, guid: a78d5314158ed924abcde0f1c3d134a3, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -3394,6 +3398,14 @@ PrefabInstance:
     - target: {fileID: 34894788747437887, guid: 01b2288c4929f1047b90e64fea9a23e3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523303990139992752, guid: 01b2288c4929f1047b90e64fea9a23e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523303990139992754, guid: 01b2288c4929f1047b90e64fea9a23e3, type: 3}
+      propertyPath: maxHealth
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01b2288c4929f1047b90e64fea9a23e3, type: 3}
