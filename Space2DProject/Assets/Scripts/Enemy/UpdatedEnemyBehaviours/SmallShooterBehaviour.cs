@@ -55,6 +55,7 @@ public class SmallShooterBehaviour : EnemyBehaviour
 
     private void RunAway()
     {
+        
         agent.SetDestination(enemyTransform.position + (enemyTransform.position - player.position).normalized * 1);
         animator.SetBool("isAttacking", false);
         animator.SetBool("isWalking", true);

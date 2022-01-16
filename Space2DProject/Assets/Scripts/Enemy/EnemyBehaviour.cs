@@ -33,9 +33,12 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public bool cleared = false;
 
+    protected AudioManager am;
+
 
     private void Start()
     {
+        am = AudioManager.Instance;
         InitVariables();
     }
 

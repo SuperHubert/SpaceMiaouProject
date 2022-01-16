@@ -72,7 +72,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         if(agent.isOnNavMesh) agent.SetDestination(enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1);
         
         yield return new WaitForSeconds(0.1f);
-
+        
         if(enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(target);
         
         yield return new WaitForSeconds(0.1f);
