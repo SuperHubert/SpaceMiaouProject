@@ -16,11 +16,14 @@ public class BossCinematic : MonoBehaviour
     public Dialogues dialogue01;
     public Dialogues dialogue02;
     public Dialogues dialogue03;
+
+    private AudioManager am;
     // Start is called before the first frame update
     void Start()
     {
         camTransform = cam.transform;
         bossAnimator = boss.GetComponent<Animator>();
+        am = AudioManager.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -56,6 +59,8 @@ public class BossCinematic : MonoBehaviour
         bossFight.SpawnBoss();
         DialogueManager.Instance.StartDialogue(dialogue03);
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
+        am.Stop(8, true);
+        StartCoroutine(LevelManager.Instance.LatePlay(9, 1));
 
         bossAnimator.enabled = true;
         yield return new WaitForSeconds(1f);
