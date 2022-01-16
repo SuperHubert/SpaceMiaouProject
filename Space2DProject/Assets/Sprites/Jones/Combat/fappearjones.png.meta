@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: c24722962b5a4b641a594d7e4c80f9da
+guid: 00d48c9f272fd2f4191b1baafc2f738e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6801484230355519323
-    second: anim creep-Sheet_0
+      213: 6796950418377340880
+    second: fappearjones_0
   - first:
-      213: -19197035621551941
-    second: anim creep-Sheet_1
+      213: -1797004035812679797
+    second: fappearjones_1
   - first:
-      213: 7595320547185918642
-    second: anim creep-Sheet_2
+      213: -7125772269891573699
+    second: fappearjones_2
   - first:
-      213: -5002266508145469767
-    second: anim creep-Sheet_3
+      213: -5965271102328904535
+    second: fappearjones_3
   - first:
-      213: 6653772652237948458
-    second: anim creep-Sheet_4
+      213: 4268842427184707938
+    second: fappearjones_4
   - first:
-      213: 1924656027958333063
-    second: anim creep-Sheet_5
+      213: 6146159916815679334
+    second: fappearjones_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,127 +109,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: anim creep-Sheet_0
+      name: fappearjones_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 50
-        height: 50
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a8fc38d0264c91a0800000000000000
-      internalID: -6801484230355519323
+      spriteID: 0d7f25bc46e935e50800000000000000
+      internalID: 6796950418377340880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anim creep-Sheet_1
+      name: fappearjones_1
       rect:
         serializedVersion: 2
-        x: 50
+        x: 64
         y: 0
-        width: 50
-        height: 50
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb07907d56ccbbff0800000000000000
-      internalID: -19197035621551941
+      spriteID: b8f1171b952cf07e0800000000000000
+      internalID: -1797004035812679797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anim creep-Sheet_2
+      name: fappearjones_2
       rect:
         serializedVersion: 2
-        x: 100
+        x: 128
         y: 0
-        width: 50
-        height: 50
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b20e32cbcff76960800000000000000
-      internalID: 7595320547185918642
+      spriteID: d38a8cedfdb2c1d90800000000000000
+      internalID: -7125772269891573699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anim creep-Sheet_3
+      name: fappearjones_3
       rect:
         serializedVersion: 2
-        x: 150
+        x: 192
         y: 0
-        width: 50
-        height: 50
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b6d72e2d11649ab0800000000000000
-      internalID: -5002266508145469767
+      spriteID: 9a468cca989173da0800000000000000
+      internalID: -5965271102328904535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anim creep-Sheet_4
+      name: fappearjones_4
       rect:
         serializedVersion: 2
-        x: 200
+        x: 256
         y: 0
-        width: 50
-        height: 50
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a260ad859f2f65c50800000000000000
-      internalID: 6653772652237948458
+      spriteID: 269f57af199fd3b30800000000000000
+      internalID: 4268842427184707938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anim creep-Sheet_5
+      name: fappearjones_5
       rect:
         serializedVersion: 2
-        x: 250
+        x: 320
         y: 0
-        width: 50
-        height: 50
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78e454dc570c5ba10800000000000000
-      internalID: 1924656027958333063
+      spriteID: 66ffa8e61eb8b4550800000000000000
+      internalID: 6146159916815679334
       vertices: []
       indices: 
       edges: []
