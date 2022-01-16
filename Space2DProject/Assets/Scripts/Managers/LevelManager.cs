@@ -412,6 +412,7 @@ public class LevelManager : MonoBehaviour
 
     public void GoToBossFight()
     {
+        AudioManager.Instance.StopAllSounds();
         floorNumber = maxFloors - 1;
         GenerateNextLevel();
         ChangeBackgroundColor();
