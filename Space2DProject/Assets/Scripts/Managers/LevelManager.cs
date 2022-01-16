@@ -40,9 +40,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private int floorNumber;
     [SerializeField] private int maxFloors = 3;
-
-    private AudioManager am;
-
+    
     private bool canGenerate = true;
     
     #region Singleton
@@ -65,7 +63,6 @@ public class LevelManager : MonoBehaviour
         
         if (!generateOnStart) return;
         StartNewRun(numberOfRooms,firstSeed);
-        am = AudioManager.Instance;
     }
 
     public void StartNewRun(int rooms, int seed)
@@ -228,13 +225,11 @@ public class LevelManager : MonoBehaviour
         switch (biome)
         {
             case 0:
-                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.01176471f,0.0627451f,0.1176471f,1f);
-                globalLight.color = new Color(0.4237718f,0.7010058f,0.8396226f,1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
+                globalLight.color = Color.white;
                 portalSpriteRenderer.sprite = portalBiome1;
                 towerSpriteRenderer.sprite = towerBiome1;
                 fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
-                am.Stop(5,true);
-                StartCoroutine(LatePlay(6, 3));
                 break;
             case 1:
                 mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.3960784f, 0.05882353f, 0.09411765f, 1);
@@ -242,17 +237,13 @@ public class LevelManager : MonoBehaviour
                 portalSpriteRenderer.sprite = portalBiome2;
                 towerSpriteRenderer.sprite = towerBiome2;
                 fogImage.color = new Color(1f,0f,0.1058824f,1);
-                am.Stop(6,true);
-                StartCoroutine(LatePlay(7, 3));
                 break;
             case 2:
                 mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f, 1);
-                globalLight.color = new Color(0.2641509f,0.2159546f,0.1831613f,1f);
+                globalLight.color = Color.white;
                 portalSpriteRenderer.sprite = portalBiome3;
                 towerSpriteRenderer.sprite = towerBiome3;
                 fogImage.color = new Color(0.7098039f,0.7098039f,0.7098039f,1f);
-                am.Stop(7,true);
-                StartCoroutine(LatePlay(8, 3));
                 break;
             default:
                 mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
@@ -264,11 +255,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LatePlay(int id, float time)
-    {
-        yield return new WaitForSeconds(time);
-        am.Play(id);
-    }
 
     IEnumerator BossFightNavMesh()
     {

@@ -12,9 +12,6 @@ public class NewBossBehaviour : EnemyBehaviour
     [SerializeField] private GameObject part1Triggers;
     [SerializeField] private GameObject arena;
     [SerializeField] private GameObject part2Triggers;
-
-    private AudioManager am;
-
     public int phase = 0;
     public bool arenaMode = false;
 
@@ -67,7 +64,6 @@ public class NewBossBehaviour : EnemyBehaviour
         part2Triggers.SetActive(false);
         closeUpAttack.SetActive(false);
         rockFalls = false;
-        AudioManager.Instance.Stop(9, true);
     }
     
     
