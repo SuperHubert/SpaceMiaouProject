@@ -204,14 +204,10 @@ public class LevelManager : MonoBehaviour
             
             generator.GeneratorSettingsForBoss();
             
-            //Boss Parameters (other script)
-            
-            //floorNumber--;
             ConsoleManager.Instance.Print("Max Level Reached");
         }
         else
         {
-            //JOUER LA CINEMATIQUE LA
             LoadingManager.Instance.UpdateLoading(0);
             SceneManager.LoadScene(6);
         }
@@ -416,6 +412,10 @@ public class LevelManager : MonoBehaviour
 
     public void GoToBossFight()
     {
-        
+        floorNumber = maxFloors - 1;
+        GenerateNextLevel();
+        ChangeBackgroundColor();
+        Level().GetChild(6).gameObject.SetActive(true);
+        generator.GeneratorSettingsForBoss();
     }
 }

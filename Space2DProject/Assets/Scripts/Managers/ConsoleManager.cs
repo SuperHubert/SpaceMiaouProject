@@ -280,7 +280,7 @@ public class ConsoleManager : MonoBehaviour
         
         GOTOBOSS = new Command("gotoboss", "Go to the boss room", "gotoboss", () =>
         {
-            
+            levelm.GoToBossFight();
             Print("Going to boss room");
         });
         
