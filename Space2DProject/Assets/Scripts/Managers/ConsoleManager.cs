@@ -46,6 +46,9 @@ public class ConsoleManager : MonoBehaviour
     private static Command<int> SETNUMBEROFROOMS;
     private static Command GETCURRENTMAXFLOORS;
     private static Command<int> SETMAXFLOORS;
+    private static Command GOTOBOSS;
+    private static Command WIN;
+    
 
     //Money Manager
     private static Command<int> GIVECOINS; //WORKS ONLY FOR POSITIVE AMOUNT
@@ -273,6 +276,19 @@ public class ConsoleManager : MonoBehaviour
             }
             
             Print("Added "+amount+" nyancoins");
+        });
+        
+        GOTOBOSS = new Command("gotoboss", "Go to the boss room", "gotoboss", () =>
+        {
+            
+            Print("Going to boss room");
+        });
+        
+        WIN = new Command("win", "Goes to Credit Scene", "win", () =>
+        {
+            levelm.floorNumber = levelm.GetMaxFloors();
+            levelm.Level().GetChild(3).GetComponent<PortalV2>().OnInteraction();
+            Print("GG");
         });
         
         SETCOINS = new Command<int>("setcoins", "Sets the amount of nyancoins", "setcoins int<amount of coins>", (amount) =>
@@ -535,6 +551,8 @@ public class ConsoleManager : MonoBehaviour
             SETNUMBEROFROOMS,
             GETCURRENTMAXFLOORS,
             SETMAXFLOORS,
+            GOTOBOSS,
+            WIN,
             GIVECOINS,
             SETCOINS,
             GIVEHP,

@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private List<int> seedList = new List<int>();
 
-    [SerializeField] private int floorNumber;
+    public int floorNumber;
     [SerializeField] private int maxFloors = 3;
 
     private AudioManager am;
@@ -414,8 +414,8 @@ public class LevelManager : MonoBehaviour
         return mainCamera.gameObject.GetComponent<Camera>();
     }
 
-    public bool IsInBossFight()
+    public void GoToBossFight()
     {
-        return bossfight.IsInBossFight();
+        
     }
 }

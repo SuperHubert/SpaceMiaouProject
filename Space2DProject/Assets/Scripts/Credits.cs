@@ -11,13 +11,13 @@ public class Credits : MonoBehaviour
     {
         if (LoadingLevelData.Instance.creditsGoToMenu)
         {
-            movingCredits.SetActive(true);
-            staticCredits.SetActive(false);
+            movingCredits.SetActive(false);
+            staticCredits.SetActive(true);
         }
         else
         {
-            movingCredits.SetActive(false);
-            staticCredits.SetActive(true);
+            movingCredits.SetActive(true);
+            staticCredits.SetActive(false);
         }
         
     }
