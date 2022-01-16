@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
 public class GenerationSimpleHalf : MonoBehaviour
@@ -340,18 +341,29 @@ public class GenerationSimpleHalf : MonoBehaviour
             room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
             
             //Instantiates prefab tilemap UnWalkable
-            Instantiate(prefabRoom.transform.GetChild(roomTilemapsIndex).GetChild(1),room.transform.GetChild(roomTilemapsIndex));
-            
+            var unwalkable = Instantiate(prefabRoom.transform.GetChild(roomTilemapsIndex).GetChild(1),room.transform.GetChild(roomTilemapsIndex));
+            unwalkable.GetComponent<TilemapRenderer>().enabled = false;
             //Instantiates prefab collision GameObjects
             foreach (Transform collisionObj in prefabRoom.transform.GetChild(roomCollisionsIndex))
             {
                 Instantiate(collisionObj, room.transform.GetChild(roomCollisionsIndex));
             }
             
-            //Instantiates prefab Sprite Renderers GameObjects
+            /*Instantiates prefab Sprite Renderers GameObjects
             foreach (Transform spriteRenObj in prefabRoom.transform.GetChild(roomSpriteRendersIndex))
             {
                 Instantiate(spriteRenObj, room.transform.GetChild(roomSpriteRendersIndex));
+            }
+            */
+            
+            var renderers = prefabRoom.transform.GetChild(roomSpriteRendersIndex);
+            for (int i = 0; i < renderers.childCount; i++)
+            {
+                GameObject waterObj = Instantiate(renderers.GetChild(i).gameObject, room.transform.GetChild(roomSpriteRendersIndex));
+                if (i != 2) continue;
+                var tempColor = waterObj.GetComponent<SpriteRenderer>().color;
+                tempColor.a = 0.7f;
+                waterObj.GetComponent<SpriteRenderer>().color = tempColor;
             }
             
             if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
