@@ -12,11 +12,11 @@ public class Credits : MonoBehaviour
     {
         if (LoadingLevelData.Instance.creditsGoToMenu)
         {
-            credits.position = Vector3.up * 360 + Vector3.right * 640;
+            MoveCredits();
         }
         else
         {
-            credits.position = Vector3.up * -360 + Vector3.right * 640;
+            
         }
         
     }
