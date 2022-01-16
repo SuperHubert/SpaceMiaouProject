@@ -47,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
+        if(enemyBehaviour == null) return;
         if (enemyBehaviour.currentState != EnemyBehaviour.State.Dead && moveHealthBar)
         {
             UpdateHealthBarPosition();

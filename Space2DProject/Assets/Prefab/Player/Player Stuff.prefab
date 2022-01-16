@@ -142,6 +142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8800626575084868215}
     m_Modifications:
+    - target: {fileID: 1557975824, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1631893213, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
       propertyPath: fallAnimObj
       value: 

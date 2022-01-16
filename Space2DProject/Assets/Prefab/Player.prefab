@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.15572977, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 77e2010fe5559d84a9c88854d2feef28, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   isSpraying: 0
-  slider: {fileID: 0}
+  sprayImage: {fileID: 0}
   maxSpray: 100
   currentSpray: 0
   burn: 0
