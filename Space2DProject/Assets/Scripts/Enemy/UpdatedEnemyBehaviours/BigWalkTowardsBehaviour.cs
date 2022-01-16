@@ -24,6 +24,15 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         if (currentState == State.Awake && !isPerformingAction)
         {
             if(agent.isOnNavMesh) agent.SetDestination(player.position);
+            
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isWalking", true);
+            
+            Vector2 orientation = new Vector2(player.position.x - transform.GetChild(0).position.x,
+                player.position.y - transform.GetChild(0).position.y).normalized;
+            
+            animator.SetFloat("Horizontal",orientation.x);
+            animator.SetFloat("Vertical",orientation.y);
         }
     }
 
@@ -37,6 +46,9 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
     
     private IEnumerator Attack()
     {
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacking", true);
+        
         if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
         yield return new WaitUntil(() => !ondeDeChoc.activeSelf);
         //leve la tete et la frappe sur le sol
@@ -54,4 +66,25 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         ondeDeChoc.SetActive(false);
     }
     
+    public override void Die(bool destroy = false)
+    {
+        currentState = State.Dead;
+        agent.velocity = Vector3.zero;
+        if(agent.isOnNavMesh) agent.isStopped = true;
+        StartCoroutine(PlayAnim());
+    }
+
+    IEnumerator PlayAnim()
+    {
+        animator.Play("CreepDeath");
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(1f);
+        base.Die();
+    }
+    
+    public override void Stun(float duration = 1)
+    {
+        animator.SetBool("Damage", true);
+        base.Stun(duration);
+    }
 }
