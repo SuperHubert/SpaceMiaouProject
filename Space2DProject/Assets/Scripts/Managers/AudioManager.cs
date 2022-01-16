@@ -48,7 +48,7 @@ public class AudioManager : MonoBehaviour
         sounds[id].source.Play();
     }
 
-    public void Stop(int id)
+    public void Stop(int id, bool fade = false)
     {
         if(id>=sounds.Count || id<0) return;
         //if(sounds[id].source.isPlaying) return;

@@ -45,15 +45,26 @@ public class Arena : MonoBehaviour
         {
             if(door.gameObject.activeSelf) doors.Add(door.GetComponent<Animator>());
         }
-        
-        //var parentHp = LevelManager.Instance.Level().GetChild(5);
-        //var parentEnemy = LevelManager.Instance.Level().GetChild(1);
-        var parentHp = level.GetChild(5);
-        var parentEnemy = level.GetChild(1);
+
+
+        Transform parentHp;
+        Transform parentEnemy;
+        if (level != null)
+        {
+            parentHp = level.GetChild(5);
+            parentEnemy = level.GetChild(1);
+        }
+        else
+        {
+            parentHp = LevelManager.Instance.Level().GetChild(5);
+            parentEnemy = LevelManager.Instance.Level().GetChild(1);
+        }
         foreach (var enemy in enemies)
         {
             enemy.gameObject.SetActive(false);
-            enemy.GetChild(0).GetComponent<EnemyHealth>().healthBarTransform.SetParent(parentHp);
+            var hpBar = enemy.GetChild(0).GetComponent<EnemyHealth>().healthBarTransform;
+            hpBar.SetParent(parentHp);
+            hpBar.gameObject.SetActive(false);
             enemy.SetParent(parentEnemy);
         }
         OpenDoors();

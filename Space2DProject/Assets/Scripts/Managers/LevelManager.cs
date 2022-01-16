@@ -255,6 +255,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+
     IEnumerator BossFightNavMesh()
     {
         bossfight.ActivateBossFight();
