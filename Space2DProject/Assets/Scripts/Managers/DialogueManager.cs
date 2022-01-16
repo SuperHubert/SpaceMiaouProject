@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI speaker;
     private TextMeshProUGUI dialogueText;
     private Image portraitRender;
+    private int audioSourceIndex = 0;
 
     private Coroutine typingCoroutine;
     
@@ -59,6 +60,7 @@ public class DialogueManager : MonoBehaviour
         
         speaker.text = dialogue.characterName;
         portraitRender.sprite = dialogue.characterImage;
+        audioSourceIndex = dialogue.audioSourceIndex;
 
         sentences.Clear();
 
@@ -115,7 +117,7 @@ public class DialogueManager : MonoBehaviour
     {
         do
         {
-            am.Play(0);
+            am.Play(audioSourceIndex);
             yield return new WaitForSeconds(0.2f);
         } while (!isDoneTyping);
         

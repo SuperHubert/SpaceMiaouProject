@@ -11,5 +11,7 @@ public class Dialogues
     [TextArea(3,10)]
     public List<string> sentences = new List<string>();
 
+    public int audioSourceIndex = 0;
+
 
 }
