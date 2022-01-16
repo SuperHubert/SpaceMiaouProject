@@ -9,6 +9,7 @@ public class ManagerMenu : MonoBehaviour
     public GameObject previousSelectedObj;
     
     [SerializeField] private GameObject inputImage;
+    [SerializeField] private Slider soundSlider;
     private void Start()
     {
         firstSelectedButton.Select();
@@ -16,11 +17,12 @@ public class ManagerMenu : MonoBehaviour
     
     private void Update()
     {
+        if(soundSlider != null) return;
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             if (previousSelectedObj == null)
             {
-                firstSelectedButton.Select();;
+                firstSelectedButton.Select();
             }
             else
             {
@@ -86,5 +88,10 @@ public class ManagerMenu : MonoBehaviour
     public void GoToMenuFromGame()
     {
         LifeManager.Instance.CleanReturnToMenu();
+    }
+
+    public void ChangeVolume()
+    {
+        AudioManager.Instance.ChangeVolume(soundSlider.value);
     }
 }

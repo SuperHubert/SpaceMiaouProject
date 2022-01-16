@@ -9,6 +9,7 @@ using DG.Tweening;
 public class AudioManager : MonoBehaviour
 {
     public List<Sound> sounds = new List<Sound>();
+    public static float volumeMultiplier;
 
     public static AudioManager Instance;
 
@@ -68,6 +69,18 @@ public class AudioManager : MonoBehaviour
         foreach (var sound in sounds.Where(sound => sound.source.isPlaying))
         {
             sound.source.Stop();
+        }
+    }
+
+    public void ChangeVolume(float input)
+    {
+        if (input > 1) input = 1;
+        if (input < 0) input = 0;
+        volumeMultiplier = input;
+
+        foreach (var sound in sounds)
+        {
+            sound.source.volume = sound.volume * volumeMultiplier;
         }
     }
 
