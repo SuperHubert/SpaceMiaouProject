@@ -63,6 +63,7 @@ public class SmallShooterBehaviour : EnemyBehaviour
     
     private void ShootBullet()
     {
+        am.Play(12, true);
         animator.SetBool("isAttacking", true);
         bullet = ObjectPooler.Instance.SpawnFromPool("Enemy Bullets", enemyTransform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = (player.position - enemyTransform.position).normalized*bulletSpeed;
