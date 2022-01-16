@@ -85,6 +85,7 @@ public class Cinematic : MonoBehaviour
             if (index > 2 && !LoadingLevelData.Instance.hasLaunchedGame)
             {
                 LoadingLevelData.Instance.hasLaunchedGame = true;
+                LoadingLevelData.Instance.skipCinematic = true;
                 SceneManager.LoadScene(3);
                 return;
             }

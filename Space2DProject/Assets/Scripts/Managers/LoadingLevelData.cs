@@ -10,6 +10,7 @@ public class LoadingLevelData : MonoBehaviour
     public bool hasLaunchedGame = false;
     public bool creditsGoToMenu = true;
     public bool noMoreLogo = false;
+    public bool skipCinematic = false;
 
     #region Singleton Don't Destroy On Load
     public static LoadingLevelData Instance;

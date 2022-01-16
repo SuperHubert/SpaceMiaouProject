@@ -38,7 +38,7 @@ public class ManagerMenu : MonoBehaviour
     {
         LoadingLevelData.Instance.creditsGoToMenu = false;
         LoadingManager.Instance.RotationItem();
-        if (LoadingLevelData.Instance.hasLaunchedGame)
+        if (LoadingLevelData.Instance.skipCinematic)
         {
             LoadingManager.Instance.LoadScene(3);
         }

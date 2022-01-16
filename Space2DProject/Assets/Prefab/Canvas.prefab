@@ -6449,7 +6449,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1788054955226412208}
         m_TargetAssemblyTypeName: ManagerMenu, Assembly-CSharp
-        m_MethodName: ReturnToMenu
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
