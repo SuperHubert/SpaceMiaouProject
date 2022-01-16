@@ -30,5 +30,11 @@ public class Tower : MonoBehaviour,IInteractible
             //if(enemy.GetChild(0).gameObject.activeSelf) 
             enemy.GetChild(0).GetComponent<EnemyHealth>().Die(false);
         }
+        
+        foreach (Transform item in transform.parent.GetChild(3))
+        {
+            if(item.GetComponent<Chest>() != null) item.gameObject.SetActive(false);
+        }
+        
     }
 }
