@@ -75,7 +75,7 @@ public class LifeManager : MonoBehaviour
        StartCoroutine(PlayDyingAnimation());
    }
 
-   IEnumerator PlayDyingAnimation(bool instant = false)
+   IEnumerator PlayDyingAnimation(bool instant = false,int scene = 5)
    {
        if (!instant)
        {
@@ -87,7 +87,7 @@ public class LifeManager : MonoBehaviour
        DialogueManager.Instance.EndDialogue();
        LoadingManager.Instance.UpdateLoading();
        LoadingLevelData.Instance.ResetData();
-       LoadingManager.Instance.LoadScene(5);
+       LoadingManager.Instance.LoadScene(scene);
        am.StopAllSounds();
        InputManager.canInput = true;
    }
@@ -116,14 +116,12 @@ public class LifeManager : MonoBehaviour
 
    public void CleanReturnToMenu()
    {
+       //LevelManager.Instance.Player().GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
        LevelManager.Instance.Player().SetActive(false);
-       UIManager.Instance.IncreaseScore(0);
-       DialogueManager.Instance.EndDialogue();
-       LoadingManager.Instance.UpdateLoading();
-       LoadingLevelData.Instance.ResetData();
-       LoadingManager.Instance.LoadScene(0);
-       am.StopAllSounds();
-       InputManager.canInput = true;
+       LoadingLevelData.Instance.score = UIManager.Instance.score;
+       Time.timeScale = 1f;
+       InputManager.canInput = false;
+       StartCoroutine(PlayDyingAnimation(true,0));
    }
    
 

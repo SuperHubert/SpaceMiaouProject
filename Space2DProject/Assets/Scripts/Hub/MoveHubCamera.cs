@@ -9,14 +9,11 @@ public class MoveHubCamera : MonoBehaviour
     public Vector3 pos;
     private Vector3 offset = new Vector3(0, 0, -10f);
     public float cameraSize = 6f;
-    private AudioManager am;
 
     private void Start()
     {
         cam = Camera.main;
         camTransform = cam.transform;
-        am = AudioManager.Instance;
-        am.Play(5);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
