@@ -10,6 +10,8 @@ public class ManagerMenu : MonoBehaviour
     
     [SerializeField] private GameObject inputImage;
     [SerializeField] private Slider soundSlider;
+
+    [SerializeField] private GameObject pauseUI;
     private void Start()
     {
         firstSelectedButton.Select();
@@ -72,9 +74,11 @@ public class ManagerMenu : MonoBehaviour
         if (forceOff)
         {
             inputImage.SetActive(false);
+            if(pauseUI != null) pauseUI.SetActive(true);
         }
         else
         {
+            if(pauseUI != null) pauseUI.SetActive(false);
             inputImage.SetActive(!inputImage.activeSelf);
         }
     }

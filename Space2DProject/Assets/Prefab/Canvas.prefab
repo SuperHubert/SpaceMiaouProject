@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c20df0791234254bafd4b27797a81e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseUI: {fileID: 8611923240129973446}
 --- !u!1 &173286866399255500
 GameObject:
   m_ObjectHideFlags: 0
@@ -9051,6 +9052,7 @@ MonoBehaviour:
   previousSelectedObj: {fileID: 0}
   inputImage: {fileID: 163732829208829852}
   soundSlider: {fileID: 0}
+  pauseUI: {fileID: 8611923240129973446}
 --- !u!1 &8613917076387441743
 GameObject:
   m_ObjectHideFlags: 0

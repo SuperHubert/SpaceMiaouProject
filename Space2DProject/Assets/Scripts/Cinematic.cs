@@ -12,7 +12,6 @@ public class Cinematic : MonoBehaviour
     [SerializeField] private int index = -1;
 
     [SerializeField] private float timeBetweenLetters = 0.005f;
-    [SerializeField] private float timeBetweenBlinks = 0.5f;
     private Coroutine typingCoroutine;
     private bool isDoneTyping = true;
     
