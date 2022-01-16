@@ -228,7 +228,7 @@ public class LevelManager : MonoBehaviour
         switch (biome)
         {
             case 0:
-                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.01176471f,0.0627451f,0.1176471f,1f);
                 globalLight.color = new Color(0.4237718f,0.7010058f,0.8396226f,1);
                 portalSpriteRenderer.sprite = portalBiome1;
                 towerSpriteRenderer.sprite = towerBiome1;
