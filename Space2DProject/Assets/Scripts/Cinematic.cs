@@ -15,10 +15,7 @@ public class Cinematic : MonoBehaviour
     [SerializeField] private float timeBetweenBlinks = 0.5f;
     private Coroutine typingCoroutine;
     private bool isDoneTyping = true;
-
-    public GameObject rubikaLogo;
-    public GameObject oversweptLogo;
-
+    
     [System.Serializable] public class CinematicItem
     {
         public Sprite sprite;
@@ -120,9 +117,6 @@ public class Cinematic : MonoBehaviour
 
     private IEnumerator BeginCutscene()
     {
-        yield return new WaitForSeconds(1.5f);
-        rubikaLogo.SetActive(false);
-        oversweptLogo.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         GoToImage(0);
     }
