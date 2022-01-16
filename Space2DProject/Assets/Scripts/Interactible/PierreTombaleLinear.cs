@@ -1,14 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PierreTombaleLinear : MonoBehaviour,IInteractible
 {
     public List<Dialogues> dialogues;
-    public static List<Dialogues> usableDialogues = new List<Dialogues>();
-    public static int index;
-
-    // Start is called before the first frame update
+    private static List<Dialogues> usableDialogues = new List<Dialogues>();
+    private static int index;
+    
     void Start()
     {
         if (usableDialogues.Count != 0) return;
