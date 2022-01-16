@@ -82,4 +82,9 @@ public class ManagerMenu : MonoBehaviour
         LoadingLevelData.Instance.creditsGoToMenu = true;
         SceneManager.LoadScene(7);
     }
+
+    public void GoToMenuFromGame()
+    {
+        LifeManager.Instance.CleanReturnToMenu();
+    }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HubCameraStart : MonoBehaviour
@@ -11,6 +8,7 @@ public class HubCameraStart : MonoBehaviour
     
     private void Start()
     {
+        Time.timeScale = 1;
         cam = Camera.main;
         camTransform = cam.transform;
     }

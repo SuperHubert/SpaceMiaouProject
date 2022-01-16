@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
@@ -23,6 +22,8 @@ public class LifeManager : MonoBehaviour
 
     public Animator anim;
 
+    private AudioManager am;
+
     #region Singleton
     public static LifeManager Instance;
 
@@ -37,6 +38,7 @@ public class LifeManager : MonoBehaviour
         spriteRenderer = LevelManager.Instance.Player().GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
         mainCamera = LevelManager.Instance.Camera();
+        am = AudioManager.Instance;
     }
 
     public void TakeDamages(int damages)
@@ -86,6 +88,7 @@ public class LifeManager : MonoBehaviour
        LoadingManager.Instance.UpdateLoading();
        LoadingLevelData.Instance.ResetData();
        LoadingManager.Instance.LoadScene(5);
+       am.StopAllSounds();
        InputManager.canInput = true;
    }
 
@@ -110,7 +113,18 @@ public class LifeManager : MonoBehaviour
        spriteRenderer.material = originalMaterial;
        flashRoutine = null;
    }
-   
+
+   public void CleanReturnToMenu()
+   {
+       LevelManager.Instance.Player().SetActive(false);
+       UIManager.Instance.IncreaseScore(0);
+       DialogueManager.Instance.EndDialogue();
+       LoadingManager.Instance.UpdateLoading();
+       LoadingLevelData.Instance.ResetData();
+       LoadingManager.Instance.LoadScene(0);
+       am.StopAllSounds();
+       InputManager.canInput = true;
+   }
    
 
    //testing camera shake values

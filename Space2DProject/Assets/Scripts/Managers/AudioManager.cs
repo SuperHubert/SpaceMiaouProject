@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using DG.Tweening;
@@ -59,6 +60,14 @@ public class AudioManager : MonoBehaviour
         else
         {
             sounds[id].source.Stop();
+        }
+    }
+    
+    public void StopAllSounds()
+    {
+        foreach (var sound in sounds.Where(sound => sound.source.isPlaying))
+        {
+            sound.source.Stop();
         }
     }
 
