@@ -130,7 +130,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Jones Ora
     clip: {fileID: 8300000, guid: 0d8bb56e9660d2c46b16e2f4413775da, type: 3}
-    volume: 0.8
+    volume: 0.6
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -142,6 +142,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Jones Mort
     clip: {fileID: 8300000, guid: 1a66570e1c7ea734186d3e6ac533e03f, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Activate Tower
+    clip: {fileID: 8300000, guid: 28fa109c0cd495d4b8cb607b9633884c, type: 3}
     volume: 0.8
     pitch: 1
     loop: 0
