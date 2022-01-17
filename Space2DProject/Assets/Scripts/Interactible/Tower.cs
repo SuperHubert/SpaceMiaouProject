@@ -9,7 +9,7 @@ public class Tower : MonoBehaviour,IInteractible
     public Collider2D portalCollider2D;
     public Camera cam;
     public List<Dialogues> dialogues;
-    private int timesActivated = 0;
+    [SerializeField] private int timesActivated = 0;
     
     private void Start()
     {
@@ -25,9 +25,12 @@ public class Tower : MonoBehaviour,IInteractible
         laserObj.SetActive(true);
         portalCollider2D.enabled = true;
         gameObject.GetComponent<Collider2D>().enabled = false;
-        
-        StartCoroutine(PlayDialogue(timesActivated));
         timesActivated++;
+        if (timesActivated > LoadingLevelData.Instance.towerDialogue)
+        {
+            LoadingLevelData.Instance.towerDialogue = timesActivated;
+            StartCoroutine(PlayDialogue());
+        }
         KillAllEnemies();
         
     }
@@ -54,9 +57,10 @@ public class Tower : MonoBehaviour,IInteractible
         }
     }
 
-    private IEnumerator PlayDialogue(int index)
+    private IEnumerator PlayDialogue()
     {
         yield return new WaitForSeconds(0.5f);
-        DialogueManager.Instance.StartDialogue(dialogues[index]);
+        DialogueManager.Instance.StartDialogue(dialogues[timesActivated-1]);
+
     }
 }
