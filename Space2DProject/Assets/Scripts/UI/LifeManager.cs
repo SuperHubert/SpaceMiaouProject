@@ -73,6 +73,7 @@ public class LifeManager : MonoBehaviour
        LoadingLevelData.Instance.score = UIManager.Instance.score;
        Time.timeScale = 1f;
        InputManager.canInput = false;
+       
        StartCoroutine(PlayDyingAnimation());
    }
 
@@ -85,6 +86,10 @@ public class LifeManager : MonoBehaviour
            yield return new WaitForSeconds(3.5f);
        }
        yield return new WaitForSeconds(0.5f);
+       foreach (Transform child in LevelManager.Instance.Level().GetChild(5))
+       {
+           child.gameObject.SetActive(false);
+       }
        UIManager.Instance.IncreaseScore(0);
        DialogueManager.Instance.EndDialogue();
        LoadingManager.Instance.UpdateLoading();
