@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4045755169813109874}
   - component: {fileID: 5125923569925846856}
   - component: {fileID: 4220924803073203232}
+  - component: {fileID: 3719225720826207672}
+  - component: {fileID: 7831325229565199621}
   m_Layer: 14
   m_Name: Tomb Stone 1
   m_TagString: Untagged
@@ -98,3 +100,93 @@ MonoBehaviour:
   player: {fileID: 0}
   offset: 0.3
   layer: 7
+--- !u!61 &3719225720826207672
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937326293335592268}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &7831325229565199621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937326293335592268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77df66221bde2174e97592247bc68930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - There is something engraved on this monument...
+    - That's weird, I think I can understand it.
+    - It's an old legend about the God of this forest.
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - The Old God protected the people of this forest for decades.
+    - But somehow, it failed to protect them against the Blobs.
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - The people tried to fight back but without their God, they failed too.
+    audioSourceIndex: 0
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - After analisys, we discovered that those stone were engraved...
+    - After analisys, we discovered that those stone were engraved...
+    - ... At least 2000 years ago. I don't think there could be a single survivor.
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - The Old God was able to produce... spores ?
+    - The people of this planet used to create artifacts with those spores.
+    - And with other materials form the two other gods...
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - 'This is a... poem ? '
+    - I think this is a farewell of a soldier to his familly...
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - 'This one is older than the other. '
+    - Its a legend about an explorer. A tiny pink guy send in the stars to collect
+      something
+    audioSourceIndex: 0
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Agent Jones, you need to activate the tower.
+    - Time is running against us.
+    audioSourceIndex: 0
