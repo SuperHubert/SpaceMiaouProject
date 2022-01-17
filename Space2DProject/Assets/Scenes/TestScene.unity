@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: playerFollower
       value: 
       objectReference: {fileID: 409208226}
+    - target: {fileID: 6261848302358424114, guid: a9f10ba9043fa0141b6278da015b9b35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090367515377529417, guid: a9f10ba9043fa0141b6278da015b9b35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8292005040965791100, guid: a9f10ba9043fa0141b6278da015b9b35, type: 3}
       propertyPath: m_Name
       value: New Boss Fight
