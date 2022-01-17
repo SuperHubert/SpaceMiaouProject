@@ -29,7 +29,15 @@ public class Tower : MonoBehaviour,IInteractible
         foreach (Transform enemy in transform.parent.GetChild(1))
         {
             //if(enemy.GetChild(0).gameObject.activeSelf) 
-            enemy.GetChild(0).GetComponent<EnemyHealth>().Die(false);
+            
+            if (enemy.GetChild(0).gameObject.activeSelf)
+            {
+                enemy.GetChild(0).GetComponent<EnemyHealth>().Die(false);
+            }
+            else
+            {
+                Destroy(enemy.gameObject);
+            }
         }
         
         foreach (Transform item in transform.parent.GetChild(3))
