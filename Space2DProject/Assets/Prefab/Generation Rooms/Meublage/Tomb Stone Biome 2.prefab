@@ -140,7 +140,7 @@ MonoBehaviour:
     - According to this stone and our observations...
     - This region was once an other forest of trees.
     - But somehow the Blobs corrupted it.
-    audioSourceIndex: 0
+    audioSourceIndex: 22
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
@@ -159,7 +159,7 @@ MonoBehaviour:
     sentences:
     - Agent Jones you need to stop reading and reach the tower.
     - The blobs are not our only ennemy. Time is running.
-    audioSourceIndex: 0
+    audioSourceIndex: 22
 --- !u!61 &4237325928305539578
 BoxCollider2D:
   m_ObjectHideFlags: 0
