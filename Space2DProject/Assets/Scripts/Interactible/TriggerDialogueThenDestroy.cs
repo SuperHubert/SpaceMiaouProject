@@ -17,11 +17,9 @@ public class TriggerDialogueThenDestroy : MonoBehaviour,IInteractible
     void Update()
     {
         if(index >= dialogues.Count) return;
-        if (started && !dialogueManager.dialogueCanvas.activeSelf)
-        {
-            dialogueManager.StartDialogue(dialogues[index]);
-            index++;
-        }
+        if (!started || dialogueManager.dialogueCanvas.activeSelf) return;
+        dialogueManager.StartDialogue(dialogues[index]);
+        index++;
     }
 
     private void StartDialogue()
