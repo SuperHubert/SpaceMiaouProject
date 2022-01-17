@@ -38,7 +38,6 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     private void Start()
     {
-        am = AudioManager.Instance;
         InitVariables();
     }
 
@@ -65,6 +64,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         
         actionCd = 0;
         isPerformingAction = false;
+        
+        am = AudioManager.Instance;
     }
     
     public virtual void WakeUp()

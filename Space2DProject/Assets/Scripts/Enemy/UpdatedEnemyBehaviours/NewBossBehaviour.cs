@@ -12,9 +12,7 @@ public class NewBossBehaviour : EnemyBehaviour
     [SerializeField] private GameObject part1Triggers;
     [SerializeField] private GameObject arena;
     [SerializeField] private GameObject part2Triggers;
-
-    private AudioManager am;
-
+    
     public int phase = 0;
     public bool arenaMode = false;
 
@@ -38,11 +36,9 @@ public class NewBossBehaviour : EnemyBehaviour
         }
         else
         {
-            if (rockFalls)
-            {
-                rockAttackCd = rockAttackCdMax;
-                StartCoroutine(SimpleRocksAttack());
-            }
+            if (!rockFalls) return;
+            rockAttackCd = rockAttackCdMax;
+            StartCoroutine(SimpleRocksAttack());
         }
     }
 
@@ -98,34 +94,34 @@ public class NewBossBehaviour : EnemyBehaviour
                 break;
             case 2:
                 StartCoroutine(SimpleRocksAttack());
-                AudioManager.Instance.Play(3);
+                am.Play(3);
                 break;
                 
             case 3:
                 StartCoroutine(MultipleRocksAttack());
-                AudioManager.Instance.Play(4);
+                am.Play(4);
                 break;
             case 4:
                 animator.SetTrigger("EyeOFF");
                 EnterArenaMode();
                 part1Triggers.SetActive(false);
-                AudioManager.Instance.Play(3);
+                am.Play(3);
                 break;
             case 5:
                 animator.SetTrigger("SpikesON");
                 part1Triggers.SetActive(true);
                 rockFalls = true;
                 StartCoroutine(SimpleRocksAttack());
-                AudioManager.Instance.Play(4);
+                am.Play(4);
                 break;
             case 6:
                 part1Triggers.SetActive(false);
                 part2Triggers.SetActive(true);
-                AudioManager.Instance.Play(3);
+                am.Play(3);
                 break;
             case 7:
                 StartCoroutine(MultipleRocksAttack());
-                AudioManager.Instance.Play(4);
+                am.Play(4);
                 break;
             default:
                 break;
