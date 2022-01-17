@@ -44,6 +44,8 @@ public class LevelManager : MonoBehaviour
     private AudioManager am;
 
     private bool canGenerate = true;
+
+    [SerializeField] private Dialogues dialogue;
     
     #region Singleton
 
@@ -418,5 +420,13 @@ public class LevelManager : MonoBehaviour
         ChangeBackgroundColor();
         Level().GetChild(6).gameObject.SetActive(true);
         generator.GeneratorSettingsForBoss();
+    }
+
+    public void PlayIntroDialogue()
+    {
+        if(LoadingLevelData.Instance.firstRunDialogue) return;
+        DialogueManager.Instance.StartDialogue(dialogue);
+        LoadingLevelData.Instance.firstRunDialogue = true;
+
     }
 }

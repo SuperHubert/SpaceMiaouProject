@@ -484,6 +484,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalCollider2D: {fileID: 0}
   cam: {fileID: 0}
+  dialogues:
+  - characterName: 
+    characterImage: {fileID: 0}
+    sentences: []
+    audioSourceIndex: 0
+  - characterName: 
+    characterImage: {fileID: 0}
+    sentences: []
+    audioSourceIndex: 0
+  - characterName: 
+    characterImage: {fileID: 0}
+    sentences: []
+    audioSourceIndex: 0
 --- !u!61 &6521914564625401045
 BoxCollider2D:
   m_ObjectHideFlags: 0
