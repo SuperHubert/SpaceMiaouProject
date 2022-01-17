@@ -107,6 +107,7 @@ public class Combat2 : MonoBehaviour
         {
             isSpecialAttacking = true;
             canSpecialAttack = false;
+            isAttacking = true;
             
             playerAnimator.Play("SpinAttack");
             AudioManager.Instance.Play(14, true);
