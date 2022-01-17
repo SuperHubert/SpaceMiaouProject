@@ -18,6 +18,8 @@ public class Fall : MonoBehaviour
     private bool canFall = true;
 
     public Coroutine teleportFollowerRoutine;
+
+    private AudioManager am;
     
     void Start()
     {
@@ -28,6 +30,7 @@ public class Fall : MonoBehaviour
         playerObj = playerTransform.gameObject;
         playerMovement = playerObj.GetComponent<PlayerMovement>();
         fallAnim = fallAnimObj.GetComponent<Animator>();
+        am = AudioManager.Instance;
     }
     
     private void OnTriggerStay2D(Collider2D other)
@@ -41,6 +44,7 @@ public class Fall : MonoBehaviour
         
         
         fallAnimObj.transform.position = transform.position;
+        am.Play(18, true);
         fallAnim.Play("Noyade");
         
         playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = false;

@@ -60,7 +60,7 @@ public class BossCinematic : MonoBehaviour
         DialogueManager.Instance.StartDialogue(dialogue03);
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
         am.Stop(8, true);
-        am.Play(1);
+        am.Play(3, true);
         StartCoroutine(LevelManager.Instance.LatePlay(9, 1));
 
         bossAnimator.enabled = true;

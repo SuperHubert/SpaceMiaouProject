@@ -38,11 +38,14 @@ public class EnemyHealth : MonoBehaviour
     private NewBossBehaviour bossBehaviour;
     [SerializeField] private List<int> phaseThresholds = new List<int>();
 
+    private AudioManager am;
+
 
     void Start()
     {
         InitEnemy();
         if (bossHealth) bossBehaviour = transform.parent.GetComponent<NewBossBehaviour>();
+        am = AudioManager.Instance;
     }
 
     private void Update()
@@ -112,6 +115,8 @@ public class EnemyHealth : MonoBehaviour
             ResizeHealthBar();
 
             currentHealth -= damage;
+
+            am.Play(20, true);
             
             healthBarObj.SetActive(currentHealth > 0);
 
