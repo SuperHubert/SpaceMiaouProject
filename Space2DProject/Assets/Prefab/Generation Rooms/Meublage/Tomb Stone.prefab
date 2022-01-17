@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 9087570208931850957}
   - component: {fileID: 79393830446318071}
   - component: {fileID: 8983375784265083551}
+  - component: {fileID: 386893896502278138}
+  - component: {fileID: 6460959923349365149}
   m_Layer: 14
   m_Name: Tomb Stone
   m_TagString: Untagged
@@ -98,3 +100,83 @@ MonoBehaviour:
   player: {fileID: 0}
   offset: 0.3
   layer: 7
+--- !u!61 &386893896502278138
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467468548962909171}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &6460959923349365149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467468548962909171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77df66221bde2174e97592247bc68930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - This one is about this place.
+    - It says it was once a green and peacefull valley.
+    - The Blobs detroyed it... and killed its God too.
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - In the biggest temple of the planet lived the Spider God
+    - It was the strongest of the three.
+    - But he was the first to die... He was killed... By a tree ?
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - What the... Someone wrote on the text of this stone.
+    - '"Glory to the new god !"'
+    - I don't want to know what is this about.
+    audioSourceIndex: 0
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - We analyzed the structure of the grail your human found.
+    - It was the item that created the blobs. But it's innofensive now.
+    - And sadly useless...
+    audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - Another weird legend. This time about something like...
+    - A frog ? A cook ? A froock ?
+    - I don't konw who wrote it... But he was obviously mad.
+    audioSourceIndex: 0
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Move on Jones... We need to finish this job.
+    - Fast.
+    audioSourceIndex: 0
