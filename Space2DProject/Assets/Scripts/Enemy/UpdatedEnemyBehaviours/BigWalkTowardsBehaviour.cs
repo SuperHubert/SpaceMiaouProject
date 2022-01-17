@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BigWalkTowardsBehaviour : EnemyBehaviour
 {
-    [SerializeField] private GameObject ondeDeChoc;
-
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -45,16 +43,14 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
     private IEnumerator Attack()
     {
         if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
-        yield return new WaitUntil(() => !ondeDeChoc.activeSelf);
         isPerformingAction = true;
         animator.SetBool("isWalking", false);
         animator.SetBool("isAttacking", true);
         
         yield return new WaitForSeconds(0.5f);
-        
-        ondeDeChoc.transform.position = player.position;
-        ondeDeChoc.SetActive(true);
-        yield return new WaitForSeconds(1.2f);
+
+        var ondeDeChoc = ObjectPooler.Instance.SpawnFromPool("Explosion", player.position, Quaternion.identity);
+        yield return new WaitForSeconds(1.8f);
         isPerformingAction = false;
         ondeDeChoc.SetActive(false);
         animator.SetBool("isAttacking", false);
@@ -62,6 +58,7 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
     
     public override void Die(bool destroy = false)
     {
+        StopAllCoroutines();
         currentState = State.Dead;
         agent.velocity = Vector3.zero;
         if(agent.isOnNavMesh) agent.isStopped = true;
