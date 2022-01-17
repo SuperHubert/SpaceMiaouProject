@@ -82,35 +82,44 @@ public class DialogueManager : MonoBehaviour
         }
         
         if(nextBlinkRoutine != null) StopCoroutine(nextBlinkRoutine);
-        
-        if (sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
 
-        var sentence = sentences.Dequeue();
+        if (isDoneTyping)
+        {
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
 
-        if (instantDisplay)
+            var sentence = sentences.Dequeue();
+
+            if (instantDisplay)
+            {
+                dialogueText.text = sentence;
+                return;
+            }
+        
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+        
+            if (soundCoroutine != null)
+            {
+                StopCoroutine(soundCoroutine);
+            }
+        
+        
+        
+            typingCoroutine = StartCoroutine(TypeSentence(sentence));
+            soundCoroutine = StartCoroutine(PlayTypingSound());
+        }
+        else
         {
-            dialogueText.text = sentence;
-            return;
+            Time.timeScale = Time.timeScale == 1f ? 0f : 1f;
         }
         
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-        }
         
-        if (soundCoroutine != null)
-        {
-            StopCoroutine(soundCoroutine);
-        }
-        
-        
-        
-        typingCoroutine = StartCoroutine(TypeSentence(sentence));
-        soundCoroutine = StartCoroutine(PlayTypingSound());
     }
     
     private IEnumerator PlayTypingSound()
