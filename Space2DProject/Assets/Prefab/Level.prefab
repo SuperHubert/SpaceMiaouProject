@@ -482,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6c2b1fbee5b9e4da0c424f736e0bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portalCollider2D: {fileID: 8364773362135438213}
   cam: {fileID: 0}
 --- !u!61 &6521914564625401045
 BoxCollider2D:

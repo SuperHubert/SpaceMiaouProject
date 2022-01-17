@@ -22,10 +22,12 @@ public class Chest : MonoBehaviour, IInteractible
         anim.SetTrigger("Open");
         
         float drop = Random.Range(0, 100);
+        
+        var transform1 = transform;
         if (drop < LootManager.Instance.ConvertLevelToProbability(floor))
         {
             var bonk = LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : Random.Range(1, 3),
-                transform.position);
+                transform1.position,transform1);
             yield return new WaitForSeconds(1.25f);
             foreach (var obj in bonk)
             {
@@ -34,7 +36,7 @@ public class Chest : MonoBehaviour, IInteractible
         }
         else
         {
-            LootManager.Instance.GetUpgrade(floor,transform.position);
+            LootManager.Instance.GetUpgrade(floor,transform1.position,transform1);
         }
         
         yield return new WaitForSeconds(0.95f);

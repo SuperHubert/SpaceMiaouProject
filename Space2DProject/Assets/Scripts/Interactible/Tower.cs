@@ -4,13 +4,13 @@ using DG.Tweening;
 public class Tower : MonoBehaviour,IInteractible
 {
     private GameObject laserObj;
-    private Collider2D portalCollider2D;
+    public Collider2D portalCollider2D;
     public Camera cam;
     
     private void Start()
     {
         laserObj = transform.GetChild(0).gameObject;
-        portalCollider2D = transform.parent.GetChild(3).GetComponent<Collider2D>();
+        if(portalCollider2D == null) portalCollider2D = transform.parent.GetChild(3).GetComponent<Collider2D>();
     }
     
     public void OnInteraction()
