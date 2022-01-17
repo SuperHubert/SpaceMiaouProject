@@ -28,7 +28,7 @@ public class Chest : MonoBehaviour, IInteractible
         {
             var bonk = LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : Random.Range(1, 3),
                 transform1.position,transform1);
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(0.75f);
             foreach (var obj in bonk)
             {
                 obj.GetComponent<Collider2D>().enabled = true;

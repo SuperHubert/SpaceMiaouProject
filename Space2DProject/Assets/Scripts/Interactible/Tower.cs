@@ -39,7 +39,11 @@ public class Tower : MonoBehaviour,IInteractible
     {
         foreach (Transform item in transform.parent.GetChild(2))
         {
-            if (item.GetComponent<Arena>() != null) item.GetComponent<Arena>().completed = true;
+            if (item.GetComponent<Arena>() != null)
+            {
+                item.GetComponent<Collider2D>().enabled = false;
+                item.GetComponent<Arena>().completed = true;
+            }
             if (item.GetComponent<Chest>() == null) continue;
             item.GetComponent<Chest>().OnInteraction();
             item.gameObject.SetActive(false);

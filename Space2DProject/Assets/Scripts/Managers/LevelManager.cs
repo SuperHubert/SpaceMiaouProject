@@ -114,6 +114,9 @@ public class LevelManager : MonoBehaviour
 
     private void ClearLevel()
     {
+        PierreTombaleLinear.usableDialogues.Clear();
+        PierreTombaleLinear.index = 0;
+        
         gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
 
         generator.CleanUpObjects();

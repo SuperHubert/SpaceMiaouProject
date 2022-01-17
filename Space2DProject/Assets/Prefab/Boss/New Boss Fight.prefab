@@ -126012,6 +126012,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2777616280682645003, guid: a666927c188cf5140ad44412a738259b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4886054859038878197, guid: a666927c188cf5140ad44412a738259b, type: 3}
       propertyPath: arena
       value: 

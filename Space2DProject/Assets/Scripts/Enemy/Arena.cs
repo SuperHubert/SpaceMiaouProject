@@ -62,6 +62,7 @@ public class Arena : MonoBehaviour
         foreach (var enemy in enemies)
         {
             enemy.gameObject.SetActive(false);
+            enemy.GetComponent<EnemyBehaviour>().respawn = false;
             var hpBar = enemy.GetChild(0).GetComponent<EnemyHealth>().healthBarTransform;
             hpBar.SetParent(parentHp);
             hpBar.gameObject.SetActive(false);

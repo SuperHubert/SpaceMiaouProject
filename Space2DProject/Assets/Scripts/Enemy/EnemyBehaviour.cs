@@ -8,7 +8,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     
     [SerializeField] public State currentState;
 
-    [SerializeField] protected bool respawn = true;
+    public bool respawn = true;
 
     [SerializeField] protected bool hasAction;
     [SerializeField] protected int actionCdMax;
@@ -136,6 +136,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         sleepTrigger.SetActive(false);
         actionTrigger.SetActive(false);
         respawnTrigger.SetActive(false);
+
+        enemyTransform.GetComponent<Collider2D>().enabled = true;
         
         enemyTransform.position = respawnTrigger.transform.position;
         health.InitEnemy();

@@ -4,9 +4,9 @@ using UnityEngine;
 public class PierreTombaleLinear : MonoBehaviour,IInteractible
 {
     public List<Dialogues> dialogues;
-    private static List<Dialogues> usableDialogues = new List<Dialogues>();
-    private static int index;
-    
+    public static List<Dialogues> usableDialogues = new List<Dialogues>();
+    public static int index;
+
     void Start()
     {
         if (usableDialogues.Count != 0) return;

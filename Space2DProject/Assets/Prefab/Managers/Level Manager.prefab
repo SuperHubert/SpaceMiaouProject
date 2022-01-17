@@ -298,7 +298,10 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   playerFollower: {fileID: 0}
   minimapBackground: {fileID: 0}
+  mapBackground: {fileID: 0}
+  mapCamera: {fileID: 0}
   globalLight: {fileID: 0}
+  fogImage: {fileID: 0}
   portalBiome1: {fileID: 21300000, guid: 7eea68ec573e30141bd896ee1e449ea6, type: 3}
   portalBiome2: {fileID: 21300000, guid: 085d524d09dda124bbe7acaf77e83037, type: 3}
   portalBiome3: {fileID: 21300000, guid: d34fca60b27863147a8694e7b6a91531, type: 3}
@@ -310,6 +313,16 @@ MonoBehaviour:
   seedList: 
   floorNumber: 0
   maxFloors: 3
+  dialogue:
+    characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Agent Jones, you are now in LHS 1723 Alpha's first region.
+    - You need to activate 4 towers to cut the infection. It will kill all the ennemies
+      in one shot.
+    - You can use your weapons or sneak if you want.
+    - Good Luck agent !
+    audioSourceIndex: 0
 --- !u!114 &4883749890520021249
 MonoBehaviour:
   m_ObjectHideFlags: 0
