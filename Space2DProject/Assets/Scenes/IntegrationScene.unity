@@ -1880,6 +1880,26 @@ PrefabInstance:
       propertyPath: minimapBackground
       value: 
       objectReference: {fileID: 385766023}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: dialogue.characterName
+      value: Master X
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: dialogue.characterImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Welcome to Half Life Online
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516107961040028520, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: bonk
+      objectReference: {fileID: 0}
     - target: {fileID: 1651888776245691690, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_IsActive
       value: 1

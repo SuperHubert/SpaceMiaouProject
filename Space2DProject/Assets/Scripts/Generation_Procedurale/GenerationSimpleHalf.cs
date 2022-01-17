@@ -474,6 +474,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         CleanUpGrid();
 
         UpdateProgress(1);
+        
+        LevelManager.Instance.PlayIntroDialogue();
     }
 
     private void RecenterLevel()
