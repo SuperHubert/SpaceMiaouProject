@@ -61,10 +61,8 @@ public class ConsoleManager : MonoBehaviour
 
     //Camera Manager
     private static Command<int> CAMERAMODE; //Missing some code
-    private static Command TOGGLECAMERALOCK; //Missing some code
-    
+
     //Loading Manager
-    private static Command TRUELOADINGIMAGE; //Missing some code
     private static Command<int> LOADINGMODE;
     
     //Player
@@ -335,33 +333,7 @@ public class ConsoleManager : MonoBehaviour
             }
         
         });
-
-        TOGGLECAMERALOCK = new Command("cameralock", "Toggles camera controls", "cameralock", () =>
-        {
-            //ToggleCameraControls()
-            if (true)
-            {
-                Print("Camera controls are now ON");
-            }
-            else
-            {
-                Print("Camera controls are now OFF");
-            }
-        });
-
-        TRUELOADINGIMAGE = new Command("trueloadingimage", "Toggles true loading image", "trueloadingimage", () =>
-         {
-             //ToggleLoadingImage()
-             if (true)
-             {
-                 Print("True image is now ON");
-             }
-             else
-             {
-                 Print("True image is now OFF");
-             }
-         });
-
+        
         LOADINGMODE = new Command<int>("loadingmode", "Changes loading screen display (0 show all, 1 show nothing, 2 no image, 3 no progressbar)", "loadingmode int<mode>", (mode) =>
         {
             
@@ -559,15 +531,11 @@ public class ConsoleManager : MonoBehaviour
             SETHP,
             SETMAXHP,
             CAMERAMODE,
-            TOGGLECAMERALOCK,
-            TRUELOADINGIMAGE,
             LOADINGMODE,
             TELEPORTPLAYER,
             GETPOS,
             ENEMYLIST,
             SPAWNENEMY,
-            //DAMAGEENEMY,
-            //KILLENEMY,
             TOGGLESHOWTRIGGERS,
             ITEMLIST,
             SPAWNITEM,

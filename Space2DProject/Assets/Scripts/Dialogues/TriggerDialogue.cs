@@ -4,8 +4,7 @@ public class TriggerDialogue : MonoBehaviour
 {
     public bool triggerOnTriggerEnter = true;
     public Dialogues dialogue;
-    private static bool isInDialogue = false;
-    
+
     public void Trigger()
     {
         if (DialogueManager.Instance.dialogueCanvas.activeSelf)

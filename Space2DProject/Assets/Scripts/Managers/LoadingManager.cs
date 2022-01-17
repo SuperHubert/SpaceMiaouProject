@@ -16,7 +16,6 @@ public class LoadingManager : MonoBehaviour
 
 
     private bool showCanvas = true;
-    private bool showImage = true;
     private bool showProgress = true;
     
     #region Singleton Don't Destroy On Load

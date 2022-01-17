@@ -8,20 +8,19 @@ public class CanGoBehind : MonoBehaviour
     public Transform player;
     public float offset = 0;
     public int layer = 7;
-    private SpriteRenderer renderer;
+    private SpriteRenderer ownRenderer;
     private int baseLayer;
 
     private void Start()
     {
         if (player == null) player = LevelManager.Instance.Player().transform;
-        renderer = gameObject.GetComponent<SpriteRenderer>();
-        baseLayer = renderer.sortingOrder;
+        ownRenderer = gameObject.GetComponent<SpriteRenderer>();
+        baseLayer = ownRenderer.sortingOrder;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        renderer.sortingOrder = player.position.y < transform.position.y + offset ? baseLayer : layer;
+        ownRenderer.sortingOrder = player.position.y < transform.position.y + offset ? baseLayer : layer;
         //renderer.sortingOrder = player.position.y < transform.position.y + offset ? 7 : baseLayer;
     }
 }

@@ -4,11 +4,10 @@ public class DamageOnTriggerEnter : MonoBehaviour
 {
     public int damage = 1;
     public bool feetHitbox = false;
-    public float hitboxMove;
     public float detectOffset;
     public float moveOffset;
     private Transform playerTransform;
-    private BoxCollider2D collider;
+    private BoxCollider2D boxCollider;
     private float yPos;
 
     private void Start()
@@ -16,22 +15,22 @@ public class DamageOnTriggerEnter : MonoBehaviour
         playerTransform = LevelManager.Instance.Player().transform;
         if (gameObject.GetComponent<BoxCollider2D>() != null)
         {
-            collider = gameObject.GetComponent<BoxCollider2D>();
-            yPos = collider.offset.y;
+            boxCollider = gameObject.GetComponent<BoxCollider2D>();
+            yPos = boxCollider.offset.y;
         }
         
     }
 
     private void Update()
     {
-        if(!feetHitbox || collider == null) return;
+        if(!feetHitbox || boxCollider == null) return;
         if (playerTransform.position.y < transform.position.y + detectOffset)
         {
-            collider.offset = Vector2.right * yPos + Vector2.up * moveOffset;
+            boxCollider.offset = Vector2.right * yPos + Vector2.up * moveOffset;
         }
         else
         {
-            collider.offset = Vector2.right * yPos;
+            boxCollider.offset = Vector2.right * yPos;
         }
     }
 

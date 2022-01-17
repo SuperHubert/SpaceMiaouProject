@@ -5,20 +5,20 @@ using UnityEngine;
 public class PlayerReflection : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    private SpriteRenderer targerRender;
-    private SpriteRenderer renderer;
+    private SpriteRenderer targetRender;
+    private SpriteRenderer ownRenderer;
 
     
     void Start()
     {
-        targerRender = target.GetComponent<SpriteRenderer>();
-        renderer = gameObject.GetComponent<SpriteRenderer>();
+        targetRender = target.GetComponent<SpriteRenderer>();
+        ownRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     
     void Update()
     {
-        renderer.enabled = targerRender.enabled;
-        renderer.sprite = targerRender.sprite;
+        ownRenderer.enabled = targetRender.enabled;
+        ownRenderer.sprite = targetRender.sprite;
     }
 }
