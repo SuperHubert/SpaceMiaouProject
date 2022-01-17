@@ -48,6 +48,7 @@ public class LifeManager : MonoBehaviour
         if (damages > 0)
         {
             Flash();
+            am.Play(13, true);
             StartCoroutine(InvulFrames());
         }
         if (lifeBar > maxHP)

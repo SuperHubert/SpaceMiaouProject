@@ -31,6 +31,8 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
+    public AudioManager am;
+
     private bool canOpenShop = true;
     public bool closeShopInput = false;
     private static readonly int PickUpAnimation = Animator.StringToHash("PickUpAnimation");
@@ -153,6 +155,8 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         
         StartCoroutine(InteractionAnimation());
 
+        AudioManager.Instance.Play(19, true);
+
         RefreshShop();
     }
 
@@ -170,6 +174,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         if (!CanBuy(index)) return;
         MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
+        AudioManager.Instance.Play(10, true);
         displayList[index].isBought = true;
         if(displayList[index].track) inventory.Add(displayList[index]);
         //soldOutList[index].SetActive(true);

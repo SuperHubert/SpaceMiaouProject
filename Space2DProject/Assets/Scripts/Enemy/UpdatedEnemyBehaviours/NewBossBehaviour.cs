@@ -97,30 +97,32 @@ public class NewBossBehaviour : EnemyBehaviour
                 break;
             case 2:
                 StartCoroutine(SimpleRocksAttack());
-                am.Play(3);
+                am.Play(3, true);
                 break;
                 
             case 3:
                 StartCoroutine(MultipleRocksAttack());
-                am.Play(4);
+                am.Play(21, true);
+                am.Play(4, true);
                 break;
             case 4:
                 animator.SetTrigger("EyeOFF");
                 EnterArenaMode();
                 part1Triggers.SetActive(false);
-                am.Play(3);
+                am.Play(3, true);
                 break;
             case 5:
                 animator.SetTrigger("SpikesON");
                 part1Triggers.SetActive(true);
                 rockFalls = true;
                 StartCoroutine(SimpleRocksAttack());
-                am.Play(4);
+                am.Play(4, true);
+                am.Play(21, true);
                 break;
             case 6:
                 part1Triggers.SetActive(false);
                 part2Triggers.SetActive(true);
-                am.Play(3);
+                am.Play(3, true);
                 break;
             case 7:
                 StartCoroutine(MultipleRocksAttack());
