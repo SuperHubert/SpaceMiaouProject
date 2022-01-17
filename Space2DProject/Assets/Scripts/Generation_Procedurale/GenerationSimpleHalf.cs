@@ -641,7 +641,7 @@ public class GenerationSimpleHalf : MonoBehaviour
 
         towerTransform.GetComponent<Collider2D>().enabled = true;
         towerTransform.GetChild(0).gameObject.SetActive(false);
-        portalTransform.GetComponent<Collider2D>().enabled = false;
+        if(portalTransform.GetComponent<Collider2D>() != null) portalTransform.GetComponent<Collider2D>().enabled = false;
         
         if (lightsTransform == null) return;
         foreach (Transform child in lightsTransform)

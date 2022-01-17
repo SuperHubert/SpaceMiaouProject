@@ -24,6 +24,7 @@ public class NewBossBehaviour : EnemyBehaviour
     {
         base.InitVariables();
         pooler = ObjectPooler.Instance;
+        if (am == null) am = AudioManager.Instance;
     }
 
     private void Update()
@@ -63,7 +64,9 @@ public class NewBossBehaviour : EnemyBehaviour
         part2Triggers.SetActive(false);
         closeUpAttack.SetActive(false);
         rockFalls = false;
-        
+
+        LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
+
         AudioManager.Instance.Stop(9, true);
     }
     
