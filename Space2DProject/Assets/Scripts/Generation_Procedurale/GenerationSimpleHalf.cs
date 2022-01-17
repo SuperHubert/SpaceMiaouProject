@@ -349,12 +349,6 @@ public class GenerationSimpleHalf : MonoBehaviour
                 Instantiate(collisionObj, room.transform.GetChild(roomCollisionsIndex));
             }
             
-            /*Instantiates prefab Sprite Renderers GameObjects
-            foreach (Transform spriteRenObj in prefabRoom.transform.GetChild(roomSpriteRendersIndex))
-            {
-                Instantiate(spriteRenObj, room.transform.GetChild(roomSpriteRendersIndex));
-            }
-            */
             
             var renderers = prefabRoom.transform.GetChild(roomSpriteRendersIndex);
             for (int i = 0; i < renderers.childCount; i++)
@@ -438,6 +432,13 @@ public class GenerationSimpleHalf : MonoBehaviour
                 {
                     AddChest(chest.gameObject);
                 }
+
+                //destroy arenas
+                if (otherObj.GetComponent<Arena>() != null && room == generationList[0])
+                {
+                    Destroy(chest.gameObject);
+                }
+                
             }
             
             //Instantiates prefab Lights GameObjects
