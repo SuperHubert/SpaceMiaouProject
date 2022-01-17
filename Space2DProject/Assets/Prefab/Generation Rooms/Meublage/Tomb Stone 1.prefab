@@ -163,7 +163,7 @@ MonoBehaviour:
     - After analisys, we discovered that those stone were engraved...
     - After analisys, we discovered that those stone were engraved...
     - ... At least 2000 years ago. I don't think there could be a single survivor.
-    audioSourceIndex: 0
+    audioSourceIndex: 22
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
@@ -189,4 +189,4 @@ MonoBehaviour:
     sentences:
     - Agent Jones, you need to activate the tower.
     - Time is running against us.
-    audioSourceIndex: 0
+    audioSourceIndex: 22

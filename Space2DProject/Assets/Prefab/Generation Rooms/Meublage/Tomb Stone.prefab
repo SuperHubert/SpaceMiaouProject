@@ -166,7 +166,7 @@ MonoBehaviour:
     - We analyzed the structure of the grail your human found.
     - It was the item that created the blobs. But it's innofensive now.
     - And sadly useless...
-    audioSourceIndex: 0
+    audioSourceIndex: 22
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
@@ -179,4 +179,4 @@ MonoBehaviour:
     sentences:
     - Move on Jones... We need to finish this job.
     - Fast.
-    audioSourceIndex: 0
+    audioSourceIndex: 22

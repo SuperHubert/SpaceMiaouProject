@@ -45,9 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: DisplayTextSound
-    clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
-    volume: 0.1
-    pitch: 0.9
+    clip: {fileID: 8300000, guid: 93364a118c948ce4fb1e999eedf75596, type: 3}
+    volume: 0.2
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: BossDialogue
@@ -174,5 +174,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0ab5be9cde147f44ea45bb07a8135761, type: 3}
     volume: 0.8
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Master X
+    clip: {fileID: 8300000, guid: 93364a118c948ce4fb1e999eedf75596, type: 3}
+    volume: 0.2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Franz
+    clip: {fileID: 8300000, guid: 93364a118c948ce4fb1e999eedf75596, type: 3}
+    volume: 0.2
+    pitch: 0.5
     loop: 0
     source: {fileID: 0}
