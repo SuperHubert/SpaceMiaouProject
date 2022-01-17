@@ -19,8 +19,8 @@ public class TriggerDialogueThenDestroy : MonoBehaviour,IInteractible
         if(index >= dialogues.Count) return;
         if (started && !dialogueManager.dialogueCanvas.activeSelf)
         {
-            index++;
             dialogueManager.StartDialogue(dialogues[index]);
+            index++;
         }
     }
 
@@ -28,6 +28,7 @@ public class TriggerDialogueThenDestroy : MonoBehaviour,IInteractible
     {
         started = true;
         dialogueManager.StartDialogue(dialogues[0]);
+        index++;
         gameObject.GetComponent<Collider2D>().enabled = false;
     }
 
