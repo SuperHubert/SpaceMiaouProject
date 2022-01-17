@@ -81,6 +81,8 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth = maxHealth;
         enemyBehaviour = transform.parent.gameObject.GetComponent<EnemyBehaviour>();
+        healthBarBackImg.fillAmount = 1;
+        healthBarFrontImg.fillAmount = 1;
 
         healthBarObj = healthBarTransform.gameObject;
         
