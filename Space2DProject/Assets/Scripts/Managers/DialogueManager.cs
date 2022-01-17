@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
     
     private Queue<string> sentences = new Queue<string>();
+    private string currentSentence;
 
     [SerializeField] private bool instantDisplay = false;
     [SerializeField] private float timeBetweenLetters = 0.005f;
@@ -24,6 +25,8 @@ public class DialogueManager : MonoBehaviour
     private bool isDoneTyping = true;
     private Coroutine soundCoroutine;
     private Coroutine nextBlinkRoutine;
+    
+    
     
     #region Singleton Don't Destroy On Load
     public static DialogueManager Instance;
@@ -99,24 +102,19 @@ public class DialogueManager : MonoBehaviour
                 return;
             }
         
-            if (typingCoroutine != null)
-            {
-                StopCoroutine(typingCoroutine);
-            }
-        
-            if (soundCoroutine != null)
-            {
-                StopCoroutine(soundCoroutine);
-            }
-        
-        
-        
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+            if (soundCoroutine != null) StopCoroutine(soundCoroutine);
+            
             typingCoroutine = StartCoroutine(TypeSentence(sentence));
             soundCoroutine = StartCoroutine(PlayTypingSound());
         }
         else
         {
-            Time.timeScale = Time.timeScale == 1f ? 0f : 1f;
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+            if (soundCoroutine != null) StopCoroutine(soundCoroutine);
+            dialogueText.text = currentSentence;
+            isDoneTyping = true;
+            nextBlinkRoutine = StartCoroutine(NextBlinkRoutine());
         }
         
         
@@ -134,6 +132,7 @@ public class DialogueManager : MonoBehaviour
     
     private IEnumerator TypeSentence(string sentence)
     {
+        currentSentence = sentence;
         if(nextBlinkRoutine != null) StopCoroutine(nextBlinkRoutine);
         nextButton.SetActive(false);
         dialogueText.text = "";
