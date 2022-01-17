@@ -26,24 +26,23 @@ public class Tower : MonoBehaviour,IInteractible
 
     void KillAllEnemies()
     {
+        foreach (Transform item in transform.parent.GetChild(2))
+        {
+            if (item.GetComponent<Arena>() != null) item.GetComponent<Arena>().completed = true;
+            if (item.GetComponent<Chest>() == null) continue;
+            item.GetComponent<Chest>().OnInteraction();
+            item.gameObject.SetActive(false);
+        }
+        
+        
         foreach (Transform enemy in transform.parent.GetChild(1))
         {
-            //if(enemy.GetChild(0).gameObject.activeSelf) 
-            
+            if (!enemy.gameObject.activeSelf) continue;
             if (enemy.GetChild(0).gameObject.activeSelf)
             {
                 enemy.GetChild(0).GetComponent<EnemyHealth>().Die(false);
             }
-            else
-            {
-                Destroy(enemy.gameObject);
-            }
+
         }
-        
-        foreach (Transform item in transform.parent.GetChild(3))
-        {
-            if(item.GetComponent<Chest>() != null) item.gameObject.SetActive(false);
-        }
-        
     }
 }

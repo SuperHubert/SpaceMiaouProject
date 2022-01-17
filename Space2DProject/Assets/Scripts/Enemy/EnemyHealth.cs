@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]private bool moveHealthBar = true;
 
     public Animator enemyAnimator;
-    private EnemyBehaviour enemyBehaviour;
+    public EnemyBehaviour enemyBehaviour;
     
     [SerializeField] private Material flashMaterial;
     [SerializeField] private SpriteRenderer spriteRenderer;

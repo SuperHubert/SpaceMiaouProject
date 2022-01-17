@@ -10,7 +10,7 @@ public class Arena : MonoBehaviour
     private List<Animator> doors = new List<Animator>();
     private List<Transform> enemies = new List<Transform>();
     private bool activated = false;
-    private bool completed = false;
+    public bool completed = false;
 
     private void Start()
     {
