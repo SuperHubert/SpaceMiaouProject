@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -44,8 +45,10 @@ public class Combat2 : MonoBehaviour
     [HideInInspector] public bool leftAttack;
     [HideInInspector] public bool uptAttack;
     [HideInInspector] public bool downAttack;
-    
-    
+
+    private AudioManager am;
+
+
     void Update()
     {
         BasicAttack();
@@ -174,6 +177,7 @@ public class Combat2 : MonoBehaviour
             canSpecialAttack = false;
             
             playerAnimator.Play("SpinAttack");
+            AudioManager.Instance.Play(14, true);
             playerAnimator.SetBool("IsAttacking", true);
             
             GetComponent<PlayerMovement>().speed = 2;

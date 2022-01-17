@@ -44,10 +44,10 @@ public class AudioManager : MonoBehaviour
         s?.source.Play();
     }
 
-    public void Play(int id)
+    public void Play(int id,bool dontCutPrevious = false)
     {
         if (id >= sounds.Count || id < 0) return;
-        //if(sounds[id].source.isPlaying) return;
+        if(sounds[id].source.isPlaying && dontCutPrevious) return;
         sounds[id].source.Play();
     }
 

@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - name: DisplayTextSound
     clip: {fileID: 8300000, guid: b1faf29cf467cea418eedf7d1e6c44c6, type: 3}
-    volume: 0.6
+    volume: 0.4
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
@@ -102,5 +102,47 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f2591564cf98c3b4ba89322652652212, type: 3}
     volume: 0.8
     pitch: 1.1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Buy Item
+    clip: {fileID: 8300000, guid: a137b7ac57dacca4c9049f56d621ee6b, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bob Attaque
+    clip: {fileID: 8300000, guid: 1a2ec944762cc624c97299225a8bb154, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bob Attaque 2
+    clip: {fileID: 8300000, guid: c7bed13fb3aefb64ba4db50678f51b2c, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jones Damaged
+    clip: {fileID: 8300000, guid: b0232a423ca4ab94ea8e086d94781cae, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jones Ora
+    clip: {fileID: 8300000, guid: 0d8bb56e9660d2c46b16e2f4413775da, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Poulpi Attaque
+    clip: {fileID: 8300000, guid: 789d5a13b32d6c44e9bc6fdb56c1f844, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jones Mort
+    clip: {fileID: 8300000, guid: 1a66570e1c7ea734186d3e6ac533e03f, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
