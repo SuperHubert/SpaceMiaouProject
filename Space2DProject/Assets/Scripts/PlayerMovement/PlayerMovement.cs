@@ -121,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;
                 
+                
+                
                 PlayCorrectDustAnim();
                 
                 previousHorizontalAxis = horizontalAxis;

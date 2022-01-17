@@ -80,6 +80,7 @@ public class LifeManager : MonoBehaviour
        if (!instant)
        {
            Instantiate(deathObj,LevelManager.Instance.Player().transform.position,Quaternion.identity);
+            am.Play(16, true);
            yield return new WaitForSeconds(3.5f);
        }
        yield return new WaitForSeconds(0.5f);
