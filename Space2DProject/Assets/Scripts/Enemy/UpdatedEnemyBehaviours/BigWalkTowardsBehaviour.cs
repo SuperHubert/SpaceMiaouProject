@@ -57,7 +57,7 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         //animator.Rebind();
         //animator.Update(0f);
         // yield return new WaitForSeconds(0.833f);
-        ondeDeChoc.transform.position = enemyTransform.position;
+        ondeDeChoc.transform.position = player.position;
         ondeDeChoc.SetActive(true);
         // animator.enabled = false;
         yield return new WaitForSeconds(1.2f);
