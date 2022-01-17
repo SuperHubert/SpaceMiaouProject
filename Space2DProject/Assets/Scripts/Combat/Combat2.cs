@@ -107,8 +107,7 @@ public class Combat2 : MonoBehaviour
         {
             isSpecialAttacking = true;
             canSpecialAttack = false;
-            isAttacking = true;
-            
+
             playerAnimator.Play("SpinAttack");
             AudioManager.Instance.Play(14, true);
             playerAnimator.SetBool("IsAttacking", true);
@@ -144,6 +143,7 @@ public class Combat2 : MonoBehaviour
     void ResetAttack()
     {
         isAttacking = false;
+        isSpecialAttacking = false;
         LifeManager.Instance.canTakeDamge = true;
         playerAnimator.SetBool("IsAttacking", false);
         GetComponent<PlayerMovement>().speed = 7;
