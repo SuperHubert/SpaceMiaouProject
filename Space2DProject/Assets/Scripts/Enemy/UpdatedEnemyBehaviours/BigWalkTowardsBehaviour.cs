@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BigWalkTowardsBehaviour : EnemyBehaviour
 {
-    [SerializeField] private GameObject ondeDeChoc;
-
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -41,26 +39,18 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         
         StartCoroutine(Attack());
     }
-
     
     private IEnumerator Attack()
     {
         if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
-        yield return new WaitUntil(() => !ondeDeChoc.activeSelf);
-        //leve la tete et la frappe sur le sol
         isPerformingAction = true;
         animator.SetBool("isWalking", false);
         animator.SetBool("isAttacking", true);
         
-        // changer tout les animator. pour coller avec l'animator
-        //animator.enabled = true;
-        //animator.Rebind();
-        //animator.Update(0f);
-        // yield return new WaitForSeconds(0.833f);
-        ondeDeChoc.transform.position = enemyTransform.position;
-        ondeDeChoc.SetActive(true);
-        // animator.enabled = false;
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
+
+        var ondeDeChoc = ObjectPooler.Instance.SpawnFromPool("Explosion", player.position, Quaternion.identity);
+        yield return new WaitForSeconds(1.8f);
         isPerformingAction = false;
         ondeDeChoc.SetActive(false);
         animator.SetBool("isAttacking", false);
@@ -68,6 +58,7 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
     
     public override void Die(bool destroy = false)
     {
+        StopAllCoroutines();
         currentState = State.Dead;
         agent.velocity = Vector3.zero;
         if(agent.isOnNavMesh) agent.isStopped = true;
