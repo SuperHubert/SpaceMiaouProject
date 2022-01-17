@@ -4,6 +4,7 @@ using UnityEngine;
 public class TriggerDialogueThenDestroy : MonoBehaviour,IInteractible
 {
     public bool onTrigger = false;
+    public bool destroy = true;
     public List<Dialogues> dialogues;
     private int index = 0;
     private bool started = false;
@@ -27,7 +28,7 @@ public class TriggerDialogueThenDestroy : MonoBehaviour,IInteractible
         started = true;
         dialogueManager.StartDialogue(dialogues[0]);
         index++;
-        gameObject.GetComponent<Collider2D>().enabled = false;
+        if(destroy) gameObject.GetComponent<Collider2D>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
