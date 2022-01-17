@@ -15,6 +15,7 @@ public class Tower : MonoBehaviour,IInteractible
     
     public void OnInteraction()
     {
+        AudioManager.Instance.Play(17);
         cam.DOShakePosition(1f,new Vector3(0.1f,0.4f,0),8,0,true);
         laserObj.SetActive(true);
         portalCollider2D.enabled = true;
