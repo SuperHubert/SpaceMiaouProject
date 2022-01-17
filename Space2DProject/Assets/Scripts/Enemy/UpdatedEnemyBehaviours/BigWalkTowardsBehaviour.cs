@@ -41,25 +41,19 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         
         StartCoroutine(Attack());
     }
-
     
     private IEnumerator Attack()
     {
         if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
         yield return new WaitUntil(() => !ondeDeChoc.activeSelf);
-        //leve la tete et la frappe sur le sol
         isPerformingAction = true;
         animator.SetBool("isWalking", false);
         animator.SetBool("isAttacking", true);
         
-        // changer tout les animator. pour coller avec l'animator
-        //animator.enabled = true;
-        //animator.Rebind();
-        //animator.Update(0f);
-        // yield return new WaitForSeconds(0.833f);
+        yield return new WaitForSeconds(0.5f);
+        
         ondeDeChoc.transform.position = player.position;
         ondeDeChoc.SetActive(true);
-        // animator.enabled = false;
         yield return new WaitForSeconds(1.2f);
         isPerformingAction = false;
         ondeDeChoc.SetActive(false);
