@@ -154,6 +154,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         if (LoadingLevelData.shopDialogue)
         {
+            DialogueManager.Instance.StartMultipleDialogues(shopDialogues,false);
             StartCoroutine(WaitForDialogueToEnd());
         }
         else
@@ -164,15 +165,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     IEnumerator WaitForDialogueToEnd()
     {
-        InputManager.canInput = false;
-        DialogueManager.Instance.StartDialogue(shopDialogues[0]);
-        yield return null;
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
-        DialogueManager.Instance.StartDialogue(shopDialogues[1]);
-        yield return null;
-        yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
-        InputManager.canInput = true;
-        LoadingLevelData.shopDialogue = false;
         OpenShop();
     }
 
