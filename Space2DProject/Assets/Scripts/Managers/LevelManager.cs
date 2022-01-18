@@ -213,6 +213,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            LoadingLevelData.Instance.score = UIManager.Instance.score;
             LoadingManager.Instance.UpdateLoading(0);
             SceneManager.LoadScene(6);
         }

@@ -29,6 +29,10 @@ public class Colonne : MonoBehaviour,IInteractible
             DialogueManager.Instance.StartMultipleDialogues(columnDialogues);
             LoadingLevelData.columnDialogue = false;
         }
+        else
+        {
+            StartCoroutine(Explode());
+        }
     }
     
     private IEnumerator Explode()
