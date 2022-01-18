@@ -9,7 +9,7 @@ using DG.Tweening;
 public class AudioManager : MonoBehaviour
 {
     public List<Sound> sounds = new List<Sound>();
-    public static float volumeMultiplier;
+    public static float volumeMultiplier = 1f;
 
     public static AudioManager Instance;
 
@@ -38,6 +38,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        volumeMultiplier = 1f;
+    }
+
     public void Play(string id)
     {
         var s = Array.Find<Sound>(sounds.ToArray(), sound => sound.name == id);
@@ -48,6 +53,7 @@ public class AudioManager : MonoBehaviour
     {
         if (id >= sounds.Count || id < 0) return;
         if(sounds[id].source.isPlaying && dontCutPrevious) return;
+        sounds[id].source.volume = sounds[id].volume * volumeMultiplier;
         sounds[id].source.Play();
     }
 
@@ -68,6 +74,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var sound in sounds.Where(sound => sound.source.isPlaying))
         {
+            sound.source.volume = sound.volume * volumeMultiplier;
             sound.source.Stop();
         }
     }

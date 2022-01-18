@@ -268,6 +268,8 @@ public class LevelManager : MonoBehaviour
     public IEnumerator LatePlay(int id, float time)
     {
         yield return new WaitForSeconds(time);
+        am.Stop(id);
+        
         am.Play(id);
     }
 
