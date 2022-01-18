@@ -663,7 +663,7 @@ MonoBehaviour:
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
     - Agent Jones, what are going to do when your spray runs out of ammo ?
-    audioSourceIndex: 0
+    audioSourceIndex: 22
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
@@ -675,7 +675,7 @@ MonoBehaviour:
     sentences:
     - How...
     - Ingenious.
-    audioSourceIndex: 0
+    audioSourceIndex: 22
   sprayAttackAxis: 0
 --- !u!114 &1693735764161799996
 MonoBehaviour:

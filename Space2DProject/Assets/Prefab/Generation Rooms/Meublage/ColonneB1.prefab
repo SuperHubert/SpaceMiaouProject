@@ -264,4 +264,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d6d89720fb4418b44ff22acc3793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vlaue: 0
+  columnDialoguesEditor:
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - "Agent Jones, remember when you thought that columns were sanitation towers
+      ?\r"
+    - Even when the towers are twice as tall and have big cat pawprints on them ?
+    audioSourceIndex: 22
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - No, I don't.
+    audioSourceIndex: 0
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Funny, me neither.
+    - Anyways, I think that if you shoot these columns they will kill whatever is
+      underneath them.
+    audioSourceIndex: 22
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - Got it.
+    audioSourceIndex: 0
