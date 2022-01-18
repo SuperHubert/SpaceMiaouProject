@@ -158,6 +158,14 @@ MonoBehaviour:
     sentences:
     - The people tried to fight back but without their God, they also perished.
     audioSourceIndex: 0
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - "Oh, another story engraved in stone. It says something about...\r"
+    - "moments, lost in time...\r."
+    - "...like tears in rain.\r"
+    - Kinda poetic.
+    audioSourceIndex: 0
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
