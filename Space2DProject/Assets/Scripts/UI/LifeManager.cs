@@ -13,15 +13,12 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private GameObject deathObj;
 
     [SerializeField] private Material flashMaterial;
-    public float flashDuration = 0.1f;
     private Camera mainCamera;
 
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
     private Coroutine flashRoutine;
-
-    public Animator anim;
-
+    
     private AudioManager am;
 
     #region Singleton

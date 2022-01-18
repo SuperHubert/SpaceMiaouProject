@@ -1,9 +1,5 @@
-
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
 
 public class Combat2 : MonoBehaviour
@@ -53,7 +49,7 @@ public class Combat2 : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer = LevelManager.Instance.Player().GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
         sprayAttack = gameObject.GetComponent<SprayAttack>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
@@ -168,7 +164,8 @@ public class Combat2 : MonoBehaviour
     {
         canSpecialAttack = true;
         isSpecialAttacking = false;
-        StartCoroutine(FlashRoutine());
+        if(flashRoutine != null) StopCoroutine(flashRoutine);
+        flashRoutine = StartCoroutine(FlashRoutine());
     }
     
     IEnumerator FlashRoutine()

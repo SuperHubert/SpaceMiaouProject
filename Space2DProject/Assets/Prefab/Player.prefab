@@ -621,10 +621,12 @@ MonoBehaviour:
   animPlayer: {fileID: 5629675976314166459}
   playerDirection: 0
   fogOfWar: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: 59f1f0a0f827d5647b63f6fb34ba5f18, type: 2}
   horizontalAxis: 0
   verticalAxis: 0
   dash: 0
   shootingAxis: 0
+  value: 0.1
 --- !u!114 &1631967610
 MonoBehaviour:
   m_ObjectHideFlags: 0

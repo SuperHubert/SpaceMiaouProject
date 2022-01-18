@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -31,8 +32,11 @@ public class PlayerMovement : MonoBehaviour
     //fog of war
     [SerializeField] private FogOfWar fogOfWar;
     
-    //Particules
-    //[SerializeField] private ParticleSystem dust;
+    [SerializeField] private Material flashMaterial;
+    private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
+    private bool canFlash = false;
         
     //Inputs
     [HideInInspector] public float horizontalAxis;
@@ -44,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
         rb = GetComponent<Rigidbody2D>();
         dashInternalCd = 0;
         dashCd = 0;
@@ -82,6 +88,13 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         dashCd -= Time.fixedDeltaTime;
+        if (dashCd <= 0 && canFlash)
+        {
+            canFlash = false;
+            if(flashRoutine != null) StopCoroutine(flashRoutine);
+            flashRoutine = StartCoroutine(FlashRoutine());
+        }
+        
 
         if (dashing)
         {
@@ -91,6 +104,8 @@ public class PlayerMovement : MonoBehaviour
                 dashing = false;
                 if(LifeManager.Instance != null) LifeManager.Instance.canTakeDamge = true;
                 animPlayer.SetBool("IsDashing", false);
+                
+                
             }
             else
             {
@@ -99,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
                 animPlayer.SetBool("IsWalking", false);
                 dashInternalCd += Time.fixedDeltaTime;
                 rb.velocity = inputMovement * dashSpeed;
+                canFlash = true;
             }
         }
         else
@@ -190,5 +206,14 @@ public class PlayerMovement : MonoBehaviour
         vol.x = topSide ? new ParticleSystem.MinMaxCurve(0.15f) : new ParticleSystem.MinMaxCurve(-0.15f);
         
         if(!ps.isPlaying) ps.Play();
+    }
+
+    public float value;
+    IEnumerator FlashRoutine()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(value);
+        spriteRenderer.material = originalMaterial;
+        flashRoutine = null;
     }
 }
