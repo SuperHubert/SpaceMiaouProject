@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: 4324144756859813116}
   - component: {fileID: 4324144756859813117}
   - component: {fileID: 2646946555882276608}
+  - component: {fileID: 7325452184057396399}
   m_Layer: 13
   m_Name: Vertical Door B2
   m_TagString: Untagged
@@ -706,3 +707,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1103287, y: 3.8543375}
   m_EdgeRadius: 0
+--- !u!208 &7325452184057396399
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4324144756859813107}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 2.25, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 6.45, y: 0, z: 0}
+  m_TimeToStationary: 0.5
