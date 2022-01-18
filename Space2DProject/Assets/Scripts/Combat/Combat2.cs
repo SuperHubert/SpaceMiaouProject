@@ -13,12 +13,10 @@ public class Combat2 : MonoBehaviour
     
     //Attacks
     public bool isAttacking = false;
-    public int force = 1;
-    
+
     public bool isSpecialAttacking;
     public bool canSpecialAttack = true;
-    public float specialAttackCoolDown = 2f;
-    
+
     private Vector3 attackDirection;
 
     //Colliders
@@ -43,10 +41,6 @@ public class Combat2 : MonoBehaviour
     public bool baseAttack;
     public bool specialAttack;
     
-    [HideInInspector] public bool leftAttack;
-    [HideInInspector] public bool uptAttack;
-    [HideInInspector] public bool downAttack;
-
     private AudioManager am;
     private SprayAttack sprayAttack;
 
@@ -98,10 +92,17 @@ public class Combat2 : MonoBehaviour
                 
         foreach (Collider2D enemy in hits)
         {
-            if (enemy.gameObject.layer != 7) continue;
-            enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
-            sprayAttack.currentSpray += sprayGainNormal;
-            sprayAttack.UpdateSprayBar();
+            if (enemy.gameObject.layer == 7)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
+                sprayAttack.currentSpray += sprayGainNormal;
+                sprayAttack.UpdateSprayBar();
+            }
+            else if (enemy.gameObject.layer == 7)
+            {
+                
+            }
+            
         }
     }
 
@@ -111,6 +112,7 @@ public class Combat2 : MonoBehaviour
     {
         if (specialAttack && !isAttacking && canSpecialAttack)
         {
+            isAttacking = true;
             isSpecialAttacking = true;
             canSpecialAttack = false;
 
@@ -122,8 +124,8 @@ public class Combat2 : MonoBehaviour
             
             Invoke(nameof(WaveAttack), 0.1f);
             Invoke(nameof(WaveAttack), 0.4f);
-            Invoke(nameof(ResetAttack), value);
-            Invoke(nameof(ResetSpecialAttack), specialAttackCoolDown);
+            Invoke(nameof(ResetAttack), 0.5f);
+            Invoke(nameof(ResetSpecialAttack), 1f);
         }
     }
 

@@ -115,7 +115,7 @@ public class EnemyHealth : MonoBehaviour
 
             currentHealth -= damage;
 
-            am.Play(20, true);
+            am.Play(20);
             
             healthBarObj.SetActive(currentHealth > 0);
 

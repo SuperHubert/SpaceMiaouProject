@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         inputMovement.Normalize();
         
-        if (dash)
+        if (dash && inputMovement != Vector3.zero)
         {
             if (dashCd <= 0)
             {
