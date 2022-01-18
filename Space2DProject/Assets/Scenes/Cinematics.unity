@@ -803,20 +803,19 @@ MonoBehaviour:
   text: {fileID: 1848393729}
   index: -1
   timeBetweenLetters: 0.04
-  timeBetweenBlinks: 0.5
   itemList:
   - sprite: {fileID: 21300000, guid: 9a764ed34ff8e10489c0857a100d357e, type: 3}
     description: My human is a cool dude. He likes to dig stuff up.
   - sprite: {fileID: 21300000, guid: debc9d0efdbc577478cbe71204d488bd, type: 3}
-    description: But he often ends up getting chased by what he unearthens.
+    description: But he often ends up getting chased by what he unearths.
   - sprite: {fileID: 21300000, guid: ed25151518a0d064ba8719e300078db2, type: 3}
-    description: Once again, I need to handle things myself. Come on, let's go.
+    description: Once again, I need to handle things myself. Come on, let's go!
   - sprite: {fileID: 21300000, guid: cc3bdc1885d858f4f97faffe43473fa8, type: 3}
     description: And after an epic battle...
   - sprite: {fileID: 21300000, guid: e975a6dbda4232e4baabb4d5638b154c, type: 3}
     description: ...I saved the world once again.
   - sprite: {fileID: 21300000, guid: 713ce5b818be7bc44ad09f06b85f4a9f, type: 3}
-    description: '"Ah ! There you are Kebab ! That was a close call."'
+    description: '"Ah ! There you are Kebab! That was a close call."'
 --- !u!4 &1329402766
 Transform:
   m_ObjectHideFlags: 0

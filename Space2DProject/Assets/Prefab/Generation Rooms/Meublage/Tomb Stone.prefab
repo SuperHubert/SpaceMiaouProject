@@ -144,36 +144,36 @@ MonoBehaviour:
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
     - This one is about this place.
-    - It says it was once a green and peacefull valley.
-    - The Blobs detroyed it... and killed its God too.
+    - It says it was once a green and peaceful valley.
+    - The Blobs destroyed everything and slayed the gods...
     audioSourceIndex: 0
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - In the biggest temple of the planet lived the Spider God
+    - In the biggest temple of the planet lived the Spider God.
     - It was the strongest of the three.
-    - But he was the first to die... He was killed... By a tree ?
+    - But he was the first to die... and he was killed... By a tree?
     audioSourceIndex: 0
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - What the... Someone wrote on the text of this stone.
-    - '"Glory to the new god !"'
-    - I don't want to know what is this about.
+    - What the...? Someone's written over the text of this stone.
+    - '"Glory to the new god!"'
+    - I don't want to know what this is about.
     audioSourceIndex: 0
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
     - We analyzed the structure of the grail your human found.
-    - It was the item that created the blobs. But it's innofensive now.
+    - It's the item that created the blobs. But it's harmless now.
     - And sadly useless...
     audioSourceIndex: 22
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - Another weird legend. This time about something like...
-    - A frog ? A cook ? A froock ?
-    - I don't konw who wrote it... But he was obviously mad.
+    - Another weird legend. This time it's about...
+    - A frog? A cook? A frook?
+    - I don't know who wrote this... But he was obviously mad.
     audioSourceIndex: 0
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
