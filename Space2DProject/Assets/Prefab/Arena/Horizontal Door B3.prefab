@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436813698340944340}
   - component: {fileID: 436813698340944341}
+  - component: {fileID: 6844367348242860923}
   m_Layer: 0
   m_Name: Spike Left
   m_TagString: Untagged
@@ -82,6 +83,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6844367348242860923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436813698340944343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dedb7cea5364ce4894a1163a94055e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  offset: 0
+  layer: 7
 --- !u!1 &436813698350636425
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436813698350636430}
   - component: {fileID: 436813698350636428}
+  - component: {fileID: 5836311367316063578}
   m_Layer: 0
   m_Name: Spike Mid
   m_TagString: Untagged
@@ -164,6 +181,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5836311367316063578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436813698350636425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dedb7cea5364ce4894a1163a94055e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  offset: 0
+  layer: 7
 --- !u!1 &436813698448727252
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436813698448727253}
   - component: {fileID: 436813698448727259}
+  - component: {fileID: 386631532310697430}
   m_Layer: 0
   m_Name: Spike Right
   m_TagString: Untagged
@@ -246,6 +279,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &386631532310697430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436813698448727252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dedb7cea5364ce4894a1163a94055e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  offset: 0
+  layer: 7
 --- !u!1 &5775159796144053942
 GameObject:
   m_ObjectHideFlags: 0

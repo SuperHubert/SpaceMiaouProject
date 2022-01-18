@@ -83,23 +83,23 @@ public class LifeManager : MonoBehaviour
        {
            Instantiate(deathObj,LevelManager.Instance.Player().transform.position,Quaternion.identity);
             am.Play(16, true);
-           yield return new WaitForSeconds(3.5f);
+           yield return new WaitForSeconds(1.5f);
        }
-       yield return new WaitForSeconds(0.5f);
+       yield return null;
        foreach (Transform child in LevelManager.Instance.Level().GetChild(5))
        {
            child.gameObject.SetActive(false);
        }
+       am.StopAllSounds();
        UIManager.Instance.IncreaseScore(0);
        DialogueManager.Instance.EndDialogue();
        LoadingManager.Instance.UpdateLoading();
        LoadingLevelData.Instance.ResetData();
        LoadingManager.Instance.LoadScene(scene);
-       am.StopAllSounds();
        InputManager.canInput = true;
    }
 
-   IEnumerator InvulFrames()
+   private IEnumerator InvulFrames()
    {
        canTakeDamge = false;
        yield return new WaitForSeconds(invulTime);
