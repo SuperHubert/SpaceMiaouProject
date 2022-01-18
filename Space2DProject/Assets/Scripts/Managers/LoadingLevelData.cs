@@ -16,6 +16,7 @@ public class LoadingLevelData : MonoBehaviour
     public static bool shopDialogue = true;
     public static bool columnDialogue = true;
     public static bool sprayAmmoDialogue = true;
+    public static bool bossDead = false;
 
     #region Singleton Don't Destroy On Load
     public static LoadingLevelData Instance;

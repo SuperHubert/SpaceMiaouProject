@@ -16,9 +16,5 @@ public class Portal : MonoBehaviour, IInteractible
         DialogueManager.Instance.EndDialogue();
         
         shopInteraction.displayList.Clear();
-        
-        //LoadingManager.Instance.UpdateLoading();
-        
-        //LevelManager.Instance.GenerateNextLevel();
     }
 }
