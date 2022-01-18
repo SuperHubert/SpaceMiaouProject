@@ -652,10 +652,6 @@ PrefabInstance:
       propertyPath: followPlayer
       value: 
       objectReference: {fileID: 409208227}
-    - target: {fileID: 6156038838675469327, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6728737467620990442, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1139,7 +1135,7 @@ PrefabInstance:
     - target: {fileID: 6617073259897082749, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 3c8ac581a26d17e49b19aafa9d3b0022, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6617073259897082750, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: level
       value: 

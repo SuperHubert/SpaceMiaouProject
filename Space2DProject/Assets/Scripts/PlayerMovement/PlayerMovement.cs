@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public bool dashing = false;
     private float dashInternalCd;
     public float dashInternalCdMax = 0.1f;
-    private float dashCd;
+    public float dashCd;
     public float dashCdMax = 1f;
 
     //Animations

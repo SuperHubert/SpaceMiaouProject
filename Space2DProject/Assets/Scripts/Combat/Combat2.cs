@@ -44,10 +44,12 @@ public class Combat2 : MonoBehaviour
     
     private AudioManager am;
     private SprayAttack sprayAttack;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
         sprayAttack = gameObject.GetComponent<SprayAttack>();
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
     }
     
     void Update()
@@ -96,6 +98,7 @@ public class Combat2 : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
                 sprayAttack.currentSpray += sprayGainNormal;
                 sprayAttack.UpdateSprayBar();
+                playerMovement.dashCd = 0;
             }
             else if (enemy.gameObject.layer == 14)
             {
@@ -133,9 +136,14 @@ public class Combat2 : MonoBehaviour
         foreach (Collider2D enemy in hit)
         {
             if (enemy.gameObject.layer != 7) continue;
-            if(enemy.GetComponent<EnemyHealth>() != null) enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
-            sprayAttack.currentSpray += sprayGainSpecial;
-            sprayAttack.UpdateSprayBar();
+            if (enemy.GetComponent<EnemyHealth>() != null)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
+                sprayAttack.currentSpray += sprayGainSpecial;
+                sprayAttack.UpdateSprayBar();
+                playerMovement.dashCd = 0;
+            }
+            
         }
         
         LifeManager.Instance.canTakeDamge = false;

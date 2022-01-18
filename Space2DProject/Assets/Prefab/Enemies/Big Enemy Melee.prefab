@@ -528,7 +528,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -548,7 +548,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: a0889977b1b0bdf42b5440bb71d1e76b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 4523303990139992757}
   - component: {fileID: 4523303990139992763}
   - component: {fileID: 4523303990139992754}
+  - component: {fileID: 8615422511945313140}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -681,6 +682,22 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4333456302616705398}
   bossHealth: 0
   phaseThresholds: 
+--- !u!114 &8615422511945313140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523303990139992752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575ccd494e101484cb518b50d078ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  feetHitbox: 0
+  detectOffset: 0
+  moveOffset: 0
 --- !u!1 &4734263760463347778
 GameObject:
   m_ObjectHideFlags: 0

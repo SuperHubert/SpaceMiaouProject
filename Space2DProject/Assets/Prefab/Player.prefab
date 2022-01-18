@@ -672,10 +672,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 5629675976314166459}
   isAttacking: 0
-  force: 1
+  canAttack: 1
   isSpecialAttacking: 0
   canSpecialAttack: 1
-  specialAttackCoolDown: 2
   baseRightCollider: {fileID: 7701683658996652597}
   baseLeftCollider: {fileID: 3670718848343679485}
   baseUpCollider: {fileID: 1272243284189037122}
@@ -685,14 +684,10 @@ MonoBehaviour:
   baseFX: {fileID: 5887807797639799553, guid: 2a962cf8f34898448b166cbcedb55d0f, type: 3}
   damage: 10
   specialDamage: 15
-  sprayGainNormal: 15
-  sprayGainSpecial: 25
+  sprayGainNormal: 5
+  sprayGainSpecial: 10
   baseAttack: 0
   specialAttack: 0
-  leftAttack: 0
-  uptAttack: 0
-  downAttack: 0
-  value: 0
 --- !u!1 &6095275311435496822
 GameObject:
   m_ObjectHideFlags: 0

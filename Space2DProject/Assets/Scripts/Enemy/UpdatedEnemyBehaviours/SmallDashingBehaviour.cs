@@ -76,6 +76,9 @@ public class SmallDashingBehaviour : EnemyBehaviour
         if (enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(target);
         
         yield return new WaitForSeconds(0.1f);
+        agent.stoppingDistance = 0f;
+        agent.acceleration = 8;
+        agent.speed = 3.5f;
     }
     
     public override void Die(bool destroy = false)

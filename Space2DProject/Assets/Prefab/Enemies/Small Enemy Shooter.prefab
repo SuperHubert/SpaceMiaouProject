@@ -97,9 +97,11 @@ MonoBehaviour:
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 3978072682437876789}
+  enemyBehaviour: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
-  flashDuration: 0.05
   spriteRenderer: {fileID: 4433037488844149721}
+  bossHealth: 0
+  phaseThresholds: 
 --- !u!1 &1376833891981886967
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +186,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -204,7 +206,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 9bc593a86a0b55f41a770aa54027ac34, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
