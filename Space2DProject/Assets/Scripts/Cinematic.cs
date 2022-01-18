@@ -29,6 +29,8 @@ public class Cinematic : MonoBehaviour
         if (LoadingLevelData.hasLaunchedGame)
         {
             GoToImage(3);
+            AudioManager.Instance.Stop(5, true);
+            
         }
         else
         {

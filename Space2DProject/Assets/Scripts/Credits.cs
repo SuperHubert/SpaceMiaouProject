@@ -6,9 +6,12 @@ public class Credits : MonoBehaviour
     [SerializeField] private GameObject movingCredits;
     [SerializeField] private GameObject staticCredits;
     [SerializeField] private GameObject thanks;
+    private AudioManager am;
     
     void Start()
     {
+        AudioManager.Instance.Play(24);
+
         if (LoadingLevelData.creditsGoToMenu)
         {
             movingCredits.SetActive(false);
