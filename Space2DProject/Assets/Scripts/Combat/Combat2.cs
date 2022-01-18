@@ -170,11 +170,11 @@ public class Combat2 : MonoBehaviour
         isSpecialAttacking = false;
         StartCoroutine(FlashRoutine());
     }
-   
+    
     IEnumerator FlashRoutine()
     {
         spriteRenderer.material = flashMaterial;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.08f);
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
     }

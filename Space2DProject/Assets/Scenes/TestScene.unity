@@ -1068,10 +1068,6 @@ PrefabInstance:
       propertyPath: strength.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6520009499888700257, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
-      propertyPath: flashMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
     - target: {fileID: 6520009499888700270, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: hpImage
       value: 

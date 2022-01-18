@@ -11,6 +11,8 @@ public class Credits : MonoBehaviour
     
     void Start()
     {
+        AudioManager.Instance.Play(24);
+        
         if (LoadingLevelData.creditsGoToMenu)
         {
             movingCredits.SetActive(false);

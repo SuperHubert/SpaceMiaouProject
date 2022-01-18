@@ -65,16 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1209e0a03ca26614f896317eff0238ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  hpImage: {fileID: 0}
+  hpImageBack: {fileID: 0}
   normalUI: {fileID: 0}
+  pauseUI: {fileID: 0}
+  inputImage: {fileID: 0}
+  pauseInput: 0
   score: 0
   scoreText: {fileID: 0}
