@@ -8,8 +8,8 @@ public class RubikaLogo : MonoBehaviour
     
     void Start()
     {
-        if(LoadingLevelData.Instance.noMoreLogo) return;
-        LoadingLevelData.Instance.noMoreLogo = true;
+        if(LoadingLevelData.noMoreLogo) return;
+        LoadingLevelData.noMoreLogo = true;
         StartCoroutine(RemoveLogo());
     }
 

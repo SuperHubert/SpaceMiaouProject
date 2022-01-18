@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +30,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
-    public AudioManager am;
+    private AudioManager am = AudioManager.Instance;
+
+    public List<Dialogues> shopDialogues;
 
     private bool canOpenShop = true;
     public bool closeShopInput = false;
@@ -151,11 +152,30 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public void OnInteraction()
     {
+        if (LoadingLevelData.shopDialogue)
+        {
+            DialogueManager.Instance.StartMultipleDialogues(shopDialogues,false);
+            StartCoroutine(WaitForDialogueToEnd());
+        }
+        else
+        {
+            OpenShop();
+        }
+    }
+
+    IEnumerator WaitForDialogueToEnd()
+    {
+        yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
+        OpenShop();
+    }
+
+    private void OpenShop()
+    {
         if(shopUI.activeSelf || !canOpenShop) return;
         
         StartCoroutine(InteractionAnimation());
 
-        AudioManager.Instance.Play(19, true);
+        am.Play(19, true);
 
         RefreshShop();
     }
@@ -174,10 +194,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         if (!CanBuy(index)) return;
         MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
-        AudioManager.Instance.Play(10, true);
+        am.Play(10, true);
         displayList[index].isBought = true;
         if(displayList[index].track) inventory.Add(displayList[index]);
-        //soldOutList[index].SetActive(true);
         displayList[index].upgrade.Invoke();
         nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
         nyanCount.text = MoneyManager.Instance.nyanCoins.ToString();

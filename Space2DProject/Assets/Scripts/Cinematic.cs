@@ -26,7 +26,7 @@ public class Cinematic : MonoBehaviour
     void Start()
     {
         LoadingManager.Instance.UpdateLoading(2);
-        if (LoadingLevelData.Instance.hasLaunchedGame)
+        if (LoadingLevelData.hasLaunchedGame)
         {
             GoToImage(3);
         }
@@ -81,10 +81,10 @@ public class Cinematic : MonoBehaviour
                 return;
             }
         
-            if (index > 2 && !LoadingLevelData.Instance.hasLaunchedGame)
+            if (index > 2 && !LoadingLevelData.hasLaunchedGame)
             {
-                LoadingLevelData.Instance.hasLaunchedGame = true;
-                LoadingLevelData.Instance.skipCinematic = true;
+                LoadingLevelData.hasLaunchedGame = true;
+                LoadingLevelData.skipCinematic = true;
                 SceneManager.LoadScene(3);
                 return;
             }

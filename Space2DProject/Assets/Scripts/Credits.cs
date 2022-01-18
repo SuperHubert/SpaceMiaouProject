@@ -9,7 +9,7 @@ public class Credits : MonoBehaviour
     
     void Start()
     {
-        if (LoadingLevelData.Instance.creditsGoToMenu)
+        if (LoadingLevelData.creditsGoToMenu)
         {
             movingCredits.SetActive(false);
             staticCredits.SetActive(true);
@@ -31,9 +31,9 @@ public class Credits : MonoBehaviour
     {
         if (!Input.anyKeyDown) return;
         
-        if (thanks.activeSelf || LoadingLevelData.Instance.creditsGoToMenu)
+        if (thanks.activeSelf || LoadingLevelData.creditsGoToMenu)
         {
-            SceneManager.LoadScene(LoadingLevelData.Instance.creditsGoToMenu ? 2 : 3);
+            SceneManager.LoadScene(LoadingLevelData.creditsGoToMenu ? 2 : 3);
         }
     }
 }

@@ -42,7 +42,7 @@ public class BossCinematic : MonoBehaviour
         
         DialogueManager.Instance.StartDialogue(dialogue01);
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
-        
+        am.Stop(8, true);
         tower.GetComponent<Animator>().enabled = true;
         yield return new WaitForSeconds(2f);
         
@@ -59,7 +59,6 @@ public class BossCinematic : MonoBehaviour
         bossFight.SpawnBoss();
         DialogueManager.Instance.StartDialogue(dialogue03);
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
-        am.Stop(8, true);
         am.Play(3, true);
         StartCoroutine(LevelManager.Instance.LatePlay(9, 1));
 

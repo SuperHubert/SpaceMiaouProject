@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -16,7 +17,9 @@ public class SprayAttack : MonoBehaviour
 
     public bool burn = false;
     public float burnDamage = 0.02f;
-    
+
+    public List<Dialogues> sprayDialogues;
+
     [HideInInspector] public float sprayAttackAxis;
     
 
@@ -59,6 +62,9 @@ public class SprayAttack : MonoBehaviour
         else
         {
             isSpraying = false;
+            if (!LoadingLevelData.sprayAmmoDialogue || !(currentSpray < 33)) return;
+            DialogueManager.Instance.StartMultipleDialogues(sprayDialogues);
+            LoadingLevelData.sprayAmmoDialogue = false;
         }
     }
 

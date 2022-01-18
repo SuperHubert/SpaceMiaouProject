@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +6,12 @@ public class Colonne : MonoBehaviour,IInteractible
 {
     private Animator animator;
     private int baseLayer;
-    
-    void Start()
+    public List<Dialogues> columnDialoguesEditor;
+    private static List<Dialogues> columnDialogues = new List<Dialogues>();
+
+    private void Start()
     {
+        if(columnDialogues.Count == 0) columnDialogues = columnDialoguesEditor;
         animator = gameObject.GetComponent<Animator>();
         baseLayer = gameObject.GetComponent<SpriteRenderer>().sortingOrder;
     }
@@ -22,10 +24,12 @@ public class Colonne : MonoBehaviour,IInteractible
 
     public void OnInteraction()
     {
-        StartCoroutine(Explode());
+        if (LoadingLevelData.columnDialogue)
+        {
+            DialogueManager.Instance.StartMultipleDialogues(columnDialogues);
+            LoadingLevelData.columnDialogue = false;
+        }
     }
-
-    public float vlaue;
     
     private IEnumerator Explode()
     {
