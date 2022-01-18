@@ -56,7 +56,6 @@ MonoBehaviour:
   respawnTriggerTransform: {fileID: 34894789945465317}
   stunned: 0
   cleared: 0
-  ondeDeChoc: {fileID: 0}
 --- !u!1 &34894789945465322
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,10 +672,11 @@ MonoBehaviour:
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 50
+  maxHealth: 40
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 8244260199258857968}
+  enemyBehaviour: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
   spriteRenderer: {fileID: 4333456302616705398}
   bossHealth: 0

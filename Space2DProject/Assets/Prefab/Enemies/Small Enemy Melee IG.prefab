@@ -134,13 +134,15 @@ MonoBehaviour:
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 20
+  maxHealth: 15
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 7114000372021665573}
+  enemyBehaviour: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
-  flashDuration: 0.05
   spriteRenderer: {fileID: 4586342183853149042}
+  bossHealth: 0
+  phaseThresholds: 
 --- !u!70 &6010281503785982382
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  feetHitbox: 0
+  detectOffset: 0
+  moveOffset: 0
 --- !u!1 &1924729776669349723
 GameObject:
   m_ObjectHideFlags: 0

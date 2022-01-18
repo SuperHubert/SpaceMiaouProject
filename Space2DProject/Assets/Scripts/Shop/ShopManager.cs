@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
 {
-    public int reductionTotal = 0;
+    public int reductionTotal = 1;
     public GameObject shopCanvas;
 
     #region Singleton
@@ -109,9 +109,9 @@ public class ShopManager : MonoBehaviour
         {
             name = ShopItemList[0].name,
             image = ShopItemList[0].image,
-            basePrice = ShopItemList[0].basePrice,
+            basePrice = 1,
             description = "Heal 1 Life [Appears in every shop]",
-            actualPrice = ShopItemList[0].actualPrice,
+            actualPrice = 1,
             upgrade = ShopItemList[0].upgrade,
             track = false,
             isBought = ShopItemList[0].isBought,

@@ -154,14 +154,6 @@ PrefabInstance:
       propertyPath: currentFollower
       value: 
       objectReference: {fileID: 4865300751528322500}
-    - target: {fileID: 1693735764161799996, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
-      propertyPath: damage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1693735764161799996, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
-      propertyPath: specialDamage
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 5629675976314166463, guid: 4521d723fa7814a45b39aebfca0c28e2, type: 3}
       propertyPath: m_RootOrder
       value: 0
