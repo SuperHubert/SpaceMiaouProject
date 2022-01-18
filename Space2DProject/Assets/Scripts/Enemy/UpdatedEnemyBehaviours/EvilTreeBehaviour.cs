@@ -39,19 +39,19 @@ public class EvilTreeBehaviour : EnemyBehaviour
         switch (biome)
         {
             case 0:
-                actionCdMax = 150;
+                actionCdMax = 200;
                 animator.SetLayerWeight (1, 1f);
                 animator.SetLayerWeight (2, 0f);
                 animator.SetLayerWeight (3, 0f);
                 break;
             case 1:
-                actionCdMax = 100;
+                actionCdMax = 150;
                 animator.SetLayerWeight (1, 0f);
                 animator.SetLayerWeight (2, 1f);
                 animator.SetLayerWeight (3, 0f);
                 break;
             case 2:
-                actionCdMax = 80;
+                actionCdMax = 110;
                 animator.SetLayerWeight (1, 0);
                 animator.SetLayerWeight (2, 0f);
                 animator.SetLayerWeight (3, 1f);
