@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,8 @@ public class Colonne : MonoBehaviour,IInteractible
 {
     private Animator animator;
     private int baseLayer;
-    
+    public List<Dialogues> columnDialogues;
+
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -22,10 +22,8 @@ public class Colonne : MonoBehaviour,IInteractible
 
     public void OnInteraction()
     {
-        StartCoroutine(Explode());
+        if (LoadingLevelData.columnDialogue) DialogueManager.Instance.StartMultipleDialogues(columnDialogues);
     }
-
-    public float vlaue;
     
     private IEnumerator Explode()
     {
