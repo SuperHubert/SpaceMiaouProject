@@ -40,9 +40,9 @@ public class ManagerMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        LoadingLevelData.Instance.creditsGoToMenu = false;
+        LoadingLevelData.creditsGoToMenu = false;
         LoadingManager.Instance.RotationItem();
-        if (LoadingLevelData.Instance.skipCinematic)
+        if (LoadingLevelData.skipCinematic)
         {
             LoadingManager.Instance.LoadScene(3);
         }
@@ -85,7 +85,7 @@ public class ManagerMenu : MonoBehaviour
 
     public void GoToCredits()
     {
-        LoadingLevelData.Instance.creditsGoToMenu = true;
+        LoadingLevelData.creditsGoToMenu = true;
         SceneManager.LoadScene(7);
     }
 

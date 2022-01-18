@@ -152,7 +152,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public void OnInteraction()
     {
-        if (LoadingLevelData.Instance.shopDialogue)
+        if (LoadingLevelData.shopDialogue)
         {
             StartCoroutine(WaitForDialogueToEnd());
         }
@@ -172,7 +172,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         yield return null;
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
         InputManager.canInput = true;
-        LoadingLevelData.Instance.shopDialogue = false;
+        LoadingLevelData.shopDialogue = false;
         OpenShop();
     }
 

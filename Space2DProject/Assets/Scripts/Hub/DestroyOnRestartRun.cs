@@ -7,6 +7,6 @@ public class DestroyOnRestartRun : MonoBehaviour
     
     void Start()
     {
-        if(!LoadingLevelData.Instance.firstRun) Destroy(gameObject);
+        if(!LoadingLevelData.firstRun) Destroy(gameObject);
     }
 }

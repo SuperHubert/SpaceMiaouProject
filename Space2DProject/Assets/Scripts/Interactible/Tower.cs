@@ -26,9 +26,9 @@ public class Tower : MonoBehaviour,IInteractible
         portalCollider2D.enabled = true;
         gameObject.GetComponent<Collider2D>().enabled = false;
         timesActivated++;
-        if (timesActivated > LoadingLevelData.Instance.towerDialogue)
+        if (timesActivated > LoadingLevelData.towerDialogue)
         {
-            LoadingLevelData.Instance.towerDialogue = timesActivated;
+            LoadingLevelData.towerDialogue = timesActivated;
             StartCoroutine(PlayDialogue());
         }
         KillAllEnemies();
