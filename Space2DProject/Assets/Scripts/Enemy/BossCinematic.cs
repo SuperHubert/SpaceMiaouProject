@@ -44,7 +44,9 @@ public class BossCinematic : MonoBehaviour
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
         am.Stop(8, true);
         tower.GetComponent<Animator>().enabled = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        am.Play(34);
+        yield return new WaitForSeconds(1f);
         
         cam.DOShakePosition(2f, Vector3.one);
         yield return new WaitForSeconds(2f);

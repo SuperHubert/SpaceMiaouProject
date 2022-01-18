@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     public int score;
     public TextMeshProUGUI scoreText;
-
+    
 
     #region Singleton
 
@@ -28,7 +28,6 @@ public class UIManager : MonoBehaviour
 
     #endregion
     
-
     private void Update()
     {
         Pause();

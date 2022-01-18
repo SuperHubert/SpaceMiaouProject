@@ -8,6 +8,7 @@ public class Colonne : MonoBehaviour,IInteractible
     private int baseLayer;
     public List<Dialogues> columnDialoguesEditor;
     private static List<Dialogues> columnDialogues = new List<Dialogues>();
+    private AudioManager am;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class Colonne : MonoBehaviour,IInteractible
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<CanGoBehind>().enabled = false;
         animator.SetTrigger("Trigger");
+        am.Play(35);
         yield return new WaitForSeconds(1);
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = baseLayer;
 

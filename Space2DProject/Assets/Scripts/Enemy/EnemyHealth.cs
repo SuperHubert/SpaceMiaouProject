@@ -136,7 +136,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            am.Play(29, true);
+            am.Play(29);
         }
         
         enemyAnimator.ResetTrigger("TakeDamage");

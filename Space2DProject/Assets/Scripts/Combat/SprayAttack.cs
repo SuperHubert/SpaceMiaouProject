@@ -21,10 +21,13 @@ public class SprayAttack : MonoBehaviour
     public List<Dialogues> sprayDialogues;
 
     [HideInInspector] public float sprayAttackAxis;
+
+    private AudioManager am;
     
 
     void Start()
     {
+        am = AudioManager.Instance;
         currentSpray = maxSpray;
     }
     
@@ -53,6 +56,9 @@ public class SprayAttack : MonoBehaviour
                 currentSpray -= 1;
 
                 canShoot = false;
+                
+                am.Play(33);
+                
                 StartCoroutine(ResetSpray());
             }
             

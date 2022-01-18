@@ -13,6 +13,7 @@ public class TriggerDialogueThenDestroy : MonoBehaviour,IInteractible
     void Start()
     {
         dialogueManager = DialogueManager.Instance;
+        InputManager.canInput = true;
     }
 
     void Update()

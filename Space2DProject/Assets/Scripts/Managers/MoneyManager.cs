@@ -25,7 +25,7 @@ public class MoneyManager : MonoBehaviour
     {
         nyanCoins ++;
         nyanCount.text = nyanCoins.ToString();
-        
+        AudioManager.Instance.Play(32, true);
         coinAnim.SetTrigger(GainPick);
     }
 

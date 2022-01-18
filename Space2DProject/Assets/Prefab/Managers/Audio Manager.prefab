@@ -195,7 +195,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: OSTDeath
-    clip: {fileID: 8300000, guid: 1a66570e1c7ea734186d3e6ac533e03f, type: 3}
+    clip: {fileID: 8300000, guid: cba652175b1e3a140886ac99fff854d2, type: 3}
     volume: 0.8
     pitch: 1
     loop: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Creep
     clip: {fileID: 8300000, guid: 4e26f1efc37b1084c947bcceefc3b440, type: 3}
-    volume: 0.8
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -226,7 +226,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: dash
     clip: {fileID: 8300000, guid: 53acf6ed9cb63b94989ffffea27c1be7, type: 3}
-    volume: 0.5
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -239,6 +239,24 @@ MonoBehaviour:
   - name: CoinPick
     clip: {fileID: 8300000, guid: dec08005d20298642971253c5c56c2d8, type: 3}
     volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SprayPchit
+    clip: {fileID: 8300000, guid: a68c24283d3839c459d05c061fd2ca64, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TowerCrash
+    clip: {fileID: 8300000, guid: e6479e90c975a6a42a03672f1511b0b9, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ColonneBreak
+    clip: {fileID: 8300000, guid: 652f5723b28453244ac72dad19999c15, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}

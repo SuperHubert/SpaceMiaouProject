@@ -50,8 +50,6 @@ public abstract class EnemyBehaviour : MonoBehaviour
         enemy = enemyTransform.gameObject;
         
         health = enemy.GetComponent<EnemyHealth>();
-
-        //animator = enemy.GetComponent<Animator>();
         
         (wakeUpTrigger = triggersTransform.GetChild(0).gameObject).SetActive(true);
         (sleepTrigger = triggersTransform.GetChild(1).gameObject).SetActive(false);

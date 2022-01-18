@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HubAudio : MonoBehaviour
@@ -10,5 +11,4 @@ public class HubAudio : MonoBehaviour
         am.StopAllSounds();
         am.Play(5);
     }
-    
 }
