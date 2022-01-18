@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -151,11 +150,23 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public void OnInteraction()
     {
+        if (LoadingLevelData.Instance.shopDialogue)
+        {
+            OpenShop();
+        }
+        else
+        {
+            OpenShop();
+        }
+    }
+
+    private void OpenShop()
+    {
         if(shopUI.activeSelf || !canOpenShop) return;
         
         StartCoroutine(InteractionAnimation());
 
-        AudioManager.Instance.Play(19, true);
+        am.Play(19, true);
 
         RefreshShop();
     }
@@ -174,7 +185,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         if (!CanBuy(index)) return;
         MoneyManager.Instance.nyanCoins -= displayList[index].actualPrice;
-        AudioManager.Instance.Play(10, true);
+        am.Play(10, true);
         displayList[index].isBought = true;
         if(displayList[index].track) inventory.Add(displayList[index]);
         //soldOutList[index].SetActive(true);

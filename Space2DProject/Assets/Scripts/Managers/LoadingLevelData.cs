@@ -12,7 +12,8 @@ public class LoadingLevelData : MonoBehaviour
     public bool noMoreLogo = false;
     public bool skipCinematic = false;
     public int towerDialogue = 0;
-    public bool firstRunDialogue = false;
+    public bool firstRun = true;
+    public bool shopDialogue = true;
 
     #region Singleton Don't Destroy On Load
     public static LoadingLevelData Instance;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DestroyOnRestartRun : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
-        if(LoadingLevelData.Instance.firstRunDialogue) Destroy(gameObject);
+        if(!LoadingLevelData.Instance.firstRun) Destroy(gameObject);
     }
 }

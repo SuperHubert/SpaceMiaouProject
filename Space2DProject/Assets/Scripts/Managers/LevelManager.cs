@@ -429,9 +429,9 @@ public class LevelManager : MonoBehaviour
 
     public void PlayIntroDialogue()
     {
-        if(LoadingLevelData.Instance.firstRunDialogue) return;
+        if(!LoadingLevelData.Instance.firstRun) return;
         DialogueManager.Instance.StartDialogue(dialogue);
-        LoadingLevelData.Instance.firstRunDialogue = true;
+        LoadingLevelData.Instance.firstRun = false;
 
     }
 }
