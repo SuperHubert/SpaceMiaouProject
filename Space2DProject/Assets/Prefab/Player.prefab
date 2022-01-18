@@ -692,6 +692,7 @@ MonoBehaviour:
   leftAttack: 0
   uptAttack: 0
   downAttack: 0
+  value: 0
 --- !u!1 &6095275311435496822
 GameObject:
   m_ObjectHideFlags: 0

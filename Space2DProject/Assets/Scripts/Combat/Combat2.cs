@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -47,8 +48,13 @@ public class Combat2 : MonoBehaviour
     [HideInInspector] public bool downAttack;
 
     private AudioManager am;
+    private SprayAttack sprayAttack;
 
-
+    private void Start()
+    {
+        sprayAttack = gameObject.GetComponent<SprayAttack>();
+    }
+    
     void Update()
     {
         BasicAttack();
@@ -62,7 +68,7 @@ public class Combat2 : MonoBehaviour
             attackDirection = GetComponent<PlayerMovement>().lastDirection;
             isAttacking = true;
             playerAnimator.SetBool("IsAttacking", true);
-            Invoke("ResetAttack", 0.5f);
+            Invoke("ResetAttack", 0.25f);
 
             if (attackDirection.x > 0 && Mathf.Abs(attackDirection.x) > Mathf.Abs(attackDirection.y))
             {
@@ -92,15 +98,15 @@ public class Combat2 : MonoBehaviour
                 
         foreach (Collider2D enemy in hits)
         {
-            if (enemy.gameObject.layer == 7)
-            {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
-                GetComponent<SprayAttack>().currentSpray += sprayGainNormal;
-                GetComponent<SprayAttack>().UpdateSprayBar();
-            }
+            if (enemy.gameObject.layer != 7) continue;
+            enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
+            sprayAttack.currentSpray += sprayGainNormal;
+            sprayAttack.UpdateSprayBar();
         }
     }
 
+    public float value;
+    
     void SpecialAttack()
     {
         if (specialAttack && !isAttacking && canSpecialAttack)
@@ -114,9 +120,9 @@ public class Combat2 : MonoBehaviour
             
             GetComponent<PlayerMovement>().speed = 2;
             
-            Invoke(nameof(WaveAttack), 0.3f);
-            Invoke(nameof(WaveAttack), 0.6f);
-            Invoke(nameof(ResetAttack), 0.9f);
+            Invoke(nameof(WaveAttack), 0.1f);
+            Invoke(nameof(WaveAttack), 0.4f);
+            Invoke(nameof(ResetAttack), value);
             Invoke(nameof(ResetSpecialAttack), specialAttackCoolDown);
         }
     }
@@ -132,8 +138,8 @@ public class Combat2 : MonoBehaviour
             {
                 if(enemy.GetComponent<EnemyHealth>() != null) enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
                 //enemy.GetComponent<EnemyHealth>().KnockBack(enemy.transform.position + (enemy.transform.position - transform.position).normalized * 2);
-                GetComponent<SprayAttack>().currentSpray += sprayGainSpecial;
-                GetComponent<SprayAttack>().UpdateSprayBar();
+                sprayAttack.currentSpray += sprayGainSpecial;
+                sprayAttack.UpdateSprayBar();
             }
         }
         
