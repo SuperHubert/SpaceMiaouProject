@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,8 @@ public class StartGame : MonoBehaviour, IInteractible
     [SerializeField] private Animator animator;
     [SerializeField] Transform parent;
     public Dialogues dialogue;
+
+    private AudioManager am;
     
     public void OnInteraction()
     {
@@ -21,6 +24,8 @@ public class StartGame : MonoBehaviour, IInteractible
         DialogueManager.Instance.StartDialogue(dialogue);
         InputManager.canInput = false;
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
+        AudioManager.Instance.Play(31, true);
+        InputManager.canInput = true;
         player.SetActive(false);
         animator.SetTrigger("Trigger");
         yield return new WaitForSeconds(1.22f);

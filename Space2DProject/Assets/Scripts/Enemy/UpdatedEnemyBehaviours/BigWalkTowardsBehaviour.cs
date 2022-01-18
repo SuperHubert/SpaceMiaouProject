@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BigWalkTowardsBehaviour : EnemyBehaviour
 {
+    private AudioManager am;
+
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -46,6 +48,7 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         isPerformingAction = true;
         animator.SetBool("isWalking", false);
         animator.SetBool("isAttacking", true);
+        AudioManager.Instance.Play(28, true);
         
         yield return new WaitForSeconds(0.5f);
 

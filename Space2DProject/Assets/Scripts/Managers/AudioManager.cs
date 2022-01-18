@@ -62,7 +62,7 @@ public class AudioManager : MonoBehaviour
         if (id >= sounds.Count || id < 0) return;
         if (fade)
         {
-            sounds[id].source.DOFade(0f, 3);
+            sounds[id].source.DOFade(0f, 5);
         }
         else
         {

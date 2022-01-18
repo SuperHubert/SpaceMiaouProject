@@ -189,14 +189,56 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: OSTEnding
-    clip: {fileID: 8300000, guid: 93364a118c948ce4fb1e999eedf75596, type: 3}
+    clip: {fileID: 8300000, guid: 0a80adc531087e34888e815686b1b1e1, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: OSTDeath
+    clip: {fileID: 8300000, guid: 1a66570e1c7ea734186d3e6ac533e03f, type: 3}
     volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: OSTDeath
-    clip: {fileID: 8300000, guid: 93364a118c948ce4fb1e999eedf75596, type: 3}
+  - name: BalaisWoosh
+    clip: {fileID: 8300000, guid: de4aee3f24d43be40b96ea1af2528708, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CoffreOuverture
+    clip: {fileID: 8300000, guid: 60a6210453176204d888c0ac3ea0852d, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Creep
+    clip: {fileID: 8300000, guid: 4e26f1efc37b1084c947bcceefc3b440, type: 3}
     volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Invincible
+    clip: {fileID: 8300000, guid: 8c5ec37062ee9a646baf6bc433116d14, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: dash
+    clip: {fileID: 8300000, guid: 53acf6ed9cb63b94989ffffea27c1be7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: teleportation
+    clip: {fileID: 8300000, guid: 112cb522c7e65b449bea18539aa8fff5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CoinPick
+    clip: {fileID: 8300000, guid: dec08005d20298642971253c5c56c2d8, type: 3}
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
