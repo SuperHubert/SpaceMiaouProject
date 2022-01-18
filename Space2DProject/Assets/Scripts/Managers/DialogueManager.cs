@@ -168,4 +168,21 @@ public class DialogueManager : MonoBehaviour
         instantDisplay = !instantDisplay;
         return instantDisplay;
     }
+
+    public void StartMultipleDialogues(List<Dialogues> allDialogues, bool canMove=true)
+    {
+        StartCoroutine(MultipleDialogueRoutine(allDialogues, canMove));
+    }
+
+    private IEnumerator MultipleDialogueRoutine(List<Dialogues> allDialogues, bool canMove)
+    {
+        InputManager.canInput = canMove;
+        foreach (var dialogue in allDialogues)
+        {
+            StartDialogue(dialogue);
+            yield return null;
+            yield return new WaitUntil(() => !dialogueCanvas.activeSelf);
+        }
+        InputManager.canInput = true;
+    }
 }
