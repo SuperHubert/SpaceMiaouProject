@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
 {
-    public int reductionTotal;
+    public int reductionTotal = 0;
     public GameObject shopCanvas;
 
     #region Singleton
