@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reductionTotal: 0
+  shopCanvas: {fileID: 0}
   ShopItemList:
   - name: Heal I
     image: {fileID: 21300000, guid: 8e4b10898e5f1a647bdb7c12bb210320, type: 3}
-    basePrice: 3
+    basePrice: 1
     description: Heal 1 life
     actualPrice: 0
     upgrade:
@@ -125,7 +126,7 @@ MonoBehaviour:
     isBought: 0
   - name: Heal II
     image: {fileID: 21300000, guid: 6618f77945ff1b14f9f1861c2508c3ab, type: 3}
-    basePrice: 4
+    basePrice: 2
     description: Heal 2 lifes
     actualPrice: 0
     upgrade:
@@ -147,7 +148,7 @@ MonoBehaviour:
     isBought: 0
   - name: Heal III
     image: {fileID: 21300000, guid: 913633eab67b77848b1a0102f479db35, type: 3}
-    basePrice: 5
+    basePrice: 3
     description: Heal 3 lifes
     actualPrice: 0
     upgrade:
@@ -169,7 +170,7 @@ MonoBehaviour:
     isBought: 0
   - name: Speed I
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
-    basePrice: 2
+    basePrice: 1
     description: You gain 5% movement speed
     actualPrice: 0
     upgrade:
@@ -191,7 +192,7 @@ MonoBehaviour:
     isBought: 0
   - name: Speed II
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
-    basePrice: 3
+    basePrice: 2
     description: You gain 10% movement speed
     actualPrice: 0
     upgrade:
@@ -213,7 +214,7 @@ MonoBehaviour:
     isBought: 0
   - name: Speed III
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
-    basePrice: 4
+    basePrice: 3
     description: You gain 15% movement speed
     actualPrice: 0
     upgrade:
@@ -235,7 +236,7 @@ MonoBehaviour:
     isBought: 0
   - name: Broom Damage I
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
-    basePrice: 3
+    basePrice: 2
     description: 'Jones''s broom gain 5% damages '
     actualPrice: 0
     upgrade:
@@ -257,7 +258,7 @@ MonoBehaviour:
     isBought: 0
   - name: Broom Damage II
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
-    basePrice: 4
+    basePrice: 3
     description: 'Jones''s broom gain 10% damages '
     actualPrice: 0
     upgrade:
@@ -279,7 +280,7 @@ MonoBehaviour:
     isBought: 0
   - name: Broom Damages III
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
-    basePrice: 6
+    basePrice: 4
     description: 'Jones''s broom gain 15% damages '
     actualPrice: 0
     upgrade:
@@ -323,7 +324,7 @@ MonoBehaviour:
     isBought: 0
   - name: Dash Cooldown II
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
-    basePrice: 4
+    basePrice: 3
     description: Reduce dash cooldown of 10%
     actualPrice: 0
     upgrade:
@@ -345,7 +346,7 @@ MonoBehaviour:
     isBought: 0
   - name: Dash Cooldown III
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
-    basePrice: 5
+    basePrice: 4
     description: 'Jone''s broom gain 15% damages '
     actualPrice: 0
     upgrade:
@@ -367,7 +368,7 @@ MonoBehaviour:
     isBought: 0
   - name: Fortune I
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
-    basePrice: 3
+    basePrice: 2
     description: More chest in the next levels
     actualPrice: 0
     upgrade:
@@ -389,7 +390,7 @@ MonoBehaviour:
     isBought: 0
   - name: Fortune II
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
-    basePrice: 4
+    basePrice: 3
     description: More chest in the next levels
     actualPrice: 0
     upgrade:
@@ -411,7 +412,7 @@ MonoBehaviour:
     isBought: 0
   - name: Fortune III
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
-    basePrice: 5
+    basePrice: 4
     description: More chest in the next levels
     actualPrice: 0
     upgrade:
@@ -455,7 +456,7 @@ MonoBehaviour:
     isBought: 0
   - name: Spray Damage I
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
-    basePrice: 2
+    basePrice: 1
     description: 'Jones''s spray gain 5% damages '
     actualPrice: 0
     upgrade:
@@ -477,7 +478,7 @@ MonoBehaviour:
     isBought: 0
   - name: Spray Damage II
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
-    basePrice: 3
+    basePrice: 2
     description: 'Jones''s spray gain 10% damages '
     actualPrice: 0
     upgrade:
@@ -543,7 +544,7 @@ MonoBehaviour:
     isBought: 0
   - name: Soap Gain I
     image: {fileID: 21300000, guid: c8efb72c596502f4bb767ea2ec0098c5, type: 3}
-    basePrice: 3
+    basePrice: 1
     description: Soap ammo reloads 10% faster
     actualPrice: 0
     upgrade:
@@ -565,7 +566,7 @@ MonoBehaviour:
     isBought: 0
   - name: Soap Gain II
     image: {fileID: 21300000, guid: 6647c385b2850904b868006c64bbda4a, type: 3}
-    basePrice: 4
+    basePrice: 2
     description: Soap ammo reloads 15% faster
     actualPrice: 0
     upgrade:
@@ -634,15 +635,12 @@ MonoBehaviour:
   itemName: {fileID: 0}
   itemDescription: {fileID: 0}
   itemImage: {fileID: 0}
-  soldOutList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  inventoryText: {fileID: 0}
+  inventory: []
   baseButtonSprite: {fileID: 21300000, guid: de8b187f08a37da4080e1d6f2b7ecb54, type: 3}
   soldOutSprite: {fileID: 21300000, guid: 544662833044aba4a95cda8d30d31580, type: 3}
   displayList: []
+  am: {fileID: 0}
   closeShopInput: 0
 --- !u!61 &1101935766226791751
 BoxCollider2D:
