@@ -156,6 +156,7 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         {
             DialogueManager.Instance.StartMultipleDialogues(shopDialogues,false);
             StartCoroutine(WaitForDialogueToEnd());
+            LoadingLevelData.shopDialogue = false;
         }
         else
         {
