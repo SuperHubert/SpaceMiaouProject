@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool dash;
     [HideInInspector] public float shootingAxis;
 
+    private AudioManager am;
+
     void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -53,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         dashInternalCd = 0;
         dashCd = 0;
+        am = AudioManager.Instance;
 
     }
 
@@ -104,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
                 dashing = false;
                 if(LifeManager.Instance != null) LifeManager.Instance.canTakeDamge = true;
                 animPlayer.SetBool("IsDashing", false);
+                am.Play(30, true);
                 
                 
             }

@@ -7,16 +7,20 @@ public class PortalV2 : MonoBehaviour, IInteractible
     [SerializeField] private ShopInteraction shopInteraction;
     private Animator animator;
     private Transform tpPos;
+    private AudioManager am;
 
     private void Start()
     {
         tpPos = transform.GetChild(1);
         animator = gameObject.GetComponent<Animator>();
+        am = AudioManager.Instance;
     }
 
     public void OnInteraction()
     {
         followPlayer.canMove = false;
+
+
         
         DialogueManager.Instance.EndDialogue();
         
@@ -29,6 +33,8 @@ public class PortalV2 : MonoBehaviour, IInteractible
 
     IEnumerator AnimationRoutine()
     {
+        am.Play(31, true);
+
         LevelManager.Instance.MovePlayer(tpPos);
         LevelManager.Instance.Player().SetActive(false);
         tpPos.gameObject.SetActive(true);

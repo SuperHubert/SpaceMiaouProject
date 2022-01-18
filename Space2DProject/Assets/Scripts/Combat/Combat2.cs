@@ -66,6 +66,7 @@ public class Combat2 : MonoBehaviour
         if (!baseAttack || isAttacking || !canAttack) return;
         attackDirection = GetComponent<PlayerMovement>().lastDirection;
         isAttacking = true;
+        AudioManager.Instance.Play(26, true);
         playerAnimator.SetBool("IsAttacking", true);
         Invoke("ResetAttack", 0.25f);
 

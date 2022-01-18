@@ -9,12 +9,14 @@ public class Chest : MonoBehaviour, IInteractible
     private Animator anim;
     private Collider2D col;
     public GameObject linkedIcon;
-    
+    private AudioManager am;
+
     private void Start()
     {
         floor = LevelManager.Instance.FloorNumber();
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
+        am = AudioManager.Instance;
 
     }
     IEnumerator PlayOpenAnim()
@@ -46,6 +48,7 @@ public class Chest : MonoBehaviour, IInteractible
         col.enabled = false;
         linkedIcon.SetActive(false);
         StartCoroutine(PlayOpenAnim());
+        am.Play(27, true);
     }
 
     public void UpdateChest(MapIcons mapIcons)
