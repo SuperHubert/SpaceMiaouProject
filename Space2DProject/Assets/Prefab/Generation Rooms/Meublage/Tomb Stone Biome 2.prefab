@@ -150,9 +150,10 @@ MonoBehaviour:
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - This stone is older than the others. Its legend is weird.
+    - This stone is older than the others. The text on it is weird.
     - It's about a young girl trying to save her pet.
-    - That's funny... because in my case, I'm always saving my human.
+    - That's funny...
+    - I'm usualy the one saving my human.
     audioSourceIndex: 0
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}

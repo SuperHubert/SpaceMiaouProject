@@ -156,12 +156,12 @@ MonoBehaviour:
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - The people tried to fight back but without their God, they failed too.
+    - The people tried to fight back but without their God, they perished too.
     audioSourceIndex: 0
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
-    - After analisys, we discovered that those stone were engraved...
+    - After analysis, we discovered that those stones were engraved...
     - After analisys, we discovered that those stone were engraved...
     - ... At least 2000 years ago. I don't think there could be a single survivor.
     audioSourceIndex: 22
