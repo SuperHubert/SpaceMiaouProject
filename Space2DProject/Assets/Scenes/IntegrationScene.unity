@@ -525,6 +525,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1938541002454892176, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: m_text
+      value: Reduce the cost of all item by 1 Nyan coin (new prices cannot go  below
+        1)
+      objectReference: {fileID: 0}
     - target: {fileID: 2062910515460076547, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -541,6 +546,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 811878286}
+    - target: {fileID: 4218982432004426264, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4344419285714797310, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

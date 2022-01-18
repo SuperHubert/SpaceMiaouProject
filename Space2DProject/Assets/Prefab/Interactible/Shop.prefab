@@ -106,7 +106,7 @@ MonoBehaviour:
   - name: Heal I
     image: {fileID: 21300000, guid: 8e4b10898e5f1a647bdb7c12bb210320, type: 3}
     basePrice: 1
-    description: Heal 1 life
+    description: Heal 1 health point
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -128,7 +128,7 @@ MonoBehaviour:
   - name: Heal II
     image: {fileID: 21300000, guid: 6618f77945ff1b14f9f1861c2508c3ab, type: 3}
     basePrice: 2
-    description: Heal 2 lifes
+    description: Heal 2 health points
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -150,7 +150,7 @@ MonoBehaviour:
   - name: Heal III
     image: {fileID: 21300000, guid: 913633eab67b77848b1a0102f479db35, type: 3}
     basePrice: 3
-    description: Heal 3 lifes
+    description: Heal 3 health points
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -172,7 +172,7 @@ MonoBehaviour:
   - name: Speed I
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
     basePrice: 1
-    description: You gain 5% movement speed
+    description: Gain 5% movement speed
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -194,7 +194,7 @@ MonoBehaviour:
   - name: Speed II
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
     basePrice: 2
-    description: You gain 10% movement speed
+    description: Gain 10% movement speed
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -216,7 +216,7 @@ MonoBehaviour:
   - name: Speed III
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
     basePrice: 3
-    description: You gain 15% movement speed
+    description: Gain 15% movement speed
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -238,7 +238,7 @@ MonoBehaviour:
   - name: Broom Damage I
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 2
-    description: 'Jones''s broom gain 5% damages '
+    description: Gain 5% damage bonus on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -260,7 +260,7 @@ MonoBehaviour:
   - name: Broom Damage II
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 3
-    description: 'Jones''s broom gain 10% damages '
+    description: Gain 10% damage bonus on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -279,10 +279,10 @@ MonoBehaviour:
           m_CallState: 2
     track: 1
     isBought: 0
-  - name: Broom Damages III
+  - name: Broom Damage III
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 4
-    description: 'Jones''s broom gain 15% damages '
+    description: Gain 15% damage bonus on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -304,7 +304,7 @@ MonoBehaviour:
   - name: Dash Cooldown I
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
     basePrice: 2
-    description: Reduce dash cooldown of 5%
+    description: Reduce dash cooldown by 5%
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -326,7 +326,7 @@ MonoBehaviour:
   - name: Dash Cooldown II
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
     basePrice: 3
-    description: Reduce dash cooldown of 10%
+    description: Reduce dash cooldown by 10%
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -348,7 +348,7 @@ MonoBehaviour:
   - name: Dash Cooldown III
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
     basePrice: 4
-    description: 'Jone''s broom gain 15% damages '
+    description: Reduce dash cooldown by 15%
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -370,7 +370,7 @@ MonoBehaviour:
   - name: Fortune I
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
     basePrice: 2
-    description: More chest in the next levels
+    description: Get more containers in the next regions
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -392,7 +392,7 @@ MonoBehaviour:
   - name: Fortune II
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
     basePrice: 3
-    description: More chest in the next levels
+    description: Get even more containers in the next regions
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -414,7 +414,7 @@ MonoBehaviour:
   - name: Fortune III
     image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
     basePrice: 4
-    description: More chest in the next levels
+    description: Get even way more containers in the next regions
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -436,7 +436,8 @@ MonoBehaviour:
   - name: 'Bleach '
     image: {fileID: 21300000, guid: eb7b966f7e0fa3e4cb82e34dfcac4bf6, type: 3}
     basePrice: 2
-    description: Spray bullets burns 2% of any opponent in addition of normal damages
+    description: Dealing spray damage will burn enemies for 2% of their max health
+      per second
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -458,7 +459,7 @@ MonoBehaviour:
   - name: Spray Damage I
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
     basePrice: 1
-    description: 'Jones''s spray gain 5% damages '
+    description: Gain 5% damage on spray attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -480,7 +481,7 @@ MonoBehaviour:
   - name: Spray Damage II
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
     basePrice: 2
-    description: 'Jones''s spray gain 10% damages '
+    description: Gain 10% damage on spray attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -502,7 +503,8 @@ MonoBehaviour:
   - name: Better Prices I
     image: {fileID: 21300000, guid: f98f05007731d6d4c87aaef8bec40e04, type: 3}
     basePrice: 3
-    description: Reduce all costs of 1 NyanCoin
+    description: Reduce the cost of all items by 1 Nyan coin (new prices cannot drop
+      below 1)
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -524,7 +526,8 @@ MonoBehaviour:
   - name: Better Prices II
     image: {fileID: 21300000, guid: 0b8b5ef32035dc0459a0c1767b51270d, type: 3}
     basePrice: 4
-    description: Reduce all costs of 2 NyanCoin
+    description: Reduce the cost of all items by 2 Nyan coins (new prices cannot
+      drop below 1)
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -546,7 +549,7 @@ MonoBehaviour:
   - name: Soap Gain I
     image: {fileID: 21300000, guid: c8efb72c596502f4bb767ea2ec0098c5, type: 3}
     basePrice: 1
-    description: Soap ammo reloads 10% faster
+    description: Gain 10% more soap ammo from broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -568,7 +571,7 @@ MonoBehaviour:
   - name: Soap Gain II
     image: {fileID: 21300000, guid: 6647c385b2850904b868006c64bbda4a, type: 3}
     basePrice: 2
-    description: Soap ammo reloads 15% faster
+    description: Gain 15% more soap ammo from broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
