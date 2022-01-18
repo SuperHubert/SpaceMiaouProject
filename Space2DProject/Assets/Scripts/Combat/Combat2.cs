@@ -45,9 +45,16 @@ public class Combat2 : MonoBehaviour
     private AudioManager am;
     private SprayAttack sprayAttack;
     private PlayerMovement playerMovement;
+    
+    [SerializeField] private Material flashMaterial;
+    private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
 
     private void Start()
     {
+        spriteRenderer = LevelManager.Instance.Player().GetComponent<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
         sprayAttack = gameObject.GetComponent<SprayAttack>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
     }
@@ -161,5 +168,14 @@ public class Combat2 : MonoBehaviour
     {
         canSpecialAttack = true;
         isSpecialAttacking = false;
+        StartCoroutine(FlashRoutine());
+    }
+   
+    IEnumerator FlashRoutine()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.material = originalMaterial;
+        flashRoutine = null;
     }
 }
