@@ -83,7 +83,8 @@ public class LifeManager : MonoBehaviour
        {
            Instantiate(deathObj,LevelManager.Instance.Player().transform.position,Quaternion.identity);
             am.Play(16, true);
-           yield return new WaitForSeconds(1.5f);
+            
+            yield return new WaitForSeconds(1.5f);
        }
        yield return null;
        foreach (Transform child in LevelManager.Instance.Level().GetChild(5))

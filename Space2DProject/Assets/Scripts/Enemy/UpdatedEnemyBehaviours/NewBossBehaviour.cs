@@ -68,6 +68,7 @@ public class NewBossBehaviour : EnemyBehaviour
         LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
 
         AudioManager.Instance.Stop(9, true);
+        AudioManager.Instance.Play(5, true);
     }
     
     
