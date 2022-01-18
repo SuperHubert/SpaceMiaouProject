@@ -393,9 +393,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5630943770092397240}
   - component: {fileID: 9143766090537389839}
-  - component: {fileID: 2373537118565057131}
   - component: {fileID: 6521914564625401045}
   - component: {fileID: 8336869994145552897}
+  - component: {fileID: 2373537118565057131}
   - component: {fileID: 5620690891368572842}
   m_Layer: 14
   m_Name: Tower
@@ -470,40 +470,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2373537118565057131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6156038838675469327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6c2b1fbee5b9e4da0c424f736e0bb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portalCollider2D: {fileID: 0}
-  cam: {fileID: 0}
-  dialogues:
-  - characterName: Master X
-    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
-    sentences:
-    - Well done agent Jones, 3 towers left.
-    - You can reach the nearest portal to go to the next zone.
-    audioSourceIndex: 22
-  - characterName: Master X
-    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
-    sentences:
-    - Only 2 towers left!
-    - Be careful, the next region seems to be quite dangerous.
-    audioSourceIndex: 22
-  - characterName: Master X
-    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
-    sentences:
-    - Okay, well done agent! The level of corruption is now very low.
-    - You can take the portal to go to the temple and activate the last tower.
-    audioSourceIndex: 22
-  timesActivated: 0
 --- !u!61 &6521914564625401045
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -552,6 +518,58 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &2373537118565057131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156038838675469327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6c2b1fbee5b9e4da0c424f736e0bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalCollider2D: {fileID: 0}
+  cam: {fileID: 0}
+  dialogues:
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Well done agent Jones, 3 towers left.
+    - You can reach the nearest portal to go to the next zone.
+    audioSourceIndex: 22
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Only 2 towers left!
+    - Be careful, the next region seems to be quite dangerous.
+    audioSourceIndex: 22
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Okay, well done agent! The level of corruption is now very low.
+    - You can take the portal to go to the temple and activate the last tower.
+    audioSourceIndex: 22
+  timesActivated: 0
+  dialoguesChests:
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - By the way, the tower's energy beam reacts to the supply container's materials...
+    - And destroys them when activated.
+    - I hope you found all of them before activating the tower.
+    audioSourceIndex: 22
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - Couldn't you have said that earlier ?
+    audioSourceIndex: 0
+  - characterName: 
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Sorry, I forgot...
+    audioSourceIndex: 22
 --- !u!114 &5620690891368572842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +893,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2545915620620602384}
     m_Modifications:
+    - target: {fileID: 593867141416601127, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
+      propertyPath: offset
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2233394246705086644, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
       propertyPath: m_Name
       value: Shop

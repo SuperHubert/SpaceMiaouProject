@@ -45,8 +45,8 @@ public class LevelManager : MonoBehaviour
 
     private bool canGenerate = true;
 
-    [SerializeField] private Dialogues dialogue;
-    
+    public List<Dialogues> introDialogues;
+
     #region Singleton
 
     public static LevelManager Instance;
@@ -431,7 +431,7 @@ public class LevelManager : MonoBehaviour
     public void PlayIntroDialogue()
     {
         if(!LoadingLevelData.firstRun) return;
-        DialogueManager.Instance.StartDialogue(dialogue);
+        DialogueManager.Instance.StartMultipleDialogues(introDialogues,false);
         LoadingLevelData.firstRun = false;
 
     }

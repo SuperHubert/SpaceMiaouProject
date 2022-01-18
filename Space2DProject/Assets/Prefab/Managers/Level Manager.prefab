@@ -313,6 +313,22 @@ MonoBehaviour:
   seedList: 
   floorNumber: 0
   maxFloors: 3
+  introDialogues:
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Agent Jones, you are now on planet LHS 1732 Alpha's first biome.
+    - You need to activate 4 towers in total to defeat the corruption. It will kill
+      all the enemies in one shot.
+    - Each tower is in a different biome.
+    - You can use your weapons, or sneak if you want.
+    - We sent some supplies for you, but they got scattered around on their way down.
+    - They were in special containers so they should still be usable if you manage
+      to find them.
+    - I'll be tracking your position so if you ever get lost don't hesitate to check
+      your map.
+    - Good Luck agent!
+    audioSourceIndex: 22
   dialogue:
     characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}

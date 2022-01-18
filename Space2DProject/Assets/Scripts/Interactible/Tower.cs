@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour,IInteractible
     public Camera cam;
     public List<Dialogues> dialogues;
     [SerializeField] private int timesActivated = 0;
+    public List<Dialogues> dialoguesChests;
     
     private void Start()
     {
@@ -65,6 +66,8 @@ public class Tower : MonoBehaviour,IInteractible
     {
         yield return new WaitForSeconds(0.5f);
         DialogueManager.Instance.StartDialogue(dialogues[timesActivated-1]);
-
+        if(timesActivated-1 != 0) yield break;
+        yield return null;
+        DialogueManager.Instance.StartMultipleDialogues(dialoguesChests);
     }
 }
