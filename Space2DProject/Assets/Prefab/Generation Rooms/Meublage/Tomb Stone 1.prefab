@@ -150,46 +150,45 @@ MonoBehaviour:
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - The Old God protected the people of this forest for decades.
+    - The Old God protected the people of this forest for centuries.
     - But somehow, it failed to protect them against the Blobs.
     audioSourceIndex: 0
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - The people tried to fight back but without their God, they perished too.
+    - The people tried to fight back but without their God, they also perished.
     audioSourceIndex: 0
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
     - After analysis, we discovered that those stones were engraved...
-    - After analisys, we discovered that those stone were engraved...
-    - ... At least 2000 years ago. I don't think there could be a single survivor.
+    - ... At least 2000 years ago. I don't think there's a single survivor left.
     audioSourceIndex: 22
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - The Old God was able to produce... spores ?
+    - The Old God was able to produce... spores?
     - The people of this planet used to create artifacts with those spores.
-    - And with other materials form the two other gods...
+    - And with materials from the two other gods...
     audioSourceIndex: 0
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
-    - 'This is a... poem ? '
-    - I think this is a farewell of a soldier to his familly...
+    - 'This is a... poem? '
+    - I think this is a farewell of a soldier to his family...
     audioSourceIndex: 0
   - characterName: Jones
     characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
     sentences:
     - 'This one is older than the other. '
-    - Its a legend about an explorer. A tiny pink guy send in the stars to collect
-      something
+    - It's a legend about an explorer. A tiny, pink creature looking for something
+      among the stars...
     audioSourceIndex: 0
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
     - Agent Jones, you need to activate the tower.
-    - Time is running against us.
+    - Time is against us.
     audioSourceIndex: 22
 --- !u!1 &8670246550968729482
 GameObject:

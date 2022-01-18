@@ -317,15 +317,15 @@ MonoBehaviour:
     characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
-    - Agent Jones, you are now on planet LHS 1732 Alpha's first region.
+    - Agent Jones, you are now on planet LHS 1732 Alpha's first biome.
     - You need to activate 4 towers in total to defeat the corruption. It will kill
       all the enemies in one shot.
-    - Each tower is in a different region.
-    - You can use your weapons or sneak if you want.
+    - Each tower is in a different biome.
+    - You can use your weapons, or sneak if you want.
     - We sent some supplies for you, but they got scattered around on their way down.
     - They were in special cases so they should still be usable if you manage to
       find them.
-    - Good Luck agent !
+    - Good Luck agent!
     audioSourceIndex: 0
 --- !u!114 &4883749890520021249
 MonoBehaviour:

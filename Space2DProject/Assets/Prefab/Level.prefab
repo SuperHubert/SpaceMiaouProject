@@ -494,14 +494,14 @@ MonoBehaviour:
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
-    - Only 2 towers left.
-    - Be carefull, the next region seems to be really dangerous.
+    - Only 2 towers left!
+    - Be careful, the next region seems to be quite dangerous.
     audioSourceIndex: 22
   - characterName: Master X
     characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
     sentences:
-    - Okay, well done agent, the level of infection is now really low.
-    - You can take the next portal to go to the temple and activate the last tower.
+    - Okay, well done agent! The level of corruption is now very low.
+    - You can take the portal to go to the temple and activate the last tower.
     audioSourceIndex: 22
   timesActivated: 0
 --- !u!61 &6521914564625401045
