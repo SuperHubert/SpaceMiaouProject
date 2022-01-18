@@ -17,16 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HubWorld.unity
     guid: 45014ab5c138b164f8869d9d5207d05a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IntegrationScene.unity
     guid: 5c0fecf72fb11ee448543c61e212fae9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DeathScene.unity
     guid: d4f84179e38f10d499323fbe41c14353
   - enabled: 1
     path: Assets/Scenes/Cinematics.unity
     guid: a338473f1d476914d8363ed24a49a320
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CreditScene.unity
     guid: 6d996af775313a046938ee293e533fd6
   - enabled: 0
