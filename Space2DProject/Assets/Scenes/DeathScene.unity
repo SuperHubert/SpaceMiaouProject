@@ -626,7 +626,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1329402765}
         m_TargetAssemblyTypeName: ManagerMenu, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: ReturnToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -840,6 +840,7 @@ MonoBehaviour:
   previousSelectedObj: {fileID: 0}
   inputImage: {fileID: 0}
   soundSlider: {fileID: 0}
+  pauseUI: {fileID: 0}
 --- !u!4 &1329402766
 Transform:
   m_ObjectHideFlags: 0

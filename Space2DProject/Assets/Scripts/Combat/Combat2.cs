@@ -98,9 +98,10 @@ public class Combat2 : MonoBehaviour
                 sprayAttack.currentSpray += sprayGainNormal;
                 sprayAttack.UpdateSprayBar();
             }
-            else if (enemy.gameObject.layer == 7)
+            else if (enemy.gameObject.layer == 14)
             {
-                
+                if(enemy.GetComponent<Chest>() != null) enemy.GetComponent<IInteractible>().OnInteraction();
+                if(enemy.GetComponent<Colonne>() != null) enemy.GetComponent<IInteractible>().OnInteraction();
             }
             
         }
