@@ -30,7 +30,9 @@ public class ShopInteraction : MonoBehaviour, IInteractible
 
     public List<ShopManager.ShopItem> displayList = new List<ShopManager.ShopItem>();
 
-    public AudioManager am;
+    private AudioManager am = AudioManager.Instance;
+
+    public List<Dialogues> shopDialogues;
 
     private bool canOpenShop = true;
     public bool closeShopInput = false;
@@ -152,12 +154,26 @@ public class ShopInteraction : MonoBehaviour, IInteractible
     {
         if (LoadingLevelData.Instance.shopDialogue)
         {
-            OpenShop();
+            StartCoroutine(WaitForDialogueToEnd());
         }
         else
         {
             OpenShop();
         }
+    }
+
+    IEnumerator WaitForDialogueToEnd()
+    {
+        InputManager.canInput = false;
+        DialogueManager.Instance.StartDialogue(shopDialogues[0]);
+        yield return null;
+        yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
+        DialogueManager.Instance.StartDialogue(shopDialogues[1]);
+        yield return null;
+        yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
+        InputManager.canInput = true;
+        LoadingLevelData.Instance.shopDialogue = false;
+        OpenShop();
     }
 
     private void OpenShop()
@@ -188,7 +204,6 @@ public class ShopInteraction : MonoBehaviour, IInteractible
         am.Play(10, true);
         displayList[index].isBought = true;
         if(displayList[index].track) inventory.Add(displayList[index]);
-        //soldOutList[index].SetActive(true);
         displayList[index].upgrade.Invoke();
         nyanCountShop.text = MoneyManager.Instance.nyanCoins.ToString();
         nyanCount.text = MoneyManager.Instance.nyanCoins.ToString();

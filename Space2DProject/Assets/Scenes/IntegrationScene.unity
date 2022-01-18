@@ -937,6 +937,19 @@ PrefabInstance:
       propertyPath: buttonList.Array.data[5]
       value: 
       objectReference: {fileID: 385766016}
+    - target: {fileID: 273499834543205587, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: shopDialogues.Array.data[1].sentences.Array.data[1]
+      value: I've linked these old phones to our air drop system.
+      objectReference: {fileID: 0}
+    - target: {fileID: 273499834543205587, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: shopDialogues.Array.data[1].sentences.Array.data[2]
+      value: But because of the way they're built, they won't function without coins.
+      objectReference: {fileID: 0}
+    - target: {fileID: 273499834543205587, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+      propertyPath: shopDialogues.Array.data[1].sentences.Array.data[3]
+      value: Luckly, you'll find some Nyan Coins in the containers we dropped before
+        you arrived on the planet.
+      objectReference: {fileID: 0}
     - target: {fileID: 2373537118565057131, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
       propertyPath: cam
       value: 
