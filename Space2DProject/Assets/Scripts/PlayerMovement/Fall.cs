@@ -8,17 +8,14 @@ public class Fall : MonoBehaviour
     private Animator fallAnim;
     private FollowPlayer follow;
     private PlayerMovement playerMovement;
-
-    public float teleportCooldown = 1f;
+    private LifeManager lifeManager;
     
     private Transform pointBotLeft;
     private Transform pointTopRight;
     private Transform playerTransform;
     private GameObject playerObj;
     private bool canFall = true;
-
-    public Coroutine teleportFollowerRoutine;
-
+    
     private AudioManager am;
     
     void Start()
@@ -30,6 +27,7 @@ public class Fall : MonoBehaviour
         playerObj = playerTransform.gameObject;
         playerMovement = playerObj.GetComponent<PlayerMovement>();
         fallAnim = fallAnimObj.GetComponent<Animator>();
+        lifeManager =LifeManager.Instance;
         am = AudioManager.Instance;
     }
     
@@ -38,11 +36,7 @@ public class Fall : MonoBehaviour
         if(other.gameObject.layer != 13) return;
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
         if (playerMovement.dashing) return;
-        canFall = false;
-        InputManager.canInput = false;
-        InputManager.canMove = false;
-        
-        
+        InputManager.canInput = lifeManager.canTakeDamge = canFall = false;
         fallAnimObj.transform.position = transform.position;
         am.Play(18, true);
         fallAnim.Play("Noyade");
@@ -56,12 +50,10 @@ public class Fall : MonoBehaviour
         fallAnim.Play("Noyade");
         yield return new WaitForSeconds(2.5f);
         playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = true;
-        LifeManager.Instance.TakeDamages(1);
         playerTransform.position = currentFollower.transform.position;
-        canFall = true;
-        InputManager.canInput = true;
-        InputManager.canMove = true;
-        playerObj.SetActive(true);
+        yield return null;
+        playerObj.SetActive(lifeManager.canTakeDamge = InputManager.canInput = canFall = true);
+        lifeManager.TakeDamages(1);
     }
 
     public IEnumerator TeleportFollower(bool instant = false)
