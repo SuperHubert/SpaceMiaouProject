@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour
         if(uiManager != null && uiManager.pauseUI.activeSelf) return;
         
         
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F))
         {
             if (DialogueManager.Instance.dialogueCanvas.activeSelf)
             {
@@ -63,11 +63,20 @@ public class InputManager : MonoBehaviour
         {
             if (!shopInteraction.shopUI.activeSelf)
             {
-                sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
+                
+                if (sprayAttack.sprayAttackAxis == 0 && Input.GetKey(KeyCode.J))
+                {
+                    sprayAttack.sprayAttackAxis = 1;
+                }
+                else
+                {
+                    sprayAttack.sprayAttackAxis = 0;
+                }
+                if(sprayAttack.sprayAttackAxis == 0) sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
                 playerMovement.shootingAxis = Input.GetAxisRaw("SprayAttack");
                 
-                combat.baseAttack = Input.GetButtonDown("BaseAttack");
-                combat.specialAttack = Input.GetButtonDown("SpecialAttack");
+                combat.baseAttack = Input.GetButtonDown("BaseAttack") || Input.GetKeyDown(KeyCode.K);
+                combat.specialAttack = Input.GetButtonDown("SpecialAttack") || Input.GetKeyDown(KeyCode.L);
             }
             
             shopInteraction.closeShopInput = Input.GetKeyDown(KeyCode.JoystickButton1);
@@ -78,7 +87,7 @@ public class InputManager : MonoBehaviour
         {
             playerMovement.horizontalAxis = Input.GetAxisRaw("Horizontal");
             playerMovement.verticalAxis = Input.GetAxisRaw("Vertical");
-            playerMovement.dash = Input.GetMouseButtonDown(1) || Input.GetAxisRaw("Dash") > 0 || Input.GetAxisRaw("Dash2") > 0;
+            playerMovement.dash = Input.GetAxisRaw("Dash") > 0 || Input.GetAxisRaw("Dash2") > 0 || Input.GetKeyDown(KeyCode.LeftShift);
 
             isMoving = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
         }
@@ -86,7 +95,7 @@ public class InputManager : MonoBehaviour
         if (mapManager != null)
         {
             mapManager.mapExitInput = Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.JoystickButton1);
-            mapManager.mapInput = Input.GetButtonDown("DisplayMap") || Input.GetKeyDown(KeyCode.JoystickButton7);
+            mapManager.mapInput = Input.GetButtonDown("DisplayMap") || Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.M);
         }
         
     }

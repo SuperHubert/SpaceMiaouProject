@@ -13,6 +13,7 @@ public class Colonne : MonoBehaviour,IInteractible
     private void Start()
     {
         if(columnDialogues.Count == 0) columnDialogues = columnDialoguesEditor;
+        am = AudioManager.Instance;
         animator = gameObject.GetComponent<Animator>();
         baseLayer = gameObject.GetComponent<SpriteRenderer>().sortingOrder;
     }
@@ -20,20 +21,16 @@ public class Colonne : MonoBehaviour,IInteractible
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.layer != 10) return;
+        if(!gameObject.GetComponent<CanGoBehind>().enabled) return;
         StartCoroutine(Explode());
     }
 
     public void OnInteraction()
     {
-        if (LoadingLevelData.columnDialogue)
-        {
-            DialogueManager.Instance.StartMultipleDialogues(columnDialogues);
-            LoadingLevelData.columnDialogue = false;
-        }
-        else
-        {
-            StartCoroutine(Explode());
-        }
+        if (!LoadingLevelData.columnDialogue) return;
+        DialogueManager.Instance.StartMultipleDialogues(columnDialogues);
+        LoadingLevelData.columnDialogue = false;
+        StartCoroutine(Explode());
     }
     
     private IEnumerator Explode()
@@ -42,6 +39,7 @@ public class Colonne : MonoBehaviour,IInteractible
         gameObject.GetComponent<CanGoBehind>().enabled = false;
         animator.SetTrigger("Trigger");
         am.Play(35);
+        Debug.Log("sound");
         yield return new WaitForSeconds(1);
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = baseLayer;
 
