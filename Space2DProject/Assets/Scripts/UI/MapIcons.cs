@@ -11,8 +11,7 @@ public class MapIcons : MonoBehaviour
     [SerializeField] private GameObject chestIconPrefab;
     [SerializeField] private Transform chestParent;
     public List<Transform> chestList;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         jonesTrans = LevelManager.Instance.Player().transform;
@@ -20,8 +19,8 @@ public class MapIcons : MonoBehaviour
 
     public void UpdateJonesIconPos(float levelSize)
     {
-        var position = (Vector2) jonesTrans.position * 330 / levelSize + new Vector2(640, 360);
-        jonesIcon.position = position;
+        var position = (Vector2) jonesTrans.position * 330 / levelSize;
+        jonesIcon.localPosition = position;
     }
 
     public void AddChest(GameObject chest)
@@ -34,9 +33,10 @@ public class MapIcons : MonoBehaviour
         Vector2 position = Vector2.zero;
         foreach (var chest in chestList)
         {
-            position = (Vector2) chest.position * 330 / levelSize + new Vector2(640, 360);
+            position = (Vector2) chest.position * 330 / levelSize;
             chest.GetComponent<Chest>().linkedIcon =
                 Instantiate(chestIconPrefab, position, Quaternion.identity, chestParent);
+            chest.GetComponent<Chest>().linkedIcon.transform.localPosition = position;
         }
 
         chestList.Clear();
@@ -53,23 +53,23 @@ public class MapIcons : MonoBehaviour
 
     public void MoveShopIcon(Transform shopTransform, int levelSize,bool active)
     {
-        Vector2 position = (Vector2) shopTransform.position * 330 / levelSize + new Vector2(640, 360);
+        Vector2 position = (Vector2) shopTransform.position * 330 / levelSize;
         if(shopIcon == null) return;
-        shopIcon.position = position;
+        shopIcon.localPosition = position;
         shopIcon.gameObject.SetActive(active);
     }
     
     public void MoveTowerIcon(Transform towerTransform, int levelSize)
     {
-        Vector2 position = (Vector2) towerTransform.position * 330 / levelSize + new Vector2(640, 360);
+        Vector2 position = (Vector2) towerTransform.position * 330 / levelSize;
         if(towerIcon == null) return;
-        towerIcon.position = position;
+        towerIcon.localPosition = position;
     }
     
     public void MovePortalIcon(Transform portalTransform, int levelSize)
     {
-        Vector2 position = (Vector2) portalTransform.position * 330 / levelSize + new Vector2(640, 360);
+        Vector2 position = (Vector2) portalTransform.position * 330 / levelSize;
         if(portalIcon == null) return;
-        portalIcon.position = position;
+        portalIcon.localPosition = position;
     }
 }
