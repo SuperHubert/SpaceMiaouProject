@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private ShopInteraction shopInteraction;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject canvasHP;
     
     void Start()
     {
@@ -45,6 +46,8 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton5))
         {
             canvas.SetActive(!canvas.activeSelf);
+            canvasHP.SetActive(!canvasHP.activeSelf);
+            LifeManager.Instance.canDie = !LifeManager.Instance.canDie;
         }
 
         if(uiManager != null) uiManager.pauseInput = (Input.GetKeyDown(KeyCode.JoystickButton6) || Input.GetKeyDown(KeyCode.Escape));

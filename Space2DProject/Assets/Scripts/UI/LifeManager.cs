@@ -19,7 +19,7 @@ public class LifeManager : MonoBehaviour
     private Material originalMaterial;
     private Coroutine flashRoutine;
 
-    private bool canDie = true;
+    public bool canDie = true;
     
     private AudioManager am;
 

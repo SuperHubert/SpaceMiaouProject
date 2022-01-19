@@ -1026,6 +1026,11 @@ PrefabInstance:
       objectReference: {fileID: 1764349729}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+--- !u!1 &935626966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782007306, guid: 4d9a3ec63e26eaa43a4851bb2f230eb4, type: 3}
+  m_PrefabInstance: {fileID: 935626965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &968109814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 232190760378284535, guid: 3f5e0a6e473088b43a0469edc197c2b2, type: 3}
@@ -1530,6 +1535,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 385766034}
+    - target: {fileID: 2092646708, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
+      propertyPath: canvasHP
+      value: 
+      objectReference: {fileID: 935626966}
     - target: {fileID: 2092646708, guid: ff58718954dca62489ce5721d36f7d5a, type: 3}
       propertyPath: playerObj
       value: 
