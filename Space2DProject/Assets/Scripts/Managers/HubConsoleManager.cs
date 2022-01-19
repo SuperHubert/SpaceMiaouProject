@@ -45,7 +45,7 @@ public class HubConsoleManager : MonoBehaviour
         
         RESETDATA = new Command("resetdata", "Reset Data (Sets the seed to the current time)", "resetdata", () =>
         {
-            loadingLevelData.ResetData();
+            loadingLevelData.ResetData(true);
             Print("Data has been reset");
         });
         

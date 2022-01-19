@@ -42,7 +42,7 @@ public class LoadingLevelData : MonoBehaviour
         ResetData();
     }
 
-    public void ResetData()
+    public void ResetData(bool includeDialogues = false)
     {
         DateTime dateTime = DateTime.Now;
         int seconds = dateTime.Second;
@@ -51,5 +51,12 @@ public class LoadingLevelData : MonoBehaviour
         int days = 1000000*dateTime.Day;
         int months = 100000000*dateTime.Month;
         seed = seconds+minutes+hours+days+months;
+        if(!includeDialogues) return;
+        towerDialogue = 0;
+        firstRun = true;
+        shopDialogue = true;
+        columnDialogue = true;
+        sprayAmmoDialogue = true;
+        bossDead = false;
     }
 }

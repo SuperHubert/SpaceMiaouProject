@@ -214,6 +214,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             LoadingLevelData.Instance.score = UIManager.Instance.score;
+            LoadingLevelData.Instance.ResetData();
             LoadingManager.Instance.UpdateLoading(0);
             SceneManager.LoadScene(6);
         }

@@ -11,8 +11,6 @@ public class Credits : MonoBehaviour
     
     void Start()
     {
-        AudioManager.Instance.Play(24);
-        
         if (LoadingLevelData.creditsGoToMenu)
         {
             movingCredits.SetActive(false);
@@ -22,6 +20,7 @@ public class Credits : MonoBehaviour
         {
             movingCredits.SetActive(true);
             staticCredits.SetActive(false);
+            AudioManager.Instance.Play(24);
         }
 
         scoreText = score.GetComponent<TextMeshProUGUI>();
@@ -37,10 +36,10 @@ public class Credits : MonoBehaviour
     private void ReturnToHub()
     {
         if (!Input.anyKeyDown) return;
+
+        if (!score.activeSelf && !LoadingLevelData.creditsGoToMenu) return;
         
-        if (score.activeSelf || LoadingLevelData.creditsGoToMenu)
-        {
-            SceneManager.LoadScene(LoadingLevelData.creditsGoToMenu ? 2 : 3);
-        }
+        AudioManager.Instance.Stop(24,true);
+        SceneManager.LoadScene(LoadingLevelData.creditsGoToMenu ? 2 : 3);
     }
 }

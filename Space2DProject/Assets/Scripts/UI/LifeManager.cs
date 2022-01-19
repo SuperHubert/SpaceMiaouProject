@@ -64,8 +64,7 @@ public class LifeManager : MonoBehaviour
     }
 
    public void Die(bool instant = false)
-   { 
-       //LevelManager.Instance.Player().GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
+   {
        LevelManager.Instance.Player().SetActive(false);
        LoadingLevelData.Instance.score = UIManager.Instance.score;
        Time.timeScale = 1f;
@@ -128,19 +127,4 @@ public class LifeManager : MonoBehaviour
        InputManager.canInput = false;
        StartCoroutine(PlayDyingAnimation(true,0));
    }
-   
-
-   //testing camera shake values
-   /*
-   public float duration;
-   public Vector3 strength;
-   public int vibration;
-   public bool fadeOut;
-   
-   public void TestShake()
-   {
-       mainCamera.DOShakePosition(duration,strength,vibration,0,fadeOut);
-   }
-    */
-
 }
