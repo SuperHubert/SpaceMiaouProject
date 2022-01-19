@@ -18,6 +18,8 @@ public class LifeManager : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
     private Coroutine flashRoutine;
+
+    private bool canDie = true;
     
     private AudioManager am;
 
@@ -54,8 +56,16 @@ public class LifeManager : MonoBehaviour
         }
         else if (lifeBar <= 0)
         {
-            lifeBar = 0;
-            Die();
+            if (canDie)
+            {
+                lifeBar = 0;
+                Die();
+            }
+            else
+            {
+                lifeBar = 1;
+            }
+            
         }
 
         UIManager.Instance.UpdateHp((float)lifeBar/maxHP);
@@ -64,8 +74,7 @@ public class LifeManager : MonoBehaviour
     }
 
    public void Die(bool instant = false)
-   { 
-       //LevelManager.Instance.Player().GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
+   {
        LevelManager.Instance.Player().SetActive(false);
        LoadingLevelData.Instance.score = UIManager.Instance.score;
        Time.timeScale = 1f;
@@ -129,18 +138,4 @@ public class LifeManager : MonoBehaviour
        StartCoroutine(PlayDyingAnimation(true,0));
    }
    
-
-   //testing camera shake values
-   /*
-   public float duration;
-   public Vector3 strength;
-   public int vibration;
-   public bool fadeOut;
-   
-   public void TestShake()
-   {
-       mainCamera.DOShakePosition(duration,strength,vibration,0,fadeOut);
-   }
-    */
-
 }

@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private MapManager mapManager;
     [SerializeField] private ShopInteraction shopInteraction;
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private GameObject canvas;
     
     void Start()
     {
@@ -34,6 +35,16 @@ public class InputManager : MonoBehaviour
                 if (Input.GetKey(kcode))
                     Debug.Log("KeyCode down: " + kcode);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.JoystickButton4))
+        {
+            Time.timeScale = Time.timeScale > 0.5f ? 0 : 1;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.JoystickButton5))
+        {
+            canvas.SetActive(!canvas.activeSelf);
         }
 
         if(uiManager != null) uiManager.pauseInput = (Input.GetKeyDown(KeyCode.JoystickButton6) || Input.GetKeyDown(KeyCode.Escape));

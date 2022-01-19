@@ -76,31 +76,31 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: HubOST
     clip: {fileID: 8300000, guid: c59b3b6727a49734588cfd8bfc60225b, type: 3}
-    volume: 0.6
+    volume: 0
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Biome1OST
     clip: {fileID: 8300000, guid: 69d87f5f528ed184fb698a81e57b9054, type: 3}
-    volume: 0.8
+    volume: 0
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Biome2OST
     clip: {fileID: 8300000, guid: 77d61d5706d93e1429c8d5a892c96e1f, type: 3}
-    volume: 0.8
+    volume: 0
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Biome3OST
     clip: {fileID: 8300000, guid: 22451f161d4e55f4cb57077268a64261, type: 3}
-    volume: 0.8
+    volume: 0
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: BossFightOST
     clip: {fileID: 8300000, guid: f2591564cf98c3b4ba89322652652212, type: 3}
-    volume: 0.8
+    volume: 0
     pitch: 1.1
     loop: 0
     source: {fileID: 0}
