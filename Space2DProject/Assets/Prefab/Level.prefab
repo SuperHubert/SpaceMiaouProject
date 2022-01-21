@@ -893,10 +893,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2545915620620602384}
     m_Modifications:
-    - target: {fileID: 593867141416601127, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
-      propertyPath: offset
-      value: -0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 2233394246705086644, guid: 9929856c85fafd043ab23c324c345f03, type: 3}
       propertyPath: m_Name
       value: Shop
