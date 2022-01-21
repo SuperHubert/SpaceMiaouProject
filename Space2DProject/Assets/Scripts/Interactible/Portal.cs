@@ -9,8 +9,6 @@ public class Portal : MonoBehaviour, IInteractible
 
     public void OnInteraction()
     {
-        followPlayer.canMove = false;
-        
         rayObj.SetActive(true);
         
         DialogueManager.Instance.EndDialogue();

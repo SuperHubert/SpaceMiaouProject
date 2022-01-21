@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5413473680694493045}
   - component: {fileID: 5413473680694493046}
   - component: {fileID: 5413473680694493043}
-  - component: {fileID: 5413473680694493044}
   - component: {fileID: 5718726045862293568}
   m_Layer: 14
   m_Name: PortalPos
@@ -111,21 +110,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5413473680694493044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5413473680694493047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93deeb0e582ce5b4bbd5d850ea5c0cc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followPlayer: {fileID: 0}
-  shopInteraction: {fileID: 0}
-  rayObj: {fileID: 0}
 --- !u!114 &5718726045862293568
 MonoBehaviour:
   m_ObjectHideFlags: 0

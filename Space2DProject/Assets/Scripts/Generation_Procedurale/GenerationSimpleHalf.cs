@@ -457,8 +457,6 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         Random.state = randState;
-
-        followPlayer.isInHub = false;
         
         DestroySomeChests();
 

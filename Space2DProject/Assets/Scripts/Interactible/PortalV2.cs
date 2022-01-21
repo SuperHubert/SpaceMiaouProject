@@ -20,8 +20,6 @@ public class PortalV2 : MonoBehaviour, IInteractible
 
     public void OnInteraction()
     {
-        followPlayer.canMove = false;
-        
         DialogueManager.Instance.EndDialogue();
         
         shopInteraction.displayList.Clear();

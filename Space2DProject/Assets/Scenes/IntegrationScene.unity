@@ -1051,21 +1051,13 @@ PrefabInstance:
       propertyPath: sprayImage
       value: 
       objectReference: {fileID: 385766026}
-    - target: {fileID: 3747763753785216952, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3747763753785216955, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: fogOfWar
       value: 
       objectReference: {fileID: 2103139292}
-    - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3747763753785216958, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -26.46
+    - target: {fileID: 3747763753785216964, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8147461662139558952, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: VelocityModule.x.scalar
@@ -1127,7 +1119,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4865300751528322498, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
 --- !u!1 &1017999290 stripped
 GameObject:

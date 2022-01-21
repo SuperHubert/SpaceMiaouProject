@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class Fall : MonoBehaviour
 {
-    public GameObject currentFollower;
     public GameObject fallAnimObj;
     private Animator fallAnim;
-    private FollowPlayer follow;
+    [SerializeField] private FollowPlayer follow;
     private PlayerMovement playerMovement;
     private LifeManager lifeManager;
     
@@ -22,7 +21,6 @@ public class Fall : MonoBehaviour
     {
         pointBotLeft = transform.GetChild(0);
         pointTopRight = transform.GetChild(1);
-        follow = currentFollower.GetComponent<FollowPlayer>();
         playerTransform = transform.parent;
         playerObj = playerTransform.gameObject;
         playerMovement = playerObj.GetComponent<PlayerMovement>();
@@ -46,7 +44,7 @@ public class Fall : MonoBehaviour
         am.Play(18, true);
         fallAnim.Play("Noyade");
         yield return new WaitForSeconds(1f);
-        playerTransform.position = currentFollower.transform.position;
+        playerTransform.position = follow.teleportSpot;
         yield return null;
         lifeManager.TakeDamages(1);
     }
@@ -54,8 +52,7 @@ public class Fall : MonoBehaviour
     public IEnumerator TeleportFollower(bool instant = false)
     {
         if(instant)yield return null;
-        follow.WarpToPlayer();
-        follow.canMove = true;
+        follow.ResetTeleportSpot();
     }
 
     public void ResetFollowerPos()

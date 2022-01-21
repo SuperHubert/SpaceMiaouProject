@@ -73,7 +73,6 @@ public class LevelManager : MonoBehaviour
     public void StartNewRun(int rooms, int seed)
     {
         if (!canGenerate) return;
-        playerFollower.isInHub = true;
         if (rooms < 0)
         {
             if (LoadingLevelData.Instance != null)
@@ -125,6 +124,8 @@ public class LevelManager : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
+
+        Player().SetActive(false);
     }
     
     private IEnumerator NewLevel()
@@ -297,10 +298,8 @@ public class LevelManager : MonoBehaviour
     public void MovePlayer(Transform position)
     {
         mainCamera.position = player.position = position.position;
-        if (playerFall != null && playerFall.GetComponent<Fall>() != null)
-        {
-            StartCoroutine(playerFall.GetComponent<Fall>().TeleportFollower(true));
-        }
+        if (playerFall == null || playerFall.GetComponent<Fall>() == null) return;
+        if(player.gameObject.activeSelf) playerFall.GetComponent<Fall>().ResetFollowerPos();
     }
     
     public void GeneratePreviousLevel()
@@ -430,6 +429,8 @@ public class LevelManager : MonoBehaviour
 
     public void PlayIntroDialogue()
     {
+        Player().SetActive(true);
+        MovePlayer(player);
         if(!LoadingLevelData.firstRun) return;
         DialogueManager.Instance.StartMultipleDialogues(introDialogues,false);
         LoadingLevelData.firstRun = false;
