@@ -8,19 +8,19 @@ public class PortalV2 : MonoBehaviour, IInteractible
     private Animator animator;
     private Transform tpPos;
     private AudioManager am;
+    private LevelManager lm;
 
     private void Start()
     {
         tpPos = transform.GetChild(1);
         animator = gameObject.GetComponent<Animator>();
         am = AudioManager.Instance;
+        lm = LevelManager.Instance;
     }
 
     public void OnInteraction()
     {
         followPlayer.canMove = false;
-
-
         
         DialogueManager.Instance.EndDialogue();
         
@@ -35,14 +35,13 @@ public class PortalV2 : MonoBehaviour, IInteractible
     {
         am.Play(31, true);
 
-        LevelManager.Instance.MovePlayer(tpPos);
-        LevelManager.Instance.Player().SetActive(false);
-        tpPos.gameObject.SetActive(true);
+        lm.MovePlayer(tpPos);
         
+        tpPos.gameObject.SetActive(true);
+        lm.DisablePlayer(1.22f);
         yield return new WaitForSeconds(1.22f);
         
         LoadingManager.Instance.UpdateLoading();
-        LevelManager.Instance.GenerateNextLevel();
-        LevelManager.Instance.Player().SetActive(true);
+        lm.GenerateNextLevel();
     }
 }

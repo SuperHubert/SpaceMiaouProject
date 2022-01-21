@@ -239,7 +239,7 @@ public class LevelManager : MonoBehaviour
                 StartCoroutine(LatePlay(6, 3));
                 break;
             case 1:
-                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.3960784f, 0.05882353f, 0.09411765f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.3294118f,0.03921569f,0.03921569f,1);
                 globalLight.color = new Color(0.8396226f,0.6663744f,0.4475347f, 1);
                 portalSpriteRenderer.sprite = portalBiome2;
                 towerSpriteRenderer.sprite = towerBiome2;
@@ -248,7 +248,7 @@ public class LevelManager : MonoBehaviour
                 StartCoroutine(LatePlay(7, 3));
                 break;
             case 2:
-                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.09411765f, 0.07843138f, 0.07843138f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.02352941f,0.01568628f,0.01568628f,1);
                 globalLight.color = new Color(0.2641509f,0.2159546f,0.1831613f,1f);
                 portalSpriteRenderer.sprite = portalBiome3;
                 towerSpriteRenderer.sprite = towerBiome3;
@@ -257,7 +257,7 @@ public class LevelManager : MonoBehaviour
                 StartCoroutine(LatePlay(8, 3));
                 break;
             default:
-                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.03137255f, 0.09019608f, 0.145098f, 1);
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.01176471f,0.0627451f,0.1176471f,1f);
                 globalLight.color = Color.white;
                 portalSpriteRenderer.sprite = portalBiome1;
                 towerSpriteRenderer.sprite = towerBiome1;
