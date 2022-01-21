@@ -36,23 +36,17 @@ public class Fall : MonoBehaviour
         if(other.gameObject.layer != 13) return;
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
         if (playerMovement.dashing) return;
-        InputManager.canInput = lifeManager.canTakeDamge = canFall = false;
+        StartCoroutine(DoTheFalling());
+    }
+    
+    IEnumerator DoTheFalling()
+    {
+        LevelManager.Instance.DisablePlayer(1f);
         fallAnimObj.transform.position = transform.position;
         am.Play(18, true);
         fallAnim.Play("Noyade");
-        
-        playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = false;
-        StartCoroutine(DoTheFalling());
-    }
-
-    IEnumerator DoTheFalling()
-    {
-        fallAnim.Play("Noyade");
-        yield return new WaitForSeconds(2.5f);
-        playerTransform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = playerObj.GetComponent<SpriteRenderer>().enabled = LifeManager.Instance.canTakeDamge = true;
+        yield return new WaitForSeconds(1f);
         playerTransform.position = currentFollower.transform.position;
-        yield return null;
-        playerObj.SetActive(lifeManager.canTakeDamge = InputManager.canInput = canFall = true);
         lifeManager.TakeDamages(1);
     }
 
