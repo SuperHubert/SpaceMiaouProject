@@ -1,8 +1,23 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class BigWalkTowardsBehaviour : EnemyBehaviour
 {
+    private Collider2D col;
+
+    protected override void InitVariables()
+    {
+        base.InitVariables();
+        col = enemyTransform.GetComponent<Collider2D>();
+    }
+
+    public override void Respawn()
+    {
+        base.Respawn();
+        col.enabled = true;
+    }
+
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -61,6 +76,7 @@ public class BigWalkTowardsBehaviour : EnemyBehaviour
         StopAllCoroutines();
         currentState = State.Dead;
         agent.velocity = Vector3.zero;
+        col.enabled = false;
         if(agent.isOnNavMesh) agent.isStopped = true;
         StartCoroutine(PlayAnim());
     }
