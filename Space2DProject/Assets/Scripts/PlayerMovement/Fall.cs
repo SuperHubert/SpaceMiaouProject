@@ -47,6 +47,7 @@ public class Fall : MonoBehaviour
         playerTransform.position = follow.teleportSpot;
         yield return null;
         lifeManager.TakeDamages(1);
+        playerObj.GetComponent<PlayerMovement>().dashCd = 0;
     }
 
     public IEnumerator TeleportFollower(bool instant = false)
