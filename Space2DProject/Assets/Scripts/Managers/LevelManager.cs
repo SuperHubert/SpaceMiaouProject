@@ -433,6 +433,20 @@ public class LevelManager : MonoBehaviour
         if(!LoadingLevelData.firstRun) return;
         DialogueManager.Instance.StartMultipleDialogues(introDialogues,false);
         LoadingLevelData.firstRun = false;
+    }
 
+    public void DisablePlayer(float duration)
+    {
+        StartCoroutine(DisableRoutine(duration));
+    }
+
+    IEnumerator DisableRoutine(float duration)
+    {
+        player.GetChild(7).GetComponent<SpriteRenderer>().enabled = player.GetChild(0).GetComponent<SpriteRenderer>().enabled = Player().GetComponent<SpriteRenderer>().enabled = InputManager.canInput = false;
+        LifeManager.Instance.canTakeDamge = false;
+        yield return new WaitForSeconds(duration);
+        LifeManager.Instance.canTakeDamge = true;
+        yield return null;
+        player.GetChild(7).GetComponent<SpriteRenderer>().enabled = player.GetChild(0).GetComponent<SpriteRenderer>().enabled = Player().GetComponent<SpriteRenderer>().enabled = InputManager.canInput = true;
     }
 }
