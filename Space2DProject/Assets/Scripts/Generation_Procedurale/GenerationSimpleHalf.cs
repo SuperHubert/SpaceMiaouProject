@@ -355,9 +355,10 @@ public class GenerationSimpleHalf : MonoBehaviour
             {
                 GameObject waterObj = Instantiate(renderers.GetChild(i).gameObject, room.transform.GetChild(roomSpriteRendersIndex));
                 if (i != 2) continue;
-                var tempColor = waterObj.GetComponent<SpriteRenderer>().color;
-                tempColor.a = 0.7f;
-                waterObj.GetComponent<SpriteRenderer>().color = tempColor;
+                waterObj.GetComponent<SpriteRenderer>().sortingOrder = -1;
+                //var tempColor = waterObj.GetComponent<SpriteRenderer>().color;
+                //tempColor.a = 0.7f;
+                //waterObj.GetComponent<SpriteRenderer>().color = tempColor;
             }
             
             if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
