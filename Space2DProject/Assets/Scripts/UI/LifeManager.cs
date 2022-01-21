@@ -13,6 +13,7 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private GameObject deathObj;
 
     [SerializeField] private Material flashMaterial;
+
     private Camera mainCamera;
 
     private SpriteRenderer spriteRenderer;
@@ -44,8 +45,8 @@ public class LifeManager : MonoBehaviour
         lifeBar -= damages;
         if (damages > 0)
         {
-            Flash();
             am.Play(13, true);
+            mainCamera.DOShakePosition(0.05f,new Vector3(0.1f,0.4f,0),8,0,true);
             StartCoroutine(InvulFrames());
         }
         if (lifeBar > maxHP)
@@ -64,8 +65,7 @@ public class LifeManager : MonoBehaviour
     }
 
    public void Die(bool instant = false)
-   { 
-       //LevelManager.Instance.Player().GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
+   {
        LevelManager.Instance.Player().SetActive(false);
        LoadingLevelData.Instance.score = UIManager.Instance.score;
        Time.timeScale = 1f;
@@ -100,47 +100,24 @@ public class LifeManager : MonoBehaviour
    private IEnumerator InvulFrames()
    {
        canTakeDamge = false;
-       yield return new WaitForSeconds(invulTime);
-       canTakeDamge = true;
-   }
-
-   private void Flash()
-   {
-       if(flashRoutine != null) StopCoroutine(flashRoutine);
-       mainCamera.DOShakePosition(0.05f,new Vector3(0.1f,0.4f,0),8,0,true);
-       flashRoutine = StartCoroutine(FlashRoutine());
-   }
-   
-   IEnumerator FlashRoutine()
-   {
        spriteRenderer.material = flashMaterial;
        yield return new WaitForSeconds(0.1f);
        spriteRenderer.material = originalMaterial;
-       flashRoutine = null;
+       var tempColor = spriteRenderer.color;
+       tempColor.a = 0.7f;
+       spriteRenderer.color = tempColor;
+       yield return new WaitForSeconds(invulTime - 0.1f);
+       tempColor.a = 1f;
+       spriteRenderer.color = tempColor;
+       canTakeDamge = true;
    }
-
+   
    public void CleanReturnToMenu()
    {
-       //LevelManager.Instance.Player().GetComponent<Combat2>().playerAnimator.SetTrigger("Dead");
        LevelManager.Instance.Player().SetActive(false);
        LoadingLevelData.Instance.score = UIManager.Instance.score;
        Time.timeScale = 1f;
        InputManager.canInput = false;
        StartCoroutine(PlayDyingAnimation(true,0));
    }
-   
-
-   //testing camera shake values
-   /*
-   public float duration;
-   public Vector3 strength;
-   public int vibration;
-   public bool fadeOut;
-   
-   public void TestShake()
-   {
-       mainCamera.DOShakePosition(duration,strength,vibration,0,fadeOut);
-   }
-    */
-
 }

@@ -2797,10 +2797,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 3747763753785216952, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3747763753785216955, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: fogOfWar
       value: 
@@ -2865,10 +2861,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8800626576473368606, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 8800626576857137171, guid: 4372e1a7ca96ffa41a07171cf897cad0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

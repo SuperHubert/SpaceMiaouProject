@@ -35,7 +35,7 @@ public class Fall : MonoBehaviour
     {
         if(other.gameObject.layer != 13) return;
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
-        if (playerMovement.dashing) return;
+        if (playerMovement.dashing || !LifeManager.Instance.canTakeDamge) return;
         StartCoroutine(DoTheFalling());
     }
     
@@ -47,6 +47,7 @@ public class Fall : MonoBehaviour
         fallAnim.Play("Noyade");
         yield return new WaitForSeconds(1f);
         playerTransform.position = currentFollower.transform.position;
+        yield return null;
         lifeManager.TakeDamages(1);
     }
 
