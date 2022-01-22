@@ -26,6 +26,8 @@ public class PortalV2 : MonoBehaviour, IInteractible
         
         animator.SetTrigger("Trigger");
 
+        lm.DisablePlayer(1.22f);
+        
         StartCoroutine(AnimationRoutine());
     }
 
@@ -36,9 +38,9 @@ public class PortalV2 : MonoBehaviour, IInteractible
         lm.MovePlayer(tpPos);
         
         tpPos.gameObject.SetActive(true);
-        lm.DisablePlayer(1.22f);
         yield return new WaitForSeconds(1.22f);
-        
+        lm.Player().SetActive(false);
+
         LoadingManager.Instance.UpdateLoading();
         lm.GenerateNextLevel();
     }

@@ -15,6 +15,7 @@ public class Colonne : MonoBehaviour,IInteractible
         if(columnDialogues.Count == 0) columnDialogues = columnDialoguesEditor;
         animator = gameObject.GetComponent<Animator>();
         baseLayer = gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+        am = AudioManager.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

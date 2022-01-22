@@ -680,6 +680,7 @@ MonoBehaviour:
   enemyBehaviour: {fileID: 0}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
   spriteRenderer: {fileID: 4333456302616705398}
+  damageIndicatorPrefab: {fileID: 1425911417197815886, guid: 9a31e8be4ab07eb4ea4bbc5b89ccac46, type: 3}
   bossHealth: 0
   phaseThresholds: 
 --- !u!114 &8615422511945313140

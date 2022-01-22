@@ -33,10 +33,12 @@ public class EnemyHealth : MonoBehaviour
     private Material originalMaterial;
     private Coroutine flashRoutine;
 
+    private Transform levelCanvas;
+    public GameObject damageIndicatorPrefab;
+    
     [SerializeField] private bool bossHealth = false;
     private NewBossBehaviour bossBehaviour;
     [SerializeField] private List<int> phaseThresholds = new List<int>();
-
     private AudioManager am;
 
 
@@ -45,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         InitEnemy();
         if (bossHealth) bossBehaviour = transform.parent.GetComponent<NewBossBehaviour>();
         am = AudioManager.Instance;
+        levelCanvas = LevelManager.Instance.Level().GetChild(5);
     }
 
     private void Update()
@@ -107,13 +110,15 @@ public class EnemyHealth : MonoBehaviour
         {
             if (bossHealth && bossBehaviour.arenaMode)
             {
-                //playSound and particule
+                am.Play(29);
                 return;
             }
             
             ResizeHealthBar();
 
             currentHealth -= damage;
+
+            DisplayDamage((int)damage);
 
             am.Play(20);
             
@@ -208,6 +213,20 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
+    }
+
+    private void DisplayDamage(int damage)
+    {
+        var position = transform.position;
+
+        position.z = 0f;
+        position.y += healthBarOffset;
+
+        position = cam.WorldToScreenPoint(position);
+
+        var damagePopup = Instantiate(damageIndicatorPrefab, position, Quaternion.identity,levelCanvas);
+        damagePopup.GetComponent<DamageMove>().linkedEnemy = transform;
+        damagePopup.GetComponent<DamageMove>().damage = damage;
     }
 
     public void KnockBack(Vector3 pos, float duration = 1f)
