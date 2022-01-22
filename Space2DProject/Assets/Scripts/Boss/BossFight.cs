@@ -11,6 +11,7 @@ public class BossFight : MonoBehaviour
     private Transform startPos;
     public GameObject playerFollower;
     public GameObject mapHider;
+    public GameObject mapHiderMinimap;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class BossFight : MonoBehaviour
         bossStartRoom.SetActive(yes);
         playerFollower.SetActive(!yes);
         mapHider.SetActive(yes);
+        mapHiderMinimap.SetActive(yes);
         
         isInBossFight = yes;
 

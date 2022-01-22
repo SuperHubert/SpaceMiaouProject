@@ -9,6 +9,7 @@ public class Chest : MonoBehaviour, IInteractible
     private Animator anim;
     private Collider2D col;
     public GameObject linkedIcon;
+    public GameObject linkedIconMinimap;
     private AudioManager am;
 
     private void Start()
@@ -47,6 +48,7 @@ public class Chest : MonoBehaviour, IInteractible
     {
         col.enabled = false;
         linkedIcon.SetActive(false);
+        linkedIconMinimap.SetActive(false);
         StartCoroutine(PlayOpenAnim());
         am.Play(27, true);
     }

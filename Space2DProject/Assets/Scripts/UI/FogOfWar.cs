@@ -6,12 +6,13 @@ public class FogOfWar : MonoBehaviour
 
     // Component for the mask
     public RawImage rawImage;
+    public RawImage rawImageMinimap;
+    
     // Place to draw our revealing smudges
     public RenderTexture targetRender;
     public RectTransform targetImage;
     public FogOfWarReverse reverse;
-
-    public InputManager inputManager;
+    
     public int levelSize;
     public int revealSize;
 
@@ -36,8 +37,7 @@ public class FogOfWar : MonoBehaviour
         if (levelSize == 0) return;
         localPoint = point * 330 / levelSize + Vector2.one * 330;
         RenderTexture.active = targetRender;
-
-
+        
         // Draw circle to reveal content
         int xPos = Mathf.RoundToInt((localPoint.x / targetImage.sizeDelta.x) * (float)targetRender.width);
         int yPos = Mathf.RoundToInt((localPoint.y / targetImage.sizeDelta.y) * (float)targetRender.height);
@@ -59,8 +59,7 @@ public class FogOfWar : MonoBehaviour
                 }
             }    
         }
-            
-        // Don't forget to apply the result
+        
         texture.Apply();
 
         RenderTexture.active = null;
@@ -84,16 +83,8 @@ public class FogOfWar : MonoBehaviour
         texture.Apply();
         
         rawImage.texture = texture;
+        rawImageMinimap.texture = texture;
         
         reverse.ClearFog();
-    }
-
-    public void MoveOnMap(Transform reference, Transform target)
-    {
-        var refPos = reference.position;
-        int xPos = Mathf.RoundToInt((refPos.x / targetImage.sizeDelta.x) * (float)targetRender.width);
-        int yPos = Mathf.RoundToInt((refPos.y / targetImage.sizeDelta.y) * (float)targetRender.height);
-
-        target.position = new Vector3(xPos, yPos, 0);
     }
 }

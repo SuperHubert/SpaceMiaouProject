@@ -7,9 +7,14 @@ public class MapIcons : MonoBehaviour
     public RectTransform shopIcon;
     public RectTransform towerIcon;
     public RectTransform portalIcon;
+    public RectTransform jonesIconMinimap;
+    public RectTransform shopIconMinimap;
+    public RectTransform towerIconMinimap;
+    public RectTransform portalIconMinimap;
     private Transform jonesTrans;
     [SerializeField] private GameObject chestIconPrefab;
     [SerializeField] private Transform chestParent;
+    [SerializeField] private Transform chestParentMinimap;
     public List<Transform> chestList;
     
     void Start()
@@ -21,6 +26,7 @@ public class MapIcons : MonoBehaviour
     {
         var position = (Vector2) jonesTrans.position * 330 / levelSize;
         jonesIcon.localPosition = position;
+        jonesIconMinimap.localPosition = position;
     }
 
     public void AddChest(GameObject chest)
@@ -37,6 +43,9 @@ public class MapIcons : MonoBehaviour
             chest.GetComponent<Chest>().linkedIcon =
                 Instantiate(chestIconPrefab, position, Quaternion.identity, chestParent);
             chest.GetComponent<Chest>().linkedIcon.transform.localPosition = position;
+            chest.GetComponent<Chest>().linkedIconMinimap =
+                Instantiate(chestIconPrefab, position, Quaternion.identity, chestParentMinimap);
+            chest.GetComponent<Chest>().linkedIconMinimap.transform.localPosition = position;
         }
 
         chestList.Clear();
@@ -49,6 +58,12 @@ public class MapIcons : MonoBehaviour
         {
             Destroy(icon.gameObject);
         }
+
+        foreach (Transform icon in chestParentMinimap)
+        {
+            Destroy(icon.gameObject);
+        }
+
     }
 
     public void MoveShopIcon(Transform shopTransform, int levelSize,bool active)
@@ -56,7 +71,9 @@ public class MapIcons : MonoBehaviour
         Vector2 position = (Vector2) shopTransform.position * 330 / levelSize;
         if(shopIcon == null) return;
         shopIcon.localPosition = position;
+        shopIconMinimap.localPosition = position;
         shopIcon.gameObject.SetActive(active);
+        
     }
     
     public void MoveTowerIcon(Transform towerTransform, int levelSize)
@@ -64,6 +81,7 @@ public class MapIcons : MonoBehaviour
         Vector2 position = (Vector2) towerTransform.position * 330 / levelSize;
         if(towerIcon == null) return;
         towerIcon.localPosition = position;
+        towerIconMinimap.localPosition = position;
     }
     
     public void MovePortalIcon(Transform portalTransform, int levelSize)
@@ -71,5 +89,6 @@ public class MapIcons : MonoBehaviour
         Vector2 position = (Vector2) portalTransform.position * 330 / levelSize;
         if(portalIcon == null) return;
         portalIcon.localPosition = position;
+        portalIconMinimap.localPosition = position;
     }
 }
