@@ -13,7 +13,9 @@ public class Cinematic : MonoBehaviour
 
     [SerializeField] private float timeBetweenLetters = 0.005f;
     private Coroutine typingCoroutine;
+    private Coroutine soundCoroutine;
     private bool isDoneTyping = true;
+    private AudioManager am;
     
     [System.Serializable] public class CinematicItem
     {
@@ -25,6 +27,8 @@ public class Cinematic : MonoBehaviour
     
     void Start()
     {
+        am = AudioManager.Instance;
+        
         LoadingManager.Instance.UpdateLoading(2);
         if (LoadingLevelData.hasLaunchedGame)
         {
@@ -58,9 +62,11 @@ public class Cinematic : MonoBehaviour
         
         if(typingCoroutine != null) StopCoroutine(typingCoroutine);
         typingCoroutine = StartCoroutine(TypeSentence(itemList[index].description));
+        if(soundCoroutine != null) StopCoroutine(soundCoroutine);
+        soundCoroutine = StartCoroutine(PlayTypingSound());
     }
 
-    public void GoToImage(int number)
+    private void GoToImage(int number)
     {
         image.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
@@ -70,6 +76,8 @@ public class Cinematic : MonoBehaviour
         
         if(typingCoroutine != null) StopCoroutine(typingCoroutine);
         typingCoroutine = StartCoroutine(TypeSentence(itemList[number].description));
+        if(soundCoroutine != null) StopCoroutine(soundCoroutine);
+        soundCoroutine = StartCoroutine(PlayTypingSound());
     }
     
     public void NextImage()
@@ -95,10 +103,13 @@ public class Cinematic : MonoBehaviour
 
             if(typingCoroutine != null) StopCoroutine(typingCoroutine);
             typingCoroutine = StartCoroutine(TypeSentence(itemList[index].description));
+            if(soundCoroutine != null) StopCoroutine(soundCoroutine);
+            soundCoroutine = StartCoroutine(PlayTypingSound());
         }
         else
         {
             if(typingCoroutine != null) StopCoroutine(typingCoroutine);
+            if(soundCoroutine != null) StopCoroutine(soundCoroutine);
             isDoneTyping = true;
             text.text = itemList[index].description;
         }
@@ -115,6 +126,16 @@ public class Cinematic : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenLetters);;
         }
         isDoneTyping = true;
+    }
+    
+    private IEnumerator PlayTypingSound()
+    {
+        do
+        {
+            am.Play(index != 5 ? 0 : 23);
+            yield return new WaitForSeconds(0.2f);
+        } while (!isDoneTyping);
+        
     }
 
     private IEnumerator BeginCutscene()

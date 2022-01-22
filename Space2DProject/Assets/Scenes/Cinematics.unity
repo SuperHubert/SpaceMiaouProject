@@ -801,7 +801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1538210638}
   text: {fileID: 1848393729}
-  index: -1
+  index: 4
   timeBetweenLetters: 0.04
   itemList:
   - sprite: {fileID: 21300000, guid: 9a764ed34ff8e10489c0857a100d357e, type: 3}

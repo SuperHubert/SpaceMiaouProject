@@ -293,6 +293,8 @@ public class LevelManager : MonoBehaviour
         
         LoadingManager.Instance.UpdateLoading(2);
         
+        Player().SetActive(true);
+        
     }
 
     public void MovePlayer(Transform position)
