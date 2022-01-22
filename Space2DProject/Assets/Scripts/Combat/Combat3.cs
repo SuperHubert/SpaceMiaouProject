@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat2 : MonoBehaviour
+public class Combat3 : MonoBehaviour
 {
     //Animations
     public Animator playerAnimator;
@@ -99,7 +99,7 @@ public class Combat2 : MonoBehaviour
         {
             if (enemy.gameObject.layer == 7)
             {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
+                //enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
                 sprayAttack.currentSpray += sprayGainNormal;
                 sprayAttack.UpdateSprayBar();
                 playerMovement.dashCd = 0;
@@ -134,14 +134,14 @@ public class Combat2 : MonoBehaviour
 
     private void WaveAttack()
     {
-        Destroy(Instantiate(specialFX, transform.position, Quaternion.identity, gameObject.transform), 1f);
+        //Destroy(Instantiate(specialFX, transform.position, Quaternion.identity, gameObject.transform), 1f);
         Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.8f);
 
         foreach (Collider2D enemy in hit)
         {
             if (enemy.gameObject.layer != 7) continue;
             if (enemy.GetComponent<EnemyHealth>() == null) continue;
-            enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
+            //enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
             sprayAttack.currentSpray += sprayGainSpecial;
             sprayAttack.UpdateSprayBar();
             playerMovement.dashCd = 0;

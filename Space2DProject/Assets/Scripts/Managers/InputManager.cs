@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     
     private SprayAttack sprayAttack;
     private Combat2 combat;
+    private Combat3 combat3;
     private DisplayInteracion displayInteraction;
     private PlayerMovement playerMovement;
     [SerializeField] private MapManager mapManager;
@@ -21,6 +22,7 @@ public class InputManager : MonoBehaviour
     {
         sprayAttack = playerObj.GetComponent<SprayAttack>();
         combat = playerObj.GetComponent<Combat2>();
+        combat3 = playerObj.GetComponent<Combat3>();
         displayInteraction = playerObj.GetComponent<DisplayInteracion>();
         playerMovement = playerObj.GetComponent<PlayerMovement>();
     }
@@ -65,9 +67,26 @@ public class InputManager : MonoBehaviour
             {
                 sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
                 playerMovement.shootingAxis = Input.GetAxisRaw("SprayAttack");
+
+                if (combat3 != null)
+                {
+                    if (combat3.enabled)
+                    {
+                        combat3.baseAttack = Input.GetButtonDown("BaseAttack");
+                        combat3.specialAttack = Input.GetButtonDown("SpecialAttack");
+                    }
+                    else
+                    {
+                        combat.baseAttack = Input.GetButtonDown("BaseAttack");
+                        combat.specialAttack = Input.GetButtonDown("SpecialAttack");
+                    }
+                }
+                else
+                {
+                    combat.baseAttack = Input.GetButtonDown("BaseAttack");
+                    combat.specialAttack = Input.GetButtonDown("SpecialAttack");
+                }
                 
-                combat.baseAttack = Input.GetButtonDown("BaseAttack");
-                combat.specialAttack = Input.GetButtonDown("SpecialAttack");
             }
             
             shopInteraction.closeShopInput = Input.GetKeyDown(KeyCode.JoystickButton1);

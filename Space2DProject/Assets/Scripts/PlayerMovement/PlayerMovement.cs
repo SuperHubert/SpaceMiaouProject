@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (Mathf.Abs(inputMovement.x) > deadZone || Mathf.Abs(inputMovement.y) > deadZone)
         {
-            if (GetComponent<Combat2>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)
+            if (GetComponent<Combat3>().isAttacking == false && GetComponent<SprayAttack>().isSpraying == false)
             {
                 animPlayer.SetBool("IsWalking",true); 
                 rb.velocity = inputMovement * speed;
@@ -160,20 +160,12 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayCorrectDustAnim()
     {
-        //var currentSign = Mathf.Sign(horizontalAxis);
-        //var previousSign = Mathf.Sign(previousHorizontalAxis);
-        //droite : Mathf.Sign(horizontalAxis) = 1
-        //gauche : Mathf.Sign(horizontalAxis) = -1
-        //haut : Mathf.Sign(verticalAxis) = 1
-        //bas : Mathf.Sign(verticalAxis) = -1
-        
         if(ObjectPooler.Instance == null) return;
 
         var currentHAxis = Mathf.Sign(horizontalAxis);
         var currentVAxis = Mathf.Sign(verticalAxis);
         var prevHAxis = Mathf.Sign(previousHorizontalAxis);
         var prevVAxis = Mathf.Sign(previousVerticalAxis);
-        
         
         if (prevHAxis != currentHAxis)
         {
