@@ -39,7 +39,5 @@ public class DamageOnTriggerEnter : MonoBehaviour
         if(other.gameObject.layer != 6) return;
         LifeManager.Instance.TakeDamages(damage);
     }
-    
-    
-    
+        
 }

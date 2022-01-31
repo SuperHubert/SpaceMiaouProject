@@ -28,7 +28,7 @@ public class Arena : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("bonk");
+        if(other.gameObject.layer != 6) return;
         activated = true;
         SpawnEnemies();
         CloseDoors();

@@ -21,4 +21,9 @@ public class PlayerReflection : MonoBehaviour
         ownRenderer.enabled = targetRender.enabled;
         ownRenderer.sprite = targetRender.sprite;
     }
+
+    public void Disable(bool state=false)
+    {
+        gameObject.SetActive(state);
+    }
 }

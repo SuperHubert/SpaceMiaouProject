@@ -228,6 +228,7 @@ public class LevelManager : MonoBehaviour
         var cam = mainCamera.GetComponent<Camera>();
         var portalSpriteRenderer = generator.level.GetChild(3).GetComponent<SpriteRenderer>();
         var towerSpriteRenderer = generator.level.GetChild(7).GetComponent<SpriteRenderer>();
+        var playerReflection = player.GetChild(7).GetComponent<PlayerReflection>();
         switch (biome)
         {
             case 0:
@@ -237,6 +238,7 @@ public class LevelManager : MonoBehaviour
                 towerSpriteRenderer.sprite = towerBiome1;
                 fogImageMinimap.color = fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
                 am.Stop(5,true);
+                playerReflection.Disable(true);
                 StartCoroutine(LatePlay(6, 3));
                 break;
             case 1:
@@ -246,6 +248,7 @@ public class LevelManager : MonoBehaviour
                 towerSpriteRenderer.sprite = towerBiome2;
                 fogImageMinimap.color = fogImage.color = new Color(1f,0f,0.1058824f,1);
                 am.Stop(6,true);
+                playerReflection.Disable(true);
                 StartCoroutine(LatePlay(7, 3));
                 break;
             case 2:
@@ -255,6 +258,7 @@ public class LevelManager : MonoBehaviour
                 towerSpriteRenderer.sprite = towerBiome3;
                 fogImageMinimap.color = fogImage.color = new Color(0.7098039f,0.7098039f,0.7098039f,1f);
                 am.Stop(7,true);
+                playerReflection.Disable();
                 StartCoroutine(LatePlay(8, 3));
                 break;
             default:
@@ -263,6 +267,7 @@ public class LevelManager : MonoBehaviour
                 portalSpriteRenderer.sprite = portalBiome1;
                 towerSpriteRenderer.sprite = towerBiome1;
                 fogImageMinimap.color = fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
+                playerReflection.Disable(true);
                 break;
         }
     }

@@ -52,12 +52,15 @@ public class SmallDashingBehaviour : EnemyBehaviour
         base.Action();
         StartCoroutine(DashAttack());
     }
-
+    
     private IEnumerator DashAttack()
     {
         animator.SetBool("isWalking", false);
         animator.SetBool("isAttacking", true);
         
+        yield return null;
+        
+        /*
         agent.velocity = Vector3.zero;
         agent.acceleration = 100;
         agent.speed = 10;
@@ -71,7 +74,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         
         if(agent.isOnNavMesh) agent.SetDestination(enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1);
         
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(value);
         am.Play(15, true);
         if (enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(target);
         
@@ -79,8 +82,9 @@ public class SmallDashingBehaviour : EnemyBehaviour
         agent.stoppingDistance = 0f;
         agent.acceleration = 8;
         agent.speed = 3.5f;
+        */
     }
-    
+
     public override void Die(bool destroy = false)
     {
         enemy.GetComponent<Collider2D>().enabled = false;

@@ -411,7 +411,6 @@ public class GenerationSimpleHalf : MonoBehaviour
                 (room.caseUnder != null),
                 (room.caseLeft != null), (room.caseRight != null));
             
-            //Instantiates prefab enemy GameObjects (not for 1st room)
             if (room != generationList[0])
             {
                 foreach (Transform enemyObj in prefabRoom.transform.GetChild(roomEnemiesIndex))
@@ -617,8 +616,6 @@ public class GenerationSimpleHalf : MonoBehaviour
         portalTransform.position = new Vector3(0, -150, 0);
         
         cameraMap.orthographicSize = 25 + 10;
-        
-        //maybe more stuff
     }
 
     public void CleanUpObjects()
