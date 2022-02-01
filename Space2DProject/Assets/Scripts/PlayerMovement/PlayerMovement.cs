@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         am = AudioManager.Instance;
 
     }
-
+    
     private void Update()
     {
         inputMovement.x = horizontalAxis;
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         if(!InputManager.canInput) return;
         InputManager.canMove = !dashing;
 
-        if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
+        if (Mathf.Abs(horizontalAxis) > 0 || Mathf.Abs(verticalAxis) > 0)
         {
             lastDirection = inputMovement;
             animPlayer.SetFloat("Move X",lastDirection.x);
@@ -77,14 +77,12 @@ public class PlayerMovement : MonoBehaviour
         
         if (dash && inputMovement != Vector3.zero)
         {
-            if (dashCd <= 0)
-            {
-                dashCd = dashCdMax;
-                dashInternalCd = 0;
-                dashing = true;
+            if (!(dashCd <= 0)) return;
+            dashCd = dashCdMax;
+            dashInternalCd = 0;
+            dashing = true;
 
-                animPlayer.SetBool("IsDashing", true);
-            }
+            animPlayer.SetBool("IsDashing", true);
         }
     }
 
@@ -203,12 +201,11 @@ public class PlayerMovement : MonoBehaviour
         
         if(!ps.isPlaying) ps.Play();
     }
-
-    public float value;
+    
     IEnumerator FlashRoutine()
     {
         spriteRenderer.material = flashMaterial;
-        yield return new WaitForSeconds(value);
+        yield return new WaitForSeconds(0.1f);
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
     }
