@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if(!InputManager.canInput) return;
         InputManager.canMove = !dashing;
 
-        if (Mathf.Abs(horizontalAxis) > 0 || Mathf.Abs(verticalAxis) > 0)
+        if (Mathf.Abs(horizontalAxis) > 0.3f || Mathf.Abs(verticalAxis) > 0.3f)
         {
             lastDirection = inputMovement;
             animPlayer.SetFloat("Move X",lastDirection.x);
