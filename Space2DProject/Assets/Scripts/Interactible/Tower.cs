@@ -11,11 +11,13 @@ public class Tower : MonoBehaviour,IInteractible
     public List<Dialogues> dialogues;
     [SerializeField] private int timesActivated = 0;
     public List<Dialogues> dialoguesChests;
+    private CombatManager cm;
     
     private void Start()
     {
         timesActivated = 0;
         laserObj = transform.GetChild(0).gameObject;
+        cm = CombatManager.Instance;
         if(portalCollider2D == null) portalCollider2D = transform.parent.GetChild(3).GetComponent<Collider2D>();
     }
     
@@ -60,6 +62,8 @@ public class Tower : MonoBehaviour,IInteractible
             }
 
         }
+        
+        cm.Clear();
     }
 
     private IEnumerator PlayDialogue()

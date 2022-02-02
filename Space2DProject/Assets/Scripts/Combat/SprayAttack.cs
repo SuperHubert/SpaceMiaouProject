@@ -23,11 +23,13 @@ public class SprayAttack : MonoBehaviour
     [HideInInspector] public float sprayAttackAxis;
 
     private AudioManager am;
+    private CombatManager cm;
     
 
     void Start()
     {
         am = AudioManager.Instance;
+        cm = CombatManager.Instance;
         currentSpray = maxSpray;
     }
     
@@ -68,7 +70,7 @@ public class SprayAttack : MonoBehaviour
         else
         {
             isSpraying = false;
-            if (!LoadingLevelData.sprayAmmoDialogue || !(currentSpray < 33)) return;
+            if (!LoadingLevelData.sprayAmmoDialogue || !(currentSpray < 33) || !cm.IsEmpty()) return;
             DialogueManager.Instance.StartMultipleDialogues(sprayDialogues);
             LoadingLevelData.sprayAmmoDialogue = false;
         }

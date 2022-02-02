@@ -26,8 +26,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine soundCoroutine;
     private Coroutine nextBlinkRoutine;
     
-    
-    
+
     #region Singleton Don't Destroy On Load
     public static DialogueManager Instance;
 

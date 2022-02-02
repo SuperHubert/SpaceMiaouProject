@@ -35,6 +35,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     protected AudioManager am;
 
+    private CombatManager cm;
+
 
     private void Start()
     {
@@ -64,6 +66,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         isPerformingAction = false;
         
         am = AudioManager.Instance;
+        cm = CombatManager.Instance;
     }
     
     public virtual void WakeUp()
@@ -73,6 +76,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(true);
         actionTrigger.SetActive(hasAction);
+        
+        cm.Add(gameObject);
         
         currentState = State.Awake;
     }
@@ -84,6 +89,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         actionTrigger.SetActive(false);
 
         if(agent.isOnNavMesh) agent.SetDestination(transform.position);
+        
+        cm.Remove(gameObject);
         
         currentState = State.Asleep;
         isPerformingAction = false;
@@ -97,7 +104,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
         
-        //animator.SetTrigger("Dead");
+        cm.Remove(gameObject);
 
         agent.Warp(transform.position);
         
@@ -139,6 +146,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
         
         enemyTransform.position = respawnTrigger.transform.position;
         health.InitEnemy();
+        
+        cm.Remove(gameObject);
         
         currentState = State.Asleep;
         
