@@ -27,8 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Animations
     [SerializeField] private Animator animPlayer;
-    public int playerDirection = 0;
-    
+
     //fog of war
     [SerializeField] private FogOfWar fogOfWar;
     
@@ -88,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        dashCd -= Time.fixedDeltaTime;
+        if(dashCd > 0) dashCd -= Time.fixedDeltaTime;
         if (dashCd <= 0 && canFlash)
         {
             canFlash = false;

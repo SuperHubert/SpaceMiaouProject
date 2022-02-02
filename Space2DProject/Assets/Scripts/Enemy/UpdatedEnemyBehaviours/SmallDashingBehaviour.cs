@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class SmallDashingBehaviour : EnemyBehaviour
 {
-    //[SerializeField] private Animator animator;
-    
     private void Update()
     {
         if(currentState != State.Awake) return;
@@ -13,6 +11,7 @@ public class SmallDashingBehaviour : EnemyBehaviour
         {
             actionCd--;
         }
+        /*
         else
         {
             isPerformingAction = false;
@@ -21,24 +20,19 @@ public class SmallDashingBehaviour : EnemyBehaviour
             agent.speed = 3.5f;
             actionTrigger.SetActive(true);
         }
-        
-        if (currentState == State.Awake && !isPerformingAction)
-        {
-            if(agent.isOnNavMesh) agent.SetDestination(player.position);
-            
-            //animator direction
-            animator.SetBool("isAttacking", false);
-            animator.SetBool("isWalking", true);
+        */
 
-            Vector2 orientation = new Vector2(player.position.x - transform.GetChild(0).position.x,
-                player.position.y - transform.GetChild(0).position.y).normalized;
+        if (currentState != State.Awake || isPerformingAction) return;
+        if(agent.isOnNavMesh) agent.SetDestination(player.position);
             
-            animator.SetFloat("Horizontal",orientation.x);
-            animator.SetFloat("Vertical",orientation.y);
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isWalking", true);
 
-            //look left or right
-            //animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
-        }
+        Vector2 orientation = new Vector2(player.position.x - transform.GetChild(0).position.x,
+            player.position.y - transform.GetChild(0).position.y).normalized;
+            
+        animator.SetFloat("Horizontal",orientation.x);
+        animator.SetFloat("Vertical",orientation.y);
     }
 
     protected override void InitVariables()
@@ -55,34 +49,48 @@ public class SmallDashingBehaviour : EnemyBehaviour
     
     private IEnumerator DashAttack()
     {
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isAttacking", true);
+        isPerformingAction = true;
         
         yield return null;
         
-        /*
+        agent.velocity = Vector3.zero;
+
+        var enemyTransformPosition = enemyTransform.position;
+        var playerPos = player.position;
+        var backPos = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1;
+        var dashPos = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * 5;
+        
+        Debug.DrawRay(enemyTransformPosition, (playerPos - enemyTransformPosition).normalized * -1, Color.green, 4, false);
+        
+        if(agent.isOnNavMesh && enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(backPos);
+
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => agent.velocity == Vector3.zero);
+        
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacking", true);
+
         agent.velocity = Vector3.zero;
         agent.acceleration = 100;
         agent.speed = 10;
         agent.stoppingDistance = 1.5f;
-
-        var enemyTransformPosition = enemyTransform.position;
-        var playerPos = player.position;
-        var target = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * 5;
         
         Debug.DrawRay(enemyTransformPosition, (playerPos - enemyTransformPosition).normalized * 5, Color.green, 4, false);
+        if(agent.isOnNavMesh && enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(dashPos);
         
-        if(agent.isOnNavMesh) agent.SetDestination(enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1);
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => agent.velocity == Vector3.zero);
         
-        yield return new WaitForSeconds(value);
-        am.Play(15, true);
-        if (enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(target);
-        
-        yield return new WaitForSeconds(0.1f);
         agent.stoppingDistance = 0f;
         agent.acceleration = 8;
         agent.speed = 3.5f;
-        */
+
+        actionCd = 0;
+
+        isPerformingAction = false;
+
+        animator.SetBool("isWalking", true);
+        animator.SetBool("isAttacking", false);
     }
 
     public override void Die(bool destroy = false)
