@@ -549,7 +549,7 @@ MonoBehaviour:
   healthBarOffset: 0.6
   isBurning: 0
   burnRate: 1
-  canTakeDamage: 0
+  canTakeDamage: 1
   maxHealth: 3
   currentHealth: 0
   moveHealthBar: 1

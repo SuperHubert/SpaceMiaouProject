@@ -719,6 +719,7 @@ GameObject:
   - component: {fileID: 6916192241049636527}
   - component: {fileID: 5236249419338612324}
   - component: {fileID: 2989836823339002476}
+  - component: {fileID: 834349894604246139}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -835,6 +836,30 @@ PolygonCollider2D:
       - {x: 0.8602216, y: -0.69296974}
       - {x: 0.8137011, y: -0.44459707}
       - {x: 0.33725977, y: -0.3456993}
+--- !u!68 &834349894604246139
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6499467751900224598}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.8406029, y: -0.27388692}
+  - {x: -0.5600008, y: -0.7215812}
+  - {x: 0.8299694, y: -0.7117995}
+  - {x: 1.0161716, y: -0.27037555}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &6912049192731536220
 GameObject:
   m_ObjectHideFlags: 0

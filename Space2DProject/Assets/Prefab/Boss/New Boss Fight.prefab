@@ -125530,6 +125530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFollower: {fileID: 0}
   mapHider: {fileID: 0}
+  mapHiderMinimap: {fileID: 0}
 --- !u!1 &9071768629213536384
 GameObject:
   m_ObjectHideFlags: 0
