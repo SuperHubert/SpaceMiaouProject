@@ -41,7 +41,7 @@ public class SprayAttack : MonoBehaviour
 
     void SprayingAttack()
     {
-        if (sprayAttackAxis > 0 && GetComponent<Combat2>().isAttacking == false && GetComponent<Combat2>().isSpecialAttacking == false)
+        if (sprayAttackAxis > 0 && GetComponent<Combat3>().isAttacking == false && GetComponent<Combat3>().isSpecialAttacking == false)
         {
             isSpraying = true;
             if (canShoot && currentSpray > 0)
@@ -70,7 +70,7 @@ public class SprayAttack : MonoBehaviour
         else
         {
             isSpraying = false;
-            if (!LoadingLevelData.sprayAmmoDialogue || !(currentSpray < 33) || !cm.IsEmpty()) return;
+            if (!LoadingLevelData.sprayAmmoDialogue || !(currentSpray < 1/3f * maxSpray) || !cm.IsEmpty()) return;
             DialogueManager.Instance.StartMultipleDialogues(sprayDialogues);
             LoadingLevelData.sprayAmmoDialogue = false;
         }

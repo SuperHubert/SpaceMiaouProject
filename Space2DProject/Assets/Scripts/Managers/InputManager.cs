@@ -10,7 +10,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] private bool showKeycodes = false;
     
     private SprayAttack sprayAttack;
-    private Combat2 combat;
     private Combat3 combat3;
     private DisplayInteracion displayInteraction;
     private PlayerMovement playerMovement;
@@ -21,7 +20,6 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         sprayAttack = playerObj.GetComponent<SprayAttack>();
-        combat = playerObj.GetComponent<Combat2>();
         combat3 = playerObj.GetComponent<Combat3>();
         displayInteraction = playerObj.GetComponent<DisplayInteracion>();
         playerMovement = playerObj.GetComponent<PlayerMovement>();
@@ -68,24 +66,8 @@ public class InputManager : MonoBehaviour
                 sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
                 playerMovement.shootingAxis = Input.GetAxisRaw("SprayAttack");
 
-                if (combat3 != null)
-                {
-                    if (combat3.enabled)
-                    {
-                        combat3.baseAttack = Input.GetButtonDown("BaseAttack");
-                        combat3.specialAttack = Input.GetButtonDown("SpecialAttack");
-                    }
-                    else
-                    {
-                        combat.baseAttack = Input.GetButtonDown("BaseAttack");
-                        combat.specialAttack = Input.GetButtonDown("SpecialAttack");
-                    }
-                }
-                else
-                {
-                    combat.baseAttack = Input.GetButtonDown("BaseAttack");
-                    combat.specialAttack = Input.GetButtonDown("SpecialAttack");
-                }
+                combat3.baseAttack = Input.GetButtonDown("BaseAttack");
+                combat3.specialAttack = Input.GetButtonDown("SpecialAttack");
                 
             }
             

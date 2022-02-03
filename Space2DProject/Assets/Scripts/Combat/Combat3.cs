@@ -82,18 +82,20 @@ public class Combat3 : MonoBehaviour
         }
         StartCoroutine(BaseAttackReset());
     }
-    
+
     IEnumerator BaseAttackReset()
     {
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(0.3f);
+        ResetAttack();
         if (hitTrigger)
         {
-            ResetAttack();
+            canAttack = true;
+            hitTrigger = false;
             yield break;
         }
-        
-        yield return new WaitForSeconds(2.2f);
-        ResetAttack();
+        yield return new WaitForSeconds(0.1f);
+        canAttack = true;
+        hitTrigger = false;
     }
     
     private void SpecialAttack()
@@ -108,22 +110,25 @@ public class Combat3 : MonoBehaviour
         playerAnimator.SetBool("IsAttacking", true);
             
         playerMovement.speed = 2;
-            
-        Invoke(nameof(WaveAttack), 0.1f);
-        Invoke(nameof(ResetAttack), 0.85f);
-        Invoke(nameof(ResetSpecialAttack), 2f);
+
+        StartCoroutine(SpecialAttackReset());
     }
 
-    private void WaveAttack()
+    IEnumerator SpecialAttackReset()
     {
+        yield return new WaitForSeconds(0.1f);
         LifeManager.Instance.canTakeDamge = false;
+        yield return new WaitForSeconds(0.75f);
+        ResetAttack();
+        canAttack = true;
+        yield return new WaitForSeconds(1.15f);
+        ResetSpecialAttack();
+
     }
     
     private void ResetAttack()
     {
         isSpecialAttacking = isAttacking = false;
-        canAttack = true;
-        hitTrigger = false;
         LifeManager.Instance.canTakeDamge = true;
         playerAnimator.SetBool("IsAttacking", false);
         playerMovement.speed = 7;

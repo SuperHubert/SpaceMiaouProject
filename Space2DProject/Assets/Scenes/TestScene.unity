@@ -1859,37 +1859,6 @@ PolygonCollider2D:
       - {x: -0.006055653, y: -0.5815444}
       - {x: 0.39887458, y: -0.18677968}
       - {x: 1.4816084, y: 0.58519816}
---- !u!114 &426134141072769920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6649588435083573369}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f99d9ccacab3b49bc0d61291dcf7bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 6649588435083573255}
-  isAttacking: 0
-  canAttack: 1
-  isSpecialAttacking: 0
-  canSpecialAttack: 1
-  baseRightCollider: {fileID: 8685567304301231753}
-  baseLeftCollider: {fileID: 2349109145542133057}
-  baseUpCollider: {fileID: 274543160456439550}
-  baseDownCollider: {fileID: 7514292270007166271}
-  hits: []
-  specialFX: {fileID: 649608801789586204, guid: dd05e02ef9b14ec4794132fb65d67036, type: 3}
-  baseFX: {fileID: 5887807797639799553, guid: 2a962cf8f34898448b166cbcedb55d0f, type: 3}
-  damage: 10
-  specialDamage: 15
-  sprayGainNormal: 5
-  sprayGainSpecial: 10
-  baseAttack: 0
-  specialAttack: 0
-  flashMaterial: {fileID: 2100000, guid: a609e62be8caf5c4da9b1a6d4fb1bc20, type: 2}
 --- !u!212 &677574959808267001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2575,7 +2544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2affb570fe9ba9049a373aaad95e63d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 2
   isSpraying: 0
   sprayImage: {fileID: 608592099}
   maxSpray: 100
@@ -2883,7 +2852,6 @@ GameObject:
   - component: {fileID: 6649588435083573254}
   - component: {fileID: 1326509145321897414}
   - component: {fileID: 5451045019369785910}
-  - component: {fileID: 426134141072769920}
   - component: {fileID: 6649588435083573370}
   m_Layer: 6
   m_Name: Player (1)
