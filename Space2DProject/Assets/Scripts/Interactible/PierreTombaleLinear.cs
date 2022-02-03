@@ -6,6 +6,9 @@ public class PierreTombaleLinear : MonoBehaviour,IInteractible
     public List<Dialogues> dialogues;
     public static List<Dialogues> usableDialogues = new List<Dialogues>();
     public static int index;
+
+    private bool triggered = false;
+    
     private Collider2D col;
     private CombatManager cm;
 
@@ -20,7 +23,7 @@ public class PierreTombaleLinear : MonoBehaviour,IInteractible
     
     private void Update()
     {
-        if(col.enabled == cm.IsEmpty()) return;
+        if(col.enabled == cm.IsEmpty() || triggered) return;
         col.enabled = cm.IsEmpty();
     }
     
@@ -37,6 +40,7 @@ public class PierreTombaleLinear : MonoBehaviour,IInteractible
     {
         if (index >= usableDialogues.Count) index = 0;
         gameObject.GetComponent<Collider2D>().enabled = false;
+        triggered = true;
         DialogueManager.Instance.StartDialogue(usableDialogues[index]);
         index++;
         

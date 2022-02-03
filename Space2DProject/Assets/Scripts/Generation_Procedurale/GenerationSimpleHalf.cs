@@ -31,7 +31,6 @@ public class GenerationSimpleHalf : MonoBehaviour
     private int roomTowerIndex;
     private int roomLightsIndex;
     [SerializeField] private Camera cameraMap;
-    [SerializeField] private FollowPlayer followPlayer;
     [SerializeField] private FogOfWar fogOfWar;
     private MapIcons mapIcons;
 

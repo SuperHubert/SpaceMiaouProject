@@ -673,7 +673,7 @@ MonoBehaviour:
   isBurning: 0
   burnRate: 1
   canTakeDamage: 1
-  maxHealth: 40
+  maxHealth: 16
   currentHealth: 0
   moveHealthBar: 1
   enemyAnimator: {fileID: 8244260199258857968}

@@ -7,36 +7,24 @@ public class Combat3 : MonoBehaviour
     //Animations
     public Animator playerAnimator;
     
+    public GameObject baseFX;
+    
     //Attacks
     public bool isAttacking = false;
     public bool canAttack = true;
 
-    public bool isSpecialAttacking;
+    public bool isSpecialAttacking = false;
     public bool canSpecialAttack = true;
 
     private Vector3 attackDirection;
-
-    //Colliders
-    public Collider2D baseRightCollider;
-    public Collider2D baseLeftCollider;
-    public Collider2D baseUpCollider;
-    public Collider2D baseDownCollider;
     
-    public List<Collider2D> hits;
-    
-    //Fx
-    public GameObject specialFX;
-    public GameObject baseFX;
-
-    //Damage
-    public float damage = 10;
-    public float specialDamage = 10;
-
     public float sprayGainNormal = 15f;
     public float sprayGainSpecial = 20f;
 
     public bool baseAttack;
     public bool specialAttack;
+
+    public bool hitTrigger = false;
     
     private AudioManager am;
     private SprayAttack sprayAttack;
@@ -53,6 +41,7 @@ public class Combat3 : MonoBehaviour
         originalMaterial = spriteRenderer.material;
         sprayAttack = gameObject.GetComponent<SprayAttack>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
+        am = AudioManager.Instance;
     }
     
     void Update()
@@ -64,55 +53,49 @@ public class Combat3 : MonoBehaviour
     private void BasicAttack()
     {
         if (!baseAttack || isAttacking || !canAttack) return;
-        attackDirection = GetComponent<PlayerMovement>().lastDirection;
+        attackDirection = playerMovement.lastDirection;
         isAttacking = true;
+        canAttack = false;
         AudioManager.Instance.Play(26, true);
         playerAnimator.SetBool("IsAttacking", true);
-        Invoke("ResetAttack", 0.25f);
+        playerMovement.speed = 0;
 
         if (attackDirection.x > 0 && Mathf.Abs(attackDirection.x) > Mathf.Abs(attackDirection.y))
         {
-            NewAttack(baseRightCollider, "RightBaseAttack",new Vector3(0.7f,-0.3f,0),Quaternion.Euler(0,0,-90));
+            playerAnimator.Play("RightBaseAttack");
+            Destroy(Instantiate(baseFX, transform.position+ new Vector3(0.7f,-0.3f,0),Quaternion.Euler(0,0,-90), gameObject.transform), 0.5f);
         }
         else if (attackDirection.x < 0 && Mathf.Abs(attackDirection.x) > Mathf.Abs(attackDirection.y))
         {
-            NewAttack(baseLeftCollider, "LeftBaseAttack",new Vector3(-0.7f,-0.3f,0),Quaternion.Euler(0,0,90));
+            playerAnimator.Play("LeftBaseAttack");
+            Destroy(Instantiate(baseFX, transform.position+ new Vector3(-0.7f,-0.3f,0),Quaternion.Euler(0,0,90), gameObject.transform), 0.5f);
         }
         else if (attackDirection.y > 0 && Mathf.Abs(attackDirection.y) > Mathf.Abs(attackDirection.x))
         {
-            NewAttack(baseUpCollider, "BackBaseAttack",new Vector3(-0.15f,0.45f,0),Quaternion.Euler(0,0,0));
+            playerAnimator.Play("BackBaseAttack");
+            Destroy(Instantiate(baseFX, transform.position+ new Vector3(-0.15f,0.45f,0),Quaternion.Euler(0,0,0), gameObject.transform), 0.5f);
         }
         else if (attackDirection.y < 0 && Mathf.Abs(attackDirection.y) > Mathf.Abs(attackDirection.x))
         {
-            NewAttack(baseDownCollider,"FrontBaseAttack",new Vector3(0,-0.65f,0),Quaternion.Euler(0,0,180));
+            playerAnimator.Play("FrontBaseAttack");
+            Destroy(Instantiate(baseFX, transform.position+ new Vector3(0,-0.65f,0),Quaternion.Euler(0,0,180), gameObject.transform), 0.5f);
         }
+        StartCoroutine(BaseAttackReset());
     }
-
-    private void NewAttack(Collider2D col,string stateName,Vector3 pos, Quaternion rot)
+    
+    IEnumerator BaseAttackReset()
     {
-        Physics2D.OverlapCollider(col, new ContactFilter2D().NoFilter(), hits);
-        Debug.Log("D");
-        playerAnimator.Play(stateName);
-        Destroy(Instantiate(baseFX, transform.position+ pos, rot, gameObject.transform), 0.5f);
-                
-        foreach (Collider2D enemy in hits)
+        yield return new WaitForSeconds(1.8f);
+        if (hitTrigger)
         {
-            if (enemy.gameObject.layer == 7)
-            {
-                //enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
-                sprayAttack.currentSpray += sprayGainNormal;
-                sprayAttack.UpdateSprayBar();
-                playerMovement.dashCd = 0;
-            }
-            else if (enemy.gameObject.layer == 14)
-            {
-                if(enemy.GetComponent<Chest>() != null) enemy.GetComponent<IInteractible>().OnInteraction();
-                if(enemy.GetComponent<Colonne>() != null) enemy.GetComponent<IInteractible>().OnInteraction();
-            }
-            
+            ResetAttack();
+            yield break;
         }
+        
+        yield return new WaitForSeconds(2.2f);
+        ResetAttack();
     }
-
+    
     private void SpecialAttack()
     {
         if (!specialAttack || isAttacking || !canSpecialAttack) return;
@@ -124,39 +107,26 @@ public class Combat3 : MonoBehaviour
         AudioManager.Instance.Play(14, true);
         playerAnimator.SetBool("IsAttacking", true);
             
-        GetComponent<PlayerMovement>().speed = 2;
+        playerMovement.speed = 2;
             
         Invoke(nameof(WaveAttack), 0.1f);
-        Invoke(nameof(WaveAttack), 0.4f);
         Invoke(nameof(ResetAttack), 0.85f);
-        Invoke(nameof(ResetSpecialAttack), 1f);
+        Invoke(nameof(ResetSpecialAttack), 2f);
     }
 
     private void WaveAttack()
     {
-        //Destroy(Instantiate(specialFX, transform.position, Quaternion.identity, gameObject.transform), 1f);
-        Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.2f), 1.8f);
-
-        foreach (Collider2D enemy in hit)
-        {
-            if (enemy.gameObject.layer != 7) continue;
-            if (enemy.GetComponent<EnemyHealth>() == null) continue;
-            //enemy.GetComponent<EnemyHealth>().TakeDamage(specialDamage,true,2f);
-            sprayAttack.currentSpray += sprayGainSpecial;
-            sprayAttack.UpdateSprayBar();
-            playerMovement.dashCd = 0;
-
-        }
-        
         LifeManager.Instance.canTakeDamge = false;
     }
-
+    
     private void ResetAttack()
     {
         isSpecialAttacking = isAttacking = false;
-        LifeManager.Instance.canTakeDamge = canAttack = true;
+        canAttack = true;
+        hitTrigger = false;
+        LifeManager.Instance.canTakeDamge = true;
         playerAnimator.SetBool("IsAttacking", false);
-        GetComponent<PlayerMovement>().speed = 7;
+        playerMovement.speed = 7;
     }
 
     private void ResetSpecialAttack()
@@ -166,12 +136,19 @@ public class Combat3 : MonoBehaviour
         if(flashRoutine != null) StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashRoutine());
     }
-
+    
     private IEnumerator FlashRoutine()
     {
         spriteRenderer.material = flashMaterial;
         yield return new WaitForSeconds(0.08f);
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
+    }
+
+    public void SprayGain(bool special)
+    {
+        sprayAttack.currentSpray += special ? sprayGainSpecial : sprayGainNormal;
+        sprayAttack.UpdateSprayBar();
+        playerMovement.dashCd = 0;
     }
 }
