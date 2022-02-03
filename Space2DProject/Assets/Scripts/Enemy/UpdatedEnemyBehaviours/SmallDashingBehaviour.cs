@@ -114,8 +114,16 @@ public class SmallDashingBehaviour : EnemyBehaviour
     }
     
     public override void Stun(float duration = 1)
-        {
-            animator.SetBool("Damage", true);
-            base.Stun(duration);
-        }
+    {
+        animator.SetBool("Damage", true);
+        base.Stun(duration);
+    }
+
+    public override void Sleep()
+    {
+        base.Sleep();
+        agent.stoppingDistance = 0f;
+        agent.acceleration = 8;
+        agent.speed = 3.5f;
+    }
 }

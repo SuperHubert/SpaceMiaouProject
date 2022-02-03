@@ -58,6 +58,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogues dialogue)
     {
+        InputManager.canInput = false;
+        
         dialogueCanvas.SetActive(true);
         
         speaker.text = dialogue.characterName;
@@ -160,6 +162,8 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
+        
+        InputManager.canInput = true;
     }
 
     public bool ToggleInstantTyping()

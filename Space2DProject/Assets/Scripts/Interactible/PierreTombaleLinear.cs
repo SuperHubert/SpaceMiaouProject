@@ -6,12 +6,22 @@ public class PierreTombaleLinear : MonoBehaviour,IInteractible
     public List<Dialogues> dialogues;
     public static List<Dialogues> usableDialogues = new List<Dialogues>();
     public static int index;
+    private Collider2D col;
+    private CombatManager cm;
 
     void Start()
     {
+        cm = CombatManager.Instance;
+        col = gameObject.GetComponent<Collider2D>();
         if (usableDialogues.Count != 0) return;
         index = 0;
         RefillDialogues();
+    }
+    
+    private void Update()
+    {
+        if(col.enabled == cm.IsEmpty()) return;
+        col.enabled = cm.IsEmpty();
     }
     
     private void RefillDialogues()
