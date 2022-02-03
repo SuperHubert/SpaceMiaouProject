@@ -2803,7 +2803,6 @@ MonoBehaviour:
   dashCd: 0
   dashCdMax: 1
   animPlayer: {fileID: 6649588435083573255}
-  playerDirection: 0
   fogOfWar: {fileID: 608592096}
   flashMaterial: {fileID: 2100000, guid: 59f1f0a0f827d5647b63f6fb34ba5f18, type: 2}
   horizontalAxis: 0

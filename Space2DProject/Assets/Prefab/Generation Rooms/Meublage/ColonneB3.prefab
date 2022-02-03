@@ -159,7 +159,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 4eaec04f9933d2446a71a827192d1aed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8bafebf74eaff884e8299166027d0a25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -264,4 +264,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d6d89720fb4418b44ff22acc3793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vlaue: 0
+  columnDialoguesEditor: []
