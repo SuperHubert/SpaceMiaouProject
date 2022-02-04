@@ -11,16 +11,6 @@ public class SmallDashingBehaviour : EnemyBehaviour
         {
             actionCd--;
         }
-        /*
-        else
-        {
-            isPerformingAction = false;
-            agent.stoppingDistance = 0f;
-            agent.acceleration = 8;
-            agent.speed = 3.5f;
-            actionTrigger.SetActive(true);
-        }
-        */
 
         if (currentState != State.Awake || isPerformingAction) return;
         if(agent.isOnNavMesh) agent.SetDestination(player.position);
@@ -60,12 +50,12 @@ public class SmallDashingBehaviour : EnemyBehaviour
         var backPos = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1;
         var dashPos = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * 5;
         
-        Debug.DrawRay(enemyTransformPosition, (playerPos - enemyTransformPosition).normalized * -1, Color.green, 4, false);
-        
         if(agent.isOnNavMesh && enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(backPos);
 
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => agent.velocity == Vector3.zero);
+        
+        am.Play(15,true);
         
         animator.SetBool("isWalking", false);
         animator.SetBool("isAttacking", true);
@@ -75,7 +65,6 @@ public class SmallDashingBehaviour : EnemyBehaviour
         agent.speed = 10;
         agent.stoppingDistance = 1.5f;
         
-        Debug.DrawRay(enemyTransformPosition, (playerPos - enemyTransformPosition).normalized * 5, Color.green, 4, false);
         if(agent.isOnNavMesh && enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(dashPos);
         
         yield return new WaitForSeconds(0.5f);
