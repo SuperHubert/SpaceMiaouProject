@@ -35,7 +35,6 @@ public class EvilTreeBehaviour : EnemyBehaviour
     public override void Die(bool destroy = false)
     {
         StartCoroutine(DeathAnim());
-        base.Die(destroy);
     }
 
     IEnumerator DeathAnim()
