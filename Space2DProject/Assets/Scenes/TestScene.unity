@@ -2883,6 +2883,7 @@ MonoBehaviour:
   baseAttack: 0
   specialAttack: 0
   hitTrigger: 0
+  bonusDamage: 0
   flashMaterial: {fileID: 2100000, guid: a609e62be8caf5c4da9b1a6d4fb1bc20, type: 2}
 --- !u!60 &7514292270007166271
 PolygonCollider2D:

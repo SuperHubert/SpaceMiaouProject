@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class EvilTreeBehaviour : EnemyBehaviour
 {
-    //[SerializeField] private Animator animator;
+    private static readonly int Attack1 = Animator.StringToHash("Attack");
+    private static readonly int Die1 = Animator.StringToHash("Die");
+    private SpriteRenderer spriteRender;
+
     private void Update()
     {
         animator.SetBool("Awake", true);
@@ -19,19 +22,34 @@ public class EvilTreeBehaviour : EnemyBehaviour
     protected override void InitVariables()
     {
         UpdateAppearance();
+        spriteRender = animator.gameObject.GetComponent<SpriteRenderer>();
         base.InitVariables();
     }
 
     protected override void Action()
     {
         base.Action();
-        
+        animator.SetTrigger(Attack1);
+
         var targetPos = player.position;
 
         var spawnedObj = ObjectPooler.Instance.SpawnFromPool("Root", targetPos, Quaternion.identity);
         spawnedObj.GetComponent<Root>().Spawn();
     }
+
+    public override void Die(bool destroy = false)
+    {
+        StartCoroutine(DeathAnim());
+    }
     
+    IEnumerator DeathAnim()
+    {
+        currentState = State.Dead;
+        animator.SetTrigger(Die1);
+        yield return new WaitUntil(() => spriteRender.color.a == 0);
+        base.Die();
+    }
+
     private void UpdateAppearance()
     {
         var biome = LevelManager.Instance.GetBiome();
