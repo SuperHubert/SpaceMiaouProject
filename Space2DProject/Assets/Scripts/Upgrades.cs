@@ -63,22 +63,22 @@ public class Upgrades : MonoBehaviour
 
     public void DamagesBalai1()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
-        combat.damage += combat.damage * 5f / 100f;
+        var combat = LevelManager.Instance.Player().GetComponent<Combat3>();
+        combat.bonusDamage += 1;
         Debug.Log("Damages Balai I");
     }
 
     public void DamagesBalai2()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
-        combat.damage += combat.damage * 10f / 100f;
+        var combat = LevelManager.Instance.Player().GetComponent<Combat3>();
+        combat.bonusDamage += 2;
         Debug.Log("Damages Balai II");
     }
 
     public void DamagesBalai3()
     {
-        var combat = LevelManager.Instance.Player().GetComponent<Combat2>();
-        combat.damage += combat.damage * 15f / 100f;
+        var combat = LevelManager.Instance.Player().GetComponent<Combat3>();
+        combat.bonusDamage += 3;
         Debug.Log("Damages Balai III");
     }
 
@@ -136,14 +136,14 @@ public class Upgrades : MonoBehaviour
     public void DamagesSpray1()
     {
         var sprayAttack = LevelManager.Instance.Player().GetComponent<SprayAttack>();
-        sprayAttack.damage += sprayAttack.damage * 5f / 100f;
+        sprayAttack.damage += 1;
         Debug.Log("Damages Spray I");
     }
 
     public void DamagesSpray2()
     {
         var sprayAttack = LevelManager.Instance.Player().GetComponent<SprayAttack>();
-        sprayAttack.damage += sprayAttack.damage * 10f / 100f;
+        sprayAttack.damage += 2;
         Debug.Log("Damages Spray II");
     }
 

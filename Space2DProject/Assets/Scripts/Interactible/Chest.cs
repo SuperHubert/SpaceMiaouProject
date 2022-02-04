@@ -29,7 +29,7 @@ public class Chest : MonoBehaviour, IInteractible
         var transform1 = transform;
         if (drop < LootManager.Instance.ConvertLevelToProbability(floor))
         {
-            var bonk = LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : Random.Range(1, 3),
+            var bonk = LootManager.Instance.GetCoins(floor > 2 ? Random.Range(1, floor + 1) : 1,
                 transform1.position,transform1);
             yield return new WaitForSeconds(0.75f);
             foreach (var obj in bonk)

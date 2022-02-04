@@ -238,7 +238,7 @@ MonoBehaviour:
   - name: Broom Damage I
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 2
-    description: Gain 5% damage bonus on broom attacks
+    description: Gain 1 bonus damage on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -260,7 +260,7 @@ MonoBehaviour:
   - name: Broom Damage II
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 3
-    description: Gain 10% damage bonus on broom attacks
+    description: Gain 2 bonus damages on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -282,7 +282,7 @@ MonoBehaviour:
   - name: Broom Damage III
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 4
-    description: Gain 15% damage bonus on broom attacks
+    description: Gain 3 bonus damages on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -459,7 +459,7 @@ MonoBehaviour:
   - name: Spray Damage I
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
     basePrice: 1
-    description: Gain 5% damage on spray attacks
+    description: Gain 1 bonus damage on spray attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -481,7 +481,7 @@ MonoBehaviour:
   - name: Spray Damage II
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
     basePrice: 2
-    description: Gain 10% damage on spray attacks
+    description: Gain 2 bonus damages on spray attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:

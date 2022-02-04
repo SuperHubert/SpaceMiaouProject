@@ -13,10 +13,11 @@ public class AttackDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
         var enemy = other.gameObject;
         if (enemy.GetComponent<EnemyHealth>() != null)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(damage,true);
+            enemy.GetComponent<EnemyHealth>().TakeDamage(damage+combat.bonusDamage,true);
             combat.SprayGain(specialAttack);
             if (!specialAttack) combat.hitTrigger = true;
         }

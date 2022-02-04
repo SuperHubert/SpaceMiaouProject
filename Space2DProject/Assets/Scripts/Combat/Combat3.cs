@@ -29,7 +29,9 @@ public class Combat3 : MonoBehaviour
     private AudioManager am;
     private SprayAttack sprayAttack;
     private PlayerMovement playerMovement;
-    
+
+    public int bonusDamage = 0;
+
     [SerializeField] private Material flashMaterial;
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
