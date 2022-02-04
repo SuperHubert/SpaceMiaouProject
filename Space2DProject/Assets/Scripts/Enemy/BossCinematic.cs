@@ -34,6 +34,7 @@ public class BossCinematic : MonoBehaviour
 
     IEnumerator Animation()
     {
+        CombatManager.Instance.Add(gameObject);
         UIManager.Instance.normalUI.SetActive(false);
         InputManager.canInput = false;
         camManager.enabled = false;
@@ -72,7 +73,7 @@ public class BossCinematic : MonoBehaviour
         bossAnimator.enabled = true;
         yield return new WaitForSeconds(1f);
         camManager.enabled = true;
-        InputManager.canInput = true;
+        InputManager.canInput = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
         UIManager.Instance.normalUI.SetActive(true);
         LevelManager.Instance.Player().transform.position = new Vector3(0,-12,0);

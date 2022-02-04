@@ -64,6 +64,8 @@ public class NewBossBehaviour : EnemyBehaviour
         part2Triggers.SetActive(false);
         closeUpAttack.SetActive(false);
         rockFalls = false;
+        
+        CombatManager.Instance.Clear();
 
         LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
 
