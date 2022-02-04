@@ -53,7 +53,7 @@ Material:
     - _EnableExternalAlpha: 0
     m_Colors:
     - Vector2_b4a550fd73364f92b80a48d5284c7898: {r: 5, g: 5, b: 0, a: 0}
-    - _Color: {r: 0.35823253, g: 2.2807472, b: 2.2329829, a: 1}
+    - _Color: {r: 0.22338437, g: 2.4925, b: 2.225545, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
