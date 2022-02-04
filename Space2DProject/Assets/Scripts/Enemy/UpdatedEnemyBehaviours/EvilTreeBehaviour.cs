@@ -31,7 +31,20 @@ public class EvilTreeBehaviour : EnemyBehaviour
         var spawnedObj = ObjectPooler.Instance.SpawnFromPool("Root", targetPos, Quaternion.identity);
         spawnedObj.GetComponent<Root>().Spawn();
     }
-    
+
+    public override void Die(bool destroy = false)
+    {
+        StartCoroutine(DeathAnim());
+        base.Die(destroy);
+    }
+
+    IEnumerator DeathAnim()
+    {
+        animator.SetTrigger("Die");
+        yield return new WaitForSeconds(0.5f);
+        base.Die();
+    }
+
     private void UpdateAppearance()
     {
         var biome = LevelManager.Instance.GetBiome();
