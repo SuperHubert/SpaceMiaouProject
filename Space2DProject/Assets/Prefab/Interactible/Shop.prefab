@@ -105,7 +105,7 @@ MonoBehaviour:
   ShopItemList:
   - name: Heal I
     image: {fileID: 21300000, guid: 8e4b10898e5f1a647bdb7c12bb210320, type: 3}
-    basePrice: 1
+    basePrice: 2
     description: Heal 1 health point
     actualPrice: 0
     upgrade:
@@ -127,7 +127,7 @@ MonoBehaviour:
     isBought: 0
   - name: Heal II
     image: {fileID: 21300000, guid: 6618f77945ff1b14f9f1861c2508c3ab, type: 3}
-    basePrice: 2
+    basePrice: 3
     description: Heal 2 health points
     actualPrice: 0
     upgrade:
@@ -149,7 +149,7 @@ MonoBehaviour:
     isBought: 0
   - name: Heal III
     image: {fileID: 21300000, guid: 913633eab67b77848b1a0102f479db35, type: 3}
-    basePrice: 3
+    basePrice: 4
     description: Heal 3 health points
     actualPrice: 0
     upgrade:
@@ -171,7 +171,7 @@ MonoBehaviour:
     isBought: 0
   - name: Speed I
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
-    basePrice: 1
+    basePrice: 2
     description: Gain 5% movement speed
     actualPrice: 0
     upgrade:
@@ -193,7 +193,7 @@ MonoBehaviour:
     isBought: 0
   - name: Speed II
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
-    basePrice: 2
+    basePrice: 3
     description: Gain 10% movement speed
     actualPrice: 0
     upgrade:
@@ -215,7 +215,7 @@ MonoBehaviour:
     isBought: 0
   - name: Speed III
     image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
-    basePrice: 3
+    basePrice: 4
     description: Gain 15% movement speed
     actualPrice: 0
     upgrade:
@@ -237,7 +237,7 @@ MonoBehaviour:
     isBought: 0
   - name: Broom Damage I
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
-    basePrice: 2
+    basePrice: 3
     description: Gain 1 bonus damage on broom attacks
     actualPrice: 0
     upgrade:
@@ -259,7 +259,7 @@ MonoBehaviour:
     isBought: 0
   - name: Broom Damage II
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
-    basePrice: 3
+    basePrice: 4
     description: Gain 2 bonus damages on broom attacks
     actualPrice: 0
     upgrade:
@@ -281,7 +281,7 @@ MonoBehaviour:
     isBought: 0
   - name: Broom Damage III
     image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
-    basePrice: 4
+    basePrice: 5
     description: Gain 3 bonus damages on broom attacks
     actualPrice: 0
     upgrade:
@@ -303,7 +303,7 @@ MonoBehaviour:
     isBought: 0
   - name: Dash Cooldown I
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
-    basePrice: 2
+    basePrice: 3
     description: Reduce dash cooldown by 5%
     actualPrice: 0
     upgrade:
@@ -325,7 +325,7 @@ MonoBehaviour:
     isBought: 0
   - name: Dash Cooldown II
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
-    basePrice: 3
+    basePrice: 4
     description: Reduce dash cooldown by 10%
     actualPrice: 0
     upgrade:
@@ -347,7 +347,7 @@ MonoBehaviour:
     isBought: 0
   - name: Dash Cooldown III
     image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
-    basePrice: 4
+    basePrice: 5
     description: Reduce dash cooldown by 15%
     actualPrice: 0
     upgrade:
@@ -435,7 +435,7 @@ MonoBehaviour:
     isBought: 0
   - name: 'Bleach '
     image: {fileID: 21300000, guid: eb7b966f7e0fa3e4cb82e34dfcac4bf6, type: 3}
-    basePrice: 2
+    basePrice: 3
     description: Dealing spray damage will burn enemies for 2% of their max health
       per second
     actualPrice: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
     isBought: 0
   - name: Spray Damage I
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
-    basePrice: 1
+    basePrice: 2
     description: Gain 1 bonus damage on spray attacks
     actualPrice: 0
     upgrade:
@@ -480,7 +480,7 @@ MonoBehaviour:
     isBought: 0
   - name: Spray Damage II
     image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
-    basePrice: 2
+    basePrice: 3
     description: Gain 2 bonus damages on spray attacks
     actualPrice: 0
     upgrade:
@@ -502,7 +502,7 @@ MonoBehaviour:
     isBought: 0
   - name: Better Prices I
     image: {fileID: 21300000, guid: f98f05007731d6d4c87aaef8bec40e04, type: 3}
-    basePrice: 3
+    basePrice: 4
     description: Reduce the cost of all items by 1 Nyan coin (new prices cannot drop
       below 1)
     actualPrice: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
     isBought: 0
   - name: Better Prices II
     image: {fileID: 21300000, guid: 0b8b5ef32035dc0459a0c1767b51270d, type: 3}
-    basePrice: 4
+    basePrice: 5
     description: Reduce the cost of all items by 2 Nyan coins (new prices cannot
       drop below 1)
     actualPrice: 0

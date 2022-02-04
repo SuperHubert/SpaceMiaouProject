@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarTransform: {fileID: 5964290422703830236}
-  healthBarLenght: 300
+  healthBarLenght: 800
   healthBarWidth: 20
   healthBarOffset: 0.6
   isBurning: 0
@@ -793,7 +793,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6912049194478969306}
   damageIndicatorPrefab: {fileID: 1425911417197815886, guid: 9a31e8be4ab07eb4ea4bbc5b89ccac46, type: 3}
   bossHealth: 1
-  phaseThresholds: d2000000aa00000096000000820000006e0000004b00000023000000
+  phaseThresholds: a4010000540100002c01000004010000dc0000009600000046000000
 --- !u!60 &2989836823339002476
 PolygonCollider2D:
   m_ObjectHideFlags: 0

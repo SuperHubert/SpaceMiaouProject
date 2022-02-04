@@ -158,6 +158,8 @@ public class EnemyHealth : MonoBehaviour
     public void Die(bool increaseScore = true)
     {
         isDying = true;
+        
+        if(flashRoutine != null) StopCoroutine(flashRoutine);
 
         if (increaseScore)
         {
