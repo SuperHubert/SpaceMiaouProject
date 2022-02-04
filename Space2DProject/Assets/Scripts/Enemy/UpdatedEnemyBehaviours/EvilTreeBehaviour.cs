@@ -40,7 +40,7 @@ public class EvilTreeBehaviour : EnemyBehaviour
     IEnumerator DeathAnim()
     {
         animator.SetTrigger("Die");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         base.Die();
     }
 
