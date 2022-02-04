@@ -40,7 +40,10 @@ public class BossCinematic : MonoBehaviour
         camTransform.DOMove(new Vector3(0, -5.76f, -10), 2.5f);
         cam.DOOrthoSize(12, 2.5f);
         yield return new WaitForSeconds(2.5f);
-        
+        foreach (Transform child in door)
+        {
+            child.gameObject.SetActive(true);
+        }
         DialogueManager.Instance.StartDialogue(dialogue01);
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
         am.Stop(8, true);
@@ -48,20 +51,21 @@ public class BossCinematic : MonoBehaviour
         yield return new WaitForSeconds(1f);
         am.Play(34);
         yield return new WaitForSeconds(1f);
-        
         cam.DOShakePosition(2f, Vector3.one);
         yield return new WaitForSeconds(2f);
-        
+        InputManager.canInput = false;
         camTransform.DOMove(new Vector3(0, -9, -10), 2.5f);
         cam.DOOrthoSize(7, 2.5f);
         DialogueManager.Instance.StartDialogue(dialogue02);
         yield return new WaitForSeconds(2.5f);
-        
+        InputManager.canInput = false;
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
+        InputManager.canInput = false;
         camTransform.DOMove(new Vector3(0, -1.6f, -10), 1f);
         bossFight.SpawnBoss();
         DialogueManager.Instance.StartDialogue(dialogue03);
         yield return new WaitUntil(() => !DialogueManager.Instance.dialogueCanvas.activeSelf);
+        InputManager.canInput = false;
         am.Play(3, true);
         StartCoroutine(LevelManager.Instance.LatePlay(9, 1));
 
@@ -72,11 +76,8 @@ public class BossCinematic : MonoBehaviour
         gameObject.GetComponent<Collider2D>().enabled = false;
         UIManager.Instance.normalUI.SetActive(true);
         LevelManager.Instance.Player().transform.position = new Vector3(0,-12,0);
-        foreach (Transform child in door)
-        {
-            child.gameObject.SetActive(true);
-        }
         yield return new WaitForSeconds(1f);
+        InputManager.canInput = true;
         bossAnimator.SetTrigger("Idle");
     }
 }

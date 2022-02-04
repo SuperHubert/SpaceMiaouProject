@@ -203,8 +203,8 @@ public class EnemyHealth : MonoBehaviour
     
     private void Flash()
     {
-        if (spriteRenderer == null) return;
-        if(flashRoutine != null) StopCoroutine(flashRoutine);
+        if(isDying) if(flashRoutine != null) StopCoroutine(flashRoutine);
+        if (spriteRenderer == null || isDying) return;
         if(bossHealth && currentHealth <= 0) spriteRenderer.material = originalMaterial;
         if(enemyBehaviour.gameObject.activeSelf) flashRoutine = StartCoroutine(FlashRoutine());
     }

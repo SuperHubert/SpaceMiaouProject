@@ -705,7 +705,7 @@ MonoBehaviour:
   fall: {fileID: 1631893213}
   speed: 7
   inputMovement: {x: 0, y: 0, z: 0}
-  deadZone: 0.3
+  deadZone: 0.4
   lastDirection: {x: 0, y: 0, z: 0}
   dashSpeed: 30
   dashing: 0
