@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 public class Arena : MonoBehaviour
 {
@@ -11,10 +10,12 @@ public class Arena : MonoBehaviour
     private List<Transform> enemies = new List<Transform>();
     private bool activated = false;
     public bool completed = false;
+    private Camera cam;
 
     private void Start()
     {
         InitObjs();
+        cam = Camera.main;
     }
 
     void Update()
@@ -93,6 +94,7 @@ public class Arena : MonoBehaviour
 
     private void CloseDoors()
     {
+        cam.DOShakePosition(0.5f, Vector3.one);
         foreach (Transform door in transform.GetChild(0))
         {
             if (door.GetComponent<Collider2D>()!= null) door.GetComponent<Collider2D>().enabled = true;
@@ -105,7 +107,6 @@ public class Arena : MonoBehaviour
     
     private void OpenDoors()
     {
-        Debug.Log("bonk");
         foreach (Transform door in transform.GetChild(0))
         {
             if (door.GetComponent<Collider2D>()!= null) door.GetComponent<Collider2D>().enabled = false;
