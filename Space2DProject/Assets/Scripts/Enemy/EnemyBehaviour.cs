@@ -77,7 +77,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         sleepTrigger.SetActive(true);
         actionTrigger.SetActive(hasAction);
         
-        cm.Add(gameObject);
+        if(cm != null) cm.Add(gameObject);
         
         currentState = State.Awake;
     }
@@ -90,7 +90,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
         if(agent.isOnNavMesh) agent.SetDestination(transform.position);
         
-        cm.Remove(gameObject);
+        if(cm != null) cm.Remove(gameObject);
         
         currentState = State.Asleep;
         isPerformingAction = false;
@@ -104,7 +104,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
         
-        cm.Remove(gameObject);
+        if(cm != null) cm.Remove(gameObject);
 
         agent.Warp(transform.position);
         
@@ -147,7 +147,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         enemyTransform.position = respawnTrigger.transform.position;
         health.InitEnemy();
         
-        cm.Remove(gameObject);
+        if(cm != null) cm.Remove(gameObject);
         
         currentState = State.Asleep;
         

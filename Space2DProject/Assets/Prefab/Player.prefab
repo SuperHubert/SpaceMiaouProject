@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5376916406343267898}
   - component: {fileID: 8800196449721614723}
+  - component: {fileID: 3468410616461997895}
   m_Layer: 8
   m_Name: BaseDownCollider
   m_TagString: Untagged
@@ -326,6 +327,20 @@ PolygonCollider2D:
       - {x: 0.058452785, y: -0.1823982}
       - {x: 0.39887458, y: -0.18677968}
       - {x: 1.2520574, y: 0.5305433}
+--- !u!114 &3468410616461997895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410284229827622136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa17438a2b949ed4ca6cd1cfbcd58a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  specialAttack: 0
 --- !u!1 &3848790184236696473
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6121227370276993018}
   - component: {fileID: 7701683658996652597}
+  - component: {fileID: 4368711486060695979}
   m_Layer: 8
   m_Name: BaseRightCollider
   m_TagString: Untagged
@@ -394,6 +410,20 @@ PolygonCollider2D:
       - {x: 0.058452785, y: -0.1823982}
       - {x: 0.39887458, y: -0.18677968}
       - {x: 1.2520574, y: 0.5305433}
+--- !u!114 &4368711486060695979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848790184236696473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa17438a2b949ed4ca6cd1cfbcd58a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  specialAttack: 0
 --- !u!1 &5419367473089600402
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +794,7 @@ MonoBehaviour:
   baseAttack: 0
   specialAttack: 0
   hitTrigger: 0
+  bonusDamage: 0
   flashMaterial: {fileID: 2100000, guid: a609e62be8caf5c4da9b1a6d4fb1bc20, type: 2}
 --- !u!1 &6095275311435496822
 GameObject:
@@ -775,6 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2974663824073932754}
   - component: {fileID: 3670718848343679485}
+  - component: {fileID: 8344324339308750173}
   m_Layer: 8
   m_Name: BaseLeftCollider
   m_TagString: Untagged
@@ -834,6 +866,20 @@ PolygonCollider2D:
       - {x: 0.058452785, y: -0.1823982}
       - {x: 0.39887458, y: -0.18677968}
       - {x: 1.2520574, y: 0.5305433}
+--- !u!114 &8344324339308750173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095275311435496822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa17438a2b949ed4ca6cd1cfbcd58a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  specialAttack: 0
 --- !u!1 &8934128019086311351
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7401763466328115471}
   - component: {fileID: 1272243284189037122}
+  - component: {fileID: 8601703806595948161}
   m_Layer: 8
   m_Name: BaseUpCollider
   m_TagString: Untagged
@@ -902,6 +949,20 @@ PolygonCollider2D:
       - {x: 0.058452785, y: -0.1823982}
       - {x: 0.39887458, y: -0.18677968}
       - {x: 1.4816084, y: 0.58519816}
+--- !u!114 &8601703806595948161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934128019086311351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa17438a2b949ed4ca6cd1cfbcd58a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  specialAttack: 0
 --- !u!1001 &1643568712856876593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1033,6 +1094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6acc978bc160e441a60e4eb18fe2dd9, type: 3}
+--- !u!4 &1631893211 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7342238897723181360, guid: b6acc978bc160e441a60e4eb18fe2dd9, type: 3}
+  m_PrefabInstance: {fileID: 7342238896125394923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1631893213 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7342238897723181366, guid: b6acc978bc160e441a60e4eb18fe2dd9, type: 3}
@@ -1044,8 +1110,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e76f58e2a7470b4da88d85279c6a68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1631893211 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7342238897723181360, guid: b6acc978bc160e441a60e4eb18fe2dd9, type: 3}
-  m_PrefabInstance: {fileID: 7342238896125394923}
-  m_PrefabAsset: {fileID: 0}
