@@ -6,28 +6,29 @@ public class SmallDashingBehaviour : EnemyBehaviour
     private void Update()
     {
         if(currentState != State.Awake) return;
-        
+
         if (actionCd > 0)
         {
             actionCd--;
         }
-        else
-        {
-            isPerformingAction = false;
-            agent.stoppingDistance = 0f;
-            agent.acceleration = 8;
-            agent.speed = 3.5f;
-            actionTrigger.SetActive(true);
-        }
-        
-        if (currentState == State.Awake && !isPerformingAction)
-        {
-            agent.SetDestination(player.position);
+
+        if (currentState != State.Awake || isPerformingAction) return;
+        if(agent.isOnNavMesh) agent.SetDestination(player.position);
             
-            //animator direction
-            //look left or right
-            animator.SetInteger("Direction", player.position.x - transform.position.x > 0 ? 2 : 4);
-        }
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isWalking", true);
+
+        Vector2 orientation = new Vector2(player.position.x - transform.GetChild(0).position.x,
+            player.position.y - transform.GetChild(0).position.y).normalized;
+            
+        animator.SetFloat("Horizontal",orientation.x);
+        animator.SetFloat("Vertical",orientation.y);
+    }
+
+    protected override void InitVariables()
+    {
+        base.InitVariables();
+        enemy.GetComponent<Collider2D>().enabled = true;
     }
 
     protected override void Action()
@@ -35,28 +36,83 @@ public class SmallDashingBehaviour : EnemyBehaviour
         base.Action();
         StartCoroutine(DashAttack());
     }
-
+    
     private IEnumerator DashAttack()
     {
-        animator.SetTrigger("Attack");
+        isPerformingAction = true;
+        
+        yield return null;
         
         agent.velocity = Vector3.zero;
-        agent.acceleration = 100;
-        agent.speed = 20;
-        agent.stoppingDistance = 1f;
 
         var enemyTransformPosition = enemyTransform.position;
         var playerPos = player.position;
-        var target = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * 5;
+        var backPos = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1;
+        var dashPos = enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * 5;
         
-        Debug.DrawRay(enemyTransformPosition, (playerPos - enemyTransformPosition).normalized * 5, Color.green, 4, false);
-        
-        agent.SetDestination(enemyTransformPosition + (playerPos - enemyTransformPosition).normalized * -1);
-        
-        yield return new WaitForSeconds(0.1f);
+        if(agent.isOnNavMesh && enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(backPos);
 
-        agent.SetDestination(target);
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => agent.velocity == Vector3.zero);
         
-        animator.ResetTrigger("Attack");
+        am.Play(15,true);
+        
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isAttacking", true);
+
+        agent.velocity = Vector3.zero;
+        agent.acceleration = 100;
+        agent.speed = 10;
+        agent.stoppingDistance = 1.5f;
+        
+        if(agent.isOnNavMesh && enemy.activeSelf && currentState != State.Dead && !animator.GetBool("isDead")) agent.SetDestination(dashPos);
+        
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => agent.velocity == Vector3.zero);
+        
+        agent.stoppingDistance = 0f;
+        agent.acceleration = 8;
+        agent.speed = 3.5f;
+
+        actionCd = 0;
+
+        isPerformingAction = false;
+
+        animator.SetBool("isWalking", true);
+        animator.SetBool("isAttacking", false);
+    }
+
+    public override void Die(bool destroy = false)
+    {
+        enemy.GetComponent<Collider2D>().enabled = false;
+        currentState = State.Dead;
+        agent.stoppingDistance = 0f;
+        agent.acceleration = 8;
+        agent.speed = 3.5f;
+        agent.velocity = Vector3.zero;
+        if(agent.isOnNavMesh) agent.isStopped = true;
+        StartCoroutine(PlayAnim());
+    }
+
+    IEnumerator PlayAnim()
+    {
+        animator.Play("Poupi_Death");
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(1f);
+        base.Die();
+    }
+    
+    public override void Stun(float duration = 1)
+    {
+        animator.SetBool("Damage", true);
+        base.Stun(duration);
+    }
+
+    public override void Sleep()
+    {
+        base.Sleep();
+        agent.stoppingDistance = 0f;
+        agent.acceleration = 8;
+        agent.speed = 3.5f;
     }
 }

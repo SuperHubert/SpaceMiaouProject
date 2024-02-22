@@ -49,8 +49,9 @@ MonoBehaviour:
   isInGodMode: 0
   canTakeDamge: 1
   invulTime: 1
+  deathObj: {fileID: 4031187297786249503, guid: bac0eba2eb9dd5349b5375d76d7ba375, type: 3}
   flashMaterial: {fileID: 2100000, guid: 19a353e510b5d4743ab1fb7544d1b00b, type: 2}
-  flashDuration: 0.1
+  transparentMaterial: {fileID: 2100000, guid: effa90d4a3f840f4c978fb4921b69782, type: 2}
 --- !u!114 &6043002544381492803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,13 +64,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1209e0a03ca26614f896317eff0238ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  hpImage: {fileID: 0}
+  hpImageBack: {fileID: 0}
+  normalUI: {fileID: 0}
+  pauseUI: {fileID: 0}
+  inputImage: {fileID: 0}
+  pauseInput: 0
+  score: 0
+  scoreText: {fileID: 0}

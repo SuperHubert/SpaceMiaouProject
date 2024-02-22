@@ -10,19 +10,19 @@ public class DisplayInteracion : MonoBehaviour
 
     private void Update()
     {
-        if (interact && canInteract)
-        {
-            objectToInteractWith.GetComponent<IInteractible>().OnInteraction();
-        }
+        if (!interact || !canInteract) return;
+        
+        if(objectToInteractWith != null )objectToInteractWith.GetComponent<IInteractible>().OnInteraction();
+        pressButton.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<IInteractible>() != null)
-        {
-            pressButton.SetActive(canInteract = true);
-            objectToInteractWith = other.gameObject;
-        }
+        if(DialogueManager.Instance.dialogueCanvas.activeSelf) return;
+        if (other.GetComponent<IInteractible>() == null) return;
+        
+        pressButton.SetActive(canInteract = true);
+        objectToInteractWith = other.gameObject;
     }
 
     private void OnTriggerExit2D(Collider2D other)

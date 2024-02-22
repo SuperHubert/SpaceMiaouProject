@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
-    [SerializeField] private int damage = 1;
-    
+    [SerializeField] private Animator animator;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //play Animation
-        LifeManager.Instance.TakeDamages(damage);
+        animator.Play("Trigger");
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        //play Animation
-    }
+    
 }

@@ -47,3 +47,18 @@ MonoBehaviour:
   - tag: Enemy Bullets
     prefab: {fileID: 1853708342740301708, guid: 6fdb7ff1959e27740b33d053380a70fe, type: 3}
     size: 100
+  - tag: Enemy Bullets
+    prefab: {fileID: 1853708342740301708, guid: 6fdb7ff1959e27740b33d053380a70fe, type: 3}
+    size: 100
+  - tag: Enemy Bullets
+    prefab: {fileID: 1853708342740301708, guid: 6fdb7ff1959e27740b33d053380a70fe, type: 3}
+    size: 100
+  - tag: Dust
+    prefab: {fileID: 3662350605876692763, guid: ca7a8a23b6fd4df4892f2aa28a22fe95, type: 3}
+    size: 10
+  - tag: Rock
+    prefab: {fileID: 5979208715033799408, guid: 4d102e178761d8545a1915b746cc3a53, type: 3}
+    size: 25
+  - tag: Explosion
+    prefab: {fileID: 8915638910282533396, guid: 12f6986c90f886d40a54013ba3aecd3c, type: 3}
+    size: 25

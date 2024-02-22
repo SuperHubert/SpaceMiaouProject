@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2340910093457116432}
   - component: {fileID: 2350670521089478828}
   - component: {fileID: 1101935766226791751}
+  - component: {fileID: 3304569764049068382}
+  - component: {fileID: 593867141416601127}
   m_Layer: 14
   m_Name: Shop
   m_TagString: Untagged
@@ -30,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2233394246705086644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c65e53e5c2db8c144acc86ff4200e6e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,10 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reductionTotal: 0
+  shopCanvas: {fileID: 0}
   ShopItemList:
   - name: Heal I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 3
+    image: {fileID: 21300000, guid: 8e4b10898e5f1a647bdb7c12bb210320, type: 3}
+    basePrice: 2
+    description: Heal 1 health point
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -119,10 +123,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 0
     isBought: 0
   - name: Heal II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 4
+    image: {fileID: 21300000, guid: 6618f77945ff1b14f9f1861c2508c3ab, type: 3}
+    basePrice: 3
+    description: Heal 2 health points
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -139,10 +145,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 0
     isBought: 0
   - name: Heal III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 5
+    image: {fileID: 21300000, guid: 913633eab67b77848b1a0102f479db35, type: 3}
+    basePrice: 4
+    description: Heal 3 health points
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -159,10 +167,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 0
     isBought: 0
   - name: Speed I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
     basePrice: 2
+    description: Gain 5% movement speed
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -179,10 +189,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Speed II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
     basePrice: 3
+    description: Gain 10% movement speed
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -199,10 +211,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Speed III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: 60c4d367070a71c439e4f472a65bf4a5, type: 3}
     basePrice: 4
+    description: Gain 15% movement speed
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -219,10 +233,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Broom Damage I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 3
+    description: Gain 1 bonus damage on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -239,10 +255,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Broom Damage II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
     basePrice: 4
+    description: Gain 2 bonus damages on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -259,10 +277,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
-  - name: Broom Damages III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 6
+  - name: Broom Damage III
+    image: {fileID: 21300000, guid: 60653c6a1df611843bd0190342be6f3b, type: 3}
+    basePrice: 5
+    description: Gain 3 bonus damages on broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -279,10 +299,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Dash Cooldown I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 2
+    image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
+    basePrice: 3
+    description: Reduce dash cooldown by 5%
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -299,10 +321,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Dash Cooldown II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
     basePrice: 4
+    description: Reduce dash cooldown by 10%
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -319,10 +343,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Dash Cooldown III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: 22310606ad807ec498412ff2f3744a56, type: 3}
     basePrice: 5
+    description: Reduce dash cooldown by 15%
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -339,10 +365,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Fortune I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 3
+    image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
+    basePrice: 2
+    description: Get more containers in the next regions
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -359,10 +387,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Fortune II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 4
+    image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
+    basePrice: 3
+    description: Get even more containers in the next regions
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -379,10 +409,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Fortune III
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 5
+    image: {fileID: 21300000, guid: 6a804396ebefb4c448451992402fef5b, type: 3}
+    basePrice: 4
+    description: Get even way more containers in the next regions
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -399,10 +431,13 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: 'Bleach '
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 2
+    image: {fileID: 21300000, guid: eb7b966f7e0fa3e4cb82e34dfcac4bf6, type: 3}
+    basePrice: 3
+    description: Dealing spray damage will burn enemies for 2% of their max health
+      per second
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -419,10 +454,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Spray Damage I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
     basePrice: 2
+    description: Gain 1 bonus damage on spray attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -439,10 +476,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Spray Damage II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
+    image: {fileID: 21300000, guid: b7ee1bbf10a33ce4ea89f167d6226aaf, type: 3}
     basePrice: 3
+    description: Gain 2 bonus damages on spray attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -459,10 +498,13 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Better Prices I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 3
+    image: {fileID: 21300000, guid: f98f05007731d6d4c87aaef8bec40e04, type: 3}
+    basePrice: 4
+    description: Reduce the cost of all items by 1 Nyan coin (new prices cannot drop
+      below 1)
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -479,10 +521,13 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Better Prices II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 4
+    image: {fileID: 21300000, guid: 0b8b5ef32035dc0459a0c1767b51270d, type: 3}
+    basePrice: 5
+    description: Reduce the cost of all items by 2 Nyan coins (new prices cannot
+      drop below 1)
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -499,10 +544,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Soap Gain I
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 3
+    image: {fileID: 21300000, guid: c8efb72c596502f4bb767ea2ec0098c5, type: 3}
+    basePrice: 1
+    description: Gain 10% more soap ammo from broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -519,10 +566,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   - name: Soap Gain II
-    Image: {fileID: 21300000, guid: 230a9b3400a31a34785444ffb90bf286, type: 3}
-    basePrice: 4
+    image: {fileID: 21300000, guid: 6647c385b2850904b868006c64bbda4a, type: 3}
+    basePrice: 2
+    description: Gain 15% more soap ammo from broom attacks
     actualPrice: 0
     upgrade:
       m_PersistentCalls:
@@ -539,6 +588,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    track: 1
     isBought: 0
   ShopItemList2: []
 --- !u!114 &2340910093457116432
@@ -569,8 +619,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopUI: {fileID: 0}
   shopManager: {fileID: 2233394246705086647}
-  exitButton: {fileID: 0}
+  selectedButton: {fileID: 0}
   nyanCountShop: {fileID: 0}
+  nyanCount: {fileID: 0}
+  animator: {fileID: 3304569764049068382}
   textList:
   - {fileID: 0}
   - {fileID: 0}
@@ -578,9 +630,36 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   imageList: []
-  testNameList: []
-  soldOutList: []
+  buttonList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemName: {fileID: 0}
+  itemDescription: {fileID: 0}
+  itemImage: {fileID: 0}
+  inventoryText: {fileID: 0}
+  inventory: []
+  baseButtonSprite: {fileID: 21300000, guid: de8b187f08a37da4080e1d6f2b7ecb54, type: 3}
+  soldOutSprite: {fileID: 21300000, guid: 544662833044aba4a95cda8d30d31580, type: 3}
   displayList: []
+  shopDialogues:
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Agent Jones, I've found a way to get you some specific upgrades.
+    - I've linked these old phones to our air drop system.
+    - But because of the way they're built, they won't function without coins.
+    - Luckly, you'll find some Nyan Coins in the containers we dropped before you
+      arrived on the planet.
+    audioSourceIndex: 22
+  - characterName: Jones
+    characterImage: {fileID: 21300000, guid: 06d4fce5cb898694eb3165b6de2c15fd, type: 3}
+    sentences:
+    - I was wondering why you sent me Nyan Coins as supplies.
+    audioSourceIndex: 0
+  closeShopInput: 0
 --- !u!61 &1101935766226791751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -598,7 +677,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -607,3 +686,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &3304569764049068382
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233394246705086644}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 575a62ab4744b764eba2e970b5078fb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &593867141416601127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233394246705086644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dedb7cea5364ce4894a1163a94055e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  offset: -0.1
+  layer: 7

@@ -1,31 +1,12 @@
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 
 public class FollowPlayer : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    public Transform player;
-    public bool canMove = false;
-    public bool isInHub = true;
+    [SerializeField] private GameObject player;
+    public Vector2 teleportSpot;
     
-    private void Start()
+    public void ResetTeleportSpot()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        canMove = false;
+        teleportSpot = player != null ? player.transform.position : player.transform.position;
     }
-    
-    void Update()
-    {
-        if(!InputManager.canInput || agent == null || !canMove || isInHub) return;
-        if(transform.position == player.position) return;
-        //agent.Warp(player.position);
-    }
-
-    public void WarpToPlayer()
-    {
-        if(transform.position == player.position || SceneManager.GetActiveScene().buildIndex == 3) return;
-        agent.Warp(player.position);
-    }
-
 }

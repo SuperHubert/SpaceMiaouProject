@@ -6,45 +6,65 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueCanvas;
+    public GameObject dialogueCanvas;
+    private GameObject nextButton;
     private TextMeshProUGUI speaker;
     private TextMeshProUGUI dialogueText;
     private Image portraitRender;
+    private int audioSourceIndex = 0;
 
     private Coroutine typingCoroutine;
     
     private Queue<string> sentences = new Queue<string>();
+    private string currentSentence;
 
     [SerializeField] private bool instantDisplay = false;
     [SerializeField] private float timeBetweenLetters = 0.005f;
+    [SerializeField] private float timeBetweenBlinks = 0.5f;
     private AudioManager am;
     private bool isDoneTyping = true;
     private Coroutine soundCoroutine;
+    private Coroutine nextBlinkRoutine;
     
-    #region Singleton
+
+    #region Singleton Don't Destroy On Load
     public static DialogueManager Instance;
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
     }
     #endregion
     
     void Start()
     {
-        speaker = dialogueCanvas.transform.GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
-        dialogueText = dialogueCanvas.transform.GetChild(0).GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
-        portraitRender = dialogueCanvas.transform.GetChild(0).GetChild(1).GetChild(0).gameObject
+        speaker = dialogueCanvas.transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>();
+        dialogueText = dialogueCanvas.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>();
+        portraitRender = dialogueCanvas.transform.GetChild(0).GetChild(2).GetChild(0).gameObject
             .GetComponent<Image>();
         am = AudioManager.Instance;
+        nextButton = dialogueCanvas.transform.GetChild(0).GetChild(5).gameObject;
     }
 
     public void StartDialogue(Dialogues dialogue)
     {
+        InputManager.canInput = false;
+        
         dialogueCanvas.SetActive(true);
         
         speaker.text = dialogue.characterName;
         portraitRender.sprite = dialogue.characterImage;
+        audioSourceIndex = dialogue.audioSourceIndex;
 
         sentences.Clear();
 
@@ -65,39 +85,47 @@ public class DialogueManager : MonoBehaviour
             dialogueCanvas.SetActive(true);
         }
         
-        if (sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
+        if(nextBlinkRoutine != null) StopCoroutine(nextBlinkRoutine);
 
-        var sentence = sentences.Dequeue();
+        if (isDoneTyping)
+        {
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
 
-        if (instantDisplay)
+            var sentence = sentences.Dequeue();
+
+            if (instantDisplay)
+            {
+                dialogueText.text = sentence;
+                return;
+            }
+        
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+            if (soundCoroutine != null) StopCoroutine(soundCoroutine);
+            
+            typingCoroutine = StartCoroutine(TypeSentence(sentence));
+            soundCoroutine = StartCoroutine(PlayTypingSound());
+        }
+        else
         {
-            dialogueText.text = sentence;
-            return;
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+            if (soundCoroutine != null) StopCoroutine(soundCoroutine);
+            dialogueText.text = currentSentence;
+            isDoneTyping = true;
+            nextBlinkRoutine = StartCoroutine(NextBlinkRoutine());
         }
         
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-        }
         
-        if (soundCoroutine != null)
-        {
-            StopCoroutine(soundCoroutine);
-        }
-        
-        typingCoroutine = StartCoroutine(TypeSentence(sentence));
-        soundCoroutine = StartCoroutine(PlayTypingSound());
     }
     
     private IEnumerator PlayTypingSound()
     {
         do
         {
-            am.Play(0);
+            am.Play(audioSourceIndex);
             yield return new WaitForSeconds(0.2f);
         } while (!isDoneTyping);
         
@@ -105,6 +133,9 @@ public class DialogueManager : MonoBehaviour
     
     private IEnumerator TypeSentence(string sentence)
     {
+        currentSentence = sentence;
+        if(nextBlinkRoutine != null) StopCoroutine(nextBlinkRoutine);
+        nextButton.SetActive(false);
         dialogueText.text = "";
         isDoneTyping = false;
         foreach (char letter in sentence.ToCharArray())
@@ -113,16 +144,48 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenLetters);;
         }
         isDoneTyping = true;
+        yield return new WaitForSeconds(timeBetweenBlinks);
+        nextBlinkRoutine = StartCoroutine(NextBlinkRoutine());
+    }
+
+    private IEnumerator NextBlinkRoutine()
+    {
+        while (isDoneTyping)
+        {
+            nextButton.SetActive(true);
+            yield return new WaitForSeconds(timeBetweenBlinks);
+            nextButton.SetActive(false);
+            yield return new WaitForSeconds(timeBetweenBlinks);
+        }
     }
 
     public void EndDialogue()
     {
         dialogueCanvas.SetActive(false);
+        
+        InputManager.canInput = true;
     }
 
     public bool ToggleInstantTyping()
     {
         instantDisplay = !instantDisplay;
         return instantDisplay;
+    }
+
+    public void StartMultipleDialogues(List<Dialogues> allDialogues, bool canMove=true)
+    {
+        StartCoroutine(MultipleDialogueRoutine(allDialogues, canMove));
+    }
+
+    private IEnumerator MultipleDialogueRoutine(List<Dialogues> allDialogues, bool canMove)
+    {
+        InputManager.canInput = canMove;
+        foreach (var dialogue in allDialogues)
+        {
+            StartDialogue(dialogue);
+            yield return null;
+            yield return new WaitUntil(() => !dialogueCanvas.activeSelf);
+        }
+        InputManager.canInput = true;
     }
 }

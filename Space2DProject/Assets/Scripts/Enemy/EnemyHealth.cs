@@ -1,11 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject healthBarObj;
-    private Image healthBar;
+    public Transform healthBarTransform;
+    private GameObject healthBarObj;
+    private Image healthBarFrontImg;
+    private Image healthBarBackImg;
+    private Camera cam;
     [SerializeField] private float healthBarLenght = 100f;
     [SerializeField] private float healthBarWidth = 20f;
     [SerializeField] private float healthBarOffset = 0.6f;
@@ -14,25 +18,52 @@ public class EnemyHealth : MonoBehaviour
     public float burnRate = 1f;
     private Coroutine burnRoutine;
 
+    public bool canTakeDamage = true;
     [SerializeField]private float maxHealth = 3;
     [SerializeField]private float currentHealth;
+    private bool isDying = false;
 
     [SerializeField]private bool moveHealthBar = true;
 
-    private Animator enemyAnimator;
-    private EnemyBehaviour enemyBehaviour;
+    public Animator enemyAnimator;
+    public EnemyBehaviour enemyBehaviour;
     
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
+
+    private Transform levelCanvas;
+    public GameObject damageIndicatorPrefab;
+    
+    [SerializeField] private bool bossHealth = false;
+    private NewBossBehaviour bossBehaviour;
+    [SerializeField] private List<int> phaseThresholds = new List<int>();
+    private AudioManager am;
+
+
     void Start()
     {
         InitEnemy();
+        if (bossHealth) bossBehaviour = transform.parent.GetComponent<NewBossBehaviour>();
+        am = AudioManager.Instance;
+        levelCanvas = LevelManager.Instance.Level().GetChild(5);
     }
 
     private void Update()
     {
+        if(enemyBehaviour == null) return;
         if (enemyBehaviour.currentState != EnemyBehaviour.State.Dead && moveHealthBar)
         {
             UpdateHealthBarPosition();
         }
+        
+                
+        if (healthBarBackImg.fillAmount != healthBarFrontImg.fillAmount)
+        {
+            HealthDecreaseEffect();
+        }
+
         
     }
 
@@ -43,40 +74,74 @@ public class EnemyHealth : MonoBehaviour
         hpPos.z = 0f;
         hpPos.y += healthBarOffset;
 
-        hpPos = Camera.main.WorldToScreenPoint(hpPos);
+        hpPos = cam.WorldToScreenPoint(hpPos);
         
         healthBarObj.transform.position = hpPos;
     }
     
     public void InitEnemy()
     {
+        healthBarFrontImg = healthBarTransform.GetChild(1).GetComponent<Image>();
+        healthBarBackImg = healthBarTransform.GetChild(0).GetComponent<Image>();
+
         currentHealth = maxHealth;
-        enemyAnimator = gameObject.GetComponent<Animator>();
         enemyBehaviour = transform.parent.gameObject.GetComponent<EnemyBehaviour>();
+        healthBarBackImg.fillAmount = 1;
+        healthBarFrontImg.fillAmount = 1;
+
+        healthBarObj = healthBarTransform.gameObject;
         
-        healthBar = healthBarObj.GetComponent<Image>();
         healthBarObj.SetActive(false);
 
         isBurning = false;
         
+        cam = Camera.main;
+
+        isDying = false;
+        
+        if(spriteRenderer != null) originalMaterial = spriteRenderer.material;
+        
         ResizeHealthBar();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage,bool stun = false, float duration = 1)
     {
-        ResizeHealthBar();
-        
-        healthBarObj.SetActive(true);
-        
-        enemyAnimator.SetTrigger("TakeDamage");
-        
-        currentHealth -= damage;
-
-        healthBar.fillAmount = currentHealth / maxHealth;
-        
-        if (currentHealth <= 0)
+        if (canTakeDamage)
         {
-            Die();
+            if (bossHealth && bossBehaviour.arenaMode)
+            {
+                am.Play(29);
+                return;
+            }
+            
+            ResizeHealthBar();
+
+            currentHealth -= damage;
+
+            DisplayDamage((int)damage);
+
+            am.Play(20);
+            
+            healthBarObj.SetActive(currentHealth > 0);
+
+            healthBarFrontImg.fillAmount = currentHealth / maxHealth;
+
+            Flash();
+            
+            if(bossHealth) CheckPhase();
+            
+            if (currentHealth <= 0 && !isDying)
+            {
+                Die();
+            }
+            else if(stun)
+            {
+                enemyBehaviour.Stun(duration);
+            }
+        }
+        else
+        {
+            am.Play(29);
         }
         
         enemyAnimator.ResetTrigger("TakeDamage");
@@ -84,20 +149,33 @@ public class EnemyHealth : MonoBehaviour
     
     private void ResizeHealthBar()
     {
-        healthBar.rectTransform.localScale = Vector3.one;
-        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
+        healthBarFrontImg.rectTransform.localScale = Vector3.one;
+        healthBarFrontImg.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
+        healthBarBackImg.rectTransform.localScale = Vector3.one;
+        healthBarBackImg.rectTransform.sizeDelta = new Vector2(healthBarLenght, healthBarWidth);
     }
     
-    private void Die()
+    public void Die(bool increaseScore = true)
     {
-        enemyAnimator.SetBool("IsDead", true);
+        isDying = true;
         
-        enemyBehaviour.Die();
+        if(flashRoutine != null) StopCoroutine(flashRoutine);
+
+        if (increaseScore)
+        {
+            UIManager.Instance.IncreaseScore((int)maxHealth);
+            healthBarObj.SetActive(false);
+        }
+        else
+        {
+            enemyBehaviour.cleared = true;
+            healthBarObj.SetActive(false);
+        }
+
+        enemyBehaviour.Die(!increaseScore);
 
         isBurning = false;
-        
-        healthBarObj.SetActive(false);
-        
+
         if(burnRoutine != null) StopCoroutine(burnRoutine);
     }
 
@@ -118,4 +196,51 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     
+    private void HealthDecreaseEffect()
+    {
+        if(healthBarBackImg != null) healthBarBackImg.fillAmount = Mathf.Lerp (healthBarBackImg.fillAmount, healthBarFrontImg.fillAmount, 1f * Time.deltaTime);
+    }
+    
+    private void Flash()
+    {
+        if(isDying) if(flashRoutine != null) StopCoroutine(flashRoutine);
+        if (spriteRenderer == null || isDying) return;
+        if(bossHealth && currentHealth <= 0) spriteRenderer.material = originalMaterial;
+        if(enemyBehaviour.gameObject.activeSelf) flashRoutine = StartCoroutine(FlashRoutine());
+    }
+   
+    IEnumerator FlashRoutine()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.material = originalMaterial;
+        flashRoutine = null;
+    }
+
+    private void DisplayDamage(int damage)
+    {
+        var position = transform.position;
+
+        position.z = 0f;
+        position.y += healthBarOffset;
+
+        position = cam.WorldToScreenPoint(position);
+
+        var damagePopup = Instantiate(damageIndicatorPrefab, position, Quaternion.identity,levelCanvas);
+        damagePopup.GetComponent<DamageMove>().linkedEnemy = transform;
+        damagePopup.GetComponent<DamageMove>().damage = damage;
+    }
+
+    public void KnockBack(Vector3 pos, float duration = 1f)
+    {
+        enemyBehaviour.KnockBack(pos,duration);
+    }
+
+    public void CheckPhase()
+    {
+        if(bossBehaviour.phase >= phaseThresholds.Count) return;
+        if (currentHealth < phaseThresholds[bossBehaviour.phase]) bossBehaviour.TriggerNextPhase();
+
+}
+
 }

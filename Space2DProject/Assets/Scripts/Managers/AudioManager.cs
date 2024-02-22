@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
     public List<Sound> sounds = new List<Sound>();
-    
+    public static float volumeMultiplier = 1f;
+
     public static AudioManager Instance;
 
     private void Awake()
@@ -24,7 +27,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         #endregion
-        
+
         foreach (var s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -35,23 +38,57 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        volumeMultiplier = 1f;
+    }
+
     public void Play(string id)
     {
         var s = Array.Find<Sound>(sounds.ToArray(), sound => sound.name == id);
         s?.source.Play();
     }
-    
-    public void Play(int id)
+
+    public void Play(int id,bool dontCutPrevious = false)
     {
-        if(id>=sounds.Count || id<0) return;
-        //if(sounds[id].source.isPlaying) return;
+        if (id >= sounds.Count || id < 0) return;
+        if(sounds[id].source.isPlaying && dontCutPrevious) return;
+        sounds[id].source.volume = sounds[id].volume * volumeMultiplier;
         sounds[id].source.Play();
     }
 
-    public void Stop(int id)
+    public void Stop(int id, bool fade = false)
     {
-        if(id>=sounds.Count || id<0) return;
-        //if(sounds[id].source.isPlaying) return;
-        sounds[id].source.Stop();
+        if (id >= sounds.Count || id < 0) return;
+        if (fade)
+        {
+            sounds[id].source.DOFade(0f, 5);
+        }
+        else
+        {
+            sounds[id].source.Stop();
+        }
     }
+    
+    public void StopAllSounds()
+    {
+        foreach (var sound in sounds.Where(sound => sound.source.isPlaying))
+        {
+            sound.source.volume = sound.volume * volumeMultiplier;
+            sound.source.Stop();
+        }
+    }
+
+    public void ChangeVolume(float input)
+    {
+        if (input > 1) input = 1;
+        if (input < 0) input = 0;
+        volumeMultiplier = input;
+
+        foreach (var sound in sounds)
+        {
+            sound.source.volume = sound.volume * volumeMultiplier;
+        }
+    }
+
 }

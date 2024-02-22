@@ -1,17 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class LoadingManager : MonoBehaviour
 {
-    [SerializeField] private GameObject canvas;
+    public GameObject canvas;
     private Image backgroundImage;
     private Image progressBar;
-    private GameObject loadingText;
+    public Animator animator;
+    public List<RuntimeAnimatorController> controllersReserve;
+    [SerializeField] private List<RuntimeAnimatorController> controllers = new List<RuntimeAnimatorController>();
+
 
     private bool showCanvas = true;
-    private bool showImage = true;
     private bool showProgress = true;
     
     #region Singleton Don't Destroy On Load
@@ -37,7 +41,7 @@ public class LoadingManager : MonoBehaviour
     {
         backgroundImage = canvas.transform.GetChild(0).gameObject.GetComponent<Image>();
         progressBar = canvas.transform.GetChild(1).gameObject.GetComponent<Image>();
-        loadingText = canvas.transform.GetChild(2).gameObject;
+        RefillControllers();
     }
 
     public void LoadScene(int sceneNumber)
@@ -65,7 +69,6 @@ public class LoadingManager : MonoBehaviour
         }
         
         canvas.SetActive(false);
-        InputManager.canInput = true;
         progressBar.fillAmount = 0;
     }
 
@@ -87,6 +90,7 @@ public class LoadingManager : MonoBehaviour
         if (progress > 1)
         {
             canvas.SetActive(false);
+            RotationItem();
             InputManager.canInput = true;
             return;
         }
@@ -101,7 +105,7 @@ public class LoadingManager : MonoBehaviour
         else
         {
             canvas.SetActive(true);
-            InputManager.canInput = true;
+            InputManager.canInput = false;
         }
     }
 
@@ -132,5 +136,20 @@ public class LoadingManager : MonoBehaviour
         return mode;
     }
 
-    
+    public void RotationItem()
+    {
+        if(controllers.Count == 0) RefillControllers();
+        RuntimeAnimatorController controller = controllers[Random.Range(0, controllers.Count)];
+        animator.runtimeAnimatorController = controller;
+        controllers.Remove(controller);
+    }
+
+    private void RefillControllers()
+    {
+        controllers.Clear();
+        foreach (var controller in controllersReserve)
+        {
+            controllers.Add(controller);
+        }
+    }
 }

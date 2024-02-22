@@ -10,6 +10,8 @@ public class BossFight : MonoBehaviour
     private GameObject bossObj;
     private Transform startPos;
     public GameObject playerFollower;
+    public GameObject mapHider;
+    public GameObject mapHiderMinimap;
 
     void Start()
     {
@@ -32,20 +34,30 @@ public class BossFight : MonoBehaviour
 
         LevelManager.Instance.Level().GetChild(6).position = new Vector3(-5,-40,0);
         LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,50,0);
+        LevelManager.Instance.Level().GetChild(7).position = new Vector3(0,50,0);
         
         bossRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossRoom.SetActive(yes);
         bossStartRoom.transform.parent = yes ? LevelManager.Instance.Level().GetChild(0) : transform;
         bossStartRoom.SetActive(yes);
         playerFollower.SetActive(!yes);
+        mapHider.SetActive(yes);
+        mapHiderMinimap.SetActive(yes);
+        
+        isInBossFight = yes;
 
     }
 
     public Transform SpawnBossAndReturnStartPos()
     {
+        
+        return startPos;
+    }
+
+    public void SpawnBoss()
+    {
         bossObj.SetActive(true);
         bossObj.transform.GetChild(0).GetComponent<EnemyHealth>().InitEnemy();
-        return startPos;
     }
 
     public void CancelBossFight()
@@ -59,10 +71,5 @@ public class BossFight : MonoBehaviour
     public bool IsInBossFight()
     {
         return isInBossFight;
-    }
-
-    public void StartBossFight()
-    {
-        isInBossFight = true;
     }
 }

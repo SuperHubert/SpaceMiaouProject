@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2066300090379407896}
   - component: {fileID: 4883749890520021249}
   - component: {fileID: 3190055964251800992}
+  - component: {fileID: 1794612807576374737}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -85,6 +86,7 @@ MonoBehaviour:
   level: {fileID: 0}
   cameraMap: {fileID: 0}
   followPlayer: {fileID: 0}
+  fogOfWar: {fileID: 0}
   buildNavMesh: 1
   movePlayer: 1
   firstRoomPrefab: {fileID: 0}
@@ -179,7 +181,11 @@ MonoBehaviour:
   - {fileID: 3865417857991898078, guid: 2f3f8d8110b99dd42b1b0e98b86e18c8, type: 3}
   - {fileID: 3813306253620380701, guid: 40968c2d1e111b743a533f5c3263d7f5, type: 3}
   - {fileID: 2056553921587132423, guid: 45db086700a53094c92f0867b6b57d80, type: 3}
-  b1Ver4: []
+  b1Ver4:
+  - {fileID: 8725725207868173899, guid: efcecf40cbf1530499efad06c3c6ed89, type: 3}
+  - {fileID: 6498211490458390588, guid: e7fd3609947a8b946853416b6f5efac6, type: 3}
+  - {fileID: 8404871324626534143, guid: c0a8085e19d837d4ebf1c4b41beb1ba0, type: 3}
+  - {fileID: 2015526224669411458, guid: 8a8c5be9a4e0aa743b5b247ce3027751, type: 3}
   b1Ver31:
   - {fileID: 5413313178159561782, guid: 96345f2b06670724795afbf0047e773a, type: 3}
   - {fileID: 5619327191945026177, guid: 0a334b07c161e3c408eaec24dcfda6bd, type: 3}
@@ -188,7 +194,8 @@ MonoBehaviour:
   - {fileID: 5876084445961683811, guid: 68ffe2b744d79f34c8af0ae9cf79ce40, type: 3}
   b1Ver33:
   - {fileID: 1101565691399217013, guid: 469420ccc4eda1a44b2d2f04122a6c14, type: 3}
-  b1Ver34: []
+  b1Ver34:
+  - {fileID: 5713374221132255987, guid: 48558ab274d711c4787b07d624034df1, type: 3}
   b1Ver21:
   - {fileID: 7171600881412037748, guid: abbb6ee3c74a366439d231ec863fb22d, type: 3}
   b1Ver22:
@@ -197,7 +204,6 @@ MonoBehaviour:
   - {fileID: 5505419183239541532, guid: b7ebb58822232124489b21c9a63b8c64, type: 3}
   b1Ver24:
   - {fileID: 3656742117810010668, guid: 9059a4bd571c5ec4e9a462bd92297262, type: 3}
-  - {fileID: 6894654003919462521, guid: ddff03d99d79bd84d8d20cf9b3eebbf7, type: 3}
   b1Ver25:
   - {fileID: 5412835793782931130, guid: 30c531bdbe408a64aa9344e68e178005, type: 3}
   b1Ver26:
@@ -206,7 +212,6 @@ MonoBehaviour:
   - {fileID: 5967875725512681892, guid: 69a2e9cc2f3464f4db065d42833e6cde, type: 3}
   b1Ver12:
   - {fileID: 890058871905647881, guid: 7daa63ec535455d4e91fad9fb5721997, type: 3}
-  - {fileID: 4609911621382385617, guid: c80cd74d8fe8efa478d3f9337697bae5, type: 3}
   b1Ver13:
   - {fileID: 4077715859240780027, guid: 863e709d42176af4ca1be2931ec91211, type: 3}
   b1Ver14:
@@ -254,7 +259,7 @@ MonoBehaviour:
   b3Ver33:
   - {fileID: 3729984780916525272, guid: 2e2f3dc233d127442a747a982f8d7bfd, type: 3}
   b3Ver34:
-  - {fileID: 7114705089968390554, guid: 92e3ae19c855d994abaae08ab4af3124, type: 3}
+  - {fileID: 8998497337788918608, guid: a15c947da37d2874fb93a81d148b07e5, type: 3}
   b3Ver21:
   - {fileID: 8965511800713556665, guid: 553f6d91975feaf4983805ebe882c049, type: 3}
   b3Ver22:
@@ -271,7 +276,6 @@ MonoBehaviour:
   - {fileID: 4379724156161722663, guid: db77a2f2703684b4e98a8531238e7ad2, type: 3}
   b3Ver12:
   - {fileID: 414673518720267116, guid: e1837dd3882a91c449b75061b73dd2a2, type: 3}
-  - {fileID: 2154650363866298685, guid: 660aea405c4a72540935ed0cbb68fc66, type: 3}
   b3Ver13:
   - {fileID: 1390091858274596710, guid: 99d6109a212a2df418e8b577e0b48300, type: 3}
   b3Ver14:
@@ -293,12 +297,39 @@ MonoBehaviour:
   player: {fileID: 0}
   playerFall: {fileID: 0}
   mainCamera: {fileID: 0}
-  playerFollower: {fileID: 0}
+  minimapBackground: {fileID: 0}
+  mapBackground: {fileID: 0}
+  mapCamera: {fileID: 0}
+  globalLight: {fileID: 0}
+  fogImage: {fileID: 0}
+  fogImageMinimap: {fileID: 0}
+  portalBiome1: {fileID: 21300000, guid: 7eea68ec573e30141bd896ee1e449ea6, type: 3}
+  portalBiome2: {fileID: 21300000, guid: 085d524d09dda124bbe7acaf77e83037, type: 3}
+  portalBiome3: {fileID: 21300000, guid: d34fca60b27863147a8694e7b6a91531, type: 3}
+  towerBiome1: {fileID: 21300000, guid: 33dfb673f1f0cec47a26791686c00fb2, type: 3}
+  towerBiome2: {fileID: 21300000, guid: f0488d53396733747b007ad819c1b986, type: 3}
+  towerBiome3: {fileID: 21300000, guid: 438cb547a8c29674ebd8330ffe07b61c, type: 3}
   firstSeed: 69
   numberOfRooms: 16
   seedList: 
   floorNumber: 0
   maxFloors: 3
+  introDialogues:
+  - characterName: Master X
+    characterImage: {fileID: 21300000, guid: 8d0e914d495a1c846b754c342cdfb0fa, type: 3}
+    sentences:
+    - Agent Jones, you are now on planet LHS 1732 Alpha's first biome.
+    - You need to activate 4 towers in total to defeat the corruption. It will kill
+      all the enemies in one shot.
+    - Each tower is in a different biome.
+    - You can use your weapons, or sneak if you want.
+    - We sent some supplies for you, but they got scattered around on their way down.
+    - They were in special containers so they should still be usable if you manage
+      to find them.
+    - I'll be tracking your position so if you ever get lost don't hesitate to check
+      your map.
+    - Good Luck agent!
+    audioSourceIndex: 22
 --- !u!114 &4883749890520021249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,3 +382,15 @@ MonoBehaviour:
   - {fileID: 1197272549727215844, guid: 71bbeb4e722cab141aeb26d8c7f9526c, type: 3}
   - {fileID: 5862895917483481305, guid: abb6f21b2d9381540ad8ff954028f109, type: 3}
   - {fileID: 6007543027693674112, guid: 7ea1e874dfc10d44e8b9af9168fdb610, type: 3}
+--- !u!114 &1794612807576374737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940852392271807217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8fc09c6989df84f8c2c6accd18a7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

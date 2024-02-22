@@ -24,4 +24,11 @@ public class BulletDamage : MonoBehaviour
     {
         bulletDamage = damage;
     }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == 6) LifeManager.Instance.TakeDamages(bulletDamage);
+        
+        gameObject.SetActive(false);
+    }
 }

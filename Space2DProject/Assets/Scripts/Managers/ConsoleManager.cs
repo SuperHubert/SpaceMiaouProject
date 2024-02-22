@@ -46,6 +46,9 @@ public class ConsoleManager : MonoBehaviour
     private static Command<int> SETNUMBEROFROOMS;
     private static Command GETCURRENTMAXFLOORS;
     private static Command<int> SETMAXFLOORS;
+    private static Command GOTOBOSS;
+    private static Command WIN;
+    
 
     //Money Manager
     private static Command<int> GIVECOINS; //WORKS ONLY FOR POSITIVE AMOUNT
@@ -58,10 +61,8 @@ public class ConsoleManager : MonoBehaviour
 
     //Camera Manager
     private static Command<int> CAMERAMODE; //Missing some code
-    private static Command TOGGLECAMERALOCK; //Missing some code
-    
+
     //Loading Manager
-    private static Command TRUELOADINGIMAGE; //Missing some code
     private static Command<int> LOADINGMODE;
     
     //Player
@@ -179,7 +180,8 @@ public class ConsoleManager : MonoBehaviour
         {
             loadingm.UpdateLoading();
         
-            levelm.GenerateNextLevel();
+            levelm.Level().GetChild(3).GetComponent<PortalV2>().OnInteraction();
+            //levelm.GenerateNextLevel();
         });
         
         PREVIOUSLEVEL = new Command("previouslevel", "Generates previous level of the current run", "previouslevel", () =>
@@ -274,6 +276,19 @@ public class ConsoleManager : MonoBehaviour
             Print("Added "+amount+" nyancoins");
         });
         
+        GOTOBOSS = new Command("gotoboss", "Go to the boss room", "gotoboss", () =>
+        {
+            levelm.GoToBossFight();
+            Print("Going to boss room");
+        });
+        
+        WIN = new Command("win", "Goes to Credit Scene", "win", () =>
+        {
+            levelm.floorNumber = levelm.GetMaxFloors();
+            levelm.Level().GetChild(3).GetComponent<PortalV2>().OnInteraction();
+            Print("GG");
+        });
+        
         SETCOINS = new Command<int>("setcoins", "Sets the amount of nyancoins", "setcoins int<amount of coins>", (amount) =>
         {
             moneym.SetCoins(amount);
@@ -318,33 +333,7 @@ public class ConsoleManager : MonoBehaviour
             }
         
         });
-
-        TOGGLECAMERALOCK = new Command("cameralock", "Toggles camera controls", "cameralock", () =>
-        {
-            //ToggleCameraControls()
-            if (true)
-            {
-                Print("Camera controls are now ON");
-            }
-            else
-            {
-                Print("Camera controls are now OFF");
-            }
-        });
-
-        TRUELOADINGIMAGE = new Command("trueloadingimage", "Toggles true loading image", "trueloadingimage", () =>
-         {
-             //ToggleLoadingImage()
-             if (true)
-             {
-                 Print("True image is now ON");
-             }
-             else
-             {
-                 Print("True image is now OFF");
-             }
-         });
-
+        
         LOADINGMODE = new Command<int>("loadingmode", "Changes loading screen display (0 show all, 1 show nothing, 2 no image, 3 no progressbar)", "loadingmode int<mode>", (mode) =>
         {
             
@@ -534,21 +523,19 @@ public class ConsoleManager : MonoBehaviour
             SETNUMBEROFROOMS,
             GETCURRENTMAXFLOORS,
             SETMAXFLOORS,
+            GOTOBOSS,
+            WIN,
             GIVECOINS,
             SETCOINS,
             GIVEHP,
             SETHP,
             SETMAXHP,
             CAMERAMODE,
-            TOGGLECAMERALOCK,
-            TRUELOADINGIMAGE,
             LOADINGMODE,
             TELEPORTPLAYER,
             GETPOS,
             ENEMYLIST,
             SPAWNENEMY,
-            //DAMAGEENEMY,
-            //KILLENEMY,
             TOGGLESHOWTRIGGERS,
             ITEMLIST,
             SPAWNITEM,

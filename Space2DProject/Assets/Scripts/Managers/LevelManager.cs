@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
@@ -17,18 +19,34 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject playerFall;
     [SerializeField] private Transform mainCamera;
-    [SerializeField] private FollowPlayer playerFollower;
+
+    [SerializeField] private RawImage minimapBackground;
+    [SerializeField] private RawImage mapBackground;
+    [SerializeField] private Camera mapCamera;
+    [SerializeField] private Light2D globalLight;
+    [SerializeField] private Image fogImage;
+    [SerializeField] private Image fogImageMinimap;
+    [SerializeField] private Sprite portalBiome1;
+    [SerializeField] private Sprite portalBiome2;
+    [SerializeField] private Sprite portalBiome3;
+    [SerializeField] private Sprite towerBiome1;
+    [SerializeField] private Sprite towerBiome2;
+    [SerializeField] private Sprite towerBiome3;
     
     [SerializeField] private int firstSeed;
     [SerializeField] private int numberOfRooms;
 
     [SerializeField] private List<int> seedList = new List<int>();
 
-    [SerializeField] private int floorNumber;
+    public int floorNumber;
     [SerializeField] private int maxFloors = 3;
-    
+
+    private AudioManager am;
+
     private bool canGenerate = true;
-    
+
+    public List<Dialogues> introDialogues;
+
     #region Singleton
 
     public static LevelManager Instance;
@@ -49,13 +67,12 @@ public class LevelManager : MonoBehaviour
         
         if (!generateOnStart) return;
         StartNewRun(numberOfRooms,firstSeed);
+        am = AudioManager.Instance;
     }
 
     public void StartNewRun(int rooms, int seed)
     {
         if (!canGenerate) return;
-        playerFollower.isInHub = true;
-
         if (rooms < 0)
         {
             if (LoadingLevelData.Instance != null)
@@ -96,15 +113,19 @@ public class LevelManager : MonoBehaviour
 
     private void ClearLevel()
     {
+        PierreTombaleLinear.usableDialogues.Clear();
+        PierreTombaleLinear.index = 0;
+        
         gameObject.GetComponent<NavMeshSurface2d>().RemoveData();
 
-        foreach (Transform child in generator.GetGrid().parent)
+        generator.CleanUpObjects();
+
+        foreach (Transform item in ObjectPooler.Instance.transform)
         {
-            foreach (Transform item in child)
-            {
-                Destroy(item.gameObject);
-            }
+            item.gameObject.SetActive(false);
         }
+
+        Player().SetActive(false);
     }
     
     private IEnumerator NewLevel()
@@ -141,7 +162,7 @@ public class LevelManager : MonoBehaviour
         }
         
         generator.GenerateRooms(numberOfRooms,seedList[floorNumber]);
-
+        
         canGenerate = true;
     }
 
@@ -166,6 +187,8 @@ public class LevelManager : MonoBehaviour
         
         generator.GenerateRooms(rooms,seed);
 
+        UIManager.Instance.IncreaseScore(0);
+
         canGenerate = true;
     }
     
@@ -187,17 +210,74 @@ public class LevelManager : MonoBehaviour
             
             generator.GeneratorSettingsForBoss();
             
-            //Boss Parameters (other script)
-            
-            //floorNumber--;
             ConsoleManager.Instance.Print("Max Level Reached");
         }
         else
         {
-            LifeManager.Instance.Die(true);
+            LoadingLevelData.Instance.score = UIManager.Instance.score;
+            LoadingManager.Instance.UpdateLoading(0);
+            SceneManager.LoadScene(6);
         }
         
 
+    }
+
+    public void ChangeBackgroundColor()
+    {
+        var biome = GetBiome();
+        var cam = mainCamera.GetComponent<Camera>();
+        var portalSpriteRenderer = generator.level.GetChild(3).GetComponent<SpriteRenderer>();
+        var towerSpriteRenderer = generator.level.GetChild(7).GetComponent<SpriteRenderer>();
+        var playerReflection = player.GetChild(7).GetComponent<PlayerReflection>();
+        switch (biome)
+        {
+            case 0:
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.01176471f,0.0627451f,0.1176471f,1f);
+                globalLight.color = new Color(0.4237718f,0.7010058f,0.8396226f,1);
+                portalSpriteRenderer.sprite = portalBiome1;
+                towerSpriteRenderer.sprite = towerBiome1;
+                fogImageMinimap.color = fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
+                am.Stop(5,true);
+                playerReflection.Disable(true);
+                StartCoroutine(LatePlay(6, 3));
+                break;
+            case 1:
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.3294118f,0.03921569f,0.03921569f,1);
+                globalLight.color = new Color(0.8396226f,0.6663744f,0.4475347f, 1);
+                portalSpriteRenderer.sprite = portalBiome2;
+                towerSpriteRenderer.sprite = towerBiome2;
+                fogImageMinimap.color = fogImage.color = new Color(1f,0f,0.1058824f,1);
+                am.Stop(6,true);
+                playerReflection.Disable(true);
+                StartCoroutine(LatePlay(7, 3));
+                break;
+            case 2:
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.02352941f,0.01568628f,0.01568628f,1);
+                globalLight.color = new Color(0.2641509f,0.2159546f,0.1831613f,1f);
+                portalSpriteRenderer.sprite = portalBiome3;
+                towerSpriteRenderer.sprite = towerBiome3;
+                fogImageMinimap.color = fogImage.color = new Color(0.7098039f,0.7098039f,0.7098039f,1f);
+                am.Stop(7,true);
+                playerReflection.Disable();
+                StartCoroutine(LatePlay(8, 3));
+                break;
+            default:
+                mapCamera.backgroundColor = mapBackground.color = minimapBackground.color = cam.backgroundColor = new Color(0.01176471f,0.0627451f,0.1176471f,1f);
+                globalLight.color = Color.white;
+                portalSpriteRenderer.sprite = portalBiome1;
+                towerSpriteRenderer.sprite = towerBiome1;
+                fogImageMinimap.color = fogImage.color = new Color(0.2509804f,0.3294118f,1f,1f);
+                playerReflection.Disable(true);
+                break;
+        }
+    }
+
+    public IEnumerator LatePlay(int id, float time)
+    {
+        yield return new WaitForSeconds(time);
+        am.Stop(id);
+        
+        am.Play(id);
     }
 
     IEnumerator BossFightNavMesh()
@@ -218,15 +298,15 @@ public class LevelManager : MonoBehaviour
         
         LoadingManager.Instance.UpdateLoading(2);
         
+        Player().SetActive(true);
+        
     }
 
     public void MovePlayer(Transform position)
     {
         mainCamera.position = player.position = position.position;
-        if (playerFall != null && playerFall.GetComponent<Fall>() != null)
-        {
-            StartCoroutine(playerFall.GetComponent<Fall>().TeleportFollower(true));
-        }
+        if (playerFall == null || playerFall.GetComponent<Fall>() == null) return;
+        if(player.gameObject.activeSelf) playerFall.GetComponent<Fall>().ResetFollowerPos();
     }
     
     public void GeneratePreviousLevel()
@@ -337,5 +417,44 @@ public class LevelManager : MonoBehaviour
     {
         maxFloors = n >= 1 ? n : 1;
         return maxFloors;
+    }
+
+    public Camera Camera()
+    {
+        return mainCamera.gameObject.GetComponent<Camera>();
+    }
+
+    public void GoToBossFight()
+    {
+        AudioManager.Instance.StopAllSounds();
+        floorNumber = maxFloors - 1;
+        GenerateNextLevel();
+        ChangeBackgroundColor();
+        Level().GetChild(6).gameObject.SetActive(true);
+        generator.GeneratorSettingsForBoss();
+    }
+
+    public void PlayIntroDialogue()
+    {
+        Player().SetActive(true);
+        MovePlayer(player);
+        if(!LoadingLevelData.firstRun) return;
+        DialogueManager.Instance.StartMultipleDialogues(introDialogues,false);
+        LoadingLevelData.firstRun = false;
+    }
+
+    public void DisablePlayer(float duration)
+    {
+        StartCoroutine(DisableRoutine(duration));
+    }
+
+    IEnumerator DisableRoutine(float duration)
+    {
+        player.GetChild(7).GetComponent<SpriteRenderer>().enabled = player.GetChild(0).GetComponent<SpriteRenderer>().enabled = Player().GetComponent<SpriteRenderer>().enabled = InputManager.canInput = false;
+        LifeManager.Instance.canTakeDamge = false;
+        yield return new WaitForSeconds(duration);
+        LifeManager.Instance.canTakeDamge = true;
+        yield return null;
+        player.GetChild(7).GetComponent<SpriteRenderer>().enabled = player.GetChild(0).GetComponent<SpriteRenderer>().enabled = Player().GetComponent<SpriteRenderer>().enabled = InputManager.canInput = true;
     }
 }

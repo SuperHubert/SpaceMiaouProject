@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
     public int reductionTotal = 0;
+    public GameObject shopCanvas;
 
     #region Singleton
     public static ShopManager Instance;
@@ -22,8 +22,10 @@ public class ShopManager : MonoBehaviour
         public string name;
         public Sprite image;
         public int basePrice;
+        public string description = "does something";
         public int actualPrice;
         public UnityEvent upgrade = new UnityEvent();
+        public bool track = true;
         public bool isBought = false;
 
     }
@@ -33,7 +35,7 @@ public class ShopManager : MonoBehaviour
 
      public void ReductionPickI()
     {
-        reductionTotal ++;
+        reductionTotal++;
     }
 
     public void ReductionPickII()
@@ -49,6 +51,7 @@ public class ShopManager : MonoBehaviour
             name = item.name,
             image = item.image,
             basePrice = item.basePrice,
+            description = item.description,
             actualPrice = item.actualPrice,
             upgrade = item.upgrade,
             isBought = item.isBought
@@ -74,6 +77,7 @@ public class ShopManager : MonoBehaviour
                         basePrice = item.basePrice,
                         actualPrice = item.actualPrice,
                         upgrade = item.upgrade,
+                        track = item.track,
                         isBought = item.isBought
                     }))
                     {
@@ -95,8 +99,6 @@ public class ShopManager : MonoBehaviour
                 text += item.name + " ";
             }
             
-            Debug.Log("Floor "+i+" : "+text);
-
             if (i != floor)
             {
                 returnList.Clear();
@@ -107,10 +109,13 @@ public class ShopManager : MonoBehaviour
         {
             name = ShopItemList[0].name,
             image = ShopItemList[0].image,
-            basePrice = ShopItemList[0].basePrice,
-            actualPrice = ShopItemList[0].actualPrice,
+            basePrice = 1,
+            description = "Heal 1 Life [Appears in every shop]",
+            actualPrice = 1,
             upgrade = ShopItemList[0].upgrade,
-            isBought = ShopItemList[0].isBought
+            track = false,
+            isBought = ShopItemList[0].isBought,
+            
         };
         
         returnList.Add(healItem);

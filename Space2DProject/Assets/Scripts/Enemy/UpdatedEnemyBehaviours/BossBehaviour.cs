@@ -42,11 +42,12 @@ public class BossBehaviour : EnemyBehaviour
         StartCoroutine(CloseAttack(attackList[0]));
     }
 
-    public override void Die()
+    public override void Die(bool destroy = false)
     {
         base.Die();
         healthBarBack.SetActive(false);
         LevelManager.Instance.Level().GetChild(3).position = new Vector3(0,5,0);
+        LevelManager.Instance.Level().GetChild(3).GetComponent<Collider2D>().enabled = true;
         ConsoleManager.Instance.Print("Bravo, vous avez fini le jeu");
     }
 

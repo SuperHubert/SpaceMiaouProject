@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
 public class GenerationSimpleHalf : MonoBehaviour
@@ -14,9 +15,11 @@ public class GenerationSimpleHalf : MonoBehaviour
     private Transform enemies;
     private Transform items;
     private Transform spawnPoint;
-    private Transform shopPos;
-    private Transform portalPos;
+    private Transform shopTransform;
+    private Transform portalTransform;
     private Transform healthBarCanvas;
+    private Transform lightsTransform;
+    private Transform towerTransform;
     private int roomSpriteRendersIndex;
     private int roomTilemapsIndex;
     private int roomCollisionsIndex;
@@ -25,8 +28,11 @@ public class GenerationSimpleHalf : MonoBehaviour
     private int roomPortalIndex;
     private int roomSpawnIndex;
     private int roomShopIndex;
+    private int roomTowerIndex;
+    private int roomLightsIndex;
     [SerializeField] private Camera cameraMap;
-    [SerializeField] private FollowPlayer followPlayer;
+    [SerializeField] private FogOfWar fogOfWar;
+    private MapIcons mapIcons;
 
     [SerializeField] private bool buildNavMesh = true;
     [SerializeField] private bool movePlayer = true;
@@ -52,9 +58,11 @@ public class GenerationSimpleHalf : MonoBehaviour
         enemies = level.GetChild(1);
         items = level.GetChild(2);
         spawnPoint = level.GetChild(4);
-        portalPos = level.GetChild(3);
+        portalTransform = level.GetChild(3);
         healthBarCanvas = level.GetChild(5);
-        shopPos = level.GetChild(6);
+        shopTransform = level.GetChild(6);
+        towerTransform = level.GetChild(7);
+        lightsTransform = level.GetChild(8);
 
         roomSpriteRendersIndex = 0;
         roomTilemapsIndex = 1;
@@ -64,11 +72,14 @@ public class GenerationSimpleHalf : MonoBehaviour
         roomPortalIndex = 5;
         roomSpawnIndex = 6;
         roomShopIndex = 7;
+        roomTowerIndex = 8;
+        roomLightsIndex = 9;
     }
 
     private void Start()
     {
         textureAssigner = gameObject.GetComponent<TextureAssigner>();
+        mapIcons = fogOfWar.gameObject.GetComponent<MapIcons>();
     }
 
     public void GenerateRooms(int numberOfRooms,int seed)
@@ -139,6 +150,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         progress = 0;
 
         chestList.Clear();
+        
+        mapIcons.ClearChestsIcons();
         
         textureAssigner.FillAllPools();
 
@@ -314,6 +327,8 @@ public class GenerationSimpleHalf : MonoBehaviour
     {
         textureAssigner.FillAllPools();
         
+        LevelManager.Instance.ChangeBackgroundColor();
+        
         foreach (Case room in generationList)
         {
             GetSurroundingCasesList(room);
@@ -325,20 +340,26 @@ public class GenerationSimpleHalf : MonoBehaviour
             room.GetComponent<SpriteRenderer>().sprite = prefabRoom.GetComponent<SpriteRenderer>().sprite;
             
             //Instantiates prefab tilemap UnWalkable
-            Instantiate(prefabRoom.transform.GetChild(roomTilemapsIndex).GetChild(1),room.transform.GetChild(roomTilemapsIndex));
-            
+            var unwalkable = Instantiate(prefabRoom.transform.GetChild(roomTilemapsIndex).GetChild(1),room.transform.GetChild(roomTilemapsIndex));
+            unwalkable.GetComponent<TilemapRenderer>().enabled = false;
             //Instantiates prefab collision GameObjects
             foreach (Transform collisionObj in prefabRoom.transform.GetChild(roomCollisionsIndex))
             {
                 Instantiate(collisionObj, room.transform.GetChild(roomCollisionsIndex));
             }
             
-            //Instantiates prefab Sprite Renderers GameObjects
-            foreach (Transform spriteRenObj in prefabRoom.transform.GetChild(roomSpriteRendersIndex))
+            
+            var renderers = prefabRoom.transform.GetChild(roomSpriteRendersIndex);
+            for (int i = 0; i < renderers.childCount; i++)
             {
-                Instantiate(spriteRenObj, room.transform.GetChild(roomSpriteRendersIndex));
+                GameObject waterObj = Instantiate(renderers.GetChild(i).gameObject, room.transform.GetChild(roomSpriteRendersIndex));
+                if (i != 2) continue;
+                waterObj.GetComponent<SpriteRenderer>().sortingOrder = -1;
+                //var tempColor = waterObj.GetComponent<SpriteRenderer>().color;
+                //tempColor.a = 0.7f;
+                //waterObj.GetComponent<SpriteRenderer>().color = tempColor;
             }
-
+            
             if (firstRoomPrefab == null || firstRoomPrefab.activeSelf==false)
             {
                 firstRoomPrefab = prefabRoom;
@@ -389,14 +410,15 @@ public class GenerationSimpleHalf : MonoBehaviour
                 (room.caseUnder != null),
                 (room.caseLeft != null), (room.caseRight != null));
             
-            //Instantiates prefab enemy GameObjects (not for 1st room)
             if (room != generationList[0])
             {
                 foreach (Transform enemyObj in prefabRoom.transform.GetChild(roomEnemiesIndex))
                 {
                     Transform instantiatedEnemy = Instantiate(enemyObj, room.transform);
                     instantiatedEnemy.parent = enemies;
-                    instantiatedEnemy.GetChild(0).GetChild(1).SetParent(healthBarCanvas);
+                    //instantiatedEnemy.GetChild(0).GetChild(1).SetParent(healthBarCanvas);
+                    Debug.Log(instantiatedEnemy.GetChild(0));
+                    instantiatedEnemy.GetChild(0).GetComponent<EnemyHealth>().healthBarTransform.SetParent(healthBarCanvas);
                 }
             }
             
@@ -409,6 +431,23 @@ public class GenerationSimpleHalf : MonoBehaviour
                 {
                     AddChest(chest.gameObject);
                 }
+
+                //destroy arenas
+                if (otherObj.GetComponent<Arena>() != null && room == generationList[0])
+                {
+                    Destroy(chest.gameObject);
+                }
+                
+            }
+            
+            //Instantiates prefab Lights GameObjects
+            if (prefabRoom.transform.childCount >= 10)
+            {
+                foreach (Transform lightObj in prefabRoom.transform.GetChild(roomLightsIndex))
+                {
+                    Transform lightT = Instantiate(lightObj, room.transform);
+                    lightT.parent = lightsTransform;
+                }
             }
             
             UpdateProgress(0.1f/ dungeonNumberOfRooms);
@@ -416,14 +455,24 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         Random.state = randState;
-
-        followPlayer.isInHub = false;
         
         DestroySomeChests();
+
+        var levelSize = fogOfWar.levelSize;
+        
+        mapIcons.UpdateChests(levelSize);
+        
+        mapIcons.MoveShopIcon(shopTransform,levelSize,shopTransform.gameObject.activeSelf);
+        
+        mapIcons.MoveTowerIcon(towerTransform,levelSize);
+        
+        mapIcons.MovePortalIcon(portalTransform,levelSize);
         
         CleanUpGrid();
 
         UpdateProgress(1);
+        
+        LevelManager.Instance.PlayIntroDialogue();
     }
 
     private void RecenterLevel()
@@ -456,6 +505,8 @@ public class GenerationSimpleHalf : MonoBehaviour
         }
         
         generationList.Clear();
+        
+        fogOfWar.ClearFog();
     }
     
     private int[] GetLevelSize()
@@ -502,7 +553,9 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         posObject = Instantiate(firstRoomPrefab.transform.GetChild(roomShopIndex).gameObject, room.transform);
         
-        shopPos.position = posObject.transform.position;
+        shopTransform.position = posObject.transform.position;
+        
+        shopTransform.gameObject.GetComponent<ShopInteraction>().UpdateAppearance();
     }
 
     private void MovePortal()
@@ -511,7 +564,12 @@ public class GenerationSimpleHalf : MonoBehaviour
         
         GameObject posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomPortalIndex).gameObject, room.transform);
 
-        portalPos.position = posObject.transform.position;
+        portalTransform.position = posObject.transform.position;
+        
+        //posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomTowerIndex).gameObject, room.transform);
+        posObject = Instantiate(lastRoomPrefab.transform.GetChild(roomTowerIndex).gameObject, room.transform);
+        
+        towerTransform.position = posObject.transform.position;
     }
     
     private void UpdateProgress(float number)
@@ -534,29 +592,59 @@ public class GenerationSimpleHalf : MonoBehaviour
         if (levelHeight > levelWidth)
         {
             cameraMap.orthographicSize = levelHeight * 25 + 10;
+            fogOfWar.levelSize = levelHeight * 25 + 10;
         }
         else
         {
             cameraMap.orthographicSize = levelWidth * 25 + 10;
+            fogOfWar.levelSize = levelWidth * 25 + 10;
         }
-        
-        
+
     }
 
     private void DestroySomeChests()
     {
         foreach (GameObject item in chestList)
         {
-            item.GetComponent<Chest>().UpdateChest();
+            item.GetComponent<Chest>().UpdateChest(mapIcons);
         }
     }
     
     public void GeneratorSettingsForBoss()
     {
-        portalPos.position = new Vector3(0, -150, 0);
+        portalTransform.position = new Vector3(0, -150, 0);
         
         cameraMap.orthographicSize = 25 + 10;
+    }
+
+    public void CleanUpObjects()
+    {
+        foreach (Transform child in healthBarCanvas)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in grid)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in enemies)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in items)
+        {
+            Destroy(child.gameObject);
+        }
+
+        towerTransform.GetComponent<Collider2D>().enabled = true;
+        towerTransform.GetChild(0).gameObject.SetActive(false);
+        if(portalTransform.GetComponent<Collider2D>() != null) portalTransform.GetComponent<Collider2D>().enabled = false;
         
-        //maybe more stuff
+        if (lightsTransform == null) return;
+        foreach (Transform child in lightsTransform)
+        { 
+            Destroy(child.gameObject);
+        }
+
     }
 }

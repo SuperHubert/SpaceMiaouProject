@@ -3,51 +3,57 @@ using UnityEngine;
 
 public class Fall : MonoBehaviour
 {
-    public GameObject currentFollower;
-    private FollowPlayer follow;
+    public GameObject fallAnimObj;
+    private Animator fallAnim;
+    [SerializeField] private FollowPlayer follow;
     private PlayerMovement playerMovement;
-
-    public float teleportCooldown = 1f;
+    private LifeManager lifeManager;
     
     private Transform pointBotLeft;
     private Transform pointTopRight;
+    private Transform playerTransform;
+    private GameObject playerObj;
     private bool canFall = true;
-
-    public Coroutine teleportFollowerRoutine;
+    
+    private AudioManager am;
     
     void Start()
     {
         pointBotLeft = transform.GetChild(0);
         pointTopRight = transform.GetChild(1);
-        follow = currentFollower.GetComponent<FollowPlayer>();
-        playerMovement = transform.parent.gameObject.GetComponent<PlayerMovement>();
+        playerTransform = transform.parent;
+        playerObj = playerTransform.gameObject;
+        playerMovement = playerObj.GetComponent<PlayerMovement>();
+        fallAnim = fallAnimObj.GetComponent<Animator>();
+        lifeManager =LifeManager.Instance;
+        am = AudioManager.Instance;
     }
     
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.layer != 13) return;
         if (!other.OverlapPoint(pointBotLeft.position) || !other.OverlapPoint(pointTopRight.position) || !canFall) return;
-        if (playerMovement.dashing) return;
-        canFall = false;
+        if (playerMovement.dashing || !LifeManager.Instance.canTakeDamge) return;
         StartCoroutine(DoTheFalling());
     }
-
+    
     IEnumerator DoTheFalling()
     {
-        //play Animation;
-        InputManager.canInput = false;
+        LevelManager.Instance.DisablePlayer(1f);
+        fallAnimObj.transform.position = transform.position;
+        am.Play(18, true);
+        fallAnim.Play("Noyade");
         yield return new WaitForSeconds(1f);
-        LifeManager.Instance.TakeDamages(1);
-        transform.parent.position = currentFollower.transform.position;
-        canFall = true;
-        InputManager.canInput = true;
+        playerTransform.position = follow.teleportSpot;
+        yield return null;
+        lifeManager.TakeDamages(1);
+        playerObj.GetComponent<PlayerMovement>().dashCd = 0;
     }
-    
+
     public IEnumerator TeleportFollower(bool instant = false)
     {
         if(instant)yield return null;
-        follow.WarpToPlayer();
-        follow.canMove = true;
+        follow.ResetTeleportSpot();
     }
 
     public void ResetFollowerPos()

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3673371043094171299}
   - component: {fileID: 3673371043094171298}
+  - component: {fileID: 2072445289536621032}
   m_Layer: 0
   m_Name: Button Manager
   m_TagString: Untagged
@@ -41,5 +42,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee828accda8e6e4a8b83b49aae0213e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelectedButton: {fileID: 0}
+  previousSelectedObj: {fileID: 0}
+  inputImage: {fileID: 0}
+  soundSlider: {fileID: 0}
+  pauseUI: {fileID: 0}
+--- !u!114 &2072445289536621032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3673371043094171297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d2d0cb25ce74d4c883535048d5d850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

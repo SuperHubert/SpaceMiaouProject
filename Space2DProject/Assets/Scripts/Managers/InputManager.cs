@@ -4,21 +4,23 @@ public class InputManager : MonoBehaviour
 {
     public static bool canInput = true;
     public static bool canMove = true;
+    public bool isMoving;
     public GameObject playerObj;
 
     [SerializeField] private bool showKeycodes = false;
     
     private SprayAttack sprayAttack;
-    private Combat combat;
+    private Combat3 combat3;
     private DisplayInteracion displayInteraction;
     private PlayerMovement playerMovement;
     [SerializeField] private MapManager mapManager;
     [SerializeField] private ShopInteraction shopInteraction;
+    [SerializeField] private UIManager uiManager;
     
     void Start()
     {
         sprayAttack = playerObj.GetComponent<SprayAttack>();
-        combat = playerObj.GetComponent<Combat>();
+        combat3 = playerObj.GetComponent<Combat3>();
         displayInteraction = playerObj.GetComponent<DisplayInteracion>();
         playerMovement = playerObj.GetComponent<PlayerMovement>();
     }
@@ -33,6 +35,27 @@ public class InputManager : MonoBehaviour
                     Debug.Log("KeyCode down: " + kcode);
             }
         }
+
+        if(uiManager != null) uiManager.pauseInput = (Input.GetKeyDown(KeyCode.JoystickButton6) || Input.GetKeyDown(KeyCode.Escape));
+        
+        if(uiManager != null && uiManager.pauseUI.activeSelf) return;
+        
+        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (DialogueManager.Instance.dialogueCanvas.activeSelf)
+            {
+                DialogueManager.Instance.DisplayNextSentence();
+            }
+            else
+            {
+                displayInteraction.interact = true;
+            }
+        }
+        else
+        {
+            displayInteraction.interact = false;
+        }
         
         if(!canInput) return;
         
@@ -43,26 +66,23 @@ public class InputManager : MonoBehaviour
                 sprayAttack.sprayAttackAxis = Input.GetAxisRaw("SprayAttack");
                 playerMovement.shootingAxis = Input.GetAxisRaw("SprayAttack");
 
-                combat.rightAttack = Input.GetButtonDown("RightAttack");
-                combat.leftAttack = Input.GetButtonDown("LeftAttack");
-                combat.uptAttack = Input.GetButtonDown("UpAttack");
-                combat.downAttack = Input.GetButtonDown("DownAttack");
-                combat.specialAttack = Input.GetButtonDown("SpecialAttack");
+                combat3.baseAttack = Input.GetButtonDown("BaseAttack");
+                combat3.specialAttack = Input.GetButtonDown("SpecialAttack");
+                
             }
             
             shopInteraction.closeShopInput = Input.GetKeyDown(KeyCode.JoystickButton1);
         }
         
-        displayInteraction.interact = Input.GetButtonDown("Fire1");
 
         if (canMove)
         {
             playerMovement.horizontalAxis = Input.GetAxisRaw("Horizontal");
             playerMovement.verticalAxis = Input.GetAxisRaw("Vertical");
-            playerMovement.dash = Input.GetMouseButtonDown(1) || Input.GetAxisRaw("Dash") > 0;
-        }
-        
+            playerMovement.dash = Input.GetMouseButtonDown(1) || Input.GetAxisRaw("Dash") > 0 || Input.GetAxisRaw("Dash2") > 0;
 
+            isMoving = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
+        }
         
         if (mapManager != null)
         {

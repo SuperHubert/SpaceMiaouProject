@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -10,18 +11,25 @@ public class SprayAttack : MonoBehaviour
     public bool isSpraying;
     private bool canShoot = true;
 
-    public Slider slider;
+    public Image sprayImage;
     public float maxSpray = 100;
     public float currentSpray;
 
     public bool burn = false;
     public float burnDamage = 0.02f;
-    
+
+    public List<Dialogues> sprayDialogues;
+
     [HideInInspector] public float sprayAttackAxis;
+
+    private AudioManager am;
+    private CombatManager cm;
     
 
     void Start()
     {
+        am = AudioManager.Instance;
+        cm = CombatManager.Instance;
         currentSpray = maxSpray;
     }
     
@@ -33,8 +41,7 @@ public class SprayAttack : MonoBehaviour
 
     void SprayingAttack()
     {
-        if (sprayAttackAxis > 0 && GetComponent<Combat>().isAttacking == false &&
-            GetComponent<Combat>().isSpecialAttacking == false)
+        if (sprayAttackAxis > 0 && GetComponent<Combat3>().isAttacking == false && GetComponent<Combat3>().isSpecialAttacking == false)
         {
             isSpraying = true;
             if (canShoot && currentSpray > 0)
@@ -51,6 +58,9 @@ public class SprayAttack : MonoBehaviour
                 currentSpray -= 1;
 
                 canShoot = false;
+                
+                am.Play(33);
+                
                 StartCoroutine(ResetSpray());
             }
             
@@ -60,12 +70,16 @@ public class SprayAttack : MonoBehaviour
         else
         {
             isSpraying = false;
+            if (!LoadingLevelData.sprayAmmoDialogue || !(currentSpray < 1/3f * maxSpray) || !cm.IsEmpty()) return;
+            DialogueManager.Instance.StartMultipleDialogues(sprayDialogues);
+            LoadingLevelData.sprayAmmoDialogue = false;
         }
     }
 
     public void UpdateSprayBar()
     {
-        slider.value = currentSpray / maxSpray;
+        if (currentSpray > maxSpray) currentSpray = maxSpray;
+        sprayImage.fillAmount = (float)currentSpray / maxSpray;
     }
 
     IEnumerator ResetSpray()

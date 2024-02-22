@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +8,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     
     [SerializeField] public State currentState;
 
-    [SerializeField] protected bool respawn = true;
+    public bool respawn = true;
 
     [SerializeField] protected bool hasAction;
     [SerializeField] protected int actionCdMax;
@@ -18,14 +19,23 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected EnemyHealth health;
     protected Transform player;
 
-    [SerializeField] protected Animator animator;
+    public Animator animator;
     [SerializeField] protected Transform enemyTransform;
+    protected GameObject enemy;
     [SerializeField] protected Transform triggersTransform;
     [SerializeField] protected Transform respawnTriggerTransform;
     private GameObject wakeUpTrigger;
     private GameObject sleepTrigger;
     private GameObject respawnTrigger;
     protected GameObject actionTrigger;
+
+    public bool stunned = false;
+
+    public bool cleared = false;
+
+    protected AudioManager am;
+
+    private CombatManager cm;
 
 
     private void Start()
@@ -38,11 +48,10 @@ public abstract class EnemyBehaviour : MonoBehaviour
         agent = transform.GetChild(0).GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.SetDestination(enemyTransform.position);
+        if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
+        enemy = enemyTransform.gameObject;
         
-        health = enemyTransform.gameObject.GetComponent<EnemyHealth>();
-
-        animator = enemyTransform.gameObject.GetComponent<Animator>();
+        health = enemy.GetComponent<EnemyHealth>();
         
         (wakeUpTrigger = triggersTransform.GetChild(0).gameObject).SetActive(true);
         (sleepTrigger = triggersTransform.GetChild(1).gameObject).SetActive(false);
@@ -50,18 +59,25 @@ public abstract class EnemyBehaviour : MonoBehaviour
         (respawnTrigger = respawnTriggerTransform.gameObject).SetActive(false);
 
         player = LevelManager.Instance.Player().transform;
-        
+
         if (!hasAction) return;
         
         actionCd = 0;
         isPerformingAction = false;
+        
+        am = AudioManager.Instance;
+        cm = CombatManager.Instance;
     }
     
     public virtual void WakeUp()
     {
+        if (currentState == State.Dead) return;
+        
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(true);
         actionTrigger.SetActive(hasAction);
+        
+        if(cm != null) cm.Add(gameObject);
         
         currentState = State.Awake;
     }
@@ -72,16 +88,25 @@ public abstract class EnemyBehaviour : MonoBehaviour
         wakeUpTrigger.SetActive(true);
         actionTrigger.SetActive(false);
 
-        agent.SetDestination(transform.position);
+        if(agent.isOnNavMesh) agent.SetDestination(transform.position);
+        
+        if(cm != null) cm.Remove(gameObject);
         
         currentState = State.Asleep;
         isPerformingAction = false;
         
     }
 
-    public virtual void Die()
+    public virtual void Die(bool destroy = false)
     {
-        agent.SetDestination(transform.position);
+        if (destroy)
+        {
+            Destroy(gameObject);
+        }
+        
+        if(cm != null) cm.Remove(gameObject);
+
+        agent.Warp(transform.position);
         
         wakeUpTrigger.SetActive(false);
         sleepTrigger.SetActive(false);
@@ -97,19 +122,32 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
         
         enemyTransform.gameObject.SetActive(false);
-        
+
         currentState = State.Dead;
     }
 
     public virtual void Respawn()
     {
         if (!respawn) return;
+        if(cleared) return;
         
         animator.SetBool("isDead",false);
         
         enemyTransform.gameObject.SetActive(true);
+        
+        if(agent.isOnNavMesh) agent.isStopped = false;
+        
+        wakeUpTrigger.SetActive(true);
+        sleepTrigger.SetActive(false);
+        actionTrigger.SetActive(false);
+        respawnTrigger.SetActive(false);
+
+        enemyTransform.GetComponent<Collider2D>().enabled = true;
+        
         enemyTransform.position = respawnTrigger.transform.position;
         health.InitEnemy();
+        
+        if(cm != null) cm.Remove(gameObject);
         
         currentState = State.Asleep;
         
@@ -117,6 +155,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public void ExecuteAction()
     {
+        if (currentState == State.Dead) return;
         if (actionCd != 0 || !hasAction) return;
         isPerformingAction = true;
         actionCd = actionCdMax;
@@ -127,6 +166,41 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         if (isPerformingAction) return;
         actionTrigger.SetActive(false);
+    }
+
+    public virtual void Stun(float duration = 1f)
+    {
+        if(!stunned) StartCoroutine(StunRoutine(duration));
+    }
+
+    public virtual IEnumerator StunRoutine(float duration = 1f)
+    {
+        stunned = true;
+        agent.velocity = Vector3.zero;
+        if(agent.isOnNavMesh) agent.isStopped = true;
+        yield return new WaitForSeconds(duration);
+        if(agent.isOnNavMesh) agent.isStopped = false;
+        stunned = false;
+        animator.SetBool("Damage", false);
+    }
+
+    public virtual void KnockBack(Vector3 pos, float duration = 0.75f)
+    {
+        StartCoroutine(KnockBackRoutine(pos,duration));
+    }
+
+    public virtual IEnumerator KnockBackRoutine(Vector3 pos,float duration)
+    {
+        agent.velocity = Vector3.zero;
+        if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
+        yield return null;
+        agent.acceleration = 100;
+        agent.speed = 20;
+        agent.stoppingDistance = 1f;
+        if(agent.isOnNavMesh) agent.SetDestination(pos);
+        yield return new WaitForSeconds(duration);
+        if(agent.isOnNavMesh) agent.SetDestination(enemyTransform.position);
+        
     }
 
 }
